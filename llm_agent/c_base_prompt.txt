@@ -1,0 +1,80 @@
+here is an example library delimited by ```:
+```
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <assert.h>
+
+#include "library.h"
+
+void lib_echo(char *data, ssize_t len){
+	if(strlen(data) == 0) {
+		return;
+	}
+	char *buf = calloc(1, len);
+	strncpy(buf, data, len);
+	printf("%s",buf);
+	free(buf);
+
+	// A crash so we can tell the harness is working for lib_echo
+	if(data[0] == 'p') {
+		if(data[1] == 'o') {
+			if(data[2] =='p') {
+				if(data[3] == '!') {
+					assert(0);
+				}
+			}
+		}
+	}
+}
+
+int  lib_mul(int x, int y){
+	if(x%2 == 0) {
+		return y << x;
+	} else if (y%2 == 0) {
+		return x << y;
+	} else if (x == 0) {
+		return 0;
+	} else if (y == 0) {
+		return 0;
+	} else {
+		return x * y;
+	}
+}
+```
+A harness is a main function that takes input from stdin and uses it as input to the functions. An example of this is delimited by ```:
+```
+#include <unistd.h>
+#include <string.h>
+#include <stdio.h>
+
+#include "library.h"
+
+// fixed size buffer based on assumptions about the maximum size that is likely necessary to exercise all aspects of the target function
+#define SIZE 100
+
+int main(int argc, char* argv[]) {
+	if((argc == 2) && strcmp(argv[1], "echo") == 0) {
+		// make sure buffer is initialized to eliminate variable behaviour that isn't dependent on the input.
+		char input[SIZE] = {0};
+
+		ssize_t length;
+		length = read(STDIN_FILENO, input, SIZE);
+
+		lib_echo(input, length);
+	} else if ((argc == 2) && strcmp(argv[1], "mul") == 0) {
+		int a,b = 0;
+		read(STDIN_FILENO, &a, 4);
+		read(STDIN_FILENO, &b, 4);
+	} 
+}
+```
+
+IMPORTANT: A harness should not interfere with or sanitize input. Also, a harness does not produce any output. A harness only calls a function with inputs from stdin.
+
+Write a harness for the following function delimited by ```. Use scanf to receive input:
+```
+int div(int a, int b) {
+return(a / b);}
+```
+
