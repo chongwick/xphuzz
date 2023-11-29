@@ -31,10 +31,9 @@ import numpy as np
 
 def TestOneInput(input_bytes):
     fdp = atheris.FuzzedDataProvider(input_bytes)
-    x1 = fdp.ConsumeFloatListInRange(2, -10.0, 10.0)
-    x2 = fdp.ConsumeFloatListInRange(2, -10.0, 10.0)
-    out = np.zeros((2, 2))
-    np.matmul(x1, x2, out=out, casting='same_kind')
+    x1 = fdp.ConsumeFloatList(2)
+    x2 = fdp.ConsumeFloatList(2)
+    np.matmul(x1, x2)
 
 def main():
     atheris.Setup(sys.argv, TestOneInput)
@@ -44,7 +43,8 @@ if __name__ == "__main__":
     atheris.instrument_all()
     main()
 ```
-Mutate this test harness with the goal of increasing coverage. Use the given test harness as the base to create functioning harnesses. Provide 5 mutations formatted like:
+Mutate this test harness with the goal of increasing coverage. Call the target function in unique ways. Use the given test harness as the base to create functioning harnesses. Significantly increase the complexity of the harness. Provide 5 mutations formatted like:
+mutation_#.py
 ```
 code
 ```

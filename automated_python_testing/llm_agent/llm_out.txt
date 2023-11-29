@@ -1,0 +1,49 @@
+Here are two unique fuzzing harnesses in Python:
+
+Fuzzing Harness 1:
+```python
+import atheris
+import sys
+import example_library
+
+def TestOneInput(input_bytes):
+    fdp = atheris.FuzzedDataProvider(input_bytes)
+    data = fdp.ConsumeInt(sys.maxsize)
+    try:
+        example_library.CodeBeingFuzzed(data)
+    except Exception as e:
+        pass
+
+def main():
+    atheris.Setup(sys.argv, TestOneInput)
+    atheris.Fuzz()
+
+if __name__ == "__main__":
+    atheris.instrument_all()
+    main()
+```
+
+Fuzzing Harness 2:
+```python
+import atheris
+import sys
+import example_library
+
+def TestOneInput(input_bytes):
+    fdp = atheris.FuzzedDataProvider(input_bytes)
+    data = fdp.ConsumeUnicode(sys.maxsize)
+    try:
+        example_library.CodeBeingFuzzed(data)
+    except Exception as e:
+        pass
+
+def main():
+    atheris.Setup(sys.argv, TestOneInput)
+    atheris.Fuzz()
+
+if __name__ == "__main__":
+    atheris.instrument_all()
+    main()
+```
+
+Please note that you need to replace `example_library` with the actual name of the library that contains the code being fuzzed.

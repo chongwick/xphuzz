@@ -60,7 +60,7 @@ def test(context):
     quit()
 
 def main():
-    context = [{'role': 'system', 'content': 'You are a generic assistant'}]
+    context = [{'role': 'system', 'content': 'You are a generic assistant.'}]
     base_prompt = get_base_prompt("python")
     #base_prompt = get_mutate_prompt("python")
     add_context(context, 'user', 'Here is a function and its corresponding\
@@ -72,17 +72,18 @@ def main():
             sys, atheris, and the target library. Before using any \
             attributes, methods, or functions from libraries, make \
             sure to check if they exist and are accesible. \
-            Try to avoid triggering an AttributeError. \
             Refer to the function documentation to avoid triggering \
             TypeErrors. Fuzz every parameter. Do not make generic \
             try/except blocks, only specific exceptions. \
             Prioritize high coverage via unique parameters/function calls. \
-            Produce 5 unique fuzzing harnesses in Python. \
+            Respond only with 2 unique fuzzing harnesses in Python. \
             Output format: harness_#.py: ```\\n <code> \\n```')
-    #add_context(context, 'user', base_prompt)
+    add_context(context, 'user', base_prompt)
     print("last\n\n\n")
     with open("llm_out.txt", "w") as f:
         f.write(context[-1]['content'])
+    #with open("mutation_out.txt", "w") as f:
+    #    f.write(context[-1]['content'])
 
 if __name__ == "__main__":
     main()
