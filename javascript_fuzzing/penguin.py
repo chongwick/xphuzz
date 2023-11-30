@@ -1,7 +1,7 @@
 class Prompter:
     def __init__(self):
         self.i = 0
-    #Five primitive operations
+    #Primitive operations
     def combine(self, snippet_list, context):
         segments = ""
         for snip in snippet_list:
@@ -15,8 +15,21 @@ class Prompter:
         out_str = "Make this more complicated:\n" + snippet
         return(out_str)
 
-    def inject(self, snippet, context):
-        out_str = "use more JavaScript functions:\n" + snippet
+    def inject_statement(self, snippet, context, generic=True):
+        if generic:
+            lines = [line+"\n" for line in snippet.split("\n") if line]
+            lines.insert(13,"###\n")
+            out_str = "".join(lines) + "\n" + "Write 4 new statements that could be inserted at ###"
+            print(out_str)
+            #out_str = "use more JavaScript functions:\n" + snippet
+            return(out_str)
+
+    def inject_variable(self, snippet, context):
+        lines = [line+"\n" for line in snippet.split("\n") if line]
+        lines.insert(13,"###\n")
+        out_str = "".join(lines) + "\n" + "Write 4 new statements that could be inserted at ###"
+        print(out_str)
+        #out_str = "use more JavaScript functions:\n" + snippet
         return(out_str)
 
     def fix(self, error, context):

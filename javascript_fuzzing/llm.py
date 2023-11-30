@@ -81,13 +81,12 @@ def main():
 
     input_files = ["snippets/snippet.js"]
     loops,conditionals = parser.parse_structures(input_files[0])
-    for i in loops:
-        print(i)
-    quit()
     output_file = "output.js"
-    snippet = formatter.label_lines(input_files[0])
+    #snippet = formatter.label_lines(input_files[0])
+    with open(input_files[0], "r") as f:
+        snippet = f.read()
     #combine([output_file, "snippets/snippet3"], context, output_file)
-    add_context(context, 'user', prompter.complicate(snippet, context))
+    add_context(context, 'user', prompter.inject_statement(snippet, context))
     write_output(output_file, context[-1]['content'])
 
     #complicate(output_file, context, output_file)
