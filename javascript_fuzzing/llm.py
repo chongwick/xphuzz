@@ -1,7 +1,9 @@
 import openai    
 import os
 import tiktoken
-import formatter
+from formatter import Formatter
+from penguin import Prompter
+import parser
 
 from dotenv import load_dotenv, find_dotenv    
 _ = load_dotenv(find_dotenv())    
@@ -47,7 +49,7 @@ def get_mutate_prompt(base="python"):
 
 def add_context(context, role, content):
     context.append({'role': role, 'content': content})
-    response = get_completion_from_messages(context, temperature=1)
+    response = get_completion_from_messages(context, temperature=0)
     context.append({'role': 'assistant', 'content': response})
     print(response)
 
@@ -62,59 +64,33 @@ def test(context):
     print(context[-1]['content'])
     quit()
 
-#Five primitive operations
-def combine(snippet_list, context, output_file):
-    segments = ""
-    for snip in snippet_list:
-        with open(snip, "r") as f:
-            segments += f.read()
-        segments += "\n\n"
-    out_str = segments + "\n Intermingle these pieces of code"
-    add_context(context, 'user', out_str) 
-    with open(output_file, "w") as f:
-        f.write(context[-1]['content'])
+def write_output(file_name,output):
+    with open(file_name, "w") as f:
+        f.write(output)
 
-def complicate(snippet, context, output_file):
-    with open(snippet, "r") as f:
-        snippet = f.read()
-    add_context(context, 'user', "Make this more complicated:\n" + snippet)
-    with open(output_file, "w") as f:
-        f.write(context[-1]['content'])
-
-def inject(snippet, context, output_file):
-    with open(snippet, "r") as f:
-        snippet = f.read()
-    add_context(context, 'user', "Use more JavaScript function:\n" + snippet)
-    with open(output_file, "w") as f:
-        f.write(context[-1]['content'])
-
-def fix(error, context, output_file):
-    with open(error, "r") as f:
-        snippet = f.read()
-    add_context(context, 'user', error)
-    with open(output_file, "w") as f:
-        f.write(context[-1]['content'])
-
-def extend(snippet, context, output_file):
-    with open(snippet, "r") as f:
-        snippet = f.read()
-    add_context(context, 'user', "Add to this:\n" + snippet)
-    with open(output_file, "w") as f:
-        f.write(context[-1]['content'])
-
-def num_tokens_from_string(string: str, encoding_name="gpt-3.5-turbo") -> int:
+def num_tokens_from_string(string, encoding_name="gpt-3.5-turbo"):
     encoding = tiktoken.encoding_for_model(encoding_name)
     num_tokens = len(encoding.encode(string))
     return num_tokens
 
 def main():
     formatter = Formatter()
+    prompter = Prompter()
     context = [{'role': 'system', 'content': "You are a coding tool and \
                 reply ONLY with JAVASCRIPT CODE."}]
+
+    input_files = ["snippets/snippet.js"]
+    loops,conditionals = parser.parse_structures(input_files[0])
+    for i in loops:
+        print(i)
+    quit()
     output_file = "output.js"
+    snippet = formatter.label_lines(input_files[0])
     #combine([output_file, "snippets/snippet3"], context, output_file)
-    #complicate("snippets/snippet",context, output_file)
-    complicate(output_file, context, output_file)
+    add_context(context, 'user', prompter.complicate(snippet, context))
+    write_output(output_file, context[-1]['content'])
+
+    #complicate(output_file, context, output_file)
     #extend(output_file, context, output_file)
     #extend("snippet2",context)
     #base_prompt = get_base_prompt("java")
