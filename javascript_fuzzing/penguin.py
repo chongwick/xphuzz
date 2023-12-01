@@ -8,7 +8,7 @@ class Prompter:
         self.extension_prompt = "Add to this"
 
     #Primitive operations
-    def inject_statement(self, snippet, context, num, loc, generic=True):
+    def inject_statement(self, snippet, num, loc, generic=True):
         if generic:
             lines = [line+"\n" for line in snippet.split("\n") if line]
             lines.insert(loc,"###\n")
@@ -16,7 +16,7 @@ class Prompter:
             print("prompt:\n" + prompt + "\n")
             return(prompt, "".join(lines))
 
-    def inject_variable(self, snippet, context, num, loc, generic=True):
+    def inject_variable(self, snippet, num, loc, generic=True):
         if generic:
             lines = [line+"\n" for line in snippet.split("\n") if line]
             lines.insert(loc,"###\n")
@@ -25,19 +25,19 @@ class Prompter:
             return(prompt, "".join(lines))
 
     #Nondeterministic operations
-    def fix(self, error, context):
+    def fix(self, error):
         out_str = error
         return(out_str)
 
-    def extend(self, snippet, context):
+    def extend(self, snippet):
         prompt = snippet + "\n" + self.extension_prompt
         return(prompt)
 
-    def complicate(self, snippet, context):
+    def complicate(self, snippet):
         out_str = "Make this more complicated:\n" + snippet
         return(out_str)
 
-    def combine(self, snippet_list, context):
+    def combine(self, snippet_list):
         segments = ""
         for snip in snippet_list:
             with open(snip, "r") as f:

@@ -22,10 +22,10 @@ function* invalidControls() {
   yield "";
 }
 
-const invalidControlGenerator = invalidControls();
-
-// Example usage:
-console.log(invalidControlGenerator.next().value); // Output: "А"
-console.log(invalidControlGenerator.next().value); // Output: "Б"
-console.log(invalidControlGenerator.next().value); // Output: "В"
-// ... continue calling invalidControlGenerator.next().value to get the next invalid control character
+// Example usage
+const iterator = invalidControls();
+let result = iterator.next();
+while (!result.done) {
+  console.log(result.value);
+  result = iterator.next();
+}
