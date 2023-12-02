@@ -1,9 +1,11 @@
 def parse_structures(in_file):
     loop_keywords = ["for", "do", "while"]
     conditional_keywords = ["if", "else", "else if", "switch"]
+    function_keyword = "function"
     match_do_while = False
     loops = []
     conditionals = []
+    functions = []
     with open(in_file, "r") as f:
         content = f.readlines()
     for num, line in enumerate(content):
@@ -17,5 +19,7 @@ def parse_structures(in_file):
                     match_do_while = True
             elif any(word in line for word in conditional_keywords):
                 conditionals.append((num, line))
-    return loops, conditionals
+            elif function_keyword in line:
+                functions.append((num, line))
+    return loops, conditionals, functions
 

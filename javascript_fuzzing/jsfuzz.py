@@ -1,24 +1,65 @@
+import os
+import random
 from penguin import Prompter
 import parser
-import os
 from llm import LLM_Instance
 
+INJECT_STATEMENT = 0
+INJECT_VARIABLE = 1
+
 class Generator():
-    def __init__(self, llm, prompter, snippets, output_file):
+    def __init__(self, llm, input_directory, output_file, base_seed=None):
         self.llm = llm
-        self.prompter = prompter
-        self.snippets = snippets
+        self.input_directory = input_directory
         self.output_file = output_file
+        self.base_seed = base_seed
+        self.prompter = Prompter()
+        self.seed_files = os.listdir(self.input_directory)
+        self.record = {}
+        if self.base_seed == None:
+            self.base_seed = random.choice(self.seed_files)
+
+    def get_content(self, seed_file): # Read file and parse structures
+        file_path = self.input_directory + "/" + seed_file
+        with open(file_path, "r") as f:
+            seed_content = f.read()
+        structures  = parser.parse_structures(file_path)
+        output = {'content': seed_content, 'loops': structures[0], 'conditionals': structures[1],
+                  'functions': structures[2]}
+        return(output)
 
     def query_llm(self, prompt):
         self.llm.add_context('user', prompt)
         return(self.llm.context[-1]['content'])
         
+    def mutate(self, seed_data, seed_name, random_gen=True):
+        self.record[seed_name] = []
+        if random_gen:
+            structure_type = random.choice(['loops','conditionals','functions'])
+            structure_target = random.choice(seed_data[structure_type]) # line number, content
+            operation = random.randint(0,1)
+            if operation == INJECT_STATEMENT:
+                # 4 will be the default statement number for now
+                prompt, code = self.prompter.inject_statement(seed_data['content'], 4, 
+                                                              structure_target[0])
+            elif operation == INJECT_VARIABLE:
+                prompt, code = self.prompter.inject_variable(seed_data['content'], 4, 
+                                                              structure_target[0])
+            self.record[seed_name].append({'operation':operation,'location':structure_target[0],
+                                           'structure':structure_type})
+            print(self.record[seed_name])
+            quit()
+        return
+
     def run(self, cycles):
+        seed_data = self.get_content(self.base_seed) # Get file contents and parsed structures
+        self.mutate(seed_data, self.base_seed)
         for count in range(cycles):
+            #mutate
             continue
-        #Extension should be run at the end to ensure the script runs
-        prompt = self.prompter.extend(self.snippets[0])
+        # Extension should be run at the end to ensure the script runs
+        # i.e. there may be defined functions but no call to them
+        prompt = self.prompter.extend(seed_data['content'])
         self.query_llm(prompt)
 
 def write_output(file_name,output):
@@ -26,27 +67,24 @@ def write_output(file_name,output):
         f.write(output)
 
 def main():
-    prompter = Prompter()
     context = [{'role': 'system', 'content': "You are a coding tool and \
                 reply ONLY with JAVASCRIPT CODE."}]
     llm = LLM_Instance(context, 0.25)
-
-    input_files = ["snippets/snippet.js"]
+    input_directory = "snippet2"
     output_file = "output.js"
-    loops,conditionals = parser.parse_structures(input_files[0])
 
 
-    with open(input_files[0], "r") as f:
-        snippet = f.read()
+    generator = Generator(llm, input_directory, output_file)
+    generator.run(1)
 
-    generator = Generator(llm, prompter, snippet, output_file)
     #prompt, code = prompter.inject_statement(snippet, context, 4, 2)
     #add_context(context, 'user', prompt)
     #write_output(output_file, code.replace(prompter.delimiter,context[-1]['content']))
     #reset_context(context)
-    prompt = prompter.extend(snippet, context)
-    llm.add_context('user', prompt)
-    write_output(output_file, context[-1]['content'])
+
+    #prompt = prompter.extend(snippet, context)
+    #llm.add_context('user', prompt)
+    #write_output(output_file, context[-1]['content'])
 
 if __name__ == "__main__":
     main()
