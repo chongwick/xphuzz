@@ -38,29 +38,34 @@ class Generator():
             structure_type = random.choice(['loops','conditionals','functions'])
             structure_target = random.choice(seed_data[structure_type]) # line number, content
             operation = random.randint(0,1)
+            statement_number = random.randint(1,5)
             if operation == INJECT_STATEMENT:
-                # 4 will be the default statement number for now
-                prompt, code = self.prompter.inject_statement(seed_data['content'], 4, 
-                                                              structure_target[0])
+                prompt, code = self.prompter.inject_statement(
+                        seed_data['content'], statement_number, structure_target[0])
             elif operation == INJECT_VARIABLE:
-                prompt, code = self.prompter.inject_variable(seed_data['content'], 4, 
-                                                              structure_target[0])
+                prompt, code = self.prompter.inject_variable(
+                        seed_data['content'], statement_number, structure_target[0])
+
             self.record[seed_name].append({'operation':operation,'location':structure_target[0],
                                            'structure':structure_type})
-            print(self.record[seed_name])
-            quit()
-        return
+            write_output(self.output_file, 
+                         code.replace(self.prompter.delimiter,self.query_llm(prompt)))
+            self.llm.reset_context()
+        return code
 
     def run(self, cycles):
+        # First seed mutation start 
         seed_data = self.get_content(self.base_seed) # Get file contents and parsed structures
-        self.mutate(seed_data, self.base_seed)
+        mutated_code = self.mutate(seed_data, self.base_seed)
+
+        # First seed mutation end
         for count in range(cycles):
             #mutate
             continue
         # Extension should be run at the end to ensure the script runs
         # i.e. there may be defined functions but no call to them
-        prompt = self.prompter.extend(seed_data['content'])
-        self.query_llm(prompt)
+        prompt = self.prompter.extend(mutated_code)
+        write_output(self.output_file, self.query_llm(prompt))
 
 def write_output(file_name,output):
     with open(file_name, "w") as f:
@@ -69,7 +74,7 @@ def write_output(file_name,output):
 def main():
     context = [{'role': 'system', 'content': "You are a coding tool and \
                 reply ONLY with JAVASCRIPT CODE."}]
-    llm = LLM_Instance(context, 0.25)
+    llm = LLM_Instance(context, 0.25) # Default temperature is 0.25
     input_directory = "snippet2"
     output_file = "output.js"
 
