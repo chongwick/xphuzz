@@ -34,23 +34,25 @@ class Generator():
         
     def mutate(self, seed_data, seed_name, random_gen=True):
         self.record[seed_name] = []
+        operation = None
+        statement_number = None
         if random_gen:
-            structure_type = random.choice(['loops','conditionals','functions'])
-            structure_target = random.choice(seed_data[structure_type]) # line number, content
             operation = random.randint(0,1)
             statement_number = random.randint(1,5)
-            if operation == INJECT_STATEMENT:
-                prompt, code = self.prompter.inject_statement(
-                        seed_data['content'], statement_number, structure_target[0])
-            elif operation == INJECT_VARIABLE:
-                prompt, code = self.prompter.inject_variable(
-                        seed_data['content'], statement_number, structure_target[0])
+            structure_type = random.choice(['loops','conditionals','functions'])
+            structure_target = random.choice(seed_data[structure_type]) # line number, content
+        if operation == INJECT_STATEMENT:
+            prompt, code = self.prompter.inject_statement(
+                    seed_data['content'], statement_number, structure_target[0])
+        elif operation == INJECT_VARIABLE:
+            prompt, code = self.prompter.inject_variable(
+                    seed_data['content'], statement_number, structure_target[0])
 
-            self.record[seed_name].append({'operation':operation,'location':structure_target[0],
-                                           'structure':structure_type})
-            write_output(self.output_file, 
-                         code.replace(self.prompter.delimiter,self.query_llm(prompt)))
-            self.llm.reset_context()
+        self.record[seed_name].append({'operation':operation,'location':structure_target[0],
+                                       'structure':structure_type})
+        write_output(self.output_file, 
+                     code.replace(self.prompter.delimiter,self.query_llm(prompt)))
+        self.llm.reset_context()
         return code
 
     def run(self, cycles):

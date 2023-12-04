@@ -10,7 +10,7 @@ class Prompter:
     #Primitive operations
     def inject_statement(self, snippet, num, loc, generic=True):
         if generic:
-            lines = [line+"\n" for line in snippet.split("\n") if line]
+            lines = [i+"\n" for i in snippet.split("\n")]
             lines.insert(loc+1,"###\n") # Line after the structure is defined
             prompt = "".join(lines) + "\n" + self.inject_statement_prompt.format(n=num)
             print("prompt:\n" + prompt + "\n")
@@ -18,7 +18,7 @@ class Prompter:
 
     def inject_variable(self, snippet, num, loc, generic=True):
         if generic:
-            lines = [line+"\n" for line in snippet.split("\n") if line]
+            lines = [i+"\n" for i in snippet.split("\n")]
             lines.insert(loc+1,"###\n") # Line after the structure is defined
             prompt = "".join(lines) + "\n" + self.inject_variable_prompt.format(n=num)
             print("prompt:\n" + prompt + "\n")
