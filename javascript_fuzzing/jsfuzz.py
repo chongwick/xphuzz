@@ -25,8 +25,8 @@ class Generator():
         with open(file_path, "r") as f:
             seed_content = f.read()
         structures  = parser.parse_structures(file_path)
-        output = {'content': seed_content, 'loops': structures[0], 'conditionals': structures[1],
-                  'functions': structures[2]}
+        output = {'content':seed_content, 'loops':structures[0], 'conditionals':structures[1],
+                  'functions':structures[2], 'structure_ends':structures[3]}
         return(output)
 
     def query_llm(self, prompt):
@@ -49,9 +49,8 @@ class Generator():
         if random_gen:
             operation = random.randint(0,2)
             statement_number = random.randint(1,5)
-            structure_type = random.choice(['loops','conditionals','functions'])
+            structure_type = random.choice(['loops','conditionals','functions','structure_ends'])
             structure_target = random.choice(seed_data[structure_type]) # line number, content
-
         if operation == INJECT_STATEMENT:
             prompt, code = self.prompter.inject_statement(
                     seed_data['content'], statement_number, structure_target[0])

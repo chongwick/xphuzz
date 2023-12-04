@@ -1,6 +1,8 @@
 function* invalidControls() {
   // Check upper case Cyrillic
   for (var alpha = 0x0410; alpha <= 0x042F; alpha++) {
+var newVariable = "Hello";
+var newObj = { name: "John", age: 25 };
     yield String.fromCharCode(alpha);
   }
 
@@ -14,8 +16,6 @@ function* invalidControls() {
   for (alpha = 0x00; alpha <= 0x7F; alpha++) {
     let letter = String.fromCharCode(alpha);
     if (!letter.match(/[0-9A-Za-z_\$(|)\[\]\/\\^]/)) {
-      let variable1 = "Hello";
-      let variable2 = 12345;
       yield letter;
     }
   }
@@ -24,12 +24,4 @@ function* invalidControls() {
   yield "";
 }
 
-// Additional code
 
-let generator = invalidControls();
-let result = generator.next();
-
-while (!result.done) {
-  console.log(result.value);
-  result = generator.next();
-}

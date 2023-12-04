@@ -6,6 +6,7 @@ def parse_structures(in_file):
     loops = []
     conditionals = []
     functions = []
+    structure_ends = []
     with open(in_file, "r") as f:
         content = f.readlines()
     for num, line in enumerate(content):
@@ -21,5 +22,8 @@ def parse_structures(in_file):
                 conditionals.append((num, line))
             elif function_keyword in line:
                 functions.append((num, line))
-    return loops, conditionals, functions
+            elif "}" in line:
+                structure_ends.append((num, line))
+
+    return loops, conditionals, functions, structure_ends
 
