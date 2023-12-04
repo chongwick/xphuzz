@@ -6,6 +6,7 @@ from llm import LLM_Instance
 
 INJECT_STATEMENT = 0
 INJECT_VARIABLE = 1
+REPLACE_STATEMENT = 2
 
 class Generator():
     def __init__(self, llm, input_directory, output_file, base_seed=None):
@@ -32,28 +33,42 @@ class Generator():
         self.llm.add_context('user', prompt)
         return(self.llm.context[-1]['content'])
         
+    def insert_mutation(self, code, insertion):
+        code = [i+"\n" for i in code.split("\n")]
+        for i in range(len(code)):
+            if code[i].startswith(self.prompter.delimiter):
+                code[i] = insertion + "\n"
+                break;
+        code = "".join(code)
+        return code
+
     def mutate(self, seed_data, seed_name, random_gen=True):
         self.record[seed_name] = []
         operation = None
         statement_number = None
         if random_gen:
-            operation = random.randint(0,1)
+            operation = random.randint(0,2)
             statement_number = random.randint(1,5)
             structure_type = random.choice(['loops','conditionals','functions'])
             structure_target = random.choice(seed_data[structure_type]) # line number, content
+
         if operation == INJECT_STATEMENT:
             prompt, code = self.prompter.inject_statement(
                     seed_data['content'], statement_number, structure_target[0])
         elif operation == INJECT_VARIABLE:
             prompt, code = self.prompter.inject_variable(
                     seed_data['content'], statement_number, structure_target[0])
+        elif operation == REPLACE_STATEMENT:
+            prompt, code = self.prompter.replace_statement(
+                    seed_data['content'], statement_number, structure_target[0])
 
+        #Record the mutation
         self.record[seed_name].append({'operation':operation,'location':structure_target[0],
                                        'structure':structure_type})
-        write_output(self.output_file, 
-                     code.replace(self.prompter.delimiter,self.query_llm(prompt)))
+        new_code = self.insert_mutation(code, self.query_llm(prompt))
+        write_output(self.output_file, new_code)
         self.llm.reset_context()
-        return code
+        return new_code
 
     def run(self, cycles):
         # First seed mutation start 

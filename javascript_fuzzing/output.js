@@ -14,6 +14,8 @@ function* invalidControls() {
   for (alpha = 0x00; alpha <= 0x7F; alpha++) {
     let letter = String.fromCharCode(alpha);
     if (!letter.match(/[0-9A-Za-z_\$(|)\[\]\/\\^]/)) {
+      let variable1 = "Hello";
+      let variable2 = 12345;
       yield letter;
     }
   }
@@ -24,16 +26,10 @@ function* invalidControls() {
 
 // Additional code
 
-function* invalidControlsExtended() {
-  // Check ASCII characters which are not in the extended range or syntax
-  // characters
-  for (var alpha = 0x80; alpha <= 0xFF; alpha++) {
-    let letter = String.fromCharCode(alpha);
-    if (!letter.match(/[0-9A-Za-z_\$(|)\[\]\/\\^]/)) {
-      yield letter;
-    }
-  }
+let generator = invalidControls();
+let result = generator.next();
 
-  // Check for end of string
-  yield "";
+while (!result.done) {
+  console.log(result.value);
+  result = generator.next();
 }

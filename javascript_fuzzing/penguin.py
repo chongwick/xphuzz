@@ -5,6 +5,7 @@ class Prompter:
                                         "at {d}".format(d=self.delimiter))
         self.inject_variable_prompt = ("Initialize {n}+ new variables or objects " +
                 "that could be inserted at {d}".format(d=self.delimiter))
+        self.replace_statement_prompt = ("Change only the line marked by {d}".format(d=self.delimiter))
         self.extension_prompt = "Add to this"
 
     #Primitive operations
@@ -21,6 +22,14 @@ class Prompter:
             lines = [i+"\n" for i in snippet.split("\n")]
             lines.insert(loc+1,"###\n") # Line after the structure is defined
             prompt = "".join(lines) + "\n" + self.inject_variable_prompt.format(n=num)
+            print("prompt:\n" + prompt + "\n")
+            return(prompt, "".join(lines))
+
+    def replace_statement(self, snippet, num, loc, generic=True):
+        if generic:
+            lines = [i+"\n" for i in snippet.split("\n")]
+            lines[loc] = "###"+lines[loc]
+            prompt = "".join(lines) + "\n" + self.replace_statement_prompt.format(n=num)
             print("prompt:\n" + prompt + "\n")
             return(prompt, "".join(lines))
 
