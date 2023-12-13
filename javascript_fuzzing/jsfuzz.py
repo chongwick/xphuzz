@@ -29,9 +29,20 @@ class Generator():
                   'functions':structures[2], 'structure_ends':structures[3]}
         return(output)
 
-    def query_llm(self, prompt):
+    def query_llm(self, prompt): # Also format
         self.llm.add_context('user', prompt)
-        return(self.llm.context[-1]['content'])
+        result = self.llm.context[-1]['content']
+        result = [line + "\n" for line in result.split("\n")]
+        code_section = False
+        code = ""
+        for line in result:
+            if "```" in line and not(code_section):
+                code_section = True
+            elif "```" in line and code_section:
+                break
+            elif code_section:
+                code += line
+        return code
         
     def insert_mutation(self, code, insertion):
         code = [i+"\n" for i in code.split("\n")]
@@ -48,24 +59,24 @@ class Generator():
         statement_number = None
         if random_gen:
             operation = random.randint(0,2)
+            operation = INJECT_STATEMENT
             statement_number = random.randint(1,5)
             structure_type = random.choice(['loops','conditionals','functions','structure_ends'])
             structure_target = random.choice(seed_data[structure_type]) # line number, content
         if operation == INJECT_STATEMENT:
             prompt, code = self.prompter.inject_statement(
-                    seed_data['content'], statement_number, structure_target[0])
+                    seed_data['content'], statement_number, structure_target[0], structure_type)
         elif operation == INJECT_VARIABLE:
             prompt, code = self.prompter.inject_variable(
-                    seed_data['content'], statement_number, structure_target[0])
+                    seed_data['content'], statement_number, structure_target[0], structure_type)
         elif operation == REPLACE_STATEMENT:
             prompt, code = self.prompter.replace_statement(
-                    seed_data['content'], statement_number, structure_target[0])
+                    seed_data['content'], statement_number, structure_target[0], structure_type)
 
         #Record the mutation
         self.record[seed_name].append({'operation':operation,'location':structure_target[0],
                                        'structure':structure_type})
         new_code = self.insert_mutation(code, self.query_llm(prompt))
-        write_output(self.output_file, new_code)
         self.llm.reset_context()
         return new_code
 
@@ -73,15 +84,19 @@ class Generator():
         # First seed mutation start 
         seed_data = self.get_content(self.base_seed) # Get file contents and parsed structures
         mutated_code = self.mutate(seed_data, self.base_seed)
+        write_output(self.input_directory+"/"+self.output_file, mutated_code)
 
         # First seed mutation end
-        for count in range(cycles):
+        for count in range(cycles-1):
+            seed_data = self.get_content(self.output_file)
+            mutated_code = self.mutate(seed_data, self.base_seed)
+            write_output(self.output_file, mutated_code)
             #mutate
-            continue
+
         # Extension should be run at the end to ensure the script runs
         # i.e. there may be defined functions but no call to them
-        prompt = self.prompter.extend(mutated_code)
-        write_output(self.output_file, self.query_llm(prompt))
+        #prompt = self.prompter.extend(mutated_code)
+        #write_output(self.output_file, self.query_llm(prompt))
 
 def write_output(file_name,output):
     with open(file_name, "w") as f:
@@ -91,8 +106,9 @@ def main():
     context = [{'role': 'system', 'content': "You are a coding tool and \
                 reply ONLY with JAVASCRIPT CODE."}]
     llm = LLM_Instance(context, 0.25) # Default temperature is 0.25
+    #input_directory = "js_snippets_v8"
     input_directory = "snippet2"
-    output_file = "output.js"
+    output_file =  "output.js"
 
 
     generator = Generator(llm, input_directory, output_file)

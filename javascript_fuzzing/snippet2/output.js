@@ -1,10 +1,8 @@
 function opt(arr, start, end) {
-        if (start < 0 || end > arr.length) {
-                throw new Error("Invalid range specified");
-        }
-
         for (let i = start; i < end; i++) {
                 if (i === 10) {
+                        continue;
+
                         i += 0;
                 }
                 arr[i] = 2.3023e-320;
@@ -15,16 +13,10 @@ function main() {
         arr.fill(1.1);
 
         for (let i = 0; i < 1000; i++) {
-            if (i === 100) {
-                i = 0;
-            }
-
                 opt(arr, 0, 3);
         }
         opt(arr, 0, 100000);
 }
 main();
-
-
 
 
