@@ -1,3 +1,5 @@
+import random
+
 class Prompter:
     def __init__(self):
         self.delimiter = "###"
@@ -62,4 +64,23 @@ class Prompter:
             segments += "\n\n"
         prompt = segments + "\n Mix these pieces of code together"
         return(prompt)
+
+### NEW STUFF ###
+    def insert_delimiter(snippet, loc):
+        if loc != None:
+            lines = [i+"\n" for i in snippet.split("\n")]
+            lines.insert(loc+1,self.delimiter+"\n") # Line after the structure is defined
+            delimited_snippet = "".join(lines)
+            return delimited_snippet
+        else: # Insert into random location
+            lines = [i+"\n" for i in snippet.split("\n")]
+            lines.insert(random.randint(0,len(lines)),self.delimiter+"\n")
+            delimited_snippet = "".join(lines)
+            return delimited_snippet
+
+    # Adds a random variable to the snippet -> We want to be mindful of the context of the snippet
+    # i.e. what the snippet contains s.t. the LLM has sufficient context to insert a sensible variable
+    def add_variable(self, snippet, loc=None):
+        ...
+
 
