@@ -1,0 +1,36 @@
+var str = "AISpsjFbWLAZEYyNzx8j5yG8cWkK2Mgb";
+
+function opt(arr, start, end) {
+    for (let i = start; i < end; i++) {
+        if (i === 10) {
+            let localVar = 42; // Replace 42 with the initial value you want
+            localVar += 5; // Perform any operation on the variable
+            arr[i] = localVar; // Assign the modified variable to the array
+        }
+        // Other code...
+        arr[i] = 2.3023e-320;
+    }
+}
+
+function go(a, b, c) {
+    try {
+        for (var v_in in str) {
+            try { 
+                opt(undefined, -0, {}); // Call the opt function with undefined arguments
+            } catch(e) {}
+
+            try { 
+                new Uint32Array(41902); // Attempt to create a Uint32Array
+            } catch(e) {}
+        }   
+    } catch(e) {}
+
+    try {
+        delete v_in.a; // Attempt to delete property 'a' of v_in (which might be undefined)
+    } catch(e) {}
+}
+
+// Example usage
+let myArray = new Array(20); // Replace 20 with the desired array length
+go(-0, {}, 23704);
+
