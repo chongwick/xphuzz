@@ -12,20 +12,22 @@ class LLM_Instance:
 
     def get_completion(self, prompt, model="gpt-3.5-turbo"):    
         messages = [{"role": "user", "content": prompt}]    
-        response = openai.ChatCompletion.create(    
+        response = openai.chat.completions.create(    
             model=model,    
             messages=messages,    
             temperature=self.temperature)                      
-        return response.choices[0].message["content"]
+        return response.choices[0].message.content.strip()
+        #return response.choices[0].message["content"]
 
     def get_completion_from_messages(self, messages, model="gpt-3.5-turbo"):
-        response = openai.ChatCompletion.create(
+        response = openai.chat.completions.create(
             model=model,
             messages=messages,
             temperature=self.temperature, # this is the degree of randomness of the model's output
         )
     #     print(str(response.choices[0].message))
-        return response.choices[0].message["content"]
+        return response.choices[0].message.content.strip()
+        #return response.choices[0].message["content"]
 
     def add_context(self, role, content):
         self.context.append({'role': role, 'content': content})

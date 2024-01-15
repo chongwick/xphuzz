@@ -37,5 +37,6 @@ function main() {
                 opt(arr, 0, 3);
         }
         opt(arr, 0, 100000);
+	console.log("hi");
 }
 main();
