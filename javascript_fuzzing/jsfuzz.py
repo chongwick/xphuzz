@@ -2,11 +2,12 @@ import sys
 import os
 import datetime
 import random
+import argparse
 current_dir = os.path.dirname(os.path.realpath(__file__))
 base_dir = os.path.abspath(os.path.join(current_dir, '..'))
 if base_dir not in sys.path: sys.path.append(base_dir)
 import mapper
-from corpus_generator import Generator
+from generator import Generator
 import coverage.native_code.executor as executor
 from penguin import Prompter
 import parser
@@ -21,10 +22,11 @@ def main():
     exec_engine = executor.Executor(timeout_per_execution_in_ms=400, enable_coverage=True)
 
     corpus_directory = sys.argv[1].split("/")[0]
-    output_file =  "../" + corpus_directory + "/output.js"
+    output_file = corpus_directory + "/output.js"
 
-    #mapper.map_seed_bitmap(corpus_directory, exec_engine, "base_map_v8_1_12_24")
-    g = mapper.load_map("test_dir_bms")
+    #seed_cov_map = mapper.map_seed_bitmap(corpus_directory, exec_engine, "base_map_v8_1_12_24")
+    #seed_cov_map = mapper.load_cor_maps("test_dir_1_bms")
+    seed_cov_map = mapper.load_cor_maps("2_test_dir_bms")
     
     context = [{'role': 'system', 'content': "You are a coding tool and \
                 reply ONLY with JAVASCRIPT CODE."}]
@@ -32,6 +34,15 @@ def main():
 
     generator = Generator(llm, corpus_directory, output_file)
     generator.run(1)
+    print(generator.base_seed)
+    exec_engine.load_global_coverage_map_from_file(seed_cov_map[generator.base_seed])
+    print("Initial Edge Number: {}\n".format(exec_engine.get_number_triggered_edges()[0]))
+
+    with open(output_file, "r") as f:
+        mutated_seed = f.read()
+    result = exec_engine.execute_safe(mutated_seed)
+    print("New Edges After Mutation: {}\n".format(result.num_new_edges))
+    #exec_engine.print_statistics()
 
 if __name__ == "__main__":
     main()

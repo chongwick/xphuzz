@@ -7,24 +7,6 @@ function opt(arr, start, end) {
         }
 }
 function main() {
-let startTime = Date.now();
-let endTime;
-let elapsedTime;
-
-let iterations = 0;
-let maxIterations = 1000000;
-
-while (iterations < maxIterations) {
-    iterations++;
-    if (iterations % 1000 === 0) {
-        endTime = Date.now();
-        elapsedTime = endTime - startTime;
-        if (elapsedTime > 1000) {
-            break;
-        }
-    }
-}
-
         let arr = new Array(100);
         arr.fill(1.1);
 
@@ -33,6 +15,13 @@ while (iterations < maxIterations) {
         }
         opt(arr, 0, 100000);
 }
+const startTime = Date.now();
+const endTime = startTime + 1000; // Set the end time to 1 second after the start time
+
+while (Date.now() < endTime) {} // Loop for 1 second to simulate a long-running task
+
+console.log("Finished waiting for 1 second");
+
 main();
 
 

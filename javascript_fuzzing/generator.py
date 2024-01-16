@@ -1,3 +1,10 @@
+import parser
+import os
+import random
+import itertools
+from penguin import Prompter
+
+RANDOM_SEED = 80085
 INJECT_STATEMENT = 0
 INJECT_VARIABLE = 1
 REPLACE_STATEMENT = 2
@@ -11,8 +18,10 @@ class Generator():
         self.prompter = Prompter()
         self.seed_files = os.listdir(self.input_directory)
         self.record = {}
-        if self.base_seed == None:
-            self.base_seed = random.choice(self.seed_files)
+        self.seed_combos = list(itertools.combinations(self.seed_files,2))
+        #if self.base_seed == None:
+        #    self.base_seed = random.choice(self.seed_files)
+        self.base_seed, self.ancilla_seed = random.choice(self.seed_combos)
 
     def get_content(self, seed_file): # Read file and parse structures
         file_path = self.input_directory + "/" + seed_file
@@ -53,7 +62,6 @@ class Generator():
         statement_number = None
         if random_gen:
             operation = random.randint(0,2)
-            operation = INJECT_STATEMENT
             statement_number = random.randint(1,5)
             structure_type = random.choice(['loops','conditionals','functions','structure_ends'])
             structure_target = random.choice(seed_data[structure_type]) # line number, content
@@ -76,9 +84,15 @@ class Generator():
 
     def run(self, cycles):
         # First seed mutation start 
-        seed_data = self.get_content(self.base_seed) # Get file contents and parsed structures
+        base_seed_data = self.get_content(self.base_seed) # Get file contents and parsed structures
+        ancilla_seed_data = self.get_content(self.ancilla_seed)
+        interlinked = self.query_llm(
+                self.prompter.mix(base_seed_data['content'], ancilla_seed_data['content']))
+        write_output(self.output_file, interlinked)
+        return
         mutated_code = self.mutate(seed_data, self.base_seed)
-        write_output(self.input_directory+"/"+self.output_file, mutated_code)
+        write_to_file = self.output_file
+        write_output(self.output_file, mutated_code)
 
         # First seed mutation end
         for count in range(cycles-1):

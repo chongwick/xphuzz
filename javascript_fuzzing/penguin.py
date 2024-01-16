@@ -55,14 +55,12 @@ class Prompter:
         out_str = "Make this more complicated:\n" + snippet
         return(out_str)
 
-    def mix(self, base, secondary):
-        prompt += "Here is Code A:\n"
-        segments = ""
-        for snip in snippet_list:
-            with open(snip, "r") as f:
-                segments += f.read()
-            segments += "\n\n"
-        prompt = segments + "\n Mix these pieces of code together"
+    def mix(self, base, ancilla):
+        prompt = "Here is Code A:\n```"
+        prompt += base + "\n```"
+        prompt += "Here is Code B:\n```"
+        prompt += ancilla + "\n```"
+        prompt += "Mix these pieces of code together"
         return(prompt)
 
 ### NEW STUFF ###
