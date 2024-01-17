@@ -4,3 +4,6 @@ The first step is instrumenting a JS Engine to enable fuzzing. Blank JS code is 
 Initially, the fuzzer takes a corpus directory as input. For each seed in the corpus, the fuzzer creates a bitmap. This collection of bitmaps is stored in a directory. 
 Next, all possible combinations of 2 are generated from the input corpus. A random combination of base and ancillary seed are selected to be intermingled as the first mutation.
 This summarizes the pre-fuzzing process.
+
+January 17:
+A combination is fed to the LLM (i.e. "Here is Code A... Here is Code B..."). These are mixed together. Argument parsing added.

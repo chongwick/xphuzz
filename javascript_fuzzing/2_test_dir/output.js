@@ -19,6 +19,8 @@ function trigger() {
     }
 }
 
+trigger();
+
 a = [1];
 b = [];
 a.__defineGetter__(0, function () {
@@ -26,5 +28,3 @@ a.__defineGetter__(0, function () {
 });
 
 c = a.concat(b);
-
-trigger();

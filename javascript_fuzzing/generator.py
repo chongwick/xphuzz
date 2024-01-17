@@ -87,7 +87,7 @@ class Generator():
         base_seed_data = self.get_content(self.base_seed) # Get file contents and parsed structures
         ancilla_seed_data = self.get_content(self.ancilla_seed)
         interlinked = self.query_llm(
-                self.prompter.mix(base_seed_data['content'], ancilla_seed_data['content']))
+            self.prompter.mix(base_seed_data['content'], ancilla_seed_data['content']))
         write_output(self.output_file, interlinked)
         return
         mutated_code = self.mutate(seed_data, self.base_seed)

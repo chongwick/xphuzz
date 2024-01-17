@@ -60,7 +60,9 @@ class Prompter:
         prompt += base + "\n```"
         prompt += "Here is Code B:\n```"
         prompt += ancilla + "\n```"
-        prompt += "Mix these pieces of code together"
+        #prompt += "Stochastically mix these pieces of code together"
+        #prompt += "Mix these pieces of code together"
+        prompt += "Use Code B in Code A"
         return(prompt)
 
 ### NEW STUFF ###
