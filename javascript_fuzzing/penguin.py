@@ -62,7 +62,7 @@ class Prompter:
         prompt += ancilla + "\n```"
         #prompt += "Stochastically mix these pieces of code together"
         #prompt += "Mix these pieces of code together"
-        prompt += "Use Code B in Code A"
+        prompt += "Use Code B in Code A. Do not simply append B to A"
         return(prompt)
 
 ### NEW STUFF ###

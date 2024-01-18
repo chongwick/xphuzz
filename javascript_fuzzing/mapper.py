@@ -28,7 +28,10 @@ def map_seed_bitmap(corpus_directory, exec_engine, base_map):
         exec_engine.restore_global_coverage_map()
         #exec_engine.load_global_coverage_map_from_file("backup")
         result = exec_engine.execute_safe(seed)
-        bitmap_file = bitmap_directory + "/" + file.split(".")[0]+"__bm"
+        if result.num_new_edges == 0:
+            bitmap_file = bitmap_directory + "/" + file.split(".")[0]+"__0bm"
+        else:
+            bitmap_file = bitmap_directory + "/" + file.split(".")[0]+"__bm"
         seed_cov_map[str(file)]=bitmap_file
         exec_engine.save_global_coverage_map_in_file(bitmap_file)
         triggered, total = exec_engine.get_number_triggered_edges()

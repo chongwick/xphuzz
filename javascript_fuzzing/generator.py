@@ -45,6 +45,11 @@ class Generator():
                 break
             elif code_section:
                 code += line
+        #TODO: Handle this more gracefully 
+        #TODO: you a bitch up there
+        if code == "":
+            print("Re-query: Format Error")
+            code = self.query_llm("The response did not correspond to the ```<code>``` format.")
         return code
         
     def insert_mutation(self, code, insertion):
@@ -88,6 +93,7 @@ class Generator():
         ancilla_seed_data = self.get_content(self.ancilla_seed)
         interlinked = self.query_llm(
             self.prompter.mix(base_seed_data['content'], ancilla_seed_data['content']))
+        #interlinked = self.query_llm("This did not increase coverage. Try again.")
         write_output(self.output_file, interlinked)
         return
         mutated_code = self.mutate(seed_data, self.base_seed)
