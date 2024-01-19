@@ -64,6 +64,10 @@ def main():
         corpus_directory = sys.argv[2].split("/")[0]
         output_file = corpus_directory + "/output.js"
         seed_cov_map = mapper.load_cor_maps(corpus_directory + "_bms")
+    with open("js_snippets_v8/output.js", "r") as f:
+        thing = f.read()
+    exec_engine.execute_safe(thing)
+    quit()
     
     context = [{'role': 'system', 'content': "You are a coding tool and \
                 reply ONLY with JAVASCRIPT CODE. We are trying to increase code coverage."}]

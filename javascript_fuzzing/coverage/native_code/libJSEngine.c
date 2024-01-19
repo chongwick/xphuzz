@@ -1024,15 +1024,18 @@ static int reprl_spawn_child(struct reprl_context* ctx)
         close(crpipe[1]);
 
         int devnull = open("/dev/null", O_RDWR);
+        int errFile = open("__err__", O_RDWR);
+        dup2(errFile, 0);
         dup2(devnull, 0);
 		
 		// The following lines can be commented out to see the stdout/stderr of the JS engine in the main console (for debugging)
         if (ctx->stdout) dup2(ctx->stdout->fd, 1);
-        else dup2(devnull, 1);
-        if (ctx->stderr) dup2(ctx->stderr->fd, 2);
-        else dup2(devnull, 2);
+        else dup2(errFile, 1);
+        //if (ctx->stderr) dup2(ctx->stderr->fd, 2);
+        //else dup2(errFile, 2);
 
         close(devnull);
+        close(errFile);
         
         // close all other FDs. We try to use FD_CLOEXEC everywhere, but let's be extra sure we don't leak any fds to the child.
         int tablesize = getdtablesize();

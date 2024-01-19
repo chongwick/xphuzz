@@ -10,3 +10,6 @@ A combination is fed to the LLM (i.e. "Here is Code A... Here is Code B..."). Th
 
 January 18:
 Some seeds don't produce any coverage on top of the base calculation. One of two things can be done here. 1) We assume that the base calculation is too high and that the seeds are actually valid. We disregard the base calculation in this case. 2) We remove the 0-coverage seed from the corpus. This assumes something is wrong with the seed.
+
+January 19:
+Modified the libJSEngine such that the JS engine errors are ported to file __err__ which will then be used to prompt the LLM for corrections.
