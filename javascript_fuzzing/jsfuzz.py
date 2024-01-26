@@ -28,11 +28,16 @@ def parse_args(args):
             return "bmgns"
         elif "s" in args[0]:
             return "bmgs"
-    elif args[0] == "-f":
+    elif args[0] == "-fz":
         if help_command:
             print("Fuzzing: Include Corpus Directory")
             quit()
-        return "f"
+        return "fz"
+    elif args[0] == "-fx":
+        if help_command:
+            print("Fixing: Include Corpus Directory")
+            quit()
+        return "fx"
     else:
         print("!!! Invalid Option: {} !!!".format(args[0]))
         quit()
@@ -60,35 +65,45 @@ def main():
                     os.rename(corpus_directory+"/"+i,no_new_edge_dir+"/"+i)
                     os.rename(seed_cov_map[i], no_new_edge_dir+"/"+seed_cov_map[i].split("/")[1])
         return
-    elif action == "f":
+
+    elif action == "fz":
         corpus_directory = sys.argv[2].split("/")[0]
         output_file = corpus_directory + "/output.js"
         seed_cov_map = mapper.load_cor_maps(corpus_directory + "_bms")
-    with open("js_snippets_v8/output.js", "r") as f:
-        thing = f.read()
-    exec_engine.execute_safe(thing)
-    quit()
-    
-    context = [{'role': 'system', 'content': "You are a coding tool and \
-                reply ONLY with JAVASCRIPT CODE. We are trying to increase code coverage."}]
-    llm = LLM_Instance(context, 0.25) # Default temperature is 0.25
+        context = [{'role': 'system', 'content': "You are a coding tool and \
+                    reply ONLY with JAVASCRIPT CODE. We are trying to increase code coverage."}]
+        llm = LLM_Instance(context, 0.25) # Default temperature is 0.25
+        generator = Generator(llm, exec_engine, seed_cov_map, corpus_directory, output_file)
+        generator.run(1)
 
-    generator = Generator(llm, corpus_directory, output_file)
-    generator.run(1)
-    exec_engine.load_global_coverage_map_from_file(seed_cov_map[generator.base_seed])
-    #print("Initial Edge Number: {}\n".format(exec_engine.get_number_triggered_edges()[0]))
+    elif action == "fx":
+        corpus_directory = sys.argv[2].split("/")[0]
+        seed_cov_map = {} #Unneeded for fixing in this current scheme
+        output_file = "" #Also unnecessary
+        context = [{'role': 'system', 'content': "You are a coding tool and \
+                    reply ONLY with JAVASCRIPT CODE. We are trying to fix code. \
+                    DO NOT REMOVE CODE."}]
+        llm = LLM_Instance(context, 0.25) # Default temperature is 0.25
+        generator = Generator(llm, exec_engine, seed_cov_map, 
+                              corpus_directory, output_file, fix=True)
+        broken_seeds = os.listdir(corpus_directory + "_C0V") # Broken is a misnomer as is 0-cov
+        for seed in broken_seeds:
+            output_file = corpus_directory + "/" + seed.split(".js")[0] + "_FXD.js"
+            generator.fix_seed(corpus_directory + "_C0V/" + seed, output_file)
 
-    with open(output_file, "r") as f:
-        mutated_seed = f.read()
-    result = exec_engine.execute_safe(mutated_seed)
-    #print("New Edges After Mutation: {}\n".format(result.num_new_edges))
-    #exec_engine.print_statistics()
-    if result.num_new_edges > 0:
-        print("Success: {} new edges".format(result.num_new_edges))
-        print(generator.base_seed, generator.ancilla_seed)
-    else:
-        print("Failure: no new edges")
-        print(generator.base_seed, generator.ancilla_seed)
+    #exec_engine.load_global_coverage_map_from_file(seed_cov_map[generator.base_seed])
+
+    #with open(output_file, "r") as f:
+    #    mutated_seed = f.read()
+    #result = exec_engine.execute_safe(mutated_seed)
+    ##print("New Edges After Mutation: {}\n".format(result.num_new_edges))
+    ##exec_engine.print_statistics()
+    #if result.num_new_edges > 0:
+    #    print("Success: {} new edges".format(result.num_new_edges))
+    #    print(generator.base_seed, generator.ancilla_seed)
+    #else:
+    #    print("Failure: no new edges")
+    #    print(generator.base_seed, generator.ancilla_seed)
 
 if __name__ == "__main__":
     main()

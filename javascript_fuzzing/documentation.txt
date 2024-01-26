@@ -13,3 +13,19 @@ Some seeds don't produce any coverage on top of the base calculation. One of two
 
 January 19:
 Modified the libJSEngine such that the JS engine errors are ported to file __err__ which will then be used to prompt the LLM for corrections.
+
+January 22:
+A function was written to parse the __err__ file. This parsed error is passed back to the LLM to correct the code. The LLM is given 1 chance to correct the code. More output is being given to __err__ than just the error for the JavaScript engine. error_parser needs to be modified to fix this behavior. Handled.
+
+January 23:
+We need to determine which mutations we want to use. They need to be high quality large-scale mutations as we are constrained both by the speed and availability of LLM queries.
+
+January 24:
+Modified code correction parsing. Now, we can modify the previously unworkable seeds. Mutation idea: Ask LLM to identify unique values from seeds and place in dictionary.
+
+January 25:
+In my code fixing, I might have accidentally messed up the implementation such that I can't detect if an error is being triggered. As a rule of thumb, "Fixed" seeds are not to be used as base seeds. Use node.js to get errors -> it'll be faster
+
+
+January 26:
+Some code does not contain syntax errors, they simply trigger less coverage than the default dummy executions. These are still not valid to be used for base seeds. Huge modifications to fixing as well as token counting to avoid overflowing the context window.
