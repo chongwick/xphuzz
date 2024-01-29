@@ -29,3 +29,6 @@ In my code fixing, I might have accidentally messed up the implementation such t
 
 January 26:
 Some code does not contain syntax errors, they simply trigger less coverage than the default dummy executions. These are still not valid to be used for base seeds. Huge modifications to fixing as well as token counting to avoid overflowing the context window.
+
+January 29:
+I have code now that can pull out interesting values/ code lines. TheLLM does this action very well. I also have code to simply run the seed with the instrumented JavaScript Engine to get coverage information. I cleaned up the repository. On the docket for tomorrow: Get a production version of v8 for error-checking -> instrumented version is very slow. This will be used to generate the seed corpus. I'm thinking 1) Generate the corpus via mixing every permutation of seeds 2) Insert interesting values into these permutations 3) Based on coverage feedback, we can detemine which values and structures are the most effective in increasing coverage. We just want to increase coverage. That's it.

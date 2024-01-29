@@ -51,10 +51,6 @@ class Prompter:
         prompt = snippet + "\n" + self.extension_prompt
         return(prompt)
 
-    def complicate(self, snippet):
-        out_str = "Make this more complicated:\n" + snippet
-        return(out_str)
-
     def mix(self, base, ancilla):
         prompt = "Here is Code A:\n```"
         prompt += base + "\n```"

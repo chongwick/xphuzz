@@ -42,12 +42,12 @@ class Generator():
                   'functions':structures[2], 'structure_ends':structures[3]}
         return(output)
 
-    def query_llm(self, prompt): # Also formats for execution
+    def query_llm_code(self, prompt): # Query LLM For code in correct format
         #time.sleep(20) # 3 prompts per minute
         print("\n-- Querying LLM --\n")
         try:
             self.llm.add_context('user', prompt)
-        except RuntimeError as e:
+        except RuntimeError as e: #Runtime error will be raised if the context window is exceeded
             return False
         result = self.llm.context[-1]['content']
         result = [line + "\n" for line in result.split("\n")]
@@ -64,8 +64,17 @@ class Generator():
         #TODO: you a bitch up there
         if code == "":
             print("\n! Re-query: Format Error !\n")
-            code = self.query_llm("The response did not correspond to the ```<code>``` format.")
+            code = self.query_llm_code(
+                    "The response did not correspond to the ```<code>``` format.")
         return code
+
+    def query_llm_generic(self, prompt):
+        try:
+            self.llm.add_context('user', prompt)
+        except RuntimeError as e:
+            return False
+        result = self.llm.context[-1]['content']
+        return result
 
     def fix_seed(self, file, output_file):
         print("\n-- Fixing --\n")
@@ -82,7 +91,7 @@ class Generator():
             prompt = "Here is JavaScript Code:\n```" + seed_content + "\n```"
             prompt += ("This is its error: " + error_message +
                        "Fix this and return in the proper format")
-            code = self.query_llm(prompt)
+            code = self.query_llm_code(prompt)
             result, code = self.execute_code_new(code, fix=True, fix_attempts=2)
             if result == False:
                 print("FIX:FAILED {f} -> {e}".format(
@@ -92,6 +101,18 @@ class Generator():
                 print("Fix: SUCCESS")
             self.llm.reset_context() #Don't want this getting too big
             return
+        
+    def summarize(self, file):
+        self.llm.change_role("You are a JavaScript analyzing assistant")
+        file_path = self.input_directory + "/" + file
+        with open(file_path, "r") as f:
+            seed_content = f.read()
+        print('______\n', seed_content, '________\n')
+        prompt = seed_content
+        prompt += "\nThis is JavaScript Code. Identify special/uncommon numbers/structures in it. Return a Python list of these uncommonalities"
+        #prompt += "\nThis is JavaScript Code. Identify special/uncommon lines in it. Return a Python list of these uncommonalities"
+        self.query_llm_generic(prompt)
+        quit()
 
     # Load a coverage map before executing
     def execute_code_new(self, code, fix=False, fix_attempts=1):
@@ -105,7 +126,7 @@ class Generator():
             fix_attempts -= 1
             print("\n! JavaScript Error: Re-querying LLM !\n")
             clear_file("__err__")
-            code = self.query_llm("Fix this and return in the proper format\n" + error_message)
+            code = self.query_llm_code("Fix this and return in the proper format\n" + error_message)
             if code == False:
                 return False, None
             if not fix:
@@ -124,40 +145,6 @@ class Generator():
             else:
                 return result
 
-    '''
-    # Execute the code and query LLM to fix any errors if necessary (once)
-    def execute_code(self, code, fix=False):
-        self.exec_engine.load_global_coverage_map_from_file(self.seed_cov_map[self.base_seed])
-        print("\n -- Executing Code -- \n")
-        with open("__err__", "w") as f:
-            pass
-        result = self.exec_engine.execute_safe(code)
-        error_message = error_parser.parse_error("__err__")
-        if len(error_message) == 0:
-            if fix == True:
-                return result, code
-            else:
-                return result
-        else:
-            print("\n! JavaScript Error: Re-querying LLM !\n")
-            print(error_message)
-            with open("__err__", "w") as f:
-                pass
-            code = self.query_llm("Fix this and return in the proper format\n" + error_message)
-            self.exec_engine.load_global_coverage_map_from_file(self.seed_cov_map[self.base_seed])
-            result = self.exec_engine.execute_safe(code)
-            error_message = error_parser.parse_error("__err__")
-            if len(error_message) == 0:
-                if fix == True:
-                    return result, code
-                else:
-                    return result
-            else:
-                print("\n!! JavaScript Error: See __err__ !!\n")
-                print(error_message)
-                quit()
-    '''
-        
     def print_results(self, result):
         if result.num_new_edges > 0:
             print("Success: {} new edges".format(result.num_new_edges))
@@ -197,17 +184,19 @@ class Generator():
         #Record the mutation
         self.record[seed_name].append({'operation':operation,'location':structure_target[0],
                                        'structure':structure_type})
-        new_code = self.insert_mutation(code, self.query_llm(prompt))
+        new_code = self.insert_mutation(code, self.query_llm_code(prompt))
         self.llm.reset_context()
         return new_code
 
     def run(self, cycles):
         # First seed mutation involves mixing two seeds together
+        self.summarize(self.base_seed)
+        return
         base_seed_data = self.get_content(self.base_seed) # Get file contents and parsed structures
         ancilla_seed_data = self.get_content(self.ancilla_seed)
-        interlinked = self.query_llm(
+        interlinked = self.query_llm_code(
             self.prompter.mix(base_seed_data['content'], ancilla_seed_data['content']))
-        #interlinked = self.query_llm("This did not increase coverage. Try again.")
+        #interlinked = self.query_llm_code("This did not increase coverage. Try again.")
         self.exec_engine.load_global_coverage_map_from_file(self.seed_cov_map[self.base_seed])
         result = self.execute_code_new(interlinked)
         self.print_results(result)
@@ -215,8 +204,8 @@ class Generator():
         return
 
         #self.llm.change_temperature(1)
-        #new = self.query_llm("Insert/Change code to increase coverage.")
-        #new = self.query_llm("In the mixed coce, wrap a number/variable/string in a function invocation")
+        #new = self.query_llm_code("Insert/Change code to increase coverage.")
+        #new = self.query_llm_code("In the mixed coce, wrap a number/variable/string in a function invocation")
         result = self.execute_code(new)
         self.print_results(result)
         return
@@ -235,7 +224,7 @@ class Generator():
         # Extension should be run at the end to ensure the script runs
         # i.e. there may be defined functions but no call to them
         #prompt = self.prompter.extend(mutated_code)
-        #write_output(self.output_file, self.query_llm(prompt))
+        #write_output(self.output_file, self.query_llm_code(prompt))
 
 def write_output(file_name,output):
     with open(file_name, "w") as f:

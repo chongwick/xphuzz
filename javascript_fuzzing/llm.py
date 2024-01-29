@@ -17,6 +17,7 @@ class LLM_Instance:
 
     def change_temperature(self, temperature):
         self.temperature = temperature
+        return
 
     def get_completion(self, prompt, model="gpt-3.5-turbo"):    
         messages = [{"role": "user", "content": prompt}]    
@@ -52,9 +53,13 @@ class LLM_Instance:
     def reset_context(self):
         self.context = self.original_context.copy()
         self.token_count = self.num_tokens_from_string(self.context[0]['content'])
+        return
+
+    def change_role(self, role_description):
+        self.context = [{'role': 'system', 'content': role_description}]
+        return
 
     def num_tokens_from_string(self, string, encoding_name="cl100k_base"):
-        #encoding = tiktoken.encoding_for_model(encoding_name)
         encoding = tiktoken.get_encoding(encoding_name)
         num_tokens = len(encoding.encode(string))
         return num_tokens

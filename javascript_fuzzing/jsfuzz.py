@@ -90,6 +90,16 @@ def main():
         for seed in broken_seeds:
             output_file = corpus_directory + "/" + seed.split(".js")[0] + "_FXD.js"
             generator.fix_seed(corpus_directory + "_C0V/" + seed, output_file)
+    else: # Run fuzzing without mutations
+        corpus_directory = sys.argv[2].split("/")[0]
+        exec_engine.load_global_coverage_map_from_file("base_map_v8_1_12_24")
+        for i in os.listdir(corpus_directory):
+            with open(corpus_directory+"/"+i, "r") as f:
+                seed_content = f.read()
+                result = exec_engine.execute_safe(seed_content)
+                print(result.num_new_edges)
+        exec_engine.print_statistics()
+        quit()
 
     #exec_engine.load_global_coverage_map_from_file(seed_cov_map[generator.base_seed])
 
