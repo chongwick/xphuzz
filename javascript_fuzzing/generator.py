@@ -5,11 +5,14 @@ import itertools
 from penguin import Prompter
 import error_parser
 import time
+import config as cfg
+import pickle
 
 RANDOM_SEED = 80085
 INJECT_STATEMENT = 0
 INJECT_VARIABLE = 1
 REPLACE_STATEMENT = 2
+UNCOMMON_LINE_FILE = "uncommon.pickle"
 
 class Generator():
     def __init__(self, llm, exec_engine, seed_cov_map, input_directory, output_file, fix=False):
@@ -21,8 +24,10 @@ class Generator():
         self.prompter = Prompter()
         self.seed_files = os.listdir(self.input_directory)
         self.record = {}
+        with open(UNCOMMON_LINE_FILE, 'rb') as f:
+            self.uncommon_lines = pickle.load(f)
         if not(fix):
-            tmp_combos = list(itertools.permutations(self.seed_files,2))
+            tmp_combos = list(itertools.combinations(self.seed_files,2))
             self.seed_combos = []
             # Fixed seeds cannot be used as base seeds
             for seed in tmp_combos:
@@ -83,6 +88,8 @@ class Generator():
         clear_file("__err__")
         result = self.exec_engine.execute_safe(seed_content)
         error_message = error_parser.parse_error("__err__")
+        #self.exec_engine.execute_debug(file)
+        #error_message = error_parser.parse_error("__err__")
         if not(error_message): # Some code does not contain syntax errors
             write_output(output_file, seed_content)
             print("Fix: SUCCESS")
@@ -92,7 +99,7 @@ class Generator():
             prompt += ("This is its error: " + error_message +
                        "Fix this and return in the proper format")
             code = self.query_llm_code(prompt)
-            result, code = self.execute_code_new(code, fix=True, fix_attempts=2)
+            result, code = self.execute_code(code, fix=True, fix_attempts=2)
             if result == False:
                 print("FIX:FAILED {f} -> {e}".format(
                     f=file, e=error_parser.parse_error("__err__")))
@@ -107,15 +114,23 @@ class Generator():
         file_path = self.input_directory + "/" + file
         with open(file_path, "r") as f:
             seed_content = f.read()
-        print('______\n', seed_content, '________\n')
+        #print('______\n', seed_content, '________\n')
         prompt = seed_content
-        prompt += "\nThis is JavaScript Code. Identify special/uncommon numbers/structures in it. Return a Python list of these uncommonalities"
+        #prompt += ("\nThis is JavaScript Code. Identify special/uncommon \
+        #        numbers/structures in it. Return a Python list of these uncommonalities.\
+        #        Format as ```<list>```")
+        prompt += ("\nThis is JavaScript Code. Identify special/uncommon \
+                lines in it. Ignore comments. Return a Python list of these uncommonalities.\
+                Format as ```<list>```")
         #prompt += "\nThis is JavaScript Code. Identify special/uncommon lines in it. Return a Python list of these uncommonalities"
-        self.query_llm_generic(prompt)
-        quit()
+        summary = self.query_llm_code(prompt)
+        self.uncommon_lines.extend(i for i in summary if i not in self.uncommon_lines)
+        with open(UNCOMMON_LINE_FILE, "wb") as f:
+            pickle.dump(self.uncommon_lines, f, protocol=pickle.HIGHEST_PROTOCOL)
+        self.llm.reset_context()
 
     # Load a coverage map before executing
-    def execute_code_new(self, code, fix=False, fix_attempts=1):
+    def execute_code(self, code, fix=False, fix_attempts=1):
         is_error = lambda x: len(x) != 0
         print("\n -- Executing Code -- \n")
         clear_file("__err__")
@@ -190,15 +205,13 @@ class Generator():
 
     def run(self, cycles):
         # First seed mutation involves mixing two seeds together
-        self.summarize(self.base_seed)
-        return
         base_seed_data = self.get_content(self.base_seed) # Get file contents and parsed structures
         ancilla_seed_data = self.get_content(self.ancilla_seed)
         interlinked = self.query_llm_code(
             self.prompter.mix(base_seed_data['content'], ancilla_seed_data['content']))
         #interlinked = self.query_llm_code("This did not increase coverage. Try again.")
         self.exec_engine.load_global_coverage_map_from_file(self.seed_cov_map[self.base_seed])
-        result = self.execute_code_new(interlinked)
+        result = self.execute_code(interlinked)
         self.print_results(result)
         write_output(self.output_file, interlinked)
         return

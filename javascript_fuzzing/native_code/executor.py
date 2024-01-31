@@ -54,7 +54,6 @@ import time
 import utils
 import os.path
 
-
 def RIFSIGNALED(status):
     return (status & 0xff) != 0
 
@@ -263,6 +262,10 @@ class Executor:
         self.total_number_engine_starts += 1
         self.executed_testcases_since_last_engine_restart.clear()
 
+    def execute_debug(self, code_path):
+        os.system("{d} {c} > /dev/null  2> __err__".format(
+            d=cfg.v8_path_debug_without_coverage,c=code_path))
+        
     def save_global_coverage_map_in_file(self, filepath):
         libJSEngine.save_global_coverage_map_in_file(filepath)
 

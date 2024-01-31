@@ -1,7 +1,5 @@
-[COV] edge counters initialized. Shared memory: shm_id_146_1138 with 1367061 edges
-Warning: unknown flag --interrupt-budget=1024.
-Try --help for options
-0
+[COV] edge counters initialized. Shared memory: shm_id_121_1138 with 1367061 edges
+
 0
 0
 0
@@ -15,8 +13,12 @@ Expected: 6.176516726456e-312
 Actual: 6.176516726456e-312
 Expected: 6.176516726456e-312
 Actual: 6.176516726456e-312
-Expected: 6.176516726456e-312
-Actual: 6.176516726456e-312
+defined
+undefined
+undefined
+undefined
+undefined
+undefined
 undefined
 undefined
 undefined

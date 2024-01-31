@@ -8,10 +8,11 @@ base_dir = os.path.abspath(os.path.join(current_dir, '..'))
 if base_dir not in sys.path: sys.path.append(base_dir)
 import mapper
 from generator import Generator
-import coverage.native_code.executor as executor
+import native_code.executor as executor
 from penguin import Prompter
 import parser
 from llm import LLM_Instance
+import config as cfg
 
 def parse_args(args):
     help_command = False

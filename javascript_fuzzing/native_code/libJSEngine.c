@@ -316,9 +316,9 @@ static PyObject *initialize(PyObject *self, PyObject *args) {
 	prog_argv[2] = "--single-threaded";
 	prog_argv[3] = "--predictable";
 	prog_argv[4] = "--allow-natives-syntax";
-	prog_argv[5] = "--interrupt-budget=1024";
-	prog_argv[6] = "--fuzzing";
-	prog_argv[7] = NULL;
+	//prog_argv[5] = "--interrupt-budget=1024";
+	prog_argv[5] = "--fuzzing";
+	prog_argv[6] = NULL;
 
 	// Now copy the environment
 	char **env = environ;
