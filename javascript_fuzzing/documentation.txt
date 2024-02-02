@@ -38,3 +38,12 @@ I feel like poop... nothing accomplished
 
 January 31:
 Clean up code tomorrow (config). exec_engine.execute_debug(file) takes the filename as input as opposed to the seed content itself... should fix this in the future for consistency sake. sake. idk... debug execution isn't as great as I initially thought. I set up the code such that interesting lines are stored inside a pickle file which will be a collection of interesting code lines. Eventually, based on the performance of these lines (i.e. coverage increases), there will be a database which describes the effectiveness of certain lines. 
+
+February 1:
+I wrote code to calculate the cost of the queries. This is something that will need to be optimized.Also, the LLM querying code has been modified such that it returns the interesting lines in a python list. I query it just one time, if it doesn't match the format, I just skip it... should probably implement some sort of fixing measure. From this corpus of interesting lines, we can calculate the coverage increases associated with them. We will prompt the LLM to insert the line into a snippet, then dependent on the coverage increase of the snippet, we can calculate a ranking for these covereage increases.
+
+February 2:
+This is February 1 Daniel telling February 2 Daniel to clean up the code, today. Specifically, put globals in the config file, move prompts to penguin, delete unused code, move isolated functions out of the generator file. Maybe consider writing an actual argument parser.
+
+February 2:
+Don't tell me what to do idiot. I dunno about the "interesting code line" thing. It causes a lot of errors.

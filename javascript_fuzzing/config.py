@@ -458,3 +458,11 @@ corpus_template_files = None
 if percent_of_templates_self_created > 1:
     print("Error, >cfg.percent_of_templates_self_created< must be below 1!")
     sys.exit(-1)
+
+
+
+#My Globals:
+token_max = 4097
+uncommon_line_file = "uncommon.pickle"
+error_file = "__err__"
+base_map = "base_map_v8_1_12_24"

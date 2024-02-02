@@ -58,10 +58,31 @@ class Prompter:
         prompt += ancilla + "\n```"
         #prompt += "Stochastically mix these pieces of code together"
         #prompt += "Mix these pieces of code together"
-        prompt += "Use Code B in Code A. Do not simply append B to A." + self.formatter
+        prompt += "Use Code B in Code A. Do not simply append B to A. " + self.formatter
         return(prompt)
 
-### NEW STUFF ###
+    def insert_line(self, base, lines):
+        prompt = "Here is Base_Code:\n```"
+        prompt += base + "\n```"
+        for i in range(len(lines)):
+            line = lines[i]
+            prompt += "\nHere is Add_Line_{n}:\n```\n{l}\n```".format(n=i,l=line)
+        prompt += ("\nUse each Add_Line_x in Base_Code.\
+                Do not put Add_Line_x in quotation marks.\
+                Do not simply append Add_Line_x to Base_code. " + self.formatter)
+        return(prompt)
+
+    def summarize(self, code):
+        prompt = "This is JavaScript Code. Identify special/uncommon lines in it. \
+                Ignore comments. Return a Python list of these uncommonalities.\
+                Format as ```<list>```"
+        prompt += "```\n" + code + "\n```\n"
+        return(prompt)
+
+    def code_format_fix(self):
+        prompt = "The response did not correspond to the ```<code>``` format."
+        return(prompt)
+
     def insert_delimiter(snippet, loc):
         if loc != None:
             lines = [i+"\n" for i in snippet.split("\n")]
@@ -73,10 +94,4 @@ class Prompter:
             lines.insert(random.randint(0,len(lines)),self.delimiter+"\n")
             delimited_snippet = "".join(lines)
             return delimited_snippet
-
-    # Adds a random variable to the snippet -> We want to be mindful of the context of the snippet
-    # i.e. what the snippet contains s.t. the LLM has sufficient context to insert a sensible variable
-    def add_variable(self, snippet, loc=None):
-        ...
-
 

@@ -7,12 +7,12 @@ import error_parser
 import time
 import config as cfg
 import pickle
+from ast import literal_eval
 
 RANDOM_SEED = 80085
 INJECT_STATEMENT = 0
 INJECT_VARIABLE = 1
 REPLACE_STATEMENT = 2
-UNCOMMON_LINE_FILE = "uncommon.pickle"
 
 class Generator():
     def __init__(self, llm, exec_engine, seed_cov_map, input_directory, output_file, fix=False):
@@ -24,7 +24,7 @@ class Generator():
         self.prompter = Prompter()
         self.seed_files = os.listdir(self.input_directory)
         self.record = {}
-        with open(UNCOMMON_LINE_FILE, 'rb') as f:
+        with open(cfg.uncommon_line_file, 'rb') as f:
             self.uncommon_lines = pickle.load(f)
         if not(fix):
             tmp_combos = list(itertools.combinations(self.seed_files,2))
@@ -69,9 +69,41 @@ class Generator():
         #TODO: you a bitch up there
         if code == "":
             print("\n! Re-query: Format Error !\n")
-            code = self.query_llm_code(
-                    "The response did not correspond to the ```<code>``` format.")
+            code = self.query_llm_code(self.prompter.code_format_fix())
         return code
+
+    def query_llm_list(self, prompt): # Query LLM For list in correct format
+        #time.sleep(20) # 3 prompts per minute
+        print("\n-- Querying LLM --\n")
+        try:
+            self.llm.add_context('user', prompt)
+        except RuntimeError as e: #Runtime error will be raised if the context window is exceeded
+            return False
+        result = self.llm.context[-1]['content']
+        result = [line + "\n" for line in result.split("\n")]
+        code_section = False
+        code = ""
+        for line in result:
+            if "```" in line and not(code_section):
+                code_section = True
+            elif "```" in line and code_section:
+                break
+            elif code_section:
+                code += line
+        bad_query = (code == "")
+        summary = None
+        if not(bad_query):
+            try:
+                summary = literal_eval(code)
+            except Exception as e:
+                bad_query = True
+        if bad_query:
+            return None
+            print("\n! Re-query: Format Error !\n")
+            code = self.query_llm_list(
+                    "The response did not correspond to the ```<list>``` format. Only include \
+                            the list []. Do not include list_name = ...")
+        return summary
 
     def query_llm_generic(self, prompt):
         try:
@@ -85,11 +117,11 @@ class Generator():
         print("\n-- Fixing --\n")
         with open(file, "r") as f:
             seed_content = f.read()
-        clear_file("__err__")
+        clear_file(cfg.error_file)
         result = self.exec_engine.execute_safe(seed_content)
-        error_message = error_parser.parse_error("__err__")
+        error_message = error_parser.parse_error(cfg.error_file)
         #self.exec_engine.execute_debug(file)
-        #error_message = error_parser.parse_error("__err__")
+        #error_message = error_parser.parse_error(cfg.error_file)
         if not(error_message): # Some code does not contain syntax errors
             write_output(output_file, seed_content)
             print("Fix: SUCCESS")
@@ -102,7 +134,7 @@ class Generator():
             result, code = self.execute_code(code, fix=True, fix_attempts=2)
             if result == False:
                 print("FIX:FAILED {f} -> {e}".format(
-                    f=file, e=error_parser.parse_error("__err__")))
+                    f=file, e=error_parser.parse_error(cfg.error_file)))
             else:
                 write_output(output_file, code) 
                 print("Fix: SUCCESS")
@@ -111,45 +143,44 @@ class Generator():
         
     def summarize(self, file):
         self.llm.change_role("You are a JavaScript analyzing assistant")
+        #self.uncommon_lines = []
+        #with open(cfg.uncommon_line_file, "wb") as f:
+        #    pickle.dump(self.uncommon_lines, f, protocol=pickle.HIGHEST_PROTOCOL)
+        #quit()
         file_path = self.input_directory + "/" + file
         with open(file_path, "r") as f:
             seed_content = f.read()
-        #print('______\n', seed_content, '________\n')
-        prompt = seed_content
-        #prompt += ("\nThis is JavaScript Code. Identify special/uncommon \
-        #        numbers/structures in it. Return a Python list of these uncommonalities.\
-        #        Format as ```<list>```")
-        prompt += ("\nThis is JavaScript Code. Identify special/uncommon \
-                lines in it. Ignore comments. Return a Python list of these uncommonalities.\
-                Format as ```<list>```")
-        #prompt += "\nThis is JavaScript Code. Identify special/uncommon lines in it. Return a Python list of these uncommonalities"
-        summary = self.query_llm_code(prompt)
-        self.uncommon_lines.extend(i for i in summary if i not in self.uncommon_lines)
-        with open(UNCOMMON_LINE_FILE, "wb") as f:
-            pickle.dump(self.uncommon_lines, f, protocol=pickle.HIGHEST_PROTOCOL)
-        self.llm.reset_context()
+        prompt = self.prompter.summarize(code)
+        summary = self.query_llm_list(prompt)
+        if summary != None:
+            self.uncommon_lines.extend(i for i in summary if i not in self.uncommon_lines)
+            #print(self.uncommon_lines)
+            with open(cfg.uncommon_line_file, "wb") as f:
+                pickle.dump(self.uncommon_lines, f, protocol=pickle.HIGHEST_PROTOCOL)
+        cost = self.llm.reset_context()
+        return cost
 
     # Load a coverage map before executing
     def execute_code(self, code, fix=False, fix_attempts=1):
         is_error = lambda x: len(x) != 0
         print("\n -- Executing Code -- \n")
-        clear_file("__err__")
+        clear_file(cfg.error_file)
         result = self.exec_engine.execute_safe(code)
-        error_message = error_parser.parse_error("__err__")
+        error_message = error_parser.parse_error(cfg.error_file)
 
         while(is_error(error_message) and fix_attempts != 0):
             fix_attempts -= 1
             print("\n! JavaScript Error: Re-querying LLM !\n")
-            clear_file("__err__")
+            clear_file(cfg.error_file)
             code = self.query_llm_code("Fix this and return in the proper format\n" + error_message)
             if code == False:
                 return False, None
             if not fix:
                 self.exec_engine.load_global_coverage_map_from_file(self.seed_cov_map[self.base_seed])
             else:
-                self.exec_engine.load_global_coverage_map_from_file("base_map_v8_1_12_24")
+                self.exec_engine.load_global_coverage_map_from_file(cfg.base_map)
             result = self.exec_engine.execute_safe(code)
-            error_message = error_parser.parse_error("__err__")
+            error_message = error_parser.parse_error(cfg.error_file)
 
         if is_error(error_message):
             print("\n!! JavaScript Error: See __err__ !!\n")
@@ -204,6 +235,19 @@ class Generator():
         return new_code
 
     def run(self, cycles):
+        # interestinggggg
+        base_seed_data = self.get_content(self.base_seed) # Get file contents and parsed structures
+        line = [random.choice(self.uncommon_lines)]
+        self.llm.change_temperature(1)
+        thang = self.query_llm_code(self.prompter.insert_line(base_seed_data['content'], line))
+        self.exec_engine.load_global_coverage_map_from_file(self.seed_cov_map[self.base_seed])
+        result = self.execute_code(thang)
+        self.print_results(result)
+        print(base_seed_data['content'])
+        print(line)
+        print(thang)
+        return
+
         # First seed mutation involves mixing two seeds together
         base_seed_data = self.get_content(self.base_seed) # Get file contents and parsed structures
         ancilla_seed_data = self.get_content(self.ancilla_seed)

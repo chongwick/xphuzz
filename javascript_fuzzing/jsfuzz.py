@@ -39,6 +39,11 @@ def parse_args(args):
             print("Fixing: Include Corpus Directory")
             quit()
         return "fx"
+    elif args[0] == "-sz":
+        if help_command:
+            print("Identifying uncommon lines in corpus")
+            quit()
+        return "sz"
     else:
         print("!!! Invalid Option: {} !!!".format(args[0]))
         quit()
@@ -76,7 +81,6 @@ def main():
         llm = LLM_Instance(context, 0.25) # Default temperature is 0.25
         generator = Generator(llm, exec_engine, seed_cov_map, corpus_directory, output_file)
         generator.run(1)
-
     elif action == "fx":
         corpus_directory = sys.argv[2].split("/")[0]
         seed_cov_map = {} #Unneeded for fixing in this current scheme
@@ -91,6 +95,19 @@ def main():
         for seed in broken_seeds:
             output_file = corpus_directory + "/" + seed.split(".js")[0] + "_FXD.js"
             generator.fix_seed(corpus_directory + "_C0V/" + seed, output_file)
+    elif action == "sz":
+        corpus_directory = sys.argv[2].split("/")[0]
+        output_file = corpus_directory + "/output.js"
+        seed_cov_map = mapper.load_cor_maps(corpus_directory + "_bms")
+        context = [{'role': 'system', 'content': "You are a coding tool and \
+                    reply ONLY with JAVASCRIPT CODE. We are trying to increase code coverage."}]
+        llm = LLM_Instance(context, 0.25) # Default temperature is 0.25
+        generator = Generator(llm, exec_engine, seed_cov_map, corpus_directory, output_file)
+        files = os.listdir(corpus_directory)
+        cost = 0
+        for file in files:
+            cost += generator.summarize(file)
+        print("***************final cost***************\n{}".format(cost))
     else: # Run fuzzing without mutations
         corpus_directory = sys.argv[2].split("/")[0]
         exec_engine.load_global_coverage_map_from_file("base_map_v8_1_12_24")

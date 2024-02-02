@@ -1,8 +1,8 @@
 import openai    
 import os
 import tiktoken
+import config as cfg
 
-TOKEN_MAX=4097
 
 class LLM_Instance:
     def __init__(self, context, temperature):
@@ -10,6 +10,8 @@ class LLM_Instance:
         self.original_context = self.context.copy()
         self.temperature = temperature
         self.token_count = self.num_tokens_from_string(self.context[0]['content'])
+        self.dollar_cost = lambda x,y: x * 0.000001 if y == "input" else x * 0.000002
+        self.running_cost = self.dollar_cost(self.token_count, "input") #Initial context
         from dotenv import load_dotenv, find_dotenv    
         _ = load_dotenv(find_dotenv())    
         #openai.api_key  = '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'    
@@ -40,20 +42,26 @@ class LLM_Instance:
 
     def add_context(self, role, content):
         self.context.append({'role': role, 'content': content})
-        self.token_count += self.num_tokens_from_string(content)
-        if self.token_count > TOKEN_MAX:
+        tokens = self.num_tokens_from_string(content)
+        self.token_count += tokens
+        self.running_cost += self.dollar_cost(tokens, "input")
+        if self.token_count > cfg.token_max:
             self.reset_context()
-            raise RuntimeError("Exceeded Max Tokens ({m}): {t}".format(m=TOKEN_MAX,
+            raise RuntimeError("Exceeded Max Tokens ({m}): {t}".format(m=cfg.token_max,
                                                                        t=self.token_count))
         response = self.get_completion_from_messages(self.context)
-        self.token_count += self.num_tokens_from_string(response)
+        tokens = self.num_tokens_from_string(response)
+        self.token_count += tokens
+        self.running_cost += self.dollar_cost(tokens, "output")
         self.context.append({'role': 'assistant', 'content': response})
         print(response)
 
     def reset_context(self):
         self.context = self.original_context.copy()
         self.token_count = self.num_tokens_from_string(self.context[0]['content'])
-        return
+        old_cost = self.running_cost
+        self.running_cost = self.dollar_cost(self.token_count, "input") #Initial context
+        return old_cost
 
     def change_role(self, role_description):
         self.context = [{'role': 'system', 'content': role_description}]
