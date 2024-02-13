@@ -15,28 +15,46 @@ INJECT_VARIABLE = 1
 REPLACE_STATEMENT = 2
 
 class Generator():
-    def __init__(self, llm, exec_engine, seed_cov_map, input_directory, output_file, fix=False):
+    def __init__(self, llm, exec_engine, seed_cov_map,
+                 input_directory, output_directory, fix=False):
         self.llm = llm
+        '''Tag of Death X
+                          | 
+                        X   '''
         self.exec_engine = exec_engine
         self.seed_cov_map = seed_cov_map
         self.input_directory = input_directory
-        self.output_file = output_file
+        self.output_directory = output_directory
+        self.output_file = output_directory + "/idk"
         self.prompter = Prompter()
         self.seed_files = os.listdir(self.input_directory)
         self.record = {}
+        self.base_seed = None
+        self.ancilla_seed = None
         with open(cfg.uncommon_line_file, 'rb') as f:
             self.uncommon_lines = pickle.load(f)
         if not(fix):
+            # There are a lot of combinations for mutations. In case the mutations get interrupted,
+            # We want a list that tracks what combinations have been completed already.
+            self.combo_tracking_list = self.output_directory + "_ctl.pickle"
             tmp_combos = list(itertools.combinations(self.seed_files,2))
             self.seed_combos = []
             # Fixed seeds cannot be used as base seeds
             for seed in tmp_combos:
                 if "FXD" not in seed[0]:
                     self.seed_combos.append(seed)
+            with open(self.combo_tracking_list, "wb") as f:
+                pickle.dump(self.seed_combos, f, protocol=pickle.HIGHEST_PROTOCOL)
             #if self.base_seed == None:
             #    self.base_seed = random.choice(self.seed_files)
-            self.base_seed, self.ancilla_seed = random.choice(self.seed_combos)
-            self.exec_engine.load_global_coverage_map_from_file(self.seed_cov_map[self.base_seed])
+            self.get_new_seeds()
+            #self.exec_engine.load_global_coverage_map_from_file(self.seed_cov_map[self.base_seed])
+
+    # This function selects a new base_seed/ancilla for mutation while updating the tracking file
+    def get_new_seeds(self):
+        self.base_seed, self.ancilla_seed = self.seed_combos.pop()
+        with open(self.combo_tracking_list, "wb") as f:
+            pickle.dump(self.seed_combos, f, protocol=pickle.HIGHEST_PROTOCOL)
 
     def get_content(self, seed_file): # Read file and parse structures
         file_path = self.input_directory + "/" + seed_file
@@ -113,6 +131,8 @@ class Generator():
         result = self.llm.context[-1]['content']
         return result
 
+    # This doesn't need to be deleted as it is entirely separate from the mutation code
+    # Move it though
     def fix_seed(self, file, output_file):
         print("\n-- Fixing --\n")
         with open(file, "r") as f:
@@ -160,36 +180,39 @@ class Generator():
         cost = self.llm.reset_context()
         return cost
 
+    '''Tag of Death X
+                      | 
+                    X   '''
     # Load a coverage map before executing
-    def execute_code(self, code, fix=False, fix_attempts=1):
-        is_error = lambda x: len(x) != 0
-        print("\n -- Executing Code -- \n")
-        clear_file(cfg.error_file)
-        result = self.exec_engine.execute_safe(code)
-        error_message = error_parser.parse_error(cfg.error_file)
+    #def execute_code(self, code, fix=False, fix_attempts=1):
+    #    is_error = lambda x: len(x) != 0
+    #    print("\n -- Executing Code -- \n")
+    #    clear_file(cfg.error_file)
+    #    result = self.exec_engine.execute_safe(code)
+    #    error_message = error_parser.parse_error(cfg.error_file)
 
-        while(is_error(error_message) and fix_attempts != 0):
-            fix_attempts -= 1
-            print("\n! JavaScript Error: Re-querying LLM !\n")
-            clear_file(cfg.error_file)
-            code = self.query_llm_code("Fix this and return in the proper format\n" + error_message)
-            if code == False:
-                return False, None
-            if not fix:
-                self.exec_engine.load_global_coverage_map_from_file(self.seed_cov_map[self.base_seed])
-            else:
-                self.exec_engine.load_global_coverage_map_from_file(cfg.base_map)
-            result = self.exec_engine.execute_safe(code)
-            error_message = error_parser.parse_error(cfg.error_file)
+    #    while(is_error(error_message) and fix_attempts != 0):
+    #        fix_attempts -= 1
+    #        print("\n! JavaScript Error: Re-querying LLM !\n")
+    #        clear_file(cfg.error_file)
+    #        code = self.query_llm_code("Fix this and return in the proper format\n" + error_message)
+    #        if code == False:
+    #            return False, None
+    #        if not fix:
+    #            self.exec_engine.load_global_coverage_map_from_file(self.seed_cov_map[self.base_seed])
+    #        else:
+    #            self.exec_engine.load_global_coverage_map_from_file(cfg.base_map)
+    #        result = self.exec_engine.execute_safe(code)
+    #        error_message = error_parser.parse_error(cfg.error_file)
 
-        if is_error(error_message):
-            print("\n!! JavaScript Error: See __err__ !!\n")
-            return False, None
-        else:
-            if fix:
-                return result, code
-            else:
-                return result
+    #    if is_error(error_message):
+    #        print("\n!! JavaScript Error: See __err__ !!\n")
+    #        return False, None
+    #    else:
+    #        if fix:
+    #            return result, code
+    #        else:
+    #            return result
 
     def print_results(self, result):
         if result.num_new_edges > 0:
@@ -236,27 +259,31 @@ class Generator():
 
     def run(self, cycles):
         # interestinggggg
-        base_seed_data = self.get_content(self.base_seed) # Get file contents and parsed structures
-        line = [random.choice(self.uncommon_lines)]
-        self.llm.change_temperature(1)
-        thang = self.query_llm_code(self.prompter.insert_line(base_seed_data['content'], line))
-        self.exec_engine.load_global_coverage_map_from_file(self.seed_cov_map[self.base_seed])
-        result = self.execute_code(thang)
-        self.print_results(result)
-        print(base_seed_data['content'])
-        print(line)
-        print(thang)
-        return
+        #base_seed_data = self.get_content(self.base_seed) # Get file contents and parsed structures
+        #line = [random.choice(self.uncommon_lines)]
+        #self.llm.change_temperature(1)
+        #thang = self.query_llm_code(self.prompter.insert_line(base_seed_data['content'], line))
 
-        # First seed mutation involves mixing two seeds together
+        '''T#ag of Death X
+            #              | 
+            #            X   '''
+        #self.exec_engine.load_global_coverage_map_from_file(self.seed_cov_map[self.base_seed])
+        #result = self.execute_code(thang)
+        #self.print_results(result)
+        #print(base_seed_data['content'])
+        #print(line)
+        #print(thang)
+        #return
+
+
+
+
+
         base_seed_data = self.get_content(self.base_seed) # Get file contents and parsed structures
         ancilla_seed_data = self.get_content(self.ancilla_seed)
         interlinked = self.query_llm_code(
             self.prompter.mix(base_seed_data['content'], ancilla_seed_data['content']))
         #interlinked = self.query_llm_code("This did not increase coverage. Try again.")
-        self.exec_engine.load_global_coverage_map_from_file(self.seed_cov_map[self.base_seed])
-        result = self.execute_code(interlinked)
-        self.print_results(result)
         write_output(self.output_file, interlinked)
         return
 

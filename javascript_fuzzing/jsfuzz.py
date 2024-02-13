@@ -11,6 +11,7 @@ from generator import Generator
 import native_code.executor as executor
 from penguin import Prompter
 import parser
+import renamer
 from llm import LLM_Instance
 import config as cfg
 
@@ -72,15 +73,32 @@ def main():
                     os.rename(seed_cov_map[i], no_new_edge_dir+"/"+seed_cov_map[i].split("/")[1])
         return
 
+
+
+
+
+
+
     elif action == "fz":
         corpus_directory = sys.argv[2].split("/")[0]
-        output_file = corpus_directory + "/output.js"
+        output_directory = "mut_corp_" + corpus_directory
+        if not os.path.exists(output_directory):
+            os.makedirs(output_directory)
+        else:
+            print("output directory already exists... do something about it...")
+            return
         seed_cov_map = mapper.load_cor_maps(corpus_directory + "_bms")
         context = [{'role': 'system', 'content': "You are a coding tool and \
                     reply ONLY with JAVASCRIPT CODE. We are trying to increase code coverage."}]
         llm = LLM_Instance(context, 0.25) # Default temperature is 0.25
-        generator = Generator(llm, exec_engine, seed_cov_map, corpus_directory, output_file)
+        generator = Generator(llm, exec_engine, seed_cov_map, corpus_directory, output_directory)
         generator.run(1)
+        
+
+
+
+
+
     elif action == "fx":
         corpus_directory = sys.argv[2].split("/")[0]
         seed_cov_map = {} #Unneeded for fixing in this current scheme
