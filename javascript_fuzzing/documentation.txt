@@ -65,3 +65,6 @@ The limiting factor is in the LLM queries from both a monetary and speed perspec
 
 February 6-12:
 Working on Fry to get llama running
+
+February 13:
+TODO: deintegrate the fuzzing engine from the mutation engine to enable two-stage processing.
