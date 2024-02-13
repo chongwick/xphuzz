@@ -47,3 +47,21 @@ This is February 1 Daniel telling February 2 Daniel to clean up the code, today.
 
 February 2:
 Don't tell me what to do idiot. I dunno about the "interesting code line" thing. It causes a lot of errors.
+
+February 5:
+The limiting factor is in the LLM queries from both a monetary and speed perspective. There are a few considerations.
+1) How do we want to mutate/fuzz?
+-- mutate seeds to create a corpus which we run (2 stages)
+-- mutate/fuzz together (1 stage)
+-- have multiple sessions of option 1
+2) LLM instances
+-- Use ChatGPT exclusively
+-- Use LLAMA
+-- Use both
+3) Multithreading
+-- How many concurrent processes?
+-- If using LLAMA exclusively, how many instances of LLAMA can we have?
+---- i.e. We can query one instance of LLAMA one at a time -> slow
+
+February 6-12:
+Working on Fry to get llama running
