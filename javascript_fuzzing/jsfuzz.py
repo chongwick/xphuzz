@@ -8,10 +8,10 @@ base_dir = os.path.abspath(os.path.join(current_dir, '..'))
 if base_dir not in sys.path: sys.path.append(base_dir)
 import mapper
 from generator import Generator
+from mutator import Mutator
 import native_code.executor as executor
 from penguin import Prompter
 import parser
-import renamer
 from llm import LLM_Instance
 import config as cfg
 
@@ -84,15 +84,12 @@ def main():
         output_directory = "mut_corp_" + corpus_directory
         if not os.path.exists(output_directory):
             os.makedirs(output_directory)
-        else:
-            print("output directory already exists... do something about it...")
-            return
-        seed_cov_map = mapper.load_cor_maps(corpus_directory + "_bms")
+        #seed_cov_map = mapper.load_cor_maps(corpus_directory + "_bms")
         context = [{'role': 'system', 'content': "You are a coding tool and \
                     reply ONLY with JAVASCRIPT CODE. We are trying to increase code coverage."}]
         llm = LLM_Instance(context, 0.25) # Default temperature is 0.25
-        generator = Generator(llm, exec_engine, seed_cov_map, corpus_directory, output_directory)
-        generator.run(1)
+        mutator = Mutator(llm, corpus_directory, output_directory)
+        mutator.run(1)
         
 
 
@@ -136,20 +133,6 @@ def main():
                 print(result.num_new_edges)
         exec_engine.print_statistics()
         quit()
-
-    #exec_engine.load_global_coverage_map_from_file(seed_cov_map[generator.base_seed])
-
-    #with open(output_file, "r") as f:
-    #    mutated_seed = f.read()
-    #result = exec_engine.execute_safe(mutated_seed)
-    ##print("New Edges After Mutation: {}\n".format(result.num_new_edges))
-    ##exec_engine.print_statistics()
-    #if result.num_new_edges > 0:
-    #    print("Success: {} new edges".format(result.num_new_edges))
-    #    print(generator.base_seed, generator.ancilla_seed)
-    #else:
-    #    print("Failure: no new edges")
-    #    print(generator.base_seed, generator.ancilla_seed)
 
 if __name__ == "__main__":
     main()

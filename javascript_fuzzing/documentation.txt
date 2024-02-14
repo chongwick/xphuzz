@@ -69,3 +69,7 @@ Working on Fry to get llama running
 February 13:
 TODO: deintegrate the fuzzing engine from the mutation engine to enable two-stage processing. Specifically, mutation and execution should have NOTHING to do with each other. Here's a Venn diagram of how that looks OO.
 THE ONLY "FIXING" that should be done is formatting. Each mutated seed's name will 
+
+February 14:
+I've removed the execution code from the mutation code. The initialization function for the mutator is slightly complicated, but this is by necessity. In case the mutation process is interrupted, we don't want to restart everything. After every mutation, our progress is saved.
+The mixing code is complete, I think we should give it one attempt at fixing.

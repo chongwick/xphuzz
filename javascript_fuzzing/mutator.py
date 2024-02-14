@@ -20,7 +20,6 @@ class Mutator():
         self.llm = llm
         self.input_directory = input_directory
         self.output_directory = output_directory
-        self.output_file = output_directory + "/idk"
         self.prompter = Prompter()
         self.seed_files = os.listdir(self.input_directory)
         self.base_seed = None
@@ -30,14 +29,18 @@ class Mutator():
         # There are a lot of combinations for mutations. In case the mutations get interrupted,
         # We want a list that tracks what combinations have been completed already.
         self.combo_tracking_list = self.output_directory + "_ctl.pickle"
-        tmp_combos = list(itertools.combinations(self.seed_files,2))
-        self.seed_combos = []
-        # Fixed seeds cannot be used as base seeds
-        for seed in tmp_combos:
-            if "FXD" not in seed[0]:
-                self.seed_combos.append(seed)
-        with open(self.combo_tracking_list, "wb") as f:
-            pickle.dump(self.seed_combos, f, protocol=pickle.HIGHEST_PROTOCOL)
+        if os.path.isfile(self.combo_tracking_list):
+            with open(self.combo_tracking_list, 'rb') as f:
+                self.seed_combos = pickle.load(f)
+        else:
+            tmp_combos = list(itertools.combinations(self.seed_files,2))
+            self.seed_combos = []
+            # Fixed seeds cannot be used as base seeds
+            for seed in tmp_combos:
+                if "FXD" not in seed[0]:
+                    self.seed_combos.append(seed)
+            with open(self.combo_tracking_list, "wb") as f:
+                pickle.dump(self.seed_combos, f, protocol=pickle.HIGHEST_PROTOCOL)
         #if self.base_seed == None:
         #    self.base_seed = random.choice(self.seed_files)
         #self.exec_engine.load_global_coverage_map_from_file(self.seed_cov_map[self.base_seed])
@@ -164,9 +167,7 @@ class Mutator():
         #print(thang)
         #return
 
-
-
-
+        # This loop makes every possible combination of seeds
         while(len(self.seed_combos) != 0):
             self.get_seeds()
             base_seed_data = self.get_content(self.base_seed)
@@ -174,7 +175,10 @@ class Mutator():
             interlinked = self.query_llm_code(
                 self.prompter.mix(base_seed_data['content'], ancilla_seed_data['content']))
             #interlinked = self.query_llm_code("This did not increase coverage. Try again.")
-            write_output(self.output_file, interlinked)
+            file_name = (self.output_directory + "/" +  self.base_seed.split(".")[0] + "__" +
+                         self.ancilla_seed.split(".")[0] + ".js")
+            write_output(file_name, interlinked)
+        os.remove(self.combo_tracking_list)
         return
 
 def write_output(file_name,output):
