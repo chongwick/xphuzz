@@ -12,7 +12,7 @@ from mutator import Mutator
 import native_code.executor as executor
 from penguin import Prompter
 import parser
-from llm import LLM_Instance
+from llm2 import Chat_LLM
 import config as cfg
 
 def parse_args(args):
@@ -87,7 +87,7 @@ def main():
         #seed_cov_map = mapper.load_cor_maps(corpus_directory + "_bms")
         context = [{'role': 'system', 'content': "You are a coding tool and \
                     reply ONLY with JAVASCRIPT CODE. We are trying to increase code coverage."}]
-        llm = LLM_Instance(context, 0.25) # Default temperature is 0.25
+        llm = Chat_LLM(context, 0.25) # Default temperature is 0.25
         mutator = Mutator(llm, corpus_directory, output_directory)
         mutator.run(1)
         
@@ -103,7 +103,7 @@ def main():
         context = [{'role': 'system', 'content': "You are a coding tool and \
                     reply ONLY with JAVASCRIPT CODE. We are trying to fix code. \
                     DO NOT REMOVE CODE."}]
-        llm = LLM_Instance(context, 0.25) # Default temperature is 0.25
+        llm = Chat_LLM(context, 0.25) # Default temperature is 0.25
         generator = Generator(llm, exec_engine, seed_cov_map, 
                               corpus_directory, output_file, fix=True)
         broken_seeds = os.listdir(corpus_directory + "_C0V") # Broken is a misnomer as is 0-cov
@@ -116,13 +116,11 @@ def main():
         seed_cov_map = mapper.load_cor_maps(corpus_directory + "_bms")
         context = [{'role': 'system', 'content': "You are a coding tool and \
                     reply ONLY with JAVASCRIPT CODE. We are trying to increase code coverage."}]
-        llm = LLM_Instance(context, 0.25) # Default temperature is 0.25
+        llm = Chat_LLM(context, 0.25) # Default temperature is 0.25
         generator = Generator(llm, exec_engine, seed_cov_map, corpus_directory, output_file)
         files = os.listdir(corpus_directory)
-        cost = 0
         for file in files:
-            cost += generator.summarize(file)
-        print("***************final cost***************\n{}".format(cost))
+            generator.summarize(file)
     else: # Run fuzzing without mutations
         corpus_directory = sys.argv[2].split("/")[0]
         exec_engine.load_global_coverage_map_from_file("base_map_v8_1_12_24")

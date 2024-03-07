@@ -79,6 +79,13 @@ class Prompter:
         prompt += "```\n" + code + "\n```\n"
         return(prompt)
 
+    def new_sum(self, code):
+        prompt = "Identify any uncommonalities in this code. Write segments of valid JavaScript code\
+                using these uncommonalities. Return the segments in a list.\
+                Format the list as Segment 1:```<segment>```..."
+        prompt += "```\n" + code + "\n```\n"
+        return(prompt)
+
     def code_format_fix(self):
         prompt = "The response did not correspond to the ```<code>``` format."
         return(prompt)

@@ -466,3 +466,4 @@ token_max = 4097
 uncommon_line_file = "uncommon.pickle"
 error_file = "__err__"
 base_map = "base_map_v8_1_12_24"
+model_id = "codellama/CodeLlama-34b-Instruct-hf"

@@ -142,8 +142,7 @@ class Mutator():
             #print(self.uncommon_lines)
             with open(cfg.uncommon_line_file, "wb") as f:
                 pickle.dump(self.uncommon_lines, f, protocol=pickle.HIGHEST_PROTOCOL)
-        cost = self.llm.reset_context()
-        return cost
+        self.llm.reset_context()
 
     def insert_mutation(self, code, insertion):
         code = [i+"\n" for i in code.split("\n")]
@@ -167,6 +166,10 @@ class Mutator():
         #print(thang)
         #return
 
+        #self.get_seeds()
+        #base_seed_data = self.get_content(self.base_seed)
+        #self.query_llm_list(self.prompter.new_sum(base_seed_data['content']))
+        #quit()
         # This loop makes every possible combination of seeds
         while(len(self.seed_combos) != 0):
             self.get_seeds()
