@@ -1,5 +1,7 @@
+import sys
 import pickle
 import os
+import native_code.executor as executor
 
 # Establish a base map to counteract nondeterministic behavior
 # Eliminates the need to run dummy executions at every start
@@ -23,6 +25,12 @@ def map_seed_bitmap(corpus_directory, exec_engine, base_map):
     
     # Record an initial coverage bitmap for each snippet and store it in an output file
     for file in os.listdir(corpus_directory):
+        ### Don't remap already mapped files
+        bitmap_file_C0V = bitmap_directory + "/" + file.split(".")[0]+"__0bm"
+        bitmap_file_SUC = bitmap_directory + "/" + file.split(".")[0]+"__bm"
+        if os.path.isfile(bitmap_file_C0V) or os.path.isfile(bitmap_file_SUC):
+            pass
+        ###
         with open(os.path.join(corpus_directory, file), 'r') as f:
             seed = f.read()
         exec_engine.restore_global_coverage_map()
@@ -54,3 +62,17 @@ def load_cor_maps(bms_directory):
     print("-- Coverage Maps Loaded --\n")
     return seed_cov_map
 
+def main():
+    corpus_directory = sys.argv[1].split("/")[0]
+    exec_engine = executor.Executor(timeout_per_execution_in_ms=400, enable_coverage=True)
+    seed_cov_map = map_seed_bitmap(corpus_directory, exec_engine, "base_map_v8_1_12_24")
+    no_new_edge_dir = corpus_directory+"_C0V"
+    os.mkdir(no_new_edge_dir)
+    for i in seed_cov_map:
+        if "0bm" in seed_cov_map[i]:
+            os.rename(corpus_directory+"/"+i,no_new_edge_dir+"/"+i)
+            os.rename(seed_cov_map[i], no_new_edge_dir+"/"+seed_cov_map[i].split("/")[1])
+
+
+if __name__ == "__main__":
+    main()

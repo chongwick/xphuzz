@@ -7,6 +7,7 @@ import error_parser
 import time
 import config as cfg
 import pickle
+import star_llama
 from ast import literal_eval
 
 RANDOM_SEED = 80085
@@ -153,7 +154,7 @@ class Mutator():
         code = "".join(code)
         return code
 
-    def run(self, cycles):
+    def run(self):
         # interestinggggg
         #base_seed_data = self.get_content(self.base_seed) # Get file contents and parsed structures
         #line = [random.choice(self.uncommon_lines)]
@@ -192,3 +193,17 @@ def clear_file(file_name):
     with open(file_name, "w") as f:
         pass
 
+def main():
+    corpus_directory = sys.argv[1].split("/")[0]
+    output_directory = "mut_corp_" + corpus_directory
+    if not os.path.exists(output_directory):
+        os.makedirs(output_directory)
+    #seed_cov_map = mapper.load_cor_maps(corpus_directory + "_bms")
+    context = [{'role': 'system', 'content': "You are a coding tool and \
+                reply ONLY with JAVASCRIPT CODE. We are trying to increase code coverage."}]
+    completer = star_llama.Completion_LLM(context, 0.25)
+    mutator = Mutator(completer, corpus_directory, output_directory)
+    mutator.run()
+
+if __name__ == "__main__":
+    main()
