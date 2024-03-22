@@ -124,3 +124,7 @@ I modified the code fixing such that I added context to it so it knows what kind
 
 March 19:
 The GPU needs to be used exclusively for the LLM, I've written receiver and host. Host will run the LLM, while receiver will act as "star_llama" interface to the LLM. Needs some fixing but mostly good.
+
+March 22:
+Completely done. Host has been integrated entirely into star_llama. Simply run star_llama.py on a GPU, import receiver.py on the CPU, and it can run in a very similar manner to the openai API. This code is a little bit special because of the system it is run on. Specifically, star_llama and receiver communicate to each other via a shared directory. On fry (my cluster), compute nodes all have access to my home directory, as such, there is no need to do any networking/sshing/scping to coordinate instructions.
+Now, it is time to do the actual mutations, rebuild d8 according to Samuel GroB's suggestions. 
