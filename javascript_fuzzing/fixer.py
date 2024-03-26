@@ -4,12 +4,11 @@ import os
 import random
 import itertools
 from penguin import Prompter
-import error_parser
 import time
 import config as cfg
 import pickle
 from ast import literal_eval
-from star_llama import Chat_LLM
+from receiver import Chat_LLM
 import native_code.executor as executor
 
 class Fixer():
@@ -74,7 +73,7 @@ class Fixer():
         print("\n-- Fixing {} --\n".format(file))
         with open(file, "r") as f:
             seed_content = f.read()
-        clear_file(cfg.error_file)
+        error_parser.clear_error_file()
         result = self.exec_engine.execute_safe(seed_content)
         error_message = error_parser.parse_error(cfg.error_file)
         #self.exec_engine.execute_debug(file)
@@ -103,14 +102,14 @@ class Fixer():
     def execute_code(self, code, fix=False, fix_attempts=1):
         is_error = lambda x: len(x) != 0
         print("\n -- Executing Code -- \n")
-        clear_file(cfg.error_file)
+        error_parser.clear_error_file()
         result = self.exec_engine.execute_safe(code)
         error_message = error_parser.parse_error(cfg.error_file)
 
         while(is_error(error_message) and fix_attempts != 0):
             fix_attempts -= 1
             print("\n! JavaScript Error: Re-querying LLM !\n")
-            clear_file(cfg.error_file)
+            error_parser.clear_error_file()
             code = self.query_llm_code("Fix this and return in the proper format\n" + error_message)
             if code == False:
                 return False, None
@@ -128,10 +127,6 @@ def write_output(file_name,output):
     with open(file_name, "w") as f:
         f.write(output)
 
-def clear_file(file_name):
-    with open(file_name, "w") as f:
-        pass
-
 def main():
     exec_engine = executor.Executor(timeout_per_execution_in_ms=400, enable_coverage=True)
     corpus_directory = sys.argv[1].split("/")[0]
@@ -140,6 +135,7 @@ def main():
     system_role = "You are a code fixing tool and reply only with JavaSript Code. \
             Your replies should be formatted as ```<code>```"
     context = [{'role': 'system', 'content': system_role}]
+    #context = [{'role': 'system', 'content': 'You are a code fixing tool and reply only with JavaSript Code. Your replies should be formatted as ```<code>```'}, {'role': 'user', 'content': 'Here is JavaScript Code: ```console.log(hi);``` This is its error: ReferenceError: hi is not defined. Fix this. Do not comment. Do not remove any code. Reply only with code.'}, {'role': 'assistant', 'content': '```\nconst hi = "Hello, World!";\nconsole.log(hi);\n``` The issue was that the `hi` variable was not defined.'}, {'role': 'user', 'content': 'You were supposed to reply only with the code'}, {'role': 'assistant', 'content': '```\nconst hi = "Hello, World!";\nconsole.log(hi);\n```'}]
 
     context.append({'role': 'user', 'content': "Here is JavaScript Code: ```console.log(hi);``` \
             This is its error: ReferenceError: hi is not defined. Fix this. Do not comment. \
@@ -156,7 +152,11 @@ def main():
     broken_seeds = os.listdir(corpus_directory + "_C0V") # Broken is a misnomer as is 0-cov
     for seed in broken_seeds:
         output_file = corpus_directory + "/" + seed.split(".js")[0] + "_FXD.js"
-        fixer.fix_seed(corpus_directory + "_C0V/" + seed, output_file)
+        if os.path.isfile(output_file):
+            print("Already fixed :)")
+            continue
+        else:
+            fixer.fix_seed(corpus_directory + "_C0V/" + seed, output_file)
 
 if __name__ == "__main__":
     main()

@@ -111,8 +111,11 @@ class Chat_LLM:
         self.token_count += self.num_tokens_from_string(content)
         if self.token_count > cfg.token_max:
             while(self.token_count > cfg.token_max):
-                popped = self.context.pop(0)
-                self.token_count -= self.num_tokens_from_string(popped)
+                #gotta do it twice because it needs to alternate user/system/user/system
+                popped = self.context.pop(1)
+                self.token_count -= self.num_tokens_from_string(popped['content'])
+                popped = self.context.pop(1)
+                self.token_count -= self.num_tokens_from_string(popped['content'])
             #self.reset_context()
             #raise RuntimeError("Exceeded Max Tokens ({m}): {t}".format(m=cfg.token_max,
             #                                                           t=self.token_count))
@@ -215,6 +218,7 @@ class FIM_LLM:
 
 def main():
     llm_type = None
+    cur_llm_type = None
     llm_object = None
 
     is_terminate = lambda : os.path.isfile(terminate_file)
@@ -230,18 +234,22 @@ def main():
         elif set_llm_type():
             with open(llm_type_file, "r") as f:
                 llm_type = f.read()
-                del(llm_object)
-                torch.cuda.empty_cache()
+                if llm_type != cur_llm_type:
+                    del(llm_object)
+                    torch.cuda.empty_cache()
                 if "chat" in llm_type:
                     llm_type = CHAT
+                    cur_llm_type = CHAT
                     arguments = get_arguments(arguments_file)
                     context = arguments['context']
                     llm_object = Chat_LLM(context)
                 elif "completion" in llm_type:
                     llm_type = COMPLETION
+                    cur_llm_type = COMPLETION
                     llm_object = Completion_LLM()
                 elif "fim" in llm_type:
                     llm_type = FIM
+                    cur_llm_type = FIM
                     llm_object = FIM_LLM()
                 with open(output_file, "w") as f:
                     f.write("1")

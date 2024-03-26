@@ -27,6 +27,7 @@ def submit(arguments):
 class Chat_LLM:
     def __init__(self, context, temperature=0.1):
         self.context = context
+        self.original_context = self.context.copy()
         arguments = {"context" : context}
         with open(arguments_file, "wb") as f:
             pickle.dump(arguments,f)

@@ -1,4 +1,4 @@
-[COV] edge counters initialized. Shared memory: shm_id_21_1138 with 1532888 edges
+[COV] edge counters initialized. Shared memory: shm_id_16_1138 with 1532888 edges
 fuzzcode.js:3: RangeError: Invalid string length
 String.prototype.split.call(o2,'');
                        ^

@@ -2,6 +2,7 @@ import sys
 import pickle
 import os
 import native_code.executor as executor
+import config as cfg
 
 # Establish a base map to counteract nondeterministic behavior
 # Eliminates the need to run dummy executions at every start
@@ -35,11 +36,19 @@ def map_seed_bitmap(corpus_directory, exec_engine, base_map):
             seed = f.read()
         exec_engine.restore_global_coverage_map()
         #exec_engine.load_global_coverage_map_from_file("backup")
+        error_parser.clear_error_file()
         result = exec_engine.execute_safe(seed)
-        if result.num_new_edges == 0:
-            bitmap_file = bitmap_directory + "/" + file.split(".")[0]+"__0bm"
-        else:
+        error_message = error_parser.parse_error(cfg.error_file)
+        if not(error_message):
             bitmap_file = bitmap_directory + "/" + file.split(".")[0]+"__bm"
+        else:
+            bitmap_file = bitmap_directory + "/" + file.split(".")[0]+"__0bm"
+            
+        #if result.num_new_edges == 0:
+        #    bitmap_file = bitmap_directory + "/" + file.split(".")[0]+"__0bm"
+        #else:
+        #    bitmap_file = bitmap_directory + "/" + file.split(".")[0]+"__bm"
+
         seed_cov_map[str(file)]=bitmap_file
         exec_engine.save_global_coverage_map_in_file(bitmap_file)
         triggered, total = exec_engine.get_number_triggered_edges()
@@ -70,8 +79,9 @@ def main():
     os.mkdir(no_new_edge_dir)
     for i in seed_cov_map:
         if "0bm" in seed_cov_map[i]:
+            os.remove(seed_cov_map[i])
             os.rename(corpus_directory+"/"+i,no_new_edge_dir+"/"+i)
-            os.rename(seed_cov_map[i], no_new_edge_dir+"/"+seed_cov_map[i].split("/")[1])
+            #os.rename(seed_cov_map[i], no_new_edge_dir+"/"+seed_cov_map[i].split("/")[1])
 
 
 if __name__ == "__main__":
