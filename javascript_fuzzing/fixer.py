@@ -75,7 +75,7 @@ class Fixer():
             seed_content = f.read()
         error_parser.clear_error_file()
         result = self.exec_engine.execute_safe(seed_content)
-        error_message = error_parser.parse_error(cfg.error_file)
+        error_message = error_parser.parse_error()
         #self.exec_engine.execute_debug(file)
         #error_message = error_parser.parse_error(cfg.error_file)
         if not(error_message): # Some code does not contain syntax errors
@@ -91,7 +91,7 @@ class Fixer():
             result, code = self.execute_code(code, fix=True, fix_attempts=2)
             if result == False:
                 print("FIX:FAILED {f} -> {e}".format(
-                    f=file, e=error_parser.parse_error(cfg.error_file)))
+                    f=file, e=error_parser.parse_error()))
             else:
                 write_output(output_file, code) 
                 print("Fix: SUCCESS")
@@ -104,7 +104,7 @@ class Fixer():
         print("\n -- Executing Code -- \n")
         error_parser.clear_error_file()
         result = self.exec_engine.execute_safe(code)
-        error_message = error_parser.parse_error(cfg.error_file)
+        error_message = error_parser.parse_error()
 
         while(is_error(error_message) and fix_attempts != 0):
             fix_attempts -= 1
@@ -115,7 +115,7 @@ class Fixer():
                 return False, None
             self.exec_engine.load_global_coverage_map_from_file(cfg.base_map)
             result = self.exec_engine.execute_safe(code)
-            error_message = error_parser.parse_error(cfg.error_file)
+            error_message = error_parser.parse_error()
 
         if is_error(error_message):
             print("\n!! JavaScript Error: See __err__ !!\n")

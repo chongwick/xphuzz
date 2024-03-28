@@ -44,7 +44,7 @@ def execute_function(llm_type, llm_object, arguments):
         llm_functions = CHAT_FUNCTIONS
     elif llm_type == COMPLETION:
         llm_functions = COMPLETION_FUNCTIONS
-    elif llm_type == FIM_FUNCTIONS:
+    elif llm_type == FIM:
         llm_functions = FIM_FUNTIONS
     function = llm_functions[arguments['command']]
     params = [llm_object] + arguments['params'] #Prepend self to the arguments

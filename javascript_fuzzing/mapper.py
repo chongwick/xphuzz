@@ -3,6 +3,7 @@ import pickle
 import os
 import native_code.executor as executor
 import config as cfg
+import error_parser
 
 # Establish a base map to counteract nondeterministic behavior
 # Eliminates the need to run dummy executions at every start
@@ -38,7 +39,7 @@ def map_seed_bitmap(corpus_directory, exec_engine, base_map):
         #exec_engine.load_global_coverage_map_from_file("backup")
         error_parser.clear_error_file()
         result = exec_engine.execute_safe(seed)
-        error_message = error_parser.parse_error(cfg.error_file)
+        error_message = error_parser.parse_error()
         if not(error_message):
             bitmap_file = bitmap_directory + "/" + file.split(".")[0]+"__bm"
         else:

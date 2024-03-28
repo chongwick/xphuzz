@@ -131,3 +131,14 @@ Now, it is time to do the actual mutations, rebuild d8 according to Samuel GroB'
 
 March 26:
 It may be unnecessary to perform fixing prior to mixing the seeds.
+
+March 27:
+The generation of the C0V database has been modified such that the only seeds that go there are ones that cannot be executed. Not the ones that trigger less coverage than the other seeds.
+
+March 28:
+We need to take a further look at the mutation process of the JS snippets (i.e. Llama2) and decide on GPT4 and the feasibility of producing promising results with that LLM. We want to look at instrumenting a PHP engine with coverage and translating JavaScript snippets to PHP.
+
+Here is the basic translation method we want to follow for PHP:
+role description: "You are a JavaScript to PHP translator. You respond with ```<code>```"
+add_context("user","JS_CODE")
+this seems to work very well for llama at the moment

@@ -111,6 +111,6 @@ class FIM_LLM:
 
     def fill_in_middle(self, content):
         arguments = {
-                'command':"get_completion",'params':[content]
+                'command':"fill_in_middle",'params':[content]
                 }
         return submit(arguments)
