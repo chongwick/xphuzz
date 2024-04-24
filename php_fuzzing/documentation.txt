@@ -1,0 +1,41 @@
+April 1:
+I am working on compiling PHP with Fuzzilli's coverage.c code. I have modified coverage.c such that it is coverage.cc now. I have inserted this code into ./ext/intl/intl_convertcpp.cpp. I have set CC=clang CXX=clang++ CXXFLAGS=-fsanitize-coverage=trace-pc-guard --enable-address-sanitizer, --enable-undefined-sanitizer
+
+April 2:
+April Fools lol... yeah so anyway coverage.c needs to be included in the C compilation, not some rando cpp. let's redo this. additionally, the flags need to be for c.
+1)use --enable-address-sanitizer
+
+April 3:
+./buildconf -f
+insert coverage.c into main/main.c
+CFLAGS="-fsanitize-coverage=trace-pc-guard"
+./configure --enable-address-sanitizer --enable-undefined-sanitize
+
+April 4:
+Forcing clang does not work because php uses explicit registers
+
+April 5:
+So basically, I set export CC="clang" and export CXX="clang++" then ./configure --enable-address-sanitizer. insert coverage.c into php_cli.c. edit the makefile and replace fsanitize=address with -fsanitize-coverage=trace-pc-guard. then make.
+
+April 8:
+Got php working: singularity run ubuntu.sif ./php <input_file>
+
+April 11:
+Rewrite libJSEngine in Python OR get it working... idk. Also, fsanitize=address should be active... potentially use two engines, one with fsanitize=address and one with trace-pc-guard
+
+CAN YOU FUZZ A HASHTABLE?
+
+can't do both fsanitize=address and trace-pc-guard bc seg fault... idk why
+
+April 19:
+We need a second engine (i.e. fsanitize=address). Additionally, there are difficulties with running an interactive shell and keeping the communication pipe open using python https://www.reddit.com/r/learnpython/comments/qplpyn/how_to_run_a_command_line_interactive_program/. This will be addressed later, but for now, we'll just close the pipe. https://docs.python.org/2/library/pty.html
+Make python script wait a little bit before reading from the shared bitmap focus on coverage consistency
+
+April 22:
+JavaScript-Raider also has a variance of a few hundred edges, so we're okay.
+
+we're using a100 bla bla bla...
+
+April 24:
+We got shared memory saving and loading
+We have two php engines. one with coverage instrumentation compiled using clang. the other with undefined/address sanitizers enabled compiled using gcc.

@@ -142,3 +142,7 @@ Here is the basic translation method we want to follow for PHP:
 role description: "You are a JavaScript to PHP translator. You respond with ```<code>```"
 add_context("user","JS_CODE")
 this seems to work very well for llama at the moment
+
+March 29:
+https://github.com/guidance-ai/guidance.git
+https://www.reddit.com/r/LocalLLaMA/comments/19e4dca/making_llama_model_return_only_what_i_ask_json/
