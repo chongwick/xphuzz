@@ -267,6 +267,7 @@ def main():
                         llm_type = CHAT
                         cur_llm_type = CHAT
                         arguments = get_arguments(arguments_file)
+                        os.remove(arguments_file)
                         context = arguments['context']
                         llm_object = Chat_LLM(context)
                     elif "completion" in llm_type:
@@ -280,8 +281,6 @@ def main():
                 with open(output_file, "w") as f:
                     f.write("1")
                 os.remove(llm_type_file)
-                if os.path.isfile(arguments_file):
-                    os.remove(arguments_file)
         elif is_query():
             arguments = get_arguments(arguments_file)
             os.remove(llm_query_file)

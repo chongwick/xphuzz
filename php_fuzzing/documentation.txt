@@ -39,3 +39,13 @@ we're using a100 bla bla bla...
 April 24:
 We got shared memory saving and loading
 We have two php engines. one with coverage instrumentation compiled using clang. the other with undefined/address sanitizers enabled compiled using gcc.
+
+April 25:
+need to fix stderr/stdout
+work on translation portion.
+
+April 26:
+stderr/out done. needs to get parsed. Fixed star_llama and downloaded new model. I think llama 3 is better than codellama...
+
+April 27:
+We have star_llama and receiver configured for llama3. llama3 follows instructions significantly better than I thought it would. 

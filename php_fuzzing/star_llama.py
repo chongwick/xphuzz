@@ -1,4 +1,4 @@
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, StoppingCriteria
 import transformers
 import torch
 import os
@@ -16,6 +16,7 @@ FIM_INDICATOR = "<FILL_HERE>"
 CHAT = "chat"
 COMPLETION = "completion"
 FIM = "fim"
+LLAMA3 = "llama3"
 
 llm_workdir = "llm_workdir/"
 terminate_file = llm_workdir + "__terminate__"
@@ -42,10 +43,12 @@ def execute_function(llm_type, llm_object, arguments):
     llm_functions = None
     if llm_type == CHAT:
         llm_functions = CHAT_FUNCTIONS
+    if llm_type == LLAMA3:
+        llm_functions = LLAMA3_FUNCTIONS
     elif llm_type == COMPLETION:
         llm_functions = COMPLETION_FUNCTIONS
     elif llm_type == FIM:
-        llm_functions = FIM_FUNTIONS
+        llm_functions = FIM_FUNCTIONS
     function = llm_functions[arguments['command']]
     params = [llm_object] + arguments['params'] #Prepend self to the arguments
     return(function(*params))
@@ -83,6 +86,42 @@ FIM_FUNCTIONS = {
         "fill_in_middle":
         lambda llm, c : llm.fill_in_middle(c),
 }
+LLAMA3_FUNCTIONS = {
+        "change_response_max_length":
+        lambda llm, l : llm.change_response_max_length(l),
+        "change_temperature":
+        lambda llm, t : llm.change_temperature(t),
+        "add_context":
+        lambda llm, r, c: llm.add_context(r,c),
+        "reset_context":
+        lambda llm : llm.reset_context(),
+        "change_role":
+        lambda llm, rd : llm.change_role(rd),
+}
+
+#NEW
+class MyStoppingCriteria(StoppingCriteria):
+    def __init__(self, target_sequence, prompt, tokenizer):
+        self.target_sequence = target_sequence
+        self.prompt=prompt
+        self.tokenizer = tokenizer
+
+    def __call__(self, input_ids, scores, **kwargs):
+        # Get the generated text as a string
+        generated_text = self.tokenizer.decode(input_ids[0])
+        generated_text = generated_text.replace(self.prompt,'')
+        # Check if the target sequence appears in the generated text
+        if self.target_sequence in generated_text:
+            return True  # Stop generation
+
+        return False  # Continue generation
+
+    def __len__(self):
+        return 1
+
+    def __iter__(self):
+        yield self
+#NEW
 
 class Chat_LLM:
     def __init__(self, context, temperature=0.1):
@@ -124,7 +163,9 @@ class Chat_LLM:
         output = self.model.generate(input_ids=inputs, max_new_tokens=self.max_response_length, 
                                      do_sample=True,
                                      temperature=self.temperature, 
-                                     pad_token_id=self.tokenizer.eos_token_id)
+                                     pad_token_id=self.tokenizer.eos_token_id,
+                                     )
+                                     
         output = output[0].to("cpu")
         decoded = self.tokenizer.decode(output)
         response = decoded.split("[/INST]")[-1].split("</s>")[0].lstrip()
@@ -216,6 +257,73 @@ class FIM_LLM:
         content.replace(FIM_INDICATOR, fim_content)
         return content
 
+class LLAMA3_LLM:
+    def __init__(self, context, temperature=0.6):
+        self.context = context
+        self.model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
+        self.original_context = self.context.copy()
+        self.temperature = temperature
+        self.max_response_length = 250
+        self.tokenizer = AutoTokenizer.from_pretrained(self.model_id)
+        self.terminators = [self.tokenizer.eos_token_id,
+                       self.tokenizer.convert_tokens_to_ids("<|eot_id|>")]
+        self.token_count = self.num_tokens_from_string(self.context[0]['content'])
+        self.model = AutoModelForCausalLM.from_pretrained(
+           self.model_id,
+           torch_dtype=torch.float16,
+           device_map="auto",
+        )
+
+    def change_response_max_length(self, length):
+        self.max_response_length = length
+        return
+
+    def change_temperature(self, temperature):
+        self.temperature = temperature
+        return
+
+    def add_context(self, role, content):
+        self.context.append
+        self.context.append({'role': role, 'content': content})
+        self.token_count += self.num_tokens_from_string(content)
+        if self.token_count > cfg.token_max:
+            while(self.token_count > cfg.token_max):
+                #gotta do it twice because it needs to alternate user/system/user/system
+                popped = self.context.pop(1)
+                self.token_count -= self.num_tokens_from_string(popped['content'])
+                popped = self.context.pop(1)
+                self.token_count -= self.num_tokens_from_string(popped['content'])
+            #self.reset_context()
+            #raise RuntimeError("Exceeded Max Tokens ({m}): {t}".format(m=cfg.token_max,
+            #                                                           t=self.token_count))
+        inputs = self.tokenizer.apply_chat_template(
+                self.context,
+                add_generation_prompt=True,
+                return_tensors="pt").to(self.model.device)
+        output = self.model.generate(inputs,
+                                 max_new_tokens=self.max_response_length,
+                                 eos_token_id=self.terminators,
+                                 do_sample=True,
+                                 temperature=self.temperature,
+                                 top_p=0.9,)
+        result = output[0][inputs.shape[-1]:]
+        response = self.tokenizer.decode(result, skip_special_tokens=True)
+        self.context.append({'role': 'assistant', 'content': response})
+        return response
+
+    def reset_context(self):
+        self.context = self.original_context.copy()
+        self.token_count = self.num_tokens_from_string(self.context[0]['content'])
+
+    def change_role(self, role_description):
+        self.context = [{'role': 'system', 'content': role_description}]
+        return
+
+    def num_tokens_from_string(self, string, encoding_name="cl100k_base"):
+        encoding = tiktoken.get_encoding(encoding_name)
+        num_tokens = len(encoding.encode(string))
+        return num_tokens
+
 def main():
     llm_type = None
     cur_llm_type = None
@@ -237,25 +345,31 @@ def main():
                 if llm_type != cur_llm_type:
                     del(llm_object)
                     torch.cuda.empty_cache()
-                if "chat" in llm_type:
-                    llm_type = CHAT
-                    cur_llm_type = CHAT
-                    arguments = get_arguments(arguments_file)
-                    context = arguments['context']
-                    llm_object = Chat_LLM(context)
-                elif "completion" in llm_type:
-                    llm_type = COMPLETION
-                    cur_llm_type = COMPLETION
-                    llm_object = Completion_LLM()
-                elif "fim" in llm_type:
-                    llm_type = FIM
-                    cur_llm_type = FIM
-                    llm_object = FIM_LLM()
+                    if "chat" in llm_type:
+                        llm_type = CHAT
+                        cur_llm_type = CHAT
+                        arguments = get_arguments(arguments_file)
+                        os.remove(arguments_file)
+                        context = arguments['context']
+                        llm_object = Chat_LLM(context)
+                    elif "llama3" in llm_type:
+                        llm_type = LLAMA3
+                        cur_llm_type = LLAMA3
+                        arguments = get_arguments(arguments_file)
+                        os.remove(arguments_file)
+                        context = arguments['context']
+                        llm_object = LLAMA3_LLM(context)
+                    elif "completion" in llm_type:
+                        llm_type = COMPLETION
+                        cur_llm_type = COMPLETION
+                        llm_object = Completion_LLM()
+                    elif "fim" in llm_type:
+                        llm_type = FIM
+                        cur_llm_type = FIM
+                        llm_object = FIM_LLM()
                 with open(output_file, "w") as f:
                     f.write("1")
                 os.remove(llm_type_file)
-                if os.path.isfile(arguments_file):
-                    os.remove(arguments_file)
         elif is_query():
             arguments = get_arguments(arguments_file)
             os.remove(llm_query_file)

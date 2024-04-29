@@ -114,3 +114,44 @@ class FIM_LLM:
                 'command':"fill_in_middle",'params':[content]
                 }
         return submit(arguments)
+
+class LLAMA3_LLM:
+    def __init__(self, context, temperature=0.6):
+        self.context = context
+        self.original_context = self.context.copy()
+        arguments = {"context" : context}
+        with open(arguments_file, "wb") as f:
+            pickle.dump(arguments,f)
+        send_command_file(llm_type_file, "llama3")
+        while(not(is_output())):
+            pass
+        os.remove(output_file)
+        
+    def change_response_max_length(self, length):
+        arguments = {
+                'command':"change_response_max_length",'params':[length]
+                }
+        return submit(arguments)
+
+    def change_temperature(self, temperature):
+        arguments = {
+                'command':"change_temperature",'params':[temperature]
+                }
+        return submit(arguments)
+
+    def add_context(self, role, content):
+        arguments = {
+                'command':"add_context",'params':[role, content]
+                }
+        result = submit(arguments)
+        #idk maybe return this who knows
+        self.context.append({'role': 'assistant', 'content': result})
+        return self.context
+        #return result
+
+    def reset_context(self):
+        self.context = self.original_context
+        arguments = {
+                'command':"reset_context",'params':[]
+                }
+        return submit(arguments)
