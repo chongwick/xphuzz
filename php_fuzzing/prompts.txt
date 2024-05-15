@@ -1,3 +1,0 @@
-here is javascript code
-ths is its error
-fix this

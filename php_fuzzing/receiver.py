@@ -1,22 +1,31 @@
 import pickle
 import os
+import config as cfg
+import time
 
 llm_workdir = "llm_workdir/"
 output_file = llm_workdir + "__output__"
-is_output = lambda : os.path.isfile(output_file)
+is_output = lambda : (os.path.isfile(output_file) and 
+        os.path.getsize(output_file) > 0)
 terminate_file = llm_workdir + "__terminate__"
-llm_type_file = llm_workdir + "__llm_type__"
-llm_query_file = llm_workdir + "__llm_query__"
+llm_type_file = llm_workdir + "__llm_type__.pickle"
+#llm_query_file = llm_workdir + "__llm_query__"
 arguments_file = llm_workdir + "arguments.pickle"
 
 def send_command_file(file, content=""):
-    with open(file, "w") as f:
-        f.write(content)
+    #print(file, content)
+    try:
+        with open(file, "w") as f:
+            f.write(content)
+    except Exception as e:
+        time.sleep(1)
+        with open(file, "w") as f:
+            f.write(content)
 
 def submit(arguments):
     with open(arguments_file, "wb") as f:
         pickle.dump(arguments,f)
-    send_command_file(llm_query_file)
+    #send_command_file(llm_query_file)
     while(not(is_output())):
         pass
     with open(output_file, "r") as f:
@@ -28,10 +37,9 @@ class Chat_LLM:
     def __init__(self, context, temperature=0.1):
         self.context = context
         self.original_context = self.context.copy()
-        arguments = {"context" : context}
-        with open(arguments_file, "wb") as f:
-            pickle.dump(arguments,f)
-        send_command_file(llm_type_file, "chat")
+        type_info = ("chat", context)
+        with open(llm_type_file, "wb") as f:
+            pickle.dump(type_info,f)
         while(not(is_output())):
             pass
         os.remove(output_file)
@@ -47,6 +55,13 @@ class Chat_LLM:
                 'command':"change_temperature",'params':[temperature]
                 }
         return submit(arguments)
+
+    def give_context(self, context):
+        arguments = {
+                'command':"give_context",'params':[context]
+                }
+        result = submit(arguments)
+        return result
 
     def add_context(self, role, content):
         arguments = {
@@ -65,9 +80,19 @@ class Chat_LLM:
                 }
         return submit(arguments)
 
+    def change_role(self, role_description):
+        self.context = [{'role': 'system', 'content': role_description}]
+        self.original_context = self.context.copy()
+        arguments = {
+                'command':'change_role','params':[role_description]
+                }
+        return submit(arguments)
+
 class Completion_LLM:
     def __init__(self, temperature=0.1):
-        send_command_file(llm_type_file, "completion")
+        type_info = ("completion", None)
+        with open(llm_type_file, "wb") as f:
+            pickle.dump(type_info,f)
         while(not(is_output())):
             pass
         os.remove(output_file)
@@ -92,7 +117,9 @@ class Completion_LLM:
 
 class FIM_LLM:
     def __init__(self, temperature=0.1):
-        send_command_file(llm_type_file, "fim")
+        type_info = ("fim", None)
+        with open(llm_type_file, "wb") as f:
+            pickle.dump(type_info,f)
         while(not(is_output())):
             pass
         os.remove(output_file)
@@ -119,10 +146,9 @@ class LLAMA3_LLM:
     def __init__(self, context, temperature=0.6):
         self.context = context
         self.original_context = self.context.copy()
-        arguments = {"context" : context}
-        with open(arguments_file, "wb") as f:
-            pickle.dump(arguments,f)
-        send_command_file(llm_type_file, "llama3")
+        type_info = ("llama3", context)
+        with open(llm_type_file, "wb") as f:
+            pickle.dump(type_info,f)
         while(not(is_output())):
             pass
         os.remove(output_file)
@@ -139,7 +165,15 @@ class LLAMA3_LLM:
                 }
         return submit(arguments)
 
+    def give_context(self, context):
+        arguments = {
+                'command':"give_context",'params':[context]
+                }
+        result = submit(arguments)
+        return result
+
     def add_context(self, role, content):
+        self.context.append({'role': role, 'content': content})
         arguments = {
                 'command':"add_context",'params':[role, content]
                 }
@@ -153,5 +187,13 @@ class LLAMA3_LLM:
         self.context = self.original_context
         arguments = {
                 'command':"reset_context",'params':[]
+                }
+        return submit(arguments)
+
+    def change_role(self, role_description):
+        self.context = [{'role': 'system', 'content': role_description}]
+        self.original_context = self.context.copy()
+        arguments = {
+                'command':'change_role','params':[role_description]
                 }
         return submit(arguments)
