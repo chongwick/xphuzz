@@ -60,8 +60,10 @@ def main():
                 pickle.dump(request_queue, f, protocol=pickle.HIGHEST_PROTOCOL)
 
             with open(request_file, "rb") as f:
-                context = pickle.load(f)
+                pickle_content = pickle.load(f)
             os.remove(request_file)
+            context = pickle_content[1]
+            fix_number = pickle_content[2]
 
             result = llm.give_context(context)
             context.append({'role':'assistant','content':result})

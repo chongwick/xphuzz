@@ -125,7 +125,8 @@ def main():
 
         cfg.enter_shared_dir(cfg.llm_requests)
         with open(translation_req_name, 'wb') as f:
-            pickle.dump(query_context, f, protocol=pickle.HIGHEST_PROTOCOL)
+            pickle_content = (0, query_context) #number of fixes
+            pickle.dump(pickle_content, f, protocol=pickle.HIGHEST_PROTOCOL)
         requests.append(translation_req_name)
         with open(cfg.llm_queue, 'wb') as f:
             pickle.dump(requests, f, protocol=pickle.HIGHEST_PROTOCOL)

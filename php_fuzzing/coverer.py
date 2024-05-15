@@ -29,10 +29,10 @@ def main():
 
         while(len(request_queue) != 0):
             request_file = request_queue.pop(0)
+            output_file = os.path.join(cfg.san_queue,request_file)
             with open(request_file, "r") as f:
                 code = f.read()
-            output_file = os.path.join(cfg.san_queue,request_file)
-            result = cov_eng.execute_prog(output_file)
+            result = cov_eng.execute_prog(request_file)
             if result == -1:
                 print("Bad execution")
                 continue
@@ -40,6 +40,13 @@ def main():
                 context = fixer.generate_fix_prompt(code, err.parse_error(result, request_file))
             else:
                 cfg.enter_shared_dir(cfg.san_requests)
+                os.rename(request_file, output_file)
+                with open(cfg.san_queue, "rb") as f:
+                    san_queue = pickle.load(f)
+                san_queue.append(output_file)
+                with open(cfg.san_queue, "wb") as f:
+                    pickle.dump(san_queue,f,protocol=pickle.HIGHEST_PROTOCOL)
+                cfg.exit_shared_dir(cfg.san_requests)
 
                 
 
