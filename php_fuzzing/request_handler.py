@@ -47,38 +47,43 @@ def main():
         utils.enter_shared_dir(cfg.llm_requests)
         with open(cfg.llm_queue, "rb") as f:
             request_queue = pickle.load(f)
+
+        if len(request_queue) == 0:
+            continue
+
+        request_file = request_queue.pop(0)
+
         with open(cfg.llm_queue, "wb") as f:
-            pickle.dump([], f, protocol=pickle.HIGHEST_PROTOCOL) #we have all the requests loaded
+            pickle.dump(request_queue, f, protocol=pickle.HIGHEST_PROTOCOL)
+
         utils.exit_shared_dir(cfg.llm_requests)
 
-        while(len(request_queue) != 0):
-            request_file = request_queue.pop(0)
-            php_file = os.path.join(cfg.php_corpus,
-                    request_file.split("/")[-1].split("_")[0]+".php")
+        php_file = os.path.join(cfg.php_corpus,
+                request_file.split("/")[-1].split("_")[0]+".php")
 
-            if("_t" in request_file): #Translation request
+        if("_t" in request_file): #Translation request
 
-                ##update progress
-                #with open(cfg.llm_progress, "wb") as f:
-                #    pickle.dump(request_queue, f, protocol=pickle.HIGHEST_PROTOCOL)
+            ##update progress
+            #with open(cfg.llm_progress, "wb") as f:
+            #    pickle.dump(request_queue, f, protocol=pickle.HIGHEST_PROTOCOL)
 
-                with open(request_file, "rb") as f:
-                    context = pickle.load(f)
-                os.remove(request_file)
+            with open(request_file, "rb") as f:
+                context = pickle.load(f)
+            os.remove(request_file)
 
-                result = llm.give_context(context)
-                context.append({'role':'assistant','content':result})
-                code = correct_format(llm, result, context)
-                #print(code)
-                utils.enter_shared_dir(cfg.php_corpus)
-                with open(php_file,"w") as f:
-                    f.write(code)
-                utils.exit_shared_dir(cfg.php_corpus)
-                utils.add_to_queue(cfg.cov_queue,php_file)
+            result = llm.give_context(context)
+            context.append({'role':'assistant','content':result})
+            code = correct_format(llm, result, context)
+            #print(code)
+            utils.enter_shared_dir(cfg.php_corpus)
+            with open(php_file,"w") as f:
+                f.write(code)
+            utils.exit_shared_dir(cfg.php_corpus)
+            utils.add_to_queue(cfg.cov_queue,php_file)
 
 
-            elif("_f" in request_file): #Fix request
-                ...
+        elif("_f" in request_file): #Fix request
+            ...
 
 
 if __name__ == "__main__":
