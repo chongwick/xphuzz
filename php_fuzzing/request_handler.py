@@ -62,8 +62,8 @@ def main():
             with open(request_file, "rb") as f:
                 pickle_content = pickle.load(f)
             os.remove(request_file)
+            fix_number = pickle_content[0]
             context = pickle_content[1]
-            fix_number = pickle_content[2]
 
             result = llm.give_context(context)
             context.append({'role':'assistant','content':result})
