@@ -1,6 +1,7 @@
 import os
 import receiver
 import config as cfg
+import utils
 import pickle
 
 fix_prompt = "The response did not correspond to the ```<code>``` format."
@@ -43,41 +44,41 @@ def main():
 
     while(True):
         #We protect this action because we are changing the queue
-        cfg.enter_shared_dir(cfg.llm_requests)
+        utils.enter_shared_dir(cfg.llm_requests)
         with open(cfg.llm_queue, "rb") as f:
             request_queue = pickle.load(f)
         with open(cfg.llm_queue, "wb") as f:
             pickle.dump([], f, protocol=pickle.HIGHEST_PROTOCOL) #we have all the requests loaded
-        cfg.exit_shared_dir(cfg.llm_requests)
+        utils.exit_shared_dir(cfg.llm_requests)
 
         while(len(request_queue) != 0):
             request_file = request_queue.pop(0)
-            output_file = os.path.join(cfg.cov_requests,
+            php_file = os.path.join(cfg.php_corpus,
                     request_file.split("/")[-1].split("_")[0]+".php")
 
-            #update progress
-            with open(cfg.llm_progress, "wb") as f:
-                pickle.dump(request_queue, f, protocol=pickle.HIGHEST_PROTOCOL)
+            if("_t" in request_file): #Translation request
 
-            with open(request_file, "rb") as f:
-                pickle_content = pickle.load(f)
-            os.remove(request_file)
-            fix_number = pickle_content[0]
-            context = pickle_content[1]
+                ##update progress
+                #with open(cfg.llm_progress, "wb") as f:
+                #    pickle.dump(request_queue, f, protocol=pickle.HIGHEST_PROTOCOL)
 
-            result = llm.give_context(context)
-            context.append({'role':'assistant','content':result})
-            code = correct_format(llm, result, context)
-            #print(code)
-            cfg.enter_shared_dir(cfg.cov_requests)
-            with open(output_file,"w") as f:
-                f.write(code)
-            with open(cfg.cov_queue, "rb") as f:
-                queue = pickle.load(f)
-            queue.append(output_file)
-            with open(cfg.cov_queue, "wb") as f:
-                pickle.dump(queue, f, protocol=pickle.HIGHEST_PROTOCOL)
-            cfg.exit_shared_dir(cfg.cov_requests)
+                with open(request_file, "rb") as f:
+                    context = pickle.load(f)
+                os.remove(request_file)
+
+                result = llm.give_context(context)
+                context.append({'role':'assistant','content':result})
+                code = correct_format(llm, result, context)
+                #print(code)
+                utils.enter_shared_dir(cfg.php_corpus)
+                with open(php_file,"w") as f:
+                    f.write(code)
+                utils.exit_shared_dir(cfg.php_corpus)
+                utils.add_to_queue(cfg.cov_queue,php_file)
+
+
+            elif("_f" in request_file): #Fix request
+                ...
 
 
 if __name__ == "__main__":

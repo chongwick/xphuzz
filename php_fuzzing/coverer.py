@@ -1,5 +1,6 @@
 import os
 import config as cfg
+import utils
 import pickle
 from executor import Executor
 import errreader as err
@@ -20,12 +21,12 @@ def main():
 
     while(True):
         #We protect this action because we are changing the queue
-        cfg.enter_shared_dir(cfg.cov_requests)
+        utils.enter_shared_dir(cfg.cov_requests)
         with open(cfg.cov_queue, "rb") as f:
             request_queue = pickle.load(f)
         with open(cfg.cov_queue, "wb") as f:
             pickle.dump([], f, protocol=pickle.HIGHEST_PROTOCOL) #we have all the requests loaded
-        cfg.exit_shared_dir(cfg.cov_requests)
+        utils.exit_shared_dir(cfg.cov_requests)
 
         while(len(request_queue) != 0):
             request_file = request_queue.pop(0)
@@ -39,14 +40,14 @@ def main():
             if err.is_error(result):
                 context = fixer.generate_fix_prompt(code, err.parse_error(result, request_file))
             else:
-                cfg.enter_shared_dir(cfg.san_requests)
+                utils.enter_shared_dir(cfg.san_requests)
                 os.rename(request_file, output_file)
                 with open(cfg.san_queue, "rb") as f:
                     san_queue = pickle.load(f)
                 san_queue.append(output_file)
                 with open(cfg.san_queue, "wb") as f:
                     pickle.dump(san_queue,f,protocol=pickle.HIGHEST_PROTOCOL)
-                cfg.exit_shared_dir(cfg.san_requests)
+                utils.exit_shared_dir(cfg.san_requests)
 
                 
 

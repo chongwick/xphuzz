@@ -2,6 +2,7 @@ from executor import Executor
 from receiver import LLAMA3_LLM
 from penguin import Prompter
 import config as cfg
+import utils
 import errreader as err
 import sys
 import os
@@ -123,14 +124,13 @@ def main():
         query_context = translator.generate_translation_prompt(translator.get_content(seed))
         translation_req_name = os.path.join(cfg.llm_requests,seed.split(".")[0]+"_t")
 
-        cfg.enter_shared_dir(cfg.llm_requests)
+        utils.enter_shared_dir(cfg.llm_requests)
         with open(translation_req_name, 'wb') as f:
-            pickle_content = (0, query_context) #number of fixes
-            pickle.dump(pickle_content, f, protocol=pickle.HIGHEST_PROTOCOL)
+            pickle.dump(query_context, f, protocol=pickle.HIGHEST_PROTOCOL)
         requests.append(translation_req_name)
         with open(cfg.llm_queue, 'wb') as f:
             pickle.dump(requests, f, protocol=pickle.HIGHEST_PROTOCOL)
-        cfg.exit_shared_dir(cfg.llm_requests)
+        utils.exit_shared_dir(cfg.llm_requests)
 
         
 
