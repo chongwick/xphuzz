@@ -37,6 +37,19 @@ def correct_format(llm, result, context):
         quit()
     return code
 
+def get_seed_data():
+    utils.enter_seed_database()
+    with open(cfg.seed_data, "rb") as f:
+        seed_data = pickle.load(f)
+    utils.exit_seed_database()
+    return seed_data
+
+def update_seed_data(seed_data):
+    utils.enter_seed_database()
+    with open(cfg.seed_data, "wb") as f:
+        pickle.dump(seed_data,f,protocol=pickle.HIGHEST_PROTOCOL)
+    utils.exit_seed_database()
+
 def main():
     role = 'You are a chatting assistant'
     context = [{'role': 'system', 'content': role}]
@@ -47,19 +60,21 @@ def main():
         utils.enter_shared_dir(cfg.llm_requests)
         with open(cfg.llm_queue, "rb") as f:
             request_queue = pickle.load(f)
-
         if len(request_queue) == 0:
             continue
-
         request_file = request_queue.pop(0)
-
+        seed_name = request_file.split("/")[-1].split("_")[0]
         with open(cfg.llm_queue, "wb") as f:
             pickle.dump(request_queue, f, protocol=pickle.HIGHEST_PROTOCOL)
-
         utils.exit_shared_dir(cfg.llm_requests)
-
+        
         php_file = os.path.join(cfg.php_corpus,
                 request_file.split("/")[-1].split("_")[0]+".php")
+
+        seed_data = get_seed_data()
+        if seed_name not in seed_data:
+            seed_data[seed_name] = {"fix_count":0,"php_file":php_file,"context"=None}
+
 
         if("_t" in request_file): #Translation request
 
@@ -84,6 +99,8 @@ def main():
 
         elif("_f" in request_file): #Fix request
             ...
+
+        update_seed_data(seed_data)
 
 
 if __name__ == "__main__":

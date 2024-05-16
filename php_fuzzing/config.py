@@ -9,10 +9,5 @@ seed_data = "seed_data.pickle"
 php_corpus = "php_corpus"
 cov_queue = "cov_queue.pickle"
 
-
-cov_requests = "coverage_requests"
-san_requests = "sanitization_requests"
-san_queue = "sanitization_requests/queue.pickle"
-
 llm_progress = "llm_progress.pickle"
 

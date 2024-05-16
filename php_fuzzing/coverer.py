@@ -5,21 +5,22 @@ import pickle
 from executor import Executor
 import errreader as err
 
-class Fixer():
-    def generate_fix_prompt(self, code, error):
-        role = 'Fix PHP code. Return as ```<code>```'
-        context = [{'role': 'system', 'content': role}]
-        prompt = ""
-        prompt += "```\n{c}\n```\n".format(c=code)
-        prompt += error
-        context.append({'role': 'user', 'content': prompt})
-        return context
+def generate_fix_prompt(code, error):
+    role = 'Fix PHP code. Return as ```<code>```'
+    context = [{'role': 'system', 'content': role}]
+    prompt = ""
+    prompt += "```\n{c}\n```\n".format(c=code)
+    prompt += error
+    context.append({'role': 'user', 'content': prompt})
+    return context
 
 def main():
     cov_eng = Executor(cfg.coverage_engine)
-    fixer = Fixer()
 
     while(True):
+        
+
+
         #We protect this action because we are changing the queue
         utils.enter_shared_dir(cfg.cov_requests)
         with open(cfg.cov_queue, "rb") as f:
@@ -38,7 +39,7 @@ def main():
                 print("Bad execution")
                 continue
             if err.is_error(result):
-                context = fixer.generate_fix_prompt(code, err.parse_error(result, request_file))
+                context = generate_fix_prompt(code, err.parse_error(result, request_file))
             else:
                 utils.enter_shared_dir(cfg.san_requests)
                 os.rename(request_file, output_file)
