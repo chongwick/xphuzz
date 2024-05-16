@@ -31,7 +31,7 @@ def add_to_queue(queue_file, val, pos=-1):
     queue_type = queue_file.split(".")[0]
     occ = queue_type + "_occupied"
     vac = queue_type + "_vacant"
-    while os.isfile(occ):
+    while os.path.isfile(occ):
         pass
     os.rename(vac, occ)
     with open(queue_file, "rb") as f:
@@ -45,7 +45,7 @@ def get_from_queue(pos):
     queue_type = queue_file.split(".")[0]
     occ = queue_type + "_occupied"
     vac = queue_type + "_vacant"
-    while os.isfile(occ):
+    while os.path.isfile(occ):
         pass
     os.rename(vac, occ)
     with open(queue_file, "rb") as f:
