@@ -73,7 +73,7 @@ def main():
 
         seed_data = get_seed_data()
         if seed_name not in seed_data:
-            seed_data[seed_name] = {"fix_count":0,"php_file":php_file,"context"=None}
+            seed_data[seed_name] = {"fix_count":0,"php_file":php_file,"context":None}
 
 
         if("_t" in request_file): #Translation request
