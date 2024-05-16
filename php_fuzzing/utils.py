@@ -25,7 +25,7 @@ def enter_seed_database():
 def exit_seed_database():
     vacant_file = "seed_data_vacant"
     occupied_file = "seed_data_occupied"
-    os.rename(occupied, vacant_file)
+    os.rename(occupied_file, vacant_file)
 
 def add_to_queue(queue_file, val, pos=-1):
     queue_type = queue_file.split(".")[0]
