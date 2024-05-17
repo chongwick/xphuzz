@@ -27,7 +27,7 @@ def exit_seed_database():
     occupied_file = "seed_data_occupied"
     os.rename(occupied_file, vacant_file)
 
-def add_to_queue(queue_file, val, pos=-1):
+def add_to_queue(queue_file, val, pos=None):
     queue_type = queue_file.split(".")[0]
     occ = queue_type + "_occupied"
     vac = queue_type + "_vacant"
@@ -36,12 +36,15 @@ def add_to_queue(queue_file, val, pos=-1):
     os.rename(vac, occ)
     with open(queue_file, "rb") as f:
         queue = pickle.load(f)
-    queue.insert(pos, val)
+    if pos != None:
+        queue.insert(pos, val)
+    else:
+        queue.append(val)
     with open(queue_file, "wb") as f:
         pickle.dump(queue,f,protocol=pickle.HIGHEST_PROTOCOL)
     os.rename(occ,vac)
 
-def get_from_queue(pos):
+def pop_from_queue(queue_file, pos=0):
     queue_type = queue_file.split(".")[0]
     occ = queue_type + "_occupied"
     vac = queue_type + "_vacant"
@@ -50,6 +53,8 @@ def get_from_queue(pos):
     os.rename(vac, occ)
     with open(queue_file, "rb") as f:
         queue = pickle.load(f)
+    if len(queue) == 0:
+        return -1
     queue.pop(pos)
     with open(queue_file, "wb") as f:
         pickle.dump(queue,f,protocol=pickle.HIGHEST_PROTOCOL)

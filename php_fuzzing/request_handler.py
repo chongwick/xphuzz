@@ -98,6 +98,7 @@ def main():
 
 
         elif("_f" in request_file): #Fix request
+            quit()
             ...
 
         update_seed_data(seed_data)
