@@ -55,8 +55,9 @@ def pop_from_queue(queue_file, pos=0):
         queue = pickle.load(f)
     if len(queue) == 0:
         return -1
-    queue.pop(pos)
+    ret_val = queue.pop(pos)
     with open(queue_file, "wb") as f:
         pickle.dump(queue,f,protocol=pickle.HIGHEST_PROTOCOL)
     os.rename(occ,vac)
+    return ret_val
 
