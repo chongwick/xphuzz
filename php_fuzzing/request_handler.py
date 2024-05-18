@@ -78,7 +78,7 @@ def main():
 
 
         if("_t" in request_file): #Translation request
-
+            print("Translating: {}".format(request_file))
             ##update progress
             #with open(cfg.llm_progress, "wb") as f:
             #    pickle.dump(request_queue, f, protocol=pickle.HIGHEST_PROTOCOL)
