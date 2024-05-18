@@ -10,7 +10,7 @@ def format_directory(input_directory):
             new_name = secrets.token_hex(10)
         nums[new_name] = 1 
         os.rename(os.path.join(input_directory, i), 
-                os.path.join(input_directory, new_name + ".php"))
+                os.path.join(input_directory, new_name + ".js"))
 
 def main():
     format_directory(sys.argv[1])

@@ -61,6 +61,7 @@ def main():
         with open(cfg.llm_queue, "rb") as f:
             request_queue = pickle.load(f)
         if len(request_queue) == 0:
+            utils.exit_shared_dir(cfg.llm_requests)
             continue
         request_file = request_queue.pop(0)
         seed_name = request_file.split("/")[-1].split("_")[0]
