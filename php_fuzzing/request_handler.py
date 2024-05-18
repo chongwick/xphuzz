@@ -37,19 +37,6 @@ def correct_format(llm, result, context):
         quit()
     return code
 
-def get_seed_data():
-    utils.enter_seed_database()
-    with open(cfg.seed_data, "rb") as f:
-        seed_data = pickle.load(f)
-    utils.exit_seed_database()
-    return seed_data
-
-def update_seed_data(seed_data):
-    utils.enter_seed_database()
-    with open(cfg.seed_data, "wb") as f:
-        pickle.dump(seed_data,f,protocol=pickle.HIGHEST_PROTOCOL)
-    utils.exit_seed_database()
-
 def main():
     role = 'You are a chatting assistant'
     context = [{'role': 'system', 'content': role}]
@@ -57,25 +44,21 @@ def main():
 
     while(True):
         #We protect this action because we are changing the queue
-        utils.enter_shared_dir(cfg.llm_requests)
-        with open(cfg.llm_queue, "rb") as f:
-            request_queue = pickle.load(f)
+
+        request_queue = utils.load_pickle(cfg.llm_queue)
         if len(request_queue) == 0:
-            utils.exit_shared_dir(cfg.llm_requests)
             continue
         request_file = request_queue.pop(0)
         seed_name = request_file.split("/")[-1].split("_")[0]
-        with open(cfg.llm_queue, "wb") as f:
-            pickle.dump(request_queue, f, protocol=pickle.HIGHEST_PROTOCOL)
-        utils.exit_shared_dir(cfg.llm_requests)
-        
+        utils.dump_pickle(cfg.llm_queue, request_queue)
+
         php_file = os.path.join(cfg.php_corpus,
                 request_file.split("/")[-1].split("_")[0]+".php")
+        
+        seed_data = utils.load_pickle(cfg.seed_data)
 
-        seed_data = get_seed_data()
         if seed_name not in seed_data:
             seed_data[seed_name] = {"fix_count":0,"php_file":php_file,"context":None}
-
 
         if("_t" in request_file): #Translation request
             print("Translating: {}".format(request_file))
@@ -83,26 +66,25 @@ def main():
             #with open(cfg.llm_progress, "wb") as f:
             #    pickle.dump(request_queue, f, protocol=pickle.HIGHEST_PROTOCOL)
 
-            with open(request_file, "rb") as f:
-                context = pickle.load(f)
+            context = utils.load_pickle(request_file)
             os.remove(request_file)
 
             result = llm.give_context(context)
             context.append({'role':'assistant','content':result})
             code = correct_format(llm, result, context)
             #print(code)
-            utils.enter_shared_dir(cfg.php_corpus)
-            with open(php_file,"w") as f:
-                f.write(code)
-            utils.exit_shared_dir(cfg.php_corpus)
-            utils.add_to_queue(cfg.cov_queue,php_file)
+            utils.write_file(php_file, code)
+
+            cov_queue = utils.load_pickle(cfg.cov_queue)
+            cov_queue.append(php_file)
+            utils.dump_pickle(cfg.cov_queue, cov_queue)
 
 
         elif("_f" in request_file): #Fix request
             quit()
             ...
 
-        update_seed_data(seed_data)
+        utils.dump_pickle(cfg.seed_data, seed_data)
 
 
 if __name__ == "__main__":

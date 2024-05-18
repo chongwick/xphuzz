@@ -1,6 +1,36 @@
 import os
 import config as cfg
 import pickle
+import fcntl
+
+def write_file(file_path, content):
+    with open(file_path, "w") as f:
+        fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+        f.write(content)
+        fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+
+def read_file(file_path):
+    with open(file_path, "r") as f:
+        content = f.read()
+    return content
+        
+def dump_pickle(file_path, content):
+    with open(file_path, "wb") as f:
+        fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+        pickle.dump(content,f,protocol=pickle.HIGHEST_PROTOCOL)
+        fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+
+def load_pickle(file_path):
+    with open(file_path, "rb") as f:
+        tmp = pickle.load(f)
+    return tmp
+
+
+
+
+
+
+
 
 def enter_shared_dir(directory):                                                                      
     vacant_file=os.path.join(directory,"vacant")                                                      
@@ -54,6 +84,7 @@ def pop_from_queue(queue_file, pos=0):
     with open(queue_file, "rb") as f:
         queue = pickle.load(f)
     if len(queue) == 0:
+        os.rename(occ,vac)
         return -1
     ret_val = queue.pop(pos)
     with open(queue_file, "wb") as f:
