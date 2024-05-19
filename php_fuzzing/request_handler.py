@@ -60,7 +60,12 @@ def main():
         seed_data = utils.load_pickle(cfg.seed_data)
 
         if seed_name not in seed_data:
-            seed_data[seed_name] = {"fix_count":0,"php_file":php_file,"context":None}
+            seed_data[seed_name] = {
+                    "reset_count": 0,
+                    "fix_count": 0,
+                    "php_file": php_file,
+                    "context": None
+                    }
 
         if("_t" in request_file): #Translation request
             print("Translating: {}".format(request_file))
@@ -77,15 +82,31 @@ def main():
             #print(code)
             utils.write_file(php_file, code)
 
-            utils.add_to_queue(cfg.cov_queue, php_file))
+            utils.add_to_queue(cfg.cov_queue, php_file)
             #cov_queue = utils.load_pickle(cfg.cov_queue)
             #cov_queue.append(php_file)
             #utils.dump_pickle(cfg.cov_queue, cov_queue)
 
 
         elif("_f" in request_file): #Fix request
-            quit()
-            ...
+            print("Fixing: {}".format(request_file))
+            history = seed_data[seed_name]
+            if history['fix_count'] == 5:
+                print("Nah, can't fix this one")
+            else:
+                context = utils.load_pickle(request_file)
+                if history['fix_count'] == 0:
+                    history['context'] = context
+                else:
+                    history['context'].append(context[-1])
+                    context = history['context'] #Perhaps we just want to give it the present context
+                history['fix_count'] += 1
+                os.remove(request_file)
+                result = llm.give_context(context)
+                context.append({'role':'assistant','content':result})
+                code = correct_format(llm, result, context)
+                utils.write_file(php_file, code)
+                utils.add_to_queue(cfg.cov_queue, php_file)
 
         utils.dump_pickle(cfg.seed_data, seed_data)
 

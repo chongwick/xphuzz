@@ -33,7 +33,7 @@ def main():
             continue
         if err.is_error(result):
             fix_query = generate_fix_prompt(code, err.parse_error(result, php_file))
-            fix_req_name = os.path.join(cfg.llm_requests,php_file.split(".")[0]+"_f")
+            fix_req_name = os.path.join(cfg.llm_requests,php_file.split("/")[-1].split(".")[0]+"_f")
             utils.dump_pickle(fix_req_name, fix_query)
             utils.add_to_queue(cfg.llm_queue, fix_req_name)
             #requests = utils.load_pickle(cfg.llm_queue)

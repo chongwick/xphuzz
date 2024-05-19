@@ -42,7 +42,10 @@ def pop_from_queue(queue_file, pos=0):
     queue_type = queue_file.split(".")[0]
     with open(queue_file, "rb") as f:
         fcntl.flock(f.fileno(), fcntl.LOCK_EX)
-        queue = pickle.load(f)
+        try:
+            queue = pickle.load(f)
+        except Exception as e:
+            print(queue_file); quit()
     if len(queue) == 0:
         with open(queue_file, "rb") as f:
             fcntl.flock(f.fileno(), fcntl.LOCK_UN)
