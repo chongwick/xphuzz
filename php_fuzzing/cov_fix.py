@@ -18,12 +18,15 @@ def main():
     cov_eng = Executor(cfg.coverage_engine)
 
     while(True):
-
         php_file = utils.pop_from_queue(cfg.cov_queue)
         if php_file == -1:
             continue
-        with open(php_file, "r") as f:
-            code = f.read()
+        #cov_queue = utils.load_pickle(cfg.cov_queue)
+        #if len(cov_queue) == 0:
+        #    continue
+        #php_file = cov_queue.pop(0)
+        #utils.dump_pickle(cfg.cov_queue, cov_queue)
+        code = utils.read_file(php_file)
         result = cov_eng.execute_prog(php_file)
         if result == -1:
             print("Bad execution")
@@ -31,13 +34,12 @@ def main():
         if err.is_error(result):
             fix_query = generate_fix_prompt(code, err.parse_error(result, php_file))
             fix_req_name = os.path.join(cfg.llm_requests,php_file.split(".")[0]+"_f")
-            utils.enter_shared_dir(cfg.llm_requests)
-            with open(fix_req_name, 'wb') as f:
-                pickle.dump(fix_query, f, protocol=pickle.HIGHEST_PROTOCOL)
-            with open(cfg.llm_queue, 'rb') as f:
-                requests = pickle.load(f)
-            requests.append(fix_req_name)
-            utils.exit_shared_dir(cfg.llm_requests)
+            utils.dump_pickle(fix_req_name, fix_query)
+            utils.add_to_queue(cfg.llm_queue, fix_req_name)
+            #requests = utils.load_pickle(cfg.llm_queue)
+            #requests.append(fix_req_name)
+            #utils.dump_pickle(cfg.llm_queue, requests)
+
         else:
             utils.add_to_queue(cfg.san_queue,php_file)
 

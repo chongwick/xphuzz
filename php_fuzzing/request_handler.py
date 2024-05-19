@@ -45,12 +45,14 @@ def main():
     while(True):
         #We protect this action because we are changing the queue
 
-        request_queue = utils.load_pickle(cfg.llm_queue)
-        if len(request_queue) == 0:
-            continue
-        request_file = request_queue.pop(0)
+        request_file = utils.pop_from_queue(cfg.llm_queue)
         seed_name = request_file.split("/")[-1].split("_")[0]
-        utils.dump_pickle(cfg.llm_queue, request_queue)
+        #request_queue = utils.load_pickle(cfg.llm_queue)
+        #if len(request_queue) == 0:
+        #    continue
+        #request_file = request_queue.pop(0)
+        #seed_name = request_file.split("/")[-1].split("_")[0]
+        #utils.dump_pickle(cfg.llm_queue, request_queue)
 
         php_file = os.path.join(cfg.php_corpus,
                 request_file.split("/")[-1].split("_")[0]+".php")
@@ -75,9 +77,10 @@ def main():
             #print(code)
             utils.write_file(php_file, code)
 
-            cov_queue = utils.load_pickle(cfg.cov_queue)
-            cov_queue.append(php_file)
-            utils.dump_pickle(cfg.cov_queue, cov_queue)
+            utils.add_to_queue(cfg.cov_queue, php_file))
+            #cov_queue = utils.load_pickle(cfg.cov_queue)
+            #cov_queue.append(php_file)
+            #utils.dump_pickle(cfg.cov_queue, cov_queue)
 
 
         elif("_f" in request_file): #Fix request
