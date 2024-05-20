@@ -3,6 +3,11 @@ import config as cfg
 import pickle
 import fcntl #with fcntl, when another process tries to lock an already locked file -> poll
 
+#Special queue operations because they're tricky
+is_busy = lambda queue : os.path.isfile(cfg.status_file[queue])
+lock = lambda queue : with open(cfg.status_file[queue],"w") as f: pass
+unlock = lambda queue : os.remove(cfg.status_file[queue])
+
 def write_file(file_path, content):
     f = open(file_path, "w")
     fcntl.flock(f.fileno(), fcntl.LOCK_EX)
@@ -38,7 +43,9 @@ def load_pickle(file_path):
     return tmp
 
 def add_to_queue(queue_file, val, pos=None):
-    queue_type = queue_file.split(".")[0]
+    while is_busy(queue_file):
+        pass
+    lock(queue_file)
     f = open(queue_file, "rb")
     fcntl.flock(f.fileno(), fcntl.LOCK_EX)
     while os.path.getsize(queue_file) == 0:
@@ -55,9 +62,12 @@ def add_to_queue(queue_file, val, pos=None):
     pickle.dump(queue,f,protocol=pickle.HIGHEST_PROTOCOL)
     fcntl.flock(f.fileno(), fcntl.LOCK_UN)
     f.close()
+    unlock(queue_file)
 
 def pop_from_queue(queue_file, pos=0):
-    queue_type = queue_file.split(".")[0]
+    while is_busy(queue_file):
+        pass
+    lock(queue_file)
     f = open(queue_file, "rb")
     fcntl.flock(f.fileno(), fcntl.LOCK_EX)
     while os.path.getsize(queue_file) == 0:
@@ -71,6 +81,7 @@ def pop_from_queue(queue_file, pos=0):
     fcntl.flock(f.fileno(), fcntl.LOCK_UN)
     f.close()
     if len(queue) == 0:
+        unlock(queue_file)
         return -1
     else:
         ret_val = queue.pop(pos)
@@ -80,4 +91,5 @@ def pop_from_queue(queue_file, pos=0):
         fcntl.flock(f.fileno(), fcntl.LOCK_UN)
         f.close()
         return ret_val
+    unlock(queue_file)
 
