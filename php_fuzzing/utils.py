@@ -62,7 +62,12 @@ def pop_from_queue(queue_file, pos=0):
     fcntl.flock(f.fileno(), fcntl.LOCK_EX)
     while os.path.getsize(queue_file) == 0:
         pass
-    queue = pickle.load(f)
+    while(True):
+        try:
+            queue = pickle.load(f)
+            break;
+        except Exception as e:
+            pass
     fcntl.flock(f.fileno(), fcntl.LOCK_UN)
     f.close()
     if len(queue) == 0:
