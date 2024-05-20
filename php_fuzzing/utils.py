@@ -12,9 +12,9 @@ def write_file(file_path, content):
 
 def read_file(file_path):
     f = open(file_path, "r")
+    fcntl.flock(f.fileno(), fcntl.LOCK_EX)
     while os.path.getsize(file_path) == 0:
         pass
-    fcntl.flock(f.fileno(), fcntl.LOCK_EX)
     content = f.read()
     fcntl.flock(f.fileno(), fcntl.LOCK_UN)
     f.close()
@@ -29,9 +29,9 @@ def dump_pickle(file_path, content):
 
 def load_pickle(file_path):
     f = open(file_path, "rb")
+    fcntl.flock(f.fileno(), fcntl.LOCK_EX)
     while os.path.getsize(file_path) == 0:
         pass
-    fcntl.flock(f.fileno(), fcntl.LOCK_EX)
     tmp = pickle.load(f)
     fcntl.flock(f.fileno(), fcntl.LOCK_UN)
     f.close()
@@ -40,9 +40,9 @@ def load_pickle(file_path):
 def add_to_queue(queue_file, val, pos=None):
     queue_type = queue_file.split(".")[0]
     f = open(queue_file, "rb")
+    fcntl.flock(f.fileno(), fcntl.LOCK_EX)
     while os.path.getsize(queue_file) == 0:
         pass
-    fcntl.flock(f.fileno(), fcntl.LOCK_EX)
     queue = pickle.load(f)
     fcntl.flock(f.fileno(), fcntl.LOCK_UN)
     f.close()
@@ -59,9 +59,9 @@ def add_to_queue(queue_file, val, pos=None):
 def pop_from_queue(queue_file, pos=0):
     queue_type = queue_file.split(".")[0]
     f = open(queue_file, "rb")
+    fcntl.flock(f.fileno(), fcntl.LOCK_EX)
     while os.path.getsize(queue_file) == 0:
         pass
-    fcntl.flock(f.fileno(), fcntl.LOCK_EX)
     queue = pickle.load(f)
     fcntl.flock(f.fileno(), fcntl.LOCK_UN)
     f.close()

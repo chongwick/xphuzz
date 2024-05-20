@@ -23,8 +23,12 @@ def parse_error(error, filename):
     with open(filename, "r") as f:
         content = f.readlines()
     if(line_num.isdigit()):
-        error_line = content[int(line_num)-1] #weird offset
-        return "{s}\n{e}".format(s=spec,e=error_line)
+        try:
+            error_line = content[int(line_num)-1] #weird offset
+            return "{s}\n{e}".format(s=spec,e=error_line)
+        except Exception as e:
+            print("some issue with this one: ", spec)
+            return spec
     else:
         return spec
 
