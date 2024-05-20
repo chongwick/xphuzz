@@ -11,12 +11,12 @@ llm_queue = "llm_requests/queue.pickle"
 cov_queue = "queues/cov_queue.pickle"
 san_queue = "queues/san_queue.pickle"
 
-llm_busy = "llm_requests/llm_busy"
-cov_busy = "queues/cov_busy"
-san_busy = "queues/san_busy"
+llm_lock = "llm_requests/queue.pickle.lock"
+cov_lock = "queues/cov_queue.pickle.lock"
+san_lock = "queues/san_queue.pickle.lock"
 
-status_file = {
-        llm_queue : llm_busy
-        cov_queue : cov_busy
-        san_queue : san_busy
+status = {
+        llm_queue : llm_lock,
+        cov_queue : cov_lock,
+        san_queue : san_lock,
         }
