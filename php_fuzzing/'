@@ -1,5 +1,0 @@
-import pickle
-f = open("g.pickle","rb")
-i = pickle.load(f)
-print(i)
-print("don")
