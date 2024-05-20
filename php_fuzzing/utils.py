@@ -4,30 +4,44 @@ import pickle
 import fcntl #with fcntl, when another process tries to lock an already locked file -> poll
 
 def write_file(file_path, content):
-    with open(file_path, "w") as f:
-        fcntl.flock(f.fileno(), fcntl.LOCK_EX)
-        f.write(content)
-        fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+    f = open(file_path, "w")
+    fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+    f.write(content)
+    fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+    f.close()
 
 def read_file(file_path):
-    with open(file_path, "r") as f:
-        content = f.read()
+    f = open(file_path, "r")
+    while os.path.getsize(file_path) == 0:
+        pass
+    fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+    content = f.read()
+    fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+    f.close()
     return content
         
 def dump_pickle(file_path, content):
-    with open(file_path, "wb") as f:
-        fcntl.flock(f.fileno(), fcntl.LOCK_EX)
-        pickle.dump(content,f,protocol=pickle.HIGHEST_PROTOCOL)
-        fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+    f = open(file_path, "wb")
+    fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+    pickle.dump(content,f,protocol=pickle.HIGHEST_PROTOCOL)
+    fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+    f.close()
 
 def load_pickle(file_path):
-    with open(file_path, "rb") as f:
-        tmp = pickle.load(f)
+    f = open(file_path, "rb")
+    while os.path.getsize(file_path) == 0:
+        pass
+    fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+    tmp = pickle.load(f)
+    fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+    f.close()
     return tmp
 
 def add_to_queue(queue_file, val, pos=None):
     queue_type = queue_file.split(".")[0]
     f = open(queue_file, "rb")
+    while os.path.getsize(queue_file) == 0:
+        pass
     fcntl.flock(f.fileno(), fcntl.LOCK_EX)
     queue = pickle.load(f)
     fcntl.flock(f.fileno(), fcntl.LOCK_UN)
@@ -45,8 +59,9 @@ def add_to_queue(queue_file, val, pos=None):
 def pop_from_queue(queue_file, pos=0):
     queue_type = queue_file.split(".")[0]
     f = open(queue_file, "rb")
+    while os.path.getsize(queue_file) == 0:
+        pass
     fcntl.flock(f.fileno(), fcntl.LOCK_EX)
-    #os.path.getsize(queue_file) running out of input because file size is 0
     queue = pickle.load(f)
     fcntl.flock(f.fileno(), fcntl.LOCK_UN)
     f.close()
