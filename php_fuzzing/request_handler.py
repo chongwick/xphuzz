@@ -65,6 +65,7 @@ def main():
                     "fix_count": 0,
                     "php_file": php_file,
                     "context": None
+                    "relative_coverage": 0 #coverage is relative to the base map
                     }
 
         if("_t" in request_file): #Translation request
