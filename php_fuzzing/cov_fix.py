@@ -14,9 +14,21 @@ def generate_fix_prompt(code, error):
     context.append({'role': 'user', 'content': prompt})
     return context
 
+def mix(base, ancilla):
+    role = "Mix PHP code. Return as ```<code>```"
+    context = [{'role':'system','content':role}]
+    prompt = "Here is Code A:\n```"
+    prompt += base + "\n```"
+    prompt += "Here is Code B:\n```"
+    prompt += ancilla + "\n```"
+    prompt += "Use Code B in Code A. Do not simply append B to A."
+    context.append({'role':'user','content':prompt})
+    return context
+
 def main():
     cov_eng = Executor(cfg.coverage_engine)
     cov_eng.load_global_coverage_map_from_file(cfg.base_map)
+    coverages = {}
 
     while(True):
         php_file = utils.pop_from_queue(cfg.cov_queue)
