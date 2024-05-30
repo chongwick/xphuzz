@@ -64,7 +64,7 @@ def main():
                     "reset_count": 0,
                     "fix_count": 0,
                     "php_file": php_file,
-                    "context": None
+                    "context": None,
                     "relative_coverage": 0 #coverage is relative to the base map
                     }
 

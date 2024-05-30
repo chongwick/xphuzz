@@ -55,8 +55,8 @@ def main():
 
         else:
             utils.add_to_queue(cfg.san_queue,php_file)
-            coverage = executor.read() - cfg.base_map_edges
-            seed_name = php_file..split("/")[-1].split(".")[0]
+            coverage = cov_eng.read() - cfg.base_map_edges
+            seed_name = php_file.split("/")[-1].split(".")[0]
             seed_data = utils.load_pickle(cfg.seed_data)
             seed_data[seed_name]['relative_coverage'] = coverage
 

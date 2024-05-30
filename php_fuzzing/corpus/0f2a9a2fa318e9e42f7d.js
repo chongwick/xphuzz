@@ -1,8 +1,3 @@
-// éè¦ä¿®æ¹çå°æ¹ï¼
-// 1. test.htmlä¸­çipå°åï¼ä¸å±3å¤
-// 2. server.jsä¸­çå¬0.0.0.0
-// 3. server.pyä¸­çå¬0.0.0.0
-
 var http = require('http');
 var fs = require('fs');
 
