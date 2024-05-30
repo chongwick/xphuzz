@@ -421,7 +421,10 @@ def main():
             arguments = get_arguments(arguments_file)
             #os.remove(llm_query_file)
             os.remove(arguments_file)
-            result = execute_function(llm_type, llm_object, arguments)
+            try:
+                result = execute_function(llm_type, llm_object, arguments)
+            except Exception as e:
+                result = "<?php\necho \"did not work\"\n?>"
             with open(output_file, "w") as f:
                 if result != None:
                     f.write(result)
