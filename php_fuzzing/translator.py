@@ -17,6 +17,7 @@ def main():
 
     #First, we want to queue up all the translation queries
     while len(seed_files) != 0:
+        print(seed)
         seed = seed_files.pop()
         query_context = generate_translation_prompt(utils.read_file(seed))
         output_file_name = seed.split("/")[-1].split(".")[0]+"_t"

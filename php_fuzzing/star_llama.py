@@ -167,6 +167,10 @@ class Chat_LLM:
 
     def add_context(self, role, content):
         content_length = num_tokens_from_string(content)
+        if content_length > self.absolute_max / 2:
+            response = "<?php\necho \"did not work;\"\n?>"
+            self.context.append({'role': 'assistant', 'content': response})
+            return response
         if content_length > self.max_response_length / 2:
             self.change_response_max_length(content_length*3)
         self.context.append({'role': role, 'content': content})
@@ -287,6 +291,7 @@ class LLAMA3_LLM:
         self.model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
         self.original_context = self.context.copy()
         self.temperature = temperature
+        self.absolute_max = 1048576
         self.max_response_length = 500
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_id)
         self.terminators = [self.tokenizer.eos_token_id,
@@ -424,7 +429,7 @@ def main():
             try:
                 result = execute_function(llm_type, llm_object, arguments)
             except Exception as e:
-                result = "<?php\necho \"did not work\"\n?>"
+                result = "<?php\necho \"did not work;\"\n?>"
             with open(output_file, "w") as f:
                 if result != None:
                     f.write(result)
