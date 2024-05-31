@@ -329,6 +329,11 @@ class LLAMA3_LLM:
 
     def add_context(self, role, content):
         content_length = num_tokens_from_string(content)
+        if content_length > self.absolute_max / 2:
+            response = "<?php\necho \"did not work;\"\n?>"
+            self.context.append({'role': 'assistant', 'content': response})
+            return response
+        self.context.append({'role': 'assistant', 'content': response})
         if content_length > self.max_response_length / 2:
             self.change_response_max_length(content_length*3)
         self.context.append({'role': role, 'content': content})
