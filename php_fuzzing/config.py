@@ -1,3 +1,4 @@
+llama3_max = 1048576
 token_max = 4097*2
 base_map = "base_map_php_4_20_24"
 base_map_edges = 3737

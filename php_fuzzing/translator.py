@@ -20,6 +20,9 @@ def main():
         seed = seed_files.pop()
         print(seed)
         query_context = generate_translation_prompt(utils.read_file(seed))
+        if utils.num_tokens_from_string(query_context[-1]['content']) > cfg.llama3_max / 2:
+            print("too big")
+            continue
         output_file_name = seed.split("/")[-1].split(".")[0]+"_t"
         translation_req_name = os.path.join(cfg.llm_requests,output_file_name)
         #utils.add_to_queue(cfg.llm_queue, translation_req_name)

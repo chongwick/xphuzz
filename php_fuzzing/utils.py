@@ -3,6 +3,7 @@ import config as cfg
 import pickle
 import fcntl #with fcntl, when another process tries to lock an already locked file -> poll
 from filelock import FileLock
+import tiktoken
 
 #Special queue operations because they're tricky
 #is_busy = lambda queue : os.path.isfile(cfg.status_file[queue])
@@ -111,3 +112,7 @@ def pop_from_queue(queue_file, pos=0):
     #    f.close()
     #    return ret_val
 
+def num_tokens_from_string(string, encoding_name="cl100k_base"):
+    encoding = tiktoken.get_encoding(encoding_name)
+    num_tokens = len(encoding.encode(string))
+    return num_tokens  

@@ -175,6 +175,7 @@ class Chat_LLM:
             self.change_response_max_length(content_length*3)
         self.context.append({'role': role, 'content': content})
         self.token_count += self.num_tokens_from_string(content)
+        """this doesn't work
         if self.token_count > cfg.token_max:
             while(self.token_count > cfg.token_max):
                 #gotta do it twice because it needs to alternate user/system/user/system
@@ -185,6 +186,7 @@ class Chat_LLM:
             #self.reset_context()
             #raise RuntimeError("Exceeded Max Tokens ({m}): {t}".format(m=cfg.token_max,
             #                                                           t=self.token_count))
+        """
         inputs = self.tokenizer.apply_chat_template(self.context, return_tensors="pt").to("cuda")
 
         output = self.model.generate(input_ids=inputs, max_new_tokens=self.max_response_length, 
@@ -330,6 +332,7 @@ class LLAMA3_LLM:
     def add_context(self, role, content):
         content_length = num_tokens_from_string(content)
         if content_length > self.absolute_max / 2:
+            print("diddnasn; work")
             response = "<?php\necho \"did not work;\"\n?>"
             self.context.append({'role': 'assistant', 'content': response})
             return response
@@ -434,6 +437,7 @@ def main():
             try:
                 result = execute_function(llm_type, llm_object, arguments)
             except Exception as e:
+                print("didnot work")
                 result = "<?php\necho \"did not work;\"\n?>"
             with open(output_file, "w") as f:
                 if result != None:

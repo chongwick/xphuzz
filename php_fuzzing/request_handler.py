@@ -65,10 +65,12 @@ def main():
                     "fix_count": 0,
                     "php_file": php_file,
                     "context": None,
+                    "context_length": 0,
                     "relative_coverage": 0 #coverage is relative to the base map
                     }
 
-        if("_t" in request_file): #Translation request
+        #The initial seed translation prompt does not matter for context history
+        if("_t" in request_file): 
             print("Translating: {}".format(request_file))
             ##update progress
             #with open(cfg.llm_progress, "wb") as f:
