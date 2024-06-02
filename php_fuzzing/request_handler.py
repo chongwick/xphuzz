@@ -65,11 +65,12 @@ def main():
                     "fix_count": 0,
                     "php_file": php_file,
                     "context": None,
-                    "context_length": 0,
                     "relative_coverage": 0 #coverage is relative to the base map
                     }
 
-        #The initial seed translation prompt does not matter for context history
+        # The initial seed translation prompt does not matter for context history
+        # Additionally, all seeds were filtered for size prior to translation requests
+        # , so there is not need for size filtering here
         if("_t" in request_file): 
             print("Translating: {}".format(request_file))
             ##update progress
@@ -105,11 +106,14 @@ def main():
                     context = history['context'] #Perhaps we just want to give it the present context
                 history['fix_count'] += 1
                 os.remove(request_file)
-                result = llm.give_context(context)
-                context.append({'role':'assistant','content':result})
-                code = correct_format(llm, result, context)
-                utils.write_file(php_file, code)
-                utils.add_to_queue(cfg.cov_queue, php_file)
+                if utils.num_tokens_from_context(context) > cfg.llama3_max / 2:
+                    print("trying to fix.... too big", history['fix_count'])
+                else:
+                    result = llm.give_context(context)
+                    context.append({'role':'assistant','content':result})
+                    code = correct_format(llm, result, context)
+                    utils.write_file(php_file, code)
+                    utils.add_to_queue(cfg.cov_queue, php_file)
 
         utils.dump_pickle(cfg.seed_data, seed_data)
 

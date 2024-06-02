@@ -116,3 +116,9 @@ def num_tokens_from_string(string, encoding_name="cl100k_base"):
     encoding = tiktoken.get_encoding(encoding_name)
     num_tokens = len(encoding.encode(string))
     return num_tokens  
+
+def num_tokens_from_context(context):
+    context_length = 0
+    for i in context:
+        context_length += num_tokens_from_string(i['content'])
+    return context_length
