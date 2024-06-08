@@ -46,6 +46,8 @@ def main():
         #We protect this action because we are changing the queue
 
         request_file = utils.pop_from_queue(cfg.llm_queue)
+        if request_file == -1:
+            continue
         seed_name = request_file.split("/")[-1].split("_")[0]
         #request_queue = utils.load_pickle(cfg.llm_queue)
         #if len(request_queue) == 0:
@@ -96,6 +98,7 @@ def main():
             print("Fixing: {}".format(request_file))
             history = seed_data[seed_name]
             if history['fix_count'] == 5:
+                os.remove(request_file)
                 print("Nah, can't fix this one")
             else:
                 context = utils.load_pickle(request_file)

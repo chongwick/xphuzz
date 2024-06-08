@@ -28,6 +28,7 @@ class Executor():
         with open("blank.php", "w") as f:
             f.write("<?php\n?>")
         self.execute_prog("blank.php")
+        self.ret_code = None
         os.remove("blank.php")
         
     def __del__(self):
@@ -38,6 +39,7 @@ class Executor():
         command.append(script)
         try:
             child = subprocess.Popen(command, stdout=subprocess.PIPE, text=True)
+            self.ret_code = child.returncode
             stdout, stderr = child.communicate(timeout=120) #timeout after 2 minutes
             child.kill()
         except Exception as e:

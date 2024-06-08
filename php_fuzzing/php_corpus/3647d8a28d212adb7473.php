@@ -1,0 +1,4 @@
+<?php
+extension=reflection
+
+?>

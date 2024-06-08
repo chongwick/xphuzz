@@ -27,10 +27,10 @@ def mix(base, ancilla):
 
 def main():
     cov_eng = Executor(cfg.coverage_engine)
-    cov_eng.load_global_coverage_map_from_file(cfg.base_map)
     coverages = {}
 
     while(True):
+        cov_eng.load_global_coverage_map_from_file(cfg.base_map)
         php_file = utils.pop_from_queue(cfg.cov_queue)
         if php_file == -1:
             continue
@@ -55,10 +55,11 @@ def main():
 
         else:
             utils.add_to_queue(cfg.san_queue,php_file)
-            coverage = cov_eng.read() - cfg.base_map_edges
+            coverage = cov_eng.read() 
             seed_name = php_file.split("/")[-1].split(".")[0]
             seed_data = utils.load_pickle(cfg.seed_data)
             seed_data[seed_name]['relative_coverage'] = coverage
+            utils.dump_pickle(cfg.seed_data, seed_data)
 
 
 if __name__ == "__main__":

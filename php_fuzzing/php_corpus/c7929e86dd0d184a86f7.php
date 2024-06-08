@@ -1,0 +1,26 @@
+<?php
+
+class BigInt64Array {
+    public function __construct($size) {
+        // not implemented
+    }
+
+    public function buffer() {
+        // not implemented
+    }
+}
+
+function evil_callback() {
+    // %ArrayBufferNeuter(array.buffer); // not implemented
+    gc_collect_cycles();
+    return 71748523475265 - 16; // 0x41414141414141
+}
+
+$evil_object = (object) array('valueOf' => 'evil_callback');
+
+$bigint_array = new BigInt64Array($evil_object);
+$bigint_array->__construct($evil_object);
+
+gc_collect_cycles(); // trigger
+
+?>
