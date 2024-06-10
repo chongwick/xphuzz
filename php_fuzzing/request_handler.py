@@ -58,19 +58,23 @@ def mix(male, female):
     prompt += male + "\n```"
     prompt += "Here is Code B:\n```"
     prompt += female + "\n```"
-    prompt += "Use Code B in Code A. Do not simply append B to A."
+    prompt += "Mix Code A and Code B together in 3 different ways. Return as ```<code>```\
+            \n```<code>``` \n```<code>```"
+    #prompt += "Use Code B in Code A. Do not simply append B to A." ?
     context.append({'role':'user','content':prompt})
     return context
 
 def minimize(seed):
     print("minimize this")
 
-def update_data(iteration, llm_queue, cov_queue):
+def update_data(iteration, llm_queue, cov_queue, removal_list):
     if iteration == 20:
         tmp = list(llm_queue.queue)
         utils.dump_pickle(cfg.llm_queue, llm_queue)
         tmp = list(cov_queue.queue)
         utils.dump_pickle(cfg.cov_queue, cov_queue)
+        for i in removal_list:
+            os.remove(i)
         return 0
     else:
         return iteration + 1
@@ -80,6 +84,8 @@ def query_loop(seed_data, llm_queue, cov_queue):
     context = [{'role': 'system', 'content': role}]
     llm = receiver.LLAMA3_LLM(context)
 
+    i = 0
+    removal_list = []
     while(True):
         request_file = llm_queue.get() # blocking function
         seed_name = request_file.split("/")[-1].split("_")[0]
@@ -97,7 +103,8 @@ def query_loop(seed_data, llm_queue, cov_queue):
         if("_t" in request_file): 
             print("Translating: {}".format(request_file))
             context = utils.load_pickle(request_file)
-            os.remove(request_file)
+            removal_list.append(request_file)
+            #os.remove(request_file)
             result = llm.give_context(context)
             context.append({'role':'assistant','content':result})
             code = correct_format(llm, result, context)
@@ -106,7 +113,8 @@ def query_loop(seed_data, llm_queue, cov_queue):
         elif("_f" in request_file): #Fix request
             print("Fixing: {}".format(request_file))
             if seed_data[seed_name]['fix_count'] == 5:
-                os.remove(request_file)
+                removal_list.append(request_file)
+                #os.remove(request_file)
                 print("Nah, can't fix this one")
             else:
                 context = utils.load_pickle(request_file)
@@ -117,7 +125,8 @@ def query_loop(seed_data, llm_queue, cov_queue):
                 #    data['context'].append(context[-1])
                 #    context = data['context'] #Perhaps we just want to give it the present context
                 seed_data[seed_name]['fix_count'] += 1
-                os.remove(request_file)
+                removal_list.append(request_file)
+                #os.remove(request_file)
                 #Maybe make this an inherent feature of queries
                 if utils.num_tokens_from_context(context) > cfg.llama3_max / 2:
                     print("trying to fix.... too big")
@@ -127,12 +136,13 @@ def query_loop(seed_data, llm_queue, cov_queue):
                     code = correct_format(llm, result, context)
                     utils.write_file(php_file, code)
                     cov_queue.put(php_file)
+        i = update_data(i, llm_queue, cov_queue, removal_list)
 
 def coverage_loop(seed_data, llm_queue, cov_queue):
     cov_eng = Executor(cfg.coverage_engine)
-    i = 0
     while(True):
         php_file = cov_queue.get()
+        print("mapping: ", php_file)
         cov_eng.load_global_coverage_map_from_file(cfg.base_map)
         code = utils.read_file(php_file)
         result = cov_eng.execute_prog(php_file)
@@ -150,7 +160,6 @@ def coverage_loop(seed_data, llm_queue, cov_queue):
             coverage = cov_eng.read()
             seed_name = php_file.split("/")[-1].split(".")[0]
             seed_data[seed_name]['coverage'] = coverage
-        i = update_data(i, llm_queue, cov_queue)
 
 def main():
     seed_data = utils.load_pickle(cfg.seed_data)
