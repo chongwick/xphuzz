@@ -12,7 +12,7 @@ def generate_translation_prompt(content):
     return context
 
 def main():
-    requests = Queue()
+    requests = []
     input_directory = sys.argv[1].split("/")[0]
     seed_files = [os.path.join(input_directory,x) for x in os.listdir(input_directory)]
 
@@ -28,7 +28,7 @@ def main():
         translation_req_name = os.path.join(cfg.llm_requests,output_file_name)
         #utils.add_to_queue(cfg.llm_queue, translation_req_name)
         utils.dump_pickle(translation_req_name, query_context)
-        requests.put(translation_req_name)
+        requests.append(translation_req_name)
         utils.dump_pickle(cfg.llm_queue, requests)
 
 

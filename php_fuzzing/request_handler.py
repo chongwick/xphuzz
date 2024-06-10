@@ -73,7 +73,7 @@ def update_data(iteration, llm_queue, cov_queue):
         utils.dump_pickle(cfg.cov_queue, cov_queue)
         return 0
     else:
-        return iteration += 1
+        return iteration + 1
 
 def query_loop(seed_data, llm_queue, cov_queue):
     role = 'You are a chatting assistant'
@@ -150,7 +150,7 @@ def coverage_loop(seed_data, llm_queue, cov_queue):
             coverage = cov_eng.read()
             seed_name = php_file.split("/")[-1].split(".")[0]
             seed_data[seed_name]['coverage'] = coverage
-        i = update_data()
+        i = update_data(i, llm_queue, cov_queue)
 
 def main():
     seed_data = utils.load_pickle(cfg.seed_data)
