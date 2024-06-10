@@ -67,4 +67,82 @@ February 6-12:
 Working on Fry to get llama running
 
 February 13:
-TODO: deintegrate the fuzzing engine from the mutation engine to enable two-stage processing.
+TODO: deintegrate the fuzzing engine from the mutation engine to enable two-stage processing. Specifically, mutation and execution should have NOTHING to do with each other. Here's a Venn diagram of how that looks OO.
+THE ONLY "FIXING" that should be done is formatting. Each mutated seed's name will 
+
+February 14:
+I've removed the execution code from the mutation code. The initialization function for the mutator is slightly complicated, but this is by necessity. In case the mutation process is interrupted, we don't want to restart everything. After every mutation, our progress is saved.
+The mixing code is complete, I think we should give it one attempt at fixing.
+
+February 15:
+Got to build the other engines. Add checkpoints just in case the system dies. -> singularity shell --nv *.sif
+Singularity is vulnerable during the build
+
+February 16...:
+The entirety of this time has been spent setting up llama.
+
+February 25:
+Right now, we want to really think about the mutations, feedback loops, and metrics.
+
+Mutations: Mixing... What else?
+Feedback Loops: Fixing, Coverage...
+Metrics: Coverage, Valid JS, Mutation Speed
+
+Additionally, I want to introduce StarCoder to the system. In this case, we would still perform the mixing first. Then, we could use starcoder to further mutate the snippets by placing delimiters at random points. We DON'T NEED to use StarCoder, we can still use Llama and still craft a compelling narrative around it. E.g. Llama chat-based/Llama infilling usage. We'd call these targeted/guided mutations and stochastic insertions. Something like that... it just needs to work
+
+March 5:
+We need to compile with the address sanitizer on in order to find non-crashing memory bugs. To do this -> ```gn gen out2/fuzzbuild --args='is_debug=false dcheck_always_on=true v8_static_library=true v8_enable_verify_heap=true v8_fuzzilli=true sanitizer_coverage_flags="trace-pc-guard" is_asan=true target_cpu="x64"'```
+CodeLlama cannot do infilling using the huggingface interface.
+
+March 6:
+I have the completion figured out. The issue with completion is getting a valid completion. Specifically, I can set the maximum number amount of new tokens I want in the response. This becomes problematic because the LLM will try to produce that amount of tokens, ignoring the final validity of the code. In other words, it will end before finishing a valid line of code (e.g. no ";"). This will require a secondary query to the Chat_LLM to fix.
+
+March 7:
+Alrightayyyyy we offically have all 3 LLMs done. Namely, Chat, Completion, Fill-in-the-Middle. Chat and Completion use llama while FIM uses starcoder2. Cannot have both models loaded at once as the GPU does not have enough space for that sort of thing. Time to do some mutations. Good work. Right now as of 2:00, the FIM does not return the entirety of the modified code. Let's fix that before the day ends.
+
+Email Questions:
+1) Where to copy Coverage.c for different js engine. e.g. monkey...
+2) There is a fuzzilli directory for v8, what is the purpose of fuzzilli.cc and fuzzilli.h
+3) For v8, we don't see fsanitize=address enabled, was this disabled or v8 has it's own? What about the other engines? Should we turn on asan for the other engines?
+
+March 11:
+We delete the beginning of the context window if there are too many tokens to process (i.e. remove the first element in the python list)
+
+March 12:
+We can use starcoder instead of codellama for code completion simply by placing the infilling token at the end of the prompt
+
+March 13:
+Because we are using Codellama34bhfinstruct, we only have code completion and chatting capabilities. We cannot perform infilling with this system.
+
+March 14:
+First, we want to use the mapper -> run using python3 mapper.py
+A new bitmap needs to be established when running on a new device
+
+March 18:
+out2/fuzzbuild/d8 needs to be rebuilt and tested as Fuzzili will not treat crashes as crashes presently (refer to Samuel's email) I will work on this later, but at the moment, I need to work on the AI/SE aspect
+I modified the code fixing such that I added context to it so it knows what kind of fixing I expect.
+
+March 19:
+The GPU needs to be used exclusively for the LLM, I've written receiver and host. Host will run the LLM, while receiver will act as "star_llama" interface to the LLM. Needs some fixing but mostly good.
+
+March 22:
+Completely done. Host has been integrated entirely into star_llama. Simply run star_llama.py on a GPU, import receiver.py on the CPU, and it can run in a very similar manner to the openai API. This code is a little bit special because of the system it is run on. Specifically, star_llama and receiver communicate to each other via a shared directory. On fry (my cluster), compute nodes all have access to my home directory, as such, there is no need to do any networking/sshing/scping to coordinate instructions.
+Now, it is time to do the actual mutations, rebuild d8 according to Samuel GroB's suggestions. 
+
+March 26:
+It may be unnecessary to perform fixing prior to mixing the seeds.
+
+March 27:
+The generation of the C0V database has been modified such that the only seeds that go there are ones that cannot be executed. Not the ones that trigger less coverage than the other seeds.
+
+March 28:
+We need to take a further look at the mutation process of the JS snippets (i.e. Llama2) and decide on GPT4 and the feasibility of producing promising results with that LLM. We want to look at instrumenting a PHP engine with coverage and translating JavaScript snippets to PHP.
+
+Here is the basic translation method we want to follow for PHP:
+role description: "You are a JavaScript to PHP translator. You respond with ```<code>```"
+add_context("user","JS_CODE")
+this seems to work very well for llama at the moment
+
+March 29:
+https://github.com/guidance-ai/guidance.git
+https://www.reddit.com/r/LocalLLaMA/comments/19e4dca/making_llama_model_return_only_what_i_ask_json/

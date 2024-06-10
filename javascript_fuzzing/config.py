@@ -17,15 +17,17 @@
 # Configuration file of the fuzzer.
 
 
-import os.path
+import os
 import sys
 import platform
+import error_parser
 
 fuzzer_basefolder = os.path.dirname(os.path.abspath(__file__))
 
 
 # Paths to compiled v8 binaries
-v8_path_with_coverage = "/root/v8/v8/out/fuzzbuild/d8" #"/home/user/Desktop/JavaScriptEngines/v8_31.Dez.2021_with_coverage/d8"
+v8_path_with_coverage = "/root/v8/v8/out2/fuzzbuild/d8"
+#v8_path_with_coverage = "/root/v8/v8/out/fuzzbuild/d8" #"/home/user/Desktop/JavaScriptEngines/v8_31.Dez.2021_with_coverage/d8"
 v8_path_without_coverage = "/home/user/Desktop/JavaScriptEngines/v8_01.Aug.2021_without_coverage/d8"
 v8_path_debug_without_coverage = "node"
 
@@ -460,9 +462,10 @@ if percent_of_templates_self_created > 1:
     sys.exit(-1)
 
 
-
 #My Globals:
 token_max = 4097
 uncommon_line_file = "uncommon.pickle"
 error_file = "__err__"
 base_map = "base_map_v8_1_12_24"
+model_id = "codellama/CodeLlama-34b-Instruct-hf"
+
