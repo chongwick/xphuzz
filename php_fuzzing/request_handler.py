@@ -3,8 +3,13 @@ import receiver
 import config as cfg
 import utils
 import pickle
+from queue import Queue
+from threading import Thread, Lock
+from executor import Executor 
+import errreader as err
 
 fix_prompt = "The response did not correspond to the ```<code>``` format."
+seed_data_lock = Lock()
 
 def correct_format(llm, result, context):
     result = [line + "\n" for line in result.split("\n")]
@@ -37,89 +42,115 @@ def correct_format(llm, result, context):
         quit()
     return code
 
-def main():
+def generate_fix_prompt(code, error):
+    role = 'Fix PHP code. Return as ```<code>```'
+    context = [{'role': 'system', 'content': role}]
+    prompt = ""
+    prompt += "```\n{c}\n```\n".format(c=code)
+    prompt += error
+    context.append({'role': 'user', 'content': prompt})
+    return context
+
+def mix(male, female):
+    role = "Mix PHP code. Return as ```<code>```"
+    context = [{'role':'system','content':role}]
+    prompt = "Here is Code A:\n```"
+    prompt += male + "\n```"
+    prompt += "Here is Code B:\n```"
+    prompt += female + "\n```"
+    prompt += "Use Code B in Code A. Do not simply append B to A."
+    context.append({'role':'user','content':prompt})
+    return context
+
+def minimize(seed):
+    print("minimize this")
+
+def query_loop(seed_data, llm_queue, cov_queue):
     role = 'You are a chatting assistant'
     context = [{'role': 'system', 'content': role}]
     llm = receiver.LLAMA3_LLM(context)
 
     while(True):
-        #We protect this action because we are changing the queue
-
-        request_file = utils.pop_from_queue(cfg.llm_queue)
-        if request_file == -1:
-            continue
+        request_file = llm_queue.get() # blocking function
         seed_name = request_file.split("/")[-1].split("_")[0]
-        #request_queue = utils.load_pickle(cfg.llm_queue)
-        #if len(request_queue) == 0:
-        #    continue
-        #request_file = request_queue.pop(0)
-        #seed_name = request_file.split("/")[-1].split("_")[0]
-        #utils.dump_pickle(cfg.llm_queue, request_queue)
-
         php_file = os.path.join(cfg.php_corpus,
                 request_file.split("/")[-1].split("_")[0]+".php")
-        
-        seed_data = utils.load_pickle(cfg.seed_data)
-
-        if seed_name not in seed_data:
-            seed_data[seed_name] = {
-                    "reset_count": 0,
-                    "fix_count": 0,
-                    "php_file": php_file,
-                    "context": None,
-                    "relative_coverage": 0 #coverage is relative to the base map
-                    }
-
-        # The initial seed translation prompt does not matter for context history
-        # Additionally, all seeds were filtered for size prior to translation requests
-        # , so there is not need for size filtering here
+        with seed_data_lock:
+            if seed_name not in seed_data:
+                seed_data[seed_name] = {
+                        "reset_count": 0,
+                        "fix_count": 0,
+                        "php_file": php_file,
+                        "context": None,
+                        "coverage": 0 #coverage is relative to the base map
+                        }
         if("_t" in request_file): 
             print("Translating: {}".format(request_file))
-            ##update progress
-            #with open(cfg.llm_progress, "wb") as f:
-            #    pickle.dump(request_queue, f, protocol=pickle.HIGHEST_PROTOCOL)
-
             context = utils.load_pickle(request_file)
             os.remove(request_file)
-
             result = llm.give_context(context)
             context.append({'role':'assistant','content':result})
             code = correct_format(llm, result, context)
-            #print(code)
             utils.write_file(php_file, code)
-
-            utils.add_to_queue(cfg.cov_queue, php_file)
-            #cov_queue = utils.load_pickle(cfg.cov_queue)
-            #cov_queue.append(php_file)
-            #utils.dump_pickle(cfg.cov_queue, cov_queue)
-
-
+            cov_queue.put(php_file)
         elif("_f" in request_file): #Fix request
             print("Fixing: {}".format(request_file))
-            history = seed_data[seed_name]
-            if history['fix_count'] == 5:
+            if seed_data[seed_name]['fix_count'] == 5:
                 os.remove(request_file)
                 print("Nah, can't fix this one")
             else:
                 context = utils.load_pickle(request_file)
-                if history['fix_count'] == 0:
-                    history['context'] = context
-                else:
-                    history['context'].append(context[-1])
-                    context = history['context'] #Perhaps we just want to give it the present context
-                history['fix_count'] += 1
+                # let's just give it the present context
+                #if data['fix_count'] == 0:
+                #    data['context'] = context
+                #else:
+                #    data['context'].append(context[-1])
+                #    context = data['context'] #Perhaps we just want to give it the present context
+                seed_data[seed_name]['fix_count'] += 1
                 os.remove(request_file)
+                #Maybe make this an inherent feature of queries
                 if utils.num_tokens_from_context(context) > cfg.llama3_max / 2:
-                    print("trying to fix.... too big", history['fix_count'])
+                    print("trying to fix.... too big")
                 else:
                     result = llm.give_context(context)
                     context.append({'role':'assistant','content':result})
                     code = correct_format(llm, result, context)
                     utils.write_file(php_file, code)
-                    utils.add_to_queue(cfg.cov_queue, php_file)
+                    cov_queue.put(php_file)
 
-        utils.dump_pickle(cfg.seed_data, seed_data)
+def coverage_loop(seed_data, llm_queue, cov_queue):
+    cov_eng = Executor(cfg.coverage_engine)
+    while(True):
+        cov_eng.load_global_coverage_map_from_file(cfg.base_map)
+        php_file = cov_queue.get()
+        code = utils.read_file(php_file)
+        result = cov_eng.execute_prog(php_file)
+        if result == -1:
+            print("Bad execution")
+            continue
+        if err.is_error(result):
+            fix_query = generate_fix_prompt(code, err.parse_error(result, php_file))
+            fix_req_name = os.path.join(cfg.llm_requests,
+                                        php_file.split("/")[-1].split(".")[0]+"_f")
+            utils.dump_pickle(fix_req_name, fix_query)
+            llm_queue.put(fix_req_name)
+        else:
+            utils.add_to_queue(cfg.san_queue,php_file)
+            coverage = cov_eng.read()
+            seed_name = php_file.split("/")[-1].split(".")[0]
+            seed_data[seed_name]['coverage'] = coverage
 
+def main():
+    seed_data = utils.load_pickle(cfg.seed_data)
+
+    llm_queue = utils.load_pickle(cfg.llm_queue)
+    cov_queue = utils.load_pickle(cfg.cov_queue)
+
+    query_thread = Thread(target=query_loop, args=(seed_data, llm_queue, cov_queue))
+    coverage_thread = Thread(target=coverage_loop, args=(seed_data, llm_queue, cov_queue))
+
+    query_thread.start()
+    coverage_thread.start()
 
 if __name__ == "__main__":
     main()
