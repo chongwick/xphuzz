@@ -65,6 +65,16 @@ def mix(male, female):
 def minimize(seed):
     print("minimize this")
 
+def update_data(iteration, llm_queue, cov_queue):
+    if iteration == 20:
+        tmp = list(llm_queue.queue)
+        utils.dump_pickle(cfg.llm_queue, llm_queue)
+        tmp = list(cov_queue.queue)
+        utils.dump_pickle(cfg.cov_queue, cov_queue)
+        return 0
+    else:
+        return iteration += 1
+
 def query_loop(seed_data, llm_queue, cov_queue):
     role = 'You are a chatting assistant'
     context = [{'role': 'system', 'content': role}]
@@ -120,9 +130,10 @@ def query_loop(seed_data, llm_queue, cov_queue):
 
 def coverage_loop(seed_data, llm_queue, cov_queue):
     cov_eng = Executor(cfg.coverage_engine)
+    i = 0
     while(True):
-        cov_eng.load_global_coverage_map_from_file(cfg.base_map)
         php_file = cov_queue.get()
+        cov_eng.load_global_coverage_map_from_file(cfg.base_map)
         code = utils.read_file(php_file)
         result = cov_eng.execute_prog(php_file)
         if result == -1:
@@ -139,12 +150,17 @@ def coverage_loop(seed_data, llm_queue, cov_queue):
             coverage = cov_eng.read()
             seed_name = php_file.split("/")[-1].split(".")[0]
             seed_data[seed_name]['coverage'] = coverage
+        i = update_data()
 
 def main():
     seed_data = utils.load_pickle(cfg.seed_data)
 
-    llm_queue = utils.load_pickle(cfg.llm_queue)
-    cov_queue = utils.load_pickle(cfg.cov_queue)
+    llm_queue = Queue()
+    for i in utils.load_pickle(cfg.llm_queue):
+        llm_queue.put(i)
+    cov_queue = Queue()
+    for i in utils.load_pickle(cfg.cov_queue):
+        cov_queue.put(i)
 
     query_thread = Thread(target=query_loop, args=(seed_data, llm_queue, cov_queue))
     coverage_thread = Thread(target=coverage_loop, args=(seed_data, llm_queue, cov_queue))
