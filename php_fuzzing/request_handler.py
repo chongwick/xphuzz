@@ -4,7 +4,6 @@ import config as cfg
 import utils
 import pickle
 from queue import Queue
-from multiprocessing import Pool
 from threading import Thread, Lock
 from executor import Executor 
 import errreader as err
@@ -172,16 +171,13 @@ def main():
     for i in utils.load_pickle(cfg.cov_queue):
         cov_queue.put(i)
 
-    pool = Pool()
 
-    query_thread = pool.apply_async(query_loop,[seed_data,llm_queue,cov_queue])
-    coverage_thread = pool.apply_async(query_loop,[seed_data,llm_queue,cov_queue])
-    query_thread.get()
-    coverage_thread.get()
-    #query_thread = Thread(target=query_loop, args=(seed_data, llm_queue, cov_queue))
-    #coverage_thread = Thread(target=coverage_loop, args=(seed_data, llm_queue, cov_queue))
-    #query_thread.start()
-    #coverage_thread.start()
+    query_thread = Thread(target=query_loop, args=(seed_data, llm_queue, cov_queue))
+    coverage_thread = Thread(target=coverage_loop, args=(seed_data, llm_queue, cov_queue))
+    query_thread.start()
+    coverage_thread.start()
+    query_thread.join()
+    coverage_thread.join()
 
 
 if __name__ == "__main__":
