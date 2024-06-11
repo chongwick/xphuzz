@@ -58,7 +58,7 @@ def mix(male, female):
     prompt += male + "\n```"
     prompt += "Here is Code B:\n```"
     prompt += female + "\n```"
-    prompt += "Mix Code A and Code B together in 3 different ways. Return as ```<code>```\
+    prompt += "\nMix Code A and Code B together in 3 different ways. Return as ```<code>```\
             \n```<code>``` \n```<code>```"
     #prompt += "Use Code B in Code A. Do not simply append B to A." ?
     context.append({'role':'user','content':prompt})
@@ -69,10 +69,8 @@ def minimize(seed):
 
 def update_data(iteration, llm_queue, cov_queue, removal_list):
     if iteration == 20:
-        tmp = list(llm_queue.queue)
-        utils.dump_pickle(cfg.llm_queue, llm_queue)
-        tmp = list(cov_queue.queue)
-        utils.dump_pickle(cfg.cov_queue, cov_queue)
+        utils.dump_pickle(cfg.llm_queue, list(llm_queue.queue))
+        utils.dump_pickle(cfg.cov_queue, list(cov_queue.queue))
         for i in removal_list:
             os.remove(i)
         return 0
