@@ -4,6 +4,7 @@ import config as cfg
 import utils
 import pickle
 from queue import Queue
+from multiprocessing import Pool
 from threading import Thread, Lock
 from executor import Executor 
 import errreader as err
@@ -51,7 +52,7 @@ def generate_fix_prompt(code, error):
     context.append({'role': 'user', 'content': prompt})
     return context
 
-def mix(male, female):
+def mate(male, female):
     role = "Mix PHP code. Return as ```<code>```"
     context = [{'role':'system','content':role}]
     prompt = "Here is Code A:\n```"
@@ -71,8 +72,6 @@ def update_data(iteration, llm_queue, cov_queue, removal_list):
     if iteration == 20:
         utils.dump_pickle(cfg.llm_queue, list(llm_queue.queue))
         utils.dump_pickle(cfg.cov_queue, list(cov_queue.queue))
-        for i in removal_list:
-            os.remove(i)
         return 0
     else:
         return iteration + 1
@@ -96,13 +95,13 @@ def query_loop(seed_data, llm_queue, cov_queue):
                         "fix_count": 0,
                         "php_file": php_file,
                         "context": None,
-                        "coverage": 0 #coverage is relative to the base map
+                        "coverage": 0, #coverage is relative to the base map
+                        "parents": None, #we don't want inbreeding
                         }
         if("_t" in request_file): 
             print("Translating: {}".format(request_file))
             context = utils.load_pickle(request_file)
-            removal_list.append(request_file)
-            #os.remove(request_file)
+            os.remove(request_file)
             result = llm.give_context(context)
             context.append({'role':'assistant','content':result})
             code = correct_format(llm, result, context)
@@ -111,8 +110,7 @@ def query_loop(seed_data, llm_queue, cov_queue):
         elif("_f" in request_file): #Fix request
             print("Fixing: {}".format(request_file))
             if seed_data[seed_name]['fix_count'] == 5:
-                removal_list.append(request_file)
-                #os.remove(request_file)
+                os.remove(request_file)
                 print("Nah, can't fix this one")
             else:
                 context = utils.load_pickle(request_file)
@@ -123,8 +121,7 @@ def query_loop(seed_data, llm_queue, cov_queue):
                 #    data['context'].append(context[-1])
                 #    context = data['context'] #Perhaps we just want to give it the present context
                 seed_data[seed_name]['fix_count'] += 1
-                removal_list.append(request_file)
-                #os.remove(request_file)
+                os.remove(request_file)
                 #Maybe make this an inherent feature of queries
                 if utils.num_tokens_from_context(context) > cfg.llama3_max / 2:
                     print("trying to fix.... too big")
@@ -159,6 +156,12 @@ def coverage_loop(seed_data, llm_queue, cov_queue):
             seed_name = php_file.split("/")[-1].split(".")[0]
             seed_data[seed_name]['coverage'] = coverage
 
+def sanitization_loop(seed_data, llm_queue, cov_queue):
+    ...
+
+def mutation_loop(seed_data, llm_queue, cov_queue):
+    ...
+
 def main():
     seed_data = utils.load_pickle(cfg.seed_data)
 
@@ -169,11 +172,17 @@ def main():
     for i in utils.load_pickle(cfg.cov_queue):
         cov_queue.put(i)
 
-    query_thread = Thread(target=query_loop, args=(seed_data, llm_queue, cov_queue))
-    coverage_thread = Thread(target=coverage_loop, args=(seed_data, llm_queue, cov_queue))
+    pool = Pool()
 
-    query_thread.start()
-    coverage_thread.start()
+    query_thread = pool.apply_async(query_loop,[seed_data,llm_queue,cov_queue])
+    coverage_thread = pool.apply_async(query_loop,[seed_data,llm_queue,cov_queue])
+    query_thread.get()
+    coverage_thread.get()
+    #query_thread = Thread(target=query_loop, args=(seed_data, llm_queue, cov_queue))
+    #coverage_thread = Thread(target=coverage_loop, args=(seed_data, llm_queue, cov_queue))
+    #query_thread.start()
+    #coverage_thread.start()
+
 
 if __name__ == "__main__":
     main()
