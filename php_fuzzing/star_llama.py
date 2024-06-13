@@ -6,6 +6,7 @@ import tiktoken
 import config as cfg
 import sys
 import pickle
+import time
 
 FIM_PREFIX = "<fim_prefix>"
 FIM_MIDDLE = "<fim_middle>"
@@ -434,7 +435,31 @@ def main():
             #os.remove(llm_query_file)
             os.remove(arguments_file)
             try:
+                start = time.time()
                 result = execute_function(llm_type, llm_object, arguments)
+                length = time.timme()-start
+                print(length)
+                if length > 120:
+                    print("TOOLONG",length)
+                    del(llm_object)
+                    llm_object = None
+                    torch.cuda.empty_cache()
+                    if "chat" in llm_type:
+                        llm_type = CHAT
+                        cur_llm_type = CHAT
+                        llm_object = Chat_LLM(context)
+                    elif "llama3" in llm_type:
+                        llm_type = LLAMA3
+                        cur_llm_type = LLAMA3
+                        llm_object = LLAMA3_LLM(context)
+                    elif "completion" in llm_type:
+                        llm_type = COMPLETION
+                        cur_llm_type = COMPLETION
+                        llm_object = Completion_LLM()
+                    elif "fim" in llm_type:
+                        llm_type = FIM
+                        cur_llm_type = FIM
+                        llm_object = FIM_LLM()
             except Exception as e:
                 print("didnot work")
                 result = "<?php\necho \"did not work;\"\n?>"
