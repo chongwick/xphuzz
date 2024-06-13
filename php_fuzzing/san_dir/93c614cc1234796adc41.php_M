@@ -1,0 +1,184 @@
+<?php
+$ref_bool = true;
+$ref_int = 0;
+$ref_string = "a";
+$ref_array = array(0);
+$ref_object = new StdClass();
+$ref_resource = fopen("/dev/null", "r");
+
+function templateFunction($templateParameter) {
+	return 0;
+}
+
+function templateGenerator() {
+	yield 0;
+}
+
+class TemplateClass {
+	var $templateProperty;
+	const TEMPLATE_CONSTANT = 0;
+	function templateMethod() {
+		return 0;
+	}
+}
+
+$p = new Phar("/tmp/fuzz.phar");
+$p["fuzz.txt"] = "fuzz";
+
+$vars = array(
+	"stdClass"                       => new stdClass(),
+	"Exception"                      => new Exception(),
+	"ErrorException"                 => new ErrorException(),
+	"Error"                          => new Error(),
+	"CompileError"                   => new CompileError(),
+	"ParseError"                     => new ParseError(),
+	"TypeError"                      => new TypeError(),
+	"ArgumentCountError"             => new ArgumentCountError(),
+	"ArithmeticError"                => new ArithmeticError(),
+	"DivisionByZeroError"            => new DivisionByZeroError(),
+	"ClosedGeneratorException"       => new ClosedGeneratorException(),
+	"DateTime"                       => new DateTime(),
+	"DateTimeImmutable"              => new DateTimeImmutable(),
+	"DateTimeZone"                   => new DateTimeZone("America/Chicago"),
+	"DateInterval"                   => new DateInterval("P2Y4DT6H8M"),
+	"DatePeriod"                     => new DatePeriod("R4/2012-07-01T00:00:00Z/P7D"),
+	"LibXMLError"                    => new LibXMLError(),
+	"DOMException"                   => new DOMException(),
+	//"DOMStringList"                  => new DOMStringList(),
+	//"DOMNameList"                    => new DOMNameList(),
+	//"DOMImplementationList"          => new DOMImplementationList(),
+	//"DOMImplementationSource"        => new DOMImplementationSource(),
+	"DOMImplementation"              => new DOMImplementation(),
+	"DOMNode"                        => new DOMNode(),
+	"DOMNameSpaceNode"               => new DOMNameSpaceNode(),
+	"DOMDocumentFragment"            => new DOMDocumentFragment(),
+	"DOMDocument"                    => new DOMDocument(),
+	"DOMNodeList"                    => new DOMNodeList(),
+	"DOMNamedNodeMap"                => new DOMNamedNodeMap(),
+	"DOMCharacterData"               => new DOMCharacterData(),
+	"DOMAttr"                        => new DOMAttr("artr"),
+	"DOMElement"                     => new DOMElement("root"),
+	"DOMText"                        => new DOMText(),
+	"DOMComment"                     => new DOMComment(),
+	//"DOMTypeinfo"                    => new DOMTypeinfo(),
+	//"DOMUserDataHandler"             => new DOMUserDataHandler(),
+	//"DOMDomError"                    => new DOMDomError(),
+	//"DOMErrorHandler"                => new DOMErrorHandler(),
+	//"DOMLocator"                     => new DOMLocator(),
+	//"DOMConfiguration"               => new DOMConfiguration(),
+	"DOMCdataSection"                => new DOMCdataSection("root value"),
+	"DOMDocumentType"                => new DOMDocumentType(),
+	"DOMNotation"                    => new DOMNotation(),
+	"DOMEntity"                      => new DOMEntity(),
+	"DOMEntityReference"             => new DOMEntityReference("nbsp"),
+	"DOMProcessingInstruction"       => new DOMProcessingInstruction("php"),
+	//"DOMStringExtend"                => new DOMStringExtend(),
+	"DOMXPath"                       => new DOMXPath(new DOMDocument()),
+	"finfo"                          => new finfo(),
+//	"HashContext"                    => new HashContext(),
+	"JsonException"                  => new JsonException(),
+	"LogicException"                 => new LogicException(),
+	"BadFunctionCallException"       => new BadFunctionCallException(),
+	"BadMethodCallException"         => new BadMethodCallException(),
+	"DomainException"                => new DomainException(),
+	"InvalidArgumentException"       => new InvalidArgumentException(),
+	"LengthException"                => new LengthException(),
+	"OutOfRangeException"            => new OutOfRangeException(),
+	"RuntimeException"               => new RuntimeException(),
+	"OutOfBoundsException"           => new OutOfBoundsException(),
+	"OverflowException"              => new OverflowException(),
+	"RangeException"                 => new RangeException(),
+	"UnderflowException"             => new UnderflowException(),
+	"UnexpectedValueException"       => new UnexpectedValueException(),
+	"SplFileObject"                  => new SplFileObject(__FILE__),
+	"SplTempFileObject"              => new SplTempFileObject(),
+	"SplDoublyLinkedList"            => new SplDoublyLinkedList(),
+	"SplQueue"                       => new SplQueue(),
+	"SplStack"                       => new SplStack(),
+	"SplMinHeap"                     => new SplMinHeap(),
+	"SplMaxHeap"                     => new SplMaxHeap(),
+	"SplPriorityQueue"               => new SplPriorityQueue(),
+	"SplFixedArray"                  => new SplFixedArray(),
+	"SplObjectStorage"               => new SplObjectStorage(),
+	"MultipleIterator"               => new MultipleIterator(),
+	"SessionHandler"                 => new SessionHandler(),
+	"ReflectionException"            => new ReflectionException(),
+	"Reflection"                     => new Reflection(),
+	"ReflectionFunction"             => new ReflectionFunction("templateFunction"),
+	"ReflectionGenerator"            => new ReflectionGenerator(templateGenerator()),
+	"ReflectionParameter"            => new ReflectionParameter("templateFunction", "templateParameter"),
+	"ReflectionNamedType"            => new ReflectionNamedType(),
+	"ReflectionMethod"               => new ReflectionMethod("TemplateClass", "templateMethod"),
+	"ReflectionClass"                => new ReflectionClass("TemplateClass"),
+	"ReflectionObject"               => new ReflectionObject(new TemplateClass()),
+	"ReflectionProperty"             => new ReflectionProperty("TemplateClass", "templateProperty"),
+	"ReflectionClassConstant"        => new ReflectionClassConstant("TemplateClass", "TEMPLATE_CONSTANT"),
+	"ReflectionExtension"            => new ReflectionExtension("Reflection"),
+	"__PHP_Incomplete_Class"         => new __PHP_Incomplete_Class(),
+	"php_user_filter"                => new php_user_filter(),
+	"Directory"                      => new Directory(),
+	"AssertionError"                 => new AssertionError(),
+	"SimpleXMLElement"               => new SimpleXMLElement("<a>a</a>"),
+	"SimpleXMLIterator"              => new SimpleXMLIterator("<a>a</a>"),
+	"PharException"                  => new PharException(),
+	"Phar"                           => new Phar("/tmp/fuzz.phar"),
+	"PharData"                       => new PharData("/tmp/fuzz.tar"),
+	"PharFileInfo"                   => new PharFileInfo("phar:///tmp/fuzz.phar/fuzz.txt"),
+	"XMLReader"                      => new XMLReader(),
+	"XMLWriter"                      => new XMLWriter(),
+);
+
+function stripPath($s) {
+    return preg_replace('/[^ (]*interpreter\.js/g', 'interpreter.js', $s);
+}
+
+function checkStack($stack, $expected_lines) {
+    print('stack: '. $stack);
+    $lines = explode("\n", $stack);
+    assert(count($expected_lines) == count($lines));
+    for ($i = 0; $i < count($lines); $i++) {
+        $test = is_string($expected_lines[$i])? assertStringEquals : assertMatches;
+        $test($expected_lines[$i], $lines[$i], 'line '. $i);
+    }
+}
+
+function testCallImported() {
+    print(__FUNCTION__);
+    $stack = '';
+    $func = function ($i, $j) use (&$stack) {
+        $stack = new Error('test imported stack');
+        return $stack->getTrace();
+    };
+    $builder = new WasmModuleBuilder();
+    $builder->addImport('mod', 'func', makeSig([kWasmI32, kWasmI32], [kWasmF32]));
+    $builder->addFunction('main', makeSig([kWasmI32, kWasmF32], [kWasmF32]))
+        ->addBody([kExprGetLocal, 0, kExprGetLocal, 0, kExprI32Const, 1, kExprI32Add, kExprCallFunction, 0])
+        ->exportFunc();
+    $instance = $builder->instantiate();
+    // Test that this does not mess up internal state by executing it three times.
+    for ($i = 0; $i < 3; $i++) {
+        $interpreted_before = WasmNumInterpretedCalls($instance);
+        $instance->exports->main();
+        assert($interpreted_before + 1 == WasmNumInterpretedCalls($instance));
+        checkStack(stripPath($stack), [
+            'Error: test imported stack',                           // -
+            '/^    at func \(interpreter\.js:\d+:\d+\)$/',              // -
+
+try { try { $vars["DateTime"]->sub(new DateInterval("P2Y4DT6H8M")); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { $vars["ReflectionParameter"]->canBePassedByValue(); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { boolval(range(0, 10)); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { $vars["DOMXPath"]->query(str_repeat("%s%x%n", 0x100), new DOMNode(), true); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { getimagesizefromstring(str_repeat(chr(96), 65537) + str_repeat(chr(183), 65) + str_repeat(chr(105), 257), $ref_array); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { $vars["SessionHandler"]->create_sid(); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { ob_clean(); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { password_get_info(str_repeat("A", 0x100)); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { $vars["SplFileObject"]->key(); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { openssl_csr_export_to_file(range(0, 10), implode(array_map(function($c) {return "\\x" . str_pad(dechex($c), 2, "0");}, range(0, 255))), true); } catch (Exception $e) { } } catch(Error $e) { }
+          ' at main \(wasm-function\[1\]:1)',                     // -
+            '/^    at '. __FUNCTION__.'\(interpreter\.js:\d+:\d+\)$/',  // -
+        ]);
+    }
+}
+
+?>
+``

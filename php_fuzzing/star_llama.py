@@ -437,7 +437,7 @@ def main():
             try:
                 start = time.time()
                 result = execute_function(llm_type, llm_object, arguments)
-                length = time.timme()-start
+                length = time.time()-start
                 print(length)
                 if length > 120:
                     print("TOOLONG",length)

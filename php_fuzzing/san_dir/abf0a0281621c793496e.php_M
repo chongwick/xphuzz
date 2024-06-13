@@ -1,0 +1,149 @@
+<?php
+$ref_bool = true;
+$ref_int = 0;
+$ref_string = "a";
+$ref_array = array(0);
+$ref_object = new StdClass();
+$ref_resource = fopen("/dev/null", "r");
+
+function templateFunction($templateParameter) {
+	return 0;
+}
+
+function templateGenerator() {
+	yield 0;
+}
+
+class TemplateClass {
+	var $templateProperty;
+	const TEMPLATE_CONSTANT = 0;
+	function templateMethod() {
+		return 0;
+	}
+}
+
+$p = new Phar("/tmp/fuzz.phar");
+$p["fuzz.txt"] = "fuzz";
+
+$vars = array(
+	"stdClass"                       => new stdClass(),
+	"Exception"                      => new Exception(),
+	"ErrorException"                 => new ErrorException(),
+	"Error"                          => new Error(),
+	"CompileError"                   => new CompileError(),
+	"ParseError"                     => new ParseError(),
+	"TypeError"                      => new TypeError(),
+	"ArgumentCountError"             => new ArgumentCountError(),
+	"ArithmeticError"                => new ArithmeticError(),
+	"DivisionByZeroError"            => new DivisionByZeroError(),
+	"ClosedGeneratorException"       => new ClosedGeneratorException(),
+	"DateTime"                       => new DateTime(),
+	"DateTimeImmutable"              => new DateTimeImmutable(),
+	"DateTimeZone"                   => new DateTimeZone("America/Chicago"),
+	"DateInterval"                   => new DateInterval("P2Y4DT6H8M"),
+	"DatePeriod"                     => new DatePeriod("R4/2012-07-01T00:00:00Z/P7D"),
+	"LibXMLError"                    => new LibXMLError(),
+	"DOMException"                   => new DOMException(),
+	//"DOMStringList"                  => new DOMStringList(),
+	//"DOMNameList"                    => new DOMNameList(),
+	//"DOMImplementationList"          => new DOMImplementationList(),
+	//"DOMImplementationSource"        => new DOMImplementationSource(),
+	"DOMImplementation"              => new DOMImplementation(),
+	"DOMNode"                        => new DOMNode(),
+	"DOMNameSpaceNode"               => new DOMNameSpaceNode(),
+	"DOMDocumentFragment"            => new DOMDocumentFragment(),
+	"DOMDocument"                    => new DOMDocument(),
+	"DOMNodeList"                    => new DOMNodeList(),
+	"DOMNamedNodeMap"                => new DOMNamedNodeMap(),
+	"DOMCharacterData"               => new DOMCharacterData(),
+	"DOMAttr"                        => new DOMAttr("artr"),
+	"DOMElement"                     => new DOMElement("root"),
+	"DOMText"                        => new DOMText(),
+	"DOMComment"                     => new DOMComment(),
+	//"DOMTypeinfo"                    => new DOMTypeinfo(),
+	//"DOMUserDataHandler"             => new DOMUserDataHandler(),
+	//"DOMDomError"                    => new DOMDomError(),
+	//"DOMErrorHandler"                => new DOMErrorHandler(),
+	//"DOMLocator"                     => new DOMLocator(),
+	//"DOMConfiguration"               => new DOMConfiguration(),
+	"DOMCdataSection"                => new DOMCdataSection("root value"),
+	"DOMDocumentType"                => new DOMDocumentType(),
+	"DOMNotation"                    => new DOMNotation(),
+	"DOMEntity"                      => new DOMEntity(),
+	"DOMEntityReference"             => new DOMEntityReference("nbsp"),
+	"DOMProcessingInstruction"       => new DOMProcessingInstruction("php"),
+	//"DOMStringExtend"                => new DOMStringExtend(),
+	"DOMXPath"                       => new DOMXPath(new DOMDocument()),
+	"finfo"                          => new finfo(),
+//	"HashContext"                    => new HashContext(),
+	"JsonException"                  => new JsonException(),
+	"LogicException"                 => new LogicException(),
+	"BadFunctionCallException"       => new BadFunctionCallException(),
+	"BadMethodCallException"         => new BadMethodCallException(),
+	"DomainException"                => new DomainException(),
+	"InvalidArgumentException"       => new InvalidArgumentException(),
+	"LengthException"                => new LengthException(),
+	"OutOfRangeException"            => new OutOfRangeException(),
+	"RuntimeException"               => new RuntimeException(),
+	"OutOfBoundsException"           => new OutOfBoundsException(),
+	"OverflowException"              => new OverflowException(),
+	"RangeException"                 => new RangeException(),
+	"UnderflowException"             => new UnderflowException(),
+	"UnexpectedValueException"       => new UnexpectedValueException(),
+	"SplFileObject"                  => new SplFileObject(__FILE__),
+	"SplTempFileObject"              => new SplTempFileObject(),
+	"SplDoublyLinkedList"            => new SplDoublyLinkedList(),
+	"SplQueue"                       => new SplQueue(),
+	"SplStack"                       => new SplStack(),
+	"SplMinHeap"                     => new SplMinHeap(),
+	"SplMaxHeap"                     => new SplMaxHeap(),
+	"SplPriorityQueue"               => new SplPriorityQueue(),
+	"SplFixedArray"                  => new SplFixedArray(),
+	"SplObjectStorage"               => new SplObjectStorage(),
+	"MultipleIterator"               => new MultipleIterator(),
+	"SessionHandler"                 => new SessionHandler(),
+	"ReflectionException"            => new ReflectionException(),
+	"Reflection"                     => new Reflection(),
+	"ReflectionFunction"             => new ReflectionFunction("templateFunction"),
+	"ReflectionGenerator"            => new ReflectionGenerator(templateGenerator()),
+	"ReflectionParameter"            => new ReflectionParameter("templateFunction", "templateParameter"),
+	"ReflectionNamedType"            => new ReflectionNamedType(),
+	"ReflectionMethod"               => new ReflectionMethod("TemplateClass", "templateMethod"),
+	"ReflectionClass"                => new ReflectionClass("TemplateClass"),
+	"ReflectionObject"               => new ReflectionObject(new TemplateClass()),
+	"ReflectionProperty"             => new ReflectionProperty("TemplateClass", "templateProperty"),
+	"ReflectionClassConstant"        => new ReflectionClassConstant("TemplateClass", "TEMPLATE_CONSTANT"),
+	"ReflectionExtension"            => new ReflectionExtension("Reflection"),
+	"__PHP_Incomplete_Class"         => new __PHP_Incomplete_Class(),
+	"php_user_filter"                => new php_user_filter(),
+	"Directory"                      => new Directory(),
+	"AssertionError"                 => new AssertionError(),
+	"SimpleXMLElement"               => new SimpleXMLElement("<a>a</a>"),
+	"SimpleXMLIterator"              => new SimpleXMLIterator("<a>a</a>"),
+	"PharException"                  => new PharException(),
+	"Phar"                           => new Phar("/tmp/fuzz.phar"),
+	"PharData"                       => new PharData("/tmp/fuzz.tar"),
+	"PharFileInfo"                   => new PharFileInfo("phar:///tmp/fuzz.phar/fuzz.txt"),
+	"XMLReader"                      => new XMLReader(),
+	"XMLWriter"                      => new XMLWriter(),
+);
+
+$a = array(5.65);
+array_splice($a, 0);
+$b = array_splice($a, -4, 0, 10);
+
+print_r($a);
+
+try { try { $vars["SplFileObject"]->rewind(); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { $vars["ReflectionParameter"]->allowsNull(); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { $vars["SplDoublyLinkedList"]->offsetGet(true); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { $vars["DOMNamedNodeMap"]->getNamedItem(str_repeat("A", 0x100)); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { getlastmod(); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { gztell(fopen("/etc/passwd", "r")); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { $vars["DOMNode"]->C14NFile(str_repeat(chr(30), 257) + str_repeat(chr(9), 4097) + str_repeat(chr(153), 257), false, true, array("a" => 1, "b" => "2", "c" => 3.0), array("a" => 1, "b" => "2", "c" => 3.0)); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { $vars["ReflectionProperty"]->isStatic(); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { $vars["ReflectionType"]->isBuiltin(); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { $vars["SessionHandler"]->open(str_repeat(chr(131), 17), str_repeat(chr(144), 4097)); } catch (Exception $e) { } } catch(Error $e) { }
+print_r($b);
+
+?>

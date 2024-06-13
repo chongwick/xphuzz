@@ -1,0 +1,220 @@
+<?php
+$ref_bool = true;
+$ref_int = 0;
+$ref_string = "a";
+$ref_array = array(0);
+$ref_object = new StdClass();
+$ref_resource = fopen("/dev/null", "r");
+
+function templateFunction($templateParameter) {
+	return 0;
+}
+
+function templateGenerator() {
+	yield 0;
+}
+
+class TemplateClass {
+	var $templateProperty;
+	const TEMPLATE_CONSTANT = 0;
+	function templateMethod() {
+		return 0;
+	}
+}
+
+$p = new Phar("/tmp/fuzz.phar");
+$p["fuzz.txt"] = "fuzz";
+
+$vars = array(
+	"stdClass"                       => new stdClass(),
+	"Exception"                      => new Exception(),
+	"ErrorException"                 => new ErrorException(),
+	"Error"                          => new Error(),
+	"CompileError"                   => new CompileError(),
+	"ParseError"                     => new ParseError(),
+	"TypeError"                      => new TypeError(),
+	"ArgumentCountError"             => new ArgumentCountError(),
+	"ArithmeticError"                => new ArithmeticError(),
+	"DivisionByZeroError"            => new DivisionByZeroError(),
+	"ClosedGeneratorException"       => new ClosedGeneratorException(),
+	"DateTime"                       => new DateTime(),
+	"DateTimeImmutable"              => new DateTimeImmutable(),
+	"DateTimeZone"                   => new DateTimeZone("America/Chicago"),
+	"DateInterval"                   => new DateInterval("P2Y4DT6H8M"),
+	"DatePeriod"                     => new DatePeriod("R4/2012-07-01T00:00:00Z/P7D"),
+	"LibXMLError"                    => new LibXMLError(),
+	"DOMException"                   => new DOMException(),
+	//"DOMStringList"                  => new DOMStringList(),
+	//"DOMNameList"                    => new DOMNameList(),
+	//"DOMImplementationList"          => new DOMImplementationList(),
+	//"DOMImplementationSource"        => new DOMImplementationSource(),
+	"DOMImplementation"              => new DOMImplementation(),
+	"DOMNode"                        => new DOMNode(),
+	"DOMNameSpaceNode"               => new DOMNameSpaceNode(),
+	"DOMDocumentFragment"            => new DOMDocumentFragment(),
+	"DOMDocument"                    => new DOMDocument(),
+	"DOMNodeList"                    => new DOMNodeList(),
+	"DOMNamedNodeMap"                => new DOMNamedNodeMap(),
+	"DOMCharacterData"               => new DOMCharacterData(),
+	"DOMAttr"                        => new DOMAttr("artr"),
+	"DOMElement"                     => new DOMElement("root"),
+	"DOMText"                        => new DOMText(),
+	"DOMComment"                     => new DOMComment(),
+	//"DOMTypeinfo"                    => new DOMTypeinfo(),
+	//"DOMUserDataHandler"             => new DOMUserDataHandler(),
+	//"DOMDomError"                    => new DOMDomError(),
+	//"DOMErrorHandler"                => new DOMErrorHandler(),
+	//"DOMLocator"                     => new DOMLocator(),
+	//"DOMConfiguration"               => new DOMConfiguration(),
+	"DOMCdataSection"                => new DOMCdataSection("root value"),
+	"DOMDocumentType"                => new DOMDocumentType(),
+	"DOMNotation"                    => new DOMNotation(),
+	"DOMEntity"                      => new DOMEntity(),
+	"DOMEntityReference"             => new DOMEntityReference("nbsp"),
+	"DOMProcessingInstruction"       => new DOMProcessingInstruction("php"),
+	//"DOMStringExtend"                => new DOMStringExtend(),
+	"DOMXPath"                       => new DOMXPath(new DOMDocument()),
+	"finfo"                          => new finfo(),
+//	"HashContext"                    => new HashContext(),
+	"JsonException"                  => new JsonException(),
+	"LogicException"                 => new LogicException(),
+	"BadFunctionCallException"       => new BadFunctionCallException(),
+	"BadMethodCallException"         => new BadMethodCallException(),
+	"DomainException"                => new DomainException(),
+	"InvalidArgumentException"       => new InvalidArgumentException(),
+	"LengthException"                => new LengthException(),
+	"OutOfRangeException"            => new OutOfRangeException(),
+	"RuntimeException"               => new RuntimeException(),
+	"OutOfBoundsException"           => new OutOfBoundsException(),
+	"OverflowException"              => new OverflowException(),
+	"RangeException"                 => new RangeException(),
+	"UnderflowException"             => new UnderflowException(),
+	"UnexpectedValueException"       => new UnexpectedValueException(),
+	"SplFileObject"                  => new SplFileObject(__FILE__),
+	"SplTempFileObject"              => new SplTempFileObject(),
+	"SplDoublyLinkedList"            => new SplDoublyLinkedList(),
+	"SplQueue"                       => new SplQueue(),
+	"SplStack"                       => new SplStack(),
+	"SplMinHeap"                     => new SplMinHeap(),
+	"SplMaxHeap"                     => new SplMaxHeap(),
+	"SplPriorityQueue"               => new SplPriorityQueue(),
+	"SplFixedArray"                  => new SplFixedArray(),
+	"SplObjectStorage"               => new SplObjectStorage(),
+	"MultipleIterator"               => new MultipleIterator(),
+	"SessionHandler"                 => new SessionHandler(),
+	"ReflectionException"            => new ReflectionException(),
+	"Reflection"                     => new Reflection(),
+	"ReflectionFunction"             => new ReflectionFunction("templateFunction"),
+	"ReflectionGenerator"            => new ReflectionGenerator(templateGenerator()),
+	"ReflectionParameter"            => new ReflectionParameter("templateFunction", "templateParameter"),
+	"ReflectionNamedType"            => new ReflectionNamedType(),
+	"ReflectionMethod"               => new ReflectionMethod("TemplateClass", "templateMethod"),
+	"ReflectionClass"                => new ReflectionClass("TemplateClass"),
+	"ReflectionObject"               => new ReflectionObject(new TemplateClass()),
+	"ReflectionProperty"             => new ReflectionProperty("TemplateClass", "templateProperty"),
+	"ReflectionClassConstant"        => new ReflectionClassConstant("TemplateClass", "TEMPLATE_CONSTANT"),
+	"ReflectionExtension"            => new ReflectionExtension("Reflection"),
+	"__PHP_Incomplete_Class"         => new __PHP_Incomplete_Class(),
+	"php_user_filter"                => new php_user_filter(),
+	"Directory"                      => new Directory(),
+	"AssertionError"                 => new AssertionError(),
+	"SimpleXMLElement"               => new SimpleXMLElement("<a>a</a>"),
+	"SimpleXMLIterator"              => new SimpleXMLIterator("<a>a</a>"),
+	"PharException"                  => new PharException(),
+	"Phar"                           => new Phar("/tmp/fuzz.phar"),
+	"PharData"                       => new PharData("/tmp/fuzz.tar"),
+	"PharFileInfo"                   => new PharFileInfo("phar:///tmp/fuzz.phar/fuzz.txt"),
+	"XMLReader"                      => new XMLReader(),
+	"XMLWriter"                      => new XMLWriter(),
+);
+
+function load($file) {
+    // Load the file contents
+
+try { try { stream_bucket_make_writeable(fopen("/dev/null", "r")); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { connection_status(); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { debug_print_backtrace(1, 1000); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { $vars["SplObjectStorage"]->key(); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { $vars["DateTimeImmutable"]->getLastErrors(); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { $vars["DOMDocument"]->getElementById(implode(array_map(function($c) {return "\\x" . str_pad(dechex($c), 2, "0");}, range(0, 255)))); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { $vars["ReflectionParameter"]->allowsNull(); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { urlencode(str_repeat(chr(12), 17) + str_repeat(chr(161), 1025) + str_repeat(chr(139), 17)); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { fgetss(fopen("/dev/null", "r"), 4294967296, implode(array_map(function($c) {return "\\x" . str_pad(dechex($c), 2, "0");}, range(0, 255)))); } catch (Exception $e) { } } catch(Error $e) { }
+try { try { $vars["SplFileObject"]->fscanf(str_repeat(chr(216), 17) + str_repeat(chr(158), 257), $ref_object); } catch (Exception $e) { } } catch(Error $e) { }
+    $contents = file_get_contents($file);
+    // Return the contents
+    return $contents;
+}
+
+function display($message) {
+    // Print the message
+    echo $message. "\n";
+}
+
+class WasmModuleBuilder {
+    private $types = [];
+    private $functions = [];
+
+    public function addType($type) {
+        // Add the type to the types array
+        $this->types[] = $type;
+    }
+
+    public function addFunction($name, $type) {
+        // Add the function to the functions array
+        $this->functions[$name] = $type;
+    }
+
+    public function toBuffer() {
+        // Convert the types and functions to a buffer
+        $buffer = '';
+        foreach ($this->types as $type) {
+            $buffer.= $type. "\n";
+        }
+        foreach ($this->functions as $name => $type) {
+            $buffer.= $name.''. $type. "\n";
+        }
+        return $buffer;
+    }
+}
+
+class WebAssemblyModule {
+    private $buffer;
+
+    public function __construct($buffer) {
+        // Set the buffer
+        $this->buffer = $buffer;
+    }
+
+    public function instantiate() {
+        // Instantiate the module
+        // This is a placeholder, as PHP does not have a built-in way to instantiate WebAssembly modules
+        return new WebAssemblyInstance($this);
+    }
+}
+
+class WebAssemblyInstance {
+    private $module;
+
+    public function __construct($module) {
+        // Set the module
+        $this->module = $module;
+    }
+
+    public function exports($name) {
+        // Get the function from the module
+        $function = $this->module->functions[$name];
+        // Call the function
+        return $function;
+    }
+}
+
+// Create the WasmModuleBuilder
+$builder = new WasmModuleBuilder();
+
+// Add types and functions
+$builder->addType('kSig_i_ii');
+$builder->addType('kSig_ii_v');
+$builder->addFunction('main', 'kSig_i_ii');
+
+// Create the
