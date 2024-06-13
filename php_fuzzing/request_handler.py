@@ -12,6 +12,7 @@ fix_prompt = "The response did not correspond to the ```<code>``` format."
 seed_data_lock = Lock()
 
 def correct_format(llm, result, context):
+    tmp = context.copy()
     result = [line + "\n" for line in result.split("\n")]
     #if result[0].strip() == "error":
     #    raise RuntimeError("Restarting LLM")
@@ -29,8 +30,8 @@ def correct_format(llm, result, context):
                 code += line
         if code == "":
             print("\n! Re-query: Format Error !\n")
-            context.append({'role': 'user', 'content': fix_prompt})
-            result = llm.give_context(context)
+            tmp.append({'role': 'user', 'content': fix_prompt})
+            result = llm.give_context(tmp)
         else:
             break
     try:
@@ -39,7 +40,6 @@ def correct_format(llm, result, context):
     except Exception as e:
         print("ERRRORRRRRR")
         print(code)
-        quit()
     return code
 
 def generate_fix_prompt(code, error):
@@ -156,7 +156,39 @@ def coverage_loop(seed_data, llm_queue, cov_queue):
             seed_data[seed_name]['coverage'] = coverage
 
 def sanitization_loop(seed_data, llm_queue, cov_queue):
-    ...
+    san_eng = Executor(cfg.sanitizer_engine)
+    while(True):
+        php_file = utils.pop_from_queue(cfg.san_queue)
+        if php_file == -1:
+            continue
+        result = san_eng.execute_prog(php_file)
+        if result == -1:
+            print("really suspicious:", php_file)
+            continue
+        if san_eng.ret_code != 0:
+            if san_eng.ret_code == 255:
+                print("EXCEPTION ", php_file)
+                os.remove(php_file)
+            elif san_eng.ret_code == 124:
+                print("TIMEOUT ", php_file)
+                os.remove(php_file)
+            elif san_eng.ret_code == 153:
+                print("MEMORY LEAK", php_file)
+                os.remove(php_file)
+            elif "Allowed memory size of" in result:
+                print("OOM", php_file)
+                os.remove(php_file)
+            elif "AddressSanitizer failed to allocate" in result:
+                print("OOM", php_file)
+                os.remove(php_file)
+            elif "Assertion" in result:
+                print("ASSERTION", php_file)
+                os.remove(php_file)
+            else:
+                print("POTENTIAL VULN", php_file)
+        else:
+            print("OK")
+            os.remove(php_file)
 
 def mutation_loop(seed_data, llm_queue, cov_queue):
     ...
