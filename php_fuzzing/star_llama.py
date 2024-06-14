@@ -461,8 +461,8 @@ def main():
                         cur_llm_type = FIM
                         llm_object = FIM_LLM()
             except Exception as e:
-                print("didnot work")
-                result = "<?php\necho \"did not work;\"\n?>"
+                print("didnot work", e)
+                result = "```\n<?php\necho \"did not work;\"\n?>\n```"
             with open(output_file, "w") as f:
                 if result != None:
                     f.write(result)
