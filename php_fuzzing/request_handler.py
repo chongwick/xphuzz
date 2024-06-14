@@ -9,38 +9,39 @@ from executor import Executor
 import errreader as err
 
 fix_prompt = "The response did not correspond to the ```<code>``` format."
+mix_prompt = "The response did not correspond to the ```<code>``` ```<code>``` ```<code>```format." 
 seed_data_lock = Lock()
 
-def correct_format(llm, result, context):
+def correct_format(llm, result, context, num):
     tmp = context.copy()
-    result = [line + "\n" for line in result.split("\n")]
-    #if result[0].strip() == "error":
-    #    raise RuntimeError("Restarting LLM")
     i = 0
-    code = ""
+    matches = []
     while i < 2:
         i += 1
-        code_section = False
-        for line in result:
-            if "```" in line and not(code_section):
-                code_section = True
-            elif "```" in line and code_section:
-                break
-            elif code_section:
-                code += line
-        if code == "":
+        pattern = r'```(.*?)```'
+        matches = re.findall(pattern,result,re.DOTALL)
+        if len(matches) == 1:
+            break;
+        else:
             print("\n! Re-query: Format Error !\n")
             tmp.append({'role': 'user', 'content': fix_prompt})
             result = llm.give_context(tmp)
-        else:
-            break
+            del(tmp)
     try:
-        if "<?php" not in code.split("\n")[0]:
-            code = "<?php\n" + code + "\n?>"
+        if len(matches) == 0:
+            matches.append("<?php\n\n?>")
+            return matches
+        else:
+            i = 0
+            while i < len(matches):
+                code = matches[i]
+                if "<?php" not in code.split("\n")[0]:
+                    code = "<?php\n" + code + "\n?>"
+                matches[i] = code
     except Exception as e:
         print("ERRRORRRRRR")
         print(code)
-    return code
+    return matches
 
 def generate_fix_prompt(code, error):
     role = 'Fix PHP code. Return as ```<code>```'
@@ -103,7 +104,7 @@ def query_loop(seed_data, llm_queue, cov_queue):
             os.remove(request_file)
             result = llm.give_context(context)
             context.append({'role':'assistant','content':result})
-            code = correct_format(llm, result, context)
+            code = correct_format(llm, result, context, 1)[0]
             utils.write_file(php_file, code)
             cov_queue.put(php_file)
         elif("_f" in request_file): #Fix request
@@ -113,12 +114,6 @@ def query_loop(seed_data, llm_queue, cov_queue):
                 print("Nah, can't fix this one")
             else:
                 context = utils.load_pickle(request_file)
-                # let's just give it the present context
-                #if data['fix_count'] == 0:
-                #    data['context'] = context
-                #else:
-                #    data['context'].append(context[-1])
-                #    context = data['context'] #Perhaps we just want to give it the present context
                 seed_data[seed_name]['fix_count'] += 1
                 os.remove(request_file)
                 #Maybe make this an inherent feature of queries
@@ -127,7 +122,7 @@ def query_loop(seed_data, llm_queue, cov_queue):
                 else:
                     result = llm.give_context(context)
                     context.append({'role':'assistant','content':result})
-                    code = correct_format(llm, result, context)
+                    code = correct_format(llm, result, context, 1)[0]
                     utils.write_file(php_file, code)
                     cov_queue.put(php_file)
         i = update_data(i, llm_queue, cov_queue, removal_list)
@@ -191,7 +186,20 @@ def sanitization_loop(seed_data, llm_queue, cov_queue):
             os.remove(php_file)
 
 def mutation_loop(seed_data, llm_queue, cov_queue):
-    ...
+    generation = os.listdir('gen_1')
+    pairs = itertools.product(
+            generation[:len(generation)//2],
+            generation[len(generation)//2:])
+    for pair in pairs:
+        female = pair[0]
+        male = pair[1]
+        with open('female','r') as f:
+            female = f.read()
+        with open('male','r') as m:
+            male = f.read()
+        prompt = mate(male,female)
+        print(prompt)
+        quit()
 
 def main():
     seed_data = utils.load_pickle(cfg.seed_data)
@@ -203,14 +211,13 @@ def main():
     for i in utils.load_pickle(cfg.cov_queue):
         cov_queue.put(i)
 
-
     query_thread = Thread(target=query_loop, args=(seed_data, llm_queue, cov_queue))
     coverage_thread = Thread(target=coverage_loop, args=(seed_data, llm_queue, cov_queue))
+    mutation_thread = Thread(target=mutation_loop, args=(seed_data, llm_queue, cov_queue))
     query_thread.start()
     coverage_thread.start()
     query_thread.join()
     coverage_thread.join()
-
 
 if __name__ == "__main__":
     main()

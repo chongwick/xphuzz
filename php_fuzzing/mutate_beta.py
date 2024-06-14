@@ -1,7 +1,10 @@
+#This one will run constantly in the background
 from generator import generate_samples
 import os
 import random
 import secrets
+import config as cfg
+import utils
 
 def main():
     directory = "gen_1"
