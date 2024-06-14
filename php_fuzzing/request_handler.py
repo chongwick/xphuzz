@@ -1,3 +1,4 @@
+import itertools
 import os
 import receiver
 import config as cfg
@@ -193,9 +194,9 @@ def mutation_loop(seed_data, llm_queue, cov_queue):
     for pair in pairs:
         female = pair[0]
         male = pair[1]
-        with open('female','r') as f:
+        with open(os.path.join('gen_1',female),'r') as f:
             female = f.read()
-        with open('male','r') as m:
+        with open(os.path.join('gen_1',male),'r') as m:
             male = f.read()
         prompt = mate(male,female)
         print(prompt)
