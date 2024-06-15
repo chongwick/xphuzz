@@ -13,6 +13,8 @@ fix_prompt = "The response did not correspond to the ```<code>``` format."
 mix_prompt = "The response did not correspond to the ```<code>``` ```<code>``` ```<code>```format." 
 seed_data_lock = Lock()
 
+GENERATION = 1
+
 def correct_format(llm, result, context, num):
     tmp = context.copy()
     i = 0
@@ -69,7 +71,7 @@ def mate(male, female):
 def minimize(seed):
     print("minimize this")
 
-def update_data(iteration, llm_queue, cov_queue, removal_list):
+def update_data(iteration, llm_queue, cov_queue):
     if iteration == 20:
         utils.dump_pickle(cfg.llm_queue, list(llm_queue.queue))
         utils.dump_pickle(cfg.cov_queue, list(cov_queue.queue))
@@ -83,7 +85,6 @@ def query_loop(seed_data, llm_queue, cov_queue):
     llm = receiver.LLAMA3_LLM(context)
 
     i = 0
-    removal_list = []
     while(True):
         request_file = llm_queue.get() # blocking function
         seed_name = request_file.split("/")[-1].split("_")[0]
@@ -126,7 +127,7 @@ def query_loop(seed_data, llm_queue, cov_queue):
                     code = correct_format(llm, result, context, 1)[0]
                     utils.write_file(php_file, code)
                     cov_queue.put(php_file)
-        i = update_data(i, llm_queue, cov_queue, removal_list)
+        i = update_data(i, llm_queue, cov_queue)
 
 def coverage_loop(seed_data, llm_queue, cov_queue):
     cov_eng = Executor(cfg.coverage_engine)
@@ -150,6 +151,8 @@ def coverage_loop(seed_data, llm_queue, cov_queue):
             coverage = cov_eng.read()
             seed_name = php_file.split("/")[-1].split(".")[0]
             seed_data[seed_name]['coverage'] = coverage
+        if cov_queue.qsize() == 0:
+            ...
 
 def sanitization_loop(seed_data, llm_queue, cov_queue):
     san_eng = Executor(cfg.sanitizer_engine)
@@ -192,15 +195,11 @@ def mutation_loop(seed_data, llm_queue, cov_queue):
             generation[:len(generation)//2],
             generation[len(generation)//2:])
     for pair in pairs:
-        female = pair[0]
-        male = pair[1]
-        with open(os.path.join('gen_1',female),'r') as f:
+        with open(os.path.join('gen_1',pair[0]),'r') as f:
             female = f.read()
-        with open(os.path.join('gen_1',male),'r') as m:
-            male = f.read()
+        with open(os.path.join('gen_1',pair[1]),'r') as m:
+            male = m.read()
         prompt = mate(male,female)
-        print(prompt)
-        quit()
 
 def main():
     seed_data = utils.load_pickle(cfg.seed_data)
