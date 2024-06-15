@@ -189,7 +189,7 @@ def sanitization_loop(seed_data, llm_queue, cov_queue):
             print("OK")
             os.remove(php_file)
 
-def mutation_loop(seed_data, llm_queue, cov_queue):
+def next_gen(seed_data, llm_queue, cov_queue):
     generation = os.listdir('gen_1')
     pairs = itertools.product(
             generation[:len(generation)//2],

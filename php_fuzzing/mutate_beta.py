@@ -13,9 +13,8 @@ def mutate(directory):
     with open("template.php","r") as f:
         template = f.readlines()
     for tar in targets:
-        outdir = "san_dir"
-        #outfile = os.path.join(outdir,secrets.token_hex(10) + ".php")
-        outfile = os.path.join(outdir,tar+"_M")
+        outfile = os.path.join(cfg.mutation_directory,secrets.token_hex(10) + ".php")
+        #outfile = os.path.join(outdir,tar+"_M")
         tmp_copy = template.copy()
         with open(os.path.join(directory,tar),"r") as f:
             content = f.readlines()
@@ -24,12 +23,14 @@ def mutate(directory):
         tmp_copy += content[1:]
         tmp_copy = "".join(tmp_copy)
         generate_samples(os.path.dirname(__file__), outfile, tmp_copy, 10)
+        utils.add_to_queue(cfg.san_queue, outfile)
 
 def sanitization_loop():
     san_eng = Executor(cfg.sanitizer_engine)
     while(True):
         php_file = utils.pop_from_queue(cfg.san_queue)
         if php_file == -1:
+            mutate("gen_1") #change this
             continue
         result = san_eng.execute_prog(php_file)
         if result == -1:
@@ -61,6 +62,7 @@ def sanitization_loop():
             os.remove(php_file)
 
 def main():
-    ...
+    sanitization_loop()
+
 if __name__ == "__main__":
     main()

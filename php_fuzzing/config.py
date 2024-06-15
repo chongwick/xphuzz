@@ -17,6 +17,7 @@ san_queue = "queues/san_queue.pickle"
 llm_lock = "llm_requests/queue.pickle.lock"
 cov_lock = "queues/cov_queue.pickle.lock"
 san_lock = "queues/san_queue.pickle.lock"
+mutation_directory = "mut_dir"
 
 status = {
         llm_queue : llm_lock,
