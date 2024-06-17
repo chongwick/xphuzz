@@ -106,7 +106,6 @@ def query_loop(seed_data, llm_queue, cov_queue):
         php_file = os.path.join(cfg.php_corpus,
                 request_file.split("/")[-1].split("_")[0]+".php")
         create_seed_data(seed_data, seed_name, php_file)
-        php_file = seed_data[seed_name]['php_file'] #it isn't pretty but it works
         if("_t" in request_file): 
             print("Translating: {}".format(request_file))
             context = utils.load_pickle(request_file)
@@ -116,6 +115,26 @@ def query_loop(seed_data, llm_queue, cov_queue):
             code = correct_format(llm, result, context, 1)[0]
             utils.write_file(php_file, code)
             cov_queue.put(php_file)
+        elif("_m" in request_file): #Mate request
+            print("Mating: {}".format(request_file))
+            context = utils.load_pickle(request_file)
+            os.remove(request_file)
+            result = llm.give_context(context)
+            context.append({'role':'assistant','content':result})
+            childs = correct_format(llm, result, context, 1)
+            dr = "gen_" + str(GEN_NUM)
+            child0=childs[0];name0=secrets.token_hex(10);php0=os.path.join(dr,name0+".php")
+            child1=childs[1];name1=secrets.token_hex(10);php1=os.path.join(dr,name1+".php")
+            child2=childs[2];name2=secrets.token_hex(10);php2=os.path.join(dr,name2+".php")
+            create_seed_data(seed_data, name0, php0); utils.write_file(php0,child0)
+            create_seed_data(seed_data, name1, php1); utils.write_file(php1,child1)
+            create_seed_data(seed_data, name2, php2); utils.write_file(php2,child2)
+            seed_data[name0]['parents']=seed_data[seed_name]['parents']
+            seed_data[name1]['parents']=seed_data[seed_name]['parents']
+            seed_data[name2]['parents']=seed_data[seed_name]['parents']
+            cov_queue.put(php0); cov_queue.put(php1); cov_queue.put(php2))
+            del(seed_data[seed_name])
+            quit()
         elif("_f" in request_file): #Fix request
             print("Fixing: {}".format(request_file))
             if seed_data[seed_name]['fix_count'] == 5:
@@ -187,12 +206,10 @@ def next_gen(seed_data, llm_queue, cov_queue):
     new_dir = "gen_" + str(GEN_NUM)
     os.makedirs(new_dir)
     for pair in pairs:
-        seed_name = secrets.token_hex(10)
-        php_file = os.path.join(new_dir,seed_name + ".php")
-        with open(php_file,"w") as f:
-            pass
-        create_seed_data(seed_data, seed_name, php_file)
-        seed_data[seed_name]['parents'] = pair
+        tmp_seed_name = secrets.token_hex(10)
+        #php_file = os.path.join(new_dir,seed_name + ".php")
+        create_seed_data(seed_data, tmp_seed_name, php_file)
+        seed_data[tmp_seed_name]['parents'] = pair
         prev_gen_dir = 'gen_' + str(GEN_NUM-1)
         with open(os.path.join(prev_gen_dir,pair[0]),'r') as f:
             female = f.read()
@@ -200,10 +217,9 @@ def next_gen(seed_data, llm_queue, cov_queue):
             male = m.read()
         mate_query = mate(male,female)
         mate_req_name = os.path.join(cfg.llm_requests,
-                                     seed_name + "_m")
-        print(mate_req_name, php_file); quit()
-
-        
+                                     tmp_seed_name + "_m")
+        utils.dump_pickle(mate_req_name, mate_query)
+        llm_queue.put(mate_req_name)
 
 def main():
     seed_data = utils.load_pickle(cfg.seed_data)
