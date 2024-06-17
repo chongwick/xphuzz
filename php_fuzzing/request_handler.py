@@ -1,3 +1,5 @@
+import secrets
+import random
 import itertools
 import os
 import receiver
@@ -13,7 +15,7 @@ fix_prompt = "The response did not correspond to the ```<code>``` format."
 mix_prompt = "The response did not correspond to the ```<code>``` ```<code>``` ```<code>```format." 
 seed_data_lock = Lock()
 
-GEN_NUM = 1
+GEN_NUM = 0
 
 def correct_format(llm, result, context, num):
     tmp = context.copy()
@@ -80,6 +82,18 @@ def update_data(iteration, llm_queue, cov_queue):
     else:
         return iteration + 1
 
+def create_seed_data(seed_data, seed_name, php_file):
+    with seed_data_lock:
+        if seed_name not in seed_data:
+            seed_data[seed_name] = {
+                    "reset_count": 0,
+                    "fix_count": 0,
+                    "php_file": php_file,
+                    "context": None,
+                    "coverage": 0, #coverage is relative to the base map
+                    "parents": None, #we don't want inbreeding
+                    }
+
 def query_loop(seed_data, llm_queue, cov_queue):
     role = 'You are a chatting assistant'
     context = [{'role': 'system', 'content': role}]
@@ -91,16 +105,8 @@ def query_loop(seed_data, llm_queue, cov_queue):
         seed_name = request_file.split("/")[-1].split("_")[0]
         php_file = os.path.join(cfg.php_corpus,
                 request_file.split("/")[-1].split("_")[0]+".php")
-        with seed_data_lock:
-            if seed_name not in seed_data:
-                seed_data[seed_name] = {
-                        "reset_count": 0,
-                        "fix_count": 0,
-                        "php_file": php_file,
-                        "context": None,
-                        "coverage": 0, #coverage is relative to the base map
-                        "parents": None, #we don't want inbreeding
-                        }
+        create_seed_data(seed_data, seed_name, php_file)
+        php_file = seed_data[seed_name]['php_file'] #it isn't pretty but it works
         if("_t" in request_file): 
             print("Translating: {}".format(request_file))
             context = utils.load_pickle(request_file)
@@ -159,6 +165,7 @@ def coverage_loop(seed_data, llm_queue, cov_queue):
                 seed_data[seed_name]['coverage'] = coverage
 
 def next_gen(seed_data, llm_queue, cov_queue):
+    global GEN_NUM
     pairs = []
     print("Creating new generation")
     if GEN_NUM == 0:
@@ -168,21 +175,33 @@ def next_gen(seed_data, llm_queue, cov_queue):
         for m in male_group:
             f = female_group[random.randint(0,len(female_group)-1)]
             female_group.remove(f)
-            pairs.append(m,f)
+            pairs.append((m,f))
     else:
-        directory = 'gen_'+GEN_NUM
-        generation = os.listir(directory)
+        quit()
+        directory = 'gen_'+str(GEN_NUM)
+        generation = os.listdir(directory)
         male_group = generation[:len(generation)//2]
         female_group = generation[len(generation)//2:]
-
-    print(pairs);quit()
+        ...
+    GEN_NUM += 1
+    new_dir = "gen_" + str(GEN_NUM)
+    os.makedirs(new_dir)
     for pair in pairs:
+        seed_name = secrets.token_hex(10)
+        php_file = os.path.join(new_dir,seed_name + ".php")
+        with open(php_file,"w") as f:
+            pass
+        create_seed_data(seed_data, seed_name, php_file)
+        seed_data[seed_name]['parents'] = pair
         with open(os.path.join('gen_1',pair[0]),'r') as f:
             female = f.read()
         with open(os.path.join('gen_1',pair[1]),'r') as m:
             male = m.read()
-        prompt = mate(male,female)
-    GEN_NUM += 1
+        mate_query = mate(male,female)
+        mate_req_name = os.path.join(cfg.llm_requests,
+                                     seed_name + "_m")
+        print(mate_req_name, php_file); quit()
+
         
 
 def main():
