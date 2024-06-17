@@ -135,30 +135,32 @@ def query_loop(seed_data, llm_queue, cov_queue):
 def coverage_loop(seed_data, llm_queue, cov_queue):
     cov_eng = Executor(cfg.coverage_engine)
     while(True):
-        php_file = cov_queue.get()
-        print("mapping: ", php_file)
-        cov_eng.load_global_coverage_map_from_file(cfg.base_map)
-        code = utils.read_file(php_file)
-        result = cov_eng.execute_prog(php_file)
-        if result == -1:
-            print("Bad execution")
-            continue
-        if err.is_error(result):
-            fix_query = generate_fix_prompt(code, err.parse_error(result, php_file))
-            fix_req_name = os.path.join(cfg.llm_requests,
-                                        php_file.split("/")[-1].split(".")[0]+"_f")
-            utils.dump_pickle(fix_req_name, fix_query)
-            llm_queue.put(fix_req_name)
-        else:
-            utils.add_to_queue(cfg.san_queue,php_file)
-            coverage = cov_eng.read()
-            seed_name = php_file.split("/")[-1].split(".")[0]
-            seed_data[seed_name]['coverage'] = coverage
-        if cov_queue.qsize() == 0:
+        if cov_queue.qsize() == 0 and llm_queue.qsize() == 0:
             next_gen(seed_data, llm_queue, cov_queue)
+        else:
+            php_file = cov_queue.get()
+            print("mapping: ", php_file)
+            cov_eng.load_global_coverage_map_from_file(cfg.base_map)
+            code = utils.read_file(php_file)
+            result = cov_eng.execute_prog(php_file)
+            if result == -1:
+                print("Bad execution")
+                continue
+            if err.is_error(result):
+                fix_query = generate_fix_prompt(code, err.parse_error(result, php_file))
+                fix_req_name = os.path.join(cfg.llm_requests,
+                                            php_file.split("/")[-1].split(".")[0]+"_f")
+                utils.dump_pickle(fix_req_name, fix_query)
+                llm_queue.put(fix_req_name)
+            else:
+                utils.add_to_queue(cfg.san_queue,php_file)
+                coverage = cov_eng.read()
+                seed_name = php_file.split("/")[-1].split(".")[0]
+                seed_data[seed_name]['coverage'] = coverage
 
 def next_gen(seed_data, llm_queue, cov_queue):
     pairs = []
+    print("Creating new generation")
     if GEN_NUM == 0:
         generation = os.listdir('gen_0')
         male_group = generation[:len(generation)//2]
@@ -195,7 +197,6 @@ def main():
 
     query_thread = Thread(target=query_loop, args=(seed_data, llm_queue, cov_queue))
     coverage_thread = Thread(target=coverage_loop, args=(seed_data, llm_queue, cov_queue))
-    mutation_thread = Thread(target=mutation_loop, args=(seed_data, llm_queue, cov_queue))
     query_thread.start()
     coverage_thread.start()
     query_thread.join()
