@@ -5,7 +5,7 @@ import time
 def main():
     dir_path = os.path.dirname(os.path.realpath(__file__))
     safe_files = os.listdir(dir_path)
-    is_invalid = lambda x: not(x in safe_files or "gen" in x)
+    is_invalid = lambda x: not(x in safe_files or "gen" in x or x == "blank.php")
     while(True):
         time.sleep(5)
         cur_files = os.listdir(dir_path)

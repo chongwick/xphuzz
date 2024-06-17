@@ -13,7 +13,7 @@ fix_prompt = "The response did not correspond to the ```<code>``` format."
 mix_prompt = "The response did not correspond to the ```<code>``` ```<code>``` ```<code>```format." 
 seed_data_lock = Lock()
 
-GENERATION = 1
+GEN_NUM = 1
 
 def correct_format(llm, result, context, num):
     tmp = context.copy()
@@ -44,6 +44,7 @@ def correct_format(llm, result, context, num):
     except Exception as e:
         print("ERRRORRRRRR")
         print(code)
+    print(matches);quit()
     return matches
 
 def generate_fix_prompt(code, error):
@@ -114,6 +115,8 @@ def query_loop(seed_data, llm_queue, cov_queue):
             if seed_data[seed_name]['fix_count'] == 5:
                 os.remove(request_file)
                 print("Nah, can't fix this one")
+                if 'corpus' not in php_file: #this indicates either the original js/php corpi
+                    os.remove(php_file)
             else:
                 context = utils.load_pickle(request_file)
                 seed_data[seed_name]['fix_count'] += 1
@@ -152,54 +155,33 @@ def coverage_loop(seed_data, llm_queue, cov_queue):
             seed_name = php_file.split("/")[-1].split(".")[0]
             seed_data[seed_name]['coverage'] = coverage
         if cov_queue.qsize() == 0:
-            ...
-
-def sanitization_loop(seed_data, llm_queue, cov_queue):
-    san_eng = Executor(cfg.sanitizer_engine)
-    while(True):
-        php_file = utils.pop_from_queue(cfg.san_queue)
-        if php_file == -1:
-            continue
-        result = san_eng.execute_prog(php_file)
-        if result == -1:
-            print("really suspicious:", php_file)
-            continue
-        if san_eng.ret_code != 0:
-            if san_eng.ret_code == 255:
-                print("EXCEPTION ", php_file)
-                os.remove(php_file)
-            elif san_eng.ret_code == 124:
-                print("TIMEOUT ", php_file)
-                os.remove(php_file)
-            elif san_eng.ret_code == 153:
-                print("MEMORY LEAK", php_file)
-                os.remove(php_file)
-            elif "Allowed memory size of" in result:
-                print("OOM", php_file)
-                os.remove(php_file)
-            elif "AddressSanitizer failed to allocate" in result:
-                print("OOM", php_file)
-                os.remove(php_file)
-            elif "Assertion" in result:
-                print("ASSERTION", php_file)
-                os.remove(php_file)
-            else:
-                print("POTENTIAL VULN", php_file)
-        else:
-            print("OK")
-            os.remove(php_file)
+            next_gen(seed_data, llm_queue, cov_queue)
 
 def next_gen(seed_data, llm_queue, cov_queue):
-    generation = os.listdir('gen_1')
-    pairs = itertools.product(
-            generation[:len(generation)//2],
-            generation[len(generation)//2:])
+    pairs = []
+    if GEN_NUM == 0:
+        generation = os.listdir('gen_0')
+        male_group = generation[:len(generation)//2]
+        female_group = generation[len(generation)//2:]
+        for m in male_group:
+            f = female_group[random.randint(0,len(female_group)-1)]
+            female_group.remove(f)
+            pairs.append(m,f)
+    else:
+        directory = 'gen_'+GEN_NUM
+        generation = os.listir(directory)
+        male_group = generation[:len(generation)//2]
+        female_group = generation[len(generation)//2:]
+
+    print(pairs);quit()
     for pair in pairs:
         with open(os.path.join('gen_1',pair[0]),'r') as f:
             female = f.read()
         with open(os.path.join('gen_1',pair[1]),'r') as m:
             male = m.read()
         prompt = mate(male,female)
+    GEN_NUM += 1
+        
 
 def main():
     seed_data = utils.load_pickle(cfg.seed_data)

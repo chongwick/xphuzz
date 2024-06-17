@@ -41,8 +41,8 @@ class Executor():
             if self.engine == SANITIZER_ENGINE:
                 command.append("2>&1")
             child = subprocess.Popen(command, stdout=subprocess.PIPE, text=True)
-            self.ret_code = child.returncode
             stdout, stderr = child.communicate(timeout=120) #timeout after 2 minutes
+            self.ret_code = child.returncode
             child.kill()
         except Exception as e:
             return -1
