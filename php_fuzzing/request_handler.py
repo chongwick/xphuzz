@@ -1,3 +1,4 @@
+import re
 import secrets
 import random
 import itertools
@@ -25,13 +26,16 @@ def correct_format(llm, result, context, num):
         i += 1
         pattern = r'```(.*?)```'
         matches = re.findall(pattern,result,re.DOTALL)
-        if len(matches) == 1:
+        if len(matches) == num:
             break;
         else:
             print("\n! Re-query: Format Error !\n")
-            tmp.append({'role': 'user', 'content': fix_prompt})
+            if num == 1:
+                tmp.append({'role': 'user', 'content': fix_prompt})
+            else:
+                tmp.append({'role': 'user', 'content': fix_prompt})
             result = llm.give_context(tmp)
-            del(tmp)
+            tmp = context.copy()
     try:
         if len(matches) == 0:
             matches.append("<?php\n\n?>")
@@ -65,8 +69,8 @@ def mate(male, female):
     prompt += male + "\n```"
     prompt += "Here is Code B:\n```"
     prompt += female + "\n```"
-    prompt += "\nMix Code A and Code B together in 3 different ways. Return as ```<code>```\
-            \n```<code>``` \n```<code>```"
+    prompt += "\nMix Code A and Code B together in 2 different ways. Return as ```<code>```\
+            \n```<code>```"
     #prompt += "Use Code B in Code A. Do not simply append B to A." ?
     context.append({'role':'user','content':prompt})
     return context
@@ -132,7 +136,7 @@ def query_loop(seed_data, llm_queue, cov_queue):
             seed_data[name0]['parents']=seed_data[seed_name]['parents']
             seed_data[name1]['parents']=seed_data[seed_name]['parents']
             seed_data[name2]['parents']=seed_data[seed_name]['parents']
-            cov_queue.put(php0); cov_queue.put(php1); cov_queue.put(php2))
+            cov_queue.put(php0); cov_queue.put(php1); cov_queue.put(php2)
             del(seed_data[seed_name])
             quit()
         elif("_f" in request_file): #Fix request
@@ -208,7 +212,7 @@ def next_gen(seed_data, llm_queue, cov_queue):
     for pair in pairs:
         tmp_seed_name = secrets.token_hex(10)
         #php_file = os.path.join(new_dir,seed_name + ".php")
-        create_seed_data(seed_data, tmp_seed_name, php_file)
+        create_seed_data(seed_data, tmp_seed_name, None)
         seed_data[tmp_seed_name]['parents'] = pair
         prev_gen_dir = 'gen_' + str(GEN_NUM-1)
         with open(os.path.join(prev_gen_dir,pair[0]),'r') as f:
