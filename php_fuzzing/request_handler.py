@@ -129,7 +129,6 @@ def query_loop(seed_data, llm_queue, cov_queue):
             seed_data[name]['parents']=seed_data[seed_name]['parents']
             cov_queue.put(php0); #cov_queue.put(php1); #cov_queue.put(php2)
             del(seed_data[seed_name])
-            quit()
         elif("_f" in request_file): #Fix request
             print("Fixing: {}".format(request_file))
             if seed_data[seed_name]['fix_count'] == 5:
