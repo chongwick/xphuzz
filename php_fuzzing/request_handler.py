@@ -19,40 +19,36 @@ seed_data_lock = Lock()
 
 GEN_NUM = 0
 
-def correct_format(llm, result, context, num):
-    tmp = context.copy()
+def correct_format(llm, result, context):
+    result = [line + "\n" for line in result.split("\n")]
+    #if result[0].strip() == "error":
+    #    raise RuntimeError("Restarting LLM")
     i = 0
-    matches = []
+    code = ""
     while i < 2:
         i += 1
-        pattern = r'```(.*?)```'
-        matches = re.findall(pattern,result,re.DOTALL)
-        if len(matches) == num:
-            break;
-        else:
+        code_section = False
+        for line in result:
+            if "```" in line and not(code_section):
+                code_section = True
+            elif "```" in line and code_section:
+                break
+            elif code_section:
+                code += line
+        if code == "":
             print("\n! Re-query: Format Error !\n")
-            if num == 1:
-                tmp.append({'role': 'user', 'content': fix_prompt})
-            else:
-                tmp.append({'role': 'user', 'content': mix_prompt})
-            result = llm.give_context(tmp)
-            tmp = context.copy()
-    try:
-        if len(matches) == 0:
-            matches.append("<?php\n\n?>")
-            return matches
+            context.append({'role': 'user', 'content': fix_prompt})
+            result = llm.give_context(context)
         else:
-            i = 0
-            while i < len(matches):
-                code = matches[i]
-                if "<?php" not in code.split("\n")[0]:
-                    code = "<?php\n" + code + "\n?>"
-                matches[i] = code
+            break
+    try:
+        if "<?php" not in code.split("\n")[0]:
+            code = "<?php\n" + code + "\n?>"
     except Exception as e:
         print("ERRRORRRRRR")
         print(code)
-    print(matches);quit()
-    return matches
+        quit()
+    return code
 
 def generate_fix_prompt(code, error):
     role = 'Fix PHP code. Return as ```<code>```'
@@ -70,8 +66,7 @@ def mate(male, female):
     prompt += male + "\n```"
     prompt += "Here is Code B:\n```"
     prompt += female + "\n```"
-    prompt += "\nMix Code A and Code B together. Do not simply append B to A. Return as ```<code>```\
-            \n```<code>```"
+    prompt += "\nMix Code A and Code B together. Do not simply append B to A. Return as ```<code>```\"
     #prompt += "Use Code B in Code A. Do not simply append B to A." ?
     context.append({'role':'user','content':prompt})
     return context
@@ -117,7 +112,7 @@ def query_loop(seed_data, llm_queue, cov_queue):
             os.remove(request_file)
             result = llm.give_context(context)
             context.append({'role':'assistant','content':result})
-            code = correct_format(llm, result, context, 1)[0]
+            code = correct_format(llm, result, context)
             utils.write_file(php_file, code)
             cov_queue.put(php_file)
         elif("_m" in request_file): #Mate request
@@ -126,17 +121,12 @@ def query_loop(seed_data, llm_queue, cov_queue):
             os.remove(request_file)
             result = llm.give_context(context)
             context.append({'role':'assistant','content':result})
-            childs = correct_format(llm, result, context, 1)[0]
+            child = correct_format(llm, result, context)
             dr = "gen_" + str(GEN_NUM)
-            child0=childs[0];name0=secrets.token_hex(10);php0=os.path.join(dr,name0+".php")
-            #child1=childs[1];name1=secrets.token_hex(10);php1=os.path.join(dr,name1+".php")
-            #child2=childs[2];name2=secrets.token_hex(10);php2=os.path.join(dr,name2+".php")
-            create_seed_data(seed_data, name0, php0); utils.write_file(php0,child0)
-            #create_seed_data(seed_data, name1, php1); utils.write_file(php1,child1)
-            #create_seed_data(seed_data, name2, php2); utils.write_file(php2,child2)
-            seed_data[name0]['parents']=seed_data[seed_name]['parents']
-            #seed_data[name1]['parents']=seed_data[seed_name]['parents']
-            #seed_data[name2]['parents']=seed_data[seed_name]['parents']
+            name = secrets.token_hex(10);
+            php0 = os.path.join(dr,name+".php")
+            create_seed_data(seed_data, name, php0); utils.write_file(php0,child)
+            seed_data[name]['parents']=seed_data[seed_name]['parents']
             cov_queue.put(php0); #cov_queue.put(php1); #cov_queue.put(php2)
             del(seed_data[seed_name])
             quit()
@@ -157,7 +147,7 @@ def query_loop(seed_data, llm_queue, cov_queue):
                 else:
                     result = llm.give_context(context)
                     context.append({'role':'assistant','content':result})
-                    code = correct_format(llm, result, context, 1)[0]
+                    code = correct_format(llm, result, context)
                     utils.write_file(php_file, code)
                     cov_queue.put(php_file)
         i = update_data(i, llm_queue, cov_queue)
