@@ -7,7 +7,12 @@ import config as cfg
 import utils
 from executor import Executor
 
-def mutate(directory):
+def mutate():
+    tmp = []
+    for i in os.listdir(os.getcwd()):
+        if "gen_" in i:
+            tmp.append(int(i.split("_")[1]))
+    directory = "gen_"+str(max(tmp))
     targets = os.listdir(directory)
     insertion_symbol = "\n<phpfuzz>\n"
     with open("template.php","r") as f:
@@ -30,7 +35,7 @@ def sanitization_loop():
     while(True):
         php_file = utils.pop_from_queue(cfg.san_queue)
         if php_file == -1:
-            mutate("gen_1") #change this
+            mutate() #change this
             continue
         result = san_eng.execute_prog(php_file)
         if result == -1:

@@ -66,7 +66,7 @@ def mate(male, female):
     prompt += male + "\n```"
     prompt += "Here is Code B:\n```"
     prompt += female + "\n```"
-    prompt += "\nMix Code A and Code B together. Do not simply append B to A. Return as ```<code>```\"
+    prompt += "\nMix Code A and Code B together. Do not simply append B to A. Return as ```<code>```"
     #prompt += "Use Code B in Code A. Do not simply append B to A." ?
     context.append({'role':'user','content':prompt})
     return context
@@ -197,12 +197,33 @@ def next_gen(seed_data, llm_queue, cov_queue):
                 f = female_group[random.randint(0,len(female_group)-1)]
             pairs.append((m,f))
     else:
-        quit()
+        print("yeah i'm done")
+        os._exit(1)
         directory = 'gen_'+str(GEN_NUM)
         generation = os.listdir(directory)
         male_group = generation[:len(generation)//2]
         female_group = generation[len(generation)//2:]
-        ...
+        for m in male_group:
+            m_name = m.split(".")[0]
+            f = female_group[random.randint(0,len(female_group)-1)]
+            f_name = f.split(".")[0]
+            for parent in seed_data[m_name]['parents']:
+                while parent in seed_data[f_name]['parents']:
+                    f = female_group[random.randint(0,len(female_group)-1)]
+                    f_name = f.split(".")[0]
+            female_group.remove(f)
+            pairs.append((m,f))
+        female_group = generation[len(generation)//2:]
+        for m in male_group:
+            m_name = m.split(".")[0]
+            f = female_group[random.randint(0,len(female_group)-1)]
+            f_name = f.split(".")[0]
+            for parent in seed_data[m_name]['parents']:
+                while parent in seed_data[f_name]['parents']:
+                    f = female_group[random.randint(0,len(female_group)-1)]
+                    f_name = f.split(".")[0]
+            female_group.remove(f)
+            pairs.append((m,f))
 
     GEN_NUM += 1
     new_dir = "gen_" + str(GEN_NUM)
