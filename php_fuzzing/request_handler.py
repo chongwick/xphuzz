@@ -14,6 +14,7 @@ import errreader as err
 
 fix_prompt = "The response did not correspond to the ```<code>``` format."
 mix_prompt = "The response did not correspond to the ```<code>``` ```<code>``` ```<code>```format." 
+min_prompt = "Reduce the amount of tokens in this code. Return as ```<code>```"
 seed_data_lock = Lock()
 
 GEN_NUM = 0
@@ -33,7 +34,7 @@ def correct_format(llm, result, context, num):
             if num == 1:
                 tmp.append({'role': 'user', 'content': fix_prompt})
             else:
-                tmp.append({'role': 'user', 'content': fix_prompt})
+                tmp.append({'role': 'user', 'content': mix_prompt})
             result = llm.give_context(tmp)
             tmp = context.copy()
     try:
@@ -69,7 +70,7 @@ def mate(male, female):
     prompt += male + "\n```"
     prompt += "Here is Code B:\n```"
     prompt += female + "\n```"
-    prompt += "\nMix Code A and Code B together in 2 different ways. Return as ```<code>```\
+    prompt += "\nMix Code A and Code B together. Do not simply append B to A. Return as ```<code>```\
             \n```<code>```"
     #prompt += "Use Code B in Code A. Do not simply append B to A." ?
     context.append({'role':'user','content':prompt})
@@ -125,18 +126,18 @@ def query_loop(seed_data, llm_queue, cov_queue):
             os.remove(request_file)
             result = llm.give_context(context)
             context.append({'role':'assistant','content':result})
-            childs = correct_format(llm, result, context, 1)
+            childs = correct_format(llm, result, context, 1)[0]
             dr = "gen_" + str(GEN_NUM)
             child0=childs[0];name0=secrets.token_hex(10);php0=os.path.join(dr,name0+".php")
-            child1=childs[1];name1=secrets.token_hex(10);php1=os.path.join(dr,name1+".php")
-            child2=childs[2];name2=secrets.token_hex(10);php2=os.path.join(dr,name2+".php")
+            #child1=childs[1];name1=secrets.token_hex(10);php1=os.path.join(dr,name1+".php")
+            #child2=childs[2];name2=secrets.token_hex(10);php2=os.path.join(dr,name2+".php")
             create_seed_data(seed_data, name0, php0); utils.write_file(php0,child0)
-            create_seed_data(seed_data, name1, php1); utils.write_file(php1,child1)
-            create_seed_data(seed_data, name2, php2); utils.write_file(php2,child2)
+            #create_seed_data(seed_data, name1, php1); utils.write_file(php1,child1)
+            #create_seed_data(seed_data, name2, php2); utils.write_file(php2,child2)
             seed_data[name0]['parents']=seed_data[seed_name]['parents']
-            seed_data[name1]['parents']=seed_data[seed_name]['parents']
-            seed_data[name2]['parents']=seed_data[seed_name]['parents']
-            cov_queue.put(php0); cov_queue.put(php1); cov_queue.put(php2)
+            #seed_data[name1]['parents']=seed_data[seed_name]['parents']
+            #seed_data[name2]['parents']=seed_data[seed_name]['parents']
+            cov_queue.put(php0); #cov_queue.put(php1); #cov_queue.put(php2)
             del(seed_data[seed_name])
             quit()
         elif("_f" in request_file): #Fix request
@@ -199,6 +200,12 @@ def next_gen(seed_data, llm_queue, cov_queue):
             f = female_group[random.randint(0,len(female_group)-1)]
             female_group.remove(f)
             pairs.append((m,f))
+        female_group = generation[len(generation)//2:]
+        for m in male_group:
+            f = female_group[random.randint(0,len(female_group)-1)]
+            if (m,f) in pairs:
+                f = female_group[random.randint(0,len(female_group)-1)]
+            pairs.append((m,f))
     else:
         quit()
         directory = 'gen_'+str(GEN_NUM)
@@ -206,6 +213,7 @@ def next_gen(seed_data, llm_queue, cov_queue):
         male_group = generation[:len(generation)//2]
         female_group = generation[len(generation)//2:]
         ...
+
     GEN_NUM += 1
     new_dir = "gen_" + str(GEN_NUM)
     os.makedirs(new_dir)

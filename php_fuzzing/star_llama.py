@@ -295,7 +295,7 @@ class LLAMA3_LLM:
         self.original_context = self.context.copy()
         self.temperature = temperature
         self.absolute_max = 1048576
-        self.max_response_length = 500
+        self.max_response_length = 500 #Maybe this hsould be equal to the absolute max?
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_id)
         self.terminators = [self.tokenizer.eos_token_id,
                        self.tokenizer.convert_tokens_to_ids("<|eot_id|>")]
