@@ -64,6 +64,7 @@ def sanitization_loop():
                 os.remove(php_file)
             else:
                 print("POTENTIAL VULN", php_file)
+                os.rename(php_file, os.path.join("pot_vulns",php_file.split("/")[1]))
         else:
             print("OK")
             os.remove(php_file)
