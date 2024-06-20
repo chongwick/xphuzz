@@ -204,9 +204,9 @@ def next_gen(seed_data, llm_queue, cov_queue):
         create_seed_data(seed_data, tmp_seed_name, None)
         seed_data[tmp_seed_name]['parents'] = set(pair)
         prev_gen_dir = 'gen_' + str(GEN_NUM-1)
-        with open(os.path.join(prev_gen_dir,pair[0]),'r') as f:
+        with open(os.path.join(prev_gen_dir,pair[0]+".php"),'r') as f:
             female = f.read()
-        with open(os.path.join(prev_gen_dir,pair[1]),'r') as m:
+        with open(os.path.join(prev_gen_dir,pair[1]+".php"),'r') as m:
             male = m.read()
         mate_query = mate(male,female)
         mate_req_name = os.path.join(cfg.llm_requests,
