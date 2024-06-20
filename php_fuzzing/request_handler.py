@@ -1,3 +1,4 @@
+import time
 import re
 import secrets
 import random
@@ -11,6 +12,7 @@ from queue import Queue
 from threading import Thread, Lock
 from executor import Executor 
 import errreader as err
+from aljamain_sterling import pairing_aljo
 
 fix_prompt = "The response did not correspond to the ```<code>``` format."
 mix_prompt = "The response did not correspond to the ```<code>``` ```<code>``` ```<code>```format." 
@@ -74,13 +76,17 @@ def mate(male, female):
 def minimize(seed):
     print("minimize this")
 
-def update_data(iteration, llm_queue, cov_queue):
-    if iteration == 20:
-        utils.dump_pickle(cfg.llm_queue, list(llm_queue.queue))
-        utils.dump_pickle(cfg.cov_queue, list(cov_queue.queue))
-        return 0
-    else:
-        return iteration + 1
+def update_data(llm_queue, cov_queue, seed_data):
+    utils.dump_pickle(cfg.llm_queue, list(llm_queue.queue))
+    utils.dump_pickle(cfg.cov_queue, list(cov_queue.queue))
+    utils.dump_pickle(cfg.seed_data, seed_data)
+
+def room_service(safe_files):
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    cur_files = os.listdir(dir_path)
+    for i in cur_files:
+        if i not in safe_files or "gen_" not in i or "blank.php" not in i:
+            os.remove(os.path.join(dir_path,i))
 
 def create_seed_data(seed_data, seed_name, php_file):
     with seed_data_lock:
@@ -91,7 +97,8 @@ def create_seed_data(seed_data, seed_name, php_file):
                     "php_file": php_file,
                     "context": None,
                     "coverage": 0, #coverage is relative to the base map
-                    "parents": None, #we don't want inbreeding
+                    "parents": None, #we don't want inbreeding !!!Parents should be a set!!!
+                    "time": 0
                     }
 
 def query_loop(seed_data, llm_queue, cov_queue):
@@ -107,6 +114,7 @@ def query_loop(seed_data, llm_queue, cov_queue):
                 request_file.split("/")[-1].split("_")[0]+".php")
         create_seed_data(seed_data, seed_name, php_file)
         if("_t" in request_file): 
+            start = time.time()
             print("Translating: {}".format(request_file))
             context = utils.load_pickle(request_file)
             os.remove(request_file)
@@ -116,6 +124,7 @@ def query_loop(seed_data, llm_queue, cov_queue):
             utils.write_file(php_file, code)
             cov_queue.put(php_file)
         elif("_m" in request_file): #Mate request
+            tmp_seed_name = seed_name
             print("Mating: {}".format(request_file))
             context = utils.load_pickle(request_file)
             os.remove(request_file)
@@ -123,12 +132,13 @@ def query_loop(seed_data, llm_queue, cov_queue):
             context.append({'role':'assistant','content':result})
             child = correct_format(llm, result, context)
             dr = "gen_" + str(GEN_NUM)
-            name = secrets.token_hex(10);
-            php0 = os.path.join(dr,name+".php")
-            create_seed_data(seed_data, name, php0); utils.write_file(php0,child)
-            seed_data[name]['parents']=seed_data[seed_name]['parents']
-            cov_queue.put(php0); #cov_queue.put(php1); #cov_queue.put(php2)
-            del(seed_data[seed_name])
+            seed_name = secrets.token_hex(10);
+            php_file = os.path.join(dr,seed_name+".php")
+            create_seed_data(seed_data, seed_name, php_file)
+            utils.write_file(php_file,child)
+            seed_data[seed_name]['parents']=seed_data[tmp_seed_name]['parents']
+            cov_queue.put(php_file); #cov_queue.put(php1); #cov_queue.put(php2)
+            del(seed_data[tmp_seed_name])
         elif("_f" in request_file): #Fix request
             print("Fixing: {}".format(request_file))
             if seed_data[seed_name]['fix_count'] == 5:
@@ -149,9 +159,10 @@ def query_loop(seed_data, llm_queue, cov_queue):
                     code = correct_format(llm, result, context)
                     utils.write_file(php_file, code)
                     cov_queue.put(php_file)
-        i = update_data(i, llm_queue, cov_queue)
+        update_data(llm_queue, cov_queue, seed_data)
 
 def coverage_loop(seed_data, llm_queue, cov_queue):
+    safe_files = os.listdir(os.path.dirname(os.path.realpath(__file__)))  
     cov_eng = Executor(cfg.coverage_engine)
     while(True):
         if cov_queue.qsize() == 0 and llm_queue.qsize() == 0:
@@ -176,62 +187,22 @@ def coverage_loop(seed_data, llm_queue, cov_queue):
                 coverage = cov_eng.read()
                 seed_name = php_file.split("/")[-1].split(".")[0]
                 seed_data[seed_name]['coverage'] = coverage
+            update_data(llm_queue, cov_queue, seed_data)
+            room_service(safe_files)
 
 def next_gen(seed_data, llm_queue, cov_queue):
     global GEN_NUM
     pairs = []
     print("Creating new generation")
-    if GEN_NUM == 0:
-        generation = os.listdir('gen_0')
-        male_group = generation[:len(generation)//2]
-        female_group = generation[len(generation)//2:]
-        for m in male_group:
-            f = female_group[random.randint(0,len(female_group)-1)]
-            female_group.remove(f)
-            pairs.append((m,f))
-        female_group = generation[len(generation)//2:]
-        for m in male_group:
-            f = female_group[random.randint(0,len(female_group)-1)]
-            if (m,f) in pairs:
-                f = female_group[random.randint(0,len(female_group)-1)]
-            pairs.append((m,f))
-    else:
-        print("yeah i'm done")
-        os._exit(1)
-        directory = 'gen_'+str(GEN_NUM)
-        generation = os.listdir(directory)
-        male_group = generation[:len(generation)//2]
-        female_group = generation[len(generation)//2:]
-        for m in male_group:
-            m_name = m.split(".")[0]
-            f = female_group[random.randint(0,len(female_group)-1)]
-            f_name = f.split(".")[0]
-            for parent in seed_data[m_name]['parents']:
-                while parent in seed_data[f_name]['parents']:
-                    f = female_group[random.randint(0,len(female_group)-1)]
-                    f_name = f.split(".")[0]
-            female_group.remove(f)
-            pairs.append((m,f))
-        female_group = generation[len(generation)//2:]
-        for m in male_group:
-            m_name = m.split(".")[0]
-            f = female_group[random.randint(0,len(female_group)-1)]
-            f_name = f.split(".")[0]
-            for parent in seed_data[m_name]['parents']:
-                while parent in seed_data[f_name]['parents']:
-                    f = female_group[random.randint(0,len(female_group)-1)]
-                    f_name = f.split(".")[0]
-            female_group.remove(f)
-            pairs.append((m,f))
-
+    pairs = pairing_aljo(GEN_NUM, seed_data)
     GEN_NUM += 1
     new_dir = "gen_" + str(GEN_NUM)
     os.makedirs(new_dir)
     for pair in pairs:
-        tmp_seed_name = secrets.token_hex(10)
+        tmp_seed_name = secrets.token_hex(10) #This temporary seed will hold parent data
         #php_file = os.path.join(new_dir,seed_name + ".php")
         create_seed_data(seed_data, tmp_seed_name, None)
-        seed_data[tmp_seed_name]['parents'] = pair
+        seed_data[tmp_seed_name]['parents'] = set(pair)
         prev_gen_dir = 'gen_' + str(GEN_NUM-1)
         with open(os.path.join(prev_gen_dir,pair[0]),'r') as f:
             female = f.read()

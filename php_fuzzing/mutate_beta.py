@@ -12,7 +12,8 @@ def mutate():
     for i in os.listdir(os.getcwd()):
         if "gen_" in i:
             tmp.append(int(i.split("_")[1]))
-    tmp.remove(max(tmp))
+    if len(tmp) > 1:
+        tmp.remove(max(tmp))
     directory = "gen_"+str(max(tmp))
     targets = os.listdir(directory)
     insertion_symbol = "\n<phpfuzz>\n"
