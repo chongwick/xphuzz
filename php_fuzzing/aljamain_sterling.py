@@ -17,7 +17,8 @@ def get_coverages(pool, seed_data):
     coverages = {k: v for k, v in sorted(tmp.items(), key=lambda item: item[1])}
     return coverages
 
-def pairing_aljo(gen_num, seed_data):
+def pairing_aljo(gen_num):
+    seed_data = utils.load_pickle(cfg.seed_data)
     if gen_num != 0:
         old_dir = 'gen_'+str(gen_num-1)
         directory = 'gen_'+str(gen_num)
@@ -91,5 +92,4 @@ def pairing_aljo(gen_num, seed_data):
 
     return pairs
 
-seed_data = utils.load_pickle("seed_data.pickle")
-pairing_aljo(0, seed_data)
+pairing_aljo(0)

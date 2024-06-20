@@ -194,7 +194,7 @@ def next_gen(seed_data, llm_queue, cov_queue):
     global GEN_NUM
     pairs = []
     print("Creating new generation")
-    pairs = pairing_aljo(GEN_NUM, seed_data)
+    pairs = pairing_aljo(GEN_NUM)
     GEN_NUM += 1
     new_dir = "gen_" + str(GEN_NUM)
     os.makedirs(new_dir)
