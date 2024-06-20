@@ -85,7 +85,7 @@ def room_service(safe_files):
     dir_path = os.path.dirname(os.path.realpath(__file__))
     cur_files = os.listdir(dir_path)
     for i in cur_files:
-        if i not in safe_files or "gen_" not in i or "blank.php" not in i:
+        if i not in safe_files and "gen_" not in i and "blank.php" not in i:
             os.remove(os.path.join(dir_path,i))
 
 def create_seed_data(seed_data, seed_name, php_file):
