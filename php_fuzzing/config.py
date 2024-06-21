@@ -9,6 +9,7 @@ model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
 llm_requests = "llm_requests"
 seed_data = "seed_data.pickle"
 php_corpus = "php_corpus"
+php_template = "template.php"
 
 llm_queue = "llm_requests/queue.pickle"
 cov_queue = "queues/cov_queue.pickle"

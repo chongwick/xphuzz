@@ -73,8 +73,21 @@ def mate(male, female):
     context.append({'role':'user','content':prompt})
     return context
 
+def mutation_insertion(code, line):
+    role = "You are a randomized PHP code modifier. Return as ```<code>```'
+    context = [{'role':'system','content':role}]
+    prompt = "Here is CODE:\n```{c}\n```\nHere is LINE:\n```{l}\n```\nUse LINE\
+            to modify CODE.".format(c=code,l=line)
+    context.append({'role':'user','content':prompt})
+    return context
+
 def minimize(seed):
-    print("minimize this")
+    role = "You are a token reducer. Return as ```<code>```"
+    context = [{'role':'system','content':role}]
+    prompt = "```{}```\nReduce the amount of tokens while maintaining functionality".format(
+            seed)
+    context.append({'role':'user','content':prompt})
+    return context
 
 def update_data(llm_queue, cov_queue, seed_data):
     utils.dump_pickle(cfg.llm_queue, list(llm_queue.queue))
@@ -172,7 +185,15 @@ def coverage_loop(seed_data, llm_queue, cov_queue):
             print("mapping: ", php_file)
             cov_eng.load_global_coverage_map_from_file(cfg.base_map)
             code = utils.read_file(php_file)
+
+            with open(cfg.php_template,"r") as f:
+                template = f.read()
+            code.replace("<?php",template)
+            utils.write_file(php_file,code)
             result = cov_eng.execute_prog(php_file)
+            code.replace(template,"<?php")
+            utils.write_file(php_file,code)
+
             if result == -1:
                 print("Bad execution")
                 continue
