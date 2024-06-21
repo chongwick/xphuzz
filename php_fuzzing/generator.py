@@ -67,7 +67,7 @@ def GenerateNewSample(template, jsgrammar, n_lines):
     return result
 
 
-def generate_samples(grammar_dir, outfile, template, n_lines):
+def generate_samples(grammar_dir, outfile, template, n_lines, lineguard="php.txt"):
     """Generates a set of samples and writes them to the output files.
 
     Args:
@@ -80,12 +80,14 @@ def generate_samples(grammar_dir, outfile, template, n_lines):
     #f.close()
 
     jsgrammar = Grammar()
-    err = jsgrammar.parse_from_file(os.path.join(grammar_dir, 'php.txt'))
+    err = jsgrammar.parse_from_file(os.path.join(grammar_dir, lineguard))
     if err > 0:
         print('There were errors parsing grammar')
         return
 
     result = GenerateNewSample(template, jsgrammar, n_lines)
+    if outfile == None:
+        return result
     #print(result)
 
     if result is not None:

@@ -13,6 +13,7 @@ from threading import Thread, Lock
 from executor import Executor 
 import errreader as err
 from aljamain_sterling import pairing_aljo
+from generator import generate_samples
 
 fix_prompt = "The response did not correspond to the ```<code>``` format."
 mix_prompt = "The response did not correspond to the ```<code>``` ```<code>``` ```<code>```format." 
@@ -40,6 +41,7 @@ def correct_format(llm, result, context):
         if code == "":
             print("\n! Re-query: Format Error !\n")
             context.append({'role': 'user', 'content': fix_prompt})
+            del(result)
             result = llm.give_context(context)
         else:
             break
@@ -73,9 +75,10 @@ def mate(male, female):
     context.append({'role':'user','content':prompt})
     return context
 
-def mutation_insertion(code, line):
-    role = "You are a randomized PHP code modifier. Return as ```<code>```'
+def mutation_insertion(code):
+    role = "You are a randomized PHP code modifier. Return as ```<code>```"
     context = [{'role':'system','content':role}]
+    line = generate_samples(os.path.dirname(__file__),None,"<phpfuzz>",1,"no_guard_php.txt")
     prompt = "Here is CODE:\n```{c}\n```\nHere is LINE:\n```{l}\n```\nUse LINE\
             to modify CODE.".format(c=code,l=line)
     context.append({'role':'user','content':prompt})
@@ -142,6 +145,10 @@ def query_loop(seed_data, llm_queue, cov_queue):
             context = utils.load_pickle(request_file)
             os.remove(request_file)
             result = llm.give_context(context)
+            context.append({'role':'assistant','content':result})
+            child = correct_format(llm, result, context)
+            print("Inserting Mutation")
+            result = llm.give_context(mutation_insertion(child))
             context.append({'role':'assistant','content':result})
             child = correct_format(llm, result, context)
             dr = "gen_" + str(GEN_NUM)
