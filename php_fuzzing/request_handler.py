@@ -138,8 +138,10 @@ def query_loop(seed_data, llm_queue, cov_queue):
             context.append({'role':'assistant','content':result})
             code = correct_format(llm, result, context)
             utils.write_file(php_file, code)
+            seed_data[seed_name]['time'] += start - time.time()
             cov_queue.put(php_file)
         elif("_m" in request_file): #Mate request
+            start = time.time()
             tmp_seed_name = seed_name
             print("Mating: {}".format(request_file))
             context = utils.load_pickle(request_file)
@@ -157,9 +159,11 @@ def query_loop(seed_data, llm_queue, cov_queue):
             create_seed_data(seed_data, seed_name, php_file)
             utils.write_file(php_file,child)
             seed_data[seed_name]['parents']=seed_data[tmp_seed_name]['parents']
+            seed_data[seed_name]['time'] += start - time.time()
             cov_queue.put(php_file); #cov_queue.put(php1); #cov_queue.put(php2)
             del(seed_data[tmp_seed_name])
         elif("_f" in request_file): #Fix request
+            start = time.time()
             print("Fixing: {}".format(request_file))
             if seed_data[seed_name]['fix_count'] == 5:
                 os.remove(request_file)
@@ -179,6 +183,7 @@ def query_loop(seed_data, llm_queue, cov_queue):
                     code = correct_format(llm, result, context)
                     utils.write_file(php_file, code)
                     cov_queue.put(php_file)
+                    seed_data[seed_name]['time'] += start - time.time()
         update_data(llm_queue, cov_queue, seed_data)
 
 def coverage_loop(seed_data, llm_queue, cov_queue):

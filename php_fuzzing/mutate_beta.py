@@ -37,9 +37,18 @@ def sanitization_loop():
     while(True):
         php_file = utils.pop_from_queue(cfg.san_queue)
         if php_file == -1:
-            mutate() #change this
+            #mutate() #change this
             continue
+
+        with open(cfg.php_template,"r") as f:
+            template = f.read()
+        code.replace("<?php",template)
+        utils.write_file(php_file,code)
         result = san_eng.execute_prog(php_file)
+        code.replace(template,"<?php")
+        utils.write_file(php_file,code)
+
+        #result = san_eng.execute_prog(php_file)
         if result == -1:
             print("really suspicious:", php_file)
             continue
@@ -63,10 +72,10 @@ def sanitization_loop():
                 print("ASSERTION", php_file)
                 os.remove(php_file)
             else:
-                print("POTENTIAL VULN", php_file)
+                print("POTENTIAL VULN", php_file, san_eng.ret_code)
                 os.rename(php_file, os.path.join("pot_vulns",php_file.split("/")[1]))
         else:
-            print("OK")
+            #print("OK")
             os.remove(php_file)
 
 def main():
