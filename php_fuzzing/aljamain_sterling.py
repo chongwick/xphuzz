@@ -45,21 +45,25 @@ def pairing_aljo(gen_num):
             while len(top_five) != 0:
                 male = top_five.pop(random.randint(0,len(top_five)-1))
                 female = top_five.pop(random.randint(0,len(top_five)-1))
-                if seed_data[male]['parents'].intersection(
-                        seed_data[female]['parents']):
-                    tmp_fem = female
-                    female = top_five.pop(random.randint(0,len(top_five)-1))
-                    top_five.append(tmp_fem)
+                if seed_data[male]['parents'] != None and (
+                        seed_data[female]['parents'] != None):
+                    if seed_data[male]['parents'].intersection(
+                            seed_data[female]['parents']):
+                        tmp_fem = female
+                        female = top_five.pop(random.randint(0,len(top_five)-1))
+                        top_five.append(tmp_fem)
                 pairs.append((male,female))
             top_five = top_five_copy
             while len(the_rest) != 0:
                 male = the_rest.pop(random.randint(0,len(the_rest)-1))
                 female = the_rest.pop(random.randint(0,len(the_rest)-1))
-                if seed_data[male]['parents'].intersection(
-                        seed_data[female]['parents']):
-                    tmp_fem = female
-                    female = the_rest.pop(random.randint(0,len(the_rest)-1))
-                    the_rest.append(tmp_fem)
+                if seed_data[male]['parents'] != None and (
+                        seed_data[female]['parents'] != None):
+                    if seed_data[male]['parents'].intersection(
+                            seed_data[female]['parents']):
+                        tmp_fem = female
+                        female = the_rest.pop(random.randint(0,len(the_rest)-1))
+                        the_rest.append(tmp_fem)
                 pairs.append((male,female))
             the_rest = the_rest_copy
             count += 1
@@ -92,4 +96,4 @@ def pairing_aljo(gen_num):
 
     return pairs
 
-pairing_aljo(0)
+#print(pairing_aljo(1))

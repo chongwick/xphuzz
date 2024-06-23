@@ -20,7 +20,7 @@ def mutate():
     with open("template.php","r") as f:
         template = f.readlines()
     for tar in targets:
-        outfile = os.path.join(cfg.mutation_directory,secrets.token_hex(10) + ".php")
+        outfile = os.path.join(cfg.mutation_directory,tar+ "_M.php")
         #outfile = os.path.join(outdir,tar+"_M")
         tmp_copy = template.copy()
         with open(os.path.join(directory,tar),"r") as f:
@@ -42,6 +42,7 @@ def sanitization_loop():
 
         with open(cfg.php_template,"r") as f:
             template = f.read()
+        code = utils.read_file(php_file)
         code.replace("<?php",template)
         utils.write_file(php_file,code)
         result = san_eng.execute_prog(php_file)
@@ -55,28 +56,28 @@ def sanitization_loop():
         if san_eng.ret_code != 0:
             if san_eng.ret_code == 255:
                 print("EXCEPTION ", php_file)
-                os.remove(php_file)
+                #os.remove(php_file)
             elif san_eng.ret_code == 124:
                 print("TIMEOUT ", php_file)
-                os.remove(php_file)
+                #os.remove(php_file)
             elif san_eng.ret_code == 153:
                 print("MEMORY LEAK", php_file)
-                os.remove(php_file)
+                #os.remove(php_file)
             elif "Allowed memory size of" in result:
                 print("OOM", php_file)
-                os.remove(php_file)
+                #os.remove(php_file)
             elif "AddressSanitizer failed to allocate" in result:
                 print("OOM", php_file)
-                os.remove(php_file)
+                #os.remove(php_file)
             elif "Assertion" in result:
                 print("ASSERTION", php_file)
-                os.remove(php_file)
+                #os.remove(php_file)
             else:
                 print("POTENTIAL VULN", php_file, san_eng.ret_code)
                 os.rename(php_file, os.path.join("pot_vulns",php_file.split("/")[1]))
         else:
             #print("OK")
-            os.remove(php_file)
+            #os.remove(php_file)
 
 def main():
     sanitization_loop()

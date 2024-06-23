@@ -20,7 +20,12 @@ mix_prompt = "The response did not correspond to the ```<code>``` ```<code>``` `
 min_prompt = "Reduce the amount of tokens in this code. Return as ```<code>```"
 seed_data_lock = Lock()
 
-GEN_NUM = 0
+tmp = []
+for i in os.listdir(os.getcwd()):
+    if "gen_" in i:
+        tmp.append(int(i.split("_")[1]))    
+GEN_NUM = max(tmp) #Current generation
+del(tmp)
 
 def correct_format(llm, result, context):
     result = [line + "\n" for line in result.split("\n")]
