@@ -108,6 +108,28 @@ def minimize(seed):
     context.append({'role':'user','content':prompt})
     return context
 
+def new_corpus(llm, iterations, out_dir):
+    for i in iterations:
+        role = 'Change PHP code as instructed. Here are some values to use: 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400. Return as ```<code>```'
+        context = [{'role': 'system', 'content': role}]
+        #llm = LLAMA3_LLM(context)
+        #print("llm loaded")
+        code = '$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), str_repeat(chr(193), 257) + str_repeat(chr(155), 17) + str_repeat(chr(147), 4097), str_repeat(chr(161), 65537) + str_repeat(chr(213), 1025) + str_repeat(chr(214), 1025));'
+        prompt = 'Use this code in a complex PHP script:\n```\n{}\n```'.format(code)
+        context.append({'role':'user','content':code})
+        response = '```code\n<?php\n$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),\nbin2hex(str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)),\nbin2hex(str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025)));\n?>\n```'
+        context.append({'role':'assistant','content':response})
+        #new_code = 'passthru(implode(array_map(function($c) {return "\\x" . str_pad(deche    x($c), 2, "0");}, range(0, 255))), $ref_int);'
+        new_code = generate_samples(
+                os.path.dirname(__file__),None,"<phpfuzz>",1,"no_guard_php.txt")
+        context.append({'role':'user','content':'Make this unexpected, weird, and potentially incorrect:\n```\n{}\n```'.format(new_code)})
+        result = query_llm(llm,context)
+        context.append({'role':'assistant','content':result})
+        code = correct_format(llm, result, context)
+        mut_name = secrets.token_hex(10);
+        with open(os.path.join(out_dir,mut_name)) as f:
+            f.write(code)
+
 def update_data(llm_queue, cov_queue, seed_data):
     utils.dump_pickle(cfg.llm_queue, list(llm_queue.queue))
     utils.dump_pickle(cfg.cov_queue, list(cov_queue.queue))
@@ -241,6 +263,13 @@ def coverage_loop(seed_data, llm_queue, cov_queue):
 
 def next_gen(seed_data, llm_queue, cov_queue):
     global GEN_NUM
+    '''tmpe'''
+    print("bootstrapping new gen")
+    outdir = "gen_1_boot"
+    os.makedirs(outdir)
+    new_corpus(llm, 456, outdir)
+    quit()
+    '''tmpe'''
     pairs = []
     print("Creating new generation")
     pairs = pairing_aljo(GEN_NUM)
