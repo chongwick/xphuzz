@@ -432,9 +432,15 @@ def main():
                 f.write("1")
             os.remove(llm_type_file)
         elif is_query():
-            arguments = get_arguments(arguments_file)
-            #os.remove(llm_query_file)
-            os.remove(arguments_file)
+            try:
+                arguments = get_arguments(arguments_file)
+                os.remove(arguments_file)
+            except Exception as e:
+                os.remove(arguments_file)
+                result = "-2"
+                with open(output_file,"w") as f:
+                    f.write(result)
+                continue
             try:
                 start = time.time()
                 result = execute_function(llm_type, llm_object, arguments)
@@ -463,23 +469,11 @@ def main():
                         llm_object = FIM_LLM()
             except Exception as e:
                 print("didnot work", e)
-                result = "```\n<?php\necho \"did not work;\"\n?>\n```"
+                result = "-1"
             with open(output_file, "w") as f:
-                if result != None:
-                    f.write(result)
-                else:
-                    f.write("1")
+                f.write(result)
         else:
             pass
-
-        #except Exception as e:
-        #    print("EXCEPTION: ",e)
-        #    for i in os.listdir(llm_workdir):
-        #        if os.path.isfile(i):
-        #            os.remove(i)
-        #    with open(output_file, "w") as f:
-        #        f.write("error")
-        #    torch.cuda.empty_cache()
 
 if __name__ == "__main__":
     main()

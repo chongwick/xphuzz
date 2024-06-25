@@ -27,6 +27,17 @@ for i in os.listdir(os.getcwd()):
 GEN_NUM = max(tmp) #Current generation
 del(tmp)
 
+def query_llm(llm, context):
+    result = llm.give_context(context)
+    if result == "-2": #corrupted pickling
+        result = llm.give_context(context)
+    elif result == "-1":
+        return -1
+    if result == "-2" or "-1":
+        return -1
+    else:
+        return result
+
 def correct_format(llm, result, context):
     result = [line + "\n" for line in result.split("\n")]
     #if result[0].strip() == "error":
@@ -47,7 +58,7 @@ def correct_format(llm, result, context):
             print("\n! Re-query: Format Error !\n")
             context.append({'role': 'user', 'content': fix_prompt})
             del(result)
-            result = llm.give_context(context)
+            result = query_llm(llm, context)
         else:
             break
     try:
@@ -139,7 +150,7 @@ def query_loop(seed_data, llm_queue, cov_queue):
             print("Translating: {}".format(request_file))
             context = utils.load_pickle(request_file)
             os.remove(request_file)
-            result = llm.give_context(context)
+            result = query_llm(llm,context)
             context.append({'role':'assistant','content':result})
             code = correct_format(llm, result, context)
             utils.write_file(php_file, code)
@@ -151,11 +162,11 @@ def query_loop(seed_data, llm_queue, cov_queue):
             print("Mating: {}".format(request_file))
             context = utils.load_pickle(request_file)
             os.remove(request_file)
-            result = llm.give_context(context)
+            result = query_llm(llm,context)
             context.append({'role':'assistant','content':result})
             child = correct_format(llm, result, context)
             print("Inserting Mutation")
-            result = llm.give_context(mutation_insertion(child))
+            result = query_llm(llm,mutation_insertion(child))
             context.append({'role':'assistant','content':result})
             child = correct_format(llm, result, context)
             dr = "gen_" + str(GEN_NUM)
@@ -183,7 +194,7 @@ def query_loop(seed_data, llm_queue, cov_queue):
                 if utils.num_tokens_from_context(context) > cfg.llama3_max / 2:
                     print("trying to fix.... too big")
                 else:
-                    result = llm.give_context(context)
+                    result = query_llm(llm,context)
                     context.append({'role':'assistant','content':result})
                     code = correct_format(llm, result, context)
                     utils.write_file(php_file, code)
