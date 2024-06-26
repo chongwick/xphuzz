@@ -33,12 +33,14 @@ def query_llm(llm, context):
         result = llm.give_context(context)
     elif result == "-1":
         return -1
-    if result == "-2" or "-1":
+    if result == "-2" or result == "-1":
         return -1
     else:
         return result
 
 def correct_format(llm, result, context):
+    if result == -1 or result == -2:
+        return None
     result = [line + "\n" for line in result.split("\n")]
     #if result[0].strip() == "error":
     #    raise RuntimeError("Restarting LLM")
