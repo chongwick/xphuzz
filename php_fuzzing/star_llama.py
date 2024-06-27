@@ -446,7 +446,7 @@ def main():
                 result = execute_function(llm_type, llm_object, arguments)
                 length = time.time()-start
                 print(length)
-                if length > 120:
+                if length > 40:
                     print("TOOLONG",length)
                     del(llm_object)
                     llm_object = None

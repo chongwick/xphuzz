@@ -17,8 +17,9 @@ def get_coverages(pool, seed_data):
     coverages = {k: v for k, v in sorted(tmp.items(), key=lambda item: item[1])}
     return coverages
 
-def pairing_aljo(gen_num):
+def pairing_aljo(gen_num, boot_gen):
     seed_data = utils.load_pickle(cfg.seed_data)
+    boot_corp = os.listdir(boot_gen)
     if gen_num != 0:
         old_dir = 'gen_'+str(gen_num-1)
         directory = 'gen_'+str(gen_num)
@@ -72,27 +73,26 @@ def pairing_aljo(gen_num):
         pool = [os.path.join(directory,x) for x in os.listdir(directory)]
         pairs = []
         coverages = get_coverages(pool,seed_data)
+        total = list(coverages.keys())
         a = len(coverages)/20
         a = int(a) if ((int(a) % 2) == 0) else int(a) + 1
         top_five = list(coverages.keys())[len(coverages)-a:]
-        top_five_copy = top_five.copy()
         for i in top_five:
             del(coverages[i])
         the_rest = list(coverages.keys())
-        the_rest_copy = the_rest.copy()
-        count = 0
-        while count < 2:
-            while len(top_five) != 0:
-                male = top_five.pop(random.randint(0,len(top_five)-1))
-                female = top_five.pop(random.randint(0,len(top_five)-1))
-                pairs.append((male,female))
-            top_five = top_five_copy
-            while len(the_rest) != 0:
-                male = the_rest.pop(random.randint(0,len(the_rest)-1))
-                female = the_rest.pop(random.randint(0,len(the_rest)-1))
-                pairs.append((male,female))
-            the_rest = the_rest_copy
-            count += 1
+        while len(top_five) != 0:
+            male = top_five.pop(random.randint(0,len(top_five)-1))
+            female = top_five.pop(random.randint(0,len(top_five)-1))
+            pairs.append((male,female))
+        while len(the_rest) != 0:
+            male = the_rest.pop(random.randint(0,len(the_rest)-1))
+            female = the_rest.pop(random.randint(0,len(the_rest)-1))
+            pairs.append((male,female))
+        while len(total) != 0:
+            male = total.pop()
+            female = boot_gen.pop()
+            pairs.append((male,female))
+
 
     return pairs
 

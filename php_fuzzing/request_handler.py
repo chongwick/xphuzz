@@ -111,7 +111,8 @@ def minimize(seed):
     return context
 
 def new_corpus(llm, iterations, out_dir):
-    for i in iterations:
+    global GEN_NUM
+    while i < iterations:
         role = 'Change PHP code as instructed. Here are some values to use: 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400. Return as ```<code>```'
         context = [{'role': 'system', 'content': role}]
         #llm = LLAMA3_LLM(context)
@@ -128,9 +129,12 @@ def new_corpus(llm, iterations, out_dir):
         result = query_llm(llm,context)
         context.append({'role':'assistant','content':result})
         code = correct_format(llm, result, context)
-        mut_name = secrets.token_hex(10);
-        with open(os.path.join(out_dir,mut_name)) as f:
+        if code == None: #Idk some weird error that idc about
+            continue
+        mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
+        with open(os.path.join(out_dir,mut_name),"w") as f:
             f.write(code)
+        i += 1
 
 def update_data(llm_queue, cov_queue, seed_data):
     utils.dump_pickle(cfg.llm_queue, list(llm_queue.queue))
@@ -141,7 +145,10 @@ def room_service(safe_files):
     dir_path = os.path.dirname(os.path.realpath(__file__))
     cur_files = os.listdir(dir_path)
     for i in cur_files:
-        if i not in safe_files and "gen_" not in i and "blank.php" not in i:
+        if i not in safe_files and (
+                "gen_" not in i) and (
+                        "blank.php" not in i) and (
+                            "boot_" not in i):
             os.remove(os.path.join(dir_path,i))
 
 def create_seed_data(seed_data, seed_name, php_file):
@@ -157,124 +164,117 @@ def create_seed_data(seed_data, seed_name, php_file):
                     "time": 0
                     }
 
-def query_loop(seed_data, llm_queue, cov_queue):
-    role = 'You are a chatting assistant'
-    context = [{'role': 'system', 'content': role}]
-    llm = receiver.LLAMA3_LLM(context)
-
-    i = 0
+def query_loop(llm, seed_data, llm_queue, cov_queue):
+    global GEN_NUM
     while(True):
-        request_file = llm_queue.get() # blocking function
-        seed_name = request_file.split("/")[-1].split("_")[0]
-        php_file = os.path.join(cfg.php_corpus,
-                request_file.split("/")[-1].split("_")[0]+".php")
-        create_seed_data(seed_data, seed_name, php_file)
-        if("_t" in request_file): 
-            start = time.time()
-            print("Translating: {}".format(request_file))
-            context = utils.load_pickle(request_file)
-            os.remove(request_file)
-            result = query_llm(llm,context)
-            context.append({'role':'assistant','content':result})
-            code = correct_format(llm, result, context)
-            utils.write_file(php_file, code)
-            seed_data[seed_name]['time'] += start - time.time()
-            cov_queue.put(php_file)
-        elif("_m" in request_file): #Mate request
-            start = time.time()
-            tmp_seed_name = seed_name
-            print("Mating: {}".format(request_file))
-            context = utils.load_pickle(request_file)
-            os.remove(request_file)
-            result = query_llm(llm,context)
-            context.append({'role':'assistant','content':result})
-            child = correct_format(llm, result, context)
-            print("Inserting Mutation")
-            result = query_llm(llm,mutation_insertion(child))
-            context.append({'role':'assistant','content':result})
-            child = correct_format(llm, result, context)
-            dr = "gen_" + str(GEN_NUM)
-            seed_name = secrets.token_hex(10);
-            php_file = os.path.join(dr,seed_name+".php")
+        if cov_queue.qsize() == 0 and llm_queue.qsize() == 0:
+            print("bootstrapping new gen")
+            outdir = "boot_" + str(GEN_NUM+1)
+            os.makedirs(outdir)
+            new_corpus(llm, 456, outdir)
+            next_gen(seed_data, llm_queue, cov_queue, outdir)
+        else:
+            request_file = llm_queue.get() # blocking function
+            seed_name = request_file.split("/")[-1].split("_")[0]
+            php_file = os.path.join(cfg.php_corpus,
+                    request_file.split("/")[-1].split("_")[0]+".php")
             create_seed_data(seed_data, seed_name, php_file)
-            utils.write_file(php_file,child)
-            seed_data[seed_name]['parents']=seed_data[tmp_seed_name]['parents']
-            seed_data[seed_name]['time'] += start - time.time()
-            cov_queue.put(php_file); #cov_queue.put(php1); #cov_queue.put(php2)
-            del(seed_data[tmp_seed_name])
-        elif("_f" in request_file): #Fix request
-            start = time.time()
-            print("Fixing: {}".format(request_file))
-            if seed_data[seed_name]['fix_count'] == 5:
-                os.remove(request_file)
-                print("Nah, can't fix this one")
-                if 'corpus' not in php_file: #this indicates either the original js/php corpi
-                    os.remove(php_file)
-            else:
+            if("_t" in request_file): 
+                start = time.time()
+                print("Translating: {}".format(request_file))
                 context = utils.load_pickle(request_file)
-                seed_data[seed_name]['fix_count'] += 1
                 os.remove(request_file)
-                #Maybe make this an inherent feature of queries
-                if utils.num_tokens_from_context(context) > cfg.llama3_max / 2:
-                    print("trying to fix.... too big")
+                result = query_llm(llm,context)
+                context.append({'role':'assistant','content':result})
+                code = correct_format(llm, result, context)
+                utils.write_file(php_file, code)
+                seed_data[seed_name]['time'] += start - time.time()
+                cov_queue.put(php_file)
+            elif("_m" in request_file): #Mate request
+                start = time.time()
+                tmp_seed_name = seed_name
+                print("Mating: {}".format(request_file))
+                context = utils.load_pickle(request_file)
+                os.remove(request_file)
+                result = query_llm(llm,context)
+                context.append({'role':'assistant','content':result})
+                child = correct_format(llm, result, context)
+                #print("Inserting Mutation")
+                #result = query_llm(llm,mutation_insertion(child))
+                #context.append({'role':'assistant','content':result})
+                #child = correct_format(llm, result, context)
+                dr = "gen_" + str(GEN_NUM)
+                seed_name = secrets.token_hex(10);
+                php_file = os.path.join(dr,seed_name+".php")
+                create_seed_data(seed_data, seed_name, php_file)
+                utils.write_file(php_file,child)
+                seed_data[seed_name]['parents']=seed_data[tmp_seed_name]['parents']
+                seed_data[seed_name]['time'] += start - time.time()
+                cov_queue.put(php_file); #cov_queue.put(php1); #cov_queue.put(php2)
+                del(seed_data[tmp_seed_name])
+            elif("_f" in request_file): #Fix request
+                start = time.time()
+                print("Fixing: {}".format(request_file))
+                if seed_data[seed_name]['fix_count'] == 5:
+                    os.remove(request_file)
+                    print("Nah, can't fix this one")
+                    if 'corpus' not in php_file: #this indicates either the original js/php corpi
+                        os.remove(php_file)
                 else:
-                    result = query_llm(llm,context)
-                    context.append({'role':'assistant','content':result})
-                    code = correct_format(llm, result, context)
-                    utils.write_file(php_file, code)
-                    cov_queue.put(php_file)
-                    seed_data[seed_name]['time'] += start - time.time()
-        update_data(llm_queue, cov_queue, seed_data)
+                    context = utils.load_pickle(request_file)
+                    seed_data[seed_name]['fix_count'] += 1
+                    os.remove(request_file)
+                    #Maybe make this an inherent feature of queries
+                    if utils.num_tokens_from_context(context) > cfg.llama3_max / 2:
+                        print("trying to fix... too big")
+                    else:
+                        result = query_llm(llm,context)
+                        context.append({'role':'assistant','content':result})
+                        code = correct_format(llm, result, context)
+                        utils.write_file(php_file, code)
+                        cov_queue.put(php_file)
+                        seed_data[seed_name]['time'] += start - time.time()
+            update_data(llm_queue, cov_queue, seed_data)
 
 def coverage_loop(seed_data, llm_queue, cov_queue):
     safe_files = os.listdir(os.path.dirname(os.path.realpath(__file__)))  
     cov_eng = Executor(cfg.coverage_engine)
     while(True):
-        if cov_queue.qsize() == 0 and llm_queue.qsize() == 0:
-            next_gen(seed_data, llm_queue, cov_queue)
+        php_file = cov_queue.get()
+        print("mapping: ", php_file)
+        cov_eng.load_global_coverage_map_from_file(cfg.base_map)
+        code = utils.read_file(php_file)
+
+        with open(cfg.php_template,"r") as f:
+            template = f.read()
+        code.replace("<?php",template)
+        utils.write_file(php_file,code)
+        result = cov_eng.execute_prog(php_file)
+        code.replace(template,"<?php")
+        utils.write_file(php_file,code)
+
+        if result == -1:
+            print("Bad execution")
+            continue
+        if err.is_error(result):
+            fix_query = generate_fix_prompt(code, err.parse_error(result, php_file))
+            fix_req_name = os.path.join(cfg.llm_requests,
+                                        php_file.split("/")[-1].split(".")[0]+"_f")
+            utils.dump_pickle(fix_req_name, fix_query)
+            llm_queue.put(fix_req_name)
         else:
-            php_file = cov_queue.get()
-            print("mapping: ", php_file)
-            cov_eng.load_global_coverage_map_from_file(cfg.base_map)
-            code = utils.read_file(php_file)
+            utils.add_to_queue(cfg.san_queue,php_file)
+            coverage = cov_eng.read()
+            seed_name = php_file.split("/")[-1].split(".")[0]
+            seed_data[seed_name]['coverage'] = coverage
+        update_data(llm_queue, cov_queue, seed_data)
+        room_service(safe_files)
 
-            with open(cfg.php_template,"r") as f:
-                template = f.read()
-            code.replace("<?php",template)
-            utils.write_file(php_file,code)
-            result = cov_eng.execute_prog(php_file)
-            code.replace(template,"<?php")
-            utils.write_file(php_file,code)
-
-            if result == -1:
-                print("Bad execution")
-                continue
-            if err.is_error(result):
-                fix_query = generate_fix_prompt(code, err.parse_error(result, php_file))
-                fix_req_name = os.path.join(cfg.llm_requests,
-                                            php_file.split("/")[-1].split(".")[0]+"_f")
-                utils.dump_pickle(fix_req_name, fix_query)
-                llm_queue.put(fix_req_name)
-            else:
-                utils.add_to_queue(cfg.san_queue,php_file)
-                coverage = cov_eng.read()
-                seed_name = php_file.split("/")[-1].split(".")[0]
-                seed_data[seed_name]['coverage'] = coverage
-            update_data(llm_queue, cov_queue, seed_data)
-            room_service(safe_files)
-
-def next_gen(seed_data, llm_queue, cov_queue):
+def next_gen(seed_data, llm_queue, cov_queue, boot_gen):
     global GEN_NUM
-    '''tmpe'''
-    print("bootstrapping new gen")
-    outdir = "gen_1_boot"
-    os.makedirs(outdir)
-    new_corpus(llm, 456, outdir)
-    quit()
-    '''tmpe'''
     pairs = []
     print("Creating new generation")
-    pairs = pairing_aljo(GEN_NUM)
+    pairs = pairing_aljo(GEN_NUM, boot_gen)
     GEN_NUM += 1
     new_dir = "gen_" + str(GEN_NUM)
     os.makedirs(new_dir)
@@ -284,10 +284,15 @@ def next_gen(seed_data, llm_queue, cov_queue):
         create_seed_data(seed_data, tmp_seed_name, None)
         seed_data[tmp_seed_name]['parents'] = set(pair)
         prev_gen_dir = 'gen_' + str(GEN_NUM-1)
-        with open(os.path.join(prev_gen_dir,pair[0]+".php"),'r') as f:
-            female = f.read()
-        with open(os.path.join(prev_gen_dir,pair[1]+".php"),'r') as m:
+        with open(os.path.join(prev_gen_dir,pair[0]+".php"),'r') as m:
             male = m.read()
+        female = None
+        if "_b_" in pair[1]:
+            with open(os.path.join(boot_gen,pair[1]),'r') as f:
+                female = f.read()
+        else:
+            with open(os.path.join(prev_gen_dir,pair[1]+".php"),'r') as f:
+                female = f.read()
         mate_query = mate(male,female)
         mate_req_name = os.path.join(cfg.llm_requests,
                                      tmp_seed_name + "_m")
@@ -297,6 +302,10 @@ def next_gen(seed_data, llm_queue, cov_queue):
 def main():
     seed_data = utils.load_pickle(cfg.seed_data)
 
+    role = 'You are a chatting assistant'
+    context = [{'role': 'system', 'content': role}]
+    llm = receiver.LLAMA3_LLM(context)
+
     llm_queue = Queue()
     for i in utils.load_pickle(cfg.llm_queue):
         llm_queue.put(i)
@@ -304,7 +313,7 @@ def main():
     for i in utils.load_pickle(cfg.cov_queue):
         cov_queue.put(i)
 
-    query_thread = Thread(target=query_loop, args=(seed_data, llm_queue, cov_queue))
+    query_thread = Thread(target=query_loop, args=(llm, seed_data, llm_queue, cov_queue))
     coverage_thread = Thread(target=coverage_loop, args=(seed_data, llm_queue, cov_queue))
     query_thread.start()
     coverage_thread.start()
