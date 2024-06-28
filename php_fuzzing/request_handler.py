@@ -112,7 +112,9 @@ def minimize(seed):
 
 def new_corpus(llm, iterations, out_dir):
     global GEN_NUM
-    while i < iterations:
+    #i = 0
+    while len(os.listdir(out_dir)) != iterations:
+    #while i < iterations:
         role = 'Change PHP code as instructed. Here are some values to use: 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400. Return as ```<code>```'
         context = [{'role': 'system', 'content': role}]
         #llm = LLAMA3_LLM(context)
@@ -134,7 +136,7 @@ def new_corpus(llm, iterations, out_dir):
         mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
         with open(os.path.join(out_dir,mut_name),"w") as f:
             f.write(code)
-        i += 1
+    #    i += 1
 
 def update_data(llm_queue, cov_queue, seed_data):
     utils.dump_pickle(cfg.llm_queue, list(llm_queue.queue))
@@ -170,7 +172,8 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
         if cov_queue.qsize() == 0 and llm_queue.qsize() == 0:
             print("bootstrapping new gen")
             outdir = "boot_" + str(GEN_NUM+1)
-            os.makedirs(outdir)
+            if not(os.path.exists(outdir)):
+                os.makedirs(outdir)
             new_corpus(llm, 456, outdir)
             next_gen(seed_data, llm_queue, cov_queue, outdir)
         else:
@@ -187,6 +190,9 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                 result = query_llm(llm,context)
                 context.append({'role':'assistant','content':result})
                 code = correct_format(llm, result, context)
+                if code == None:
+                    del(seed_data[seed_name])
+                    continue
                 utils.write_file(php_file, code)
                 seed_data[seed_name]['time'] += start - time.time()
                 cov_queue.put(php_file)
@@ -199,6 +205,9 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                 result = query_llm(llm,context)
                 context.append({'role':'assistant','content':result})
                 child = correct_format(llm, result, context)
+                if child == None:
+                    del(seed_data[seed_name])
+                    continue
                 #print("Inserting Mutation")
                 #result = query_llm(llm,mutation_insertion(child))
                 #context.append({'role':'assistant','content':result})
@@ -231,6 +240,9 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                         result = query_llm(llm,context)
                         context.append({'role':'assistant','content':result})
                         code = correct_format(llm, result, context)
+                        if code == None:
+                            del(seed_data[seed_name])
+                            continue
                         utils.write_file(php_file, code)
                         cov_queue.put(php_file)
                         seed_data[seed_name]['time'] += start - time.time()

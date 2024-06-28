@@ -1,4 +1,5 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM, StoppingCriteria
+from timeout import timeout, TimeoutError
 import transformers
 import torch
 import os
@@ -40,6 +41,8 @@ def get_arguments(arguments_file):
         arguments = pickle.load(f)
     return arguments
 
+
+@timeout(40)
 def execute_function(llm_type, llm_object, arguments):
     llm_functions = None
     if llm_type == CHAT:
@@ -442,11 +445,10 @@ def main():
                     f.write(result)
                 continue
             try:
-                start = time.time()
-                result = execute_function(llm_type, llm_object, arguments)
-                length = time.time()-start
-                print(length)
-                if length > 40:
+                try:
+                    result = execute_function(llm_type, llm_object, arguments)
+                except TimeoutError as t:
+                    result = -1
                     print("TOOLONG",length)
                     del(llm_object)
                     llm_object = None

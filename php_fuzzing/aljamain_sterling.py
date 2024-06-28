@@ -90,7 +90,7 @@ def pairing_aljo(gen_num, boot_gen):
             pairs.append((male,female))
         while len(total) != 0:
             male = total.pop()
-            female = boot_gen.pop()
+            female = boot_corp.pop()
             pairs.append((male,female))
 
 
