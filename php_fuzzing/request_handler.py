@@ -307,7 +307,7 @@ def next_gen(seed_data, llm_queue, cov_queue, boot_gen):
             with open(os.path.join(boot_gen,pair[1]),'r') as f:
                 female = f.read()
         else:
-        with open(seed_data[pair[1]]['php_file'],'r') as f:
+            with open(seed_data[pair[1]]['php_file'],'r') as f:
                   female = f.read()
         #    with open(os.path.join(prev_gen_dir,pair[1]+".php"),'r') as f:
         #        female = f.read()

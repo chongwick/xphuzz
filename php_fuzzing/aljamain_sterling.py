@@ -25,6 +25,17 @@ def pairing_aljo(gen_num, boot_gen):
         directory = 'gen_'+str(gen_num)
         old_pool = [os.path.join(old_dir,x) for x in os.listdir(old_dir)]
         pool = [os.path.join(directory,x) for x in os.listdir(directory)]
+        tmp_list = []
+        for i in old_pool:
+            if i in seed_data:
+                tmp_list.append(i)
+        old_pool = tmp_list
+        tmp_list = []
+        for i in pool:
+            if i in seed_data:
+                tmp_list.append(i)
+        pool = tmp_list
+        del(tmp_list)
         if len(pool) < len(old_pool):
             tmp_coverages = get_coverages(old_pool, seed_data)
             while len(pool) < len(old_pool):
