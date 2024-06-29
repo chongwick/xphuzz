@@ -448,7 +448,7 @@ def main():
                 try:
                     result = execute_function(llm_type, llm_object, arguments)
                 except TimeoutError as t:
-                    result = -1
+                    result = "-1"
                     print("TOOLONG",length)
                     del(llm_object)
                     llm_object = None

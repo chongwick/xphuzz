@@ -206,6 +206,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                 context.append({'role':'assistant','content':result})
                 child = correct_format(llm, result, context)
                 if child == None:
+                    #or fixcount = 5?
                     del(seed_data[seed_name])
                     continue
                 #print("Inserting Mutation")
@@ -224,11 +225,13 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
             elif("_f" in request_file): #Fix request
                 start = time.time()
                 print("Fixing: {}".format(request_file))
-                if seed_data[seed_name]['fix_count'] == 5:
+                if seed_data[seed_name]['fix_count'] >= 5:
                     os.remove(request_file)
                     print("Nah, can't fix this one")
                     if 'corpus' not in php_file: #this indicates either the original js/php corpi
                         os.remove(php_file)
+                        del(seed_data[seed_name])
+
                 else:
                     context = utils.load_pickle(request_file)
                     seed_data[seed_name]['fix_count'] += 1
@@ -296,15 +299,18 @@ def next_gen(seed_data, llm_queue, cov_queue, boot_gen):
         create_seed_data(seed_data, tmp_seed_name, None)
         seed_data[tmp_seed_name]['parents'] = set(pair)
         prev_gen_dir = 'gen_' + str(GEN_NUM-1)
-        with open(os.path.join(prev_gen_dir,pair[0]+".php"),'r') as m:
+        with open(seed_data[pair[0]]['php_file'],'r') as m:
+        #with open(os.path.join(prev_gen_dir,pair[0]+".php"),'r') as m:
             male = m.read()
         female = None
         if "_b_" in pair[1]:
             with open(os.path.join(boot_gen,pair[1]),'r') as f:
                 female = f.read()
         else:
-            with open(os.path.join(prev_gen_dir,pair[1]+".php"),'r') as f:
-                female = f.read()
+        with open(seed_data[pair[1]]['php_file'],'r') as f:
+                  female = f.read()
+        #    with open(os.path.join(prev_gen_dir,pair[1]+".php"),'r') as f:
+        #        female = f.read()
         mate_query = mate(male,female)
         mate_req_name = os.path.join(cfg.llm_requests,
                                      tmp_seed_name + "_m")
