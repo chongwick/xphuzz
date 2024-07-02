@@ -1,0 +1,9 @@
+<?php
+$vars["DOMDocument"]->createTextNode(implode(array_map(function($c) {
+    $c = $c * 2;
+    $c = pow($c, 3);
+    $c = sin($c) * 1000000000;
+    return "\\x". str_pad(dechex($c), 2, "0");
+}, range(0, 255))));
+
+?>

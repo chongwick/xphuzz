@@ -1,0 +1,16 @@
+<?php
+mb_encode_mimeheader(
+    implode(
+        array_map(
+            function($c) {
+                return "\\x". str_pad(dechex($c), 2, "0"). chr(0x1F). chr(0x1E);
+            },
+            array_merge(range(0, 255), array(0x10000, 0x10001, 0x10002))
+        )
+    ),
+    chr(0x20). str_repeat(chr(0x80), 65). chr(0x7F). str_repeat(chr(0x0), 1025). chr(0x0). str_repeat(chr(0x0), 65537). chr(0x0),
+    str_repeat(chr(0x20), 0x100). str_repeat(chr(0x0), 0x100),
+    chr(0x20). str_repeat(chr(0x20), 65). chr(0x20). str_repeat(chr(0x0), 65537). chr(0x20). str_repeat(chr(0x20), 65537). chr(0x20),
+    chr(0x20). str_repeat(chr(0x20), 65). chr(0x20). str_repeat(chr(0x20), 65537). chr(0x20). str_repeat(chr(0x20), 65537). chr(0x20)
+);
+?>

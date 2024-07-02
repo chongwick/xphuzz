@@ -1,0 +1,3 @@
+<?php
+echo "What's going on? ". curl_multi_strerror(pow(2, 32)). "?! It's like a digital tornado!";
+?>

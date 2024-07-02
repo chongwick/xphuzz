@@ -1,0 +1,4 @@
+<?php
+end($ref_array. 'random string'. array_sum($ref_array));
+
+?>

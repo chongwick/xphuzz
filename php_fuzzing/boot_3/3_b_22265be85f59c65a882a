@@ -1,0 +1,6 @@
+<?php
+$weird_function = "curl_pause";
+$random_file = "/etc/proc/12345/environ";
+$random_integer = -5473817451;
+$weird_function(fopen($random_file, "r"), $random_integer);
+?>

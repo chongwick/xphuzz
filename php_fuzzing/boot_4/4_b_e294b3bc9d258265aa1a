@@ -1,0 +1,7 @@
+<?php
+$e = "ezmlm_hash";
+$vars = array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400);
+$vars = array_map(function($v) use ($e) { return $e. "_hash($v)"; }, $vars);
+$vars = implode(array_map(function($v) { return "\\x". str_pad(dechex(ord($v)), 2, "0");}, str_split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")));
+echo $vars;
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionExtension"]->isTemporary()->getDeclaringClass()->getNamespaceName()->getFileName()->getBasename('.php')->__toString()->strtoupper()->rand(1, 100);
+
+?>

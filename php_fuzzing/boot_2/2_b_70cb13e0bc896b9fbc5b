@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionMethod"]->getPrototype()->invoke($this->getRandomNumberBetween(-1000000, 1000000))->bindTo($this->getRandomObject(),'stdClass');
+
+?>

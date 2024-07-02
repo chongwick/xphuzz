@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addChild(str_repeat("This is a test: %s%x%n", 0x100). str_repeat(chr(6), 1025). str_repeat("A", 0x100), str_repeat(chr(6), 1025), str_repeat("A", 0x100));
+?>

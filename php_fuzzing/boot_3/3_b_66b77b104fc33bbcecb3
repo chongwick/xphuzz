@@ -1,0 +1,3 @@
+<?php
+$vars["SplDoublyLinkedList"]->count(sqrt(0.00000001) * pi() * 3.14159265359);
+?>

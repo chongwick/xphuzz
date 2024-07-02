@@ -1,0 +1,4 @@
+<?php
+set_include_path(str_repeat(chr(200), 257).chr(13).str_repeat(chr(160), 1025).chr(0x0A).str_repeat(chr(32), 4097));
+
+?>

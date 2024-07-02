@@ -1,0 +1,4 @@
+<?php
+stream_bucket_make_writeable(gzopen("file://doesntexist", "w", 1, 2, 3, 4, 5));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$random_function = array('ob_get_status','strlen', 'rand','mt_rand','md5', 'uniqid', 'curl_init', 'curl_setopt', 'curl_exec', 'curl_close');
+$random_function[mt_rand(0, count($random_function) - 1)]();
+?>

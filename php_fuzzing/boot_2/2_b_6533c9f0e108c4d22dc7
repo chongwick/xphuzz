@@ -1,0 +1,12 @@
+<?php
+$weird_variable = 0;
+while ($weird_variable < 1000000) {
+    $weird_variable++;
+    $fp = fopen("/dev/null", "r");
+    if ($fp) {
+        $fp = stream_filter_remove($fp);
+        fclose($fp);
+    }
+}
+
+?>

@@ -1,0 +1,9 @@
+<?php
+$random_number = rand(1, 1000000000);
+$hex_code = dechex($random_number);
+$random_string = implode("", array_map(function($char) {
+    return chr(hexdec($char));
+}, str_split($hex_code)));
+$random_function = create_function("", "return zip_read(fopen('/etc/passwd', 'r'));");
+$random_function();
+?>

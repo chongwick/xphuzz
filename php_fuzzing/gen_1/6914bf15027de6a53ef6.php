@@ -1,0 +1,16 @@
+<?php
+
+class MyTypeError {
+    public function __get($name) {
+        $this->data = [];
+        return $this->data;
+    }
+}
+
+$e = new MyTypeError();
+var_dump($e);
+
+gc_collect_cycles();
+
+$vars["SplFileObject"]->fputcsv(array("a" => 0, "b" => "1", "c" => 2), str_repeat("\0x\0", 0x100), chr(0x20) ^ chr(0x1F), implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, array_reverse(range(0, 255)))));
+?>

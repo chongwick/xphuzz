@@ -1,0 +1,4 @@
+<?php
+fgetc(fopen("I'm a sentence written in a language that doesn't exist yet, so this will probably fail.", "w"));
+
+?>

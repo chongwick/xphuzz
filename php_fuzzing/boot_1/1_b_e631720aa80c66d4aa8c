@@ -1,0 +1,4 @@
+<?php
+strtr(str_split(str_shuffle(str_repeat(chr(91), 257). str_repeat(chr(236), 1025)), chr(91)), chr(236), chr(255));
+
+?>

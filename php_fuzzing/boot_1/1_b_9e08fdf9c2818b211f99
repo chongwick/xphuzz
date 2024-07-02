@@ -1,0 +1,4 @@
+<?php
+$vars["SessionHandler"]->write(str_repeat("%s%x%n", 0x100 | 0x00000000000000000000000000000001), chr(143). str_repeat(chr(158), 17). chr(0). str_repeat(chr(158), 65));
+
+?>

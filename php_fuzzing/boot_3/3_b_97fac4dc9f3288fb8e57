@@ -1,0 +1,3 @@
+<?php
+$vars["NonExistentDirectory"]->close(fopen("ThisIsNotARealFile.txt", "r"));
+?>

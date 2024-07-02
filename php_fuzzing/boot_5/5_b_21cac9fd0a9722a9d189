@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionClassConstant"]->getName() * 0.5 * sqrt(42) + sin(31415) * $vars["DateTime"]->format('Y-m-d H:i:s');
+?>

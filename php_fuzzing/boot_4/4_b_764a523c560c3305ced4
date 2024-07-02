@@ -1,0 +1,4 @@
+<?php
+xmlwriter_start_dtd_attlist(fopen("file:///etc/passwd", "r"), implode(array_map(function($c) {return str_pad(dechex($c), 3, "0"). "x";}, array_map(function($i) {return $i * 2;}, array_map("ord", str_split(file_get_contents("https://example.com/secret.txt"))))))))
+
+?>

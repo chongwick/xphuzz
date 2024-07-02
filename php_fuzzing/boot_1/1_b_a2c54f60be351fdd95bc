@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionExtension"]->export(str_repeat(chr(145), 4097), str_repeat(chr(0x80), 0x100));
+?>

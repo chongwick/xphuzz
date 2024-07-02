@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getModifiers() * 42 * sqrt(π) + sin(π/4) * 0x100 + (string) null;
+
+?>

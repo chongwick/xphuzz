@@ -1,0 +1,4 @@
+<?php
+$vars["SplFixedArray"]->next()->setFlags(SPLFILEINFO_APACHE2)->setBinData(0x0A, pack("H*", "48656C6C6F20576F726C6421"));
+
+?>

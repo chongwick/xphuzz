@@ -1,0 +1,4 @@
+<?php
+filter_input(3, str_repeat("A", 0x100), 3, bin2hex(str_repeat(chr(242), 17)). str_repeat(chr(166), 257). str_repeat(chr(173), 1025). str_repeat(chr(242), 17). str_repeat(chr(166), 257). str_repeat(chr(173), 1025));
+
+?>

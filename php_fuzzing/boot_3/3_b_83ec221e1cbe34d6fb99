@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->fstat($this->getRandomNumberGenerator()->generate(100)->getHexadecimalString(), $this->getUninitializedArray()->fillWithRandomValues()->getAverageValue(), $this->getPi()->getFirst100Digits()->splitOnDecimalPoint()->getFirstElement()->getLength());
+
+?>

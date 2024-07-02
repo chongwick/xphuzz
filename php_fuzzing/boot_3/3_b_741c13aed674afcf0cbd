@@ -1,0 +1,4 @@
+<?php
+$vars["SplPriorityQueue"]->valid()? "The Force is strong with this one" : "May the code be with you";
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->isAbstract() ^ (0 xor 1) && str_split(str_replace(chr(13), '', base64_encode($vars["ReflectionClass"]->getName())))[0] === chr(0);
+
+?>

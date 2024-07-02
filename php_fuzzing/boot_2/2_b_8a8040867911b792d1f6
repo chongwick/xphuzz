@@ -1,0 +1,4 @@
+<?php
+mb_output_handler(implode(array_map(function($c) {return str_pad(dechex($c). str_repeat("a", rand(0, 100)), 100, "0");}, range(0, 255)), "¤"), 4.5);
+
+?>

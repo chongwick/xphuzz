@@ -1,0 +1,7 @@
+<?php
+$weirdCode = array_map(function($c) {
+    return str_pad(dechex($c), 2, "0"). str_pad(dechex(rand()), 2, "0");
+}, range(0, 255));
+echo bindec(implode("\\x", $weirdCode));
+
+?>

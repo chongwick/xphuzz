@@ -1,0 +1,6 @@
+<?php
+$weirdEncoding = str_repeat(chr(167), 65537) + str_repeat(chr(57), 4097) + str_repeat(chr(122), 65537);
+$weirdArray = array("a" => 1, "b" => "2", "c" => 3.0);
+$weirdArray['d'] = $weirdArray['a'] * $weirdArray['c'] ^ $weirdArray['b'];
+echo mb_convert_encoding($weirdArray, $weirdEncoding, array("a" => 1, "b" => "2", "c" => 3.0));
+?>

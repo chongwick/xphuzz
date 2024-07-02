@@ -1,0 +1,4 @@
+<?php
+$vars["Exception"]->getLine() * 0.5 + str_split("π")[0];
+
+?>

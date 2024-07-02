@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->canBePassedByValue()->getDeclaringClass()->getNamespaceName()->getFileName()->getBasename()->getExtension()->getShortName()->getDocComment()->get();
+
+?>

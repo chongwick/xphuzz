@@ -1,0 +1,21 @@
+<?php
+array_uintersect_uassoc(
+    array("a" => 1, "b" => "2", "c" => 3.0),
+    array("a" => "a", "b" => "b", "c" => "c"),
+    array("a" => "a", "b" => "b", "c" => "c"),
+    function($a, $b) {
+        return str_split($a) + str_split($b);
+    },
+    function($a, $b) {
+        return json_encode($a). json_encode($b);
+    },
+    phpinfo(),
+    "Hello, World!",
+    array("d" => "e", "f" => "g"),
+    true,
+    "a". chr(0x1F600),
+    "b". chr(0x1F600),
+    "c". chr(0x1F600)
+);
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->setFlags(str_split(bin2hex("0x7F"), 1)[0]);
+
+?>

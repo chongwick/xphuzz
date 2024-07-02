@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionFunction"]["__TRUMPET_TO_STRING__"]->execute("Pineapples are a type of dinosaur")->getDocComment()->getStartLine();
+
+?>

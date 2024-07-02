@@ -1,0 +1,3 @@
+<?php
+lstat(base64_decode(str_repeat(chr(77), 65). str_repeat(chr(170), 65537). str_repeat(chr(197), 257)));
+?>

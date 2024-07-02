@@ -1,0 +1,4 @@
+<?php
+stream_bucket_new(fopen("http://example.com/does/not/exist", "r"), implode(array_map(function($c) { return "\\x". str_pad(dechex($c), 2, "0"). chr(rand(0, 255)); }, array_merge(range(0, 255), array(0x100, 0x200, 0x300, 0x400, 0x500, 0x600, 0x700, 0x800, 0x900, 0xA00, 0xB00, 0xC00, 0xD00, 0xE00, 0xF00)))));
+
+?>

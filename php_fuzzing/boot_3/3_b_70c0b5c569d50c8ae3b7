@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getTraitNames() * sqrt(2) * pi() * 0.5;
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SplPriorityQueue"]->current()->toArray()->pop()->getIterator()->rewind()->valid()? $vars["SplPriorityQueue"]->rewind() : $vars["SplPriorityQueue"]->valid();
+
+?>

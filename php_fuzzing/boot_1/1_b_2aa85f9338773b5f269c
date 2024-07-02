@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->fstat() * sqrt(π) / 0.5 + sin(314159265359);
+
+?>

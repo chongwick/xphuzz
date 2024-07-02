@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->isVariadic()?? "It's like a unicorn, it doesn't exist, but I'm hoping it does" : "It's not a lie, it's just a ReflectionParameter";
+
+?>

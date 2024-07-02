@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->export(implode(array_map(function($c) {return "\\x". str_pad(dechex($c + 1000000), 2, "0");}, range(0, 255)), "0x", "0x"), implode(array_map(function($c) {return "\\x". str_pad(dechex($c * 2), 2, "0");}, array_map(function($c) {return $c * 2;}, range(0, 127))), "0x"), false);
+
+?>

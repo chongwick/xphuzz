@@ -1,0 +1,19 @@
+<?php
+array_count_values(array(
+    "a" => 1,
+    "b" => "2",
+    "c" => 3.0,
+    "d" => str_repeat(chr(0), 256),
+    "e" => 0.5 + 0.5i,
+    "f" => "hello, world!",
+    "g" => array(1, 2, 3),
+    "h" => null,
+    "i" => new stdClass,
+    "j" => array("k" => "v"),
+    "k" => array(),
+    "l" => true,
+    "m" => false,
+    "n" => "string"
+));
+
+?>

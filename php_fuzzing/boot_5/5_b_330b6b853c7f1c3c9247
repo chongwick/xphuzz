@@ -1,0 +1,4 @@
+<?php
+$vars["DateTimeZone"]->getOffset(new DateTime('January 32nd, 2050 13:45:12.34567890123456789 UTC'));
+
+?>

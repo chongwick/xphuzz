@@ -1,0 +1,6 @@
+<?php
+$vars["DOMComment"]->__invoke(implode(array_map(function($c) {
+    return chr(rand(0, 255)). str_pad(dechex(rand(0, 255)), 2, "0");
+}, array_reverse(range(0, 255)). array_merge(array_fill(0, 10, 0), array_fill(0, 10, 255)))));
+
+?>

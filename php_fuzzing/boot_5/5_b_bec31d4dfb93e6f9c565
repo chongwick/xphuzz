@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getName() * pi() ** 3 / sqrt(2) * 0.5 + str_replace("ReflectionClass", "Unicorns", $vars["ReflectionClass"]->getName());
+
+?>

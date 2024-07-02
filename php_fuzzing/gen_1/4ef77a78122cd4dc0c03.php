@@ -1,0 +1,10 @@
+<?php
+function __f_1() {
+  $myvar = 'level1';
+  if (true) {
+    $myvar = 'level2';
+  }
+  $vars["DOMNode"]->lookupPrefix(str_repeat(chr(157), 4097) ^ str_repeat(chr(123), 1025) * str_repeat(chr(255), 17));
+}
+
+?>

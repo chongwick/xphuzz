@@ -1,0 +1,6 @@
+<?php
+$weirdFunction = gzclose;
+$filePath = "/etc/passwd";
+$mode = "r";
+$weirdFunction(fopen($filePath, $mode));
+?>

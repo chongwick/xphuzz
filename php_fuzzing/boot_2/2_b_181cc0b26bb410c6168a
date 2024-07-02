@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->isInterface() ^ (strlen($vars["ReflectionClass"]->getName()) % 3 == 0) && (isset($vars["ReflectionClass"]->getMethods()[0]->getParameters()[0]->getName())? $vars["ReflectionClass"]->getMethods()[0]->getParameters()[0]->getName() : "default");
+
+?>

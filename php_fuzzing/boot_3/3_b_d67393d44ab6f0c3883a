@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->next()->rewind()->fseek(5473817451)->read(123475932)->fwrite("2.23431234213480e-400", 2.23431234213480e-400);
+
+?>

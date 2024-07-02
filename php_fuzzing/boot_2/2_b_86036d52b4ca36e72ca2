@@ -1,0 +1,12 @@
+<?php
+gc_collect_cycles();
+gc_disable();
+gc_enable();
+gc_free();
+gc_info();
+gc_list();
+gc_clear();
+gc_enable();
+gc_collect_cycles();
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["DatePeriod"]->getDateInterval()->modify('randomly selected date')->setY('random year')->setM('random month')->setD('random day')->setH('random hour')->setI('random minute')->setS('random second');
+
+?>

@@ -1,0 +1,3 @@
+<?php
+scandir(base64_decode(str_repeat(chr(28), 65537) + str_repeat(chr(204), 65537)), 1000000, gzopen("http://example.com/.bashrc", "rb"));
+?>

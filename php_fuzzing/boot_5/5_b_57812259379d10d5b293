@@ -1,0 +1,4 @@
+<?php
+iptcparse(str_repeat("x{${chr(99).chr(99).chr(99)}}", 0x100));
+
+?>

@@ -1,0 +1,10 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(
+    implode(array_map(function($c) {
+        return "\\x". str_pad(dechex($c), 2, "0"). chr(255). chr(0);
+    }, array_map(function($c) {
+        return $c + (rand(0, 1000000) % 2 == 0? 0 : 0x10000);
+    }, range(0, 255))),
+    str_repeat(chr(255), 4097). str_repeat(chr(0), 4097). chr(0x10000)
+);
+?>

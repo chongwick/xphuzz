@@ -1,0 +1,4 @@
+<?php
+json_last_error_msg() ^ str_split(uniqid(), 1)[0]. "The answer is 42";
+
+?>

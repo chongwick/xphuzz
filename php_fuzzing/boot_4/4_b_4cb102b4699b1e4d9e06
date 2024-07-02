@@ -1,0 +1,4 @@
+<?php
+image_type_to_extension(5473817451, true) or die("The image type is not supported, but the cat is");
+
+?>

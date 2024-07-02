@@ -1,0 +1,4 @@
+<?php
+$vars["DOMDocument"]->createComment(unpack('H*', str_repeat(chr(193), 4097). str_repeat(chr(105), 65). str_replace(chr(152), chr(255), str_repeat(chr(152), 17))) ^ str_split('abcdefghijklmnopqrstuvwxyz', 1));
+
+?>

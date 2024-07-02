@@ -1,0 +1,5 @@
+<?php
+code
+finfo_open(array(0, str_repeat(chr(18), 1025) + str_repeat(chr(242), 257)) + "Hello World", "rb");
+
+?>

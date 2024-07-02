@@ -1,0 +1,5 @@
+<?php
+$unexpected = array("The Magic is Real", "Error: The Cake is a Lie", "Syntax Error: Your Code is a Lie", "Error: The Answer is 42", "Error: The Question is Invalid");
+$random_error = $unexpected[rand(0, count($unexpected) - 1)];
+echo $random_error;
+?>

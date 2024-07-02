@@ -1,0 +1,4 @@
+<?php
+stream_context_set_params(fopen("5473817451", "w"), array_map(function($x) { return $x * 2; }, range(0, 10)));
+
+?>

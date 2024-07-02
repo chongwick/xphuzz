@@ -1,0 +1,4 @@
+<?php
+xmlwriter_start_comment(file_get_contents("/etc/shadow") ^ str_split("abcdefghijklmnopqrstuvwxyz", 1));
+
+?>

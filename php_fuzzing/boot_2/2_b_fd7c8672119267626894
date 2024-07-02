@@ -1,0 +1,3 @@
+<?php
+readfile(str_repeat("0x".dechex(rand(0, 0xFFFFFFFF)).chr(rand(0, 255))."\n", rand(1, 0x100)), false, fopen("/dev/random", "r"));
+?>

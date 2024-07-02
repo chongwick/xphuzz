@@ -1,0 +1,4 @@
+<?php
+ctype_graph(str_repeat("💥🔥🕳️💸🔴🛸🔹💣🎉💫", 0x100));
+
+?>

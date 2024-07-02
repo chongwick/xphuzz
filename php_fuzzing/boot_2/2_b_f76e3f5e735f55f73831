@@ -1,0 +1,4 @@
+<?php
+$vars["SplPriorityQueue"]->key() * 0.5 * pi() + sin(0.000001 * $vars["SplPriorityQueue"]->current());
+
+?>

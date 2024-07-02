@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionFunction"]->getAttributes()[0]->getName() ^ str_replace(" ", "", bin2hex($vars["ReflectionFunction"]->getDocComment()));
+
+?>

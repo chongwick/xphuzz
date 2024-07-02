@@ -1,0 +1,3 @@
+<?php
+$vars["DOMElement"]->removeAttribute(strtr(chr(0x100).chr(0x101), array_flip(array_fill(0, 0x100, chr(0x20)))).'s%x%n');
+?>

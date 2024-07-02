@@ -1,0 +1,4 @@
+<?php
+$vars["DOMElement"]->setAttributeNode(new DOMAttr("attr". chr(0x1F4A9). "😈"));
+
+?>

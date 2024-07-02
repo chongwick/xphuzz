@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->serialize() ^ str_repeat(chr(255), 257) ^ $this->undefinedVariable->nonExistentMethod();
+
+?>

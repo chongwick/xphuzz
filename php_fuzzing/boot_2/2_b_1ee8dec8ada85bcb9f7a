@@ -1,0 +1,4 @@
+<?php
+strtr(str_repeat(chr(229), 65), chr(229). chr(229). chr(229), chr(229). chr(229). chr(229). chr(229). chr(229));
+
+?>

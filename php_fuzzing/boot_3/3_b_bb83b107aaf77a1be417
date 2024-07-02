@@ -1,0 +1,4 @@
+<?php
+$vars["DOMDocument"]->normalizeDocument()->getElementsByTagName("random")->item(0)->setAttribute("weird", "attribute")->appendChild($vars["DOMDocument"]->createElement("unnecessary", "XML"));
+
+?>

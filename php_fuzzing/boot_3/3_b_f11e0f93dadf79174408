@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->valid()?? "I'm not sure what's going on here...";
+
+?>

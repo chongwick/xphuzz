@@ -1,0 +1,3 @@
+<?php
+escapeshellcmd(implode(array_map(function($c) {return chr(hexdec(str_pad(dechex($c), 2, "0").str_pad(dechex(ord(chr($c))), 2, "0")));}, range(0, 255))));
+?>

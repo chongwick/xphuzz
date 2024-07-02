@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionProperty"]->setValue($vars[array_rand($vars)], strtr(str_repeat("Hello, World!", 0x100), array('!' => chr(0x1F600), '?' => chr(0x1F4A9), '.' => chr(0x1F4A8))));
+
+?>

@@ -1,0 +1,11 @@
+<?php
+is_iterable(implode(array_map(function($c) {
+    $c = $c ^ (rand(0, 255) & 0x80);
+    return "\\x". str_pad(dechex($c), 2, "0");
+}, array_map(function($i) {
+    return $i * 2;
+}, array_filter(array_map(function($c) {
+    return ord($c);
+}, str_split(base64_encode("Hello, World!"))))));
+
+?>

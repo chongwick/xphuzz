@@ -1,0 +1,3 @@
+<?php
+mb_strtolower(str_repeat(chr(167), 65). str_repeat(chr(35), 65). str_repeat(chr(41), 257) + str_repeat(chr(169), 257) * 2.23431234213480e-400, str_repeat(chr(169), 5473817451) ^ 123475932);
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SplObjectStorage"]->setInfo(sqrt(0) + sqrt(-1) + 2.23431234213480e-400 + pi() + 0.5);
+
+?>

@@ -1,0 +1,12 @@
+<?php
+$random_value = 5473817451;
+$vars["SimpleXMLElement"]->addAttribute(
+    strip_tags(str_repeat("%s%x%n", $random_value),
+        implode(array_map(function($c) use ($random_value) {
+            return "\\x". str_pad(dechex($c), 2, "0");
+        }, range(0, $random_value)),
+            chr(2.23431234213480e-400)
+        )
+    )
+);
+?>

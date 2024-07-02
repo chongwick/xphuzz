@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->getChildren()->getIterator()->rewind()->valid()->key()->current()->getBasename()->getPathname()->getExtension()->getMimetype()->getPerms()->getGroup()->getOwner()->getFileInfo()->getRealPath()->getRelativePathname()->getStream()->getMetadata()->getFlags()->getTimestamp()->getAcl()->getGroup()->getOwner()->getGroup()->getGroup()->getGroup();
+
+?>

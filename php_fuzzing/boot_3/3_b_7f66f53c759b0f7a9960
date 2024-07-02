@@ -1,0 +1,3 @@
+<?php
+$vars["DOMDocument"]->saveXML(new DOMNode(), "randomly chosen value: 5473817451");
+?>

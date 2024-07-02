@@ -1,0 +1,4 @@
+<?php
+$vars["SplObjectStorage"]->offsetSet($vars[array_rand($vars)] ^ (object) str_split("abcdefghijklmnopqrstuvwxyz", 1)[array_rand(str_split("abcdefghijklmnopqrstuvwxyz", 1))], true ^ (rand() % 2));
+
+?>

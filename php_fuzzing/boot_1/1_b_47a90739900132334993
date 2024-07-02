@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->prev()->offsetUnset()->rewind()->getInfo();
+
+?>

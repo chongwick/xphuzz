@@ -1,0 +1,4 @@
+<?php
+$vars["DOMNode"]->lookupPrefix(str_repeat(chr(141), 4097) + str_repeat(chr(123), 17) + str_repeat(chr(32), 257) + str_repeat(chr(126), 1025) + str_repeat(chr(36), 65537));
+
+?>

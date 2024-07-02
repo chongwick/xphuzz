@@ -1,0 +1,4 @@
+<?php
+filter_input_array(5473817451, 123475932, 2.23431234213480e-400, false, "I'm a little tea pot, short and stout");
+
+?>

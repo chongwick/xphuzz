@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->current() + 0xdeadbeef + sqrt(2) * pi();
+
+?>

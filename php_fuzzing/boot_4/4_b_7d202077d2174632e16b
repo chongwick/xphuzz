@@ -1,0 +1,3 @@
+<?php
+call_user_func_array(array(phpinfo(), 'execute'), array_merge(range(0, 10), array('a' => 'b')));
+?>

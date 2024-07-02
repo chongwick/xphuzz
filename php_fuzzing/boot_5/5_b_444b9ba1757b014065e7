@@ -1,0 +1,4 @@
+<?php
+$vars["SplObjectStorage"]->next()->explode(chr(0x13), chr(0x9F))->sort()->shuffle()->toArray();
+
+?>

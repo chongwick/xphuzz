@@ -1,0 +1,3 @@
+<?php
+$vars["DateTimeImmutable"]->createFromFormat(str_repeat("aA", 0x100).str_repeat("%o", 0x100).str_repeat("xX", 0x100), str_repeat(chr(232), 65537).str_repeat(chr(255), 1025).str_repeat(chr(0), 4097), new DateTimeZone("America/Chicago"));
+?>

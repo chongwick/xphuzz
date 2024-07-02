@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->isCallable() ^ (0 || 1) && (new DateTime('now'))->getTimestamp() % 3;
+
+?>

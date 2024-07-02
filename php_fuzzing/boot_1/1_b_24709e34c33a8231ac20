@@ -1,0 +1,4 @@
+<?php
+$vars["DOMDocument"]->saveHTML(new DOMNode(), array('encoding' => 'octal', 'decoding' => 'utf-16le', 'formatOutput' => 'π'));
+
+?>

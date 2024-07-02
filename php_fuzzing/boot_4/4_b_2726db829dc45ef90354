@@ -1,0 +1,3 @@
+<?php
+echo chr(ord(posix_getlogin()) ^ 0x5A);
+?>

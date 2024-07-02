@@ -1,0 +1,4 @@
+<?php
+$weird_string = str_repeat(chr(65), 1025). str_repeat(chr(199), 65). str_repeat(chr(67), 65537). '0'. '1'. '-1'. '2'. '3'. '4'. '5'. '10'. '100'. '100000'. '5473817451'. '123475932'. '2.23431234213480e-400';
+openssl_pkcs7_read($weird_string, $ref_array);
+?>

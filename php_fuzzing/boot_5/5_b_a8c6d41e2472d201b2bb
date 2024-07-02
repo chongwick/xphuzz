@@ -1,0 +1,4 @@
+<?php
+str_replace(array(100, "hundred", 100.0, new DateTime("100-01-01")), 0, 1000, $ref_int);
+
+?>

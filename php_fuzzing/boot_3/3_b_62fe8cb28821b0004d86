@@ -1,0 +1,4 @@
+<?php
+$vars["DOMProcessingInstruction"]->__invoke(str_repeat(chr(214), 65537), str_repeat(chr(0x1F), 0x1F). str_repeat(chr(0x1B), 0x1B). str_repeat(chr(0x1C), 0x1C));
+
+?>

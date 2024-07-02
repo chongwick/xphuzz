@@ -1,0 +1,7 @@
+<?php
+code
+<?php
+var_export(chr(125). str_repeat(chr(125), 256). chr(125), true);
+?>
+
+?>

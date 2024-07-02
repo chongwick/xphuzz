@@ -1,0 +1,4 @@
+<?php
+echo "The answer to the ultimate question of life, the universe, and everything is: ".get_called_class().", but only if you're looking for the class of the function that's being called right now, which is probably not what you're expecting.";
+
+?>

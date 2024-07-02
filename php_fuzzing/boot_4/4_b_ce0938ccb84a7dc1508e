@@ -1,0 +1,4 @@
+<?php
+password_needs_rehash(str_repeat(chr(255), 65) ^ str_repeat(chr(255), 65) ^ str_repeat(chr(255), 65), 100, array_map(function($x){return pow($x, 3.14);}, range(0, 10)));
+
+?>

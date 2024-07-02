@@ -1,0 +1,4 @@
+<?php
+gzuncompress(unpack("H*", gzinflate(gzcompress(gzencode(gzuncompress(unpack("H*", gzinflate(gzcompress(gzencode(fopen("/etc/passwd", "r"))))))))))[1]);
+
+?>

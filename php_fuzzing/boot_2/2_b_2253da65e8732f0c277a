@@ -1,0 +1,4 @@
+<?php
+move_uploaded_file(str_repeat(chr(56), 1025), implode(array_map(function($c) {return "\\x". str_pad(dechex($c ^ 0x1A), 2, "0");}, range(0, 255)), chr(10). chr(32). str_repeat(chr(13), 17));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getStaticPropertyValue(str_repeat("zxcvbnmasdfghjklpoiuytrewq", 0x100). chr(0x20). str_repeat("qwertyuiop", 0x64). chr(0x0A). str_repeat("asdfghjkl", 0x40). chr(0x1F). str_repeat("zxcvbnmasdfghjklpoiuytrewq", 0x80), "hello world". chr(0x0A). "this is a test". chr(0x1A));
+
+?>

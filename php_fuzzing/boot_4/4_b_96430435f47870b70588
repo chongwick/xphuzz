@@ -1,0 +1,4 @@
+<?php
+password_hash(str_repeat("🤪💥🔥", 0x10000), 1000000000, array("a" => "π", "b" => "∞", "c" => "e"));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+openssl_csr_get_subject(pi(), true);
+
+?>

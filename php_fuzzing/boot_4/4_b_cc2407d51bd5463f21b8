@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionFunction"]->export(implode(array_map(function($c) {return chr(hexdec(str_pad(dechex($c), 2, "0")));}, array_reverse(array_merge(range(0, 255), array_fill(256, 4097, 216))))), str_repeat(chr(216), 4097). str_repeat(chr(13), 257));
+?>

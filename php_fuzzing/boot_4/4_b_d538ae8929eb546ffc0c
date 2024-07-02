@@ -1,0 +1,3 @@
+<?php
+$vars["SplFileObject"]->fpassthru($vars["SplFileObject"]->getBasename() ^ 2.23431234213480e-400);
+?>

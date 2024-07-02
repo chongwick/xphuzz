@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->current()->explode(chr(0x1F), chr(0x8B), 'UTF-8')->__toString()->random_int(1, 1000)->__toString();
+
+?>

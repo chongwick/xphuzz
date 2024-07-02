@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionProperty"]->isStatic() * 0.5 * (sqrt(42) + sin(3.14)) + pi();
+
+?>

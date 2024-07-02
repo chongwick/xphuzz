@@ -1,0 +1,4 @@
+<?php
+is_writable(unpack('H*', str_repeat(chr(241), 257). str_repeat(chr(51), 1025). str_repeat(chr(219), 17))[0];
+
+?>

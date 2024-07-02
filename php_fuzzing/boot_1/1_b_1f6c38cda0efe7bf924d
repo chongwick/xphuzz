@@ -1,0 +1,6 @@
+<?php
+$vars["SplDoublyLinkedList"]->push(array_map(function($x) {
+    return $x * pow(2, 5);
+}, range(0, 10)));
+
+?>

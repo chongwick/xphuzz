@@ -1,0 +1,6 @@
+<?php
+parse_ini_string(implode(array_map(function($c) {
+    return "\\x". str_pad(dechex($c + 0.5 + sin($c / 3.14) * 0.5), 2, "0");
+}, range(0, 255)), true, 10);
+
+?>

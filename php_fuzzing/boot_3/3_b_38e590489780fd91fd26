@@ -1,0 +1,4 @@
+<?php
+$vars["SplObjectStorage"]->count() * 0.5 + sqrt(42) / (1 << 17);
+
+?>

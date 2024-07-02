@@ -1,0 +1,3 @@
+<?php
+mb_strstr(str_repeat(chr(202), 65537) + str_repeat(chr(195), 65) + str_repeat(chr(190), 4097), str_repeat(chr(242), 17), true, str_repeat(chr(0x10000), 100000));
+?>

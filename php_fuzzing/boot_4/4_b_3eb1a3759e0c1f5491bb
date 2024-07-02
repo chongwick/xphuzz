@@ -1,0 +1,4 @@
+<?php
+openssl_spki_new($ref_resource, "0.1234567890abcdef", 5473817451);
+
+?>

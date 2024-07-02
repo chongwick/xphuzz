@@ -1,0 +1,4 @@
+<?php
+$vars["DateTimeImmutable"]->getTimezone()->getOffset(new DateTimeImmutable("now")) + $vars["DateTimeImmutable"]->format("U") * pi() + sin($vars["DateTimeImmutable"]->getTimestamp()) * $vars["DateTimeImmutable"]->getOffset(new DateTimeImmutable("now"));
+
+?>

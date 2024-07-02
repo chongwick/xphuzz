@@ -1,0 +1,4 @@
+<?php
+openssl_x509_export($a, $b, $c = 0.1234567890123456789012345678901234567890, false, $d = 'hello world', $e = array('foo' => 'bar', 'baz' => 'qux'));
+
+?>

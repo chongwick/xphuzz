@@ -1,0 +1,8 @@
+<?php
+libxml_use_internal_errors(true);
+libxml_get_errors();
+echo "<pre>";
+print_r(libxml_get_errors());
+echo "</pre>";
+
+?>

@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionMethod"]->isPrivate()?? $vars["ReflectionMethod"]->getName() ^ 5473817451;
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionMethod"]->getPrototype()->invoke($this->getVariable("MyNonExistentVariable"));
+
+?>

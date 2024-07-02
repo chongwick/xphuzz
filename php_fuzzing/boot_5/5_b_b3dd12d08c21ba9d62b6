@@ -1,0 +1,4 @@
+<?php
+setlocale(5473817451, str_repeat("A", 100000), str_repeat("Hello World! %s%x%n", 1025));
+
+?>

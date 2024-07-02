@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClassConstant"]->getDeclaringClass()->getNamespaceName(). "::$". $vars["ReflectionClassConstant"]->getName(). " = ". chr(0x1F). chr(0x61). chr(0x20). chr(0x20). "Hello, World!". chr(0x1F). chr(0x61);
+
+?>

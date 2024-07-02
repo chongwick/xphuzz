@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->getDeclaringFunction()->getFileName()->getBasename()->getIncrement()->getHex()->getInvert()->getBasename()->getIncrement()->getHex()->getInvert()->getBasename()->getIncrement()->getHex()->getInvert();
+
+?>

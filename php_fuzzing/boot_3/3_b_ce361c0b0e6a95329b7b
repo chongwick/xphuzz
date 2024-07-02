@@ -1,0 +1,4 @@
+<?php
+zip_entry_compressedsize(file_get_contents("https://example.com/non-existent-file.txt"));
+
+?>

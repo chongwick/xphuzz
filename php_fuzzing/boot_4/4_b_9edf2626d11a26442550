@@ -1,0 +1,4 @@
+<?php
+ctype_xdigit(str_repeat(chr(219), 257)). "some random text". chr(0x1F4A9). "more weird stuff". str_repeat(chr(0x1F4A9), 1000);
+
+?>

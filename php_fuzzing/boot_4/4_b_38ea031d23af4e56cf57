@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionType"]->getDeclaringClass()->getName().": ".rand()."-".$vars["ReflectionType"]->getName()."-".time().".".rand(1000,9999).".".uniqid();
+
+?>

@@ -1,0 +1,4 @@
+<?php
+stream_copy_to_stream(fopen("¯_()_/¯", "r"), fopen("π", "w"), 1000000000, 3.14159);
+
+?>

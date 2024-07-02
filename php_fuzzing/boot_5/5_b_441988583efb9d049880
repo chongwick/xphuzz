@@ -1,0 +1,4 @@
+<?php
+$vars["SplFixedArray"]->next()->__toString()->strtoupper()->rtrim('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-={}:[]|;<>?,./');
+
+?>

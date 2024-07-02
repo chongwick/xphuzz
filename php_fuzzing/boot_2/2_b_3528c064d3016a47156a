@@ -1,0 +1,3 @@
+<?php
+filetype(bin2hex(str_repeat(chr(185), 257). str_repeat(chr(203), 65)). str_repeat(chr(13), 257));
+?>

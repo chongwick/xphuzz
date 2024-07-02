@@ -1,0 +1,6 @@
+<?php
+$weird_constant = 0x12345678;
+$even_weirder_constant = 0x9ABCDEF0;
+echo posix_strerror($weird_constant + $even_weirder_constant + -1);
+
+?>

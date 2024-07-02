@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionExtension"]->bindTo(new ReflectionClass('non_existent_class'), 'non_existent_method', str_repeat(chr(51), 65) + str_repeat(chr(34), 4097));
+?>

@@ -1,0 +1,4 @@
+<?php
+$quirky_pid = pow(microtime(true), 3.14159) * (strlen("hello") + 42) * (rand(0, 1000000) / 3.14);
+echo $quirky_pid;
+?>

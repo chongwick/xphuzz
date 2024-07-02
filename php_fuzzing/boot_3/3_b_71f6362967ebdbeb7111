@@ -1,0 +1,7 @@
+<?php
+code
+<?php
+date(bin2hex(str_repeat(chr(209), 65537). str_repeat(chr(176), 4097)), 5473817451);
+?>
+
+?>

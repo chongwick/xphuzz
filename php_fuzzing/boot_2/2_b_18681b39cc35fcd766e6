@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getTraitNames() * 0.5 + 3.14 * sin(2.71828) * (rand(0, 1000000) % 3);
+
+?>

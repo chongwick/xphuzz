@@ -1,0 +1,3 @@
+<?php
+base_convert(strtr(str_repeat("🐌", 0x100), array("🐌" => "0x".chr(0x100))), 4294967295, -1);
+?>

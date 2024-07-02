@@ -1,0 +1,4 @@
+<?php
+$vars["DatePeriod"]->getStartDate()->getTimestamp()->setTimezone(new DateTimeZone("America/Los_Angeles"))->modify("+543.21 years")->format("Y-m-d H:i:s");
+
+?>

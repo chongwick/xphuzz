@@ -1,0 +1,4 @@
+<?php
+$vars["MultipleIterator"]->next()->foo()->bar()->baz()->qux();
+
+?>

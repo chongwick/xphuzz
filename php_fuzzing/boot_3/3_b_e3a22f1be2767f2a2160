@@ -1,0 +1,3 @@
+<?php
+$vars["SplObjectStorage"]->count($vars["SplObjectStorage"]->key() + $vars["SplObjectStorage"]->current() * pi());
+?>

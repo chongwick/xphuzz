@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionProperty"]->isDefault() * (sqrt(2) + sin(3.14)) / (strlen("Hello, World!") + 1);
+
+?>

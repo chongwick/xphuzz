@@ -1,0 +1,4 @@
+<?php
+strcoll(str_repeat("A", 5473817451), implode(array_map(function($c) {return chr(hexdec("2.23431234213480e-400". dechex($c)));}, range(0, 255))));
+
+?>

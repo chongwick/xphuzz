@@ -1,0 +1,4 @@
+<?php
+filesize(bin2hex(str_repeat(chr(30), 17). str_repeat(chr(138), 257). str_repeat(chr(130), 1025)));
+
+?>

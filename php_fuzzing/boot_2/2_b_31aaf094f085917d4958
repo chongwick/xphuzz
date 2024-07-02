@@ -1,0 +1,3 @@
+<?php
+$vars["DOMDocument"]->saveHTML($vars["DOMDocument"]->createElement('🤖', $vars["DOMDocument"]->createAttribute('💥')));
+?>

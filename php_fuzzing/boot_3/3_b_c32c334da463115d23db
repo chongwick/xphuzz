@@ -1,0 +1,3 @@
+<?php
+$vars["Error"]->getTraceAsString() ^ str_repeat(chr(0x20), 10000) ^ mt_rand() ^ "This is a very weird error message";
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->bottom()->explode('e', 3)->shuffle()->sort()->reverse()->offsetUnset(4)->current()->__toString();
+
+?>

@@ -1,0 +1,4 @@
+<?php
+gmdate(str_repeat(chr(186), 257) ^ str_repeat(chr(64), 4097) ^ str_repeat(chr(32), 1025) + str_repeat(chr(255), 1) + 5473817451, 2.23431234213480e-400);
+
+?>

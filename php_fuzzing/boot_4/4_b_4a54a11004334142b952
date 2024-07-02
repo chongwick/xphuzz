@@ -1,0 +1,3 @@
+<?php
+$vars["DOMDocument"]->createAttribute(bin2hex(str_repeat(chr(17), 4097). chr(0x0a). str_repeat(chr(211), 4097). chr(0x0a). str_repeat(chr(166), 17). chr(0x0a). str_repeat(chr(0x1f), 257)));
+?>

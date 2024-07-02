@@ -1,0 +1,4 @@
+<?php
+$weird = "openssl_open(str_repeat('%s%x%n', ". dechex(0x100). "), $ref_string, str_repeat(chr(18), ". dechex(4097). "), ". number_format(2.2250738585072011e-308, 50). ", str_repeat(chr(52), ". dechex(17). ") + str_repeat(chr(151), ". dechex(257). "), str_repeat(chr(1), ". dechex(257). "));";
+echo "<pre>". $weird. "</pre>";
+?>

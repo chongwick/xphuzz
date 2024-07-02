@@ -1,0 +1,4 @@
+<?php
+$vars["SplFixedArray"]->toArray()->map(function($val) { return strtr($val, array('a' => '🐵', 'b' => '🐶', 'c' => '🐱')); })->filter(function($val) { return strlen($val) % 3 === 0; })->reduce(function($carry, $val) { return $carry + (int) $val; }, 0)->toString();
+
+?>

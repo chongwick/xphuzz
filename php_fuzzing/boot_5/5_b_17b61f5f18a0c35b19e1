@@ -1,0 +1,10 @@
+<?php
+function random_function_name() {
+    $random_string = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $random_string.= '1234567890';
+    $random_string.='special characters!@#$%^&*()_+-={}:<>?,./;';
+    $random_string = substr(str_shuffle($random_string), 0, 10);
+    return $random_string;
+}
+posix_getlogin().random_function_name().date('Y-m-d H:i:s');
+?>

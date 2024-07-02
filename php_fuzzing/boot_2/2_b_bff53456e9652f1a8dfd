@@ -1,0 +1,4 @@
+<?php
+lcfirst(str_repeat(chr(0x100000000), 0x100));
+
+?>

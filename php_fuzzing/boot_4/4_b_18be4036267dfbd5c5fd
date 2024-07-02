@@ -1,0 +1,2 @@
+<pre><?php
+echo str_repeat(chr(0x1F), 50). "PHP is not my language, I'm a developer in a parallel universe!". str_repeat(chr(0x1F), 50). PHP_EOL. print_r(2.2250738585072011e-308, true). PHP_EOL. str_repeat(chr(0x1F), 50). "This code is a portal to another dimension. Use at your own risk.". str_repeat(chr(0x1F), 50);?></pre>

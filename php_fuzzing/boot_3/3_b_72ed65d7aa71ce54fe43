@@ -1,0 +1,4 @@
+<?php
+array_diff_assoc(array_merge(range(0, 10), array("a" => "string", "b" => true, "c" => 3.14159, "d" => array(1, 2, 3), "e" => new stdClass()), array("a" => "string", "b" => true, "c" => 3.14159, "d" => array(1, 2, 3), "e" => new stdClass())), array("a" => "string", "b" => true, "c" => 3.14159, "d" => array(1, 2, 3), "e" => new stdClass()));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SplPriorityQueue"]->valid() * sqrt(42) / (5 + 2 * pi()) * sin(1234567890) + array_sum(array_map('ord', "Hello, World!"));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SplObjectStorage"]->valid()?? "What's going on here?!" : "I'm not sure what's happening...";
+
+?>

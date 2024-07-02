@@ -1,0 +1,4 @@
+<?php
+session_start(array_map(function($x) { return chr(1 << $x); }, range(0, 10)));
+
+?>

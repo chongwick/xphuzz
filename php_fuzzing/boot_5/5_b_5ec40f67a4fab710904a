@@ -1,0 +1,4 @@
+<?php
+$vars["DateTime"]->sub(new DateInterval("P".mt_rand(0, 1000)."Y".mt_rand(0, 1000)."DT".mt_rand(0, 1000)."H".mt_rand(0, 1000)."M"));
+
+?>

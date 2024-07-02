@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionClass"]->getInterfaces()->getNamespacedNamespaces()->getRandomlyGeneratedMethod()->invoke($this->getRandomlyGeneratedProperty());
+?>

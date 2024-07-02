@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionClassConstant"]->__invoke(new DateTimeImmutable(), new SplFixedArray(0x100), 'A');
+?>

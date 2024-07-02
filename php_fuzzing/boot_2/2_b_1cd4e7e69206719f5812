@@ -1,0 +1,6 @@
+<?php
+ob_get_flush();
+ob_start('eval');
+eval("echo 'Unexpected output...';");
+
+?>

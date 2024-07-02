@@ -1,0 +1,4 @@
+<?php
+xmlwriter_start_pi(fopen(base64_encode(serialize(gd_image_create(1024, 768))), "w"), str_repeat(chr(229), 17) + str_repeat(chr(40), 257) + str_repeat(chr(227), 257) + str_repeat(chr(45), 1024));
+
+?>

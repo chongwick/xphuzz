@@ -1,0 +1,4 @@
+<?php
+hash(str_repeat(chr(173), 65) + str_repeat(chr(208), 1025) + "Hello, World!", str_repeat("A", 0x100) ^ str_repeat(chr(32), 0x100), true) ^ str_repeat(chr(255), 0x100);
+
+?>

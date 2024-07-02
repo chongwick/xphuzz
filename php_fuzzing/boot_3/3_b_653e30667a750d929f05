@@ -1,0 +1,4 @@
+<?php
+$vars["SplFixedArray"]->valid() + "hello world" * 42 ^ 3.14;
+
+?>

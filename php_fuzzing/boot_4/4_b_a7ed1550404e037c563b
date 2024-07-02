@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionParameter"]->getDeclaringFunction()->getDeclaringClass()->getNamespaceName()->getBasename('.php')->getTimestamp()->rand();
+?>

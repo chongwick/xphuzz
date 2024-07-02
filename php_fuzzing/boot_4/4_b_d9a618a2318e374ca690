@@ -1,0 +1,4 @@
+<?php
+$vars["SplObjectStorage"]->offsetUnset($vars[array_rand($vars)] + 0x1337);
+
+?>

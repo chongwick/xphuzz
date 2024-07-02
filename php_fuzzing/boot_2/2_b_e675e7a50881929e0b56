@@ -1,0 +1,4 @@
+<?php
+$vars["DOMDocument"]->createDocumentFragment()->appendChild($vars["DOMDocument"]->createElement("ZlorgleFlumplenax")->appendChild($vars["DOMDocument"]->createTextNode("Gleeb gloop blerp bloop"))->setAttribute("FlibberFlabber", "WizzleWhack"));
+
+?>

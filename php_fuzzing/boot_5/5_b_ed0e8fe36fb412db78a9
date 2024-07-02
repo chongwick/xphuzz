@@ -1,0 +1,3 @@
+<?php
+$vars["InvisibleMonkey"]->read(fopen("https://example.com/hidden/secret.txt", "r"));
+?>

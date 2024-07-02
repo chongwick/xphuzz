@@ -1,0 +1,4 @@
+<?php
+$vars["SplQueue"]->setIteratorMode(0.5);
+
+?>

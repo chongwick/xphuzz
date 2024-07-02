@@ -1,0 +1,4 @@
+<?php
+$vars["SplObjectStorage"]->valid()? "The answer is 42" : "The answer is actually 13.37" * sqrt(sqrt(7));
+
+?>

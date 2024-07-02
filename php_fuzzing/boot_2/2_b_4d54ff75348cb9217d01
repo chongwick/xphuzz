@@ -1,0 +1,4 @@
+<?php
+$vars["Exception"]->getTraceAsString() ^ str_repeat(chr(0x0B), 257) * sqrt(2.23431234213480e-400) + chr(193) ^ chr(155) ^ chr(147);
+
+?>

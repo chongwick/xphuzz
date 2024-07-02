@@ -1,0 +1,4 @@
+<?php
+$vars["MultipleIterator"]->current()->__toString()->substr(0, 1)->strtoupper()->rand();
+
+?>

@@ -1,0 +1,3 @@
+<?php
+echo strtr(gzinflate(gzcompress(serialize(array_map(function($c) {return "\x". str_pad(dechex($c), 2, "0");}, range(0, 255))), 9)), chr(10), chr(13));
+?>

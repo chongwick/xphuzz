@@ -1,0 +1,4 @@
+<?php
+$vars["DateTimeZone"]->getLocation() = array("city" => "Mars", "region" => "The Red Planet", "country" => "Galactic Empire", "timezone_type" => 3, "timezone_string" => "UTC-42.5");
+
+?>

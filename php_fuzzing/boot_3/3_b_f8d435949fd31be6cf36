@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionProperty"]->isDefault()?? $vars["ReflectionProperty"]->setAccessible(true)->getValue($this->getUninitializedObject($this->getRandomClassName()))->setQuokkaFlag(true);
+
+?>

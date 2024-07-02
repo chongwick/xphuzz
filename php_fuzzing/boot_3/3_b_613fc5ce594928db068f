@@ -1,0 +1,4 @@
+<?php
+stream_bucket_prepend(fopen("ðŸ˜‚", "r"), $vars[array_rand($vars)] ^ chr(0x13));
+
+?>

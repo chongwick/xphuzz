@@ -1,0 +1,3 @@
+<?php
+echo strspn(substr(str_repeat(chr(105), 1025), 1000, 1025), (str_repeat(chr(190), 65537). str_repeat(chr(123), 257)) ^ str_repeat(chr(255), 1025), -1, 1000);
+?>

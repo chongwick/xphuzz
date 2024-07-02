@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->key() ^ 5473817451;
+
+?>

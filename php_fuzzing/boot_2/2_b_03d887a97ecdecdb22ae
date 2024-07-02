@@ -1,0 +1,11 @@
+<?php
+$xmlWriter = new XMLWriter();
+$xmlWriter->startDTD("weird.dtd", "SYSTEM", "http://example.com/non-existent.dtd");
+$xmlWriter->endDTD();
+$xmlWriter->writeAttribute("unexpected", "attribute", "on", "random", "string");
+$xmlWriter->writeAttribute("weird", "value", "on", "non-existent", "attribute");
+$xmlWriter->writeAttribute("potentially", "incorrect", "on", "unrelated", "element");
+$xmlWriter->endAttribute();
+$xmlWriter->endDTD();
+$xmlWriter->endDTD();
+?>

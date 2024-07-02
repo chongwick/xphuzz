@@ -1,0 +1,4 @@
+<?php
+$vars["DOMNode"]->hasChildNodes() * 0.5 ** 3.14 * pi() * sin(42);
+
+?>

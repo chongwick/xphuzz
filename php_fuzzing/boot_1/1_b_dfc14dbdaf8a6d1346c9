@@ -1,0 +1,9 @@
+<?php
+register_shutdown_function(function() {
+    echo "<pre>";
+    phpinfo();
+    echo str_repeat("A", 0x100);
+    echo "</pre>";
+}, str_repeat("A", 0x100));
+
+?>

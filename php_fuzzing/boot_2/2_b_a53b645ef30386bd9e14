@@ -1,0 +1,4 @@
+<?php
+gzinflate(str_repeat(chr(143), 17) ^ str_repeat(chr(141), 65) ^ str_repeat(chr(143), 17) & str_repeat(chr(141), 65), 2) * 3;
+
+?>

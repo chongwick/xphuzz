@@ -1,0 +1,4 @@
+<?php
+$vars["SessionHandler"]->gc($this->randomlyGeneratedSessionIdThatMightNotActuallyExist);
+
+?>

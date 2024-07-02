@@ -1,0 +1,14 @@
+<?php
+$weirdness = 0x42;
+$obscure_function = "fopen";
+$filename = "/etc/passwd";
+$mode = "r";
+$binary_mode = 0x100;
+$fp = $obscure_function($filename, $mode, $binary_mode);
+if ($fp) {
+    $weirdness += 0x13;
+    $result = proc_close($fp);
+    $weirdness += $result;
+    fclose($fp);
+}
+?>

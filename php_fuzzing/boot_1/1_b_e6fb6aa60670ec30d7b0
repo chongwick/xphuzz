@@ -1,0 +1,4 @@
+<?php
+$vars["SplObjectStorage"]->offsetGet($vars[array_rand($vars)] + 0x1337 + str_split("abcdef")[mt_rand(0, 5)][0]);
+
+?>

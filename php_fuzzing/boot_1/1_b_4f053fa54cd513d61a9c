@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->fgetc() ^ $vars["SplFileObject"]->fstat()['size'] * 2 ** 32;
+
+?>

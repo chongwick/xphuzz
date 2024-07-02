@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionExtension"]->getVersion() * 0.5 + 2.23431234213480e-400 * 5473817451;
+
+?>

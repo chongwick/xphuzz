@@ -1,0 +1,4 @@
+<?php
+openssl_spki_verify($ref_string, "hello world", 42, "https://example.com", "This is a very long string that will definitely cause issues because it exceeds the maximum allowed length.");
+
+?>

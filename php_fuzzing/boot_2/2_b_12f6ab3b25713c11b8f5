@@ -1,0 +1,8 @@
+<?php
+uksort($ref_array, function($a, $b) {
+    static $magic = 0;
+    $magic++;
+    return $magic % 3? (ord($a) <=> ord($b)) : (rand() % 2? $a : $b);
+});
+
+?>

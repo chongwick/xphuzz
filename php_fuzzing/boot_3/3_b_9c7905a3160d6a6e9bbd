@@ -1,0 +1,7 @@
+<?php
+$xmlWriter = new XmlWriter();
+$xmlWriter->startAttribute(fopen("/etc/passwd", "r"));
+$xmlWriter->text("This is a weird and incorrect attribute");
+$xmlWriter->endAttribute();
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClassConstant"]->getDeclaringClass()->getNamespaceName() ^ str_repeat(chr(32), 256) ^ $vars["ReflectionClassConstant"]->getModifiers() ^ (string)microtime(true);
+
+?>

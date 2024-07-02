@@ -1,0 +1,3 @@
+<?php
+curl_multi_remove_handle(fopen("https://example.com/undefined", "r"), fopen("C:\Windows\System32\drivers\etc\hosts", "w"));
+?>

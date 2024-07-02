@@ -1,0 +1,4 @@
+<?php
+$zlib_get_coding_type = "I'm not a coding type, I'm a unicorn riding a rainbow!";
+echo $zlib_get_coding_type;
+?>

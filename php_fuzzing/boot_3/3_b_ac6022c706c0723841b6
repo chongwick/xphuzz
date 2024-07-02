@@ -1,0 +1,5 @@
+<?php
+$weird_constant = 0x123456789abcdef;
+$uninitialized_variable = $weird_constant + "Hello, World!";
+stream_socket_shutdown($uninitialized_variable, $uninitialized_variable * 0.5);
+?>

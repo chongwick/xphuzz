@@ -1,0 +1,4 @@
+<?php
+$vars["SplObjectStorage"]->addAll(new SplObjectStorage(array_fill(0, 1000000, new stdClass())));
+
+?>

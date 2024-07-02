@@ -1,0 +1,4 @@
+<?php
+is_object(array("a" => 1, "b" => "2", "c" => 3.0, "d" => array(), "e" => str_repeat(chr(0), 1024), "f" => 0.0, "g" => "h", "h" => array("i" => "j", "k" => array("l" => "m", "n" => 1.0))));
+
+?>

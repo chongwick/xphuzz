@@ -1,0 +1,9 @@
+<?php
+$closure = $vars["ReflectionFunction"]->getClosure();
+$closure->bindTo(new class {
+    public function __invoke($a, $b) {
+        return $a * $b;
+    }
+}, 'MyNamespace');
+$closure->call($this, 0, 1);
+?>

@@ -1,0 +1,3 @@
+<?php
+$vars["SplFixedArray"]->rewind(sqrt(42));
+?>

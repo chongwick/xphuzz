@@ -1,0 +1,4 @@
+<?php
+openssl_pkcs12_read(serialize(array('a' => 'b', 'c' => array('d' => 'e'))), $ref_array, str_repeat(chr(0), 0));
+
+?>

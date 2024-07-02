@@ -1,0 +1,4 @@
+<?php
+$vars["DOMElement"]->removeAttributeNode(new DOMAttr("attr" ^ 5473817451));
+
+?>

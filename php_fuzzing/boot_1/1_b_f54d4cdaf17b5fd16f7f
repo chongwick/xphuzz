@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->isEmpty()->foo()->bar()->baz()->qux()->wizzle()->thwack()->plink()->ploop()->floop()->fizzle()->buzz();
+
+?>

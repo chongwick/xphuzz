@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getTraitAliases() = array_merge(array_fill(0, 100000, 'Hello, World!'), array_flip(array_fill(100000, 100000, 'Goodbye, World!')));
+
+?>

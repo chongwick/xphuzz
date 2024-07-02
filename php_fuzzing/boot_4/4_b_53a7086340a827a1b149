@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->getCsvControl() = "🐠🌮🎉";
+
+?>

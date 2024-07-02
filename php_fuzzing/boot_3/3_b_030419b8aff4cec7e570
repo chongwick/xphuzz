@@ -1,0 +1,9 @@
+<?php
+$vars["SplFixedArray"]->rewind();
+$vars["SplFixedArray"]->setFlags(SplFixedArray::ARRAY_AS_PROPS);
+$vars["SplFixedArray"]->setSize(1000000000);
+$vars["SplFixedArray"]->setSize(0);
+$vars["SplFixedArray"]->rewind();
+$vars["SplFixedArray"]->setFlags(SplFixedArray::ARRAY_AS_PROPS);
+
+?>

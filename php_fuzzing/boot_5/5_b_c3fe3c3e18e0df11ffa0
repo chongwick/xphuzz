@@ -1,0 +1,4 @@
+<?php
+$vars["Reflection"]->getModifierNames(3.14159);
+
+?>

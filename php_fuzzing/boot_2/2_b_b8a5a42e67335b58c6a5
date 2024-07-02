@@ -1,0 +1,6 @@
+<?php
+<code>
+$vars["ReflectionClass"]->hasProperty(str_repeat(chr(135), 65537). "someRandomString". bin2hex(str_repeat(chr(193), 257)). str_repeat(chr(155), 17). str_repeat(chr(147), 4097));
+</code>
+
+?>

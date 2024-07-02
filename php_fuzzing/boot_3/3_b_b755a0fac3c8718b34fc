@@ -1,0 +1,4 @@
+<?php
+stream_socket_sendto(fopen("randomlygeneratedfilename.txt", "r"), str_repeat(chr(0x1F), 0x10000), 0x1000000, str_repeat(chr(0x1F), 0x10000) ^ str_repeat(chr(0x1F), 0x10000));
+
+?>

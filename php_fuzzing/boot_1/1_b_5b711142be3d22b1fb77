@@ -1,0 +1,4 @@
+<?php
+curl_multi_exec(gzopen("non-existent-file.txt", "wb"), $ref_int);
+
+?>

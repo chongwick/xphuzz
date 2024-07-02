@@ -1,0 +1,8 @@
+<?php
+$vars["DateTimeImmutable"]->setTimezone(new DateTimeZone("Pacific/Funafuti"));
+$vars["DateTimeImmutable"]->modify("now + 10000000000 seconds");
+$vars["DateTimeImmutable"]->setTimestamp(5473817451);
+$vars["DateTimeImmutable"]->setDate(1975, 6, 19);
+$vars["DateTimeImmutable"]->setISO8601('1975-06-19T00:00:00+00:00');
+
+?>

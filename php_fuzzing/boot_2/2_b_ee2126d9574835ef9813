@@ -1,0 +1,3 @@
+<?php
+mb_encode_mimeheader(str_repeat("%s%x%n", 0x10000), str_repeat(chr(0x80), 65) + str_repeat(chr(0x2F), 65) + str_repeat(chr(0x01), 65), implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 3, "0");}, range(-1, 256)), str_repeat("%s%x%n", 0x10000), 4294967296);
+?>

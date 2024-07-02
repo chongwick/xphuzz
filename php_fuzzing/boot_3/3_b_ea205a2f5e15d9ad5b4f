@@ -1,0 +1,4 @@
+<?php
+image_type_to_extension(5473817451, 'this is not a valid file extension');
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["DatePeriod"]->getEndDate()->format("Y-m-d H:i:s") * 0.5 * sqrt(2) + 123475932;
+
+?>

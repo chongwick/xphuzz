@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionClassConstant"]->getDocComment()->__toString()->substr(0, rand(0, strlen($vars["ReflectionClassConstant"]->getDocComment()->__toString())))->rand(0, strlen($vars["ReflectionClassConstant"]->getDocComment()->__toString()))->chunk_split($vars["ReflectionClassConstant"]->getDocComment()->__toString(), rand(1, 10), '*');
+?>

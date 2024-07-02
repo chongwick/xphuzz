@@ -1,0 +1,4 @@
+<?php
+fopen(str_repeat(chr(0x00).chr(0x01).chr(0x02), 0x100), str_repeat(chr(0x14).chr(0x15).chr(0x16), 17), false, fopen(bin2hex("0x48656c6c6f20576f726c6421"), "w"));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["Error"]->getFile()->setFilesystem('C:\\Windows\\System32\\calc.exe')->open()->read('Hello, World!')->write('Goodbye, World!');
+
+?>

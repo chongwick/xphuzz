@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getModifiers() ^ 0x42C8F7C3;
+
+?>

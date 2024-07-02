@@ -1,0 +1,4 @@
+<?php
+hash_init(str_repeat(chr(51), 65) + str_repeat(chr(37), 257) + str_repeat(chr(237), 17) + str_repeat(chr(123), 1025) + str_repeat(chr(42), 1) + str_repeat(chr(92), 1) + str_repeat(chr(255), 1), 2, str_repeat(chr(106), 4097) + str_repeat(chr(241), 65) + str_repeat(chr(100), 1) + str_repeat(chr(64), 1) + str_repeat(chr(32), 1) + str_repeat(chr(47), 1));
+
+?>

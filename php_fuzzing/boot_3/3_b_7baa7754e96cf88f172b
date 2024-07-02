@@ -1,0 +1,4 @@
+<?php
+$vars["DateTimeImmutable"]->setTimestamp(str_split("5473817451", 1)[0] * pow(10, str_split("5473817451", 1)[1]) + 123475932 * 2.23431234213480e-400);
+
+?>

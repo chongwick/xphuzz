@@ -1,0 +1,3 @@
+<?php
+$vars["SplDoublyLinkedList"]->unserialize(str_repeat(chr(218), 4097). str_repeat(chr(132), 1025). str_repeat(chr(240), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025). str_repeat(chr(147), 4097). str_repeat(chr(155), 17). str_repeat(chr(193), 257));
+?>

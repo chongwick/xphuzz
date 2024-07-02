@@ -1,0 +1,4 @@
+<?php
+zip_entry_filesize(fopen("https://example.com/this-does-not-exist.txt", "r"));
+
+?>

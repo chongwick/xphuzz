@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->serialize() ^ str_repeat(chr(0x1F), 257) ^ $vars["SplDoublyLinkedList"]->getInfo() ^ "Hello World!";
+
+?>

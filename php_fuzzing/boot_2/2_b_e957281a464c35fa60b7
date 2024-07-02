@@ -1,0 +1,8 @@
+<?php
+$randomVariable = "fluffy kittens";
+$weirdConstant = 0.12345678901234567890123456789012345678901234567890;
+$garbageFile = "/dev/random";
+$randomMode = "w+";
+$zipHandle = zip_read(fopen($garbageFile, $randomMode));
+echo $zipHandle->getName(). ": ". $zipHandle->getFromIndex($weirdConstant);
+?>

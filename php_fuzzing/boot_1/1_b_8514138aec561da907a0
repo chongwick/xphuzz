@@ -1,0 +1,4 @@
+<?php
+$vars["PurpleMonkeyDishwasher"]->getChildren()->setBernieSanders()->getMoustache()->setEggplant();
+
+?>

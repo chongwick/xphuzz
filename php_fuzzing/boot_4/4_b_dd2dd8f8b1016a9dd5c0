@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->next()->setInfo("This is a lie")->setInfo("It's all just a dream")->setInfo("You will never find the truth")->setInfo("It's hidden in a sea of PHP madness");
+
+?>

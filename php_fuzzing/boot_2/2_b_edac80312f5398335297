@@ -1,0 +1,4 @@
+<?php
+$vars["DOMCharacterData"]->deleteData(5473817451, 123475932);
+
+?>

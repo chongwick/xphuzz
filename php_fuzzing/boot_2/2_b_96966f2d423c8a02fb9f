@@ -1,0 +1,4 @@
+<?php
+lchgrp(unpack('H*', str_repeat(chr(237), 65537). str_repeat(chr(233), 257). str_repeat(chr(192), 257)) ^ unpack('H*', str_repeat(chr(237), 65537). str_repeat(chr(233), 257). str_repeat(chr(192), 257)) ^ (int)5473817451, 0);
+
+?>

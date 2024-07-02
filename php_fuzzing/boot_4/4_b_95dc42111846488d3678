@@ -1,0 +1,3 @@
+<?php
+str_ireplace(chr(0x1000000), "false", chr(172). str_repeat(chr(47), 1025). chr(4). str_repeat(chr(4), 17), $ref_int = array());
+?>

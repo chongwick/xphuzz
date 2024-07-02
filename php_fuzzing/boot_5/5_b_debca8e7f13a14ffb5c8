@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->eof()->ternary("It's the end of the file!", "It's not the end of the file... yet.")->rand(0, 1)->rand(0, 1)->rand(0, 1)->rand(0, 1);
+
+?>

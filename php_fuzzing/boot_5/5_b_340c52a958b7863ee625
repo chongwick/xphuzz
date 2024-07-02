@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getInterfaceNames()?? str_repeat(chr(0), 100000) + "Hello World!" + "This is a test";
+
+?>

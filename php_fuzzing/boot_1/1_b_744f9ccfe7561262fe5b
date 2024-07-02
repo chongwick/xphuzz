@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionFunction"][null][array("a" => 0, "b" => "0.5", "c" => "inf")][str_repeat(chr(0), 257)]->__construct(array("d" => 0, "e" => "1.5", "f" => -0.0));
+
+?>

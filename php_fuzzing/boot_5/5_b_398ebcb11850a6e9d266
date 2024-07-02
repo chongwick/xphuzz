@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->children(sqrt(2) * pi() * 42, true);
+
+?>

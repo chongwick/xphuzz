@@ -29,18 +29,14 @@ del(tmp)
 
 def query_llm(llm, context):
     result = llm.give_context(context)
-    if result == "-2": #corrupted pickling
+    if result == "-1" or result == "-2":
         result = llm.give_context(context)
-    elif result == "-1":
-        return -1
-    if result == "-2" or result == "-1":
-        return -1
+        if result == "-1" or result == "-2":
+            return -1
     else:
         return result
 
 def correct_format(llm, result, context):
-    if result == -1 or result == -2:
-        return None
     result = [line + "\n" for line in result.split("\n")]
     #if result[0].strip() == "error":
     #    raise RuntimeError("Restarting LLM")
@@ -61,6 +57,8 @@ def correct_format(llm, result, context):
             context.append({'role': 'user', 'content': fix_prompt})
             del(result)
             result = query_llm(llm, context)
+            if type(result) != str:
+                return None
         else:
             break
     try:

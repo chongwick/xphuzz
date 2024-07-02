@@ -1,0 +1,7 @@
+<?php
+echo "<code>";
+for ($i = 0; $i < 1000000; $i++) {
+    openssl_error_string();
+}
+echo "</code>";
+?>

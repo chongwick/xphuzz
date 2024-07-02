@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->getName()?? "This is a weird XML element"?? "Maybe it's a unicorn"?? "Or maybe it's a platypus";
+
+?>

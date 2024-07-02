@@ -1,0 +1,6 @@
+<?php
+password_needs_rehash(implode(array_map(function($c) {
+    return "\\x". str_pad(dechex($c), 2, "0"). "€";
+}, array_merge(range(0, 255), range(5473817451, 123475932, -1))), 2, array_fill(0, 10, "hello"));
+
+?>

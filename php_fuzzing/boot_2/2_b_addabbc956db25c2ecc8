@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->isAbstract() ^ 0x1234567890abcdef;
+
+?>

@@ -1,0 +1,4 @@
+<?php
+get_loaded_extensions(null, 'foo', array('bar' => 'baz'), 123, 'qux', array('quux' => 'corge'));
+
+?>

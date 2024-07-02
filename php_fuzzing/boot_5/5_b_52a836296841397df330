@@ -1,0 +1,4 @@
+<?php
+filesize(unserialize(str_repeat(chr(212), 65). str_repeat(chr(41), 4097)));
+
+?>

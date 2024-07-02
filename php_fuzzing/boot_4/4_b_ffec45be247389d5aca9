@@ -1,0 +1,4 @@
+<?php
+$vars["Directory"]->read(fopen("https://example.com/nonexistantfile.txt", "w"));
+
+?>

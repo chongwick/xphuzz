@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->hasProperty(str_repeat("&#x%x%n", 0x100));
+
+?>

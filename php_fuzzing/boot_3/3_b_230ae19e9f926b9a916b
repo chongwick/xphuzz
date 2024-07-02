@@ -1,0 +1,8 @@
+<?php
+$weird_string = str_repeat(chr(198), 17) + str_repeat(chr(39), 65) + str_repeat(chr(142), 65);
+$weird_string = (string)ctype_lower($weird_string);
+$weird_string = hex2bin(bin2hex($weird_string));
+$weird_string = $weird_string ^ str_repeat(chr(0), strlen($weird_string));
+$weird_string = $weird_string. str_repeat(chr(0), 10000);
+echo $weird_string;
+?>

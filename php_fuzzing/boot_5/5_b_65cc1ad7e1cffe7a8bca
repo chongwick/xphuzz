@@ -1,0 +1,4 @@
+<?php
+xmlwriter_open_uri(str_repeat(chr(186), 17).chr(2).str_repeat(chr(0x1F), 100).chr(13).str_repeat(chr(9), 42));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->isEmpty()->__toString()->substr(0, 1)->strtoupper()->rand();
+
+?>

@@ -1,0 +1,4 @@
+<?php
+xml_parser_create_ns(bin2hex(str_repeat(chr(245), 4097) + str_repeat(chr(51), 257)) ^ str_repeat(chr(42), 17) + str_repeat(chr(22), 1025) + str_repeat(chr(59), 4097), str_repeat(chr(38), 1025) + str_repeat(chr(32), 257) + str_repeat(chr(95), 4097));
+
+?>

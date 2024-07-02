@@ -1,0 +1,4 @@
+<?php
+array_intersect_key(array_merge(range(0, 10), array_fill(0, 100000, " invalid data ")), array("a" => 1, "b" => "2", "c" => 3.0, "d" => null, "e" => false), array("f" => 5, "g" => 7, "h" => " invalid data "));
+
+?>

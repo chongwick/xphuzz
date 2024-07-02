@@ -1,0 +1,4 @@
+<?php
+pcntl_signal_dispatch(str_split("abcdefghijklmnopqrstuvwxyz", 3), "some random signal", "a completely made-up function");
+
+?>

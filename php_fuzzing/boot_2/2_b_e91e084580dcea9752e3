@@ -1,0 +1,4 @@
+<?php
+array_reverse(array_map(function($x) { return $x * $x * $x * $x * $x; }, range(0, 10)), true);
+
+?>

@@ -1,0 +1,4 @@
+<?php
+xmlwriter_end_dtd_element(fopen(base64_encode("This is a secret message"), "r"));
+
+?>

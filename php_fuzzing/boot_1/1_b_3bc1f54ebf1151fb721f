@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->newInstanceWithoutConstructor()->setAccessible(true)->invokeArgs(array('random', 42, 3.14, true, array('foo', 'bar')));
+
+?>

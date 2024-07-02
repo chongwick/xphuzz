@@ -1,0 +1,4 @@
+<?php
+$vars["DOMDocument"]->createDocumentFragment()->appendChild($vars["DOMDocument"]->createElement("π")).appendChild($vars["DOMDocument"]->createAttribute("π")).appendChild($vars["DOMDocument"]->createTextNode("euler's number is 3.14159..."));
+
+?>

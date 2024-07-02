@@ -1,0 +1,8 @@
+<?php
+$vars["SplDoublyLinkedList"]->pop();
+$vars["SplDoublyLinkedList"]->rewind();
+$vars["SplDoublyLinkedList"]->unshift("Hello, World!");
+$vars["SplDoublyLinkedList"]->setIteratorMode(SplDoublyLinkedList::FRONT);
+$vars["SplDoublyLinkedList"]->append("This is a test.");
+$vars["SplDoublyLinkedList"]->setInfo("This is a doubly linked list.");
+?>

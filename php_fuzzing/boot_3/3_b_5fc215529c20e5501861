@@ -1,0 +1,6 @@
+<?php
+array_product(array_map(function($x) {
+    return $x * (1 + sin($x * pi()));
+}, range(0, 10)));
+
+?>

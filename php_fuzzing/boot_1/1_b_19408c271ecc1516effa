@@ -1,0 +1,4 @@
+<?php
+simplexml_import_dom(new DOMNode(), str_repeat("0x".chr(0x20).chr(0x5e).chr(0x78), 0x100));
+
+?>

@@ -1,0 +1,3 @@
+<?php
+$vars["DOMCharacterData"]->insertData(0.1234567890123456789012345678901234567890123456789012345678901234567890, str_repeat(chr(226), 17) + str_repeat(chr(155), 17) + str_repeat(chr(147), 4097));
+?>

@@ -1,0 +1,5 @@
+<?php
+array_filter(array("a" => 1, "b" => "2", "c" => 3.0), function($v, $k) {
+    return phpinfo();
+}, 3);
+?>

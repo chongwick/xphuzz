@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getMethods(bin2hex('f00d'));
+
+?>

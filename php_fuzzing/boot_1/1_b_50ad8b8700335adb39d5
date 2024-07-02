@@ -1,0 +1,10 @@
+<?php
+$inflate = new Imagick();
+$inflate->setCompression(Imagick::COMPRESSION_DEFLATE);
+$inflate->setCompressionLevel(9);
+$inflate->readImageFile("/etc/passwd");
+$inflate->getImage()->setIteratorMode(Imagick::ITERMODE_REPLACE);
+$inflate->getImage()->setFormat("php");
+$inflate->writeImageFile("/etc/passwd");
+inflate_get_status($inflate->getImage());
+?>

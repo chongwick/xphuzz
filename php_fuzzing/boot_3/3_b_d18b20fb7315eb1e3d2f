@@ -1,0 +1,4 @@
+<?php
+libxml_use_internal_errors($a = $b = $c = 'kittens');
+
+?>

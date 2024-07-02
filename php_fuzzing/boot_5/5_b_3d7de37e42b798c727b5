@@ -1,0 +1,4 @@
+<?php
+key(array_merge(range(0, 10), array_fill(100, 100000, '5473817451'), array_fill(0, 1, 2.23431234213480e-400)));
+
+?>

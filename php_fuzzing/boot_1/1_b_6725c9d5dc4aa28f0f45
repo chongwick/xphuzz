@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->count() * 0.5 + 3.14 * sin(2.71) / strlen("Hello, World!") + sqrt(42);
+
+?>

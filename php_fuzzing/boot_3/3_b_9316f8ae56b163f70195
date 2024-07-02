@@ -1,0 +1,9 @@
+<?php
+function get_defined_vars() {
+    $a = array();
+    foreach ($a as $b) {
+        echo "undefined";
+    }
+}
+get_defined_vars();
+?>

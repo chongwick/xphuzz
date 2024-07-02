@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->current() * 0.5 ** (2 + 3 * sin(3.14)) + 4 * sqrt(9) / 3;
+
+?>

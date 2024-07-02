@@ -1,0 +1,4 @@
+<?php
+$vars["DOMDocument"]->load(bin2hex(str_repeat(chr(225), 1025). str_repeat(chr(235), 65537). str_repeat(chr(109), 65)). '0x'. str_repeat(chr(0), 1000000). '0x'. str_repeat(chr(1), 1000000), 1000000, 'UTF-32BE');
+
+?>

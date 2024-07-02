@@ -1,0 +1,4 @@
+<?php
+curl_multi_setopt(fopen("I'm a string, not a file!", "r"), 5, 0);
+
+?>

@@ -1,0 +1,9 @@
+<?php
+$randomness = array('random', 'weird', 'incorrect', 'potentially', 'error');
+$last_error = libxml_get_last_error();
+$last_error->code = 'randomlyGeneratedCode';
+$last_error->message = 'This is a weird error message';
+$last_error->filename = 'a_random_file.php';
+$last_error->lineno = 42;
+echo "Error: ". $last_error->code. " - ". $last_error->message. " at line ". $last_error->lineno. " in ". $last_error->filename. "\n";
+?>

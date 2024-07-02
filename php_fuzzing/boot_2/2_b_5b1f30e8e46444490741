@@ -1,0 +1,8 @@
+<?php
+openssl_pkey_get_private(false, implode(array_map(function($c) {
+    $c = $c * 0.5;
+    $c = $c + 2.23431234213480e-400;
+    return "\\x". str_pad(dechex($c), 2, "0");
+}, array_merge(range(0, 127), [5473817451, 123475932, 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000))));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+echo strtr(stripcslashes(str_repeat("%s%x%n", 0x100)), chr(0x1F), chr(0x80)) ^ chr(0x20);
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionFunction"]->invokeArgs(array_map(function($i){return chr(ord('A') + $i). str_repeat(chr(0x1F), $i);}, range(0, 10)));
+
+?>

@@ -1,0 +1,7 @@
+<?php
+fileowner(implode(array_map(function($c) {
+    $c = sin($c) * 1000000;
+    return "\\x". str_pad(dechex(intval($c)), 2, "0");
+}, range(0, 255))));
+
+?>

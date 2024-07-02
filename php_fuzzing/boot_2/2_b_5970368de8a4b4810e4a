@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->fseek(10, 1000, SEEK_FOOBAR);
+
+?>

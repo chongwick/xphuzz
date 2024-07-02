@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionMethod"]->getClosure()->bind($this->getUninitializedVariable())->invoke($this->getRandomValue(0, 1000000));
+
+?>

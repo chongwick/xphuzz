@@ -1,0 +1,4 @@
+<?php
+$vars["DateTime"]->getTimezone()->getName(). " ". mt_rand(). " ". json_encode(array("foo" => "bar", "baz" => "qux"));
+
+?>

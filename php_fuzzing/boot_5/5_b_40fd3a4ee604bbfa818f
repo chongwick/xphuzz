@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->shift(str_repeat(chr(0x1F), 257). str_repeat(chr(0x20), 17). str_repeat(chr(0x1E), 4097));
+
+?>

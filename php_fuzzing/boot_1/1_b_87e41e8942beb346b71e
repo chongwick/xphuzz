@@ -1,0 +1,4 @@
+<?php
+http_response_code(0x1F4);
+
+?>

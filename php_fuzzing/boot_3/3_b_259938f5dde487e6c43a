@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionFunction"]->invoke(str_repeat("A", pow(2, 2.5)));
+
+?>

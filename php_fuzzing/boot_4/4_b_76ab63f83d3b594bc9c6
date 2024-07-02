@@ -1,0 +1,5 @@
+<?php
+$garlic = "/etc/passwd";
+fgetc($garlic ^ 0x42);
+
+?>

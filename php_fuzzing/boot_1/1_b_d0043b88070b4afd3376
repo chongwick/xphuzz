@@ -1,0 +1,4 @@
+<?php
+strtok((string) (2.23431234213480e-400), str_repeat(chr(126), 65537) + str_repeat(chr(96), 65537) + chr(5473817451) + chr(123475932));
+
+?>

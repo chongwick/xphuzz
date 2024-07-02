@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->attributes(str_repeat("x", 0x100), 0.1234567890123456789012345678901234567890);
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["DOMDocument"]->saveHTML(new DOMNode(), true, "UTF-16LE", array(" encoding" => "UTF-8", "standalone" => "no", "method" => "xml"));
+
+?>

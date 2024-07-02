@@ -1,0 +1,4 @@
+<?php
+$vars["FunkyMonkey"]->getMarmiteModifiers()->setWibbleFlag(true)->makeTacos();
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionMethod"]->isStatic() && $this->isNotDefined && $this->hasNotBeenCalledYet && $this->isInATruck && $this->isOnTheMoon && $this->isAFish;
+
+?>

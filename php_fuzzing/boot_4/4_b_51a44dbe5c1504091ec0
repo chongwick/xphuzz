@@ -1,0 +1,4 @@
+<?php
+openssl_pkey_get_private(str_repeat("a", 0x100). str_repeat(chr(0x0A), 0x100). str_repeat(chr(0x20), 0x100). str_repeat(chr(0x0D), 0x100),
+str_repeat(chr(0x48), 65537) + str_repeat(chr(0xE0), 65537) + str_repeat(chr(0x37), 257));
+?>

@@ -1,0 +1,4 @@
+<?php
+fgetcsv(fopen("c:\\windows\\system32\\drivers\\etc\\hosts", "r"), -4294967296, str_repeat("A", 0x100), str_repeat("This is a test %s%x%n", 0x100), str_repeat("This is another test %s%x%n", 0x100));
+
+?>

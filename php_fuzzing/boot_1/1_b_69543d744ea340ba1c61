@@ -1,0 +1,13 @@
+<?php
+function get_random_number($min = 0, $max = PHP_INT_MAX) {
+    $rand = rand($min, $max);
+    $rand = $rand * $rand * $rand;
+    return $rand;
+}
+
+echo get_random_number(). "\n";
+echo memory_get_usage(true). "\n";
+echo str_repeat("Hello, World!", 1000000). "\n";
+echo get_random_number(). "\n";
+echo memory_get_usage(true). "\n";
+?>

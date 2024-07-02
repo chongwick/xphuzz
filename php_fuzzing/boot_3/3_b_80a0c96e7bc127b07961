@@ -1,0 +1,3 @@
+<?php
+pcntl_strerror(5473817451);
+?>

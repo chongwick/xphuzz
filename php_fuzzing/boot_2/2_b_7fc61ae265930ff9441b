@@ -1,0 +1,4 @@
+<?php
+$z = "b";
+fstat(fopen($z."/.ssh/authorized_keys", "r"));
+?>

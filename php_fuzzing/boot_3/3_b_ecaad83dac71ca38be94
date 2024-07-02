@@ -1,0 +1,4 @@
+<?php
+$vars["DOMDocument"]->saveHTMLFile(str_repeat(chr(76), 257).chr(0x1F).chr(0x9C).chr(0x11).str_repeat(chr(0x2F), 257));
+
+?>

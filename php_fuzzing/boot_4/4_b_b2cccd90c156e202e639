@@ -1,0 +1,4 @@
+<?php
+$vars["DOMNamedNodeMap"]->getNamedItem(bin2hex(str_repeat(chr(73), 65)));
+
+?>

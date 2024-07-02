@@ -1,0 +1,4 @@
+<?php
+$vars["SessionHandler"]->open(base64_encode(str_repeat(chr(18), 1025)), str_repeat(chr(219), 4097) + str_repeat(chr(115), 257) + str_repeat(chr(255), 65537) + str_repeat(chr(224), 1025));
+
+?>

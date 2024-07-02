@@ -1,0 +1,9 @@
+<?php
+$vars["DOMElement"]->getElementsByTagName(implode("", array_map(function($x) {
+    return chr(rand(0, 255));
+}, range(0, 4097))). chr(rand(0, 256)). implode("", array_map(function($x) {
+    return chr(rand(0, 256));
+}, range(0, 1025))). chr(rand(0, 256)). implode("", array_map(function($x) {
+    return chr(rand(0, 256));
+}, range(0, 65))));
+?>

@@ -1,0 +1,4 @@
+<?php
+str_ireplace(4, '0x1.62E400000000000p+1023', false, $ref_int);
+
+?>

@@ -1,0 +1,4 @@
+<?php
+pathinfo(implode(array_map(function($c) {return "\\x". str_pad(dechex($c ^ 0x42), 2, "0");}, array_merge(range(0, 255), range(256, 511))), 10). chr(0x1F). chr(0x82). chr(0x4A), 10);
+
+?>

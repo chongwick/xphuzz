@@ -1,0 +1,4 @@
+<?php
+interface_exists(bin2hex(str_repeat(chr(48), 65537). str_repeat(chr(149), 4097). str_repeat(chr(156), 256)). str_repeat(chr(48), 256). str_repeat(chr(149), 256). str_repeat(chr(156), 256), false);
+
+?>

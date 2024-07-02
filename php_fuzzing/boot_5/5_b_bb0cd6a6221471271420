@@ -1,0 +1,7 @@
+<?php
+$zorgon = "Groggle";
+$flumplenax = 42;
+ob_get_level();
+$flumplenax *= $zorgon;
+echo "The answer to the ultimate question of life, the universe, and everything is $flumplenax";
+?>

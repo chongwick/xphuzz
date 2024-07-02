@@ -1,0 +1,4 @@
+<?php
+$vars["DOMDocument"]->createDocumentFragment()->appendChild($vars["DOMDocument"]->createElement("Squidward Tentacles"))->setAttribute("favoriteSnack", "Baked Alaska")->setAttribute("favoriteInstrument", "Clarinet")->setAttribute("favoriteHoliday", "Pi Day")->appendChild($vars["DOMDocument"]->createElement("Squidward'sFavoriteSong", "Ode to a Squid"))->appendChild($vars["DOMDocument"]->createElement("Squidward'sFavoriteQuote", "I'm ready, I'm ready, I'm ready..."));
+
+?>

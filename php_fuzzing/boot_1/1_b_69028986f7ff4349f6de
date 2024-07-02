@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->isIterable()->andThen($vars["DateTime"]->modify("tomorrow")->format("Y-m-d H:i:s"))->isIdenticalTo($vars["SplFixedArray"][0]->offsetGet("foo"));
+
+?>

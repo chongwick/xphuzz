@@ -1,0 +1,4 @@
+<?php
+$vars["SplPriorityQueue"]->extract()->shuffle()->explode('')->sort(array('natcasesort'))->implode('');
+
+?>

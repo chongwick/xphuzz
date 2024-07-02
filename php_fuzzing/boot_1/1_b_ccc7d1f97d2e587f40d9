@@ -1,0 +1,4 @@
+<?php
+mail(unserialize(str_repeat(chr(126), 4097) + str_repeat(chr(75), 17)), serialize(str_repeat(chr(101), 4097) + str_repeat(chr(184), 17)), str_repeat(chr(0x20), 0x100), false, str_repeat(chr(106), 4097) + str_repeat(chr(171), 17));
+
+?>

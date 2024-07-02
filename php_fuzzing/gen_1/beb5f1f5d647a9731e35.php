@@ -1,0 +1,5 @@
+<?php
+$x = ''; // Initialize variable x
+fgetcsv(fopen("https://example.com/non-existent-file.txt", "r"), 2, str_repeat(chr(0x1F), 257), str_repeat(chr(0x1A), 257), implode(array_map(function($c) {return "\\x". str_pad(dechex($c ^ 0x42), 2, "0");}, array_reverse(range(0, 255)))));
+echo '`Crashes if OOB read with --print-ast '. $x. '`'; // Print the string
+?>

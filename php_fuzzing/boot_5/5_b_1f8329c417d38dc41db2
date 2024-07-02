@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->setCsvControl(unserialize('O:8:"SplFileObject":0:{}'), str_repeat("A", 0x100 ^ 0x100), chr(154). str_repeat(chr(47), 4097). chr(27). str_repeat(chr(27), 65537 - 4097));
+
+?>

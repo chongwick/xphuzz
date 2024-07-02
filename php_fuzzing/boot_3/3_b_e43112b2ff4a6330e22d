@@ -1,0 +1,4 @@
+<?php
+curl_error(unserialize(fopen("/tmp/doesntexist", "w")."/__PHP_Incomplete_Class".str_repeat(chr(255), 1024)));
+
+?>

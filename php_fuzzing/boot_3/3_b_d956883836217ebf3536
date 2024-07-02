@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->prev()->insertAfter($vars["SplDoublyLinkedList"]->rewind()->getInfo())->setInfo("Weirdness Level: Critical");
+
+?>

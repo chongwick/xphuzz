@@ -1,0 +1,4 @@
+<?php
+$vars["DOMNode"]->removeChild($vars["DOMNode"]->appendChild(new DOMNode())->appendChild(new DOMNode())->removeChild(new DOMNode()));
+
+?>

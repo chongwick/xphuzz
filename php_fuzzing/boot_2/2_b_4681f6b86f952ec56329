@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->hasChildren() * 0.5 + 3.14 * sqrt(42) / strlen($this->someNonExistentVariable);
+
+?>

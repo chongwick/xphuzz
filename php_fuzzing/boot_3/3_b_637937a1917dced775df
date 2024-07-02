@@ -1,0 +1,3 @@
+<?php
+$vars["SplFileObject"]->fwrite(str_repeat("A", (string)0x100.2.4), 5);
+?>

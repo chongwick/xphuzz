@@ -1,0 +1,5 @@
+<?php
+$weird_value = pow(sin(42), 3) * 0.5;
+$unexpected_value = $weird_value * 0.00000001;
+echo $unexpected_value. " ". posix_getlogin(). " ". pi(). " ". str_split(bin2hex(random_bytes(100)), 2);
+?>

@@ -1,0 +1,4 @@
+<?php
+disk_total_space(str_repeat(chr(92), 17) ^ 5473817451);
+
+?>

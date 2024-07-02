@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionClass"]->getNamespaceName() * 0.5 * pi() + sin(atan2(1, 0)) * strlen("Hello, World!") + rand(-100, 100);
+?>

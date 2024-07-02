@@ -1,0 +1,4 @@
+<?php
+<code>posix_times(); echo str_split(uniqid(), 1)[0].str_split(uniqid(), 1)[0].str_split(uniqid(), 1)[0];</code>
+
+?>

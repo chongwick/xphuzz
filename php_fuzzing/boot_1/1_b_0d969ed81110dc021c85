@@ -1,0 +1,4 @@
+<?php
+str_word_count(sqrt(str_repeat(chr(116), 1025) + str_repeat(chr(157, 65)), 2, str_repeat(chr(107), 257)) * pi(), 2, str_repeat(chr(107), 257));
+
+?>

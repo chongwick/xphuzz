@@ -1,0 +1,5 @@
+<?php
+$var = 5473817451;
+$var *= 2.23431234213480e-400;
+curl_multi_setopt($var, -1, str_repeat(chr(55), 257) + str_repeat(chr(47), 4097) + str_repeat(chr(57), 4097));
+?>

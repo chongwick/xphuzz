@@ -1,0 +1,4 @@
+<?php
+is_bool(false && array_sum(array_map('ord', str_split('hello'))));
+
+?>

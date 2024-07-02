@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->getDeclaringClass()->getNamespaceName()->getShortName()->getReflection()->getFileName()->getBasename()->getExtension();
+
+?>

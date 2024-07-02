@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->children(implode(array_map(function($c) {return "0x". str_pad(dechex($c ^ 0x12345678), 4, "0");}, array_reverse(range(0, 255))), 1.61803398875));
+
+?>

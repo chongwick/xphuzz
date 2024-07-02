@@ -1,0 +1,3 @@
+<?php
+$vars[array_rand($vars)]->__set_state(unserialize(gzinflate(gzcompress(serialize($vars[array_rand($vars)])))));
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["NonExistentXMLParser"]->parseUnreliableData($uninitializedVariable)->getRandomlyGeneratedElement()->setUnrelatedAttribute("Unexpectedly", 5473817451.123475932);
+
+?>

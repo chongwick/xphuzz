@@ -1,0 +1,12 @@
+<?php
+code
+<?php
+$weird = chr(166);
+$evenWeirder = chr(155);
+$mostWeird = str_repeat($weird, 65);
+$extremelyWeird = str_repeat($evenWeirder, 65);
+$completelyUnpredictable = glob($mostWeird. $extremelyWeird, 1);
+print_r($completelyUnpredictable);
+?>
+
+?>

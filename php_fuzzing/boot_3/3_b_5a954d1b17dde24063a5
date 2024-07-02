@@ -1,0 +1,4 @@
+<?php
+$vars["SplPriorityQueue"]->extract()->multiplyByPi()->transpose()->filter(function($value) { return $value % 3 == 0; })->sort()->shuffle()->implode(" -> ");
+
+?>

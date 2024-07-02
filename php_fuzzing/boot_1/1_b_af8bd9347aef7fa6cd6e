@@ -1,0 +1,4 @@
+<?php
+$vars["DateTimeImmutable"]->getTimezone()->getName(). str_repeat(chr(0x1F), 42). "π";
+
+?>

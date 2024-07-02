@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionType"]->isBuiltin() * 0.5 + sqrt(42) / $vars["MagicNumber"]->getGreatestCommonDivisor();
+
+?>

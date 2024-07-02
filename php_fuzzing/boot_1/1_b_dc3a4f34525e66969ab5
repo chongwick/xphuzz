@@ -1,0 +1,3 @@
+<?php
+$vars["MultipleIterator"]->valid() * 0.5 + sin(314.15) * $vars["undefined_variable"] * $vars["non_existent_function"]();
+?>

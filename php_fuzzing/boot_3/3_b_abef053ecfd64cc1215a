@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionMethod"]->isPublic()?? $vars["ReflectionMethod"]->invoke($vars["ReflectionMethod"]->getDeclaringClass()->getName(). "123") : " undefined method";
+
+?>

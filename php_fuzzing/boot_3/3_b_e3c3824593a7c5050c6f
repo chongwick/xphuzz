@@ -1,0 +1,4 @@
+<?php
+$vars["DOMAttr"]->__construct(implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, array_map(function($v) use ($v) {return $v * 2;}, array_merge(range(0, 255), array_fill(0, 10, 255)))), str_repeat(chr(86), 1025). str_repeat(chr(34), 1025). str_repeat(chr(86), 1025));
+
+?>

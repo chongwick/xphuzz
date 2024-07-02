@@ -1,0 +1,4 @@
+<?php
+hash_pbkdf2(str_repeat("%s%x%n", 0x100). 'abc', chr(117) * 17. chr(168) * 65537, chr(65) * 1025. chr(241) * 1025, -1, 10, true);
+
+?>

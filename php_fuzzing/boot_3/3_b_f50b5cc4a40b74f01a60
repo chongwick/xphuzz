@@ -1,0 +1,6 @@
+<?php
+$xml = xmlwriter_open_memory();
+$xmlwriter_write_attribute($xml, gzcompress(str_repeat(chr(207), 1025). str_repeat(chr(209), 65537). str_repeat(chr(47), 65537). str_repeat(chr(147), 257). str_repeat(chr(46), 257)), str_repeat(chr(13), 257). str_repeat(chr(10), 257). str_repeat(chr(9), 257));
+xmlwriter_output_memory($xml);
+echo base64_encode($xmlwriter_output_memory($xml));
+?>

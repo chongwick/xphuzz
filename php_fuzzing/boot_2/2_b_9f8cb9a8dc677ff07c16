@@ -1,0 +1,4 @@
+<?php
+session_status() * sqrt(42) + pi();
+
+?>

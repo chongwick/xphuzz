@@ -1,0 +1,8 @@
+<?php
+$xmlWriter = new stdclass();
+$xmlWriter->open_memory = true;
+$xmlWriter->writeAttribute = "Attribute";
+$xmlWriter->writeElement = "Element";
+$xmlWriter->flush = "Flush";
+$xmlWriter->close = "Close";
+?>

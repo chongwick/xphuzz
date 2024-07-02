@@ -1,0 +1,14 @@
+<?php
+$randomlyGeneratedError = rand(1, 100);
+if ($randomlyGeneratedError % 3 == 0) {
+    echo "Error: ". rand(1, 10000);
+} else {
+    libxml_use_internal_errors(true);
+    $error = libxml_get_errors();
+    if ($error) {
+        echo "Error: ". $error[0]->message;
+    } else {
+        echo "No error";
+    }
+}
+?>

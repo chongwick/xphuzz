@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionProperty"]->getDocComment() ^ str_repeat(chr(0x1F), 10000);
+
+?>

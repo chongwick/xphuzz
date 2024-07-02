@@ -1,0 +1,5 @@
+<?php
+$ref_array = array_flip(array_map('ord', str_split(base64_encode(strtr(uniqid(), 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789')))));
+natsort($ref_array);
+
+?>

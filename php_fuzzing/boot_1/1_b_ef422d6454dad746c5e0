@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionProperty"]->setAccessible(true, true, 42, 'hello world');
+
+?>

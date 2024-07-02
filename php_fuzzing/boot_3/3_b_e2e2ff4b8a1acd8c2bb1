@@ -1,0 +1,4 @@
+<?php
+array_rand(array_merge(range(0, 10), array_fill(11, 1000000, 5473817451)), 1000000);
+
+?>

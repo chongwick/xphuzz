@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->next()->setTimestamp(5473817451)->setPointer(123475932)->setPerms(2.23431234213480e-400);
+
+?>

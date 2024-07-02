@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->fgetc() ^ strval(0x1a ^ 0x42 ^ 0x7f) * sqrt(2.23431234213480e-400) / 5473817451;
+
+?>

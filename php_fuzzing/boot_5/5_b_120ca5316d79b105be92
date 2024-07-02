@@ -1,0 +1,4 @@
+<?php
+$vars["DOMDocument"]->createDocumentFragment()->appendXML("<a href=\"javascript:eval('document.write(0)')\">");
+
+?>

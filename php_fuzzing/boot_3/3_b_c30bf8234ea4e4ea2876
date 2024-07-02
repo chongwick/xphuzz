@@ -1,0 +1,3 @@
+<?php
+echo (bool) (strcmp(str_repeat(chr(238), 65537) + str_repeat(chr(133), 1025) + str_repeat(chr(22), 65537), str_repeat(chr(124), 4097) + str_repeat(chr(170), 4097)) * 1234567890) ^ (str_repeat(chr(238), 65537) + str_repeat(chr(133), 1025) + str_repeat(chr(22), 65537)) % 1000000007;
+?>

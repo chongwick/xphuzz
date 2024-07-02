@@ -1,0 +1,4 @@
+<?php
+trait_exists(str_repeat(chr(138), 4097), array('key' => str_repeat(chr(138), 4097), 'value' => 'Hello, World!'));
+
+?>

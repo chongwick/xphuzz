@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClassConstant"]->getModifiers() + 42 * pi() * sqrt(2) * "Hello, World!";
+
+?>

@@ -1,0 +1,4 @@
+<?php
+xml_set_character_data_handler(fopen("https://example.com/nonexistentfile.txt", "w"), phpinfo());
+
+?>

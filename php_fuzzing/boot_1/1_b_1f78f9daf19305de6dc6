@@ -1,0 +1,4 @@
+<?php
+stream_socket_shutdown(fopen("https://example.com/does-not-exist", "r"), 5.5, 1234567890);
+
+?>

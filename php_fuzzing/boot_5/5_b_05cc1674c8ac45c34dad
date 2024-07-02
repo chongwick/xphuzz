@@ -1,0 +1,4 @@
+<?php
+stream_context_create(array_combine(range(0, 10), range(0, 10)), array_combine(array_map('sqrt', range(0, 10)), array_map('sqrt', range(0, 10))));
+
+?>

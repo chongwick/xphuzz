@@ -1,0 +1,11 @@
+<?php
+$weird_string = str_repeat("%s%x%n", 0x100);
+$weird_string = str_replace("%", "%%", $weird_string);
+$weird_string = str_replace("s", "S", $weird_string);
+$weird_string = str_replace("x", "X", $weird_string);
+$weird_string = str_replace("n", "N", $weird_string);
+
+$ref_int = "Hello, World!";
+passthru($weird_string, $ref_int);
+echo $ref_int;
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionMethod"]->isConstructor() * 0.5 + sin(π/3) * (rand(0, 1)? 1 : -1) * sqrt(2) * $vars["DateTime"]->getTimestamp();
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionProperty"]->isProtected()?? 'Maybe it's not?' : 'Who knows?';
+
+?>

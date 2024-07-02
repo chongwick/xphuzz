@@ -1,0 +1,10 @@
+<?php
+$vars["SplPriorityQueue"]->rewind();
+$vars["SplPriorityQueue"]->insert("random", "unexpected");
+$vars["SplPriorityQueue"]->insert("weird", "potentially");
+$vars["SplPriorityQueue"]->insert("incorrect", "values");
+$vars["SplPriorityQueue"]->rewind();
+$vars["SplPriorityQueue"]->rewind();
+$vars["SplPriorityQueue"]->rewind();
+
+?>

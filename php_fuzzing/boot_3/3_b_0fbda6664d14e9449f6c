@@ -1,0 +1,11 @@
+<?php
+$weirdness = gzopen("non_existent_file.txt", "rb");
+if ($weirdness) {
+    $garbage = gzgetc($weirdness);
+    gzclose($weirdness);
+    echo $garbage. " (Note: This will probably cause an error because the file doesn't exist)";
+} else {
+    echo "Error: Could not open non-existent file";
+}
+
+?>

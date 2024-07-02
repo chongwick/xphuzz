@@ -1,0 +1,4 @@
+<?php
+krsort($ref_array, 2, "banana", "monkey", 42, array(1, 2, 3), str_repeat(chr(13), 257));
+
+?>

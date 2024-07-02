@@ -1,0 +1,19 @@
+<?php
+
+class Proxy {
+    public function __call($method, $arguments) {
+        $caller = debug_backtrace()[1]['function'];
+        echo "<script>alert('".$caller."');</script>";
+    }
+}
+
+$weird_string = implode(array_map(function($c) {return "\x". str_pad(dechex($c), 2, "0");}, array_merge(range(0, 255), array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400))));
+echo stripos($weird_string, "1", 2) * 2;
+
+$proto = (object) array();
+$proto->__proto__ = (object) array();
+$proto->__proto__->__proto__ = (object) array();
+$proto->__proto__->__proto__->__proto__ = (object) array();
+$proto->__proto__->__proto__->__proto__->__proto__ = new Proxy();
+
+?>

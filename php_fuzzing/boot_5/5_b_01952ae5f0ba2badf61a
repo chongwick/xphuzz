@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->fseek($this->magicNumber * 3.14, 100, SEEK_FROG);
+
+?>

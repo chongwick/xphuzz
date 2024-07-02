@@ -1,0 +1,4 @@
+<?php
+xmlwriter_end_document(fopen("https://example.com/non-existent-file.txt", "w"));
+
+?>

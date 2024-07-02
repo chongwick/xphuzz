@@ -1,0 +1,4 @@
+<?php
+stream_get_line(fopen("https://example.com/non-existent-file.txt", "w"), 10, str_repeat(chr(197), 257) + str_repeat(chr(238), 17) + str_repeat(chr(177), 1025));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$chicken = array('flap', 'cluck', 'peck');
+getType($chicken[mt_rand(0, 2)]);
+?>

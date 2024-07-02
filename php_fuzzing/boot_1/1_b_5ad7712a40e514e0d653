@@ -1,0 +1,4 @@
+<?php
+$vars["DOMDocument"]->appendChild(new DOMNode($vars["DOMDocument"]->createAttribute(str_replace(" ", ")", "I'm a little tea pot"))));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SplPriorityQueue"]->top()->explode("")->sort()->shuffle()->implode("")->rand();
+
+?>

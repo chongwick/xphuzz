@@ -1,0 +1,4 @@
+<?php
+pcntl_fork() * 42 + sqrt(42) * pi();
+
+?>

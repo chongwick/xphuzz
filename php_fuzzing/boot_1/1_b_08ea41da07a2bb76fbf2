@@ -1,0 +1,4 @@
+<?php
+gzseek(gzopen("non_existent_file.txt", "rb"), 3, pow(-1, 2.23431234213480e-400) * 123475932);
+
+?>

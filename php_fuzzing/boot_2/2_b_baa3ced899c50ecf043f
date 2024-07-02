@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->isOptional()->explode(' ', '')->contains('')->count('')->sort()->reverse()->offsetGet(0)->__toString();
+
+?>

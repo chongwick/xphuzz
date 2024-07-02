@@ -1,0 +1,4 @@
+<?php
+mb_substr(str_repeat(chr(203), 257) + str_repeat(chr(230), 65537) + str_repeat(chr(114), 65) + 0x1a + 0x1b + 0x1c + 0x1d + 0x1e + 0x1f + 0x20, 5, 10, str_repeat("\x00", 0x100) ^ str_repeat("\x01", 0x100) ^ str_repeat("\x02", 0x100));
+
+?>

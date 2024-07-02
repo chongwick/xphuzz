@@ -1,0 +1,4 @@
+<?php
+$vars["DOMNode"]->insertBefore($vars["DOMNode"]->appendChild($vars["DOMNode"]->createElement("RandomlyGeneratedNode")), $vars["DOMNode"]->appendChild($vars["DOMNode"]->createElement("UnexpectedlyInsertedNode")));
+
+?>

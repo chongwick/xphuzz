@@ -1,0 +1,4 @@
+<?php
+$vars["DOMElement"]->getAttribute(unpack('H*', str_repeat(chr(107), 65). str_repeat(chr(108), 17))[1]);
+
+?>

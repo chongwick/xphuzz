@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->allowsNull()->explode('!')->pop()->insertInto("database")->execute()->getRandomKey()->makeItAPizza()->giveItToMyPetSnake();
+
+?>

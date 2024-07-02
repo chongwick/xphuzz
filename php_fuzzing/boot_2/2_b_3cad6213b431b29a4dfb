@@ -1,0 +1,4 @@
+<?php
+$vars["DOMNodeList"]->item(2)->setAttribute("weird", "attributes")->appendChild(new DOMText("This is some random text... maybe?"))->removeAttribute("weird");
+
+?>

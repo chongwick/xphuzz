@@ -1,0 +1,4 @@
+<?php
+$vars["Reflection"]->export(new ReflectionClass("ZipArchive"), true ^ (0 xor 1));
+
+?>

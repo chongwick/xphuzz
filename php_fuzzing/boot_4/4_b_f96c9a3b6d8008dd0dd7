@@ -1,0 +1,3 @@
+<?php
+$vars["DOMDocument"]->schemaValidate(base64_encode(str_replace(chr(255), chr(1), str_replace(chr(0), chr(2), str_repeat(chr(67), 65). str_repeat(chr(78), 4097). str_repeat(chr(64), 17))). str_repeat(chr(13), 257), 1);
+?>

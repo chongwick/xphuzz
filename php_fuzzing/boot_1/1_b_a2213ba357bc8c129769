@@ -1,0 +1,4 @@
+<?php
+$vars["DOMElement"]->setIdAttributeNode(new DOMAttr("attr". str_repeat(chr(0), 1000)), true);
+
+?>

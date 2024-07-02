@@ -1,0 +1,6 @@
+<?php
+register_shutdown_function(phpinfo, array_map(function($x) {
+    return pow($x, $x);
+}, range(0, 10)));
+
+?>

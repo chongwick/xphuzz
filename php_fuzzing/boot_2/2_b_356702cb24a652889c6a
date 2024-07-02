@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionProperty"]->setValue($vars[array_rand($vars)].''. array_sum($vars).''. rand());
+?>

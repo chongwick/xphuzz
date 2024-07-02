@@ -1,0 +1,4 @@
+<?php
+readline_info(str_repeat(chr(144), 65537) ^ str_repeat(chr(253), 65) ^ str_repeat(chr(33), 4097), str_repeat(chr(236), 17) ** str_repeat(chr(129), 17) ** str_repeat(chr(4), 1025));
+
+?>

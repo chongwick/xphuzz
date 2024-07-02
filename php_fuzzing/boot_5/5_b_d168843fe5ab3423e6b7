@@ -1,0 +1,3 @@
+<?php
+$vars["DOMDocument"]->loadXML(str_repeat("%s%x%n", 5473817451), 123475932.23431234213480e-400);
+?>

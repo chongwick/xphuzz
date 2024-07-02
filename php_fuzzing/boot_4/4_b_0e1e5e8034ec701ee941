@@ -1,0 +1,4 @@
+<?php
+atan2(sqrt(0), sqrt(-1));
+
+?>

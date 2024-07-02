@@ -1,0 +1,9 @@
+<?php
+$weird_string = implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, range(0, 255)));
+$ref_string = "abcdefghijklmnopqrstuvwxyz";
+$ref_array = array(1, "two", 3.14, true, null, array(1, 2, 3));
+$iv = range(0, 10);
+$padding = str_repeat("A", 0x100);
+$ref_string;
+openssl_seal($weird_string, $ref_string, $ref_array, $iv, $padding, $ref_string);
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["DOMDocument"]->getElementById(base64_encode(str_repeat(chr(57), 65537).chr(255).str_repeat(chr(22), 4096)));
+
+?>

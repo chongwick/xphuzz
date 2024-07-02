@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->isDefaultValueConstant() * 0.54321 * 0.12345 * sqrt(2) * 0xdeadbeef + 0x12345678 - 0.000000001;
+
+?>

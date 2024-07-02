@@ -1,0 +1,4 @@
+<?php
+posix_getgrnam(str_repeat("Z", 0x100). chr(0x1F). "hello");
+
+?>

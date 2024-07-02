@@ -1,0 +1,4 @@
+<?php
+$vars["DOMComment"]->__construct(str_repeat(chr(0x00), 0x100));
+
+?>

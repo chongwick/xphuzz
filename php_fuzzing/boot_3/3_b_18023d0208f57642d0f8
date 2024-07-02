@@ -1,0 +1,4 @@
+<?php
+ini_set(bin2hex(str_repeat(chr(192), 1025). str_repeat(chr(156), 65537). str_repeat(chr(246), 17)), 
+str_repeat(chr(8), 17) + str_repeat(chr(152), 1025) + str_repeat(chr(246), 17));
+?>

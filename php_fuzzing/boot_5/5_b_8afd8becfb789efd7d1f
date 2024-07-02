@@ -1,0 +1,7 @@
+<?php
+$null = fopen("/dev/null", "r");
+$null->setFlags(STREAM_CAST_URL);
+$null->setSocketsTimeout(0);
+$null->setBlocking(false);
+fscanf($null, chr(116). str_repeat(chr(238), 1025). chr(116), $ref_array);
+?>

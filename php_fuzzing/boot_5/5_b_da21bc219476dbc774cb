@@ -1,0 +1,4 @@
+<?php
+$vars["SplPriorityQueue"]->current() + "Hello, World!" * 42 + "This is a test" ^ 0.12345678901234567890;
+
+?>

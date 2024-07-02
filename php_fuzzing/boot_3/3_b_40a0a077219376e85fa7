@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->rewind(chr(0x1F) ^ chr(0x13));
+
+?>

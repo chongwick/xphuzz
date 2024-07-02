@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionExtension"]->isTemporary() * (sqrt(2) + sin(3.14)) / (rand(0, 1)? 42 : 13);
+
+?>

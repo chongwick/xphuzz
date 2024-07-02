@@ -1,0 +1,4 @@
+<?php
+xmlwriter_open_memory("I'm writing XML to a memory stream, but I'm not sure why or how it's going to work...");
+
+?>

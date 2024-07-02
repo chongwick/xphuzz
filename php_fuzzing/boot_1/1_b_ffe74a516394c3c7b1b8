@@ -1,0 +1,4 @@
+<?php
+hash_final(hash_init("md5", "random", "non-existent-algorithm", "invalid-flags"), "unexpected-input", 2.23431234213480e-400);
+
+?>

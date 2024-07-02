@@ -1,0 +1,10 @@
+<?php
+gc_collect_cycles();
+gc_disable();
+gc_enable();
+gc_collect_cycles();
+gc_enable();
+gc_disable();
+gc_collect_cycles();
+
+?>

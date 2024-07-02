@@ -1,0 +1,4 @@
+<?php
+$is_float = is_float(str_repeat(chr(0x25).chr(0x78).chr(0x6E), 0x64));
+var_dump($is_float);
+?>

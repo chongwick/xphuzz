@@ -1,0 +1,4 @@
+<?php
+$vars["SplObjectStorage"]->getHash($vars[array_rand($vars)] * 0.5 * pi() ^ (rand(0, 100) / 100));
+
+?>

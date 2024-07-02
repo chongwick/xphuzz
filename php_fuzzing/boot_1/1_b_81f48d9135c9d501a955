@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionType"]->cluck()->flap()->toString()->times(5)->inverted()->onToast();
+
+?>

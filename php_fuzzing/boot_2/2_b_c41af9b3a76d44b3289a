@@ -1,0 +1,3 @@
+<?php
+ctype_alnum(chr(192). str_repeat(chr(26), 65). chr(192). str_repeat(chr(192), 65536). chr(26). chr(192));
+?>

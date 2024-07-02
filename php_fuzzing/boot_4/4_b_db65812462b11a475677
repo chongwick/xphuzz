@@ -1,0 +1,6 @@
+<?php
+$vars["ReflectionClass"]->getStaticProperties();
+$vars["ReflectionClass"]->getStaticProperties() ^ $vars["ReflectionClass"]->getStaticProperties();
+$vars["ReflectionClass"]->getStaticProperties() ^ $vars["ReflectionClass"]->getStaticProperties() ^ $vars["ReflectionClass"]->getStaticProperties();
+$vars["ReflectionClass"]->getStaticProperties() ^ $vars["ReflectionClass"]->getStaticProperties() ^ $vars["ReflectionClass"]->getStaticProperties() ^ $vars["ReflectionClass"]->getStaticProperties();
+?>

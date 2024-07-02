@@ -1,0 +1,3 @@
+<?php
+xmlwriter_write_dtd_entity(fopen("non_existent_file.txt", "r"), str_repeat("A", 0), str_repeat(chr(34), 1), true, str_repeat(chr(147), -1) + str_repeat(chr(135), 0), str_repeat(chr(105), -1), str_repeat("This is not a valid string", 0x100));
+?>

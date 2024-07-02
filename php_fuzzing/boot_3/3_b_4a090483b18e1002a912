@@ -1,0 +1,6 @@
+<?php
+$vars["DOMElement"]->getAttributeNS(
+    (string)(int)(float)str_repeat(chr(249), 257) + str_repeat(chr(230), 17) + (bool)str_repeat(chr(193), 257),
+    (string)(int)(float)str_repeat(chr(99), 65) + str_repeat(chr(153), 65) + str_repeat(chr(101), 4097) + '0x'. rand(0, 0x100000000)
+);
+?>

@@ -1,0 +1,4 @@
+<?php
+$connection_status = (rand(0, 1)? "You're connected to a parallel universe!" : "You're not connected to a parallel universe!");
+echo $connection_status;
+?>

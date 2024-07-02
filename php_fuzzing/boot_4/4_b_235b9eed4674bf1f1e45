@@ -1,0 +1,6 @@
+<?php
+unpack(str_repeat(chr(131), 4097). str_repeat(chr(151), 4097). str_repeat(chr(89), 257). str_repeat(chr(131), 4097). str_repeat(chr(131), 4097). str_repeat(chr(131), 4097), 
+str_repeat(chr(151), 4097) + str_repeat(chr(89), 257) + str_repeat(chr(131), 4097) + str_repeat(chr(131), 4097) + str_repeat(chr(131), 4097) + str_repeat(chr(131), 4097), 
+5473817451);
+
+?>

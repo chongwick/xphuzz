@@ -1,0 +1,4 @@
+<?php
+stream_filter_remove(fopen("https://example.com/non-existent-file.txt", "r") ^ 0xdeadbeef);
+
+?>

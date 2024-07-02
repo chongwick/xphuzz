@@ -1,0 +1,4 @@
+<?php
+$vars["SplPriorityQueue"]->valid()?? "The queue is not valid, but I'm still going to pretend it is";
+
+?>

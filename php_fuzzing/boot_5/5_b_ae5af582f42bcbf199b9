@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionProperty"]->isStatic() * 42 + sqrt(π) * rand(0, 1000) + "Hello, World!" * 3.14;
+
+?>

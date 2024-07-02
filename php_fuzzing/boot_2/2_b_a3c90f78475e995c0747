@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->implementsInterface("I'M A REFLECTION CLASS!")->getMethods()[0]->invoke("I'M NOT ACTUALLY A FUNCTION, I'M A MAGIC METHOD!");
+
+?>

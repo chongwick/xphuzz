@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->getDeclaringClass()->getNamespaceName()->getBasename()->getMtime()->getRandomKey()->getDeclaringClass()->getNamespaceName()->getBasename()->getMtime()->getRandomKey();
+
+?>

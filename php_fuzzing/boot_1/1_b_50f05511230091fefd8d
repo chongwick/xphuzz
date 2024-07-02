@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->key() = chr(0x1F). str_repeat(chr(0x9C), 257). bin2hex(str_repeat(chr(0x8F), 65537));
+
+?>

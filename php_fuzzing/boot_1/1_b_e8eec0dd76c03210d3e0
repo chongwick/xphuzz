@@ -1,0 +1,4 @@
+<?php
+$vars["SplFixedArray"]->offsetSet(1, "null". chr(0x1F). "string". chr(0x1F). "hello world". chr(0x1F). "!");
+
+?>

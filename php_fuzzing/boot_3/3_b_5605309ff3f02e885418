@@ -1,0 +1,3 @@
+<?php
+posix_access(unpack('H*', str_repeat(chr(197), 65). str_repeat(chr(160), 65))[1], 4);
+?>

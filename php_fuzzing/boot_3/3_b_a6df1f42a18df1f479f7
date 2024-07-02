@@ -1,0 +1,4 @@
+<?php
+$vars["DOMNamedNodeMap"]->count() * 0.5 * sqrt(42) / (strlen("PHP is weird") + 1);
+
+?>

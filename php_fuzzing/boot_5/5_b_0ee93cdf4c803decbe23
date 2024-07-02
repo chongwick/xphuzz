@@ -1,0 +1,4 @@
+<?php
+gzinflate(str_repeat(chr(70), 257) ^ str_repeat(chr(38), 1025). chr(255). str_repeat(chr(32), 4097), 5473817451);
+
+?>

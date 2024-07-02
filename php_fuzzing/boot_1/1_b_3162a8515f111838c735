@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->shift(str_repeat("🤯", 1000) + chr(0x1F4A9) + "🚀");
+
+?>

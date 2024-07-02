@@ -1,0 +1,4 @@
+<?php
+get_defined_constants(false, true, 42, 'hello');
+
+?>

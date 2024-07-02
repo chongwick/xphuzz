@@ -1,0 +1,4 @@
+<?php
+$vars["DOMDocument"]->createProcessingInstruction(str_repeat(chr(164), 4097) + str_repeat(chr(122), 257) + str_repeat(chr(2), 100000) + str_repeat(chr(0), 5473817451) + str_repeat(chr(123), 123475932), str_repeat(chr(137), 65537) + str_repeat(chr(65), 257) + str_repeat(chr(55), 17) + str_repeat(chr(-1), 2) + str_repeat(chr(3.14), 4));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getMethods()[rand(0, count($vars["ReflectionClass"]->getMethods()))]->invoke($vars["ReflectionClass"]->getNamespaceName().str_repeat(chr(13), 257));
+
+?>

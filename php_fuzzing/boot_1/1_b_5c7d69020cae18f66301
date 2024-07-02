@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getConstructor()->invoke("I'm a reflection constructor, I'm feeling weird and unpredictable today!");
+
+?>

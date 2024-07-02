@@ -1,0 +1,4 @@
+<?php
+strnatcasecmp((float)str_repeat("A", 1.0e8), (float)(str_repeat(chr(167), 65) + str_repeat(chr(44), 17) + str_repeat(chr(189), 65)));
+
+?>

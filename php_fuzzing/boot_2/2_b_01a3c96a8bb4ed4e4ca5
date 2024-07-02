@@ -1,0 +1,4 @@
+<?php
+$vars["SplPriorityQueue"]->getExtractFlags() + 0.5 * pi() * (rand(1, 1000) / 1000) + "Hello, World!" * (2 ** 32);
+
+?>

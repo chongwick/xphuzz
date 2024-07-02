@@ -1,0 +1,4 @@
+<?php
+$vars["SplObjectStorage"]->detach($vars[array_rand($vars)]. 'a'. chr(1024));
+
+?>

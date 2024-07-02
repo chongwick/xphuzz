@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionExtension"]->isPersistent()?? "The ReflectionExtension is probably not persistent, but who knows?" : "This code is probably broken, but I'm too lazy to check";
+
+?>

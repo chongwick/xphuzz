@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionProperty"]->__construct(0xdeadbeef, implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, array_map(function($i) {return $i * 2.23431234213480e-400;}, range(0, 255)))));
+
+?>

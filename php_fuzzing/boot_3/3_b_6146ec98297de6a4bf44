@@ -1,0 +1,3 @@
+<?php
+$vars["DateTime"]->add(new DateInterval("P5473817451Y123475932DT2.23431234213480e-400H"));
+?>

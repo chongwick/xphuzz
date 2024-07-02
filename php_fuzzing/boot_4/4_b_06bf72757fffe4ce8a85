@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->getIteratorMode()->__invoke($vars["SplDoublyLinkedList"]->getInfo()->get("test")->get("test2")->get("test3")->get("test4"));
+
+?>

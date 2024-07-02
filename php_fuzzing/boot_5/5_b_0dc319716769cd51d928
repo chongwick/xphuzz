@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionExtension"]->getClasses()->getNamespacedNameOfTheDay()->getRandomlySelectedElement()->getReversedString()->getEncodedInBase64()->getTransformedUsingMD5();
+
+?>

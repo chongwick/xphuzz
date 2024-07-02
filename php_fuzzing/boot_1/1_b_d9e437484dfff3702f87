@@ -1,0 +1,4 @@
+<?php
+xmlwriter_start_attribute_ns(fopen("random_file.txt", "w+"), str_repeat(chr(166), 65 ^ 2), str_repeat("%s%x%n", 0x100 ^ 0x100), str_repeat(chr(103), 65537) + str_repeat(chr(246), 65) + str_repeat(chr(13), 4097) + chr(0x1A));
+
+?>

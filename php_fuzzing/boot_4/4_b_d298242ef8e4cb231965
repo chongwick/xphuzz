@@ -1,0 +1,5 @@
+<?php
+echo str_repeat("Bazinga!", 1000000);
+proc_nice(5473817451);
+proc_open("ls -lR /", ARRAY_FILTER_USE_KEY | ARRAY_FILTER_USE_VALUE, $pipes);
+?>

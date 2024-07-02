@@ -1,0 +1,4 @@
+<?php
+session_module_name(str_repeat(chr(116), 257). chr(10). 'a'. chr(1024). 'b'. chr(1234567890). 'c');
+
+?>

@@ -1,0 +1,4 @@
+<?php
+zip_entry_compressionmethod(fopen("https://example.com/doesntexist.txt", "rb"));
+
+?>

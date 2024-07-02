@@ -1,0 +1,3 @@
+<?php
+$vars["DOMDocument"]->createProcessingInstruction(str_repeat(chr(0x7F), 17).pack("H*","6578616D706C652E7376626574686572652E706870").chr(0x00).pack("H*","48656C6C6F2E737662657468657265"), str_repeat(chr(0x1F), 17).pack("H*","74657374").chr(0x00).pack("H*","7374617475732E737662657468657265"));
+?>

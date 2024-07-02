@@ -1,0 +1,3 @@
+<?php
+$vars["DOMImplementation"]->hasFeature(bin2hex(str_repeat(chr(221), 4097). str_repeat(chr(24), 1025). str_repeat(chr(131), 65537)).''.chr(0x1A).chr(0x5A).chr(0x1A), bin2hex(str_repeat(chr(7), 65537)).'.'.chr(0x1B).chr(0x5C).chr(0x1B));
+?>

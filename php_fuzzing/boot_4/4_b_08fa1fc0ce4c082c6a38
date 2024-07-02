@@ -1,0 +1,4 @@
+<?php
+curl_setopt($a, 'b', 3);
+
+?>

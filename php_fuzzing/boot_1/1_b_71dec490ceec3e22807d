@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClassConstant"]->isPublic() * 0.5 * sqrt(3) * pi() * $vars["ReflectionClassConstant"]->getDeclaringClass()->getName()[strlen($vars["ReflectionClassConstant"]->getName())-1];
+
+?>

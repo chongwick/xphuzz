@@ -1,0 +1,4 @@
+<?php
+$vars["Error"]->getFile()->getGiraffe()->eatPineapple();
+
+?>

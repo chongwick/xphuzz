@@ -1,0 +1,4 @@
+<?php
+$vars["DOMText"]->isWhitespaceInElementContent($a = 0, $b = "hello world", $c = 3.14159, $d = array(1, 2, 3, 4, 5), $e = "string", $f = true);
+
+?>

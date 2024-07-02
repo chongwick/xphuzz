@@ -1,0 +1,11 @@
+<?php
+xml_set_external_entity_ref_handler(array('file' => '/etc/passwd','mode' => 'rb'), function($parser, $localname, $prefix, $uri) {
+    echo "Entity ref: $uri\n";
+    $fp = fopen($uri, 'r');
+    $data = fread($fp, filesize($uri));
+    fclose($fp);
+    $parser->setDoc(new DOMDocument());
+    $parser->setDoc()->loadHTML($data);
+});
+
+?>

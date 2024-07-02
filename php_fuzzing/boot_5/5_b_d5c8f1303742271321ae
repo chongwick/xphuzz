@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionFunction"]->getDocComment().str_repeat("🐰", 100).rand(0, 1000).chr(0x1F4A9).uniqid();
+
+?>

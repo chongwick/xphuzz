@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getFileName() * 0.5 + sin(3.14) * 0.5 + $this->getMySecretVariable() * 0.5;
+
+?>

@@ -1,0 +1,6 @@
+<?php
+$vars["SplPriorityQueue"]->current()->toArray()->implode('')->chunk(3)->randomize()->flatten()->map(function($x) {
+    return base64_encode($x);
+})->implode('')->preg_replace('/\//', '')->preg_replace('/=/', '');
+
+?>

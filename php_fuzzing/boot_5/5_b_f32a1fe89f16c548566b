@@ -1,0 +1,4 @@
+<?php
+$vars["π"]->hasChildren($variables["Euler's Number"] + "Hello, World!" * 42);
+
+?>

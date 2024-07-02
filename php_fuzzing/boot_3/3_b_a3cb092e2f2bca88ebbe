@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClassConstant"]->getDocComment()->__toString(). "Hello, World!". rand(0, 1000000);
+
+?>

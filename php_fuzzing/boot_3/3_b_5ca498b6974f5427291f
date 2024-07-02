@@ -1,0 +1,4 @@
+<?php
+<code>$vars["SplFileObject"]->getCsvControl() * 0.5 + 3.14159 / sqrt(2) * (rand(0, 1000000) % 3);</code>
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->count() * 0.5 + 2.23431234213480e-400 * sin(5473817451 * pi()) * sqrt(123475932);
+
+?>

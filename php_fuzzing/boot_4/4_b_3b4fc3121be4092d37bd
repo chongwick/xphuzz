@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->isEmpty()->toArray()->implode("")->str_replace("","")->substr(0,strlen($vars["SplDoublyLinkedList"]->isEmpty()->toString()));
+
+?>

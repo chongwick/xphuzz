@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionExtension"]->getINIEntries() * sqrt(π) + array_sum(array_map('ord', str_split($vars["ReflectionExtension"]->getINIEntries(), 1))) * 0.5;
+
+?>

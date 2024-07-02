@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionMethod"]->isProtected() * sqrt(42) / (2 ** $vars["ReflectionMethod"]->getDeclaringClass()->getName()[10]);
+
+?>

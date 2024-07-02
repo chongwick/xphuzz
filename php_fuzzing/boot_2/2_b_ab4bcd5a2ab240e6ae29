@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionExtension"]->info() = "I'm a weird and incorrect reflection";
+
+?>

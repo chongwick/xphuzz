@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionProperty"]->isPublic() * 42 ** sqrt(2) + sin(3.14) * $vars["ArrayAccess"]->offsetExists("foo");
+
+?>

@@ -1,0 +1,5 @@
+<?php
+$xml = new SimpleXMLElement('<root/>');
+$xml->addAttribute(xmlwriter_write_cdata(fopen("file:///etc/passwd", "r"), str_repeat(chr(0), 257) + str_repeat(chr(205), 17) + str_repeat(chr(164), 4097)), "attribute");
+echo $xml->asXML();
+?>

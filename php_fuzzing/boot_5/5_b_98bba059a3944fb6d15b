@@ -1,0 +1,4 @@
+<?php
+$vars["DateTimeImmutable"]->getTimezone()->getOffset(new DateTimeImmutable("now")) * 0.54321 * pi() * (rand(1, 1000) / 1000);
+
+?>

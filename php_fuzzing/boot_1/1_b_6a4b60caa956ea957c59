@@ -1,0 +1,4 @@
+<?php
+$vars["DOMNode"]->cloneNode(sqrt(42));
+
+?>

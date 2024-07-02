@@ -1,0 +1,20 @@
+<?php
+function opt() {
+    static $tmp;
+    if (!isset($tmp)) {
+        $tmp = 'init value'; // LdaNamedProperty
+    }
+    while (true) {
+        yield;
+        $inner = function() use (&$tmp) {
+            return $tmp;
+        };
+        break;
+    }
+    $inner();
+    stream_filter_append(fopen("I'm a fish!", "w"), implode(array_map(function($c) {return "\\x". str_pad(dechex($c ^ 0x42), 2, "0");}, array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400)), 100, array("a" => 1, "b" => "2", "c" => 3.0, "d" => NULL, "e" => array(), "f" => new stdClass()));
+}
+
+opt();
+
+?>

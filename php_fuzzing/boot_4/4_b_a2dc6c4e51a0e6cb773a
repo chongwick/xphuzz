@@ -1,0 +1,4 @@
+<?php
+xmlwriter_end_dtd(sqrt(2) * pi() * fopen("non_existent_file.txt", "w"));
+
+?>

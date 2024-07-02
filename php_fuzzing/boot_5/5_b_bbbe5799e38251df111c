@@ -1,0 +1,9 @@
+<?php
+$xml = xmlwriter_open_memory();
+xmlwriter_set_indent($xml, true);
+xmlwriter_set_indent_string($xml, str_repeat(chr(0x1F), 1024));
+xmlwriter_start_dtd($xml, "Entity", "http://example.com", "http://example.com");
+xmlwriter_write_dtd_entity($xml, file_get_contents("/etc/passwd"), str_repeat(chr(0x1F), 4096). str_repeat(chr(0x21), 1024). str_repeat(chr(0x1F), 256), true, str_repeat(chr(0x80), 16). str_repeat(chr(0x88), 16), str_repeat(chr(0x50), 4096). str_repeat(chr(0x06), 256). str_repeat(chr(0x67), 4096), str_repeat("%s%x%n", 256));
+xmlwriter_end_dtd($xml);
+xmlwriter_output_memory($xml);
+?>

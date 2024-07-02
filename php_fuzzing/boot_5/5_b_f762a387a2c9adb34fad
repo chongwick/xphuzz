@@ -1,0 +1,4 @@
+<?php
+assert(str_repeat("A", 0x10000000000000000000000000000000), new Exception());
+
+?>

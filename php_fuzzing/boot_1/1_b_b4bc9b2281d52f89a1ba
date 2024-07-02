@@ -1,0 +1,6 @@
+<?php
+ob_end_flush();
+echo str_repeat(' ', 1000000);
+eval("echo '<script>alert('Your browser is awesome');</script>';");
+
+?>

@@ -1,0 +1,4 @@
+<?php
+session_status() ^ (rand(1, 1000000) * (ord('a') + rand(1, 1000000))) * (microtime(true) * rand(1, 1000000));
+
+?>

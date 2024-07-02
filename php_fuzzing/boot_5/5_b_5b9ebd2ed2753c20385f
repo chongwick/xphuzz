@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->isOptional()->explode("")->is_array()->xor()->andOp()->notEqual()->isset()->unset()->var_dump();
+
+?>

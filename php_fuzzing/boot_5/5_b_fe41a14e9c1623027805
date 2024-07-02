@@ -1,0 +1,4 @@
+<?php
+$vars["DOMNode"]->lookupNamespaceUri(bin2hex(str_repeat(chr(173), 257) + str_repeat(chr(163), 4097)). '0x1234567890abcdef'. str_repeat(chr(226), 1025). 'http://example.com/namespace');
+
+?>

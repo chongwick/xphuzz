@@ -1,0 +1,4 @@
+<?php
+$vars["DOMNode"]->getNodePath() * 0.5 + sin(42) * "Hello, World!";
+
+?>

@@ -1,0 +1,4 @@
+<?php
+<code>pcntl_strerror(0xdeadbeef);</code>
+
+?>

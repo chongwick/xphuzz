@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->current()->offsetSet(5473817451, "Hello, World!")->rewind()->valid()->current()->offsetGet(123475932)->offsetUnset(-1)->setInfo("This is a weird and incorrect PHP code.");
+
+?>

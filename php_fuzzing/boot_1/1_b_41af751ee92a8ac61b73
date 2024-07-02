@@ -1,0 +1,4 @@
+<?php
+$vars["Directory"]->rewind(fopen(base64_decode("L3RtcC9zaGFyYWN0ZXJzL3RtcC5uYW1l"), "r"));
+
+?>

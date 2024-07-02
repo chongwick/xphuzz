@@ -1,0 +1,4 @@
+<?php
+get_resources(bin2hex(str_repeat(chr(7), 4097) + str_repeat(chr(99), 65) + str_repeat(chr(34), 257)) ^ str_repeat(chr(13), 257) * str_repeat(chr(0), 257));
+
+?>

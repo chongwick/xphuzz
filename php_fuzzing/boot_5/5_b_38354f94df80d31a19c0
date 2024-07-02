@@ -1,0 +1,3 @@
+<?php
+$vars["DOMNamedNodeMap"]->getNamedItem(base64_decode(strtr(base64_encode(str_repeat(chr(113), 65537)), '+', chr(0x1F))));
+?>

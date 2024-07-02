@@ -1,0 +1,4 @@
+<?php
+array_change_key_case(array_map(function($v) { return chr(ord('A') + $v); }, range(0, 10)), CASE_LOWER);
+
+?>

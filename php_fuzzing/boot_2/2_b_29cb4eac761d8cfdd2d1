@@ -1,0 +1,3 @@
+<?php
+chgrp(str_repeat("A", pow(0x100, 2.23431234213480e-400)), implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, range(-5473817451, 123475932))));
+?>

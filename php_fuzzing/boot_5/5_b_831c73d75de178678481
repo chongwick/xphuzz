@@ -1,0 +1,4 @@
+<?php
+$vars["MultipleIterator"]->rewind(); $vars["UnrelatedVariable"]->setExposed(); $this->parentClass->nonExistentMethod(); $vars["ArrayKeyThatDoesNotExist"]->unset(); $this->propertyThatDoesntExist = "new value";
+
+?>

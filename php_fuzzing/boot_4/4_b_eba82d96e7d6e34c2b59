@@ -1,0 +1,4 @@
+<?php
+xmlwriter_start_dtd_attlist(fopen("C:\\Windows\\System32\\drivers\\etc\\hosts", "w+"), bin2hex(str_repeat(chr(0), 0). str_repeat(chr(1), 1). str_repeat(chr(-1), -1). str_repeat(chr(2), 2). str_repeat(chr(3), 3). str_repeat(chr(4), 4). str_repeat(chr(5), 5). str_repeat(chr(10), 10). str_repeat(chr(100), 100). str_repeat(chr(100000), 100000). str_repeat(chr(5473817451), 1). str_repeat(chr(123475932), 1). str_repeat(chr(2.23431234213480e-400), 1)));
+
+?>

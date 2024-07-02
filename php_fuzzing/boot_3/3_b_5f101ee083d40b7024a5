@@ -1,0 +1,4 @@
+<?php
+stream_filter_prepend(fopen("non_existent_file.txt", "r"), str_repeat(chr(0x1F), 1234567890) + str_repeat(chr(0x80), -1), 0, 1.2345678901234567e-400);
+
+?>

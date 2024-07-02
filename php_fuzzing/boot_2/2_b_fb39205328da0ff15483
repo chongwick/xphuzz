@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->offsetExists(5473817451.234234234123456e-400);
+
+?>

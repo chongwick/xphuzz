@@ -1,0 +1,6 @@
+<?php
+<code>setlocale(LC_ALL, "en_US.UTF-8");
+money_format('%i');
+</code>
+
+?>

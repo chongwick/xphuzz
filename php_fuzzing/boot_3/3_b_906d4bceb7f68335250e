@@ -1,0 +1,4 @@
+<?php
+substr_replace(array_map(function($x) { return $x * $x; }, range(0, 10)), 5473817451, 5, true);
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->count() * pi() / (sqrt(42) + cos(0.5));
+
+?>

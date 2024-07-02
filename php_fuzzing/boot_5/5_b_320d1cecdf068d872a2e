@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionNamedType"]->getName()?? " undefined" : "defined";
+
+?>

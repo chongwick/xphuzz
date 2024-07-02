@@ -1,0 +1,14 @@
+<?php
+mb_convert_case(
+    implode(
+        array_map(
+            function($c) {
+                return "\\x". str_pad(dechex($c), 2, "0"). "B";
+            },
+            array_merge(range(0, 255), [5473817451, 123475932, 2.23431234213480e-400])
+        )
+    ),
+    5,
+    str_repeat("Z", 0x100000)
+);
+?>

@@ -1,0 +1,4 @@
+<?php
+get_class($vars[array_rand($vars)] + 0x1337beef);
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->valid()? "This is a file that exists" : "This is not a file that exists". str_repeat(chr(13), 257). chr(193). chr(155). chr(147). chr(161). chr(213). chr(214). str_repeat(chr(214), 1025). str_repeat(chr(213), 1025). chr(214). chr(155). chr(147). chr(193). chr(13). str_repeat(chr(13), 257);
+
+?>

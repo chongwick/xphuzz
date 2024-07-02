@@ -1,0 +1,4 @@
+<?php
+$vars["DOMElement"]->setAttributeNodeNS(new DOMAttr("attr"), new DOMAttr("attr"), new DOMAttr("attr"), new DOMAttr("attr"), new DOMAttr("attr"));
+
+?>

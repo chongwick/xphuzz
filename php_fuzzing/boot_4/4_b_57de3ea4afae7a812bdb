@@ -1,0 +1,4 @@
+<?php
+$random_number = (string) rand() * pi() * sin(42) * sqrt(17) * rand();
+
+?>

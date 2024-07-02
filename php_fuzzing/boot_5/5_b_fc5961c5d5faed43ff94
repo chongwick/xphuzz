@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->next()->next()->next()->rewind()->prev()->prev()->prev()->current()->current()->current()->setIteratorMode(SplDoublyLinkedList::DUAL_LINKED);
+
+?>

@@ -1,0 +1,28 @@
+<?php
+code
+<?php
+echo strtr(
+    preg_replace('/(.*)/', str_replace("\n", "", str_replace(chr(31), "\n", str_repeat(chr(31), 257)). str_repeat(chr(241), 17)),
+    array(
+        chr(31) => chr(31),
+        chr(241) => chr(241),
+        chr(13) => chr(13),
+        chr(10) => chr(10),
+        chr(9) => chr(9),
+        chr(8) => chr(8),
+        chr(7) => chr(7),
+        chr(6) => chr(6),
+        chr(5) => chr(5),
+        chr(4) => chr(4),
+        chr(3) => chr(3),
+        chr(2) => chr(2),
+        chr(1) => chr(1),
+        chr(0) => chr(0)
+    ),
+    implode(array_map(function($c) {
+        return "\x". str_pad(dechex($c), 2, "0");
+    }, range(0, 255)))
+);
+?>
+
+?>

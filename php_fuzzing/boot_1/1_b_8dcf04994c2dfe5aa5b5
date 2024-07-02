@@ -1,0 +1,5 @@
+<?php
+$random_number = mt_rand();
+$curl_share_strerror = "This is not a real function, but it sounds like it could be!";
+echo $curl_share_strerror. " ($random_number)";
+?>

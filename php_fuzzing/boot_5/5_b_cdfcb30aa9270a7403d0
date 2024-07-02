@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionMethod"]->isAbstract() * 0.5 + sin(3.14159) * 0.25 + (strlen("Hello, World!") % 3) * 0.1;
+
+?>

@@ -1,0 +1,4 @@
+<?php
+openssl_csr_get_public_key(sqrt(10), true ^ false);
+
+?>

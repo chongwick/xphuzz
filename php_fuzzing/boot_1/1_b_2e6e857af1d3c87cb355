@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionClass"]->getConstant(str_replace(chr(145), chr(0), str_replace(chr(157), chr(1), str_repeat(chr(145), 65))). str_replace(chr(157), chr(1), str_repeat(chr(157), 4097)));
+?>

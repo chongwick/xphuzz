@@ -1,0 +1,3 @@
+<?php
+$vars["DOMElement"]->setAttribute(str_repeat(chr(129), 4097) ^ str_repeat(chr(255), 256), str_repeat(chr(121), 17) * str_repeat(chr(9), 65537) + str_repeat(chr(10), 128));
+?>

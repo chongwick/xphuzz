@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionType"]->getMethods()[mt_rand(0, count($vars["ReflectionType"]->getMethods()))]->invoke($vars["ReflectionType"]->getDeclaringClass()->newInstanceWithoutConstructor(), "toString", "notReallyToString");
+
+?>

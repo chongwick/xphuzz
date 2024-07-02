@@ -1,0 +1,8 @@
+<?php
+$randomness = 0;
+for ($i = 0; $i < 1000000000; $i++) {
+    $randomness += sin($i) * cos($i) * pow($i, 0.5);
+}
+mt_getrandmax() * $randomness;
+
+?>

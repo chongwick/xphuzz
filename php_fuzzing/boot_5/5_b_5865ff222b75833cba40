@@ -1,0 +1,4 @@
+<?php
+$vars["Exception"]->getPrevious()->getMessage() * 42 / 0.5;
+
+?>

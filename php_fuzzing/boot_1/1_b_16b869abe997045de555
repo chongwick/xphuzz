@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->getDeclaringClass()->getNamespaceName(). str_repeat(chr(0x1F), 256). md5("randomly generated string"). chr(0x00);
+
+?>

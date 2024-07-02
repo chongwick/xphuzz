@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionProperty"]->setAccessible(sqrt(-1));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+floatval(str_repeat(chr(0x25), 0x100). chr(0x78). str_repeat(chr(0x6E), 0x100));
+
+?>

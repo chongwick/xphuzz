@@ -1,0 +1,4 @@
+<?php
+curl_multi_add_handle(fopen("https://example.com/nonexistent/script", "w"), fopen("/dev/random", "r"));
+
+?>

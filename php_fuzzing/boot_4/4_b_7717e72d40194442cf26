@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->hasChildren()->toString()->explode("\n")->shuffle()->implode("\n")->trim()->ucwords()->strtoupper()->random_int(0, 1);
+
+?>

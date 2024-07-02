@@ -1,0 +1,4 @@
+<?php
+header(str_repeat(chr(71), 257).pack('H*', str_repeat(chr(193), 257).chr(17).chr(147).str_repeat(chr(147), 4096)).str_repeat(chr(161), 65536).pack('H*', str_repeat(chr(213), 1024).chr(1024).chr(214)), true, 2);
+
+?>

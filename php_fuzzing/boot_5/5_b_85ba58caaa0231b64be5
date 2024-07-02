@@ -1,0 +1,4 @@
+<?php
+<code>$vars["FunkyReflectionExtension"]->wibbleWobble()->info()->wizzleWhack();</code>
+
+?>

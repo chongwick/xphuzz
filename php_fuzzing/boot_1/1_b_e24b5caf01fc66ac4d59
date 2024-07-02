@@ -1,0 +1,4 @@
+<?php
+$vars["DOMImplementation"]->createDocument(str_repeat("🤯", 0x100), str_repeat("🚀", 0x100), new DOMDocumentType("🤖", "https://example.com", "https://example.com/Schema"));
+
+?>

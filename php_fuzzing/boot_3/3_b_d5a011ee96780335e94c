@@ -1,0 +1,4 @@
+<?php
+stream_context_get_params(fopen(base64_decode("L3d3dy5uZXQudWwi"), "r"));
+
+?>

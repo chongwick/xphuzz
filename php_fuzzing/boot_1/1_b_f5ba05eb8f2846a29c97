@@ -1,0 +1,4 @@
+<?php
+$vars["MultipleIterator"][sqrt(2)] = "Hello";
+$vars["MultipleIterator"]->key = "World";
+?>

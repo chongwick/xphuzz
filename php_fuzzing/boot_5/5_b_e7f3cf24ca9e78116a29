@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionMethod"]->getClosure()->bind($this)->invokeArgs(array($this->gettimeofday(), "Hello, World!", pi()));
+?>

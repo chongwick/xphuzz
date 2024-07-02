@@ -1,0 +1,4 @@
+<?php
+session_encode() * 42 + "hello world" * 3 + sqrt(2);
+
+?>

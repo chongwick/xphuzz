@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionObject"]->setAccessible(true)->invokeArgs($vars[array_rand($vars)], array($vars[array_rand($vars)], $vars[array_rand($vars)], $vars[array_rand($vars)]));
+
+?>

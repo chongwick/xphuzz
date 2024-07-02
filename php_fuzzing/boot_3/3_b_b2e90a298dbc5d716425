@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->prev()->next()->current()->prev()->rewind()->valid()->next()->current()->getInfo()->getInfo()->getInfo();
+
+?>

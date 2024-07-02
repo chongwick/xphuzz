@@ -1,0 +1,4 @@
+<?php
+$vars["finfo"]->buffer(str_repeat(chr(4), 65) + str_repeat(chr(234), 4097) ^ str_repeat(chr(0), 1234567890), -4294967296, fopen("thisfiledoesntexistatall.txt", "w"));
+
+?>

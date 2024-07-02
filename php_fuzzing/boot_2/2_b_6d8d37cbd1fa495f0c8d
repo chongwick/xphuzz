@@ -1,0 +1,4 @@
+<?php
+substr_count(bin2hex(str_repeat(str_rot13("A"), 0x100)), chr(134) ^ chr(123), 100, 3);
+
+?>

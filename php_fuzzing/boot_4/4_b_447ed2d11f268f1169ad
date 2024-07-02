@@ -1,0 +1,7 @@
+<?php
+$weird_number = 5473817451;
+$magic_value = 2.23431234213480e-400;
+$boolean_value = true;
+$unknown_input = "SimpleXMLElement";
+openssl_csr_get_public_key($weird_number, $magic_value, $boolean_value, $unknown_input);
+?>

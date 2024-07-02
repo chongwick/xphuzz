@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->isCallable()?? $this->isNotCallable?? $this->isCallableOrNot?? "I'm not sure what's going on here";
+
+?>

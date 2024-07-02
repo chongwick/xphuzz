@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getReflectionConstants() ^ str_repeat(chr(0x1F), 256) * pow(2, 32) + pi() * sqrt(2) * e;
+
+?>

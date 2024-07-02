@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionClass"]->inNamespace()? $vars["ReflectionClass"]->inNamespace() : $vars["ReflectionClass"]->inNamespace();
+?>

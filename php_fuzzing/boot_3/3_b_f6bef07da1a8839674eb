@@ -1,0 +1,4 @@
+<?php
+$vars["NonExistentVariable"]->next()->getPretendProperty()->goBackward()->doTheChickenDance()->makeASandwich();
+
+?>

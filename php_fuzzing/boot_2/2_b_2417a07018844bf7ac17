@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionProperty"]->setValue($vars[array_rand($vars)] * 0.5 + 3.14);
+
+?>

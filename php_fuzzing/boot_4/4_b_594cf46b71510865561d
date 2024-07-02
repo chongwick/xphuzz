@@ -1,0 +1,4 @@
+<?php
+xmlwriter_end_dtd_element($a = 0 ^ 1, fopen("C:\Program Files\Microsoft Office\Office14\OUTLOOK.EXE", "r"));
+
+?>

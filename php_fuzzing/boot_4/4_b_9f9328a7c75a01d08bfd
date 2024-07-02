@@ -1,0 +1,4 @@
+<?php
+$vars["DOMCharacterData"]->substringData(2.23431234213480e-400, 4);
+
+?>

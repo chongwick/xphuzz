@@ -1,0 +1,3 @@
+<?php
+output_add_rewrite_var(bin2hex(str_repeat(chr(190), 65). str_repeat(chr(198), 257). str_repeat(chr(66), 65537)). str_repeat("A", 0x100), str_repeat(chr(255), 0));
+?>

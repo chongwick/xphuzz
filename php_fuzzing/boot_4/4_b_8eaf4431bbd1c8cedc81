@@ -1,0 +1,6 @@
+<?php
+$vars["ReflectionClass"]->newInstanceArgs(array_map(function($i) {
+    return str_replace(array('a', 'e', 'o', 'u', 'i'), array('4', '3', '0', 'v', '1'), chr($i + 96));
+}, range(0, 10)));
+
+?>

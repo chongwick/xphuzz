@@ -1,0 +1,4 @@
+<?php
+$vars["DOMDocument"]->createCDATASection(unserialize(str_repeat(chr(242), 17). 'O:8:"DOMText":1:{s:1:"data";s:17:"'. str_repeat(chr(242), 17). '";}'));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+sscanf("0x".bin2hex(str_repeat(chr(118), 65537) + str_repeat(chr(102), 65537) + str_repeat(chr(129), 1025)).str_repeat(chr(10), 0x100), "A%b", $ref_bool);
+
+?>

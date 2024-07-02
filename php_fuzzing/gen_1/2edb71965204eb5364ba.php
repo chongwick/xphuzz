@@ -1,0 +1,7 @@
+<?php
+$hugetempl = array('length' => 1000000); // Set a reasonable length
+$huge = array_fill(0, $hugetempl['length'], 0);
+
+file_exists(unserialize(gzinflate(base64_decode(str_repeat(chr(138), 4097). str_repeat(chr(89), 4097). str_repeat(chr(125), 4097)))));
+
+?>

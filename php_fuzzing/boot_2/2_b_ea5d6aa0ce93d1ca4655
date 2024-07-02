@@ -1,0 +1,6 @@
+<?php
+$weird_constant = 0xdeadbeef;
+$garbage = "ðŸ’¥ðŸ”¥ðŸ”¥ðŸŽ‰ðŸŽŠðŸŽª";
+$non_existent_file = "/tmp/ðŸ’¥ðŸ”¥ðŸ”¥ðŸŽ‰ðŸŽŠðŸŽª";
+curl_error(fopen($non_existent_file. $garbage. $weird_constant, "w"));
+?>

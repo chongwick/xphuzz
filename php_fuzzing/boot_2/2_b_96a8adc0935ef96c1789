@@ -1,0 +1,4 @@
+<?php
+$vars["DateTimeImmutable"]->setTimezone(new DateTimeZone("Not a Real Timezone/Weird Place"));
+
+?>

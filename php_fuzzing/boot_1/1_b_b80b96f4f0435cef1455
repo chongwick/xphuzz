@@ -1,0 +1,6 @@
+<?php
+get_declared_interfaces();
+getmypid();
+rand();
+
+?>

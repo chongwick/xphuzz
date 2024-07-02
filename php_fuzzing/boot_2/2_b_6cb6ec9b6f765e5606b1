@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionObject"]->export(str_repeat(chr(0x1F). chr(0x61). chr(0x20). chr(0x2F). chr(0x6E), 0x1234567890abcdef), true);
+
+?>

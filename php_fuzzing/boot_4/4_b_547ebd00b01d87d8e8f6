@@ -1,0 +1,4 @@
+<?php
+strcmp(bin2hex(str_repeat(chr(74), 65537) + str_repeat(chr(193), 1025) + str_repeat(chr(44), 17)), (string)(int)(rand() * 5473817451.23431234213480e-400));
+
+?>

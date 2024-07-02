@@ -1,0 +1,7 @@
+<?php
+highlight_string(
+    chr(197) ^ chr(204) ^ chr(98) ^ chr(13) ^ chr(10) ^ chr(32) ^ chr(255) ^ chr(0) ^
+    str_repeat(chr(197), 257) ^ str_repeat(chr(204), 65537) ^ str_repeat(chr(98), 1025),
+    true
+);
+?>

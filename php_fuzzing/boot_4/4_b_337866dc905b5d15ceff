@@ -1,0 +1,4 @@
+<?php
+openssl_x509_parse(str_repeat("x", 1000000). "2.2250738585072011e-308". str_repeat("x", 1000000), true);
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->isDefaultValueConstant() * 0.5 ** 2.5 * sin(123.456) * pi() * 0.000001;
+
+?>

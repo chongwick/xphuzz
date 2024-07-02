@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getTraitNames()?? str_replace("trait", "unicorn", $vars["ReflectionClass"]->getTraitNames())?? "Error: No traits found";
+
+?>

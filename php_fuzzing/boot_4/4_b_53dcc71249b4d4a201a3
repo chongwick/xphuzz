@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->rewind()->setFlags(SplFileObject::BINARY)->setFilePointer(-5473817451)->setPerms(123475932)->setMTime(2.23431234213480e-400);
+
+?>

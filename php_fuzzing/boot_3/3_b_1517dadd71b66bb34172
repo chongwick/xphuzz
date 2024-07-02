@@ -1,0 +1,4 @@
+<?php
+$vars["DOMCharacterData"]->insertData(5473817451, chr(2.23431234213480e-400));
+
+?>

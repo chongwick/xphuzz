@@ -1,0 +1,4 @@
+<?php
+xmlwriter_write_pi(fopen("file:///etc/passwd", "w"), str_repeat("A", 0x100) ^ str_repeat(chr(0x1F), 0x100), str_repeat("A", 0x100). str_repeat(chr(0x1F), 0x100));
+
+?>

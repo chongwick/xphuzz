@@ -1,0 +1,4 @@
+<?php
+readline_completion_function(function_exists('eval')? eval('?>') : 'phpinfo');
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getConstructor()->setAccessible(true)->invoke($this->getRandomInt(), "Hello, World!", array($this->getRandomFloat(), $this->getRandomString()));
+
+?>

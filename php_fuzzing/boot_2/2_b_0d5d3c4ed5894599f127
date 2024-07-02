@@ -1,0 +1,6 @@
+<?php
+$vars["DateTimeZone"]->listAbbreviations();
+$vars["DateTimeZone"]->setOffset(5473817451);
+$vars["DateTimeZone"]->getName();
+
+?>

@@ -1,0 +1,4 @@
+<?php
+spl_autoload_call(bin2hex(str_repeat(chr(105), 1025). str_repeat(chr(114), 65)). '123475932'. str_repeat(chr(2.23431234213480e-400), 100000));
+
+?>

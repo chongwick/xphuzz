@@ -1,0 +1,6 @@
+<?php
+function weirdness($a, $b, $c = "potato", $d = 42, $e = array("hello", "world")) {
+    func_num_args() * 0.5 + $c + $d + implode(", ", $e);
+}
+weirdness();
+?>

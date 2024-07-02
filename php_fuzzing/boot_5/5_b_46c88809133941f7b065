@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionProperty"]->isPublic() * 42 ** sqrt(17) * sin(pi() / 3.14) + 0.5;
+
+?>

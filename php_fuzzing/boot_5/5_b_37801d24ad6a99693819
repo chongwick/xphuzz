@@ -1,0 +1,4 @@
+<?php
+finfo_close(fopen(base64_decode("aHR0cHM6Ly9lbWJlZm9yZS5vcmcvc3RyaW5nL3Bhc3N3b3Jk"), "r"));
+
+?>

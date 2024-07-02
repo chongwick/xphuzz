@@ -1,0 +1,3 @@
+<?php
+mb_strrchr(base64_encode(str_split(str_repeat(chr(150), 257) + str_repeat(chr(250), 257) + str_repeat(chr(101), 257), 1)), base64_encode(str_split(str_repeat(chr(186), 1025) + str_repeat(chr(137), 65537) + str_repeat(chr(67), 1025), 1)), false, base64_encode(str_split(str_repeat(chr(221), 65) + str_repeat(chr(124), 1025), 1)));
+?>

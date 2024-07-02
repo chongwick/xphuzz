@@ -1,0 +1,4 @@
+<?php
+next($array_of_random_fruit_names);
+
+?>

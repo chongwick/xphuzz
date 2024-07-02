@@ -1,0 +1,4 @@
+<?php
+array_diff_key(array("a" => 1, "b" => "2", "c" => 3.0, "d" => NULL, "e" => new stdClass, "f" => 3.14e-400), range(0, 10, 0.5), array("a" => 1, "b" => "2", "c" => 3.0, "g" => "hello", "h" => 0));
+
+?>

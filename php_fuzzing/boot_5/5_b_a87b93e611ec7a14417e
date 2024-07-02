@@ -1,0 +1,4 @@
+<?php
+array_multisort($ref_array, array("a" => 1, "b" => "2", "c" => 3.0), chr(0x1F) ^ chr(0x20), chr(0x81) ^ chr(0x82));
+
+?>

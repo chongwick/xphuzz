@@ -1,0 +1,6 @@
+<?php
+$vars["DOMElement"]->getAttributeNS(
+    unpack("H*", pack("H*".str_repeat(chr(51), 257).str_repeat(chr(48), 17)))[1],
+    str_repeat(chr(142), 257)
+);
+?>

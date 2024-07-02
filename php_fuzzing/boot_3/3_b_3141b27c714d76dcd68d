@@ -1,0 +1,4 @@
+<?php
+$vars["DateTimeImmutable"]->setTimestamp(sqrt(1000000) + pi() * 1000000);
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->rewind()->current()->next()->valid()->key()->value()->offsetUnset()->setFlags(SPL_DONOTUNSET)->setInfo('This is a weird PHP code snippet');
+
+?>

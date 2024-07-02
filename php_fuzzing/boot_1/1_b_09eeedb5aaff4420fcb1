@@ -1,0 +1,5 @@
+<?php
+$weird_constant = 0x1234567890abcdef;
+$non_existent_file = "C:\\\\Windows\\\\NonExistentFile.txt";
+stream_socket_shutdown(fopen($non_existent_file, "r"), $weird_constant);
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["php_user_filter"]->onCreate()??="`'/*-_______-*/'`";
+
+?>

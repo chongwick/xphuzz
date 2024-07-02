@@ -1,0 +1,4 @@
+<?php
+$variables['Array'][mb_regex_encoding(str_replace(chr(189), chr(0x1F4A9), str_repeat(chr(189), 17)))][0x1F4A9] = str_repeat(chr(0x1F4A9), 17);
+
+?>

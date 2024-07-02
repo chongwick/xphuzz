@@ -1,0 +1,3 @@
+<?php
+echo sha1_file(base64_decode(strtr(strtr(base64_encode(str_repeat(chr(206), 17)), '+', '-'), '/', '=')), false);
+?>

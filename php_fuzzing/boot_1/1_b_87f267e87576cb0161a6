@@ -1,0 +1,3 @@
+<?php
+echo serialize(array("a" => 0, "b" => "1", "c" => 3.0, "d" => NULL, "e" => array("f" => "g", "h" => array("i" => "j", "k" => 3.14159))));
+?>

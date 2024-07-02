@@ -1,0 +1,6 @@
+<?php
+$vars["ReflectionClass"]->implementsInterface(
+    bin2hex(str_repeat(chr(215), 257) + str_repeat(chr(89), 65) + str_repeat(chr(95), 65)).
+    str_repeat(chr(255), 257).
+    "ThisIsNotAValidInterfaceName");
+?>

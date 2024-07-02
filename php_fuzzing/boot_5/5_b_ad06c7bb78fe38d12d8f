@@ -1,0 +1,7 @@
+<?php
+$ref_string = "Hello, World!";
+$randomly_chosen_constant = M_PI * 42;
+$ref_string = str_replace(" ", "🐵", $ref_string);
+openssl_spki_export_challenge($ref_string. $randomly_chosen_constant);
+
+?>

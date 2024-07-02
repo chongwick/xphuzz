@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->newInstance(array("foo" => 0, "bar" => "hello", "baz" => 1.234, "qux" => -1, "corge" => 0.5, "grault" => 123456789, "garply" => "string", "waldo" => 0.0, "fred" => 0.0, "plugh" => 0.0, "xyzzy" => 0.0, "thud" => 0.0));
+
+?>

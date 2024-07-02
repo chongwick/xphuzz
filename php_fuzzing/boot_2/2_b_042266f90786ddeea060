@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionType"]->allowsNull()?? " undefined method";
+
+?>

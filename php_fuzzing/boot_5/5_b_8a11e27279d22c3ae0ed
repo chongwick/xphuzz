@@ -1,0 +1,3 @@
+<?php
+$vars["DateTimeImmutable"]->modify(str_repeat(chr(0x1F), 0x100). str_repeat(chr(0x0A), 0x100). str_repeat(chr(0x0D), 0x100));
+?>

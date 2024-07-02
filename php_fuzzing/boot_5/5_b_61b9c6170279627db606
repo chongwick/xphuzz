@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getInterfaces()->getProperties()[0]->setValue($vars["ReflectionClass"]->getNamespaceName(), 5473817451.123475932);
+
+?>

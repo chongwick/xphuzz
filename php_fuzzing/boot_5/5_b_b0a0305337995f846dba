@@ -1,0 +1,4 @@
+<?php
+substr_compare(str_repeat("A", 5473817451), str_repeat("2.23431234213480e-400%s%x%n", 10), 2, 100000, false);
+
+?>

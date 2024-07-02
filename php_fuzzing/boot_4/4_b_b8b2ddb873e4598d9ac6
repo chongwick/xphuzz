@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionType"]->bindTo(new stdClass(), 'non_existent_class')->getDocComment()->__toString()->substr(-10)->rtrim()->strtoupper()->rand(0, 1)? 'Hello' : 'World';
+
+?>

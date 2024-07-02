@@ -1,0 +1,4 @@
+<?php
+<code>$vars["ReflectionClass"]->getConstant(str_repeat(chr(30), 65) ^ str_repeat(chr(32), 65) * str_repeat(chr(255), 65) % str_repeat(chr(126), 65). str_repeat(chr(91), 65). str_repeat(chr(48), 65) + str_repeat(chr(92), 65) - str_repeat(chr(64), 65));</code>
+
+?>

@@ -1,0 +1,5 @@
+<?php
+$randomly_selected_constant = M_PI + 42;
+echo "The last error was: $randomly_selected_constant";
+
+?>

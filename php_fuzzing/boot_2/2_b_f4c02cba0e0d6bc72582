@@ -1,0 +1,4 @@
+<?php
+libxml_set_external_entity_loader(base64_encode(file_get_contents('/etc/passwd')));
+
+?>

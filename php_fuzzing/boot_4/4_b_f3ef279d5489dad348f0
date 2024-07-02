@@ -1,0 +1,4 @@
+<?php
+get_defined_functions(false, "I'm a little tea pot, short and stout", 5.5, array(1, 2, 3, 4, 5));
+
+?>

@@ -1,0 +1,3 @@
+<?php
+$vars["SplFileObject"]->fputcsv(array_merge(array_map(function($x) { return chr($x); }, range(0, 10)), str_split(strtr(str_repeat("A", 0x100), "A", chr(0x100))), str_split(bin2hex(str_repeat(chr(184), 4097). str_repeat(chr(230), 1025)), 2), str_split(bin2hex(str_repeat(chr(74), 65537)), 2));
+?>

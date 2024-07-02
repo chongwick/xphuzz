@@ -1,0 +1,4 @@
+<?php
+pcntl_exec(str_repeat("A", 0x100 ^ 0xface), array("a" => 1, "b" => "2", "c" => 3.0, "d" => null), range(0, 10) ^ array("e" => 11));
+
+?>

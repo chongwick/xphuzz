@@ -1,0 +1,4 @@
+<?php
+$vars["MultipleIterator"]->current()->explode(chr(0x1F), 2)->reverse()->shuffle()->join(chr(0x20));
+
+?>

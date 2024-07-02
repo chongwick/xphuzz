@@ -1,0 +1,4 @@
+<?php
+$vars["SplQueue"]->dequeue()->toBase64()->encodeUtf8()->replace('/\s+/', '').replace('/\W+/', '').replace('/[^A-Za-z0-9]/', '').replace('/[^A-Za-z0-9]/', '').replace('/[^A-Za-z0-9]/', '').replace('/[^A-Za-z0-9]/', '').replace('/[^A-Za-z0-9]/', '');
+
+?>

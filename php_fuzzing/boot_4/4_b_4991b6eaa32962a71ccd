@@ -1,0 +1,6 @@
+<?php
+$vars["SplFixedArray"]->fromArray(array_map(function($i) {
+    return $i * pi() * sin($i) * sqrt($i);
+}), true);
+
+?>

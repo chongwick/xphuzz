@@ -1,0 +1,8 @@
+<?php
+session_destroy();
+sleep(1000000);
+setcookie("foo", "bar", time() - 3600, "/", "example.com", 1);
+header("Location: http://example.com/very/long/url/that/will/never/be/reached");
+die("Your session has been destroyed, but you're still stuck in this code");
+
+?>

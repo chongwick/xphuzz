@@ -1,0 +1,4 @@
+<?php
+stream_set_write_buffer(fopen("🐠🌊", "r"), 5 * 3.14);
+
+?>

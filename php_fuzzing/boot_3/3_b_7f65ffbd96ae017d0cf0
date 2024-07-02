@@ -1,0 +1,4 @@
+<?php
+hebrevc(implode(array_map(function($c) {return chr(intval(hex2bin(strtr(str_pad(dechex($c), 6, "0"), "0123456789abcdef", "0123456789ABCDEF"))));}, array_map(function($x) {return $x * $x * $x;}, range(0, 255))), 100));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->getClass()->getNamespaceName()->getBasename(PATH_SEPARATOR);
+
+?>

@@ -1,0 +1,4 @@
+<?php
+dom_import_simplexml(new SimpleXMLElement("<a>".str_repeat("a", 100000)."</a>"));
+
+?>

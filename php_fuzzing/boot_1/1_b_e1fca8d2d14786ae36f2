@@ -1,0 +1,4 @@
+<?php
+$vars["DOMNode"]->isSameNode(new DOMNode())->getAttribute('non_existent_attribute')->nodeValue.' '.rand(0,1000000);
+
+?>

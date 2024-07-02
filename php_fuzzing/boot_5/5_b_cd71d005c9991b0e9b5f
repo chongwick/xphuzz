@@ -1,0 +1,6 @@
+<?php
+$xmlWriter = xmlwriter_open_memory();
+$xmlWriter = xmlwriter_start_attribute($xmlWriter, str_repeat(chr(0x80), 0x100));
+xmlwriter_text($xmlWriter, "Unexpectedly");
+xmlwriter_end_attribute($xmlWriter);
+?>

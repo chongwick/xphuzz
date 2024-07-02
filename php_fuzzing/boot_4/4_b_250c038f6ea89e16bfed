@@ -1,0 +1,4 @@
+<?php
+$vars["Error"]->getTrace() + 2.23431234213480e-400 * "Hello World" + chr(5473817451) + 123475932 * " Foo";
+
+?>

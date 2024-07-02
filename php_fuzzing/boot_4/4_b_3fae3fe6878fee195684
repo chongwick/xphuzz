@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->isDefaultValueConstant() * 0.54321 * sin(42) + 1234567890 / sqrt(0) * str_replace(" ", "", "   Weirdness   ") * pi();
+
+?>

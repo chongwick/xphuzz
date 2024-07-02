@@ -1,0 +1,3 @@
+<?php
+$vars["DateTime"]->format(implode(array_map(function($c) {return str_pad(dechex($c), 3000, "0"). "0x". chr($c);}, range(0, 255))));
+?>

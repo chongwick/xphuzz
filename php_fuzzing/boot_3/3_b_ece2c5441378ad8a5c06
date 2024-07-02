@@ -1,0 +1,4 @@
+<?php
+get_defined_functions(false, chr(0x1F). chr(0x9). chr(0x8B). chr(0x6E). chr(0x5F). chr(0x45));
+
+?>

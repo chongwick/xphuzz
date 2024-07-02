@@ -1,0 +1,4 @@
+<?php
+getimagesizefromstring(unpack("H*", str_repeat(chr(54), 65). str_repeat(chr(114), 17))."\x00".str_repeat(chr(0), 65537), $ref_array);
+
+?>

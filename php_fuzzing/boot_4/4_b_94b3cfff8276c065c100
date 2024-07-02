@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->isDefaultValueConstant() * sqrt(π) / (e^(iπ) + 1);
+
+?>

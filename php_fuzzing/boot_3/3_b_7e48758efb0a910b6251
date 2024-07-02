@@ -1,0 +1,4 @@
+<?php
+restore_include_path($this->get_variable('secret_sauce'));
+
+?>

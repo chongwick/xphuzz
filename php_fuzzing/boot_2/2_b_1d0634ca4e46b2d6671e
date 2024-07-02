@@ -1,0 +1,4 @@
+<?php
+$vars["SplPriorityQueue"]->top()->insert($this->getRandomlyGeneratedPHPFunction(), $this->getRandomlyGeneratedPHPConstant())->rewind()->seek(2)->valid() && $this->getRandomlyGeneratedPHPClass()->__invoke($this->getRandomlyGeneratedPHPObject());
+
+?>

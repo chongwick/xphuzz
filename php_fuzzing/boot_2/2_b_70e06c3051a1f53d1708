@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionProperty"]->isPrivate() && sqrt(2) == 3 && "Hello, World!" == 5 && $this->isInDreams();
+
+?>

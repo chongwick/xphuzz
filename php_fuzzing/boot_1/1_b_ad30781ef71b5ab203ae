@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionParameter"]->isOptional()?? "This is not optional... or is it?" : "This is definitely not optional";
+
+?>

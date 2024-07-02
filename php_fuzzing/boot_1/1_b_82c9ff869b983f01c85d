@@ -1,0 +1,4 @@
+<?php
+stream_context_set_params(fopen("5473817451", "w"), array_map("sqrt", range(0, 10)));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+ctype_upper(implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, array_map(function($c) {return $c * 2;}, array_map(function($c) {return $c ^ 3;}, str_split(gmp_strval(gmp_pow(2, 256), 36)))))));
+
+?>

@@ -1,0 +1,6 @@
+<?php
+$xml = "some_random_string";
+$fp = "/path/to/nowhere";
+$attribute = implode(array_map(function($c) use ($xml, $fp) { return "\\x". str_pad(dechex($c), 2, "0"). " and this is ". $xml. " and also ". $fp; }, range(0, 255)));
+xmlwriter_start_attribute($fp, $attribute);
+?>

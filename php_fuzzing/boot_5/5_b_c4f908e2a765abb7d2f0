@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->isAnonymous()->ternary('I am anonymous', 'I am not anonymous')->rand(0, 1)->rand(0, 1);
+
+?>

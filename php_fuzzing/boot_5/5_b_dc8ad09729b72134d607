@@ -1,0 +1,5 @@
+<?php
+$randomness = array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400);
+$pos = array_rand($randomness);
+echo $randomness[$pos].posix_getcwd();
+?>

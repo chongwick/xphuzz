@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->asXML(strtr(implode(array_map(function($c) {return chr(0x20 + ($c % 3));}, range(0, 255))), chr(10), chr(13)));
+
+?>

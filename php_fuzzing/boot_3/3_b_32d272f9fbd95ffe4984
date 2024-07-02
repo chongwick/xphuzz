@@ -1,0 +1,9 @@
+<?php
+$weird = array('b', 'a', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l','m', 'n', 'o', 'p', 'q', 'r','s', 't', 'u', 'v', 'w', 'x', 'y', 'z');
+$random = array_rand($weird);
+$random = $weird[$random];
+$random = $random. $random;
+$random = $random. $random;
+$random = $random. $random;
+echo $random. "zlib_get_coding_type();";
+?>

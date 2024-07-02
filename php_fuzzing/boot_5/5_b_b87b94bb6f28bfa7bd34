@@ -1,0 +1,4 @@
+<?php
+gethostbyaddr(str_repeat(chr(177), 1025). chr(0x1F). chr(0x9C). chr(0x8B). chr(0x1F));
+
+?>

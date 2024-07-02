@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->getMaxLineLen() * 0.5 * sqrt(2) / 0.000000001 + 2.23431234213480e-400;
+
+?>

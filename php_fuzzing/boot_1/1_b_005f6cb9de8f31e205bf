@@ -1,0 +1,13 @@
+<?php
+$vars["DOMAttr"]->__construct(
+    implode(array_map(function($c) {
+        $c = $c * 0.5;
+        return "\\x". str_pad(dechex($c), 2, "0");
+    }, range(0, 255)),
+    implode(array_map(function($c) {
+        $c = sin($c);
+        return "\\x". str_pad(dechex($c), 2, "0");
+    }, range(0, 255)))
+);
+
+?>

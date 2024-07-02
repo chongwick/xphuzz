@@ -1,0 +1,3 @@
+<?php
+$vars["DOMEntityReference"]->__invoke(str_repeat(chr(11), 65) ^ str_repeat(chr(36), 257) * str_repeat(chr(13), 257));
+?>

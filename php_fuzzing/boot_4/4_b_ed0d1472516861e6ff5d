@@ -1,0 +1,4 @@
+<?php
+get_object_vars($vars[md5(uniqid()) % count($vars)]);
+
+?>

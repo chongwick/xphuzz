@@ -1,0 +1,4 @@
+<?php
+array_uintersect_uassoc(range(0, 10), range(0, 10), range(0, 10), function($a, $b) { return "a"; }, function($a, $b) { return "b"; });
+
+?>

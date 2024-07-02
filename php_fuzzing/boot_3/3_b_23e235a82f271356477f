@@ -1,0 +1,4 @@
+<?php
+xml_set_start_namespace_decl_handler($this->is_a_cat? fopen("/etc/passwd", "r") : "I'm a human", phpinfo ^ 0);
+
+?>

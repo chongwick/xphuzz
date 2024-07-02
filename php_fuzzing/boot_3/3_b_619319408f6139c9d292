@@ -1,0 +1,3 @@
+<?php
+$vars["DOMNode"]->cloneNode(chr(255) ^ 0x42);
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["DateTime"]->setTimezone(new DateTimeZone("Indian/Cocos")).modify("now + 100 years")->getTimestamp() * 0.5;
+
+?>

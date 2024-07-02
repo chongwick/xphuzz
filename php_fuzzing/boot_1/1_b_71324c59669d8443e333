@@ -1,0 +1,4 @@
+<?php
+prev(array_merge($ref_array, array('random' => 'weirdness', 'unexpected' => 'incorrectness')));
+
+?>

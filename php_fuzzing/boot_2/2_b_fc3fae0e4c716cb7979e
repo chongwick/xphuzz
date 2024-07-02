@@ -1,0 +1,4 @@
+<?php
+round(microtime(true) * pow(2, 256) * pi(), 0, 1000);
+
+?>

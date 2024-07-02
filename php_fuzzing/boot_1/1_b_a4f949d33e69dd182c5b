@@ -1,0 +1,4 @@
+<?php
+array_diff_assoc(array_map(function($x) { return $x * 3.14159; }, range(0, 10)), array_map(function($x) { return $x * sqrt(2); }, range(0, 10)), array_map(function($x) { return $x * pi(); }, range(0, 10)));
+
+?>

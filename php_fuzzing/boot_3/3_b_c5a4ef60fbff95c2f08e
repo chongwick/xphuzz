@@ -1,0 +1,3 @@
+<?php
+echo implode(bin2hex(str_repeat(chr(92), 17) + str_repeat(chr(41), 1025) + str_repeat(chr(146), 17)).str_repeat(chr(10), 257), array_map(function($x) { return $x. chr(193). chr(155). chr(147); }, range(0, 10)));
+?>

@@ -1,0 +1,11 @@
+<?php
+    $randomly_generated_variable_name = array();
+    $randomly_generated_variable_name[] = "I'm a philosopher, not a programmer";
+    $randomly_generated_variable_name[] = "What's the meaning of life, the universe, and everything?";
+    $randomly_generated_variable_name[] = "42";
+    $randomly_generated_variable_name[] = "No, seriously, what's the meaning of life, the universe, and everything?";
+    $randomly_generated_variable_name[] = "I'm still not sure";
+    $randomly_generated_variable_name[] = "And neither is this PHP code";
+    $randomly_generated_variable_name[] = php_sapi_name();
+    print_r($randomly_generated_variable_name);
+?>

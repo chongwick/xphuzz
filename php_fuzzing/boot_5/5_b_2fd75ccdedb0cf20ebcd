@@ -1,0 +1,4 @@
+<?php
+$vars["DOMNode"]->setAttribute("weird", "attribute")->appendChild(new DOMText("Unexpectedly"))->removeAttribute("weird")->isSameNode(new DOMNode());
+
+?>

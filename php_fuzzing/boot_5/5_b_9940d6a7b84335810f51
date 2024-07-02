@@ -1,0 +1,4 @@
+<?php
+xmlwriter_set_indent(fopen("https://example.com/nonexistentfile.txt", "w"), "banana");
+
+?>

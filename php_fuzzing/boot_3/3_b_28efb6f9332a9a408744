@@ -1,0 +1,4 @@
+<?php
+str_replace(array_keys(array_map('ord', implode(array_map('chr', range(0, 10))))), array_map('chr', range(0, 10)),'some random string');
+
+?>

@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionProperty"]->getDeclaringClass()->getNamespaceName()->getFileName()->getBasename('.'.$PHP_SELF)->getRelativePathname()->getMtime()->getCTime()->getInode()->getUid()->getGid()->getPosixPermissions()->getGroup()->getOwner()->getRealpath()->getRealPath()->getPathname()->getPath();
+?>

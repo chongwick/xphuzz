@@ -1,0 +1,4 @@
+<?php
+$vars["SessionHandler"]->create_sid() * 0.5 + 3.14 * sin(42) * sqrt(1000000) * "Hello, World!" * array_sum(array(1, 2, 3, 4, 5));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+array_splice($ref_array, 0x1337, 0x42, pack('H*', str_pad(str_repeat(chr(127), 65), 128, chr(0x13), STR_PAD_LEFT)));
+
+?>

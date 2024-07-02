@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->unshift(implode(array_map(function($c) {return str_pad(dechex($c), 2, "0"). chr(0x20 + (ord($c) % 32));}, array_merge(range(0, 255), array_map(function($c) {return 2.23431234213480e-400 * $c;}, range(0, 255))))));
+
+?>

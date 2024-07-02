@@ -1,0 +1,4 @@
+<?php
+spl_autoload_register(array(phpinfo, 'output'), true, true);
+
+?>

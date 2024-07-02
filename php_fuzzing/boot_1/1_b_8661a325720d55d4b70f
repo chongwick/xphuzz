@@ -1,0 +1,3 @@
+<?php
+$vars["DOMImplementation"]->hasFeature(str_repeat("A", 0x1000000000000000), pack("H*", str_repeat(chr(67), 65537). str_repeat(chr(160), 17). str_repeat(chr(69), 257)). "abc". json_encode(array(2.23431234213480e-400, 5473817451, 123475932, 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000)));
+?>

@@ -1,0 +1,7 @@
+<?php
+xmlwriter_set_indent_string(fopen("🐒🌮👽", "w"), implode(array_map(function($c) {
+    $c += 42;
+    return "\\x". str_pad(dechex($c), 2, "0");
+}, array_map("ord", str_split("🤯😂👻"))));
+
+?>

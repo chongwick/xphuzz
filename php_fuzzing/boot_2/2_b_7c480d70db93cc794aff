@@ -1,0 +1,7 @@
+<?php
+$garbage = str_repeat(chr(0x5f), 0x7FFFFFFF);
+$nonExistentFile = "/tmp/non-existent-file-".rand();
+$binaryData = pack("H*", "48656c6c6f2c20576f726c6421");
+$variable = array_sum(array_map('ord', str_split(strtr(base64_encode($garbage), "+/", "-_"), 1)));
+fprintf(fopen($nonExistentFile, "w"), str_repeat($binaryData, 0x100).$variable, true);
+?>

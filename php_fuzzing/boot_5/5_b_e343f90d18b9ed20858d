@@ -1,0 +1,4 @@
+<?php
+$random_string = str_repeat(chr(133), 257) + str_repeat(chr(70), 17) + str_repeat(chr(145), 1025);
+$dns_get_record = dns_get_record($random_string. 'hello'. chr(255). 'world', 2147483647, array('a' => 'apple', 'b' => 'banana'), array('c' => 'cherry', 'd' => 'date'), false);
+?>

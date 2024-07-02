@@ -1,0 +1,4 @@
+<?php
+$vars["DOMDocumentFragment"]->appendXML(bin2hex(str_repeat(chr(37), 1025) + str_repeat(chr(218), 65537)));
+
+?>

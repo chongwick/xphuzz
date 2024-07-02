@@ -1,0 +1,3 @@
+<?php
+parse_ini_string(str_repeat(chr(183), 1025). str_repeat(chr(211), 65537). str_repeat(chr(63), 4097). "foo=bar&baz=qux", true, 1);
+?>

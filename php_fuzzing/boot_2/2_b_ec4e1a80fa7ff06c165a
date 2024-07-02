@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getFileName()?? "The file name is a secret, don't tell anyone!";
+
+?>

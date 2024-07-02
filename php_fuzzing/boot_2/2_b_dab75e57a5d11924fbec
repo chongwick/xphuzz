@@ -1,0 +1,4 @@
+<?php
+$vars["SplFixedArray"]->count() * 0.5 + sqrt(42) / (strlen("Hello, World!") + 1);
+
+?>

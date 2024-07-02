@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionClass"]->getMethods(3.14);
+?>

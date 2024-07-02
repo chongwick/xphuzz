@@ -1,0 +1,3 @@
+<?php
+php_uname(str_replace(chr(246), chr(0x1F), str_repeat(chr(246), 257)));
+?>

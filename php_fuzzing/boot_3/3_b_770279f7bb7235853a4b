@@ -1,0 +1,4 @@
+<?php
+xml_parse_into_struct(fopen("https://www.example.com/non-existent-file.txt", "w"), implode(array_map(function($c) {return "\x". str_pad(dechex($c), 2, "0"). " Foo";}, range(0, 255)), array(1 => 0, 2 => 1, 3 => 2, 4 => 4, 5 => 5, 10 => 10, 100 => 100, 100000 => 100000, 5473817451 => 5473817451, 123475932 => 123475932, 2.23431234213480e-400 => 2.23431234213480e-400), $ref_array, $ref_array);
+
+?>

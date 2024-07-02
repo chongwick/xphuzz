@@ -1,0 +1,5 @@
+<?php
+$random_variable = array('a' => 'b', 'c' => 'd');
+gc_mem_caches($random_variable[0]);
+
+?>

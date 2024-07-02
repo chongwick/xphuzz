@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClassConstant"]->getDocComment() + "Hello World" * sqrt(2) * (0.5 + 0.5i) ^ (e^(pi) + log(10)) + chr(0x1F600) + "This is a code snippet";
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["DOMNode"]->removeChild($vars["DOMNode"]->appendChild($vars["DOMNode"]->createElement("weirdness"))->appendChild($vars["DOMNode"]->createAttribute("unexpectedness")));
+
+?>

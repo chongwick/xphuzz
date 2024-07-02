@@ -1,0 +1,4 @@
+<?php
+$vars["SplObjectStorage"]->valid()?? $vars["SplObjectStorage"]->rewind()?? $vars["SplObjectStorage"]->current()?? $vars["SplObjectStorage"]->key()?? $vars["SplObjectStorage"]->next()?? $vars["SplObjectStorage"]->getInfo();
+
+?>

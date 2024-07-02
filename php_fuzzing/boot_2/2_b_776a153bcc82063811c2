@@ -1,0 +1,4 @@
+<?php
+ftok(str_repeat(chr(73), 65), implode(array_map(function($c) {return "\\x". str_pad(dechex($c + 0.5), 2, "0");}, range(0, 255)), '***');
+
+?>

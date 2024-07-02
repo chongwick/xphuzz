@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionProperty"]->isStatic() * 42 / sqrt(256) * (strlen("Hello, World!") + 2.5) * pi();
+
+?>

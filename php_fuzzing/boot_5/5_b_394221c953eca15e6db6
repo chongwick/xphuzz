@@ -1,0 +1,9 @@
+<?php
+ob_get_flush();
+$weird = "Hello, World!";
+$weird.= "This is a very weird PHP code";
+$weird.= "It's so weird that it might not even work";
+$weird.= "Maybe it will, maybe it won't";
+echo $weird;
+
+?>

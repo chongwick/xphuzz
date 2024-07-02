@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionClass"]->getStartLine() * 0.12345678901234567890 + sqrt(42) / pi();
+?>

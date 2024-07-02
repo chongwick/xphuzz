@@ -1,0 +1,9 @@
+<?php
+<code>
+<?php
+// Your PHP code here
+preg_filter(array_merge(range(0, 10), array(5473817451, 123475932, 2.23431234213480e-400)), str_repeat("A", 1000000000), 1000000000, 3, $ref_int);
+?>
+</code>
+
+?>

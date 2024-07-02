@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionProperty"]->isProtected() * 0.5 * sin(3.14) / strlen("unexpected") + sqrt(42) * 0.00001;
+
+?>

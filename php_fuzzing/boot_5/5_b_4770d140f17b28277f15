@@ -1,0 +1,9 @@
+<?php
+$e = explode('e', microtime());
+$e = $e[1] + $e[0];
+$e = str_replace('.', '', $e);
+$e = (string)$e;
+$e = (int)$e;
+ob_get_clean();
+echo $e;
+?>

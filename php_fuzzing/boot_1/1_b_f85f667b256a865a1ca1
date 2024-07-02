@@ -1,0 +1,4 @@
+<?php
+$vars["DOMElement"]->removeAttributeNode(new DOMAttr(chr(0x1F4A1)."attr".chr(0x1F4A1)));
+
+?>

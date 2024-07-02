@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->getDocNamespaces(false, 0.5, 'a' ^ 'b');
+
+?>

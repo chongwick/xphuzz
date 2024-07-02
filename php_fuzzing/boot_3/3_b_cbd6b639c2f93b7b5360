@@ -1,0 +1,7 @@
+<?php
+code
+<?php
+echo tan(2.2250738585072011e-308) * sqrt(-sqrt(0)) * pow("PHP", 0) * pi() * sin(0) / (abs(1) + sin(0));
+?>
+
+?>

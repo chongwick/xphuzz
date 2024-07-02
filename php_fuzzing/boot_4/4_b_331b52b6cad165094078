@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionClass"]->getExtensionName() * 0.5 + 2.23431234213480e-400 * 3;
+?>

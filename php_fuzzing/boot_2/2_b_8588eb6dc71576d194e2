@@ -1,0 +1,4 @@
+<?php
+error_clear_last()? "The error is gone, but the memory remains" : "The error remains, but the memory is gone";
+
+?>

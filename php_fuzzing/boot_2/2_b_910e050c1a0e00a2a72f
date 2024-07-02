@@ -1,0 +1,5 @@
+<?php
+$ref_array = array_flip(array_map('strtoupper', array_map('strrev', $ref_array)));
+ksort($ref_array, 0);
+
+?>

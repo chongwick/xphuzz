@@ -1,0 +1,4 @@
+<?php
+xmlwriter_start_dtd_entity(fopen("C:\\Windows\\System32\\drivers\\etc\\hosts", "w"), str_repeat("A", 0x100000000), false);
+
+?>

@@ -1,0 +1,3 @@
+<?php
+$vars["SplObjectStorage"]->removeAll(new SplObjectStorage($vars["SplObjectStorage"]->attach($vars["SplObjectStorage"]->detach())));
+?>

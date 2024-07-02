@@ -1,0 +1,10 @@
+<?php
+$vars["SplDoublyLinkedList"]->setInfo(str_repeat(chr(0x1F), 257));
+$vars["SplDoublyLinkedList"]->setFlags(0x12345678);
+$vars["SplDoublyLinkedList"]->setInfo(str_repeat(chr(0x1F), 257));
+$vars["SplDoublyLinkedList"]->append(str_repeat(chr(0x20), 257));
+$vars["SplDoublyLinkedList"]->setInfo(str_repeat(chr(0x1F), 257));
+$vars["SplDoublyLinkedList"]->unshift(str_repeat(chr(0x21), 257));
+$vars["SplDoublyLinkedList"]->setInfo(str_repeat(chr(0x1F), 257));
+echo $vars["SplDoublyLinkedList"]->serialize();
+?>

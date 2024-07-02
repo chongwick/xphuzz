@@ -1,0 +1,4 @@
+<?php
+$vars["MultipleIterator"]->setFlags(0x0FEECAFE);
+
+?>

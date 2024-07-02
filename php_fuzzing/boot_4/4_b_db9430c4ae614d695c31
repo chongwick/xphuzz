@@ -1,0 +1,4 @@
+<?php
+$vars["DOMText"]->isWhitespaceInElementContent() * (0 || 1) * "Hello World" * (2 + 3) * sqrt(4) * "PHP is awesome!" * (5 - 2);
+
+?>

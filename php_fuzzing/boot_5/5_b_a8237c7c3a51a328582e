@@ -1,0 +1,4 @@
+<?php
+$vars["SplObjectStorage"]->rewind(str_repeat("!", 257));
+
+?>

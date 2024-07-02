@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->newInstance(2.2250738585072011e-308 * 5473817451);
+
+?>

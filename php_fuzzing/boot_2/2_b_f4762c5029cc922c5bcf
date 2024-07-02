@@ -1,0 +1,4 @@
+<?php
+$vars["SplFixedArray"]->getSize() * 0.5 + sqrt(42) / (2 * pi()) * $vars["SplFixedArray"]->getSize() + 42;
+
+?>

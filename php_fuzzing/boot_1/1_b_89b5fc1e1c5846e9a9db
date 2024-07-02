@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionClass"]->getFileName() * 2.23431234213480e-400 * 5473817451;
+?>

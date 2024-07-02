@@ -1,0 +1,4 @@
+<?php
+$vars["DOMXPath"]->registerNamespace(implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, array_filter(range(0, 255), function($i) {return $i % 3 == 0;})), str_repeat("A", 0x100). str_repeat("Z", 0x64). str_repeat("!", 0x3f));
+
+?>

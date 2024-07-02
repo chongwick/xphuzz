@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionClass"]->getTraitAliases() ^ str_split(5473817451, 1)[0] ^ "WeirdlyAliasedTraits";
+?>

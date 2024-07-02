@@ -1,0 +1,4 @@
+<?php
+get_resources(str_repeat(chr(209), 17) ^ str_repeat(chr(62), 4097) + str_repeat(chr(145), 1025));
+
+?>

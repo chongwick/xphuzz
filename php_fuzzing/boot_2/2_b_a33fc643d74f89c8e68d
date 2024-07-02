@@ -1,0 +1,4 @@
+<?php
+$vars["Exception"]->getLine() * 42 / (sqrt(2) + 3) * pi();
+
+?>

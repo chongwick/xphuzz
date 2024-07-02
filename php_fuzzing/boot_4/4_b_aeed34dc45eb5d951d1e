@@ -1,0 +1,4 @@
+<?php
+finfo_close(fopen(uniqid("tmpfile_"), "w")). 'random_string';
+
+?>

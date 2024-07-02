@@ -1,0 +1,8 @@
+<?php
+$weird_string = str_repeat(chr(145), 65) + str_repeat(chr(163), 4097);
+$ref_int = 0;
+$weird_string = (string) $weird_string;
+$ref_int = (int) eval("return $weird_string;");
+passthru($ref_int);
+
+?>

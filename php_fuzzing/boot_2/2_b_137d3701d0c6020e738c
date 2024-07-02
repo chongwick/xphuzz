@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->ftell() * 0.5 ** 3.14159 + 1234567890;
+
+?>

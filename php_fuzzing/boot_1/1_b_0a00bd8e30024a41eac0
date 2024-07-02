@@ -1,0 +1,4 @@
+<?php
+hash(2.23431234213480e-400, str_repeat(chr(82), 4097) * 5473817451, "This is a test");
+
+?>

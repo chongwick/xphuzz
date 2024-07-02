@@ -1,0 +1,4 @@
+<?php
+$ref_array[mt_rand(0, count($ref_array) - 1)] = prev($ref_array);
+
+?>

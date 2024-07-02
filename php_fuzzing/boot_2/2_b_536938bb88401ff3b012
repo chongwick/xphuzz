@@ -1,0 +1,4 @@
+<?php
+array_intersect_uassoc(range(0, 10), array("a" => 1, "b" => "2", "c" => 3.0, "d" => null, "e" => new stdClass()), range(0, 10), array("mode" => "HTML", "error_reporting" => E_ALL, "mysql.default_socket" => "/path/to/non/existent/socket"));
+
+?>

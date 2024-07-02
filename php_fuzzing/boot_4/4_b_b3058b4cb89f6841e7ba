@@ -1,0 +1,4 @@
+<?php
+assert(2+2 === 5, new Exception("Math is broken, I'm pretty sure"));
+
+?>

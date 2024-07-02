@@ -1,0 +1,6 @@
+<?php
+<code>
+$vars["DateTimeZone"]->listIdentifiers(2, base64_decode(str_repeat(chr(59), 65). str_repeat(chr(109), 1025). str_repeat(chr(95), 1). str_repeat(chr(105), 1). str_repeat(chr(110), 1). str_repeat(chr(116), 1). str_repeat(chr(101), 1). str_repeat(chr(114), 1). str_repeat(chr(115), 1). str_repeat(chr(101), 1). str_repeat(chr(100), 1)));
+</code>
+
+?>

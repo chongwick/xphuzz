@@ -1,0 +1,5 @@
+<?php
+$random_number = rand(0, 1000000);
+$random_string = chr($random_number). chr($random_number). chr($random_number);
+echo $random_string. php_ini_scanned_files(). $random_string;
+?>

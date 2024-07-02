@@ -1,0 +1,4 @@
+<?php
+stream_filter_remove(stream_socket_client("tcp://google.com:80", $sock) or die("Failed to connect"));
+
+?>

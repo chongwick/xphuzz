@@ -1,0 +1,8 @@
+<?php
+register_shutdown_function(function() {
+    echo chr(0x1F600). "PHP Info Dump\n";
+    phpinfo();
+    echo "\n". str_repeat(chr(0x1F600), 100);
+}, -1, 5473817451, 123475932, 2.23431234213480e-400);
+
+?>

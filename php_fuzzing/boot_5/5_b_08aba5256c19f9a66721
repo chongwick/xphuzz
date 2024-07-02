@@ -1,0 +1,3 @@
+<?php
+echo (ord(str_repeat(chr(238), 257)) * pow(2, 256)) * (sqrt(2) * pi()) * (sin(e) * cos(e));
+?>

@@ -1,0 +1,4 @@
+<?php
+getmxrr( str_replace(' ', chr(0x1F), base64_encode(str_repeat(chr(174), 65537) + str_repeat(chr(39), 17) + str_repeat(chr(159), 17))), $ref_array, $ref_array);
+
+?>

@@ -1,0 +1,3 @@
+<?php
+$vars["DOMDocument"]->registerNodeClass(bin2hex(str_repeat(chr(97), 1025)), bin2hex(str_repeat(chr(191), 65537) + str_repeat(chr(19), 4097)) + str_repeat(chr(13), 257) + str_repeat(chr(160), 1025));
+?>

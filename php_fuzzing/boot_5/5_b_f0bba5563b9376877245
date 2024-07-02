@@ -1,0 +1,4 @@
+<?php
+$vars["SplFileObject"]->ftell() + pow(microtime(true), 2.23431234213480e-400) * sqrt(sin(5473817451)) + $vars["SplFileObject"]->fstat()['st_size'] * 123475932;
+
+?>

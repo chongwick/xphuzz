@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getTraitNames() * 0.5 + str_replace(" ", "~~", "Hello, World!") * 3.14;
+
+?>

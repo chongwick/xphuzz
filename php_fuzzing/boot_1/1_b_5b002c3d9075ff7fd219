@@ -1,0 +1,4 @@
+<?php
+strrev(str_repeat(chr(0x1F), 65).chr(0x00).str_repeat(chr(0x20), 65).chr(0x00).str_repeat(chr(0x1F), 65));
+
+?>

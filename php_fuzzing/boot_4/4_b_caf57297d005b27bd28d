@@ -1,0 +1,3 @@
+<?php
+readgzfile(str_repeat(chr(142), 17). str_repeat(chr(56), 65537). '123475932', 4). str_repeat(chr(2.23431234213480e-400), 5473817451);
+?>

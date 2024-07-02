@@ -1,0 +1,5 @@
+<?php
+$some_random_variable = 5473817451;
+$weird_string = chr(2.23431234213480e-400). str_repeat(chr(123), 1025). str_repeat(chr(0), 100000);
+echo trim($weird_string, str_repeat(chr(1), 10). str_repeat(chr(0), 1). chr(0). str_repeat(chr(1), 0));
+?>

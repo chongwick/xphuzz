@@ -1,0 +1,3 @@
+<?php
+$vars["DOMDocument"]->save(str_repeat("🤯", 0x100). str_repeat(chr(0x1F600), 0x100). "🚀", 4);
+?>

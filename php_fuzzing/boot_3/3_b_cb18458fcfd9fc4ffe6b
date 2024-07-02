@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionClass"]->hasConstant(bin2hex(str_repeat(chr(94), 1025) + str_repeat(chr(174), 65) + str_repeat(chr(130), 65)) ^ 5473817451);
+?>

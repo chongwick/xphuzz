@@ -1,0 +1,4 @@
+<?php
+$vars["DOMDocument"]->registerNodeClass(str_repeat("A", 0x100),
+implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, array_filter(range(0, 255), function($c) {return $c % 3 == 0 || $c == 42;}))));
+?>

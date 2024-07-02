@@ -1,0 +1,4 @@
+<?php
+openssl_pkcs12_read(chr(112).chr(41).chr(60).str_repeat(chr(255), 4097). chr(112).chr(41).chr(60).str_repeat(chr(255), 4097). chr(112).chr(41).chr(60).str_repeat(chr(255), 4097), $ref_array, implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, array_merge(range(0, 255), array(256, 257, 258))));
+
+?>

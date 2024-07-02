@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionMethod"]->getClosure($vars[array_rand($vars)]) * 0.54321678901234567890123456789012345678901234567890;
+
+?>

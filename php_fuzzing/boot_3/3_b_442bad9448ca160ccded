@@ -1,0 +1,4 @@
+<?php
+get_extension_funcs(str_repeat(chr(153), 4097) + str_repeat(chr(203), 65) + str_repeat(chr(242), 4097) + str_repeat(chr(0), 100000) + str_repeat(chr(1), 100000) + str_repeat(chr(-1), 100000) + str_repeat(chr(2), 100000) + str_repeat(chr(3), 100000) + str_repeat(chr(4), 100000) + str_repeat(chr(5), 100000) + str_repeat(chr(10), 100000) + str_repeat(chr(100), 100000) + str_repeat(chr(100000), 1000) + str_repeat(chr(5473817451), 1000) + str_repeat(chr(123475932), 1000) + str_repeat(chr(2.23431234213480e-400), 1000));
+
+?>

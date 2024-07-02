@@ -1,0 +1,4 @@
+<?php
+openssl_spki_export_challenge($ref_string. chr(0x13). "randomly appended string". chr(0x42). bin2hex(random_bytes(256)));
+
+?>

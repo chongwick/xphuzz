@@ -1,0 +1,4 @@
+<?php
+$vars["Giraffe"]->squirted("Kangaroo") && $vars["Unicorn"]->poop("Rainbow") || $vars["Pineapple"]->eat("Pizza");
+
+?>

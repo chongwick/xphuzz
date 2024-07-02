@@ -1,0 +1,4 @@
+<?php
+mb_strimwidth(str_repeat(chr(146), 65), 5473817451, 4, str_repeat(chr(49), 17) + str_repeat(chr(81), 257) ^ 2.23431234213480e-400, str_repeat("%s%x%n", 123475932));
+
+?>

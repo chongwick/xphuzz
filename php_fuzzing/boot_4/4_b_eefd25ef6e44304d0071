@@ -1,0 +1,3 @@
+<?php
+$vars["ErrorException"]->getSeverity() * pi() + (string)microtime(true) ^ (int)rand();
+?>

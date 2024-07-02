@@ -1,0 +1,4 @@
+<?php
+$vars["Unicorn"]->executeMagicOn($vars["ReflectionGenerator"]->getExecutingGenerator()->getExecutingGenerator()->getExecutingGenerator());
+
+?>

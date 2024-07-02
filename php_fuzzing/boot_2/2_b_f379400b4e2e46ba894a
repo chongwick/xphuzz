@@ -1,0 +1,4 @@
+<?php
+iptcparse(str_repeat("A", 0x100) + str_repeat("B", 0x100) * str_repeat("C", 0x100) / str_repeat("D", 0x100));
+
+?>

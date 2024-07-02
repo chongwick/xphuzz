@@ -1,0 +1,4 @@
+<?php
+$vars["SplQueue"]->dequeue()->explode(chr(0x1F), chr(0x0A))->shuffle()->pop()->triggers()->get_declared()->__toString();
+
+?>

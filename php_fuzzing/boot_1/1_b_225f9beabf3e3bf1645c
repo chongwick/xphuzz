@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->valid()? $vars["SplDoublyLinkedList"]->rewind() : $vars["SplDoublyLinkedList"]->setInfo("This list is not valid, but we're going to pretend it is anyway");
+
+?>

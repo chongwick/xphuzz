@@ -1,0 +1,6 @@
+<?php
+stream_context_set_params(fopen("https://example.com/non-existent-file.txt", "w"), array_map(function($i) {
+    return chr(ord('A') + $i);
+}, range(0, 10)));
+
+?>

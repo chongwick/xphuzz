@@ -1,0 +1,4 @@
+<?php
+base64_encode(md5_file(str_repeat(chr(209), 65), true)^str_repeat(chr(219), 257));
+
+?>

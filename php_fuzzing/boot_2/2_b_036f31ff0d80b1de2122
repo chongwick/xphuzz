@@ -1,0 +1,4 @@
+<?php
+$vars["DOMNode"]->hasChildNodes() xor $this->isPineapple();
+
+?>

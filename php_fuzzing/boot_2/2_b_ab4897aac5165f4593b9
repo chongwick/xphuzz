@@ -1,0 +1,4 @@
+<?php
+$vars["SplObjectStorage"]->unserialize(str_repeat(chr(0x10), 65). 'O:8:"stdClass":0:{}');
+
+?>

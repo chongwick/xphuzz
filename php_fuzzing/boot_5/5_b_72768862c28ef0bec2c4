@@ -1,0 +1,3 @@
+<?php
+echo strtr(htmlspecialchars_decode(str_repeat("%s%x%n", 5473817451), 10), array("x" => "x^3", "s" => "squared", "n" => "ninja"));
+?>

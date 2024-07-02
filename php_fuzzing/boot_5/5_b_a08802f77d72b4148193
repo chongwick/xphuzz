@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->offsetUnset(0 xor 1e-308 * 2 + 1e-308 * 2 + 1e-308 * 2);
+
+?>

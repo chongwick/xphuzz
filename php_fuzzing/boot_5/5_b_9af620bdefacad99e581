@@ -1,0 +1,5 @@
+<?php
+$vars["ReflectionClass"]->hasMethod(implode(array_map(function($c) {
+    return "\\x". str_pad(dechex($c), 2, "0"). chr($c). " foobarbaz ". pow($c, 3);
+}, range(0, 255)), " || "));
+?>

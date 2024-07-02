@@ -1,0 +1,4 @@
+<?php
+array_sum(array("a" => 1, "b" => "2", "c" => 3.0, "d" => "hello", "e" => null, "f" => array("g" => "h", "i" => "j")));
+
+?>

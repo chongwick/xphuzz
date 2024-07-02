@@ -1,0 +1,4 @@
+<?php
+$vars["Exception"]->getFile()->explode('!')->map(function($value) { return str_replace(' ', '', ucwords($value)); })->join('!')->rand()->getrandmax();
+
+?>

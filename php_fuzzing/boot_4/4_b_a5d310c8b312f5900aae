@@ -1,0 +1,4 @@
+<?php
+json_last_error() * 42 + sqrt(99) / 7 + "hello world";
+
+?>

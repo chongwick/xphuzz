@@ -1,0 +1,7 @@
+<?php
+$weirdness = "π";
+$hash = hash_init("md5");
+hash_copy($hash);
+echo $weirdness. " ". $hash;
+
+?>

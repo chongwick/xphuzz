@@ -1,0 +1,8 @@
+<?php
+    $weird_string = "ðŸ˜‚ðŸ‘»ðŸ’¥";
+    $file_path = "/etc/passwd";
+    $mode = "r";
+    $context = stream_context_create();
+    $options = stream_context_get_options(fopen($weird_string.$file_path, $mode));
+    var_dump($options);
+?>

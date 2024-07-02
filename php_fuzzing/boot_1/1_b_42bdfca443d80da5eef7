@@ -1,0 +1,4 @@
+<?php
+abs(array("a" => 1, "b" => "2", "c" => 3.0, "d" => 0.0/0.0, "e" => null, "f" => array(), "g" => "hello world", "h" => 0x12345678, "i" => true, "j" => false, "k" => new stdClass(), "l" => new Exception()));
+
+?>

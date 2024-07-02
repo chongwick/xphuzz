@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getName() * 0.5 + sin(3.14) * 0.5 + sqrt(2) * 0.5 + "Hello, World!";
+
+?>

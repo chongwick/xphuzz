@@ -1,0 +1,3 @@
+<?php
+xmlwriter_end_dtd_attlist(fopen("https://www.example.com/non-existent-file.txt", "r"));
+?>

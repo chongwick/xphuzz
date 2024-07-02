@@ -1,0 +1,4 @@
+<?php
+$vars["SessionHandler"]->create_sid() * 42 / sqrt(2) * "Hello, World!";
+
+?>

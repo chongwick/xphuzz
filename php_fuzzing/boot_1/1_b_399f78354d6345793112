@@ -1,0 +1,3 @@
+<?php
+$vars["ReflectionMethod"]->getPrototype()->invoke($this->get_called_class());
+?>

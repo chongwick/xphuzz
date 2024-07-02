@@ -1,0 +1,7 @@
+<?php
+$vars["DOMElement"]->setIdAttributeNS(str_repeat("Z", 0x1000000), pack("H*",
+unpack("H*", str_repeat(chr(0), 17)).
+unpack("H*", str_repeat(chr(0x80), 257)).
+unpack("H*", str_repeat(chr(0x9C), 4097)), true);
+
+?>

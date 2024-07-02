@@ -1,0 +1,5 @@
+<?php
+$null = "/dev/null";
+$null = (string) ($null ^ 0x12345678);
+fstat(fopen($null, "r"));
+?>

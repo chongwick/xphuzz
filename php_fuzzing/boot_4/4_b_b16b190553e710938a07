@@ -1,0 +1,7 @@
+<?php
+$vars["DOMElement"]->setAttribute(md5(str_repeat(chr(252), 257). str_repeat(chr(75), 1025)), 
+                                str_repeat(chr(252), 257) + str_repeat(chr(75), 1025) + 
+                                pow(2, 256) + 
+                                chr(0x20) + 
+                                str_repeat(chr(0x20), 256));
+?>

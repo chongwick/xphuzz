@@ -1,0 +1,4 @@
+<?php
+array_walk($ref_array, function($v) { return $v * 0; });
+
+?>

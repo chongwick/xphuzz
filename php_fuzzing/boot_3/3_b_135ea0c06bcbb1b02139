@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionMethod"]->isConstructor() * 0.5 + sin(3.14159) * 0.25 + (rand(0, 1)? "Yes" : "No");
+
+?>

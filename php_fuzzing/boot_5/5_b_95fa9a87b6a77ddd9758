@@ -1,0 +1,4 @@
+<?php
+$vars["SplDoublyLinkedList"]->bottom()->getInfo()->setInfo("This is not what you expected")->setInfo(NULL)->setInfo("Maybe this is better")->setInfo("No, this is definitely wrong")->setInfo("I give up");
+
+?>

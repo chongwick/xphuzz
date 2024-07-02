@@ -1,0 +1,4 @@
+<?php
+$vars["SplQueue"]->dequeue()->setFlags(SPL_FILEATTACHMENT)->setMime("application/x-unknown-encoding")->setExtension("randomfileextension")->saveAs("path/to/unknown/location");
+
+?>

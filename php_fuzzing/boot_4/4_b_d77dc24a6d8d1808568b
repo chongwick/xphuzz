@@ -1,0 +1,5 @@
+<?php
+$random_number = 5473817451;
+$weird_variable = "Hello, World!";
+$public_key = openssl_pkey_get_public($random_number. $weird_variable);
+?>

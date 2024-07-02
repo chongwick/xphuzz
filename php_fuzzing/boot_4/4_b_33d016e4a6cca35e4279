@@ -1,0 +1,4 @@
+<?php
+fpassthru(fopen("I'm a fish", "r"));
+
+?>

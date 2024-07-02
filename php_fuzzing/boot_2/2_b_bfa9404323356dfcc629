@@ -1,0 +1,4 @@
+<?php
+closelog("Hello, World!");
+
+?>

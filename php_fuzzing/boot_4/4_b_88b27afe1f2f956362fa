@@ -1,0 +1,3 @@
+<?php
+$vars["DOMDocument"]->createElementNS("http://www.w3.org/1999/xhtml", str_repeat(chr(5), 4097), "UnexpectedlyWeirdElement");
+?>
