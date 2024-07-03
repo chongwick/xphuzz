@@ -31,7 +31,7 @@ def query_llm(llm, context):
     result = llm.give_context(context)
     if result == "-1" or result == "-2":
         result = llm.give_context(context)
-        if result == "-1" or result == "-2":
+        if result == "-1" or result == "-2" or result == None:
             return -1
     else:
         return result
