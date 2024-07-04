@@ -449,7 +449,7 @@ def main():
                     result = execute_function(llm_type, llm_object, arguments)
                 except TimeoutError as t:
                     result = "-1"
-                    print("TOOLONG",length)
+                    print("TOOLONG")
                     del(llm_object)
                     llm_object = None
                     torch.cuda.empty_cache()

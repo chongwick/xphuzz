@@ -13,7 +13,7 @@ from threading import Thread, Lock
 from executor import Executor 
 import errreader as err
 from aljamain_sterling import pairing_aljo
-from generator import generate_samples
+from grammar_generators.php_gen import generate_samples
 
 fix_prompt = "The response did not correspond to the ```<code>``` format."
 mix_prompt = "The response did not correspond to the ```<code>``` ```<code>``` ```<code>```format." 
@@ -162,6 +162,7 @@ def create_seed_data(seed_data, seed_name, php_file):
                     "coverage": 0, #coverage is relative to the base map
                     "parents": None, #we don't want inbreeding !!!Parents should be a set!!!
                     "time": 0
+                    "score":0 #The score will be updated after every generation
                     }
 
 def query_loop(llm, seed_data, llm_queue, cov_queue):
@@ -192,7 +193,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                     del(seed_data[seed_name])
                     continue
                 utils.write_file(php_file, code)
-                seed_data[seed_name]['time'] += start - time.time()
+                seed_data[seed_name]['time'] += time.time() - start
                 cov_queue.put(php_file)
             elif("_m" in request_file): #Mate request
                 start = time.time()
@@ -217,7 +218,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                 create_seed_data(seed_data, seed_name, php_file)
                 utils.write_file(php_file,child)
                 seed_data[seed_name]['parents']=seed_data[tmp_seed_name]['parents']
-                seed_data[seed_name]['time'] += start - time.time()
+                seed_data[seed_name]['time'] += time.time() - start
                 cov_queue.put(php_file); #cov_queue.put(php1); #cov_queue.put(php2)
                 del(seed_data[tmp_seed_name])
             elif("_f" in request_file): #Fix request
@@ -229,7 +230,6 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                     if 'corpus' not in php_file: #this indicates either the original js/php corpi
                         os.remove(php_file)
                         del(seed_data[seed_name])
-
                 else:
                     context = utils.load_pickle(request_file)
                     seed_data[seed_name]['fix_count'] += 1
@@ -246,7 +246,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                             continue
                         utils.write_file(php_file, code)
                         cov_queue.put(php_file)
-                        seed_data[seed_name]['time'] += start - time.time()
+                        seed_data[seed_name]['time'] += time.time() - start
             update_data(llm_queue, cov_queue, seed_data)
 
 def coverage_loop(seed_data, llm_queue, cov_queue):
