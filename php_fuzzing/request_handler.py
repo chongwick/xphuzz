@@ -31,12 +31,14 @@ def query_llm(llm, context):
     result = llm.give_context(context)
     if result == "-1" or result == "-2":
         result = llm.give_context(context)
-        if result == "-1" or result == "-2" or result == None:
+        if result == "-1" or result == "-2":
             return -1
     else:
         return result
 
 def correct_format(llm, result, context):
+    if type(result) != str:
+        return None
     result = [line + "\n" for line in result.split("\n")]
     #if result[0].strip() == "error":
     #    raise RuntimeError("Restarting LLM")
@@ -75,7 +77,7 @@ def generate_fix_prompt(code, error):
     context = [{'role': 'system', 'content': role}]
     prompt = ""
     prompt += "```\n{c}\n```\n".format(c=code)
-    prompt += error
+    prompt += erro
     context.append({'role': 'user', 'content': prompt})
     return context
 
@@ -161,8 +163,8 @@ def create_seed_data(seed_data, seed_name, php_file):
                     "context": None,
                     "coverage": 0, #coverage is relative to the base map
                     "parents": None, #we don't want inbreeding !!!Parents should be a set!!!
-                    "time": 0
-                    "score":0 #The score will be updated after every generation
+                    "time": 0,
+                    "score":0, #The score will be updated after every generation
                     }
 
 def query_loop(llm, seed_data, llm_queue, cov_queue):

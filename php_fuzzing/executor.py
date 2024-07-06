@@ -39,6 +39,7 @@ class Executor():
         command.append(script)
         try:
             if self.engine == SANITIZER_ENGINE:
+                command.insert(0,'USE_ZEND_ALLOC=0')
                 command.append("2>&1")
             child = subprocess.Popen(command, stdout=subprocess.PIPE, text=True)
             stdout, stderr = child.communicate(timeout=120) #timeout after 2 minutes

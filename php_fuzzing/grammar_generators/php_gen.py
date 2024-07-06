@@ -98,3 +98,4 @@ def generate_samples(grammar_dir, outfile, template, n_lines, lineguard="php.txt
             f.close()
         except IOError:
             print('Error writing to output')
+

@@ -403,6 +403,7 @@ def main():
     while(True):
         #try:
         #Check for termination/change command files
+        result = None
         if is_terminate():
             os.remove(terminate_file)
             quit()
