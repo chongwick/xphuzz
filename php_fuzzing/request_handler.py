@@ -15,8 +15,7 @@ import errreader as err
 from aljamain_sterling import pairing_aljo
 from grammar_generators.php_gen import generate_samples
 
-fix_prompt = "The response did not correspond to the ```<code>``` format."
-mix_prompt = "The response did not correspond to the ```<code>``` ```<code>``` ```<code>```format." 
+fix_prompt = "The response did not correspond to the ```<code>``` format"
 min_prompt = "Reduce the amount of tokens in this code. Return as ```<code>```"
 seed_data_lock = Lock()
 
@@ -63,13 +62,9 @@ def correct_format(llm, result, context):
                 return None
         else:
             break
-    try:
-        if "<?php" not in code.split("\n")[0]:
-            code = "<?php\n" + code + "\n?>"
-    except Exception as e:
-        print("ERRRORRRRRR")
-        print(code)
-        quit()
+    if "<?php" not in code.split("\n")[0]:
+        code = "<?php\n" + code + "\n?>"
+
     return code
 
 def generate_fix_prompt(code, error):
@@ -77,7 +72,7 @@ def generate_fix_prompt(code, error):
     context = [{'role': 'system', 'content': role}]
     prompt = ""
     prompt += "```\n{c}\n```\n".format(c=code)
-    prompt += erro
+    prompt += error
     context.append({'role': 'user', 'content': prompt})
     return context
 
@@ -187,7 +182,8 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
             context.append({'role':'assistant','content':result})
             code = correct_format(llm, result, context)
             if code == None:
-                del(seed_data[seed_name])
+                seed_data[seed_name]['fix_count'] = 5
+                update_data(llm_queue, cov_queue, seed_data)
                 continue
             utils.write_file(php_file, code)
             seed_data[seed_name]['time'] += time.time() - start
@@ -202,8 +198,8 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
             context.append({'role':'assistant','content':result})
             child = correct_format(llm, result, context)
             if child == None:
-                #or fixcount = 5?
-                del(seed_data[seed_name])
+                seed_data[seed_name]['fix_count'] = 5
+                update_data(llm_queue, cov_queue, seed_data)
                 continue
             #print("Inserting Mutation")
             #result = query_llm(llm,mutation_insertion(child))
@@ -226,7 +222,6 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                 print("Nah, can't fix this one")
                 if 'corpus' not in php_file: #this indicates either the original js/php corpi
                     os.remove(php_file)
-                    del(seed_data[seed_name])
             else:
                 context = utils.load_pickle(request_file)
                 seed_data[seed_name]['fix_count'] += 1
@@ -239,7 +234,8 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                     context.append({'role':'assistant','content':result})
                     code = correct_format(llm, result, context)
                     if code == None:
-                        del(seed_data[seed_name])
+                        seed_data[seed_name]['fix_count'] = 5
+                        update_data(llm_queue, cov_queue, seed_data)
                         continue
                     utils.write_file(php_file, code)
                     cov_queue.put(php_file)

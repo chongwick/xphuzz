@@ -42,7 +42,7 @@ def get_arguments(arguments_file):
     return arguments
 
 
-@timeout(40)
+@timeout(600)
 def execute_function(llm_type, llm_object, arguments):
     llm_functions = None
     if llm_type == CHAT:
