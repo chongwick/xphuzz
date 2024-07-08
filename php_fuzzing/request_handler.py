@@ -15,7 +15,7 @@ import errreader as err
 from aljamain_sterling import pairing_aljo
 from grammar_generators.php_gen import generate_samples
 
-fix_prompt = "The response did not correspond to the ```<code>``` format"
+fix_prompt = "The response did not follow the ```<code>``` format."
 min_prompt = "Reduce the amount of tokens in this code. Return as ```<code>```"
 seed_data_lock = Lock()
 
@@ -186,6 +186,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                 update_data(llm_queue, cov_queue, seed_data)
                 continue
             utils.write_file(php_file, code)
+            seed_data[seed_name]['php_file'] = php_file
             seed_data[seed_name]['time'] += time.time() - start
             cov_queue.put(php_file)
         elif("_m" in request_file): #Mate request

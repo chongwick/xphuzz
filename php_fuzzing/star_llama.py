@@ -42,7 +42,7 @@ def get_arguments(arguments_file):
     return arguments
 
 
-@timeout(600)
+@timeout(120)
 def execute_function(llm_type, llm_object, arguments):
     llm_functions = None
     if llm_type == CHAT:
@@ -447,7 +447,9 @@ def main():
                 continue
             try:
                 try:
+                    start = time.time()
                     result = execute_function(llm_type, llm_object, arguments)
+                    print(time-start)
                 except TimeoutError as t:
                     result = "-1"
                     print("TOOLONG")

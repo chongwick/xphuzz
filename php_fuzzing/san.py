@@ -6,12 +6,36 @@ import config as cfg
 import utils
 import subprocess
 
+def scoring_function(seed_data_point):
+    solo_cov = seed_data_point['solo_cov']
+    collective_cov = seed_data_point['collective_cov']
+    crash = seed_data_point['crash']
+    age = 
+    solo_cov = seed_data_point['solo_cov']
+    solo_cov = seed_data_point['solo_cov']
+    seed_data_point["solo_cov": None,                                                           
+    "collective_cov": None,                                                        
+    "age": None, #AKA token length                                                 
+    "crash": None, #AKA token length                                  `
+
+def is_crash(php_file):
+    name = php_file.split(".")[0]
+    if os.path.exists(php_file):
+        return "NC"
+    elif os.path.exists(name+".er"):
+        return "ER"
+    elif os.path.exists(name+".pv"):
+        return "PV"
+
+
 def sanitization_loop():
     #san_eng = Executor(cfg.sanitizer_engine)
     is_error = lambda x: os.path.exists(x+".er")
     is_pot_vul = lambda x: os.path.exists(x+".pv")
     while(True):
+        crash = None
         php_file = utils.pop_from_queue(cfg.san_queue)
+        seed_name = php_file.split("/")[1].split(".")[0]
         if php_file == -1:
             continue
 
@@ -27,11 +51,21 @@ def sanitization_loop():
         del(command)
 
         #If there was an error with the script, see if it was more than just a memory leak
-        if is_error(php_file):
+        if is_crash(php_file) == "ER":
             command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),'0']
             child = subprocess.run(command, text=True, timeout=120)
             del(command)
+            crash = "ER"
+            php_file = php_file.split(".")[0]+".er"
+            if is_crash(php_file) == "PV":
+                crash = "PV"
+                php_file = php_file.split(".")[0]+".pv"
+        else:
+            crash = "NC"
 
+        seed_data = utils.load_pickle("seed_data.pickle")
+        seed_data[seed_name]['php_file']=php_file
+        seed_data[seed_name]['crash']=crash
         utils.write_file(php_file,og)
 
 def main():
