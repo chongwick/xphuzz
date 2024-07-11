@@ -159,10 +159,10 @@ def create_seed_data(seed_data, seed_name, php_file):
                     "parents": None, #we don't want inbreeding !!!Parents should be a set!!!
                     "time": 0,
                     "solo_cov": None,
-                    "collective_cov": None,
-                    "age": None, #AKA token length
+                    "new_cov": None,
+                    "size": None, #AKA token length
                     "crash": None, #AKA token length
-                    "score":0, #The score will be updated after every generation
+                    #"score":0, #The score will be updated after every generation
                     }
 
 def query_loop(llm, seed_data, llm_queue, cov_queue):
@@ -279,7 +279,7 @@ def coverage_loop(seed_data, llm_queue, cov_queue):
             cov_eng.execute_prog(php_file)
             increase = cov_eng.read() - cur_cov
             cov_eng.save_global_coverage_map_in_file(cfg.collective_map)
-            seed_data[seed_name]['collective_cov'] = increase
+            seed_data[seed_name]['new_cov'] = increase
         utils.write_file(php_file,og)
         update_data(llm_queue, cov_queue, seed_data)
         room_service(safe_files)

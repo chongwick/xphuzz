@@ -297,7 +297,7 @@ class LLAMA3_LLM:
         self.model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
         self.original_context = self.context.copy()
         self.temperature = temperature
-        self.absolute_max = 1048576
+        self.absolute_max = 8000
         #self.max_response_length = 500 #Maybe this hsould be equal to the absolute max?
         self.max_response_length = self.absolute_max
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_id)
@@ -449,7 +449,7 @@ def main():
                 try:
                     start = time.time()
                     result = execute_function(llm_type, llm_object, arguments)
-                    print(time-start)
+                    print(time.time()-start)
                 except TimeoutError as t:
                     result = "-1"
                     print("TOOLONG")

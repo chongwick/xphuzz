@@ -9,6 +9,7 @@ release_engine = "/home/w023dtc/php_engines/rel_php"
 model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
 llm_requests = "llm_requests"
 seed_data = "seed_data.pickle"
+stats = "stats.pickle"
 php_corpus = "php_corpus"
 php_template = "grammar_generators/template.php"
 

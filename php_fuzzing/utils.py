@@ -44,6 +44,10 @@ def load_pickle(file_path):
     f.close()
     return tmp
 
+def access_file("file_path"):
+    f = open
+
+
 def add_to_queue(queue_file, val, pos=None):
     lock = FileLock(cfg.status[queue_file], timeout=-1)
     with lock:

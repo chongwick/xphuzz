@@ -6,27 +6,35 @@ import config as cfg
 import utils
 import subprocess
 
-def scoring_function(seed_data_point):
-    solo_cov = seed_data_point['solo_cov']
-    collective_cov = seed_data_point['collective_cov']
-    crash = seed_data_point['crash']
-    age = 
-    solo_cov = seed_data_point['solo_cov']
-    solo_cov = seed_data_point['solo_cov']
-    seed_data_point["solo_cov": None,                                                           
-    "collective_cov": None,                                                        
-    "age": None, #AKA token length                                                 
-    "crash": None, #AKA token length                                  `
+TOKEN_LIMIT = 3900 #Given that the context window is 8000 for our LLM, 
+                   #our cutoff will be 3900 tokens.
 
-def is_crash(php_file):
-    name = php_file.split(".")[0]
-    if os.path.exists(php_file):
-        return "NC"
-    elif os.path.exists(name+".er"):
-        return "ER"
-    elif os.path.exists(name+".pv"):
-        return "PV"
-
+def scoring_function(seed_data):
+    global TOKEN_LIMIT
+    data = seed_data.copy()
+    solo_coverages = {}
+    crashes = {}
+    sizes = {}
+    ranking = []
+    score = {}
+    crashers = []
+    for i in data:
+        if data[i]['crash'] != "NC":
+            crashers.append(i)
+        else:
+            score[i] = data[i]['solo_cov']
+    score = {k: v for k, v in sorted(score.items(), key=lambda item: item[1], reverse=True)}
+    for i in crashers:
+        ranking.append(i)
+    for i in score:
+        ranking.append(i)
+    for i in ranking:
+        if data[i]['size'] >= TOKEN_LIMIT:
+            ranking.remove(i)
+    print(ranking)
+    print(len(ranking))
+    print(crashers)
+    quit()
 
 def sanitization_loop():
     #san_eng = Executor(cfg.sanitizer_engine)
@@ -35,9 +43,11 @@ def sanitization_loop():
     while(True):
         crash = None
         php_file = utils.pop_from_queue(cfg.san_queue)
-        seed_name = php_file.split("/")[1].split(".")[0]
         if php_file == -1:
+            print(scoring_function(utils.load_pickle(cfg.seed_data)))
             continue
+        seed_name = php_file.split("/")[1].split(".")[0]
+        print(php_file)
 
         with open(cfg.php_template,"r") as f:
             template = f.read()
@@ -51,24 +61,39 @@ def sanitization_loop():
         del(command)
 
         #If there was an error with the script, see if it was more than just a memory leak
-        if is_crash(php_file) == "ER":
+        if is_error(php_file):
+            crash = "ER"
+            php_file = php_file+".er"
             command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),'0']
             child = subprocess.run(command, text=True, timeout=120)
             del(command)
-            crash = "ER"
-            php_file = php_file.split(".")[0]+".er"
-            if is_crash(php_file) == "PV":
+            if is_pot_vul(php_file):
                 crash = "PV"
-                php_file = php_file.split(".")[0]+".pv"
+                php_file = php_file+".pv"
         else:
             crash = "NC"
 
         seed_data = utils.load_pickle("seed_data.pickle")
         seed_data[seed_name]['php_file']=php_file
         seed_data[seed_name]['crash']=crash
+        seed_data[seed_name]['size']=utils.num_tokens_from_string(og)
         utils.write_file(php_file,og)
+        utils.dump_pickle(cfg.seed_data,seed_data)
 
 def main():
+    #is_error = lambda x: os.path.exists(x+".er")
+    #php_file = "gen_0/2aefc0f640cc7b774e6c.php"
+    #with open(cfg.php_template,"r") as f:
+    #    template = f.read()
+    #code = utils.read_file(php_file)
+    #og = code
+    #code = code.replace("<?php",template)
+    #utils.write_file(php_file,code)
+
+    #command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),'1']
+    #child = subprocess.run(command, text=True, timeout=120)
+    #print(is_error(php_file))
+    #quit()
     sanitization_loop()
 
 if __name__ == "__main__":
