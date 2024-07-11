@@ -14,6 +14,7 @@ from executor import Executor
 import errreader as err
 from aljamain_sterling import pairing_aljo
 from grammar_generators.php_gen import generate_samples
+import san
 
 fix_prompt = "The response did not follow the ```<code>``` format."
 min_prompt = "Reduce the amount of tokens in this code. Return as ```<code>```"
@@ -24,6 +25,8 @@ for i in os.listdir(os.getcwd()):
     if "gen_" in i:
         tmp.append(int(i.split("_")[1]))    
 GEN_NUM = max(tmp) #Current generation
+TOKEN_LIMIT = 3900 #Given that the context window is 8000 for our LLM,
+                   #our cutoff will be 3900 tokens.
 del(tmp)
 
 def query_llm(llm, context):
@@ -162,6 +165,7 @@ def create_seed_data(seed_data, seed_name, php_file):
                     "new_cov": None,
                     "size": None, #AKA token length
                     "crash": None, #AKA token length
+                    "generation": GEN_NUM
                     #"score":0, #The score will be updated after every generation
                     }
 
@@ -243,46 +247,55 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                     seed_data[seed_name]['time'] += time.time() - start
         update_data(llm_queue, cov_queue, seed_data)
 
-def coverage_loop(seed_data, llm_queue, cov_queue):
+def coverage_loop(seed_data, llm_queue, cov_queue, san_queue):
     safe_files = os.listdir(os.path.dirname(os.path.realpath(__file__)))  
     cov_eng = Executor(cfg.coverage_engine)
     while(True):
-        php_file = cov_queue.get()
-        print("mapping: ", php_file)
-        cov_eng.load_global_coverage_map_from_file(cfg.base_map)
-        code = utils.read_file(php_file)
-        og = code
-        with open(cfg.php_template,"r") as f:
-            template = f.read()
-        code = code.replace("<?php",template)
-        utils.write_file(php_file,code)
-        result = cov_eng.execute_prog(php_file)
-
-        if result == -1:
-            print("Bad execution")
-            utils.write_file(php_file,og)
-            continue
-        if err.is_error(result):
-            fix_query = generate_fix_prompt(code, err.parse_error(result, php_file))
-            fix_req_name = os.path.join(cfg.llm_requests,
-                                        php_file.split("/")[-1].split(".")[0]+"_f")
-            utils.dump_pickle(fix_req_name, fix_query)
-            llm_queue.put(fix_req_name)
+        if cov_queue.qsize() == 0 and san_queue.qsize() == 0 and cov_queue.qsize() == 0:
+            tmp = {}
+            for i in os.listdir("gen_" + str(GEN_NUM)):
+                name = i.split("/")[1].split(".")[0]
+                tmp[name] = seed_data[name]
+            partitions = san.scoring_function(tmp)
+            print(partitions)
+            #next_gen(seed_data, llm_queue, cov_queue, boot_gen)
         else:
-            utils.add_to_queue(cfg.san_queue,php_file)
-            coverage = cov_eng.read()
-            seed_name = php_file.split("/")[-1].split(".")[0]
-            seed_data[seed_name]['solo_cov'] = coverage
-            #Get the collective coverage
-            cov_eng.load_global_coverage_map_from_file(cfg.collective_map)
-            cur_cov = cov_eng.read()
-            cov_eng.execute_prog(php_file)
-            increase = cov_eng.read() - cur_cov
-            cov_eng.save_global_coverage_map_in_file(cfg.collective_map)
-            seed_data[seed_name]['new_cov'] = increase
-        utils.write_file(php_file,og)
-        update_data(llm_queue, cov_queue, seed_data)
-        room_service(safe_files)
+            php_file = cov_queue.get()
+            print("mapping: ", php_file)
+            cov_eng.load_global_coverage_map_from_file(cfg.base_map)
+            code = utils.read_file(php_file)
+            og = code
+            with open(cfg.php_template,"r") as f:
+                template = f.read()
+            code = code.replace("<?php",template)
+            utils.write_file(php_file,code)
+            result = cov_eng.execute_prog(php_file)
+
+            if result == -1:
+                print("Bad execution")
+                utils.write_file(php_file,og)
+                continue
+            if err.is_error(result):
+                fix_query = generate_fix_prompt(code, err.parse_error(result, php_file))
+                fix_req_name = os.path.join(cfg.llm_requests,
+                                            php_file.split("/")[-1].split(".")[0]+"_f")
+                utils.dump_pickle(fix_req_name, fix_query)
+                llm_queue.put(fix_req_name)
+            else:
+                san_queue.put(php_file)
+                coverage = cov_eng.read()
+                seed_name = php_file.split("/")[-1].split(".")[0]
+                seed_data[seed_name]['solo_cov'] = coverage
+                #Get the collective coverage
+                cov_eng.load_global_coverage_map_from_file(cfg.collective_map)
+                cur_cov = cov_eng.read()
+                cov_eng.execute_prog(php_file)
+                increase = cov_eng.read() - cur_cov
+                cov_eng.save_global_coverage_map_in_file(cfg.collective_map)
+                seed_data[seed_name]['new_cov'] = increase
+            utils.write_file(php_file,og)
+            update_data(llm_queue, cov_queue, seed_data)
+            room_service(safe_files)
 
 def next_gen(seed_data, llm_queue, cov_queue, boot_gen):
     global GEN_NUM
@@ -329,13 +342,21 @@ def main():
     cov_queue = Queue()
     for i in utils.load_pickle(cfg.cov_queue):
         cov_queue.put(i)
+    san_queue = Queue()
+    for i in utils.load_pickle(cfg.san_queue):
+        san_queue.put(i)
 
     query_thread = Thread(target=query_loop, args=(llm, seed_data, llm_queue, cov_queue))
-    coverage_thread = Thread(target=coverage_loop, args=(seed_data, llm_queue, cov_queue))
+    coverage_thread = Thread(target=coverage_loop, args=(
+        seed_data, llm_queue, cov_queue, san_queue))
+    sanitization_thread = Thread(target=san.sanitization_loop, args=(seed_data, san_queue))
+
     query_thread.start()
     coverage_thread.start()
+    sanitization_thread.start()
     query_thread.join()
     coverage_thread.join()
+    sanitization_thread.join()
 
 if __name__ == "__main__":
     main()

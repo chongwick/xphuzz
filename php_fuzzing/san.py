@@ -22,30 +22,26 @@ def scoring_function(seed_data):
         if data[i]['crash'] != "NC":
             crashers.append(i)
         else:
-            score[i] = data[i]['solo_cov']
+            if data[i]['solo_cov'] != None:
+                score[i] = data[i]['solo_cov'] 
     score = {k: v for k, v in sorted(score.items(), key=lambda item: item[1], reverse=True)}
-    for i in crashers:
-        ranking.append(i)
     for i in score:
         ranking.append(i)
     for i in ranking:
         if data[i]['size'] >= TOKEN_LIMIT:
             ranking.remove(i)
-    print(ranking)
-    print(len(ranking))
-    print(crashers)
-    quit()
+    for i in crashers:
+        if data[i]['size'] >= TOKEN_LIMIT:
+            ranking.remove(i)
+    return (crashers,ranking)
 
-def sanitization_loop():
+def sanitization_loop(seed_data, san_queue):
     #san_eng = Executor(cfg.sanitizer_engine)
     is_error = lambda x: os.path.exists(x+".er")
     is_pot_vul = lambda x: os.path.exists(x+".pv")
     while(True):
         crash = None
-        php_file = utils.pop_from_queue(cfg.san_queue)
-        if php_file == -1:
-            print(scoring_function(utils.load_pickle(cfg.seed_data)))
-            continue
+        php_file = san_queue.get()
         seed_name = php_file.split("/")[1].split(".")[0]
         print(php_file)
 
@@ -73,14 +69,13 @@ def sanitization_loop():
         else:
             crash = "NC"
 
-        seed_data = utils.load_pickle("seed_data.pickle")
         seed_data[seed_name]['php_file']=php_file
         seed_data[seed_name]['crash']=crash
         seed_data[seed_name]['size']=utils.num_tokens_from_string(og)
         utils.write_file(php_file,og)
-        utils.dump_pickle(cfg.seed_data,seed_data)
+        #utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
 
-def main():
+#def main():
     #is_error = lambda x: os.path.exists(x+".er")
     #php_file = "gen_0/2aefc0f640cc7b774e6c.php"
     #with open(cfg.php_template,"r") as f:
@@ -94,10 +89,10 @@ def main():
     #child = subprocess.run(command, text=True, timeout=120)
     #print(is_error(php_file))
     #quit()
-    sanitization_loop()
+    #sanitization_loop()
 
-if __name__ == "__main__":
-    main()
+#if __name__ == "__main__":
+#    main()
 
 ##result = san_eng.execute_prog(php_file)
 #if result == -1:
