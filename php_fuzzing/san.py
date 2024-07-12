@@ -6,11 +6,9 @@ import config as cfg
 import utils
 import subprocess
 
-TOKEN_LIMIT = 3900 #Given that the context window is 8000 for our LLM, 
                    #our cutoff will be 3900 tokens.
 
 def scoring_function(seed_data):
-    global TOKEN_LIMIT
     data = seed_data.copy()
     solo_coverages = {}
     crashes = {}
@@ -28,10 +26,10 @@ def scoring_function(seed_data):
     for i in score:
         ranking.append(i)
     for i in ranking:
-        if data[i]['size'] >= TOKEN_LIMIT:
+        if data[i]['size'] >= cfg.llama3_max/4 - 100: 
             ranking.remove(i)
     for i in crashers:
-        if data[i]['size'] >= TOKEN_LIMIT:
+        if data[i]['size'] >= cfg.llama3_max/4 - 100:
             ranking.remove(i)
     return (crashers,ranking)
 

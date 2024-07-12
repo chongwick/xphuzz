@@ -17,6 +17,31 @@ def get_coverages(pool, seed_data):
     coverages = {k: v for k, v in sorted(tmp.items(), key=lambda item: item[1])}
     return coverages
 
+def new_aljo(gen_num, partitions):
+    boot = os.listdir("boot_"+str(gen_num))
+    pairs = []
+    crashers = partitions[0]
+    ranking = partitions[1]
+    if len(crashers) < 2:
+        crashers += cfg.og_crashers
+    #Eventually, the context sizes of these things will be too big so we'll just put some
+    #fresh meat in the grinder.
+    if len(crashers) + len(ranking) < 456:
+        ranking += [x.split(".")[0] for x in os.listdir("gen_0")]
+    for i in crashers:
+        tmp = crashers.copy()
+        tmp.remove(i)
+        pairs.append((i,random.choice(tmp)))
+    pairs += [(x, random.choice(ranking[:len(crashers)])) for x in crashers]
+    pairs += [(x, random.choice(boot)) for x in crashers]
+    for i in ranking:
+        tmp = ranking.copy()
+        tmp.remove(i)
+        pairs.append((i,random.choice(tmp)))
+    pairs += [(x, random.choice(boot)) for x in ranking]
+    return pairs
+    
+
 def pairing_aljo(gen_num, boot_gen):
     seed_data = utils.load_pickle(cfg.seed_data)
     boot_corp = os.listdir(boot_gen)

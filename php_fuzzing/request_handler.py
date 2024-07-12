@@ -12,7 +12,7 @@ from queue import Queue
 from threading import Thread, Lock
 from executor import Executor 
 import errreader as err
-from aljamain_sterling import pairing_aljo
+from aljamain_sterling import pairing_aljo, new_aljo
 from grammar_generators.php_gen import generate_samples
 import san
 
@@ -254,10 +254,11 @@ def coverage_loop(seed_data, llm_queue, cov_queue, san_queue):
         if cov_queue.qsize() == 0 and san_queue.qsize() == 0 and cov_queue.qsize() == 0:
             tmp = {}
             for i in os.listdir("gen_" + str(GEN_NUM)):
-                name = i.split("/")[1].split(".")[0]
+                name = i.split(".")[0]
                 tmp[name] = seed_data[name]
             partitions = san.scoring_function(tmp)
-            print(partitions)
+            print(new_aljo(GEN_NUM,partitions))
+            
             #next_gen(seed_data, llm_queue, cov_queue, boot_gen)
         else:
             php_file = cov_queue.get()
