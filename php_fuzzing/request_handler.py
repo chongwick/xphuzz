@@ -247,7 +247,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                     seed_data[seed_name]['time'] += time.time() - start
         update_data(llm_queue, cov_queue, seed_data)
 
-def coverage_loop(seed_data, llm_queue, cov_queue, san_queue):
+def coverage_loop(llm, seed_data, llm_queue, cov_queue, san_queue):
     safe_files = os.listdir(os.path.dirname(os.path.realpath(__file__)))  
     cov_eng = Executor(cfg.coverage_engine)
     while(True):
@@ -377,7 +377,7 @@ def main():
 
     query_thread = Thread(target=query_loop, args=(llm, seed_data, llm_queue, cov_queue))
     coverage_thread = Thread(target=coverage_loop, args=(
-        seed_data, llm_queue, cov_queue, san_queue))
+        llm, seed_data, llm_queue, cov_queue, san_queue))
     sanitization_thread = Thread(target=san.sanitization_loop, args=(seed_data, san_queue))
 
     query_thread.start()

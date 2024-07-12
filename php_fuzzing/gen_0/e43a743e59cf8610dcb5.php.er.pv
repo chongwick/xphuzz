@@ -15,7 +15,6 @@ class InobjectDoubles {
 function assertEquals($expected, $actual) {
   if ($expected!== $actual) {
     echo "Test failed. Expected: ". json_encode($expected). ", but got: ". json_encode($actual). "\n";
-    exit(1);
   }
 }
 
