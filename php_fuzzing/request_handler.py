@@ -324,7 +324,6 @@ def next_gen(seed_data, llm_queue, cov_queue):
         mate_query = mate(male,female)
         mate_req_name = os.path.join(cfg.llm_requests,
                                      tmp_seed_name + "_m")
-        print(pair);quit()
         utils.dump_pickle(mate_req_name, mate_query)
         llm_queue.put(mate_req_name)
 
