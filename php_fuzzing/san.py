@@ -41,7 +41,6 @@ def sanitization_loop(seed_data, san_queue):
         crash = None
         php_file = san_queue.get()
         seed_name = php_file.split("/")[1].split(".")[0]
-        print(php_file)
 
         with open(cfg.php_template,"r") as f:
             template = f.read()
@@ -69,8 +68,9 @@ def sanitization_loop(seed_data, san_queue):
 
         seed_data[seed_name]['php_file']=php_file
         seed_data[seed_name]['crash']=crash
-        seed_data[seed_name]['size']=utils.num_tokens_from_string(og)
-        utils.write_file(php_file,og)
+        code = code.replace(template,"<?php\n")
+        seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
+        utils.write_file(php_file,code)
         #utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
 
 #def main():

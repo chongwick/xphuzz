@@ -299,6 +299,7 @@ def next_gen(seed_data, llm_queue, cov_queue):
         tmp[name] = seed_data[name]
     partitions = san.scoring_function(tmp)
     pairs = new_aljo(GEN_NUM,partitions)
+    GEN_NUM+=1
     new_dir = "gen_" + str(GEN_NUM)
     os.makedirs(new_dir)
     boot_gen = "boot_"+str(GEN_NUM)
