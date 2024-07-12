@@ -252,14 +252,7 @@ def coverage_loop(seed_data, llm_queue, cov_queue, san_queue):
     cov_eng = Executor(cfg.coverage_engine)
     while(True):
         if cov_queue.qsize() == 0 and san_queue.qsize() == 0 and cov_queue.qsize() == 0:
-            tmp = {}
-            for i in os.listdir("gen_" + str(GEN_NUM)):
-                name = i.split(".")[0]
-                tmp[name] = seed_data[name]
-            partitions = san.scoring_function(tmp)
-            print(new_aljo(GEN_NUM,partitions))
-            
-            #next_gen(seed_data, llm_queue, cov_queue, boot_gen)
+            next_gen(seed_data, llm_queue, cov_queue)
         else:
             php_file = cov_queue.get()
             print("mapping: ", php_file)
@@ -298,14 +291,17 @@ def coverage_loop(seed_data, llm_queue, cov_queue, san_queue):
             update_data(llm_queue, cov_queue, seed_data)
             room_service(safe_files)
 
-def next_gen(seed_data, llm_queue, cov_queue, boot_gen):
+def next_gen(seed_data, llm_queue, cov_queue):
     global GEN_NUM
-    pairs = []
-    print("Creating new generation")
-    pairs = pairing_aljo(GEN_NUM, boot_gen)
-    GEN_NUM += 1
+    tmp = {}
+    for i in os.listdir("gen_" + str(GEN_NUM)):
+        name = i.split(".")[0]
+        tmp[name] = seed_data[name]
+    partitions = san.scoring_function(tmp)
+    pairs = new_aljo(GEN_NUM,partitions)
     new_dir = "gen_" + str(GEN_NUM)
     os.makedirs(new_dir)
+    boot_gen = "boot_"+str(GEN_NUM)
     for pair in pairs:
         tmp_seed_name = secrets.token_hex(10) #This temporary seed will hold parent data
         #php_file = os.path.join(new_dir,seed_name + ".php")
@@ -327,6 +323,7 @@ def next_gen(seed_data, llm_queue, cov_queue, boot_gen):
         mate_query = mate(male,female)
         mate_req_name = os.path.join(cfg.llm_requests,
                                      tmp_seed_name + "_m")
+        print(pair);quit()
         utils.dump_pickle(mate_req_name, mate_query)
         llm_queue.put(mate_req_name)
 

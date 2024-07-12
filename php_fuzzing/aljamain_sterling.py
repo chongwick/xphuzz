@@ -18,7 +18,7 @@ def get_coverages(pool, seed_data):
     return coverages
 
 def new_aljo(gen_num, partitions):
-    boot = os.listdir("boot_"+str(gen_num))
+    boot = os.listdir("boot_"+str(gen_num+1))
     pairs = []
     crashers = partitions[0]
     ranking = partitions[1]
@@ -34,11 +34,13 @@ def new_aljo(gen_num, partitions):
         pairs.append((i,random.choice(tmp)))
     pairs += [(x, random.choice(ranking[:len(crashers)])) for x in crashers]
     pairs += [(x, random.choice(boot)) for x in crashers]
-    for i in ranking:
-        tmp = ranking.copy()
-        tmp.remove(i)
-        pairs.append((i,random.choice(tmp)))
     pairs += [(x, random.choice(boot)) for x in ranking]
+    while len(ranking) > 2:
+        male = random.choice(ranking)
+        ranking.remove(male)
+        female = random.choice(ranking)
+        ranking.remove(female)
+        pairs.append((male,female))
     return pairs
     
 
