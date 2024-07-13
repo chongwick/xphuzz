@@ -27,6 +27,7 @@ for i in os.listdir(os.getcwd()):
 GEN_NUM = max(tmp) #Current generation
 TOKEN_LIMIT = 3900 #Given that the context window is 8000 for our LLM,
                    #our cutoff will be 3900 tokens.
+MAX_FIXES = 3
 del(tmp)
 
 def query_llm(llm, context):
@@ -186,7 +187,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
             context.append({'role':'assistant','content':result})
             code = correct_format(llm, result, context)
             if code == None:
-                seed_data[seed_name]['fix_count'] = 5
+                seed_data[seed_name]['fix_count'] = MAX_FIXES
                 update_data(llm_queue, cov_queue, seed_data)
                 continue
             utils.write_file(php_file, code)
@@ -203,7 +204,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
             context.append({'role':'assistant','content':result})
             child = correct_format(llm, result, context)
             if child == None:
-                seed_data[seed_name]['fix_count'] = 5
+                seed_data[seed_name]['fix_count'] = MAX_FIXES
                 update_data(llm_queue, cov_queue, seed_data)
                 continue
             #print("Inserting Mutation")
@@ -222,7 +223,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
         elif("_f" in request_file): #Fix request
             start = time.time()
             print("Fixing: {}".format(request_file))
-            if seed_data[seed_name]['fix_count'] >= 5:
+            if seed_data[seed_name]['fix_count'] >= MAX_FIXES:
                 os.remove(request_file)
                 print("Nah, can't fix this one")
                 if 'corpus' not in php_file: #this indicates either the original js/php corpi
@@ -239,7 +240,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                     context.append({'role':'assistant','content':result})
                     code = correct_format(llm, result, context)
                     if code == None:
-                        seed_data[seed_name]['fix_count'] = 5
+                        seed_data[seed_name]['fix_count'] = MAX_FIXES
                         update_data(llm_queue, cov_queue, seed_data)
                         continue
                     utils.write_file(php_file, code)
@@ -268,13 +269,13 @@ def coverage_loop(llm, seed_data, llm_queue, cov_queue, san_queue):
             code = code.replace("<?php",template)
             utils.write_file(php_file,code)
             result = cov_eng.execute_prog(php_file)
+            utils.write_file(php_file,og)
 
             if result == -1:
                 print("Bad execution")
-                utils.write_file(php_file,og)
                 continue
             if err.is_error(result):
-                fix_query = generate_fix_prompt(code, err.parse_error(result, php_file))
+                fix_query = generate_fix_prompt(og, err.parse_error(result, php_file))
                 fix_req_name = os.path.join(cfg.llm_requests,
                                             php_file.split("/")[-1].split(".")[0]+"_f")
                 utils.dump_pickle(fix_req_name, fix_query)
@@ -291,7 +292,6 @@ def coverage_loop(llm, seed_data, llm_queue, cov_queue, san_queue):
                 increase = cov_eng.read() - cur_cov
                 cov_eng.save_global_coverage_map_in_file(cfg.collective_map)
                 seed_data[seed_name]['new_cov'] = increase
-            utils.write_file(php_file,og)
             update_data(llm_queue, cov_queue, seed_data)
             room_service(safe_files)
 
