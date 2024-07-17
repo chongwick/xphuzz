@@ -25,12 +25,20 @@ def scoring_function(seed_data):
     score = {k: v for k, v in sorted(score.items(), key=lambda item: item[1], reverse=True)}
     for i in score:
         ranking.append(i)
-    for i in ranking:
-        if data[i]['size'] >= cfg.llama3_max/4 - 100: 
+    loop_count = 0
+    while loop_count < len(ranking):
+        i = ranking[loop_count]
+    #for i in ranking:
+        if data[i]['size'] == None or data[i]['size'] >= cfg.llama3_max/4 - 100: 
             ranking.remove(i)
-    for i in crashers:
-        if data[i]['size'] >= cfg.llama3_max/4 - 100:
-            ranking.remove(i)
+        loop_count += 1
+    loop_count = 0
+    while loop_count < len(crashers):
+    #for i in crashers:
+        i = crashers[loop_count]
+        if data[i]['size'] == None or data[i]['size'] >= cfg.llama3_max/4 - 100: 
+            crashers.remove(i)
+        loop_count += 1
     return (crashers,ranking)
 
 def sanitization_loop(seed_data, san_queue):

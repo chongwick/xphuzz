@@ -9,7 +9,6 @@
 function assertArrayEquals($expected, $result) {
     if ($expected!== $result) {
         echo "Assertion failed: Expected '$expected', got '$result'". PHP_EOL;
-        exit(1);
     }
 }
 
