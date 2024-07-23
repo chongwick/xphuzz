@@ -15,6 +15,7 @@ import errreader as err
 from aljamain_sterling import pairing_aljo, new_aljo
 from grammar_generators.php_gen import generate_samples
 import san
+import prompts
 
 fix_prompt = "The response did not follow the ```<code>``` format."
 min_prompt = "Reduce the amount of tokens in this code. Return as ```<code>```"
@@ -27,7 +28,7 @@ for i in os.listdir(os.getcwd()):
 GEN_NUM = max(tmp) #Current generation
 TOKEN_LIMIT = 3900 #Given that the context window is 8000 for our LLM,
                    #our cutoff will be 3900 tokens.
-MAX_FIXES = 3
+MAX_FIXES = 1
 del(tmp)
 
 def query_llm(llm, context):
@@ -70,44 +71,6 @@ def correct_format(llm, result, context):
         code = "<?php\n" + code + "\n?>"
 
     return code
-
-def generate_fix_prompt(code, error):
-    role = 'Fix PHP code. Return as ```<code>```'
-    context = [{'role': 'system', 'content': role}]
-    prompt = ""
-    prompt += "```\n{c}\n```\n".format(c=code)
-    prompt += error
-    context.append({'role': 'user', 'content': prompt})
-    return context
-
-def mate(male, female):
-    role = "Mix PHP code. Return as ```<code>```"
-    context = [{'role':'system','content':role}]
-    prompt = "Here is Code A:\n```"
-    prompt += male + "\n```"
-    prompt += "Here is Code B:\n```"
-    prompt += female + "\n```"
-    prompt += "\nMix Code A and Code B together. Do not simply append B to A. Return as ```<code>```"
-    #prompt += "Use Code B in Code A. Do not simply append B to A." ?
-    context.append({'role':'user','content':prompt})
-    return context
-
-def mutation_insertion(code):
-    role = "You are a randomized PHP code modifier. Return as ```<code>```"
-    context = [{'role':'system','content':role}]
-    line = generate_samples(os.path.dirname(__file__),None,"<phpfuzz>",1,"no_guard_php.txt")
-    prompt = "Here is CODE:\n```{c}\n```\nHere is LINE:\n```{l}\n```\nUse LINE\
-            to modify CODE.".format(c=code,l=line)
-    context.append({'role':'user','content':prompt})
-    return context
-
-def minimize(seed):
-    role = "You are a token reducer. Return as ```<code>```"
-    context = [{'role':'system','content':role}]
-    prompt = "```{}```\nReduce the amount of tokens while maintaining functionality".format(
-            seed)
-    context.append({'role':'user','content':prompt})
-    return context
 
 def new_corpus(llm, iterations, out_dir):
     global GEN_NUM
@@ -165,7 +128,8 @@ def create_seed_data(seed_data, seed_name, php_file):
                     "solo_cov": None,
                     "new_cov": None,
                     "size": None, #AKA token length
-                    "crash": None, #AKA token length
+                    "crash": None, 
+                    "leak_amount": None,
                     "generation": GEN_NUM
                     #"score":0, #The score will be updated after every generation
                     }
@@ -194,7 +158,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
             seed_data[seed_name]['php_file'] = php_file
             seed_data[seed_name]['time'] += time.time() - start
             cov_queue.put(php_file)
-        elif("_m" in request_file): #Mate request
+        elif("_ma" in request_file): #Mate request
             start = time.time()
             tmp_seed_name = seed_name
             print("Mating: {}".format(request_file))
@@ -208,7 +172,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                 update_data(llm_queue, cov_queue, seed_data)
                 continue
             #print("Inserting Mutation")
-            #result = query_llm(llm,mutation_insertion(child))
+            #result = query_llm(llm,prompts.mutation_insertion(child))
             #context.append({'role':'assistant','content':result})
             #child = correct_format(llm, result, context)
             dr = "gen_" + str(GEN_NUM)
@@ -220,6 +184,23 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
             seed_data[seed_name]['time'] += time.time() - start
             cov_queue.put(php_file); #cov_queue.put(php1); #cov_queue.put(php2)
             del(seed_data[tmp_seed_name])
+        elif("_mu" in request_file): #mutating crash
+            start = time.time()
+            context = utils.load_pickle(request_file)
+            os.remove(request_file)
+            result = query_llm(llm,context) 
+            context.append({'role':'assistant','content':result})
+            child = correct_format(llm, result, context)
+            if child == None:
+                seed_data[seed_name]['fix_count'] = MAX_FIXES
+                update_data(llm_queue, cov_queue, seed_data)
+                continue
+            dr = "gen_" + str(GEN_NUM)
+            php_file = os.path.join(dr,seed_name+".php")
+            seed_data[seed_name]['php_file']=php_file
+            utils.write_file(php_file,child)
+            seed_data[seed_name]['time'] += time.time() - start
+            cov_queue.put(php_file); 
         elif("_f" in request_file): #Fix request
             start = time.time()
             print("Fixing: {}".format(request_file))
@@ -275,7 +256,7 @@ def coverage_loop(llm, seed_data, llm_queue, cov_queue, san_queue):
                 print("Bad execution")
                 continue
             if err.is_error(result):
-                fix_query = generate_fix_prompt(og, err.parse_error(result, php_file))
+                fix_query = prompts.fix(og, err.parse_error(result, php_file))
                 fix_req_name = os.path.join(cfg.llm_requests,
                                             php_file.split("/")[-1].split(".")[0]+"_f")
                 utils.dump_pickle(fix_req_name, fix_query)
@@ -329,11 +310,20 @@ def next_gen(seed_data, llm_queue, cov_queue):
         name = i.split(".")[0]
         tmp[name] = seed_data[name]
     partitions = san.scoring_function(tmp)
-    pairs = new_aljo(GEN_NUM,partitions)
+    aljo_result = new_aljo(GEN_NUM,partitions)
+    pairs = aljo_result[0]
     GEN_NUM+=1
     new_dir = "gen_" + str(GEN_NUM)
     os.makedirs(new_dir)
     boot_gen = "boot_"+str(GEN_NUM)
+    for crasher in crashers:
+        seed_name = secrets.token_hex(10)
+        mut_query = prompts.mutate(seed_data[crasher]['php_file'])
+        create_seed_data(seed_data, seed_name, None)
+        seed_data[seed_name]['parents'] = set(crasher, None)
+        mut_req_name = os.path.join(cfg.llm_requests, seed_name + "_mu")
+        utils.dump_pickle(mut_req_name, mut_query)
+        llm_queue.put(mut_req_name)
     for pair in pairs:
         tmp_seed_name = secrets.token_hex(10) #This temporary seed will hold parent data
         #php_file = os.path.join(new_dir,seed_name + ".php")
@@ -352,9 +342,9 @@ def next_gen(seed_data, llm_queue, cov_queue):
                   female = f.read()
         #    with open(os.path.join(prev_gen_dir,pair[1]+".php"),'r') as f:
         #        female = f.read()
-        mate_query = mate(male,female)
+        mate_query = prompts.mate(male,female)
         mate_req_name = os.path.join(cfg.llm_requests,
-                                     tmp_seed_name + "_m")
+                                     tmp_seed_name + "_ma")
         utils.dump_pickle(mate_req_name, mate_query)
         llm_queue.put(mate_req_name)
 

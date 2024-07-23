@@ -22,18 +22,22 @@ def new_aljo(gen_num, partitions):
     pairs = []
     crashers = partitions[0]
     ranking = partitions[1]
-    if len(crashers) < 2:
-        crashers += cfg.og_crashers
+    #if len(crashers) < 2:
+    #    crashers += cfg.og_crashers
     #Eventually, the context sizes of these things will be too big so we'll just put some
     #fresh meat in the grinder.
-    if len(crashers) + len(ranking) < 456:
-        ranking += [x.split(".")[0] for x in os.listdir("gen_0")]
-    for i in crashers:
-        tmp = crashers.copy()
-        tmp.remove(i)
-        pairs.append((i,random.choice(tmp)))
-    pairs += [(x, random.choice(ranking[:len(crashers)])) for x in crashers]
-    pairs += [(x, random.choice(boot)) for x in crashers]
+    if len(ranking) < 445:
+        ranking += [x.split(".")[0] for x in os.listdir("gen_0") if 'er' not in x]
+    #for i in crashers:
+    #    tmp = crashers.copy()
+    #    tmp.remove(i)
+    #    pairs.append((i,random.choice(tmp)))
+    #pairs += [(x, random.choice(ranking[:len(crashers)])) for x in crashers]
+    #pairs += [(x, random.choice(boot)) for x in crashers]
+    top_five = ranking[:len(ranking)//20]
+    for i in top_five:
+        pairs.append((i,random.choice(crashers)))
+        pairs.append((i,random.choice(top_five)))
     pairs += [(x, random.choice(boot)) for x in ranking]
     while len(ranking) > 2:
         male = random.choice(ranking)
@@ -41,7 +45,31 @@ def new_aljo(gen_num, partitions):
         female = random.choice(ranking)
         ranking.remove(female)
         pairs.append((male,female))
-    return pairs
+    return pairs, crashers
+    #boot = os.listdir("boot_"+str(gen_num+1))
+    #pairs = []
+    #crashers = partitions[0]
+    #ranking = partitions[1]
+    #if len(crashers) < 2:
+    #    crashers += cfg.og_crashers
+    ##Eventually, the context sizes of these things will be too big so we'll just put some
+    ##fresh meat in the grinder.
+    #if len(crashers) + len(ranking) < 456:
+    #    ranking += [x.split(".")[0] for x in os.listdir("gen_0")]
+    #for i in crashers:
+    #    tmp = crashers.copy()
+    #    tmp.remove(i)
+    #    pairs.append((i,random.choice(tmp)))
+    #pairs += [(x, random.choice(ranking[:len(crashers)])) for x in crashers]
+    #pairs += [(x, random.choice(boot)) for x in crashers]
+    #pairs += [(x, random.choice(boot)) for x in ranking]
+    #while len(ranking) > 2:
+    #    male = random.choice(ranking)
+    #    ranking.remove(male)
+    #    female = random.choice(ranking)
+    #    ranking.remove(female)
+    #    pairs.append((male,female))
+    #return pairs, crashers
     
 
 def pairing_aljo(gen_num, boot_gen):

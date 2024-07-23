@@ -17,7 +17,7 @@ def scoring_function(seed_data):
     score = {}
     crashers = []
     for i in data:
-        if data[i]['crash'] != "NC":
+        if data[i]['crash'] != "NC" and data[i]['crash'] != None:
             crashers.append(i)
         else:
             if data[i]['solo_cov'] != None:
@@ -31,12 +31,16 @@ def scoring_function(seed_data):
     #for i in ranking:
         if data[i]['size'] == None or data[i]['size'] >= cfg.llama3_max/4 - 100: 
             ranking.remove(i)
+        if data[i]['time'] != None and data[i]['time'] >= cfg.query_time_limit:
+            ranking.remove(i)
         loop_count += 1
     loop_count = 0
     while loop_count < len(crashers):
     #for i in crashers:
         i = crashers[loop_count]
         if data[i]['size'] == None or data[i]['size'] >= cfg.llama3_max/4 - 100: 
+            crashers.remove(i)
+        if data[i]['time'] != None and data[i]['time'] >= cfg.query_time_limit:
             crashers.remove(i)
         loop_count += 1
     return (crashers,ranking)
@@ -57,30 +61,33 @@ def sanitization_loop(seed_data, san_queue):
         code = code.replace("<?php",template)
         utils.write_file(php_file,code)
 
-        #command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),'1']
-        #child = subprocess.run(command, text=True, timeout=120)
-        #del(command)
-        command = "./sanitize.sh " + php_file + " 1"
-        subprocess.call(command,shell=True, timeout=120)
+        command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),'1']
+        child = subprocess.run(command, text=True, timeout=120, capture_output=True)
+        del(command)
+        #command = "./sanitize.sh " + php_file + " 1"
+        #subprocess.call(command,shell=True, timeout=120)
 
         #If there was an error with the script, see if it was more than just a memory leak
         if is_error(php_file):
+            leak_amount = int(child.stdout)
             crash = "ER"
             php_file = php_file+".er"
-            #command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),'0']
-            #child = subprocess.run(command, text=True, timeout=120)
-            #del(command)
-            command = "./sanitize.sh " + php_file + " 0"
-            subprocess.call(command,shell=True, timeout=120)
+            command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),'0']
+            child = subprocess.run(command, text=True, timeout=120)
+            del(command)
+            #command = "./sanitize.sh " + php_file + " 0"
+            #subprocess.call(command,shell=True, timeout=120)
             if is_pot_vul(php_file):
                 crash = "PV"
                 php_file = php_file+".pv"
         else:
+            leak_amount = None
             crash = "NC"
 
         utils.write_file(php_file,og)
         seed_data[seed_name]['php_file']=php_file
         seed_data[seed_name]['crash']=crash
+        seed_data[seed_name]['leak_amount']=leak_amount
         seed_data[seed_name]['size']=utils.num_tokens_from_string(og)
         #utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
 

@@ -35,6 +35,8 @@ if [ $RET -ne 0 ]; then
                mv "$script" "${script}.pv"
        else
                mv "$script" "${script}.er"
+               leaked_bytes=$(echo $OUTPUT | grep -oP 'leak of \K[0-9]+')
+               echo $leaked_bytes
        fi
 fi
 
