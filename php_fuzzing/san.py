@@ -69,7 +69,11 @@ def sanitization_loop(seed_data, san_queue):
 
         #If there was an error with the script, see if it was more than just a memory leak
         if is_error(php_file):
-            leak_amount = int(child.stdout)
+            leak_amount = None
+            try:
+                leak_amount = int(child.stdout)
+            except Exception as e:
+                leak_amount = None
             crash = "ER"
             php_file = php_file+".er"
             command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),'0']
