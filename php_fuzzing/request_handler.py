@@ -312,6 +312,7 @@ def next_gen(seed_data, llm_queue, cov_queue):
     partitions = san.scoring_function(tmp)
     aljo_result = new_aljo(GEN_NUM,partitions)
     pairs = aljo_result[0]
+    crashers = aljo_result[1]
     GEN_NUM+=1
     new_dir = "gen_" + str(GEN_NUM)
     os.makedirs(new_dir)
@@ -320,7 +321,7 @@ def next_gen(seed_data, llm_queue, cov_queue):
         seed_name = secrets.token_hex(10)
         mut_query = prompts.mutate(seed_data[crasher]['php_file'])
         create_seed_data(seed_data, seed_name, None)
-        seed_data[seed_name]['parents'] = set(crasher, None)
+        seed_data[seed_name]['parents'] = set((crasher, None))
         mut_req_name = os.path.join(cfg.llm_requests, seed_name + "_mu")
         utils.dump_pickle(mut_req_name, mut_query)
         llm_queue.put(mut_req_name)
