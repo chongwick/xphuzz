@@ -62,8 +62,13 @@ def sanitization_loop(seed_data, san_queue):
         utils.write_file(php_file,code)
 
         command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),'1']
-        child = subprocess.run(command, text=True, timeout=120, capture_output=True)
-        del(command)
+        child = None
+        try:
+            child = subprocess.run(command, text=True, timeout=120, capture_output=True)
+        except TimeoutExpired as exc:
+            leak_amount = None
+            crash = "NC"
+            continue
         #command = "./sanitize.sh " + php_file + " 1"
         #subprocess.call(command,shell=True, timeout=120)
 
@@ -78,7 +83,6 @@ def sanitization_loop(seed_data, san_queue):
             php_file = php_file+".er"
             command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),'0']
             child = subprocess.run(command, text=True, timeout=120)
-            del(command)
             #command = "./sanitize.sh " + php_file + " 0"
             #subprocess.call(command,shell=True, timeout=120)
             if is_pot_vul(php_file):
