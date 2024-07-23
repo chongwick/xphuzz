@@ -68,6 +68,11 @@ def sanitization_loop(seed_data, san_queue):
         except TimeoutExpired as exc:
             leak_amount = None
             crash = "NC"
+            utils.write_file(php_file,og)
+            seed_data[seed_name]['php_file']=php_file
+            seed_data[seed_name]['crash']=crash
+            seed_data[seed_name]['leak_amount']=leak_amount
+            seed_data[seed_name]['size']=utils.num_tokens_from_string(og)
             continue
         #command = "./sanitize.sh " + php_file + " 1"
         #subprocess.call(command,shell=True, timeout=120)
