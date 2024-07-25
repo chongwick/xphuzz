@@ -36,7 +36,7 @@ if [ $RET -ne 0 ]; then
        else
                mv "$script" "${script}.er"
                leaked_bytes=$(echo $OUTPUT | grep -oP 'AddressSanitizer: \K[0-9]+')
-               echo $leaked_bytes
+               echo $leaked_bytes,,,$OUTPUT
        fi
 fi
 

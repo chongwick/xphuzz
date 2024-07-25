@@ -50,6 +50,7 @@ def sanitization_loop(seed_data, san_queue):
     is_error = lambda x: os.path.exists(x+".er")
     is_pot_vul = lambda x: os.path.exists(x+".pv")
     while(True):
+        leaks = utils.load_pickle(cfg.leaks)
         crash = None
         php_file = san_queue.get()
         seed_name = php_file.split("/")[1].split(".")[0]
@@ -80,8 +81,15 @@ def sanitization_loop(seed_data, san_queue):
         #If there was an error with the script, see if it was more than just a memory leak
         if is_error(php_file):
             leak_amount = None
+            output = None
             try:
-                leak_amount = int(child.stdout)
+                leak_amount = int(child.stdout.split(",,,")[0])
+                output = child.stdout.split(",,,")[1].split("==ERROR: ")[1]
+                if output not in leaks:
+                    leaks[output] = [seed_name]
+                else:
+                    leaks[output].append(seed_name)
+                utils.dump_pickle(cfg.leaks.pickle, leaks)
             except Exception as e:
                 leak_amount = None
             crash = "ER"
