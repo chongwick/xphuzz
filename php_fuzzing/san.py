@@ -66,7 +66,7 @@ def sanitization_loop(seed_data, san_queue):
         child = None
         try:
             child = subprocess.run(command, text=True, timeout=120, capture_output=True)
-        except TimeoutExpired as exc:
+        except subprocess.TimeoutExpired as exc:
             leak_amount = None
             crash = "NC"
             utils.write_file(php_file,og)
