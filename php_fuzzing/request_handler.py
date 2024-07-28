@@ -100,7 +100,7 @@ def new_corpus(llm, iterations, out_dir):
             f.write(code)
     #    i += 1
 
-def update_data(llm_queue, cov_queue, san_queue=None, seed_data):
+def update_data(llm_queue, cov_queue, seed_data, san_queue=None):
     utils.dump_pickle(cfg.llm_queue, list(llm_queue.queue))
     utils.dump_pickle(cfg.cov_queue, list(cov_queue.queue))
     if san_queue != None:
@@ -278,7 +278,7 @@ def coverage_loop(llm, seed_data, llm_queue, cov_queue, san_queue):
                 increase = cov_eng.read() - cur_cov
                 cov_eng.save_global_coverage_map_in_file(cfg.collective_map)
                 seed_data[seed_name]['new_cov'] = increase
-            update_data(llm_queue, cov_queue, san_queue, seed_data)
+            update_data(llm_queue, cov_queue, seed_data, san_queue)
             room_service(safe_files)
 
 def new_corpus(llm, iterations, out_dir):
