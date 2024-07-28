@@ -246,7 +246,7 @@ def coverage_loop(llm, seed_data, llm_queue, cov_queue, san_queue):
                 continue
             update_data(llm_queue, cov_queue, seed_data)
             php_file = cov_queue.get() #gets stuck here so doesn't start next gen
-            utils.log("mapping: ", php_file)
+            utils.log("mapping: " + php_file)
             cov_eng.load_global_coverage_map_from_file(cfg.base_map)
             code = utils.read_file(php_file)
             og = code
