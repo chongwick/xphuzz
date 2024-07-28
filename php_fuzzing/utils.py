@@ -10,6 +10,10 @@ import tiktoken
 #lock = lambda queue : with open(cfg.status_file[queue],"w") as f: pass
 #unlock = lambda queue : os.remove(cfg.status_file[queue])
 
+def log(msg):
+    with open("log.txt", "a") as f:
+        f.write(msg)
+
 def write_file(file_path, content):
     f = open(file_path, "w")
     fcntl.flock(f.fileno(), fcntl.LOCK_EX)

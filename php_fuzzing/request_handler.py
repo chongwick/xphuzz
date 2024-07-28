@@ -59,7 +59,7 @@ def correct_format(llm, result, context):
             elif code_section:
                 code += line
         if code == "":
-            print("\n! Re-query: Format Error !\n")
+            utils.log("\n! Re-query: Format Error !\n")
             context.append({'role': 'user', 'content': fix_prompt})
             del(result)
             result = query_llm(llm, context)
@@ -100,9 +100,11 @@ def new_corpus(llm, iterations, out_dir):
             f.write(code)
     #    i += 1
 
-def update_data(llm_queue, cov_queue, seed_data):
+def update_data(llm_queue, cov_queue, san_queue=None, seed_data):
     utils.dump_pickle(cfg.llm_queue, list(llm_queue.queue))
     utils.dump_pickle(cfg.cov_queue, list(cov_queue.queue))
+    if san_queue != None:
+        utils.dump_pickle(cfg.san_queue, list(san_queue.queue))
     utils.dump_pickle(cfg.seed_data, seed_data)
 
 def room_service(safe_files):
@@ -144,7 +146,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
         create_seed_data(seed_data, seed_name, php_file)
         if("_t" in request_file): 
             start = time.time()
-            print("Translating: {}".format(request_file))
+            utils.log("Translating: {}".format(request_file))
             context = utils.load_pickle(request_file)
             os.remove(request_file)
             result = query_llm(llm,context)
@@ -161,7 +163,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
         elif("_ma" in request_file): #Mate request
             start = time.time()
             tmp_seed_name = seed_name
-            print("Mating: {}".format(request_file))
+            utils.log("Mating: {}".format(request_file))
             context = utils.load_pickle(request_file)
             os.remove(request_file)
             result = query_llm(llm,context)
@@ -203,10 +205,10 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
             cov_queue.put(php_file); 
         elif("_f" in request_file): #Fix request
             start = time.time()
-            print("Fixing: {}".format(request_file))
+            utils.log("Fixing: {}".format(request_file))
             if seed_data[seed_name]['fix_count'] >= MAX_FIXES:
                 os.remove(request_file)
-                print("Nah, can't fix this one")
+                utils.log("Nah, can't fix this one")
                 if 'corpus' not in php_file: #this indicates either the original js/php corpi
                     os.remove(php_file)
             else:
@@ -215,7 +217,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                 os.remove(request_file)
                 #Maybe make this an inherent feature of queries
                 if utils.num_tokens_from_context(context) > cfg.llama3_max / 2:
-                    print("trying to fix... too big")
+                    utils.log("trying to fix... too big")
                 else:
                     result = query_llm(llm,context)
                     context.append({'role':'assistant','content':result})
@@ -240,8 +242,11 @@ def coverage_loop(llm, seed_data, llm_queue, cov_queue, san_queue):
             new_corpus(llm, 456, outdir)
             next_gen(seed_data, llm_queue, cov_queue)
         else:
-            php_file = cov_queue.get()
-            print("mapping: ", php_file)
+            if cov_queue.qsize == 0:
+                continue
+            update_data(llm_queue, cov_queue, seed_data)
+            php_file = cov_queue.get() #gets stuck here so doesn't start next gen
+            utils.log("mapping: ", php_file)
             cov_eng.load_global_coverage_map_from_file(cfg.base_map)
             code = utils.read_file(php_file)
             og = code
@@ -253,7 +258,7 @@ def coverage_loop(llm, seed_data, llm_queue, cov_queue, san_queue):
             utils.write_file(php_file,og)
 
             if result == -1:
-                print("Bad execution")
+                utils.log("Bad execution")
                 continue
             if err.is_error(result):
                 fix_query = prompts.fix(og, err.parse_error(result, php_file))
@@ -273,7 +278,7 @@ def coverage_loop(llm, seed_data, llm_queue, cov_queue, san_queue):
                 increase = cov_eng.read() - cur_cov
                 cov_eng.save_global_coverage_map_in_file(cfg.collective_map)
                 seed_data[seed_name]['new_cov'] = increase
-            update_data(llm_queue, cov_queue, seed_data)
+            update_data(llm_queue, cov_queue, san_queue, seed_data)
             room_service(safe_files)
 
 def new_corpus(llm, iterations, out_dir):
