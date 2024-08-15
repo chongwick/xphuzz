@@ -25,18 +25,22 @@
 <fuzzint> = 100
 <fuzzint> = 1000
 <fuzzint> = 1000000
-<fuzzint> = <largeint>
-<fuzzint> = -<largeint>
+<fuzzint> = PHP_INT_MAX
+<fuzzint> = PHP_INT_MIN
+#<fuzzint> = <largeint>
+#<fuzzint> = -<largeint>
 
-<largeint> = 536870911
-<largeint> = 536870912
-<largeint> = 1073741823
-<largeint> = 1073741824
-<largeint> = 2147483647
-<largeint> = 2147483648
-<largeint> = 4294967295
-<largeint> = 4294967296
+#<largeint> = 536870911
+#<largeint> = 536870912
+#<largeint> = 1073741823
+#<largeint> = 1073741824
+#<largeint> = 2147483647
+#<largeint> = 2147483648
+#<largeint> = 4294967295
+#<largeint> = 4294967296
 
+<fuzzfloat> = PHP_FLOAT_MAX
+<fuzzfloat> = PHP_FLOAT_MIN
 <fuzzfloat> = 2.2250738585072011e-308
 
 <fuzznumber> = <fuzzint>

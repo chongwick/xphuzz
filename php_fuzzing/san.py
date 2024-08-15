@@ -46,50 +46,55 @@ def scoring_function(seed_data):
     return (crashers,ranking)
 
 def sanitization_loop(seed_data, san_queue):
+    leak = 0
+    asan = 1
+    undef = 2
     #san_eng = Executor(cfg.sanitizer_engine)
     is_error = lambda x: os.path.exists(x+".er")
-    is_pot_vul = lambda x: os.path.exists(x+".pv")
     while(True):
-        leaks = utils.load_pickle(cfg.leaks)
         crash = None
         php_file = san_queue.get()
         seed_name = php_file.split("/")[1].split(".")[0]
 
-        with open(cfg.php_template,"r") as f:
-            template = f.read()
         code = utils.read_file(php_file)
-        og = code
-        code = code.replace("<?php",template)
+        if cfg.require_statement not in code:
+            code.replace("<?php","<?php\n" + cfg.require_statement + "\n")
+        #og = code
+        #code = code.replace("<?php",template)
         utils.write_file(php_file,code)
 
-        command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),'1']
-        child = None
-        try:
-            child = subprocess.run(command, text=True, timeout=120, capture_output=True)
-        except subprocess.TimeoutExpired as exc:
-            leak_amount = None
-            crash = "NC"
-            utils.write_file(php_file,og)
-            seed_data[seed_name]['php_file']=php_file
-            seed_data[seed_name]['crash']=crash
-            seed_data[seed_name]['leak_amount']=leak_amount
-            seed_data[seed_name]['size']=utils.num_tokens_from_string(og)
-            continue
+        for i in range(3):
+            command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),str(i)]
+            child = None
+            try:
+                child = subprocess.run(command, text=True, timeout=120, capture_output=True)
+            except subprocess.TimeoutExpired as exc:
+                crash = "NC"
+                #utils.write_file(php_file,og)
+                seed_data[seed_name]['php_file']=php_file
+                seed_data[seed_name]['crash']=crash
+                seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
+                continue
+            if is_error(php_file):
+                php_file = php_file+".er"
+                crash = i
+                break
+            else:
+                crash = "NC"
+        seed_data[seed_name]['php_file']=php_file
+        seed_data[seed_name]['crash']=crash
+        seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
+        utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
+
         #command = "./sanitize.sh " + php_file + " 1"
         #subprocess.call(command,shell=True, timeout=120)
 
         #If there was an error with the script, see if it was more than just a memory leak
+        '''
         if is_error(php_file):
-            leak_amount = None
             output = None
             #try:
-            leak_amount = int(child.stdout.split(",,,")[0])
             output = child.stdout.split(",,,")[1].split("==ERROR: ")[1]
-            if output not in leaks:
-                leaks[output] = [seed_name]
-            else:
-                leaks[output].append(seed_name)
-            utils.dump_pickle(cfg.leaks, leaks)
             #except Exception as e:
             #    leak_amount = None
             crash = "ER"
@@ -102,15 +107,14 @@ def sanitization_loop(seed_data, san_queue):
                 crash = "PV"
                 php_file = php_file+".pv"
         else:
-            leak_amount = None
             crash = "NC"
 
-        utils.write_file(php_file,og)
+        #utils.write_file(php_file,og)
         seed_data[seed_name]['php_file']=php_file
         seed_data[seed_name]['crash']=crash
-        seed_data[seed_name]['leak_amount']=leak_amount
-        seed_data[seed_name]['size']=utils.num_tokens_from_string(og)
+        seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
         #utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
+        '''
 
 #def main():
     #is_error = lambda x: os.path.exists(x+".er")

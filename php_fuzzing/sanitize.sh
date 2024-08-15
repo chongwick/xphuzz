@@ -1,13 +1,17 @@
 #!/bin/bash
-#Usage, ./sanitize.sh [target_script] [detect_leaks(0/1)]
+#Usage, ./sanitize.sh [target_script] [san_types(0/1)]
 
 script=$1
-detect_leak=$2
-export USE_ZEND_ALLOC=0
-if [ $detect_leak -ne 1 ]; then
+san_type=$2 #0 for leak, 1 for asan, 2 for undefined
+if [ $san_type = "0" ]; then
+        OUTPUT=$(timeout -s SIGTERM 120 ~/san_php "$script" 2>&1)
+elif [ $san_type = "1" ]; then
+        export USE_ZEND_ALLOC=0
         export ASAN_OPTIONS=detect_leaks=0
+        OUTPUT=$(timeout -s SIGTERM 120 ~/san_php "$script" 2>&1)
+elif [ $san_type = "2" ]; then
+        OUTPUT=$(timeout -s SIGTERM 120 ~/php_engines/undefined_php "$script" 2>&1)
 fi
-OUTPUT=$(timeout -s SIGTERM 120 ~/san_php "$script" 2>&1)
 RET=$?
 if [ $RET -ne 0 ]; then
        if [ $RET -eq 255 ]; then
@@ -31,13 +35,10 @@ if [ $RET -ne 0 ]; then
        if [ $(echo "$OUTPUT" | grep ": Assertion " | wc -l) -gt 0 ]; then
 	       exit 0
        fi
-       if [ $detect_leak -ne 1 ]; then
-               mv "$script" "${script}.pv"
-       else
-               mv "$script" "${script}.er"
-               leaked_bytes=$(echo $OUTPUT | grep -oP 'AddressSanitizer: \K[0-9]+')
-               echo $leaked_bytes,,,$OUTPUT
-       fi
+       mv "$script" "${script}.er"
+elif [ $(echo "$OUTPUT" | grep "runtime error:" | wc -l) -gt 0 ]; then
+       mv "$script" "${script}.er"
+       exit 0
 fi
 
 ## Directory containing the Python scripts

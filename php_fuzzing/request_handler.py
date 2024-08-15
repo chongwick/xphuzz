@@ -131,8 +131,8 @@ def create_seed_data(seed_data, seed_name, php_file):
                     "new_cov": None,
                     "size": None, #AKA token length
                     "crash": None, 
-                    "leak_amount": None,
-                    "generation": GEN_NUM
+                    "generation": GEN_NUM,
+                    "ranking": None,
                     #"score":0, #The score will be updated after every generation
                     }
 
