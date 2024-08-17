@@ -76,6 +76,12 @@ def new_corpus(llm, iterations, out_dir):
     global GEN_NUM
     #i = 0
     while len(os.listdir(out_dir)) != iterations:
+        new_code = generate_samples(
+                os.path.dirname(__file__),None,"<phpfuzz>",2,"no_guard_php.txt")
+        mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
+        with open(os.path.join(out_dir,mut_name),"w") as f:
+            f.write(new_code)
+        continue
     #while i < iterations:
         role = 'Change PHP code as instructed. Here are some values to use: 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400. Return as ```<code>```'
         context = [{'role': 'system', 'content': role}]
@@ -139,6 +145,8 @@ def create_seed_data(seed_data, seed_name, php_file):
 def query_loop(llm, seed_data, llm_queue, cov_queue):
     global GEN_NUM
     while(True):
+        if llm_queue.qsize == 0:
+            continue
         request_file = llm_queue.get() # blocking function
         seed_name = request_file.split("/")[-1].split("_")[0]
         php_file = os.path.join(cfg.php_corpus,
