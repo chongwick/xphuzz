@@ -1,5 +1,0 @@
-<?php
-$xml = new XMLWriter();
-$xml->writePI("xYz", pack('H*', str_pad(dechex(rand()), 257, '0', STR_PAD_LEFT). str_pad(dechex(rand()), 65537, '0', STR_PAD_LEFT). str_pad(dechex(rand()), 4097, '0', STR_PAD_LEFT), pack('H*', str_pad(dechex(rand()), 1025, '0', STR_PAD_LEFT). str_pad(dechex(rand()), 65537, '0', STR_PAD_LEFT). str_pad(dechex(rand()), 65, '0', STR_PAD_LEFT)));
-echo $xml->outputMemory();
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->fread(2.23431234213480e-400);
-
-?>

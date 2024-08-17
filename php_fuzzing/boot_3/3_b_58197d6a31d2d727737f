@@ -1,4 +1,0 @@
-<?php
-$vars["SplObjectStorage"]->next()->__toString(). "x". rand(1, 1000). "y". json_encode(array("a" => 1, "b" => 2, "c" => 3));
-
-?>

@@ -1,9 +1,0 @@
-<?php
-$vars["SplFileObject"]->fwrite(implode(array_map(function($c) {
-    $c = $c * 2.23431234213480e-400;
-    return "\\x". str_pad(dechex(ord($c)), 2, "0");
-}, array_filter(array_map(function($v) {
-    return $v % 3;
-}, array_merge(array(5473817451, 123475932), range(0, 255))))), -1000000000);
-
-?>

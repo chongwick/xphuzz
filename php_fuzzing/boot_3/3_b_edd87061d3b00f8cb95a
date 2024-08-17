@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getMethods(1000, 'abc', 3.14, array('foo', 'bar'), 'Hello, World!');
-
-?>

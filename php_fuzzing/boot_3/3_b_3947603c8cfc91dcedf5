@@ -1,6 +1,0 @@
-<?php
-<code>
-$vars["Squirrel"]->getPecan("FlibberFlabber")->getGloopernuts()->getWhirlyTwirly();
-</code>
-
-?>

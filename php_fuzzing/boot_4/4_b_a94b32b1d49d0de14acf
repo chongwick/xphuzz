@@ -1,4 +1,0 @@
-<?php
-filter_id(str_repeat(chr(60), 65) + str_repeat(chr(255), 255) + str_repeat(chr(123), 123) + str_repeat(chr(37), 37) + str_repeat(chr(48), 48) + str_repeat(chr(31), 31) + str_repeat(chr(16), 16) + str_repeat(chr(91), 91) + str_repeat(chr(64), 64) + str_repeat(chr(126), 126) + str_repeat(chr(94), 94) + str_repeat(chr(95), 95) + str_repeat(chr(36), 36) + str_repeat(chr(39), 39) + str_repeat(chr(33), 33) + str_repeat(chr(10), 10) + str_repeat(chr(32), 32));
-
-?>

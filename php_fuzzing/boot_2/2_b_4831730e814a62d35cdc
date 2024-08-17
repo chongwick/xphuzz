@@ -1,4 +1,0 @@
-<?php
-$vars["SplDoublyLinkedList"]->prev()->insertAfter(5473817451)->rewind()->current()->next()->getInfo()->setInfo("I'm a SplDoublyLinkedList");
-
-?>

@@ -1,5 +1,0 @@
-<?php
-$var = "inflate_get_read_len(fopen('/dev/null', 'r'))";
-eval($var);
-
-?>

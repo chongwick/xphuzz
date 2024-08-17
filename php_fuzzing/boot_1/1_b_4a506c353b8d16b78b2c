@@ -1,4 +1,0 @@
-<?php
-posix_mknod(unpack('H*', str_repeat(chr(171), 1025). str_repeat(chr(41), 4097). str_repeat(chr(15), 1025))[1], 0, 100, 4);
-
-?>

@@ -1,6 +1,0 @@
-<?php
-<code>
-$vars["DateTimeZone"]->getTransitions(5473817451, 123475932);
-</code>
-
-?>

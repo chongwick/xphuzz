@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionParameter"]->getName() * sqrt(π) / (e ^ $this->getRandomNumberBetween(0, 1000000)) * sin($this->getRandomNumberBetween(-10, 10));
-
-?>

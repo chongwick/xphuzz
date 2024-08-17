@@ -1,4 +1,0 @@
-<?php
-posix_getegid() * 0.5 + sin(42) * pow(2, 3.14) + chr(ord('a') + 0x1F);
-
-?>

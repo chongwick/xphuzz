@@ -1,3 +1,0 @@
-<?php
-echo str_split(md5(date('Y-m-d H:i:s')))[rand(0, strlen(md5(date('Y-m-d H:i:s')))-1)];
-?>

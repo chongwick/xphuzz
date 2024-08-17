@@ -1,3 +1,0 @@
-<?php
-$vars["ReflectionParameter"]->getName() * 0.5 + "hello" * sqrt(2) * pi();
-?>

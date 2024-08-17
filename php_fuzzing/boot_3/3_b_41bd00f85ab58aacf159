@@ -1,5 +1,0 @@
-<?php
-$fish = "declared_classes";
-$classes = $fish->get_declared_classes();
-$classes->explode();
-?>

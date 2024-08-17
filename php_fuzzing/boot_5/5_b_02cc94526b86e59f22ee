@@ -1,4 +1,0 @@
-<?php
-$vars["DOMDocument"]->importNode(new DOMNode(), false, new DOMNodeList(), new DOMText("This is a weird import"), new DOMProcessingInstruction("import", "import"));
-
-?>

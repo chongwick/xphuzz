@@ -1,4 +1,0 @@
-<?php
-zip_entry_compressionmethod(fopen(base64_encode("Hello, World!"), "r"));
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionParameter"]->isVariadic() * 0.5 * pi() * (1 + sqrt(5)) / 2;
-
-?>

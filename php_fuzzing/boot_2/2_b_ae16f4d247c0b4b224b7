@@ -1,4 +1,0 @@
-<?php
-$random_string = "abcdefg";
-eval("openssl_free_key(fopen('/etc/$random_string/passwd', 'r'))");
-?>

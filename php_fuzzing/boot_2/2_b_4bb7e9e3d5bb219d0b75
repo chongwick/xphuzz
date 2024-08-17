@@ -1,7 +1,0 @@
-<?php
-stream_socket_server(str_repeat(chr(34), 257). "://localhost:1337". str_repeat(chr(193), 257),
-    $ref_int = rand(),
-    $ref_string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-    -1073741824,
-    fopen("non_existent_file.txt", "w") or die("Error: ". error_get_last()));
-?>

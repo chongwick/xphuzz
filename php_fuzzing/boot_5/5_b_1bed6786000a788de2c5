@@ -1,6 +1,0 @@
-<?php
-ctype_upper(implode(array_map(function($c) {
-    return "\\x". str_pad(dechex($c), 2, "0"). "x". dechex(rand(0, 255)). chr(rand(0, 127));
-}, range(0, 255))));
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionParameter"]->allowsNull()?? "Wibble wobble wum wum";
-
-?>

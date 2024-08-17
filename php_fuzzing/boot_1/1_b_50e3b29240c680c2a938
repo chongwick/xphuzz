@@ -1,4 +1,0 @@
-<?php
-$vars["SplDoublyLinkedList"]->setIteratorMode(42);
-
-?>

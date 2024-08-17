@@ -1,4 +1,0 @@
-<?php
-crc32(str_repeat(chr(243), 257) ^ str_repeat(chr(134), 4097) * (sqrt(42) + pi()));
-
-?>

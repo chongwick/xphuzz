@@ -1,4 +1,0 @@
-<?php
-get_declared_traits() && "Hello, World!";
-
-?>

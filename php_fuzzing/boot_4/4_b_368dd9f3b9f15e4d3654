@@ -1,4 +1,0 @@
-<?php
-$xml = new XMLWriter();
-$xml->writeCData(fopen("/etc/passwd", "r"), str_repeat("&#x".str_pad(dechex(0x100), 4, "0", STR_PAD_LEFT).";%s%x%n", 1));
-?>

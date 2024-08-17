@@ -1,4 +1,0 @@
-<?php
-$vars["SplPriorityQueue"]->isEmpty()->explode(' ', '')->filter(function($x){return $x ==='' ;})->count();
-
-?>

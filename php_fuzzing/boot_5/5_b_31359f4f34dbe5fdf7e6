@@ -1,4 +1,0 @@
-<?php
-$vars["SplObjectStorage"]->attach($vars[array_rand($vars)] ^ 0xdeadbeef, array("a" => 1e-100, "b" => "2.23431234213480e-400", "c" => 5473817451.12345e+100));
-
-?>

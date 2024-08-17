@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionMethod"]->isStatic() * 0.5 * sin(42) + 3.14;
-
-?>

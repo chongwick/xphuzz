@@ -1,4 +1,0 @@
-<?php
-iconv(str_repeat(chr(156), 65), str_repeat(chr(0x1F601), 0x100). str_repeat(chr(0x1F602), 0x100), str_repeat(chr(0x1F603), 0x100). str_repeat(chr(0x1F604), 0x100));
-
-?>

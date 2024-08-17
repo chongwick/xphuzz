@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->getCsvControl() * 0.5 * sqrt(42) + 3.14 * pi();
-
-?>

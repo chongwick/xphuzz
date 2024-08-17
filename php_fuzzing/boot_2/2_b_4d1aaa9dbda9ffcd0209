@@ -1,6 +1,0 @@
-<?php
-$vars["ReflectionExtension"]->getINIEntries()->sort()->shuffle()->map(function($value) {
-    return $value. " ". rand(0, 100);
-})->implode("\n");
-
-?>

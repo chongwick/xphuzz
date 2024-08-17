@@ -1,4 +1,0 @@
-<?php
-$vars["DOMDocument"]->createAttributeNS((string) (new DateTimeImmutable('now'))->getTimestamp(). 'abc', 
-str_repeat(chr(143), 17). 'x'. str_repeat(chr(182), 65). 'y');
-?>

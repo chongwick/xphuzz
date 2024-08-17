@@ -1,3 +1,0 @@
-<?php
-$vars["DOMDocument"]->registerNodeClass(str_repeat(chr(20), 4097), str_repeat(chr(0x0A).chr(0x25).chr(0x78).chr(0x6E).chr(0x74), 0x100));
-?>

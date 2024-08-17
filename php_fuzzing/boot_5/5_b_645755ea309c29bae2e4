@@ -1,7 +1,0 @@
-<?php
-$random_number = rand(1, 1000000);
-$random_string = str_split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", $random_number);
-shuffle($random_string);
-$hash = hash("md5", implode("", $random_string));
-echo "<code>$hash</code>";
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->hasConstant(str_repeat(chr(41), 65). "123475932". str_repeat(chr(2.23431234213480e-400), 10). "5473817451");
-
-?>

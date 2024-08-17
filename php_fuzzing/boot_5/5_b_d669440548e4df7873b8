@@ -1,4 +1,0 @@
-<?php
-xml_set_element_handler(fopen("https://example.com/non-existent-file", "r"), phpinfo, phpinfo);
-
-?>

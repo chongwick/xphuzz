@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionGenerator"]->getFunction() = "This will probably not work and is just a bunch of nonsense";
-
-?>

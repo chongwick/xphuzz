@@ -1,4 +1,0 @@
-<?php
-xmlwriter_output_memory($a, $b = false);
-
-?>

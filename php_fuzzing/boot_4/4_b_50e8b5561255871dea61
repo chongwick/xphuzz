@@ -1,4 +1,0 @@
-<?php
-xml_parser_create(microtime(true). str_repeat("A", pi()). str_repeat(chr(0x10000), 0x10000));
-
-?>

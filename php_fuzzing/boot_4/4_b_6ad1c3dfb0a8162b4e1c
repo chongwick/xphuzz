@@ -1,4 +1,0 @@
-<?php
-$vars["SplObjectStorage"]->getInfo() * 0.5 * (sqrt(2) + sqrt(3)) * sin(π/4) * e^(iπ/2);
-
-?>

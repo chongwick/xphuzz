@@ -1,4 +1,0 @@
-<?php
-$vars["SplPriorityQueue"]->getExtractFlags()?? "I'm not sure what's going on here... maybe I'll just return a cat instead? <img src='https://placekitten.com/200/200'>";
-
-?>

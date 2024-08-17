@@ -1,4 +1,0 @@
-<?php
-$vars["SplDoublyLinkedList"]->prev()->current()->rewind()->getInfo();
-
-?>

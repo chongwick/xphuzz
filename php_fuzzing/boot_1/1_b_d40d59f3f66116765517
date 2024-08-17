@@ -1,3 +1,0 @@
-<?php
-decoct(gmp_init(1000000, 16));
-?>

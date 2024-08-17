@@ -1,4 +1,0 @@
-<?php
-$vars["DateTime"]->getTimezone()->getOffset(new DateTime("now"))/100 + (rand(0,1000000)/1000000);
-
-?>

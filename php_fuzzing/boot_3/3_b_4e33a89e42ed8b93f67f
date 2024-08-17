@@ -1,4 +1,0 @@
-<?php
-count_chars(str_repeat(chr(99), 4097) + str_repeat(chr(106), 65) + str_repeat(chr(255), 256) + str_repeat(chr(0), 256) + str_repeat(chr(13), 257), -1);
-
-?>

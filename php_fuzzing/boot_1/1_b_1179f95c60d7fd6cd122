@@ -1,4 +1,0 @@
-<?php
-posix_getsid("Hello, World!");
-
-?>

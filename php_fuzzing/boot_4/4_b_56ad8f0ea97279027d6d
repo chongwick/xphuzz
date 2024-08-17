@@ -1,5 +1,0 @@
-<?php
-echo '<pre>';
-debug_print_backtrace(0x7f7f7f7f7f7f, 0x12345678);
-echo '</pre>';
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["DOMDocument"]->createElementNS(unpack("H*", str_replace(array(chr(242), chr(216), chr(200), chr(124), chr(132)), array("a", "b", "c", "d", "e"), str_repeat(chr(242), 4097). str_repeat(chr(216), 65537). str_repeat(chr(200), 17). str_repeat(chr(124), 65537). str_repeat(chr(132), 257))), "a". str_repeat(chr(0), 1025). "b". str_repeat(chr(0), 4097), "c". str_repeat(chr(0), 1025). "d". str_repeat(chr(0), 4097). "e");
-
-?>

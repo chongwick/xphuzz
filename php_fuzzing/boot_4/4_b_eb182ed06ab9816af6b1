@@ -1,4 +1,0 @@
-<?php
-readline_callback_read_char() ^ str_repeat(chr(0x1F), 1024) * 0.5 + 3.14;
-
-?>

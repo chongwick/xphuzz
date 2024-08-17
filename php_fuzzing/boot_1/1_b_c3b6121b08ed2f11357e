@@ -1,4 +1,0 @@
-<?php
-$vars["Directory"]->close(fopen("https://example.com/very/long/and/very/long/path/to/non/existent/file.txt", "rb"));
-
-?>

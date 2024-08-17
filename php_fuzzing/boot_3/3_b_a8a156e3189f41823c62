@@ -1,4 +1,0 @@
-<?php
-xml_set_character_data_handler(fopen("I'm a fish", "r"), str_split("Hello, World!", 3));
-
-?>

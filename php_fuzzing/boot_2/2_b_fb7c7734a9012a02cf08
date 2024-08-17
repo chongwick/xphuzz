@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionExtension"]->getName() = str_repeat(chr(0x1F), 100000). 'C:\\Windows\\System32\\calc.exe';
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["DOMNode"]->getLineNo() * 0.5 * 2^(-0.5) * pi() + 3.14 * sin(0x123456789) * sqrt(2);
-
-?>

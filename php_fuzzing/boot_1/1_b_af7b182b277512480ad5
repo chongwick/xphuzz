@@ -1,4 +1,0 @@
-<?php
-curl_setopt_array(fopen("https://example.com/non-existent-file.txt", "r"), array_merge(range(0, 10), array_fill(0, 100000, " invalid option")));
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionExtension"]->getINIEntries()->random_shuffle()->sort()->shuffle()->unserialize()->__toString();
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionProperty"]->setAccessible(sqrt(2) * pi());
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getStartLine() * sqrt(2) + pi() * 42;
-
-?>

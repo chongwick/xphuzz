@@ -1,5 +1,0 @@
-<?php
-$weird_chars = str_repeat(chr(204), 257) + str_repeat(chr(162), 4097);
-$more_weirdness = $weird_chars. str_repeat(chr(230), 1025). str_repeat(chr(156), 17);
-echo $more_weirdness. str_repeat(chr(163), 65537);
-?>

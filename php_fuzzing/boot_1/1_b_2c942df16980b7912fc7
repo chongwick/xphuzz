@@ -1,7 +1,0 @@
-<?php
-echo strtr(implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, range(0, 255))), array(
-    str_repeat(chr(144), 65) => "x",
-    str_repeat(chr(122), 65) => "y",
-    "10" => "11"
-));
-?>

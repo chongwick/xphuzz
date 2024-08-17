@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getInterfaces()->pop()->__invoke("FunkyTown", 0, "TheElectricBoogaloos")->getAttributes()->pop()->getInfo()->get("xzyzyx", "plootz");
-
-?>

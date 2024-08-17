@@ -1,4 +1,0 @@
-<?php
-array_combine(array("a" => 0, "b" => "0.5", "c" => "three"), array(1, "two", 3.0));
-
-?>

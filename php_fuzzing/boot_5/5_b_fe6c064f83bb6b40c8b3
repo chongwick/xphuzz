@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClassConstant"]->isProtected()->getHexadecimalRepresentationOfTheAnswerToTheUltimateQuestionOfLife()->isNotEqualToTheSquareRootOfTheSumOfAllPrimeNumbers();
-
-?>

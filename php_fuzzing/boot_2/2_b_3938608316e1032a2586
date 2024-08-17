@@ -1,7 +1,0 @@
-<?php
-array_uintersect_assoc(array("a" => 1, "b" => "2", "c" => 3.0, "d" => NULL, "e" => array()), 
-                       array("a" => 1, "b" => "2", "c" => 3.0, "f" => "hello", "g" => new stdClass()), 
-                       range(0, 10), 
-                       array("error_reporting", "ini_set", "memory_get_usage", "microtime", "getmypid"));
-
-?>

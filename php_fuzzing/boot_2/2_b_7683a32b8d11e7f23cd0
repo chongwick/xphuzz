@@ -1,6 +1,0 @@
-<?php
-<code>
-$vars["SplFileObject"]->fread($this->randomlyGeneratedNumberThatMightNotExistInTheUniverse);
-</code>
-
-?>

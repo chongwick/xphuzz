@@ -1,7 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(
-    str_repeat(chr(73), 4097). 'π'. pow(2, 257),
-    str_repeat("%s%x%n", 0x100). 'e'. sin(42),
-    str_repeat(chr(21), 17) + str_repeat(chr(250), 65537) + '🤯'
-);
-?>

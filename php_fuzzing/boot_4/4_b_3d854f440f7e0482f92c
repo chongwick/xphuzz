@@ -1,4 +1,0 @@
-<?php
-glob(str_repeat(chr(148), 257).".".str_repeat(chr(148), 257), GLOB_BRACE | GLOB_NOSORT | GLOB_MARK);
-
-?>

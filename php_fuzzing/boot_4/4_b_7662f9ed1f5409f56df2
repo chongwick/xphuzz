@@ -1,8 +1,0 @@
-<?php
-$null = fopen("/dev/null", "r");
-$non_existent_file = fopen("/tmp/doesntexist", "w");
-$garbage = str_repeat(chr(70), 1025);
-$non_function = "zip_entry_open";
-$result = call_user_func_array($non_function, array($null, $non_existent_file, $garbage));
-echo $result;
-?>

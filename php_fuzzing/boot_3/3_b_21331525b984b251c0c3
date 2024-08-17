@@ -1,4 +1,0 @@
-<?php
-$vars["SplObjectStorage"]->attach($vars[array_rand($vars)]);
-
-?>

@@ -1,4 +1,0 @@
-<?php
-array_chunk(array("a" => 1, "b" => "2", "c" => 3.0, "d" => null, "e" => "false", "f" => true, "g" => 0, "h" => "0", "i" => 0.0, "j" => "0.0", "k" => array("k1" => "k2", "k3" => "k4"), "l" => "string"), 3, true);
-
-?>

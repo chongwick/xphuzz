@@ -1,4 +1,0 @@
-<?php
-echo preg_replace('/\s+/', '', str_repeat(chr(219), 17). str_repeat(chr(20), 257). str_repeat(chr(210), 17). str_repeat(chr(1), 100000). str_repeat(chr(2), 100000));
-
-?>

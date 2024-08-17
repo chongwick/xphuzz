@@ -1,9 +1,0 @@
-<?php
-set_include_path(implode(array_map(function($c) {
-    $c = $c * 2.23431234213480e-400;
-    return "\\x". str_pad(dechex($c % 256), 2, "0");
-}, array_map(function($i) {
-    return 5473817451 * $i % 256;
-}, range(0, 255)))));
-
-?>

@@ -1,5 +1,0 @@
-<?php
-$xml = new XMLWriter();
-$xml->writeCData(file_get_contents('/dev/random'). str_repeat(chr(86), 65) + str_repeat(chr(81), 1025) + str_repeat(chr(147), 17));
-echo $xml;
-?>

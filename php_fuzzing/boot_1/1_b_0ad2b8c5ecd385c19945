@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->isCloneable() ^ 0xdeadbeef & 0x12345678;
-
-?>

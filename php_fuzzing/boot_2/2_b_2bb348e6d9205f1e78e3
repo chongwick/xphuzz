@@ -1,4 +1,0 @@
-<?php
-$vars["DateInterval"]->format(sqrt(42) * pow(sin(atan(3.14)), 2) + chr(0x1F). str_repeat(chr(0x20), 1024));
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["DOMElement"]->setAttributeNS(str_repeat("A", 0x100) ^ str_repeat(chr(0x20), 0x100), str_repeat("%s%x%n", 0x100) ^ str_repeat(chr(0x20), 0x100), implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0") ^ str_repeat(chr(0x20), 2);}, range(0, 255))));
-
-?>

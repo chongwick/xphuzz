@@ -1,4 +1,0 @@
-<?php
-$vars["SplObjectStorage"]->addAll($this->getTheUnicornThatGrantsWishes()->getTheMysteriousArrayThatContainsAllTheUnseenThings());
-
-?>

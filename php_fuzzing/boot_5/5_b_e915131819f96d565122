@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->seek(10 ** 2 ** 3 * 0.5 + pi());
-
-?>

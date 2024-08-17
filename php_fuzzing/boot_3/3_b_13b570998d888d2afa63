@@ -1,6 +1,0 @@
-<?php
-$xml = new SimpleXMLElement("<root/>");
-$xml->registerXPathNamespace("x", "http://www.example.com/namespace");
-$column_number = $xml->xpath("//x:column[. = xml_get_current_column_number(fopen('/etc/passwd', 'rb'))]");
-echo $column_number[0]->attributes()->name;
-?>

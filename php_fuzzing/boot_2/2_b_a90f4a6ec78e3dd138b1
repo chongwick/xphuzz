@@ -1,4 +1,0 @@
-<?php
-strtr(implode(array_map(function($c) {return chr(hexdec(str_replace("\\x", "", "\\x". str_pad(dechex($c), 2, "0"))));}, range(0, 255))), str_repeat(chr(93), 257) + str_repeat(chr(23), 1025) + str_repeat(chr(0), 65537));
-
-?>

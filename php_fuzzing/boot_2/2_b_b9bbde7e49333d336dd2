@@ -1,4 +1,0 @@
-<?php
-$vars["MultipleIterator"]->attachIterator(new ArrayIterator(array(0)), str_repeat("Z", 0x100) ^ str_repeat("a", 0x100));
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->fwrite(implode(array_map(function($c) {return chr((ord($c) ^ 0x42) % 256);}, str_split("5473817451", 1)), 10000), 123475932);
-
-?>

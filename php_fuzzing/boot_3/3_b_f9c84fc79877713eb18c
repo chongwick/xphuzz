@@ -1,6 +1,0 @@
-<?php
-array_sum(array_map(function($x) {
-    return $x * (1 + sin($x) / $x);
-}, range(0, 10)));
-
-?>

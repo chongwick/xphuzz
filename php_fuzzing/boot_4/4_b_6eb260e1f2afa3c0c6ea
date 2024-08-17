@@ -1,4 +1,0 @@
-<?php
-deflate_init(π, array("a" => 0, "b" => "∞", "c" => null));
-
-?>

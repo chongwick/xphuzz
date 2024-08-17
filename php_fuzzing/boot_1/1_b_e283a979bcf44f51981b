@@ -1,3 +1,0 @@
-<?php
-eval("return array(". implode(", ", array_map(function($x) { return "'$x'"; }, func_get_args())). ");");
-?>

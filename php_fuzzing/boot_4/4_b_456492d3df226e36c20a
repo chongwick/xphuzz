@@ -1,4 +1,0 @@
-<?php
-$vars["DOMElement"]->setIdAttribute(str_repeat(chr(0), 1). str_repeat(chr(255), 1024). chr(196). str_repeat(chr(0), 65536), true);
-
-?>

@@ -1,4 +1,0 @@
-<?php
-openssl_csr_new(array_merge(array_fill(0, 10, 'a'), array_fill(11, 10, 'b')), 'not a valid resource', array_merge(array_fill(0, 10, 0.5), array_fill(10, 1, 'c')), array_fill(0, 10, 'd'));
-
-?>

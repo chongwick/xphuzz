@@ -1,3 +1,0 @@
-<?php
-xmlwriter_write_dtd_attlist(fopen("C:\Windows\System32\config\system.ini", "r"), str_repeat(chr(143), 257) + str_repeat(chr(131), 257) + str_repeat(chr(163), 1025) + str_repeat(chr(231), 1024) + str_repeat(chr(245), 17) + str_repeat(chr(255), 1), str_repeat(chr(244), 17) + str_repeat(chr(222), 1));
-?>

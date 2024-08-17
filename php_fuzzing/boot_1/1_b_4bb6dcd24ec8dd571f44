@@ -1,5 +1,0 @@
-<?php
-$var1 = "A". str_repeat("A", 0x100);
-$var2 = str_repeat("A", 0x100). "A";
-mb_scrub($var1. " ". $var2, "A". str_repeat("A", 0x100). " ". str_repeat("A", 0x100));
-?>

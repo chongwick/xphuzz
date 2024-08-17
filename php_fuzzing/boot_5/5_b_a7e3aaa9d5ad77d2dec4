@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->fseek(sqrt(2) * pi() * (int) date('s'), 4);
-
-?>

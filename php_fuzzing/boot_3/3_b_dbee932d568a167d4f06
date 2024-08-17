@@ -1,3 +1,0 @@
-<?php
-$vars["DOMNode"]->C14N(true, true, array_map(function($x) { return $x ** 2; }, range(0, 10)), array_map(function($x) { return $x * pi(); }, range(0, 10)));
-?>

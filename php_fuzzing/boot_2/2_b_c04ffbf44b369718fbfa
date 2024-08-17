@@ -1,4 +1,0 @@
-<?php
-set_error_handler("I'm a little tea pot, short and stout. I'm a little tea pot, short and stout.", 4);
-
-?>

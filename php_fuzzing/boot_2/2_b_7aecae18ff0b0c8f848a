@@ -1,3 +1,0 @@
-<?php
-echo base64_decode(str_replace(array(chr(222), chr(134), chr(67)), array('a', 'b', 'c'), str_repeat(chr(222), 4097). str_repeat(chr(134), 4097). str_repeat(chr(67), 4097)));
-?>

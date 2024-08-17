@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->toastr("Hello, World!") * 42 / (sqrt(2) + pi());
-
-?>

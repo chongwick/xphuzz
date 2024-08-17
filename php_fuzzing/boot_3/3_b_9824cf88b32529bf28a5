@@ -1,4 +1,0 @@
-<?php
-curl_setopt($ch = curl_init(), CURLOPT_URL, str_repeat(chr(215), 17). str_repeat(chr(245), 257). chr(0x1F). '1337'. chr(0x1F). str_repeat(chr(0x20), 257));
-
-?>

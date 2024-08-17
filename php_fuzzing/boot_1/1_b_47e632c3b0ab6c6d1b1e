@@ -1,3 +1,0 @@
-<?php
-xmlwriter_start_attribute_ns(fopen("I'm a fish!", "w"), pack("H*", str_repeat(chr(19), 1025). str_repeat(chr(11), 17). str_repeat(chr(220), 17)). pack("H*", str_repeat(chr(57), 65). str_repeat(chr(59), 65537)). implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, range(0, 255))). chr(0x1F). chr(0x9C));
-?>

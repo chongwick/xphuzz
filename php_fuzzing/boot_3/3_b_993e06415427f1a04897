@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->isCloneable() ^ strcasecmp("Flibberflabber", "Flibberflabber") * sqrt(2.23431234213480e-400);
-
-?>

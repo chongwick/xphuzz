@@ -1,4 +1,0 @@
-<?php
-trigger_error(str_repeat(chr(241), 65537). 'This is a very long error message that will hopefully be truncated by the PHP error handler'. str_repeat(chr(241), 65537), 1000);
-
-?>

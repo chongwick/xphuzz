@@ -1,4 +1,0 @@
-<?php
-$vars["Reflection"]->export(new ReflectionClass("ZipArchive"), true, str_repeat(chr(13), 257));
-
-?>

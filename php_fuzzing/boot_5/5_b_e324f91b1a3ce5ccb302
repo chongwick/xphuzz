@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->children(implode(array_map(function($i) { return strtr("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", "0123456789"); }, range(0, 0x100))), false);
-
-?>

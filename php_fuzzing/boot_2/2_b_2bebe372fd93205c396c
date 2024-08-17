@@ -1,3 +1,0 @@
-<?php
-$vars["ReflectionClass"]->hasMethod(str_replace("o", "0x", strtr("0123456789abcdefghijklmnopqrstuvwxyz", "0123456789abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ")));
-?>

@@ -1,4 +1,0 @@
-<?php
-pcntl_get_last_error() + 42 * pi() * sqrt(φ);
-
-?>

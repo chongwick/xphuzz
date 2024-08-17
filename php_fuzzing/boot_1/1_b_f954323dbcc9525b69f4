@@ -1,4 +1,0 @@
-<?php
-$vars["SplDoublyLinkedList"]->isEmpty()->explode(" ", "Hello, World!")->filter(function($x) { return $x === "World"; })->count()->pow(2)->sin()->log()->sqrt()->rand(0, 1);
-
-?>

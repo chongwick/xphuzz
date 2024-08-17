@@ -1,4 +1,0 @@
-<?php
-$vars["SplFixedArray"]->toArray()->__toString()->chunk(5)->map(function($chunk) { return array_map('ord', $chunk); })->implode("\n")->preg_replace('/./', '*', str_replace("\n", "\n*", $vars["SplFixedArray"]->getInfo()->getFlags())));
-
-?>

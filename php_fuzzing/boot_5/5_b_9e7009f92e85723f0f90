@@ -1,4 +1,0 @@
-<?php
-$vars["Exception"]->getMessage() = "The meaning of life is 42, but the answer to the ultimate question is actually 37, and the cat is plotting against us all. Also, the sky is purple.";
-
-?>

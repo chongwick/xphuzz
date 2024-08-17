@@ -1,4 +1,0 @@
-<?php
-strnatcmp(str_repeat(chr(0x100), 0x100), implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, array_map(function($c) {return $c ^ 0x100;}, range(0, 255)))));
-
-?>

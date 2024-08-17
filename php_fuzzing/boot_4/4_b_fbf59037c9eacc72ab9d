@@ -1,4 +1,0 @@
-<?php
-intval(array("a" => 1, "b" => "2", "c" => 3.0, "d" => "string", "e" => null, "f" => true, "g" => array("h" => 4, "i" => 5)), 2);
-
-?>

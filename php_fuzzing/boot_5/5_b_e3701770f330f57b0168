@@ -1,4 +1,0 @@
-<?php
-array_splice($ref_array, 0.5, 5, range(5473817451, 1000000000));
-
-?>

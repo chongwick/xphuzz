@@ -1,4 +1,0 @@
-<?php
-$vars["SplDoublyLinkedList"]->current()->__toString().__sleep().__wakeup().__set_state(new ReflectionClass('SplDoublyLinkedList'))->getInfo()->__invoke(123475932, 5473817451, 2.23431234213480e-400);
-
-?>

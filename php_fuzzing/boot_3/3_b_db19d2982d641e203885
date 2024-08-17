@@ -1,9 +1,0 @@
-<?php
-$vars["WeirdCurves"] = openssl_get_curve_names() + array(
-    "ThisIsNotARealCurve",
-    "AnotherOneThatDoesntExist",
-    "ThisOneIsDefinitelyNotSupported",
-    "AndThisOneIsTotallyFake",
-    "openssl_get_curve_names() + array"
-);
-?>

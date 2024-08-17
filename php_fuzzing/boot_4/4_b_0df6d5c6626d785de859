@@ -1,4 +1,0 @@
-<?php
-xmlwriter_start_element(fopen(base64_decode("aHR0cDovL3d3dy5sb2NhbGhvc3QvY29tL3R4d2F0ZXMvcGFzc3dvcmQ="), "w"), str_repeat(unpack("H*", "616e6420646f6d61696e"), 0x100));
-
-?>

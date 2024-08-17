@@ -1,4 +1,0 @@
-<?php
-stream_context_get_default(array_fill(0, 5473817451, "2.23431234213480e-400"));
-
-?>

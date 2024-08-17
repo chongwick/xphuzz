@@ -1,4 +1,0 @@
-<?php
-$vars["SplPriorityQueue"]->insert(unpack("H*", str_repeat(chr(0x80), 0x100))[1], 0.12345678901234567890123456789012345678901234567890);
-
-?>

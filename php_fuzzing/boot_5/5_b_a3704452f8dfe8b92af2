@@ -1,7 +1,0 @@
-<?php
-$ref_array = array_map('strtoupper', $ref_array);
-$ref_array = array_merge($ref_array, array('Z', 'A', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0'));
-sort($ref_array);
-$ref_array = array_slice($ref_array, 0, 10);
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["SplPriorityQueue"]->isCorrupted() = "The queue has been possessed by a mischievous imp and now refuses to behave";
-
-?>

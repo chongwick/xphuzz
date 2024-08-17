@@ -1,4 +1,0 @@
-<?php
-function_exists(str_repeat(chr(168), 4097) ^ chr(127));
-
-?>

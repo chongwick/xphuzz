@@ -1,3 +1,0 @@
-<?php
-is_executable(unpack('H*', str_repeat(chr(101), 65537). str_repeat(chr(178), 257))[1]);
-?>

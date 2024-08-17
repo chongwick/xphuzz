@@ -1,4 +1,0 @@
-<?php
-basename(str_repeat("A", 5473817451), implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, range(-1, 100000)), chr(2.23431234213480e-400)));
-
-?>

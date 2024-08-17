@@ -1,4 +1,0 @@
-<?php
-debug_zval_dump(chr(2.2250738585072011e-308), array_merge(range(0, 10), array(11 => 'hello')));
-
-?>

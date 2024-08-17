@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getFileName() ^ 5473817451;
-
-?>

@@ -1,4 +1,0 @@
-<?php
-session_set_cookie_params(array("a" => 0, "b" => "1", "c" => 2, "d" => 3.0, "e" => null, "f" => array(), "g" => new stdClass(), "h" => "i", "i" => "j", "j" => "k", "k" => "l", "l" => "m", "m" => "n", "n" => "o", "o" => "p", "p" => "q", "q" => "r", "r" => "s", "s" => "t", "t" => "u", "u" => "v", "v" => "w", "w" => "x", "x" => "y", "y" => "z", "z" => "a"));
-
-?>

@@ -1,4 +1,0 @@
-<?php
-putenv(str_repeat(chr(0x20AC), 4097). chr(0x1F4A9). str_repeat(chr(0x200B), 1025));
-
-?>

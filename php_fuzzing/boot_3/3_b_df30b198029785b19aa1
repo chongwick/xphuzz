@@ -1,4 +1,0 @@
-<?php
-$weirdness = 42;
-ob_get_level() * $weirdness ** (rand(1, 100) % 3) + pi() * sin(ob_get_level());
-?>

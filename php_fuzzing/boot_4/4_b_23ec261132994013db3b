@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->getDocNamespaces(false, true, 0, 1, "random", "string", array("key" => "value"), array("foo" => "bar", "baz" => "qux"), 1.234, "hello world!", 12345, 0.123, array(1, 2, 3, 4, 5), array("a" => "b", "c" => "d"), 0xdeadbeef, "utf-8", true, false, null);
-
-?>

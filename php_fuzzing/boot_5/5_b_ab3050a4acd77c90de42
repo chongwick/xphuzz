@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionExtension"]->getFunctions() * 0.5 * pi() * e * 2;
-
-?>

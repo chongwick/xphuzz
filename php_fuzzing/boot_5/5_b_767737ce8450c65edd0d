@@ -1,3 +1,0 @@
-<?php
-openssl_x509_fingerprint(array("a" => 1, "b" => "2", "c" => 3.0, "d" => array("e" => "f", "g" => 3.14159), "h" => new stdClass()), str_repeat(chr(0x80), 65). str_repeat(chr(0x20), 65). "hello world!", true);
-?>

@@ -1,4 +1,0 @@
-<?php
-xml_set_unparsed_entity_decl_handler(phpinfo(), fopen("5473817451", "r"));
-
-?>

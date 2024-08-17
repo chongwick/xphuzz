@@ -1,4 +1,0 @@
-<?php
-$vars["DOMDocument"]->createAttributeNS('http://example.com/'. str_repeat(chr(0x1F), 1025), str_repeat(chr(0x9C), 1025). chr(0x20). str_repeat(chr(0x0A), 1025));
-
-?>

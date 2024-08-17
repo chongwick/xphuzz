@@ -1,4 +1,0 @@
-<?php
-is_iterable(2.2250738585072011e-308, 'Unlikely', 'Unreal', 'Unstable', 'Unknowable');
-
-?>

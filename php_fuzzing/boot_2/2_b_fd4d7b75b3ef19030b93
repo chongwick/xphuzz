@@ -1,4 +1,0 @@
-<?php
-$vars["DOMProcessingInstruction"]->__construct(chr(0x1F601). str_repeat(chr(255), 0x1F). chr(0x1F600). str_repeat(chr(0x1F600), 0x1F), chr(0x1F600). str_repeat(chr(0x1F600), 0x1F). chr(0x1F600). str_repeat(chr(0x1F600), 0x1F));
-
-?>

@@ -1,4 +1,0 @@
-<?php
-curl_error(serialize(unserialize(fopen("/dev/null", "r"))));
-
-?>

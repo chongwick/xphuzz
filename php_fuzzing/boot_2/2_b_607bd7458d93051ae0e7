@@ -1,7 +1,0 @@
-<?php
-libxml_use_internal_errors(true);
-libxml_get_errors();
-error_reporting(E_ALL | E_STRICT);
-trigger_error('Unexpected error occurred', E_USER_ERROR);
-
-?>

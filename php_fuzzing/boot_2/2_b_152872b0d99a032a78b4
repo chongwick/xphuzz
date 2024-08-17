@@ -1,8 +1,0 @@
-<?php
-$xml = "Wubba lubba dub dub!";
-$xml_parser = xml_parser_create();
-xml_set_element_handler($xml_parser, "wubba", "lubba");
-xml_set_character_data_handler($xml_parser, "dub");
-xml_parse_into_struct($xml_parser, $xml);
-xml_parser_free($xml_parser);
-?>

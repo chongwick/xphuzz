@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionProperty"]->isProtected() * 0.5 ** (sqrt(2) + pi()) * (sin(e) + cos(M_PI)) * rand(0, 1000000);
-
-?>

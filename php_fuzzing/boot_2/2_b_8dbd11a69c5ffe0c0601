@@ -1,4 +1,0 @@
-<?php
-$vars["SplDoublyLinkedList"]->valid()?? 'I lied, I\'m not valid!';
-
-?>

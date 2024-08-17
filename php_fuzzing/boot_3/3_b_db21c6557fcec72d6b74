@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->getCsvControl() * 0.5 + sin(42) * $vars["SplFileObject"]->getBasename();
-
-?>

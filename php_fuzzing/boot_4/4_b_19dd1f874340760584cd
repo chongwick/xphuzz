@@ -1,5 +1,0 @@
-<?php
-$weirdness = array_map('ord', str_split(strtr(base64_encode(microtime(true)), '+/', '-_'), 1));
-posix_getgroups(array_sum($weirdness));
-
-?>

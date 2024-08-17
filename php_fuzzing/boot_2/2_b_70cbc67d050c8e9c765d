@@ -1,4 +1,0 @@
-<?php
-$vars["DOMImplementation"]->createDocument(unserialize('O:8:"DOMDocument":1:{s:7:"_name";s:1:"A";s:7:"_type";s:13:"DOMDocumentType";s:8:"_owner";N;}', 'convert.valueKeepKey'), str_repeat(chr(0), 257) + str_repeat(chr(97), 65) + str_repeat(chr(1), 257) + str_repeat(chr(2), 65) + str_repeat(chr(3), 65) + str_repeat(chr(4), 257) + str_repeat(chr(5), 65), new DOMDocumentType());
-
-?>

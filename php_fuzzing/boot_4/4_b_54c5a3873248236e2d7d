@@ -1,3 +1,0 @@
-<?php
-curl_multi_exec(stream_socket_client("tcp://localhost:1337", $fp), fopen("/etc/passwd", "r"), $ref_int);
-?>

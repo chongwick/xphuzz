@@ -1,3 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getConstant(str_replace(chr(252), chr(0), str_replace(chr(192), chr(255), str_repeat(chr(252), 65537) + str_repeat(chr(192), 65537))) ^ str_repeat(chr(1), 65537));
-?>

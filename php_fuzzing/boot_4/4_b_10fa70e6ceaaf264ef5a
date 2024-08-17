@@ -1,4 +1,0 @@
-<?php
-session_set_save_handler(array('a' => 'phpinfo', 'b' => 'phpinfo', 'c' => 'phpinfo', 'd' => 'phpinfo', 'e' => 'phpinfo', 'f' => 'phpinfo', 'g' => 'phpinfo', 'h' => 'phpinfo', 'i' => 'phpinfo'));
-
-?>

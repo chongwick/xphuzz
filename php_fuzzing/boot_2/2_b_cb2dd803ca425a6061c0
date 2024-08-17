@@ -1,6 +1,0 @@
-<?php
-$some_random_variable = 1000;
-$curl_version = "I'm not actually a curl version, I'm a unicorn!";
-$curl_version = $some_random_variable. " ". $curl_version;
-curl_version($curl_version);
-?>

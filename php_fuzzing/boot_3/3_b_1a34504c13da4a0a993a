@@ -1,4 +1,0 @@
-<?php
-$vars["DateTimeImmutable"]->getTimezone()->getOffset(new DateTimeImmutable('now', new DateTimeZone('UTC')));
-
-?>

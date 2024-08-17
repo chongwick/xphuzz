@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionMethod"]->isConstructor() * 0.5 + sin(3.14159265359) * 0.2 + sqrt(2) * 0.1;
-
-?>

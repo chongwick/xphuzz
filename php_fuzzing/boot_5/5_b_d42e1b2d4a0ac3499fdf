@@ -1,3 +1,0 @@
-<?php
-$vars["SplFileObject"]->fstat(fopen("non_existent_file", "rb"), str_split(bin2hex(str_repeat(chr(177), 257) + str_repeat(chr(199), 65537)), 4));
-?>

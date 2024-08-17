@@ -1,6 +1,0 @@
-<?php
-$weird_variable = "transportation";
-$unexpected_function = "stream_get_transports";
-$incorrect_usage = $weird_variable. "s";
-echo $unexpected_function($incorrect_usage);
-?>

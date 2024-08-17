@@ -1,4 +1,0 @@
-<?php
-$vars["SplStack"]->setIteratorMode(0x4a7b);
-
-?>

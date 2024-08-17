@@ -1,4 +1,0 @@
-<?php
-$vars["SplDoublyLinkedList"]->prev()->getInfo()->getMeta()->setMagicProperty("wibble", 42);
-
-?>

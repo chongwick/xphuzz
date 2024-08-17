@@ -1,6 +1,0 @@
-<?php
-preg_replace_callback_array(array_fill(0, 11, function($i) {
-    return "/$i/imsU";
-}), str_repeat("({$ref_int}+{$ref_int})*", 0x100), 10, $ref_int);
-
-?>

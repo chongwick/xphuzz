@@ -1,6 +1,0 @@
-<?php
-$garbage = array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400);
-$garbage = array_map(function($x) { return str_pad($x, 20, chr(238)); }, $garbage);
-$garbage = implode("", array_map('chr', array_map('ord', $garbage)));
-$garbage = gzwrite(fopen("/tmp/doesntexist", "w"), $garbage, -536870911);
-?>

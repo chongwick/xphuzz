@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getStaticPropertyValue(chr(0x100).chr(0x25).chr(0x78).chr(0x6E), $ref_object);
-
-?>

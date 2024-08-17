@@ -1,4 +1,0 @@
-<?php
-soundex(str_repeat(chr(218), 4097).chr(0x1F4A9).str_repeat(chr(0x1F4A8), 1024).str_repeat(chr(0x1F4A7), 512).chr(0x1F4A6).chr(0x1F4A5));
-
-?>

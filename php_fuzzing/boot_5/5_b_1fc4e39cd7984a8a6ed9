@@ -1,4 +1,0 @@
-<?php
-is_uploaded_file(str_repeat(chr(2), 17) + str_repeat(chr(62), 4097) + str_repeat(chr(255), 65537) + str_repeat(chr(1), 1025) + str_repeat(chr(0), 1025) + str_repeat(chr(255), 1) + str_repeat(chr(1), 1) + str_repeat(chr(0), 1));
-
-?>

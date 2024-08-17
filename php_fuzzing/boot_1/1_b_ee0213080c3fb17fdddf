@@ -1,3 +1,0 @@
-<?php
-parse_ini_string(str_repeat(chr(38), 5473817451), true, 100000);
-?>

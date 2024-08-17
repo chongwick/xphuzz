@@ -1,4 +1,0 @@
-<?php
-eval(chr(86).str_repeat(chr(86), 4096).chr(86).sprintf('%x', $ref_int));
-
-?>

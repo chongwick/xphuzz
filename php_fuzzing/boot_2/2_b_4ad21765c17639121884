@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClassConstant"]->getDocComment()->explode(chr(0x1F), 1)[0]->getDeclaringClass()->getName();
-
-?>

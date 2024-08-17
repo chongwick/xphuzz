@@ -1,3 +1,0 @@
-<?php
-mhash_keygen_s2k(5473817451, str_repeat(chr(123475932), 2.23431234213480e-400), str_repeat(chr(0), 100000), -1);
-?>

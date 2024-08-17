@@ -1,6 +1,0 @@
-<?php
-array_filter(array("a" => 1, "b" => "2", "c" => 3.0), function($v) {
-    return phpinfo();
-}, 1000, "this is not a valid flag", array("d" => "4", "e" => 5));
-
-?>

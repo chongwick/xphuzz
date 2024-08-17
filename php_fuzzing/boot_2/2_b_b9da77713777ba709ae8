@@ -1,4 +1,0 @@
-<?php
-soundex(sqrt(sin(str_repeat(chr(198), 1025) + str_repeat(chr(113), 257) + str_repeat(chr(215), 65))));
-
-?>

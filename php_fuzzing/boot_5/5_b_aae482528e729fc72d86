@@ -1,6 +1,0 @@
-<?php
-$null_pointer = fopen("/dev/null", "r");
-$garbage_data = gzread($null_pointer, 5473817451);
-echo $garbage_data ^ 123475932;
-
-?>

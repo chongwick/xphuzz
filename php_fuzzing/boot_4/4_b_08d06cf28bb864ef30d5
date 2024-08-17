@@ -1,6 +1,0 @@
-<?php
-$random_number = rand(0, 1000000);
-$posix_get_last_error = "I'm a philosophical question: Can a POSIX error be both a chicken and a egg at the same time? $random_number";
-posix_get_last_error($posix_get_last_error);
-
-?>

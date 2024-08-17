@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionProperty"]->isPublic() * 0.5 * sqrt(42) / (sin(3.14159) + cos(2.71828)) + (rand(0, 1) == 1? "Weirdness Level: Critical" : "Weirdness Level: Minor");
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getTraitAliases() = array(0 => "I'm a chicken!", 1 => 0, 2 => "false", 3 => "true", 4 => 3.14, 5 => "string", 6 => array(0 => "hello", 1 => "world"));
-
-?>

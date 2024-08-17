@@ -1,5 +1,0 @@
-<?php
-$vars["DOMDocument"]->createProcessingInstruction(implode(array_map(function($c) {
-    return "\\x". str_pad(dechex($c), 2, "0"). "randomly appended";
-}, range(0, 255)). "and concatenated again", chr(9999). str_repeat(chr(36), 65537). chr(140). str_repeat(chr(140), 65). chr(9999));
-?>

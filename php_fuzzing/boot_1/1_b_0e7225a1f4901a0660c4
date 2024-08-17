@@ -1,4 +1,0 @@
-<?php
-stream_socket_enable_crypto(fopen("https://example.com/non-existent-file.txt", "w"), true, 5473817451, fopen("ftp://localhost/non-existent-file.txt", "w"));
-
-?>

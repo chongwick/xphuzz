@@ -1,9 +1,0 @@
-<?php
-$weird_function ='strtr';
-$first_arg = $weird_function(str_repeat(chr(0), 257), str_repeat(chr(1), 1025), str_repeat(chr(2), 4097));
-$second_arg = str_repeat(chr(3), 65537) + str_repeat(chr(4), 1025) + str_repeat(chr(5), 4097);
-$third_arg = str_repeat(chr(6), 257) + str_repeat(chr(7), 17) + str_repeat(chr(8), 4097);
-$fourth_arg = str_repeat(chr(9), 257) + str_repeat(chr(10), 4097) + str_repeat(chr(11), 1025);
-$weird_function($first_arg, $second_arg, $third_arg, $fourth_arg);
-
-?>

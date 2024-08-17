@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->current()? "I'm a philosopher, not a programmer" : "I'm a programmer, not a philosopher";
-
-?>

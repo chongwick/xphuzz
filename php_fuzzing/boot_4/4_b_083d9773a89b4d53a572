@@ -1,4 +1,0 @@
-<?php
-stream_wrapper_register(str_repeat(chr(39), 65537).str_repeat(chr(38), 257)."a", 1);
-
-?>

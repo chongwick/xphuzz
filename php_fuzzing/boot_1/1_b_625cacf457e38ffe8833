@@ -1,3 +1,0 @@
-<?php
-echo str_replace(chr(142), chr(142).chr(142).chr(142), chr(142).str_repeat(chr(142), 256));
-?>

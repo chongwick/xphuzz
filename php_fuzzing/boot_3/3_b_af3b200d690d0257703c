@@ -1,4 +1,0 @@
-<?php
-gettimeofday(array('seconds' => 0.123456789,'microseconds' => 0xdeadbeef));
-
-?>

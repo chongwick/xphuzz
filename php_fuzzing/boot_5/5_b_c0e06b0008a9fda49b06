@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionMethod"]->getDocComment()? $vars["ReflectionMethod"]->getDocComment()->__toString() : "The method is not documented, but it's still a method, right? Maybe? Possibly? Hopefully?";
-
-?>

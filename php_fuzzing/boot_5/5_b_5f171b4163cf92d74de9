@@ -1,4 +1,0 @@
-<?php
-echo chr(ord('a') + (ftell(fopen("/etc/passwd", "r")) % 26));
-
-?>

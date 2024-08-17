@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionParameter"]->canBePassedByValue()?? "I'm not sure what's going on here..."; 
-
-?>

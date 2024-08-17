@@ -1,4 +1,0 @@
-<?php
-strtoupper(bin2hex(str_split(str_shuffle(str_repeat(chr(105), 1025)), 2)));
-
-?>

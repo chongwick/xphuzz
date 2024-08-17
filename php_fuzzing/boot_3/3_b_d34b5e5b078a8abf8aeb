@@ -1,3 +1,0 @@
-<?php
-$vars["DOMDocument"]->createElementNS(str_repeat(chr(229), 4097). str_repeat(chr(52), 17). "0x1337", "0x41414141", str_repeat("A", 256));
-?>

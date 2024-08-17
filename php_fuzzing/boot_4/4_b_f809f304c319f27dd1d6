@@ -1,4 +1,0 @@
-<?php
-xmlwriter_open_uri(str_repeat(chr(88), 65). 'http://example.com'. str_repeat(chr(201), 257). '!=!');
-
-?>

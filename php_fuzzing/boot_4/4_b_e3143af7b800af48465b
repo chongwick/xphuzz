@@ -1,4 +1,0 @@
-<?php
-xmlwriter_end_dtd_attlist(fopen(base64_decode("aHR0cHM6Ly93d3cudGhhd3RlLmNvbQ=="), "r"));
-
-?>

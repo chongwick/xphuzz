@@ -1,4 +1,0 @@
-<?php
-$vars["DateTimeImmutable"]->diff(new DateTime("January 32, 1975 00:00:00"), true);
-
-?>

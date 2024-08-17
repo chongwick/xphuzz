@@ -1,4 +1,0 @@
-<?php
-<code>curl_multi_strerror(10 * pi());</code>
-
-?>

@@ -1,4 +1,0 @@
-<?php
-array_reverse(array_map('str_rot13', array_keys($ref_array)))[0];
-
-?>

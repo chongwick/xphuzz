@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getInterfaceNames() * 0.5 + 2.23431234213480e-400 * 3.14159;
-
-?>

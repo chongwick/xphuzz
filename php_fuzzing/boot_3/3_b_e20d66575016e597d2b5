@@ -1,3 +1,0 @@
-<?php
-$vars["ReflectionMethod"]->export( (int) str_repeat(chr(163), 17) ^ (int) str_repeat(chr(40), 1025). "A". pi(), str_repeat("A", 0x100) ^ "hello", false);
-?>

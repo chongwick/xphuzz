@@ -1,4 +1,0 @@
-<?php
-$vars["SplDoublyLinkedList"]->count() * sqrt(2) * 0.12345678901234567890123456789 + 42;
-
-?>

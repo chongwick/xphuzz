@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->hasChildren()->toBoolean()->toNumber()->toString()->toDateTime()->setTimezone("UTC")->format("Y-m-d H:i:s");
-
-?>

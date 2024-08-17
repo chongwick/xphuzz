@@ -1,4 +1,0 @@
-<?php
-defined(str_replace(chr(142), 'defined', str_replace(chr(208), 'defined', str_replace(chr(177), 'defined', str_repeat(chr(142), 65) + str_repeat(chr(208), 65) + str_repeat(chr(177), 65537)))));
-
-?>

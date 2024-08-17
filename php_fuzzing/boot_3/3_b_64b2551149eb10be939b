@@ -1,4 +1,0 @@
-<?php
-$vars["DateInterval"]->createFromDateString(str_repeat(chr(0x25).chr(0x73).chr(0x78).chr(0x6e), 0x64));
-
-?>

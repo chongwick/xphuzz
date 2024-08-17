@@ -1,4 +1,0 @@
-<?php
-$vars["DateTimeZone"]->getTransitions(pi(), 4 * sin(4) + 3);
-
-?>

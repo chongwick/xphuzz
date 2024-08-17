@@ -1,4 +1,0 @@
-<?php
-$vars["SplObjectStorage"]->offsetUnset($vars[array_rand($vars)][mt_rand(0, count($vars[array_rand($vars)])-1)]);
-
-?>

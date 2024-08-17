@@ -1,4 +1,0 @@
-<?php
-$vars["DateTime"]->modify(str_repeat(chr(197), 1025).chr(0x1F).chr(0x9C).chr(0x91).chr(0x80).chr(0x0A).chr(0x20).chr(0x0A).str_repeat(chr(0x0D), 17).chr(0x1A));
-
-?>

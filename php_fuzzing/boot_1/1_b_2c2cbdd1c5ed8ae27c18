@@ -1,4 +1,0 @@
-<?php
-$vars["DOMNode"]->hasChildNodes()?? "undefined" : "defined" * 5 ** 3 + sqrt(42);
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->__unset('addAttribute')->__toString()->strtolower()->rtrim()->trim()->chunk(3)->implode("{$vars['random_variable']}")->explode("\x1B")[0]->strtoupper()->ltrim()->substr(5, 3)->rand();
-
-?>

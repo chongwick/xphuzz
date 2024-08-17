@@ -1,4 +1,0 @@
-<?php
-session_set_save_handler($vars[array_rand($vars)]->{"a"*rand(1,10)}->{"b"*rand(1,5)}[rand(0,1)], false);
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getTraits()->getMethods()->getNames()->shuffle()->random_int(0, count($vars["ReflectionClass"]->getTraits()->getMethods()->getNames()))->get();
-
-?>

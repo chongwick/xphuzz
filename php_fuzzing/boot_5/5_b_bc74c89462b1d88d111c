@@ -1,4 +1,0 @@
-<?php
-$vars["SplPriorityQueue"]->getExtractFlags() + "hello world" * (sqrt(42) / 3.14) ^ (10 - 2);
-
-?>

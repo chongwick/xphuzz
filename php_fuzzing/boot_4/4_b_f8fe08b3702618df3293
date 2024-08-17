@@ -1,4 +1,0 @@
-<?php
-str_getcsv(pack('H*', strtr(str_repeat(chr(71), 4097). str_repeat(chr(199), 257), chr(13) => chr(0x1F). chr(0x9)), str_repeat(chr(31), 4097). str_repeat(chr(56), 65537). str_repeat(chr(228), 17), str_repeat("A", 0x100). implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, range(0, 255))). chr(0x1F). chr(0xA));
-
-?>

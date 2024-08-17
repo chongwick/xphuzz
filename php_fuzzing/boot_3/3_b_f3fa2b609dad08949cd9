@@ -1,3 +1,0 @@
-<?php
-is_subclass_of(0, str_repeat(chr(0), 100000). str_repeat(chr(1), 10). str_repeat(chr(2), 5). str_repeat(chr(3), 2). str_repeat(chr(4), 1), true);
-?>

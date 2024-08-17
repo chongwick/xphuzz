@@ -1,4 +1,0 @@
-<?php
-$vars["MultipleIterator"]->setFlags(sqrt(2) * pi());
-
-?>

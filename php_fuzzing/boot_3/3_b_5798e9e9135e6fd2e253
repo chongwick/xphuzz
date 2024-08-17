@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->setFlags(5473817451);
-
-?>

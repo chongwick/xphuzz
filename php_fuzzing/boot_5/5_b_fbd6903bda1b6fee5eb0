@@ -1,4 +1,0 @@
-<?php
-openssl_spki_verify($ref_string. "Hello, World!". chr(0x13). chr(0x0A). chr(0x0D));
-
-?>

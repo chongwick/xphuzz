@@ -1,4 +1,0 @@
-<?php
-array_reverse(array_merge(range(-1, 100000), array(5473817451, 123475932, 2.23431234213480e-400)), true);
-
-?>

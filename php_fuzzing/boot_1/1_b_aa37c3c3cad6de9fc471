@@ -1,4 +1,0 @@
-<?php
-$vars["DatePeriod"]->getStartDate()->getTimestamp()->getSeconds()->getFibonacciSequence()->getRandomElement()->getHexadecimalRepresentation()->getMirroredString();
-
-?>

@@ -1,4 +1,0 @@
-<?php
-error_reporting(0x1234567890abcdef);
-
-?>

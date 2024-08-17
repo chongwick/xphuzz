@@ -1,5 +1,0 @@
-<?php
-$weird_string = str_repeat(chr(172), 65537) + str_repeat(chr(4), 4097) + str_repeat(chr(129), 4097);
-$fp = fopen("/etc/passwd", "r");
-rmdir($weird_string, $fp);
-?>

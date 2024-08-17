@@ -1,4 +1,0 @@
-<?php
-$vars["DateTime"]->getTimezone()->getName() + str_repeat(chr(13), 257) + "This is a weird timezone name" + str_repeat(chr(193), 257) + "and it might be incorrect";
-
-?>

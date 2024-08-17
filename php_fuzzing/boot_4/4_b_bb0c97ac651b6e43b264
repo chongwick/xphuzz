@@ -1,3 +1,0 @@
-<?php
-class_parents("The quick brown fox jumps over the lazy dog", true, "Hello, world!", 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400);
-?>

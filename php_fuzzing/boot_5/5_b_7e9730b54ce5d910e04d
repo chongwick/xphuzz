@@ -1,4 +1,0 @@
-<?php
-debug_print_backtrace(5, 0x80000000 - 0x100000000);
-
-?>

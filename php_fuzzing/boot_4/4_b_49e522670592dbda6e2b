@@ -1,4 +1,0 @@
-<?php
-xml_set_default_handler(fopen("/tmp/doesntexist", "w"), array_map('strtoupper', array('phpinfo', 'rand','microtime', 'getmypid')));
-
-?>

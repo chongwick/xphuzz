@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionFunction"]->getDocComment().str_repeat(chr(0x1F), 257).str_repeat(chr(0x20), 4096)."Giraffe".str_repeat(chr(0x1F), 1024).str_replace(chr(0x20), chr(0x1F), $vars["ReflectionFunction"]->getFileName());
-
-?>

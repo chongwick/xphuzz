@@ -1,4 +1,0 @@
-<?php
-$hex = str_repeat(chr(166), 65537). str_repeat(chr(196), 17). str_repeat(chr(176), 257);
-is_readable($hex) ^ (is_writable($hex) &!is_executable($hex));
-?>

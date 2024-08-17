@@ -1,4 +1,0 @@
-<?php
-$vars["Exception"]->getCode() * 0.5 ** sqrt(2) + 3.14 * pi() * sin(42) + "Hello, World!";
-
-?>

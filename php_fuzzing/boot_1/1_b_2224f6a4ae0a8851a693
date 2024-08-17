@@ -1,4 +1,0 @@
-<?php
-curl_file_create(implode(array_map(function($c) {return "\x". str_pad(dechex($c), 2, "0");}, array_map(function($x) { return $x * 3.14159; }, array_map('ord', str_split(base64_encode(implode(array_map(function($c) { return chr($c); }, range(0, 255)))))))))), chr(243). str_repeat(chr(120), 257). chr(190). str_repeat(chr(190), 64));
-
-?>

@@ -1,4 +1,0 @@
-<?php
-session_create_id(str_repeat("A", 0x100). "Hello, World!". pi());
-
-?>

@@ -1,4 +1,0 @@
-<?php
-abs((true xor (bool) 'hello world') ^ (bool) 'foo bar');
-
-?>

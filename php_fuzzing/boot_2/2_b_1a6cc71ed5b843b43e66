@@ -1,4 +1,0 @@
-<?php
-$vars["DateTime"]->sub(new DateInterval("P2Y4DT6H8M". chr(0x1F). "Gibberish"));
-
-?>

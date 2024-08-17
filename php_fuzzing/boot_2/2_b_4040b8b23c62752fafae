@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->setMaxLineLen(5473817451.123475932e-400);
-
-?>

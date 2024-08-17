@@ -1,4 +1,0 @@
-<?php
-$vars["DOMDocument"]->relaxNGValidate(str_repeat(chr(0x1F5E0), 0x100).str_repeat(chr(0x1F5E1), 0x100).str_repeat(chr(0x1F5E2), 0x100));
-
-?>

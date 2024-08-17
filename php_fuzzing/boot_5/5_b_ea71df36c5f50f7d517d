@@ -1,4 +1,0 @@
-<?php
-stream_set_timeout(fopen("https://example.com/non-existent-file.txt", "w"), 3, 1.5);
-
-?>

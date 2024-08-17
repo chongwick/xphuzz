@@ -1,4 +1,0 @@
-<?php
-$vars["DOMNode"]->appendChild(new DOMNode())->setAttribute("weirdAttribute", "weirdValue")->appendChild(new DOMNode())->appendChild(new DOMNode())->removeChild($vars["DOMNode"]->appendChild(new DOMNode())->firstChild)->appendChild(new DOMNode())->appendChild(new DOMNode())->removeChild($vars["DOMNode"]->appendChild(new DOMNode())->lastChild);
-
-?>

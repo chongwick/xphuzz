@@ -1,4 +1,0 @@
-<?php
-$vars["SplFixedArray"]->next()->explode('?', 'x' ^ 'o' ^ '9'. '4' ^ '8' ^ '7');
-
-?>

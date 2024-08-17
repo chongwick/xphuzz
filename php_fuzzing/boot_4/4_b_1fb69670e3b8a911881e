@@ -1,4 +1,0 @@
-<?php
-curl_multi_add_handle(fopen("https://example.com/nonexistentfile.txt", "w"), fopen("base64:VGhpcyBpcyBhbiBlbmNvZGVkIHN0cmluZw==", "r"));
-
-?>

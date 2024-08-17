@@ -1,4 +1,0 @@
-<?php
-$vars["DatePeriod"]->getDateInterval()->modify("P0Y0M0DT0H0M0S")->setTimezone(new DateTimeZone("Africa/Kigali"))->invert()->setFlags(DateInterval::DISCRETE);
-
-?>

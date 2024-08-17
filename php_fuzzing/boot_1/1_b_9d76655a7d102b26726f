@@ -1,3 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getExtensionName() + 0xdeadbeef + sqrt(-1) * pi() * (rand() % 1000000);
-?>

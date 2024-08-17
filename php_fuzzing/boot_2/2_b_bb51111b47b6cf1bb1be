@@ -1,4 +1,0 @@
-<?php
-openssl_spki_export_challenge($ref_string * 2 ** 32);
-
-?>

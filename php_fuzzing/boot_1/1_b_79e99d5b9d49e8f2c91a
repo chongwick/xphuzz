@@ -1,4 +1,0 @@
-<?php
-readline_completion_function(base64_encode(serialize(gzinflate(base64_decode(phpinfo())))));
-
-?>

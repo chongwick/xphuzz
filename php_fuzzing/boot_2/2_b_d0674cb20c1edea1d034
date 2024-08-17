@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->query("SELECT * FROM disco_ball WHERE glitter=TRUE")->fetch_assoc()['sparkle'];
-
-?>

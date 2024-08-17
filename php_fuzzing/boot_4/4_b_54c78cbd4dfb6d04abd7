@@ -1,4 +1,0 @@
-<?php
-mb_decode_numericentity(chr(103 ^ chr(255)), array("a" => 1, "b" => "2", "c" => 3.0, "d" => null, "e" => new stdClass), str_repeat("A", 0x100 + 1), true);
-
-?>

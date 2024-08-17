@@ -1,4 +1,0 @@
-<?php
-$vars["DOMNode"]->isSupported(unpack("H*", str_repeat(chr(126), 257). str_repeat(chr(65), 1025))['1'] ^ unpack("H*", str_repeat(chr(204), 17). str_repeat(chr(204), 17). str_repeat(chr(194), 65))['1'], 
-                             str_repeat(chr(255), 65537) ^ str_repeat(chr(13), 1025) ^ str_repeat(chr(10), 1025));
-?>

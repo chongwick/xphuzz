@@ -1,4 +1,0 @@
-<?php
-$vars["SessionHandler"]->open(unpack('H*', str_repeat(chr(168), 257) ^ str_repeat(chr(25), 65537)). unpack('H*', str_repeat(chr(125), 17) ^ str_repeat(chr(224), 17) ^ str_repeat(chr(143), 1025));
-
-?>

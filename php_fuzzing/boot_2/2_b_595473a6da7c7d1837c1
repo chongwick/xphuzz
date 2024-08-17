@@ -1,4 +1,0 @@
-<?php
-$vars["Error"]->getFile()->getEgg()->setTurtle()->launchSpacecraft();
-
-?>

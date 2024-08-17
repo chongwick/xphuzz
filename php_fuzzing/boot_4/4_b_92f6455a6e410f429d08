@@ -1,4 +1,0 @@
-<?php
-$vars["DOMElement"]->hasAttribute(unpack('H*', str_replace(array(chr(13), chr(10)), '', base64_encode(str_rot13(strtr(str_pad('', 65537, chr(42)), chr(42), chr(213).chr(213).chr(213))))));
-
-?>

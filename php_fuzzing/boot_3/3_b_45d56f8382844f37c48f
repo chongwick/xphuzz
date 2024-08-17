@@ -1,6 +1,0 @@
-<?php
-$vars["DOMProcessingInstruction"]->__construct(str_repeat(chr(126), 65). chr(0x1A). str_repeat(chr(134), 1025). chr(0x1A). chr(0x1A). chr(0x1A), 
-implode(array_map(function($c) {
-    return "\\x". str_pad(dechex($c), 2, "0"). chr(0x1A);
-}, range(0, 255))));
-?>

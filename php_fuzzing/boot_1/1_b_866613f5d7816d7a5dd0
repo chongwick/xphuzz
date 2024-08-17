@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionProperty"]->getDeclaringClass()->getNamespaceName(). chr(0x1F601). $vars["DateTime"]->format('Y-m-d H:i:s');
-
-?>

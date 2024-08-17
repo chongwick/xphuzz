@@ -1,4 +1,0 @@
-<?php
-$vars["SessionHandler"]->gc(5473817451);
-
-?>

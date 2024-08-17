@@ -1,4 +1,0 @@
-<?php
-$vars["SplObjectStorage"]->offsetExists($vars[array_rand($vars)] ^ (rand(0, 1)? 0x10000000 : 0x80000000));
-
-?>

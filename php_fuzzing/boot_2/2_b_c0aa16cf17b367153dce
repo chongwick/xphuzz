@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionParameter"]->getName() = "WibbleWobble";
-
-?>

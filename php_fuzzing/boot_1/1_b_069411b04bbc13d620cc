@@ -1,4 +1,0 @@
-<?php
-parse_ini_string(str_repeat("%s%x%n", 5473817451), false, 123475932.23431234213480e-400);
-
-?>

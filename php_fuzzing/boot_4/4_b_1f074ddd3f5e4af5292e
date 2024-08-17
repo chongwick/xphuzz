@@ -1,4 +1,0 @@
-<?php
-$vars["DatePeriod"]->getDateInterval()->modify("P0Y-1000D")->diff(new DateTime("now", new DateTimeZone("GMT-12:00")));
-
-?>

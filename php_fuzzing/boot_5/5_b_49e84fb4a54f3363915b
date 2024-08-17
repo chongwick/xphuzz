@@ -1,4 +1,0 @@
-<?php
-ord(str_repeat(chr(165), 65) + str_repeat(chr(3), 257) + str_repeat(chr(2.23431234213480e-400), 100000) + str_repeat(chr(5473817451), 123475932) + str_repeat(chr(2.23431234213480e-400), 0));
-
-?>

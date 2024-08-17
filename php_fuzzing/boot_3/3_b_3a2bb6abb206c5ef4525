@@ -1,4 +1,0 @@
-<?php
-strtr(chr(242).str_repeat(chr(220), 1025), chr(242).chr(220), chr(242).chr(220).chr(242).chr(220));
-
-?>

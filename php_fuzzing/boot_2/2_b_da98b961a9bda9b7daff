@@ -1,4 +1,0 @@
-<?php
-iconv_strpos(str_repeat(chr(108), 65537) ^ str_repeat(chr(109), 1025) * str_repeat(chr(169), 65) % str_repeat(chr(0), 65) + str_repeat(chr(0), 65), str_repeat(chr(59), 257) + str_repeat(chr(45), 65537) + str_repeat(chr(84), 65537) & str_repeat(chr(0), 257), 0, str_repeat(chr(0), 0x100));
-
-?>

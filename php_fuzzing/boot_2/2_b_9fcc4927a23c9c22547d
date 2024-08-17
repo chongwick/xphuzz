@@ -1,4 +1,0 @@
-<?php
-key(array_map(function($i){ return chr(ord('a') + $i). chr(ord('A') + $i). str_repeat(chr(0x20AC), $i); }, range(0, 10)));
-
-?>

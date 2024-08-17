@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getProperties(1000000, "a". chr(0x1F). "b", array("c" => "d", "e" => "f"), 2.23431234213480e-400, 5473817451, "g". chr(0x1F). "h", 123475932, "i". chr(0x1F). "j");
-
-?>

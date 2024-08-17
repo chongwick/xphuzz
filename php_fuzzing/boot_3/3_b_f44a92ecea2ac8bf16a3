@@ -1,7 +1,0 @@
-<?php
-function weirdFunction($a, $b, $c) {
-    return array_uintersect($a, $b, $c, "Hello, World!");
-}
-
-weirdFunction(array_map("sqrt", range(0, 10)), array("a" => 1, "b" => "2", "c" => 3.0), array("a" => 1, "b" => "2", "c" => 3.0), debug_backtrace());
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionType"]->allowsNull() || (rand(0, 1)? $vars["ReflectionType"]->getName() : "foo") && "bar" * 2;
-
-?>

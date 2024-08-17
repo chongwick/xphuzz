@@ -1,4 +1,0 @@
-<?php
-stristr(str_repeat("€$#^*%&", 0x1000000000000000000), implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 8, "0");}, array_merge(range(0, 255), array(256, 257, 258))), true));
-
-?>

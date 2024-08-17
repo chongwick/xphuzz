@@ -1,3 +1,0 @@
-<?php
-$vars["ReflectionProperty"]->isPrivate() * sqrt(2) * pi() * 0.5 * "hello" + "world" * $vars["ReflectionProperty"]->getDeclaringClass()->getName();
-?>

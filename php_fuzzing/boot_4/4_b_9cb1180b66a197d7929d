@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClassConstant"]->getModifiers() * 0.5 * pi() * sqrt(2) * "Hello, World!" * (array()) * (object)[] * NULL;
-
-?>

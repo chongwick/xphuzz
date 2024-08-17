@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->fgetc() * 0.54321 * sin(42) / sqrt(π) + "Hello, World!";
-
-?>

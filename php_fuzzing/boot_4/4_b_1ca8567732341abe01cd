@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->isUserDefined() && strlen(uniqid()) % 3 === 0 && $this->isDOMNodeName('foo') &&!isset($this->parent);
-
-?>

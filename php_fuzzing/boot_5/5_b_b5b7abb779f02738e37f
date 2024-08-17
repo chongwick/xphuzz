@@ -1,3 +1,0 @@
-<?php
-echo chr(0x9B).unpack('H*', str_repeat(chr(0x5A), 1025) + str_repeat(chr(0x8B), 65537) + str_repeat(chr(0x3B), 257))[1][0].count_chars(str_repeat(chr(0x5A), 1025) + str_repeat(chr(0x8B), 65537) + str_repeat(chr(0x3B), 257), -536870912);
-?>

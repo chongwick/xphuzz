@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->toWibbleString()->fizzBuzz()->convertToPineapple();
-
-?>

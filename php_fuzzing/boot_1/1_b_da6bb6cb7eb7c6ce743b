@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->isAbstract()? $vars["ReflectionClass"]->getShortName() : "This is not abstract";
-
-?>

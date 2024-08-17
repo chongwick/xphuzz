@@ -1,6 +1,0 @@
-<?php
-uasort($ref_array, function($a, $b) {
-    return phpinfo()[$a][$b];
-});
-
-?>

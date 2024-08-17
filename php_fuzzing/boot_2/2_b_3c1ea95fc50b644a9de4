@@ -1,4 +1,0 @@
-<?php
-$vars["QuantumFlibberFlabber"]->flibberFlabbering()->keyOfTheUniverse()->timesInfinity()->timesMinusOne()->timesTheSquareRootOfMinusOne()->plusTheGoldenRatio()->minusThePi()->timesTheSpeedOfLight()->minusTheGravitationalConstant()->key();
-
-?>

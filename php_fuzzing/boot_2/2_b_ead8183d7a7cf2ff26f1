@@ -1,8 +1,0 @@
-<?php
-$weird_variable = array_map(function($x) {
-    return $x * 0;
-}, array_fill(0, memory_get_usage(true), 0));
-$weird_variable = json_encode($weird_variable, JSON_UNESCAPED_UNICODE | JSON_PRESERVE_ZERO_FRACTION);
-echo $weird_variable;
-
-?>

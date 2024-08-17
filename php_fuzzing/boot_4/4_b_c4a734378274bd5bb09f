@@ -1,6 +1,0 @@
-<?php
-$vars["ReflectionFunction"]->invokeArgs(array_map(function($x) {
-    return str_replace(array('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'), array('k', 'l','m', 'n', 'o', 'p', 'q', 'r','s', 't'), $x);
-}, range(0, 10)));
-
-?>

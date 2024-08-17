@@ -1,4 +1,0 @@
-<?php
-$vars["SplPriorityQueue"]->top()->explode("")->reverse()->implode("")->sort();
-
-?>

@@ -1,4 +1,0 @@
-<?php
-sort($ref_array, 5, 'wibble', 'flumplenook');
-
-?>

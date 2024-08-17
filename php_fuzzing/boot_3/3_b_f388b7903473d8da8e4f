@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->implementsInterface(str_repeat("A", 0x100). "Z". str_repeat("B", 5473817451). chr(123475932). "a". bin2hex("2.23431234213480e-400"));
-
-?>

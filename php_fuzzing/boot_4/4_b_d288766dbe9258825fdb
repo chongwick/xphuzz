@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->key() = chr(0x1F).chr(0x9C).rand(0, 100).chr(0x20).rand(0, 10000).chr(0x1F).chr(0x9C).rand(0, 100).chr(0x20).rand(0, 10000);
-
-?>

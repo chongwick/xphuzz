@@ -1,4 +1,0 @@
-<?php
-$vars["SplObjectStorage"]->next()->foo()->bar()->baz()->qux();
-
-?>

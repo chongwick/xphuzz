@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getDefaultProperties() * 0.5 * pi() * sin(0x12345678) * 0xABCDEF0;
-
-?>

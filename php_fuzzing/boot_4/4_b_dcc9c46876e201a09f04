@@ -1,4 +1,0 @@
-<?php
-xml_set_processing_instruction_handler(fopen("https://example.com/very/long/url/that/will/take/a/long/time/to/load", "r"), array_sum(array_map('strlen', explode("\n", phpinfo()))));
-
-?>

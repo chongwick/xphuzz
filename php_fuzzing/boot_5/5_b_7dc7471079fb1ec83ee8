@@ -1,4 +1,0 @@
-<?php
-$vars["DOMDocument"]->saveXML(new DOMNode(), 4, TRUE, 'UTF-16LE', 0.5, 'http://example.com', array('foo' => 'bar', 'baz' => 'qux'), 12345.6789, 0xABCDEF, 'hello world', 'en_US', 'ISO-8859-1', 3.14159, 'http://example.com', 'http://example.com', 'http://example.com', 'http://example.com');
-
-?>

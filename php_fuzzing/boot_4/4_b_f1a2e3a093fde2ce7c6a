@@ -1,4 +1,0 @@
-<?php
-$vars["DOMElement"]->removeAttributeNS("0x".implode(array_map(function($c) {return str_pad(dechex($c), 4, "0");}, array_merge(range(0, 255), array(0xFF, 0x1234, 0x5678, 0x9ABC))), "0x".implode(array_map(function($c) {return str_pad(dechex($c), 4, "0");}, array_merge(array(0x1234, 0x5678, 0x9ABC), range(0, 255)))));
-
-?>

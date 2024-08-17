@@ -1,4 +1,0 @@
-<?php
-money_format(implode(array_map(function($c) {return "\x". str_pad(dechex($c), 2, "0");}, array_map(function($v) {return $v * 3.14159;}, array_map(function($v) {return $v ^ 0x12345678;}, range(0, 255)))), 2.2250738585072011e-308));
-
-?>

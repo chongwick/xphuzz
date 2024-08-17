@@ -1,4 +1,0 @@
-<?php
-array_slice(range(2.23431234213480e-400, 5473817451), -1, 100000, 'randomly chosen');
-
-?>

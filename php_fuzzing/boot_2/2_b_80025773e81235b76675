@@ -1,4 +1,0 @@
-<?php
-$vars["SplDoublyLinkedList"]->unshift(array_sum(array_map('sqrt', array_map('sin', array_map('atan2', array_fill(0, 257, 0), array_fill(0, 257, 1))))));
-
-?>

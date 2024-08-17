@@ -1,4 +1,0 @@
-<?php
-array_rand(array("a" => "1.5", "b" => true, "c" => null, "d" => array("e" => "f", "g" => "h"), "i" => new stdClass()), 0.5);
-
-?>

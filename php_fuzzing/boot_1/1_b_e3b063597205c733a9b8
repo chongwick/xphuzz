@@ -1,4 +1,0 @@
-<?php
-$vars["SplFixedArray"]->offsetGet($this->generateRandomlyGeneratedNegativeIntegers()[0]);
-
-?>

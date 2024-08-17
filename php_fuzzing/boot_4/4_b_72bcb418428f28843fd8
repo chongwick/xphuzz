@@ -1,9 +1,0 @@
-<?php
-array_intersect_uassoc(
-    array("a" => 1, "b" => "2", "c" => 3.0, "d" => "string"),
-    array("a" => 1, "b" => "2", "c" => 3.0, "e" => array(1, 2, 3)),
-    array("a" => 1, "b" => "2", "c" => 3.0, "f" => "resource"),
-    array("a" => 1, "b" => "2", "c" => 3.0, "g" => (object) array("prop" => "value"))
-);
-
-?>

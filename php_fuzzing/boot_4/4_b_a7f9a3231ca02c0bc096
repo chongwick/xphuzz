@@ -1,4 +1,0 @@
-<?php
-array_replace_recursive(array("a" => "null", "b" => "undefined", "c" => "NaN"), array("a" => 0, "b" => "2", "c" => 3.0));
-
-?>

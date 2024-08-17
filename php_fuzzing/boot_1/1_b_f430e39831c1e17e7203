@@ -1,3 +1,0 @@
-<?php
-$vars["DOMDocument"]->saveHTMLFile(bin2hex(str_repeat(chr(167), 17) + str_repeat(chr(254), 65537)). '¯_(ツ)_/¯');
-?>

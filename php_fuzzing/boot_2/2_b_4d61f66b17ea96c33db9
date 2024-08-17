@@ -1,4 +1,0 @@
-<?php
-$vars["SplObjectStorage"]->key() ^ 5473817451;
-
-?>

@@ -1,6 +1,0 @@
-<?php
-$var = 5473817451;
-$var = $var * str_repeat(chr(47), 4097) * 2.23431234213480e-400;
-octdec($var);
-
-?>

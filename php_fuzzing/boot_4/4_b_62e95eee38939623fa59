@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionProperty"]->isDefault() + "hello world" * 42 / sqrt(2) - "goodbye universe" ** 3;
-
-?>

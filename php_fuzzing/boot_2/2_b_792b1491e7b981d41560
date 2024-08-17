@@ -1,4 +1,0 @@
-<?php
-$vars["DOMElement"]->removeAttributeNode($vars["DOMElement"]->getAttributeNode("attr")->cloneNode(true)->setNodeValue("attr value changed"));
-
-?>

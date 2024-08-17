@@ -1,4 +1,0 @@
-<?php
-number_format(2.2250738585072011e-308, 5, str_repeat("🤯", 0x100), str_repeat("🔥", 0x100));
-
-?>

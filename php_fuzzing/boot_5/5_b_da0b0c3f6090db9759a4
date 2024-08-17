@@ -1,4 +1,0 @@
-<?php
-stream_socket_get_name(fopen("https://example.com/non-existent-file.txt", "w"), false);
-
-?>

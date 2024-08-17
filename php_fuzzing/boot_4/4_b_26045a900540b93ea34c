@@ -1,4 +1,0 @@
-<?php
-$vars["Exception"]->getMessage() * 0.5 + sqrt(2) * 3.14 * (string) rand(0, 1000000000);
-
-?>

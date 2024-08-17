@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionParameter"]->getDeclaringClass()->newInstance()->__toString()->split("")->reverse()->join("");
-
-?>

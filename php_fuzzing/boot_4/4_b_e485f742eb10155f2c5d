@@ -1,4 +1,0 @@
-<?php
-$vars["SplFixedArray"]->next()->setFlags(SPLFixedArray::ARRAY_AS_PROPS)->__invoke("Hello, World!")->unsetIndex(0)->setIteratorClass("MyIteratorClass")->setFlags(SPLFixedArray::ARRAY_AS_PROPS)->__set("magic", "happens");
-
-?>

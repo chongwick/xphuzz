@@ -1,4 +1,0 @@
-<?php
-xml_parser_set_option(fopen("I'm a string, not a file!", "w"), 100, false);
-
-?>

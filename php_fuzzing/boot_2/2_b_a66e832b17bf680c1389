@@ -1,4 +1,0 @@
-<?php
-is_float(array("a" => 1, "b" => "2", "c" => "3.0", "d" => null, "e" => true, "f" => array(), "g" => new stdClass()));
-
-?>

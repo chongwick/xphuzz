@@ -1,4 +1,0 @@
-<?php
-$vars["SplPriorityQueue"]->rewind()->insert("octopus")->underwater()->rewind()->pop()->explode()->implode("pineapple");
-
-?>

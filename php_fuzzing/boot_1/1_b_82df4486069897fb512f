@@ -1,4 +1,0 @@
-<?php
-$vars["DOMNode"]->isSameNode(new DOMNode())->getOwnerDocument()->getElementsByTagName('non_existent_tag')[0]->nodeValue = "I'm a unicorn!";
-
-?>

@@ -1,6 +1,0 @@
-<?php
-array_sum(array_map(function($i) {
-    return pow(2, $i);
-}, range(0, 10)));
-
-?>

@@ -1,6 +1,0 @@
-<?php
-<code>
-$vars["DOMCharacterData"]->substringData(1073741823, 5). str_repeat(chr(0), 1073741822). str_repeat(chr(1), 1);
-</code>
-
-?>

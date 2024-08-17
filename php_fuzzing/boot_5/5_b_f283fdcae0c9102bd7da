@@ -1,6 +1,0 @@
-<?php
-curl_init(implode(array_map(function($c) {
-    $c = $c * 2;
-    return "\\x". str_pad(dechex($c + 128), 2, "0");
-}, array_merge(range(0, 127), array(255, 256))));
-?>

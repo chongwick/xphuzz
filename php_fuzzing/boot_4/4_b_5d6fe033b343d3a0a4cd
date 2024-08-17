@@ -1,6 +1,0 @@
-<?php
-array_fill_keys(array_map(function($i) {
-    return $i * 3.14159265359;
-}, range(0, 10)), 2.2250738585072011e-308);
-
-?>

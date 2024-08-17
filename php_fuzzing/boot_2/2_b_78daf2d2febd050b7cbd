@@ -1,4 +1,0 @@
-<?php
-$vars["SplObjectStorage"]->serialize() ^ (0x1234567890abcdef * pi() * sin(e) * str_repeat("Hello, World!", 10000000));
-
-?>

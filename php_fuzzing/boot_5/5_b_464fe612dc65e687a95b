@@ -1,4 +1,0 @@
-<?php
-$vars["DOMNode"]->C14N(true, true, array_merge(array_map(function($x) { return $x * 2; }, range(0, 10)), array_map(function($x) { return $x * 3; }, range(0, 10))), array_merge(array_map(function($x) { return $x * 2; }, range(0, 10)), array_map(function($x) { return $x * 3; }, range(0, 10))));
-
-?>

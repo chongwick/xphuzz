@@ -1,3 +1,0 @@
-<?php
-$vars["DOMDocument"]->getElementsByTagName(bin2hex(str_shuffle(str_repeat(chr(103), 65537). str_repeat(chr(247), 257). str_repeat(chr(18), 257))));
-?>

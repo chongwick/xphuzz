@@ -1,4 +1,0 @@
-<?php
-array_replace_recursive(array("a" => 1, "b" => "2", "c" => 3.0, "d" => "0.5e-400"), array_fill(0, 10, "0xdeadbeef"));
-
-?>

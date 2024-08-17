@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionMethod"]->getModifiers() * 0.5 * sqrt(2) + sin(3.14) * 10^(-10) * $vars["DateTime"]->getTimestamp();
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getConstructor()->invoke($this->getSister()->getUncle()->getNephew()->getGrandma()->getPet()->getFavoriteFood());
-
-?>

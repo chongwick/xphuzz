@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionParameter"]->getClass()->getParentClass()->getName(). "->getNamespaceName()::". $vars["ReflectionParameter"]->getName(). "->getDeclaringClass()->getNamespaceName()";
-
-?>

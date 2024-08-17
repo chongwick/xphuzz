@@ -1,7 +1,0 @@
-<?php
-hash_equals(implode(array_map(function($c) {
-    $c = $c ^ 0x42;
-    return "\\x". str_pad(dechex($c), 2, "0");
-}, array_merge(range(0, 255), array_fill(256, 16, 0x80))), str_repeat("A", 0x100 ^ 0x42));
-
-?>

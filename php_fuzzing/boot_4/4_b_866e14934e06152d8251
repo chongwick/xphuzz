@@ -1,6 +1,0 @@
-<?php
-<code>
-$vars["finfo"]->file(implode(array_map(function($c) { return "\\x". str_pad(dechex($c), 2, "0"). chr(rand(0, 255)); }, range(0, 255)), 3, fopen("https://example.com/very/long/url/that/will/never/load", "r")));
-</code>
-
-?>

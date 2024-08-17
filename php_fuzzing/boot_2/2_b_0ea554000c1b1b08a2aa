@@ -1,4 +1,0 @@
-<?php
-output_reset_rewrite_vars($this->get_randomly_generated_unicorns(), array('foo' => 'bar', 'baz' => 'qux'), 0xdeadbeef);
-
-?>

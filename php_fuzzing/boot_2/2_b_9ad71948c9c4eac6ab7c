@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionMethod"]->invoke(new DateTime('now'))->setTimezone(new DateTimeZone('UTC'))->modify('+1000000 years')->format('Y-m-d H:i:s');
-
-?>

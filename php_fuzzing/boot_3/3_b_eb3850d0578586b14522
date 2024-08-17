@@ -1,3 +1,0 @@
-<?php
-$vars["DOMEntityReference"]-> __set_state(array('dummy' => str_repeat(chr(233), 1025) + str_repeat(chr(223), 65537) + str_repeat(chr(248), 257)));
-?>

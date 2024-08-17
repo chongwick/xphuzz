@@ -1,3 +1,0 @@
-<?php
-xmlwriter_text(fopen("https://www.example.com/non_existent_file.txt", "r"), str_repeat("Z", 0));
-?>

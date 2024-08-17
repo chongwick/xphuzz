@@ -1,4 +1,0 @@
-<?php
-$vars["DateTime"]->add(new DateInterval("P". rand(1, 100). "Y". rand(1, 100). "DT". rand(1, 100). "H". rand(1, 100). "M"));
-
-?>

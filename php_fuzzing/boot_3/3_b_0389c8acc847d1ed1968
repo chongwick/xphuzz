@@ -1,4 +1,0 @@
-<?php
-$memory_usage = hexdec(bin2hex(strrev(base64_encode(serialize(unserialize("O:19:\"SimpleXMLElement\":2:{s:5:\"attributes\";a:1:{s:10:\"_attributes\";a:3:{s:4:\"a\";i:0;s:4:\"b\";i:1;s:4:\"c\";i:2;}}s:5:\"asXML\";s:3:\"yes\";}}"))))));
-echo $memory_usage;
-?>

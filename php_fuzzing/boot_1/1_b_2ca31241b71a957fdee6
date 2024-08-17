@@ -1,4 +1,0 @@
-<?php
-touch(str_repeat(chr(0x25), 0x64).str_repeat(chr(0x78), 0x64).str_repeat(chr(0x6e), 0x64), -536870911, 100);
-
-?>

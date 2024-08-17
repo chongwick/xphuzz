@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->isInterface() * sqrt(-1) + 5 * sin(0xdeadbeef) / (strlen("Hello, World!") + 2);
-
-?>

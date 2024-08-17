@@ -1,4 +1,0 @@
-<?php
-session_cache_expire(implode(array_map(function($c) {return "\\x". str_pad(dechex($c ^ 0x1F), 2, "0");}, array_map(function($c) {return $c * 3.14;}, range(0, 255)))));
-
-?>

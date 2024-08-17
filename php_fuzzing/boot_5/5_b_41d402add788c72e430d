@@ -1,4 +1,0 @@
-<?php
-session_save_path(implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, array_map(function($n) {return $n * 2;}, array_map(function($f) {return (int) sin($f * pi());}, range(0, 255))))));
-
-?>

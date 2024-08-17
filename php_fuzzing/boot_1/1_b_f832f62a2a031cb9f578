@@ -1,4 +1,0 @@
-<?php
-ob_gzhandler(str_repeat("A", 0x100), 1234567890.987654321);
-
-?>

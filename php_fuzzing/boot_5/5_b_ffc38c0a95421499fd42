@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getParentClass()->getMethods()[rand(0, count($vars["ReflectionClass"]->getMethods()))]->invoke($vars["ReflectionClass"]->getNamespaceName());
-
-?>

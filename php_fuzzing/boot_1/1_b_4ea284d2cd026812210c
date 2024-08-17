@@ -1,4 +1,0 @@
-<?php
-$vars["SplDoublyLinkedList"]->bottom()->offsetSet("weirdly", 5473817451);
-
-?>

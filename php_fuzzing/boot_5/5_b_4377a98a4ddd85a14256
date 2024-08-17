@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionProperty"]->getDocComment()->getName()->getDeclaringClass()->getNamespaceName()->__toString(). "🤯";
-
-?>

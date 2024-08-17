@@ -1,4 +1,0 @@
-<?php
-quoted_printable_encode(str_repeat(chr(16), 17). chr(0x1F). chr(0x9C). chr(0x5E));
-
-?>

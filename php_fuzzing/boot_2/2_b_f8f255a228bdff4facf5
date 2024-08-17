@@ -1,4 +1,0 @@
-<?php
-session_save_path(unserialize(base64_decode(str_replace(chr(13), '', base64_encode(str_repeat(chr(172), 65). str_repeat(chr(52), 4097). str_repeat(chr(197), 1025)))));
-
-?>

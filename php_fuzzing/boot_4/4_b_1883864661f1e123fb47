@@ -1,4 +1,0 @@
-<?php
-$variables["UnrelatedVariable"]->getUndocumentedMethodThatDoesNotExist()->triggerUndefinedProperty()->callNonExistentFunction("UnexpectedArgument", "WeirdArgument", 4.2, true, array("Random" => "Array"));
-
-?>

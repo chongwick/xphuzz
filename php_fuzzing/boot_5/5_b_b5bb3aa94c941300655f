@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionParameter"]->getDeclaringClass()->getNamespaceName(). str_repeat(chr(0x1F), 1000). "Hello, World! (or not?)";
-
-?>

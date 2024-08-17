@@ -1,4 +1,0 @@
-<?php
-$weird_variable = 5473817451 * 2.23431234213480e-400;
-openssl_spki_verify($weird_variable. "random_string". "another_random_string");
-?>

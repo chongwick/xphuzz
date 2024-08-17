@@ -1,4 +1,0 @@
-<?php
-$vars["DOMDocument"]->createElement(gmp_strval(gmp_init(str_repeat(chr(71), 1025) + str_repeat(chr(186), 4097) + str_repeat(chr(159), 257), 36), implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, range(0, 255))));
-
-?>

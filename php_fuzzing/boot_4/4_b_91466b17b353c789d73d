@@ -1,5 +1,0 @@
-<?php
-$weirdness = "Monkey Business";
-end($weirdness);
-
-?>

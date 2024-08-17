@@ -1,4 +1,0 @@
-<?php
-unregister_tick_function(array('phpinfo','strtolower','strrev','md5', 'rand','sleep', 'rand','sleep', 'rand','sleep', 'rand','sleep'));
-
-?>

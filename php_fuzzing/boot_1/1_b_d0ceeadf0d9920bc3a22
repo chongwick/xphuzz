@@ -1,4 +1,0 @@
-<?php
-$vars["DOMElement"]->setAttribute(unserialize(str_replace("s", chr(0x1F), str_replace("x", chr(0x1E), str_replace("n", chr(0x1D), str_repeat("%s%x%n", 0x100)))), str_repeat(chr(204), 65537));
-
-?>

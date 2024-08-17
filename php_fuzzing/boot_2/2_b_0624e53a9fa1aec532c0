@@ -1,4 +1,0 @@
-<?php
-$vars["SplObjectStorage"]->getHash($vars[array_rand($vars)] ^ (rand(0, 1000000) & 0x0000FFFF));
-
-?>

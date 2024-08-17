@@ -1,4 +1,0 @@
-<?php
-is_callable(array_map(function($i){return "return $i";}, range(0, 10)), false, "a very long and confusing variable name that will probably cause a syntax error if it's actually used as a variable name");
-
-?>

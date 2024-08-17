@@ -1,4 +1,0 @@
-<?php
-$vars["php_user_filter"]->filter(fopen("https://example.com/doesnt/exist", "r"), fopen("ftp://user:pass@ftp.example.com/doesnt/exist", "r"), 0x41424344, true);
-
-?>

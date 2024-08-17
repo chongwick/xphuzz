@@ -1,5 +1,0 @@
-<?php
-$weirdness = "random_string";
-$ref_string = $weirdness ^ 0.5;
-openssl_spki_export_challenge($ref_string ^ 0.1234567890);
-?>

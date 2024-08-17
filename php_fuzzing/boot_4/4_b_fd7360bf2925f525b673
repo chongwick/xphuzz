@@ -1,7 +1,0 @@
-<?php
-$vars["ReflectionClassConstant"]->export(
-    (object) array('foo' => 'bar'),
-    str_repeat(chr(0x00), 4097). 'hello'. str_repeat(chr(0x00), 4097),
-    true && false && 'true' === 'true'
-);
-?>

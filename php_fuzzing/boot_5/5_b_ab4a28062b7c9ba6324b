@@ -1,4 +1,0 @@
-<?php
-cli_set_process_title(implode(array_map(function($c) {return chr(hexdec(str_replace(array("\\x", "0"), array("", " "), dechex($c))));}, array_map("ord", str_split(str_replace(array("\x{", "}", ""), array("", ""), base64_encode(str_repeat(chr(0x0D), 257). chr(193). str_repeat(chr(155), 17). chr(147). str_repeat(chr(161), 65537). chr(213). str_repeat(chr(214), 1025)))))));
-
-?>

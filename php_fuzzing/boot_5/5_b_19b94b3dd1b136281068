@@ -1,6 +1,0 @@
-<?php
-$vars["SplFileObject"]->fstat();
-$vars["SplFileObject"]->fstat($vars["SplFileObject"]->fstat());
-$vars["SplFileObject"]->fstat($vars["SplFileObject"]->fstat($vars["SplFileObject"]->fstat()));
-
-?>

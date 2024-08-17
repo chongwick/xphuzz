@@ -1,4 +1,0 @@
-<?php
-$vars["SplFixedArray"]->key() = str_repeat(chr(0x1F), 100000);
-
-?>

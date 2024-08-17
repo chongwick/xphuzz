@@ -1,4 +1,0 @@
-<?php
-call_user_func_array(array('str_rot13' => 'phpinfo'), array_map('strrev', range(0, 10)));
-
-?>

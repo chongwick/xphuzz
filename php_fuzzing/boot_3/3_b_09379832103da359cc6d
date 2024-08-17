@@ -1,3 +1,0 @@
-<?php
-$vars["ReflectionClass"]->isAnonymous() * (0.5 + sin(2 * pi() * 0.12345)) + (rand(0, 1)? "I'm not anonymous, I'm a ninja!" : "I'm anonymous, I'm a ghost!");
-?>

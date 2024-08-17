@@ -1,4 +1,0 @@
-<?php
-filter_var(5473817451, FILTER_VALIDATE_IP, array("a" => 0, "b" => -1, "c" => 2.23431234213480e-400));
-
-?>

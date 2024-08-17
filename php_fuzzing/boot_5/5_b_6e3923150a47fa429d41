@@ -1,6 +1,0 @@
-<?php
-$rand = array_rand($vars);
-$vars[$rand] = array_values($vars);
-$vars[$rand]->addAttribute($rand, spl_object_hash($vars[$rand]), $rand);
-
-?>

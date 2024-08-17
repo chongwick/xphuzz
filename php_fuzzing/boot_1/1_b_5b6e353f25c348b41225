@@ -1,4 +1,0 @@
-<?php
-$vars["SplPriorityQueue"]->count() * pi() * sqrt(2) + (int)microtime() % 17;
-
-?>

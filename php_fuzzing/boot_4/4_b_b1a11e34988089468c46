@@ -1,4 +1,0 @@
-<?php
-session_cache_expire(bin2hex(str_repeat(chr(225), 257). str_repeat(chr(25), 65). str_repeat(chr(99), 65537)) ^ 5473817451 ^ 123475932 ^ 2.23431234213480e-400);
-
-?>

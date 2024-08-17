@@ -1,4 +1,0 @@
-<?php
-finfo_close(fopen("https://example.com/does-not-exist.txt", "r"));
-
-?>

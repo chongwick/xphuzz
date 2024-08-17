@@ -1,4 +1,0 @@
-<?php
-$vars["finfo"]->buffer(unpack("H*", str_repeat(chr(253), 1025). str_repeat(chr(51), 17). str_repeat(chr(19), 4097)), 2, fsockopen("ftp://nonexistent.com", 21));
-
-?>

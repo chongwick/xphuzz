@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionParameter"]->getName().str_repeat("🚀", rand(1, 100))."👽".(new DateTime('1976-04-25'))->format('Y-m-d H:i:s')."🔥";
-
-?>

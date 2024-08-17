@@ -1,4 +1,0 @@
-<?php
-$vars["SplFixedArray"]->setSize(PHP_INT_MAX);
-
-?>

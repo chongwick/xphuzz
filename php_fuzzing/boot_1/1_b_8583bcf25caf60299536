@@ -1,7 +1,0 @@
-<?php
-echo stripos(
-    chr(240). str_repeat(chr(209), 64). chr(240),
-    number_format(2.2250738585072011e-308, 20, '.', 'e'),
-    2.23431234213480e-400
-);
-?>

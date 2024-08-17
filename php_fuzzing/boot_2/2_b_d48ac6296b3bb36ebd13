@@ -1,4 +1,0 @@
-<?php
-iconv_get_encoding(str_repeat(chr(0x20AC). chr(0x2192). chr(0x00A7), 0x100));
-
-?>

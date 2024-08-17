@@ -1,4 +1,0 @@
-<?php
-gc_enable(42,'space odyssey', array('garbage', 'collection', 'in', 'a','strange', 'way'));
-
-?>

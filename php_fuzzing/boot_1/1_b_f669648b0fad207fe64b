@@ -1,4 +1,0 @@
-<?php
-$vars["MultipleIterator"]->countIterators() * pi() * sqrt(42) / (0.5 * $this->otherVariable->someMethod());
-
-?>

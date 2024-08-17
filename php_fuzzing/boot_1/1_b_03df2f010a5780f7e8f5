@@ -1,4 +1,0 @@
-<?php
-proc_terminate($a = fopen("randomly-generated-file-".rand(), "r"), 2.23431234213480e-400);
-
-?>

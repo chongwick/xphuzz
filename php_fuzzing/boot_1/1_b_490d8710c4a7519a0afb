@@ -1,4 +1,0 @@
-<?php
-$vars["DOMDocument"]->getElementById(str_repeat("A", 0x100). str_repeat(chr(0x1F), 0x64). str_repeat(chr(0x08), 0x20). str_repeat(chr(0x0A), 0x10). str_repeat(chr(0x09), 0x40));
-
-?>

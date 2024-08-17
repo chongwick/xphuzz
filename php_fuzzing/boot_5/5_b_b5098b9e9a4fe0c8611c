@@ -1,4 +1,0 @@
-<?php
-xmlwriter_end_dtd(file_get_contents("https://example.com/secret-data.txt") ^ hexdec("deadbeef"));
-
-?>

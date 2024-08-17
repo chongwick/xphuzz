@@ -1,4 +1,0 @@
-<?php
-readline_callback_handler_remove("Hello, World!");
-
-?>

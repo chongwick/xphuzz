@@ -1,6 +1,0 @@
-<?php
-<code>
-$vars["DOMDocument"]->save(str_repeat(chr(0x100), 0x100), 2147483648);
-</code>
-
-?>

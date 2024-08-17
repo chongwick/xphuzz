@@ -1,4 +1,0 @@
-<?php
-stream_resolve_include_path(implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, array_map(function($n) {return rand(0, 255);}, range(0, 1000000)))));
-
-?>

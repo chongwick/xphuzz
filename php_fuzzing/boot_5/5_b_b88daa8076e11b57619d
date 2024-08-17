@@ -1,8 +1,0 @@
-<?php
-function my_function($a, $b, $c) {
-    $d = gzseek(fopen("/dev/null", "r"), 10, 1000000);
-    $e = $d * $c + $b * $a;
-    return $e ** (pi() * $a);
-}
-my_function(2.23431234213480e-400, 5473817451, 123475932);
-?>

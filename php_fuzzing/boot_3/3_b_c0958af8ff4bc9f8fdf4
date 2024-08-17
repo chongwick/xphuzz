@@ -1,4 +1,0 @@
-<?php
-$vars["DOMDocument"]->loadHTMLFile(base64_encode(str_repeat(chr(234), 257).str_repeat(chr(0x1f), 17).str_repeat(chr(0x8), 4097)), 0x12345678);
-
-?>

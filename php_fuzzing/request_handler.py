@@ -246,7 +246,7 @@ def coverage_loop(llm, seed_data, llm_queue, cov_queue, san_queue):
         if cov_queue.qsize() == 0 and san_queue.qsize() == 0 and llm_queue.qsize() == 0:
             outdir = "boot_" + str(GEN_NUM+1)
             safe_files.append(outdir)
-            safe_files.append("gen_"+GEN_NUM+1)
+            safe_files.append("gen_"+str(GEN_NUM+1))
             if not(os.path.exists(outdir)):
                 os.makedirs(outdir)
             new_corpus(llm, 456, outdir)

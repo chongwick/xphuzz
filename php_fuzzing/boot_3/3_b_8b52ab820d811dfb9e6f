@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionMethod"]->isProtected()? $vars["ReflectionMethod"]->invoke($vars["ReflectionMethod"]->getDeclaringClass()->getName(). "Test") : $vars["ReflectionMethod"]->getModifiers() ^ $vars["ReflectionMethod"]->getDeclaringClass()->getNamespaceName();
-
-?>

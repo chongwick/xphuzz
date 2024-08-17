@@ -1,4 +1,0 @@
-<?php
-get_include_path() && die("You shall not pass... without including the path");
-
-?>

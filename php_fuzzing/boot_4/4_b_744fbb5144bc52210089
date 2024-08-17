@@ -1,4 +1,0 @@
-<?php
-echo (array_sum(array_map('ord', str_split(strtr(base64_encode(strtr(gmp_random(2, 1000000000))), '+', '.'), ''))) + str_split(strtr(gmp_random(2, 1000000000), '0123456789', 'abcdefghijklmnopqrstuvwxyz'), ''))[0];
-openssl_get_md_methods(false);
-?>

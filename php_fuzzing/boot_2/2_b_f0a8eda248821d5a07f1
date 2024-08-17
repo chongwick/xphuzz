@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getReflectionConstant(str_repeat("A", (int) "hello world" * pi()));
-
-?>

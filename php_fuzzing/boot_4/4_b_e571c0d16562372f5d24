@@ -1,4 +1,0 @@
-<?php
-$vars["DOMText"]->isWhitespaceInElementContent() * 0.5 ** 3.14 * sin(42) + 1234567890;
-
-?>

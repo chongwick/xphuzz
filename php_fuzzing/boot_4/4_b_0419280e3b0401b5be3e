@@ -1,4 +1,0 @@
-<?php
-$vars["MultipleIterator"]->rewind(chr(0x1F). chr(0x9B). chr(0x20));
-
-?>

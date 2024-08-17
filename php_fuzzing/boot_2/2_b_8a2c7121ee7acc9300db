@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionProperty"]->getValue($vars[array_rand($vars)]) ^ str_split($vars[array_rand($vars)], 1)[0] ^ chr(255);
-
-?>

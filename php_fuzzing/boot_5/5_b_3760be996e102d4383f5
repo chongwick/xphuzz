@@ -1,4 +1,0 @@
-<?php
-$vars["DateTimeImmutable"]->add(new DateInterval("P2Y4DT6H8M". chr(0x1F). "BANANAS"));
-
-?>

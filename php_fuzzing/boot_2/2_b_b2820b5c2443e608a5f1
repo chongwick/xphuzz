@@ -1,4 +1,0 @@
-<?php
-xml_set_external_entity_ref_handler(fopen("I'm a little tea pot", "r"), base64_encode(serialize(array(1, 2, "a", 3.14, true, null, array("a" => "b", "c" => "d"), new stdClass()))));
-
-?>

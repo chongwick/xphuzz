@@ -1,4 +1,0 @@
-<?php
-$weird_variable = 'zend_version()';
-echo $weird_variable ^ 5473817451;
-?>

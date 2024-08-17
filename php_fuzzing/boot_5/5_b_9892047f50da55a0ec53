@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->isInternal() * 0.5 + sin(1234567890) * sqrt(2) * (rand(0, 100) % 2);
-
-?>

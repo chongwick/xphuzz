@@ -1,4 +1,0 @@
-<?php
-fgetss(fopen("/dev/urandom", "r"), 3, str_repeat(unpack("H*", strrev(str_pad(strtoupper(md5(uniqid()))))). chr(0), 0x100));
-
-?>

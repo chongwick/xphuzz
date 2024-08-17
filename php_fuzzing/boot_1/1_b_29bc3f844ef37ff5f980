@@ -1,3 +1,0 @@
-<?php
-$vars["Reflection"]->export(new ReflectionClass("ZipArchive"), 42 * pi() + str_repeat("!", 256));
-?>

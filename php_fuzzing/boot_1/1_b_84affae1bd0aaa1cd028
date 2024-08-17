@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionFunction"]->invoke($vars["DateTime"]->format("Y-m-d H:i:s") + 0.1234567890123456789012345678901234567890);
-
-?>

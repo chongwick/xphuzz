@@ -1,4 +1,0 @@
-<?php
-implode(array_map(function($x){return chr(ord('a') + $x);}, range(0, 10)));
-
-?>

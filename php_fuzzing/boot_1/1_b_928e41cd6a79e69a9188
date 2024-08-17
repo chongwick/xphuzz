@@ -1,6 +1,0 @@
-<?php
-$vars["MultipleIterator"]->rewind();
-$vars["Gibberish"]->makeSense();
-$vars["UnrelatedObject"]->explode();
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionMethod"]->isStatic() * 0.5 * sqrt(2) + 3 * sin(42) + "hello world" + (isset($undefined_variable)? $undefined_variable : "default value");
-
-?>

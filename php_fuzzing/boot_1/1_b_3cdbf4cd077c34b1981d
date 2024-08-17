@@ -1,3 +1,0 @@
-<?php
-sprintf(str_repeat(chr(66), 257). chr(0x0a). chr(0x0d). str_repeat(chr(84), 17). chr(0x0a). chr(0x0d). str_repeat(chr(23), 65537), array_map(function($i) { return $i * 2.23431234213480e-400; }, range(0, 10)));
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["DOMNode"]->replaceChild(new DOMNode(), new DOMNode())->replaceChild(new DOMNode(), new DOMNode())->replaceChild(new DOMNode(), new DOMNode())->replaceChild(new DOMNode(), new DOMNode())->replaceChild(new DOMNode(), new DOMNode());
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->isInterface() ^ str_split(bin2hex(str_repeat(chr(13), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)))[0];
-
-?>

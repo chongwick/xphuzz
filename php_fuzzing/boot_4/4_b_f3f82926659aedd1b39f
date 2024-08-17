@@ -1,3 +1,0 @@
-<?php
-mb_substr_count(sqrt(sin(str_repeat(chr(28), 1025))), str_repeat(chr(0x100), 0x100), str_repeat(chr(67), 65537));
-?>

@@ -1,4 +1,0 @@
-<?php
-is_file(str_repeat(chr(0x20) ^ chr(0x1F), 0x1000000));
-
-?>

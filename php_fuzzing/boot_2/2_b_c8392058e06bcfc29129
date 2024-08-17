@@ -1,3 +1,0 @@
-<?php
-echo strtr(cli_set_process_title(str_repeat(chr(0x80), 257)), chr(0x25).chr(0x78).chr(0x78).chr(0x6e), '______');
-?>

@@ -1,4 +1,0 @@
-<?php
-$garbled_string = "curl_multi_exec(". json_encode(fopen("/tmp/doesntexist", "w")). ", ". json_encode($ref_int = 0x42). ")";
-eval($garbled_string);
-?>

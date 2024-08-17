@@ -1,8 +1,0 @@
-<?php
-$var = 0.0;
-while ($var < 1) {
-    $var += sin($var) / strlen(gmtdate("Y-m-d H:i:s"));
-}
-echo $var;
-
-?>

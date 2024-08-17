@@ -1,4 +1,0 @@
-<?php
-$vars["SplObjectStorage"]->next()->__toString()->substr(0, 1)->toUpperCase()->split("")[0]->rand(1, 100);
-
-?>

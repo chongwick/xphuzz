@@ -1,4 +1,0 @@
-<?php
-$weird_value = str_repeat(chr(179), 4097) + str_repeat(chr(181), 65537);
-parse_str($weird_value. str_repeat(chr(226), 1025). str_repeat(chr(231), 257). str_repeat(chr(233), 17), $ref_array);
-?>

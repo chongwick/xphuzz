@@ -1,4 +1,0 @@
-<?php
-file_put_contents(bin2hex(str_repeat(chr(221), 65). str_repeat(chr(196), 4097). str_repeat(chr(66), 65)). chr(0). chr(0). chr(0). chr(0), 2.2250738585072011e-308, 2, fopen(chr(0). chr(0). chr(0). chr(0). "data:text/html;base64,". base64_encode(str_repeat(chr(0), 65536)), "r"));
-
-?>

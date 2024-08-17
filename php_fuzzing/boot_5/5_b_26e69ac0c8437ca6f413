@@ -1,3 +1,0 @@
-<?php
-$vars["DOMDocument"]->saveHTMLFile(base64_encode(str_repeat(chr(105), 4097) + str_repeat(chr(0), 1025) + str_repeat(chr(42), 65537)).'.'.uniqid().'.html');
-?>

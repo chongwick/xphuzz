@@ -1,7 +1,0 @@
-<?php
-$random_number = rand(0, 1000000);
-$random_string = str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
-$random_function = "posix_get_last_error";
-$random_function($random_string.$random_number);
-
-?>

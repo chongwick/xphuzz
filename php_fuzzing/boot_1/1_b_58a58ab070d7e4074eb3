@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionParameter"]->canBePassedByValue() ^ str_split($vars["ReflectionParameter"]->getName())[0][0] * 2 ** 3.14159;
-
-?>

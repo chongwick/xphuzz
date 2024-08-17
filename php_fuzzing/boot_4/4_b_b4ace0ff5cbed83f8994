@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getFileName()?? 'This is a reflection of nothing';
-
-?>

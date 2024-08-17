@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionFunction"]->__construct(array_merge(range(0, 10), array("Hello, World!", "This is a test", 3.14, 5473817451, 123475932, 2.23431234213480e-400)));
-
-?>

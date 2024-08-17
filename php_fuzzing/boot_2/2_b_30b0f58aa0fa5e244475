@@ -1,4 +1,0 @@
-<?php
-mb_ereg_match(str_repeat(chr(248), 17), str_repeat("%s%x%n", 0x100) ^ str_repeat(chr(69), 65) ^ str_repeat(chr(68), 4097) ^ str_repeat(chr(174), 4097), str_repeat(chr(69), 65) + str_repeat(chr(68), 4097) + str_replace(chr(174), chr(248), str_repeat(chr(174), 4097)));
-
-?>

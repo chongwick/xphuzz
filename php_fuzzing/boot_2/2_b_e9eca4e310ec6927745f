@@ -1,4 +1,0 @@
-<?php
-proc_terminate(fopen("I'm a philosopher, not a programmer!", "r"), 5473817451);
-
-?>

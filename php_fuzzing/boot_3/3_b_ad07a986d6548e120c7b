@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getProperties()[rand(0, 1000)]->getDocComment()->__toString()->substr(rand(0, 1000), rand(0, 1000))->rand(0, 1)? $vars["ReflectionClass"]->getNamespaceName() : $vars["ReflectionClass"]->getShortName();
-
-?>

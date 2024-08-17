@@ -1,4 +1,0 @@
-<?php
-restore_error_handler(); // Oh no, the error handler is coming back to haunt me!
-
-?>

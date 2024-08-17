@@ -1,4 +1,0 @@
-<?php
-$vars["SplDoublyLinkedList"]->offsetSet(2.23431234213480e-400, array_merge(array_fill(0, 10, "hello"), range(0, 10), array_fill(0, 10, "world")));
-
-?>

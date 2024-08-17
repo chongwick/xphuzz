@@ -1,4 +1,0 @@
-<?php
-$vars["DateTimeImmutable"]->sub(new DateInterval("P0Y0DT0H0M". chr(0x1F). "T". str_repeat(chr(0x20), 42)));
-
-?>

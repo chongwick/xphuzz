@@ -1,6 +1,0 @@
-<?php
-<code>
-$vars["DOMDocument"]->load(str_repeat("A", 0x100).str_repeat("\x1A", 0x1F).str_repeat("\x00", 0x7F).str_repeat("\x0A", 0x1F).str_repeat("A", 0x100).str_repeat("\x1A", 0x1F).str_repeat("\x00", 0x7F).str_repeat("\x0A", 0x1F).str_repeat("A", 0x100).str_repeat("\x1A", 0x1F).str_repeat("\x00", 0x7F).str_repeat("\x0A", 0x1F), 3);
-</code>
-
-?>

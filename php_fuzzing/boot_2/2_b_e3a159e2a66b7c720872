@@ -1,3 +1,0 @@
-<?php
-echo (int) str_repeat(chr(237), 257) ^ (int) str_repeat(chr(193), 257) ^ (int) str_repeat(chr(155), 17) ^ (int) str_repeat(chr(147), 4097);
-?>

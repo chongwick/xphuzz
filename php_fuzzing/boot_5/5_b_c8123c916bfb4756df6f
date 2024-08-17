@@ -1,4 +1,0 @@
-<?php
-password_hash(str_repeat(chr(18), 65). "hello". chr(0x1A). str_repeat(chr(0x1F), 17). chr(0x1B), 0x1A, array("a" => 1.234, "b" => "2.345", "c" => "3.456.789", "d" => array("e" => "f", "g" => 3.14)));
-
-?>

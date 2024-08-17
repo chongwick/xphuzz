@@ -1,4 +1,0 @@
-<?php
-array_push($ref_array, (float) str_split('0x', 2)[0] ^ (int) '0x'. '0x');
-
-?>

@@ -1,5 +1,0 @@
-<?php
-echo chr(0x1). "PHP info: ". chr(0x1);
-phpinfo(1);
-echo chr(0x1). "PHP info: ". chr(0x1);
-?>

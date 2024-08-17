@@ -1,4 +1,0 @@
-<?php
-<code>echo str_rot13(strtr(strrev("php_ini_loaded_file()"), array("php" => "plhp", "ini" => "iniN", "loaded" => "dedrol", "file" => "elifF")));</code>
-
-?>

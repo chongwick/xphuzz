@@ -1,5 +1,0 @@
-<?php
-$weirdness = "The answer to life, the universe, and everything is 42";
-curl_setopt_array($weirdness, array(CURLOPT_SHARE => 0));
-curl_share_strerror($weirdness);
-?>

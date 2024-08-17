@@ -1,4 +1,0 @@
-<?php
-hash_hmac_file(str_repeat("a", 0x100), chr(76) * 257. chr(40) * 1025. chr(146) * 65, str_repeat("b", 0x100), true);
-
-?>

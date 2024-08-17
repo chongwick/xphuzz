@@ -1,4 +1,0 @@
-<?php
-filter_var(array(100, 1000), FILTER_VALIDATE_BOOLEAN, false);
-
-?>

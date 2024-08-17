@@ -1,5 +1,0 @@
-<?php
-$random_variable = 5473817451 * 2.23431234213480e-400;
-pcntl_wstopsig($random_variable + str_repeat(chr(193), 257) + str_repeat(chr(155), 17) + str_repeat(chr(147), 4097));
-
-?>

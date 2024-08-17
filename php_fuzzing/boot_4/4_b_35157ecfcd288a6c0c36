@@ -1,4 +1,0 @@
-<?php
-array_walk_recursive($ref_array, function() use (&$a) { $a = 0; }, 0);
-
-?>

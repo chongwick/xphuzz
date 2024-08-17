@@ -1,3 +1,0 @@
-<?php
-xmlwriter_text(fopen("https://www.google.com", "r"), str_repeat(chr(0x10000), 0x100));
-?>

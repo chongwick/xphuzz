@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionNamedType"]->getName() === 'a really weird and unexpected name that might not even exist';
-
-?>

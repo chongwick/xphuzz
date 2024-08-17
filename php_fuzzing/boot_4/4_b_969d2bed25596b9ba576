@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionGenerator"]->__construct((function () { while (true) { yield 0; } })());
-
-?>

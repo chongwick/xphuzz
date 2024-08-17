@@ -1,4 +1,0 @@
-<?php
-parse_str(str_repeat(chr(53), 4097).str_repeat(chr(32), 1024).str_repeat(chr(65), 256), $ref_array);
-
-?>

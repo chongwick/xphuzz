@@ -1,6 +1,0 @@
-<?php
-$garbledValue = str_repeat(chr(148), 4097) + str_repeat(chr(196), 4097);
-$garbledValue = str_pad($garbledValue, 8192, chr(148));
-$garbledValue = chr(0x1F). pack('H*', '48656c6c6f20576f726c6421'). $garbledValue;
-zip_entry_open(fopen("/etc/passwd", "r"), fopen("/dev/null", "r"), $garbledValue);
-?>

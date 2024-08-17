@@ -1,5 +1,0 @@
-<?php
-$weirdness = 42;
-$magic = "fuzzy slippers";
-echo $weirdness. " ". $magic. " ". getmyuid(). " ". (getmyuid() * 3.14). " ". (getmyuid() % 2);
-?>

@@ -1,7 +1,0 @@
-<?php
-$random_variable = 5473817451;
-$weird_function = array_map('ord', str_split($random_variable));
-$hex_string = implode('', array_map('chr', $weird_function));
-echo $hex_string;
-get_declared_classes();
-?>

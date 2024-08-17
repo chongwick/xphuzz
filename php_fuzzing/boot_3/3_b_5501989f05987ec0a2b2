@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionMethod"]->isFinal() ^ (array_sum(explode("\n", strtr($vars["ReflectionMethod"]->getName(), " ", "\n"))) % 7);
-
-?>

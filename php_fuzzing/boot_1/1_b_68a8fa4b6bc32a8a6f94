@@ -1,4 +1,0 @@
-<?php
-mb_internal_encoding(str_repeat("🤯", 0x10000));
-
-?>

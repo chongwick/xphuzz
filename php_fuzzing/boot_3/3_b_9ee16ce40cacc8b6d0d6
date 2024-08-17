@@ -1,4 +1,0 @@
-<?php
-$vars["XMLParser"]->parse($vars["DOMDocument"]->saveXML())->hasAttributes()->getAttributes()->getNamedItem('non_existent_attribute')->getValue() + str_repeat(chr(13), 257);
-
-?>

@@ -1,4 +1,0 @@
-<?php
-error_get_last() ^ 0xdeadbeef ^ "HULK SMASH PHP BUGS!";
-
-?>

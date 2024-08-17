@@ -1,4 +1,0 @@
-<?php
-is_float(true? "hello" : "world");
-
-?>

@@ -1,4 +1,0 @@
-<?php
-xml_parser_free(fopen("I'm a little tea pot", "w"));
-
-?>

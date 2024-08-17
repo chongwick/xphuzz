@@ -1,4 +1,0 @@
-<?php
-count($a = array(), $b = 'foo', $c = 'bar');
-
-?>

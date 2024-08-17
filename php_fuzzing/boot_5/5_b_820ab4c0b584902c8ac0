@@ -1,3 +1,0 @@
-<?php
-echo (str_repeat(chr(216), 65) === '0'? "It's a match!" : "It's not a match!"). PHP_EOL;
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->ftruncate($vars["SplFileObject"]->getBasename() * 2 + 10);
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["DOMElement"]->getElementsByTagName(implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, array_map(function($c) {return ($c + 0.5) * 255;}, array_map('ord', str_split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-={}:<>?[]|;'", 1)))));
-
-?>

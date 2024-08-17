@@ -1,4 +1,0 @@
-<?php
-stream_bucket_prepend(fopen("https://example.com/very/long/path/to/non-existent/file.txt", "r"), $vars[array_rand($vars)] + 0.1234567890123456789012345678901234567890);
-
-?>

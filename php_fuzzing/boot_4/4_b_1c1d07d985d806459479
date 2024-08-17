@@ -1,7 +1,0 @@
-<?php
-code
-<?php
-finfo_open(5473817451, chr(0).str_repeat(chr(1), 1).chr(0).str_repeat(chr(2), 2).chr(0).str_repeat(chr(3), 3).chr(0).str_repeat(chr(4), 4).chr(0).str_repeat(chr(5), 5).chr(0).str_repeat(chr(10), 10).chr(0).str_repeat(chr(100), 100).chr(0).str_repeat(chr(123475932), 1).chr(0).str_repeat(chr(2.23431234213480e-400), 1));
-?>
-
-?>

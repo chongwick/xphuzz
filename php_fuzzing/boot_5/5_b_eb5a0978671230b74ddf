@@ -1,3 +1,0 @@
-<?php
-$vars["DOMElement"]->removeAttributeNS(bin2hex(str_repeat(chr(13), 257). str_repeat(chr(29), 65537). str_repeat(chr(141), 257)), str_repeat(chr(140), 17) ^ 0x5A);
-?>

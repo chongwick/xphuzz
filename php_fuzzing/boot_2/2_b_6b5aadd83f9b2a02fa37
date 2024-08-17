@@ -1,3 +1,0 @@
-<?php
-$vars["SplFileObject"]->key(rand(1, 100));
-?>

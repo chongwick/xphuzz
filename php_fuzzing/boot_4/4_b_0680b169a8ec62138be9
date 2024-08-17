@@ -1,3 +1,0 @@
-<?php
-echo "I'm feeling weird today, so I'm going to call the function that returns the level of the output buffer, which is probably not what you're expecting... ". ob_get_level(). " levels deep... or is it?";
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->isInternal() * 0.5 * pi() * sqrt(2) + (int) (sin(3.14) * 10000) % 7;
-
-?>

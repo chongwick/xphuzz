@@ -1,3 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getStartLine() * 0.5 ** 3.14 * sqrt(42) * (int) sin(atan(1)) * "Hello, World!";
-?>

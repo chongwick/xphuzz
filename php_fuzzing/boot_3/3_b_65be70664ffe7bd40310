@@ -1,3 +1,0 @@
-<?php
-echo "The process ID is ". (string) (sqrt(42) * pi()). " and it's feeling ". (rand(0, 1)? "lucky" : "unlucky"). " today!";
-?>

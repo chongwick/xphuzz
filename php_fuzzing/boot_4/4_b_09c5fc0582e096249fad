@@ -1,3 +1,0 @@
-<?php
-$vars["SplFileObject"]->key() * 0.5 ** 2.34 + (rand(1, 1000000) % 3) * (sqrt(2) + pi());
-?>

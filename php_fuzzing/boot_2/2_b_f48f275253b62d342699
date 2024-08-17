@@ -1,4 +1,0 @@
-<?php
-$vars["SplDoublyLinkedList"]->unshift($this->getRandomlyGeneratedFibonacciSequence(1000000));
-
-?>

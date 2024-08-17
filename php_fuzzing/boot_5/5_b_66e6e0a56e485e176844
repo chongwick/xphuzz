@@ -1,3 +1,0 @@
-<?php
-xml_set_element_handler(fopen("https://example.com/doesntexist.txt", "w"), 'echo "Hello World!"', 'echo "Goodbye World!"');
-?>

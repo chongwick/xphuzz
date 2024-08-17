@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionFunction"]->isDisabled() * 0.54321 + sqrt(1234567890) / (pi() * e);
-
-?>

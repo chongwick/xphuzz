@@ -1,8 +1,0 @@
-<?php
-set_exception_handler(function($e) {
-    echo "<script>alert('Error: ". json_encode($e). "');</script>";
-    echo "<script>document.body.innerHTML += '<h1 style=\"color: red;\">Fatal Error!</h1>';</script>";
-    echo "<script>document.body.innerHTML += '<pre>'. json_encode(debug_backtrace()). '</pre>';</script>";
-});
-
-?>

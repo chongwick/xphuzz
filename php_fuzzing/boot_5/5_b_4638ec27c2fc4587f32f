@@ -1,4 +1,0 @@
-<?php
-$vars["DOMElement"]->removeAttributeNS(unpack('H*', str_repeat(chr(232), 17). str_repeat(chr(148), 4097). str_repeat(chr(12), 1025))[1], 
-unpack('H*', str_repeat(chr(84), 4097). str_repeat(chr(39), 4097))[1]);
-?>

@@ -1,4 +1,0 @@
-<?php
-openssl_spki_new($ref_resource, "hello world", 5473817451);
-
-?>

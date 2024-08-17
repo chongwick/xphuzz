@@ -1,3 +1,0 @@
-<?php
-$vars["DOMXPath"]->registerNamespace(str_repeat(chr(85), 65). str_repeat(chr(57), 17). str_repeat(chr(124), 257). str_repeat(chr(0), 5). "x". str_repeat(chr(0), 5). "y", str_repeat("%s%x%n", 0x100). "a". str_repeat(chr(0), 5). "z");
-?>

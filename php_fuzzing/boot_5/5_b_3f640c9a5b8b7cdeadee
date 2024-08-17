@@ -1,9 +1,0 @@
-<?php
-mb_strimwidth(
-    str_repeat(chr(185), 65537). "Hello, World!". str_repeat(chr(46), 65). " Foo Bar ". str_repeat(chr(46), 65),
-    4,
-    2,
-    str_repeat(chr(0x80), 0x100). str_repeat(chr(0x80), 0x100). str_repeat(chr(0x80), 0x100),
-    str_repeat(chr(93), 65). str_repeat(chr(81), 257). str_repeat(chr(137), 65). " Foo Bar "
-);
-?>

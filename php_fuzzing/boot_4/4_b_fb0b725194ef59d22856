@@ -1,4 +1,0 @@
-<?php
-wordwrap(implode(array_map(function($c) {return chr(intval("0x". str_pad(dechex($c), 2, "0")));}, array_reverse(array_merge(range(0, 255), array_fill(256, 100000, 0x20))), 1000, str_repeat("\x1F\x20\x1E", 0x100). str_repeat("\x1F\x1F\x1E", 0x100), true);
-
-?>

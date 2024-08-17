@@ -1,4 +1,0 @@
-<?php
-xmlwriter_start_comment(fopen("I'm not really a file, I'm a cat!", "r"), "This is going to be a very interesting comment");
-
-?>

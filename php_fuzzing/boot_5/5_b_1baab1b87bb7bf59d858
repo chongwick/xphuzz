@@ -1,7 +1,0 @@
-<?php
-$weird_variable = "monkey";
-$function_name = "zlib_get_coding_type";
-$unexpected_usage = "($weird_variable)($function_name)";
-echo $unexpected_usage;
-
-?>

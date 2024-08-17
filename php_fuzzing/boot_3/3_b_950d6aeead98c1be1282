@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionParameter"]->hasType()? $vars["ReflectionParameter"]->getName() * (0 || 1) : "I'm a chicken";
-
-?>

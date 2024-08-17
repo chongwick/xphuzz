@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionMethod"]->setAccessible(sqrt(2));
-
-?>

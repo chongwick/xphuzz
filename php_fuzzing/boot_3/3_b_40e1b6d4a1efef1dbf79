@@ -1,6 +1,0 @@
-<?php
-  $weirdness = 1234567890;
-  $unexpected = "This is not an error code!";
-  $incorrect = "It's just a bunch of random characters!";
-  echo $weirdness. " ". $unexpected. " ". $incorrect;
-?>

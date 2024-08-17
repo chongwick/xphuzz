@@ -1,4 +1,0 @@
-<?php
-memory_get_usage(true) ^ 0.5;
-
-?>

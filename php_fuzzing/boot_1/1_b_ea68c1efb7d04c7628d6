@@ -1,5 +1,0 @@
-<?php
-$random_string = "abcdefghijklmnopqrstuvwxyz";
- localeconv();
-echo $random_string;
-?>

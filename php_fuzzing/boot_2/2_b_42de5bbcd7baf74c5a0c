@@ -1,4 +1,0 @@
-<?php
-$vars["SplDoublyLinkedList"]->bottom()->pop()->push("This is a weird and unexpected addition")->unshift("Even weirder!")->setIteratorMode(SplDoublyLinkedList::FRONT);
-
-?>

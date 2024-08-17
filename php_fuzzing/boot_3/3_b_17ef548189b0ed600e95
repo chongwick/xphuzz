@@ -1,9 +1,0 @@
-<?php
-array_walk_recursive($ref_array, function($v, $k, $ref_array) {
-    echo $v. " is a ". gettype($v). "\n";
-    echo "Key: $k\n";
-    echo "Array Reference: ". var_export($ref_array, true). "\n";
-    return $v * 2147483647;
-}, $ref_array);
-
-?>

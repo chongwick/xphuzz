@@ -1,4 +1,0 @@
-<?php
-xmlwriter_start_element(fopen("https://example.com/non-existent-file", "w"), implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, range(0, 255)), chr(0x1F).chr(0x9C).chr(0x1A)));
-
-?>

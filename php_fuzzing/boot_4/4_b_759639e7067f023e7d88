@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->isInstance($vars[array_rand($vars)] ^ 0xdeadbeef);
-
-?>

@@ -1,5 +1,0 @@
-<?php
-$random_string = 'ðŸ”¥';
-$random_array = array_map(function($c) use ($random_string) { return $random_string. str_pad(dechex($c), 2, "0"); }, range(0, 255));
-openssl_seal(str_repeat(chr(72), 65), $ref_string = 'ðŸ’¥', $ref_array = array_merge($random_array, array(''=> 'ðŸ˜‚', 255 => 'ðŸ˜±')), range(0, 10), implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, range(0, 255))), $ref_string = 'ðŸ”¥');
-?>

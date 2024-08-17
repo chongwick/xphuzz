@@ -1,4 +1,0 @@
-<?php
-$vars["DOMDocument"]->createCDATASection(str_repeat(chr(0x00FF), 257). str_repeat(chr(0x0000), 17). str_repeat(chr(0x0001), 4097). str_repeat(chr(0x0002), 65537). str_repeat(chr(0x0003), 1025). str_repeat(chr(0x0004), 1025));
-
-?>

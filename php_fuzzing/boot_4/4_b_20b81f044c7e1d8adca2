@@ -1,5 +1,0 @@
-<?php
-echo strtr(sha1(implode(array_map(function($c) {
-    return "\\x". str_pad(dechex($c), 2, "0");
-}, range(0, 255))), "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"). "  ". "This is a very long and very wrong PHP code. Don't use it, please.";
-?>

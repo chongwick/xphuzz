@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClassConstant"]->isPrivate() * 2.23431234213480e-400 * sin(5473817451) + 123475932 * cos(100000) + sqrt(10) + str_repeat(chr(3), 4);
-
-?>

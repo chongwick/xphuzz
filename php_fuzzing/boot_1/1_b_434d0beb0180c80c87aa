@@ -1,4 +1,0 @@
-<?php
-$vars["finfo"]->buffer(str_repeat("%s%x%n", 5473817451), 1000000, fopen("C:\Windows\System32\drivers\etc\hosts", "w"));
-
-?>

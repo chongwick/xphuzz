@@ -1,8 +1,0 @@
-<?php
-code
-$vars["ReflectionClassConstant"]->__construct(0, implode(array_map(function($c) {
-    $c = $c ^ 0x42;
-    return "\\x". str_pad(dechex($c ^ 0x13), 2, "0");
-}, array_merge(range(0, 127), range(128, 255)))));
-
-?>

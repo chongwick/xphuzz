@@ -1,6 +1,0 @@
-<?php
-array_intersect_uassoc(array("a" => 1, "b" => "2", "c" => 3.0, "d" => NULL, "e" => new stdClass()), 
-                       range(0, 10), range(0, 10), 
-                       array('version' => phpversion(),'system' => PHP_OS, 'debuginfo' => debug_backtrace()));
-
-?>

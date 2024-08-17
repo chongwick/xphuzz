@@ -1,4 +1,0 @@
-<?php
-curl_share_close(fopen("I'm a little tea pot, short and stout", "w"));
-
-?>

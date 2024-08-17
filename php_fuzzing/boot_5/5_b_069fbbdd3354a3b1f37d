@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getTraits() * 0.5 + sin(42) * 3.14;
-
-?>

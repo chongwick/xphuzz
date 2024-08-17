@@ -1,4 +1,0 @@
-<?php
-$vars["Error"]->getMessage() = "The meaning of life is 42, but the value of pi is actually a chicken named Cluck Norris who is secretly a ninja warrior and has been hiding in the matrix for the past 100 years.";
-
-?>

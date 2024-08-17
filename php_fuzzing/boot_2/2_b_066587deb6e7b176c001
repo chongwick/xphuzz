@@ -1,4 +1,0 @@
-<?php
-$vars["DateTimeImmutable"]->format(implode(array_map(function($x){ return chr($x); }, array_map('ord', str_split(bin2hex(str_replace(chr(10), '', str_replace(chr(13), '', file_get_contents('https://example.com'))))))));
-
-?>

@@ -1,4 +1,0 @@
-<?php
-in_array(str_repeat(chr(126), 65) ^ str_repeat(chr(255), 65), array_map(function($x){return $x ** 0.5;}, range(0, 10)), true);
-
-?>

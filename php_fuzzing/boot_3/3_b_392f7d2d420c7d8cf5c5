@@ -1,4 +1,0 @@
-<?php
-$vars["SplPriorityQueue"]->insert($this->is_a_wombat, 2.23431234213480e-400 * pi() * sqrt(42));
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionProperty"]->setAccessible(true, true, "monkey", 42, array("hello" => "world", 1.618 => "phi"));
-
-?>

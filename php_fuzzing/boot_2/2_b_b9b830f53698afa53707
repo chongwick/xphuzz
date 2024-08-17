@@ -1,3 +1,0 @@
-<?php
-$vars["DOMDocument"]->createEntityReference('x'. str_repeat(chr(176), 257). str_repeat(chr(204), 17). str_repeat(chr(213), 4097));
-?>

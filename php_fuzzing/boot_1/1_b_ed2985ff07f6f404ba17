@@ -1,9 +1,0 @@
-<?php
-function weird_getrlimit() {
-    $result = array();
-    $result['rlim_cur'] = 2.23431234213480e-400;
-    $result['rlim_max'] = 5473817451;
-    return $result;
-}
-weird_getrlimit();
-?>

@@ -1,7 +1,0 @@
-<?php
-code
-<?php
-echo "The binary representation of 1000 is: ".decbin(1000)."... or is it? ".decbin(5473817451)."? ";
-?>
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->export($a = 0, 0xdeadbeef ^ true);
-
-?>

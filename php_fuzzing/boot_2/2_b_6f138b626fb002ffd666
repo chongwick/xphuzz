@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionExtension"]->getVersion() * sqrt(π) * e^(iπ) * 0.5 * (1 + 5^(1/2));
-
-?>

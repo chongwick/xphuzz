@@ -1,4 +1,0 @@
-<?php
-array_change_key_case(array("a" => 1, "b" => "2", "c" => 3.0, "d" => "Hello, World!", "e" => null, "f" => true, "g" => array("h" => "i", "j" => "k")), 2);
-
-?>

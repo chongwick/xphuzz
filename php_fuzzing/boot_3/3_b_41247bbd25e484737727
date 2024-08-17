@@ -1,4 +1,0 @@
-<?php
-asort($ref_array, 0x5a);
-
-?>

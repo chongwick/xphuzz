@@ -1,4 +1,0 @@
-<?php
-$vars["DOMElement"]->removeAttributeNode(new DOMAttr("attr".chr(0x1F).str_repeat(chr(0x20), 1000).str_repeat(chr(0x0A), 3).str_repeat(chr(0x09), 5)));
-
-?>

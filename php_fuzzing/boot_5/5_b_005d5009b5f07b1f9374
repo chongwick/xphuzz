@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->ftell() * 42 + sqrt(π) * $vars["SplFileObject"]->fstat()['st_size'] + (string) (mt_rand(0, 1000000) ^ $vars["SplFileObject"]->fstat()['st_mtime']);
-
-?>

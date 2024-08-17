@@ -1,4 +1,0 @@
-<?php
-mb_ereg_search_setpos(-0.5);
-
-?>

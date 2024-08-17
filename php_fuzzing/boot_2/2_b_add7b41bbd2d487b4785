@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionMethod"]->isAbstract() * 0.5 * (sqrt(3) + 1);
-
-?>

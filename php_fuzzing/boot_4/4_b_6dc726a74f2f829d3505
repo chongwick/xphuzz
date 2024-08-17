@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionExtension"]->getClasses()->getNamespacedName()->getUnserialized()->getMagicMethod()->getRandomlyGenerated()->getNotExisting();
-
-?>

@@ -1,4 +1,0 @@
-<?php
-openssl_pkey_free(fopen("https://example.com/nonexistentfile.txt?query=parameter&foo=bar", "w"));
-
-?>

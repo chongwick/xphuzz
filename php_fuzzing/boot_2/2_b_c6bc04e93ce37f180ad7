@@ -1,3 +1,0 @@
-<?php
-$vars["ReflectionClass"]->isTrait() ^ (rand(0, 1)? "reflection" : "php"). "://on". rand(0, 1)? "true" : "false";
-?>

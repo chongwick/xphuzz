@@ -1,4 +1,0 @@
-<?php
-session_get_cookie_params() * pi() * 0.5 + sqrt(42) + "Hello, World!";
-
-?>

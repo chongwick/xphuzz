@@ -1,4 +1,0 @@
-<?php
-get_meta_tags(unpack("H*", str_repeat(chr(216), 65). str_repeat(chr(79), 65537). str_repeat(chr(57), 17)), 'utf-8');
-
-?>

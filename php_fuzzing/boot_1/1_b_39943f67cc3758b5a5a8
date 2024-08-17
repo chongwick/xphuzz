@@ -1,4 +1,0 @@
-<?php
-method_exists(array('str_repeat("%s%x%n", 0x100'), str_repeat(chr(177), 17) + str_repeat(chr(153), 1025) + str_repeat(chr(0), 65537));
-
-?>

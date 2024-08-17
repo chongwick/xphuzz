@@ -1,3 +1,0 @@
-<?php
-date_parse(str_repeat(chr(37).chr(101).chr(14), 0x100));
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["MultipleIterator"]->getFlags() ^ 0xdeadbeef;
-
-?>

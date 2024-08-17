@@ -1,3 +1,0 @@
-<?php
-$vars["ReflectionFunction"]->__invoke(str_repeat(chr(170), 4097) + str_repeat(chr(107), 17), "abc", 2.23431234213480e-400, "hello", "world", 5473817451, 123475932, 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000);
-?>

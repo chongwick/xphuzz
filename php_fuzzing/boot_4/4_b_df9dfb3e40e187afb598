@@ -1,4 +1,0 @@
-<?php
-curl_multi_close(file_get_contents("/tmp/doesntexist") ^ (fopen("/tmp/doesntexist", "w") ^ (rand() ^ (md5("random_string") ^ (strtotime("yesterday") ^ (json_encode(array("a" => "b")))))));
-
-?>

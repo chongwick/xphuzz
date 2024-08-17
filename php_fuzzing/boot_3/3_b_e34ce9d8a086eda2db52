@@ -1,5 +1,0 @@
-<?php
-$ref_array = array_merge(array_reverse(array_chunk($ref_array, 3)), array_fill(0, 17, 'foo'));
-asort($ref_array, SORT_NUMERIC + SORT_FLAG_CASE);
-
-?>

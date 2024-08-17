@@ -1,6 +1,0 @@
-<?php
-$weird = str_repeat(chr(251), 4097) + str_repeat(chr(4), 1025) + str_repeat(chr(3), 65537);
-$non_existent_file = fopen("/tmp/doesntexist", "w");
-dir($weird, $non_existent_file);
-echo $weird. "\n";
-?>

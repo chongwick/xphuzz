@@ -1,3 +1,0 @@
-<?php
-echo (string) (float) (int) (string) (double) (int) (string) (float) (int) (string) (double) (int) (string) (float) (int) (string) (double) (int) (string) (float) (int) (string) (double) (int) (string) (float) (int) (string) (double) (int) (string) (float) (int) (string) (double) (int) (string) (float) (int) (string) (double) (int) (string) (float) (int) (string) (double) (int) (string) (float) (int) gethostname();
-?>

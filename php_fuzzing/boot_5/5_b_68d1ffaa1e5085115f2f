@@ -1,4 +1,0 @@
-<?php
-$vars["DOMXPath"]->__construct(new DOMDocument("UTF-8", "http://example.com"));
-
-?>

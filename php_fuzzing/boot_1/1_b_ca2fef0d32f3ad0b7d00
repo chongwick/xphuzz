@@ -1,3 +1,0 @@
-<?php
-rawurlencode(unpack('H*', pack('C'.4097, 69)).pack('C65', 104));
-?>

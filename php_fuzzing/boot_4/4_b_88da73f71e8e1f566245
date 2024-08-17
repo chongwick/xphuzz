@@ -1,4 +1,0 @@
-<?php
-$vars["DateTimeImmutable"]->setDate(-1, 0, 5473817451);
-
-?>

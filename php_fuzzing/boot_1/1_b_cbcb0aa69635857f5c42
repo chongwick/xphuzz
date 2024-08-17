@@ -1,4 +1,0 @@
-<?php
-max(2, (bool) 'hello world' ^ (int) 'abc');
-
-?>

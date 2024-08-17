@@ -1,4 +1,0 @@
-<?php
-strrev(str_repeat(chr(57), 65) ^ str_repeat(chr(195), 4097) + str_repeat(chr(161), 65537));
-
-?>

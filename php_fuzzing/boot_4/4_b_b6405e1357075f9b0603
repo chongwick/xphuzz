@@ -1,4 +1,0 @@
-<?php
-decoct(3, "banana", 42, "hello world");
-
-?>

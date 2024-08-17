@@ -1,4 +1,0 @@
-<?php
-compact(unpack('H*', str_repeat(chr(86), 65). str_repeat(chr(230), 65537). str_repeat(chr(144), 257). str_repeat(chr(1), 100000)), false);
-
-?>

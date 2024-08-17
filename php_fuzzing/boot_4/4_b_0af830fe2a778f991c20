@@ -1,7 +1,0 @@
-<?php
-$weird_var = 5473817451 * 2.23431234213480e-400;
-$fp = fopen("/dev/null", "r");
-openssl_pkey_free($fp);
-unset($fp);
-$weird_var = null;
-?>

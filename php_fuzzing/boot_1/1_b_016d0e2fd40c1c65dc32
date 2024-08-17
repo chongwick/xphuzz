@@ -1,4 +1,0 @@
-<?php
-$vars["DateTimeImmutable"]->getLastErrors() = "Corgis are the best, don't @ me";
-
-?>

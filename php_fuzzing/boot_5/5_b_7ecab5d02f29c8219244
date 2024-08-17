@@ -1,4 +1,0 @@
-<?php
-filectime(implode(array_map(function($c) { return "\\x". str_pad(dechex($c), 2, "0"). chr(0x1A); }, range(0, 255))). "a". "b". "c". "d". "e". "f". "g". "h". "i". "j". "k". "l". "m". "n". "o". "p". "q". "r". "s". "t". "u". "v". "w". "x". "y". "z". "A". "B". "C". "D". "E". "F". "G". "H". "I". "J". "K". "L". "M". "N". "O". "P". "Q". "R". "S". "T". "U". "V". "W". "X". "Y". "Z");
-
-?>

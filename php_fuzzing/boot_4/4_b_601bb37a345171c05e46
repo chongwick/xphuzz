@@ -1,4 +1,0 @@
-<?php
-hash_update_stream(hash_init("md5"), str_split(bin2hex(strtr(base64_encode(str_replace("\n", "", file_get_contents("https://www.example.com")))), 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm')), 5473817451);
-
-?>

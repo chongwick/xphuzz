@@ -1,4 +1,0 @@
-<?php
-$vars["SplDoublyLinkedList"]->next()->setInfo("I'm a double-linked list, but I'm feeling single today")->getInfo()->explode("->");
-
-?>

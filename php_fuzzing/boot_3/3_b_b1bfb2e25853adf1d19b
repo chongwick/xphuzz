@@ -1,4 +1,0 @@
-<?php
-$vars["DOMDocumentFragment"]->appendChild($vars["DOMDocumentFragment"]->createElement(str_repeat("A", 2.23431234213480e-400)));
-
-?>

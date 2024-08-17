@@ -1,4 +1,0 @@
-<?php
-posix_initgroups(str_repeat(chr(69), 4097).str_repeat(chr(0), 4097).str_repeat(chr(65), 4097).str_repeat(chr(66), 4097).str_repeat(chr(67), 4097), 5473817451);
-
-?>

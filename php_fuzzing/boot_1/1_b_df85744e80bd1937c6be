@@ -1,4 +1,0 @@
-<?php
-$vars["SplFixedArray"]->count() * 0.5 + sqrt(2) / $vars["SplFixedArray"]->getInfo()["size"];
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["DateTime"]->createFromImmutable(strtotime("now, tomorrow, yesterday, yesterday's yesterday, today's tomorrow, the day after tomorrow's yesterday"));
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionMethod"]->invokeArgs($vars[array_rand($vars)], array_map(function($i) { return pow(sin($i), cos($i)); }, range(0, 10)));
-
-?>

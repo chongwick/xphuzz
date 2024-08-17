@@ -1,4 +1,0 @@
-<?php
-curl_multi_setopt(sqrt(fopen("🐵/dev/null", "🚀r")), 5, array("a" => pi(), "b" => "2.34567890123456789", "c" => "3.0", "d" => null, "e" => array("f" => array("g" => "h", "i" => jkl))));
-
-?>

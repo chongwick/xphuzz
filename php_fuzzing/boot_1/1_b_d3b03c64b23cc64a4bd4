@@ -1,6 +1,0 @@
-<?php
-$vars["ReflectionClassConstant"]->__construct(
-    "0",
-    str_repeat("%s%x%n", PHP_INT_MAX)
-);
-?>

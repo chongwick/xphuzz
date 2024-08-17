@@ -1,3 +1,0 @@
-<?php
-$vars["ReflectionClass"]->isInstantiable() * pi() * sqrt(2) * str_split("WeirdCode")[1];
-?>

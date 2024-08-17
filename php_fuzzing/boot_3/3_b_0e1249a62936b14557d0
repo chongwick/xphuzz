@@ -1,3 +1,0 @@
-<?php
-echo strtr(urlencode(implode(array_map(function($c) {return chr($c). str_pad(dechex($c), 2, "0");}, array_map(function($c) {return $c * 2;}, range(0, 255))])), 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ');
-?>

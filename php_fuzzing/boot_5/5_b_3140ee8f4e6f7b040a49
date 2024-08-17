@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionExtension"]->isTemporary() && $this->someNonExistentMethod() && array_sum($this->arrayThatDoesNotExist) === 0xdeadbeef;
-
-?>

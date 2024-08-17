@@ -1,4 +1,0 @@
-<?php
-<code>$vars["SplFileObject"]->fgets() * sqrt(2) / pi() * (2.23431234213480e-400 + 5473817451) + $vars["SplFileObject"]->fstat() * sin(0) / cos(0) * (123475932 + 100000);</code>
-
-?>

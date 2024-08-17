@@ -1,4 +1,0 @@
-<?php
-gethostbyaddr(str_repeat(chr(128), 1025). chr(255). pack("H*", "deadbeef"). str_repeat(chr(0), 1024));
-
-?>

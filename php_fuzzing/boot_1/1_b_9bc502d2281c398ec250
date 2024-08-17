@@ -1,7 +1,0 @@
-<?php
-header_register_callback(function() {
-    echo '<script>document.write("<h1>WEIRD</h1><p>PHPINFO</p>");</script>';
-    phpinfo();
-});
-
-?>

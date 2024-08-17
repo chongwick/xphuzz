@@ -1,4 +1,0 @@
-<?php
-$vars["Reflection"]->export(new ReflectionClass("ZipArchive"), false, true, null, array("foo" => "bar", "baz" => "qux"));
-
-?>

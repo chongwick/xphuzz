@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionParameter"]->getType()->getNamespaceName()->__invoke()->getDeclaringClass()->getNamespaceName()->__toString()->rand(0, 100);
-
-?>

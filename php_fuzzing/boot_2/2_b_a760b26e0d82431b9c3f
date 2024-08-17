@@ -1,4 +1,0 @@
-<?php
-stream_filter_register("This is a very long string that will hopefully not fit in the buffer and cause a segfault or at least a very slow execution", "This is another very long string that will hopefully not fit in the buffer and cause a segfault or at least a very slow execution");
-
-?>

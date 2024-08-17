@@ -1,3 +1,0 @@
-<?php
-$vars["ReflectionObject"]->export(unpack("H*", str_repeat(chr(174), 257) + str_repeat(chr(97), 65537)), true);
-?>

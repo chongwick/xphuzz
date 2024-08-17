@@ -1,4 +1,0 @@
-<?php
-xmlwriter_end_pi(fopen("https://example.com/non-existent-file.txt", "rb")) or die("Error: ".error_get_last()["message"]);
-
-?>

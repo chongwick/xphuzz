@@ -1,4 +1,0 @@
-<?php
-preg_replace(array(true, 'foo'), -1, true, 100, $ref_int, array('bar', 42, 'baz'));
-
-?>

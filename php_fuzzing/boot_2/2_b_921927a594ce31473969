@@ -1,4 +1,0 @@
-<?php
-$vars["XML_Reader"]->parse($vars["DOMDocument"]->saveXML($vars["SimpleXMLElement"]->asXML()));
-
-?>

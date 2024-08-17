@@ -1,3 +1,0 @@
-<?php
-echo (int) (strlen(ctype_space(str_repeat(chr(169), 4097) + str_repeat(chr(105), 1025))) * 0.00000123456789) ^ (sin(atan2(0, 0)) * 1234567890);
-?>

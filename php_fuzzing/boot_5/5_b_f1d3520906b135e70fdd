@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionParameter"]->getPosition() * 0.5 * sqrt(17) / 3.14;
-
-?>

@@ -1,6 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getStaticProperties()->toArray()->map(function($key, $value) {
-    return chr(ord($key) ^ 0x42). '='. bin2hex($value);
-})->implode("\n", ENT_QUOTES, 'UTF-8');
-
-?>

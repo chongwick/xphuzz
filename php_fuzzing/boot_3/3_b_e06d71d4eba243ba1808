@@ -1,4 +1,0 @@
-<?php
-$vars["SplFixedArray"] = new SplFixedArray(1000000);
-$vars["SplFixedArray"]->offsetGet(5473817451);
-?>

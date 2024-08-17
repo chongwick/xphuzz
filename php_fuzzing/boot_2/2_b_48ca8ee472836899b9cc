@@ -1,4 +1,0 @@
-<?php
-posix_getpwuid(5473817451);
-
-?>

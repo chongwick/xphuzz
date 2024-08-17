@@ -1,4 +1,0 @@
-<?php
-curl_multi_select(fopen("/etc/passwd", "r"), 0.5, "Hello, World!", array(1, 2, 3), 2.2250738585072011e-308, "This is a very long string that will probably cause an error");
-
-?>

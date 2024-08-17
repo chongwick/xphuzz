@@ -1,4 +1,0 @@
-<?php
-$vars["SplPriorityQueue"]->next()->toString()->replace("queue", "unicorns")->toUpperCase()->replace(" ", "_")->encode('base64');
-
-?>

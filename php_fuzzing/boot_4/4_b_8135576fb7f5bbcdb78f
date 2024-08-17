@@ -1,5 +1,0 @@
-<?php
-$weirdConstant = 0x100 * 3.14;
-$weirdString = str_repeat("A", $weirdConstant). "B". chr(0x100). "C";
-metaphone($weirdString, 1.618);
-?>

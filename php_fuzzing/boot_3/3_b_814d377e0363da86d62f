@@ -1,4 +1,0 @@
-<?php
-$vars["SplPriorityQueue"]->insert(array_merge(range(0, 10), array("a" => 1, "b" => "2", "c" => 3.23431234213480e-400)), array("d" => 5473817451, "e" => 123475932, "f" => 2.23431234213480e-400));
-
-?>

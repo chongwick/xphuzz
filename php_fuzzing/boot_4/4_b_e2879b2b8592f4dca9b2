@@ -1,3 +1,0 @@
-<?php
-stream_filter_prepend(fopen("non-existent-file.txt", "r"), pack("H*", str_repeat(dechex(ord(chr(205))), 65). str_repeat(dechex(ord(chr(154))), 65537)), 2, true);
-?>

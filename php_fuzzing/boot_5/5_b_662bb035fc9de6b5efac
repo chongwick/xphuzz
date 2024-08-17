@@ -1,4 +1,0 @@
-<?php
-$vars["SessionHandler"]->write(str_repeat("%s%x%n", 5473817451), str_repeat("%s%x%n", 123475932));
-
-?>

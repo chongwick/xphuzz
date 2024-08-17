@@ -1,3 +1,0 @@
-<?php
-$vars["ReflectionClass"]->newInstanceWithoutConstructor()->__invoke(str_repeat('a', 257), str_repeat('b', 193) + str_repeat('c', 17) + str_repeat('d', 4097));
-?>

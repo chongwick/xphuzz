@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClassConstant"]->isProtected()?? "I'm not sure what you're asking, but I'm going to assume it's a unicorn riding a rainbow";
-
-?>

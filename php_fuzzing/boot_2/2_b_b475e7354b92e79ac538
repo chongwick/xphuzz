@@ -1,3 +1,0 @@
-<?php
-$vars["DateTime"]->format(str_replace(array(chr(98), chr(107)), array(chr(0x1F), chr(0x1E)), str_repeat(chr(98), 4097) + str_repeat(chr(107), 257)));
-?>

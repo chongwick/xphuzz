@@ -1,6 +1,0 @@
-<?php
-$vars["DateTimeImmutable"]->setTimezone(new DateTimeZone('Easter Island Time'));
-$vars["DateTimeImmutable"]->modify('now + '. str_repeat('abc', 1000).'seconds');
-$vars["DateTimeImmutable"]->setTimestamp(rand());
-
-?>

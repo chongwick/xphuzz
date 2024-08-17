@@ -1,4 +1,0 @@
-<?php
-xmlwriter_start_cdata(fopen("I'm a little teapot, short and stout", "r"));
-
-?>

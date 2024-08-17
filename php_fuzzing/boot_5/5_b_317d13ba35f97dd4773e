@@ -1,4 +1,0 @@
-<?php
-stream_filter_prepend(fopen("randomfile.txt", "w+"), str_repeat("hello world\n", 0x1000000), 2147483648, 2147483647);
-
-?>

@@ -1,3 +1,0 @@
-<?php
-echo "I'm a unicorn that poops rainbows! ". func_num_args(). " is the number of arguments I'm expecting, but I'm not actually expecting any because I'm a unicorn!";
-?>

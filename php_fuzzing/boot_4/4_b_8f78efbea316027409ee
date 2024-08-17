@@ -1,8 +1,0 @@
-<?php
-$vars["ReflectionFunction"]->getClosure()->bindTo(new class() {
-    public function __invoke() {
-        return 'I\'m a closure, but I\'m not a closure!';
-    }
-}, 'Some Random Class Name');
-
-?>

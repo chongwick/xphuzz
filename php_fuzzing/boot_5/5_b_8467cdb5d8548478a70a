@@ -1,3 +1,0 @@
-<?php
-mb_eregi_replace(str_repeat(chr(0), 0x100), str_repeat(chr(0x80), 4097). str_repeat(chr(0x99), 65). str_repeat(chr(0xf2), 65), str_repeat(chr(0x1f), 0x100). str_repeat(chr(0x1f), 0x100), str_repeat(chr(0x1f), 0x100). str_repeat(chr(0x1f), 0x100));
-?>

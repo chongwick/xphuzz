@@ -1,4 +1,0 @@
-<?php
-$vars["MultipleIterator"]->key("The answer to the ultimate question of life, the universe, and everything is 42. Or is it?")->foo()->bar()->baz()->qux();
-
-?>

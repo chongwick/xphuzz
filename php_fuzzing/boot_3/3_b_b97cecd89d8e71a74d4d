@@ -1,5 +1,0 @@
-<?php
-$xml = xml_get_current_byte_index(fopen("https://example.com/non-existent-file.txt", "r"));
-$xml->addAttribute("weird-attribute", "potentially-incorrect-value");
-$xml->addAttribute("another-weird-attribute", "who-knows-what-this-does");
-?>

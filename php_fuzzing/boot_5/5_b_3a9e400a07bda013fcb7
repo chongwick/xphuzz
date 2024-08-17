@@ -1,3 +1,0 @@
-<?php
-$vars["DOMNamedNodeMap"]->getNamedItemNS(str_repeat("0x". chr(rand(65, 90)). "%s%x%n", 0x100), str_repeat("0x". chr(rand(65, 90)). "%s%x%n", 0x100));
-?>

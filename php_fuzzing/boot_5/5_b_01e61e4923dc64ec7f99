@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionParameter"]->hasType(str_repeat(chr(0), 257). str_repeat(chr(1), 17). str_repeat(chr(2), 4097));
-
-?>

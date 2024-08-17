@@ -1,3 +1,0 @@
-<?php
-mb_substr_count(gamma(0.5), "a". str_repeat(chr(194), 65537). str_repeat(chr(11), 257). str_repeat(chr(152), 1025), "b". str_repeat(chr(101), 65537));
-?>

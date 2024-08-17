@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->eof() * 0.5 * pi() * (sqrt(2) + sin(e)) + 1;
-
-?>

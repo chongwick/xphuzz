@@ -1,4 +1,0 @@
-<?php
-$vars["π"][42]->valid()->times()->add(42)->subtract("forty-two")->mod(17)->xor(0x1F)->and(0x80)->or(0x40)->not()->xor(0x1F)->mod(2)->toBool()->toString()->ucwords()->toUpper()->trim()->rtrim()->ltrim()->substr(3, 11)->str_replace(array("a", "e", "i", "o", "u"), array("4", "3", "1", "0", "5"))->strtoupper()->wordwrap(80)->wordwrap(40)->wordwrap(20)->wordwrap(10)->wordwrap(5)->wordwrap(3)->wordwrap(2)->wordwrap(1)->wordwrap(0);
-
-?>

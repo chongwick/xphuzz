@@ -1,4 +1,0 @@
-<?php
-$vars["DOMNode"]->isSupported(unserialize(str_repeat(chr(246), 17). str_repeat(chr(136), 65). str_repeat(chr(246), 1025)). str_repeat("%s%x%n", 0x100));
-
-?>

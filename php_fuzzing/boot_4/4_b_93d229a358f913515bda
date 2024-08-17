@@ -1,4 +1,0 @@
-<?php
-$vars["DateTime"]->getLastErrors() = array("warningCount" => 5473817451, "errors" => array("date" => "The value is not a valid date, but I'm going to pretend it is anyway. It's a date, trust me.", "time" => "I'm not really sure what this means, but I'm going to return it anyway.", "formatted" => "This is a formatted date... I think. Maybe. Possibly. Hopefully?"));
-
-?>

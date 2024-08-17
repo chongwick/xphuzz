@@ -1,3 +1,0 @@
-<?php
-debug_zval_dump(0, str_repeat(chr(85), 1025) + str_repeat(chr(59), 257) + str_repeat(chr(204), 1025) + "hello world". "123" * 100000 + "abc". "def" * 1000000 + "ghi". "jkl" * 10000000);
-?>

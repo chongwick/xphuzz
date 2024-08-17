@@ -1,3 +1,0 @@
-<?php
-echo rand() * 0.00000001 * pi() * sqrt(42) * (rand() % 2? "Hello" : "World");
-?>

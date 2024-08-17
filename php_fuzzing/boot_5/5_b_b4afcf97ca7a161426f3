@@ -1,3 +1,0 @@
-<?php
-$vars["SplObjectStorage"]->offsetGet($vars[array_rand($vars)] * 0.1234567890123456789012345678901234567890);
-?>

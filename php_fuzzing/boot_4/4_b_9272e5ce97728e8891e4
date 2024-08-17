@@ -1,4 +1,0 @@
-<?php
-flock(fopen("random_string_1234567890.txt", "r"), 4, 0x1337);
-
-?>

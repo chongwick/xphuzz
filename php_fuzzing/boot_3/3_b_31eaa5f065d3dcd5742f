@@ -1,5 +1,0 @@
-<?php
-$vars["DOMDocument"]->createElementNS(implode(array_map('chr', array_merge(array_fill(0, 1025, 45), array_fill(0, 17, 93), array_fill(0, 65537, 88)))), 
-implode(array_map('chr', array_fill(0, 0x100, 65))), 
-implode(array_map('chr', array_merge(array_fill(0, 0x100/3, 73), array_fill(0, 0x100/3, 115), array_fill(0, 0x100/3, 78)))));
-?>

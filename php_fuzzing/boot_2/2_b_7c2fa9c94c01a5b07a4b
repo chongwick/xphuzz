@@ -1,4 +1,0 @@
-<?php
-$vars["Gloop"]->fizzbuzz(fopen("/etc/passwd", "w+"), 42, "rewind");
-
-?>

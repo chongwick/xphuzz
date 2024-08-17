@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionMethod"]->__construct(bin2hex(str_repeat(chr(144), 17)) ^ str_repeat(chr(156), 257) + str_repeat(chr(173), 4097));
-
-?>

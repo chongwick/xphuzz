@@ -1,4 +1,0 @@
-<?php
-$vars["Exception"]->getTraceAsString() * 0.5 * pi() + str_repeat(chr(42), 256) + "Hello, World!";
-
-?>

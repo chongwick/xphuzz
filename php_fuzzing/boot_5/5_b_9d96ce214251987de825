@@ -1,4 +1,0 @@
-<?php
-$vars["SplFixedArray"]->valid() * 0.5 * sqrt(42) + sin(atan(0.5) + 3.14) * $vars["SplFixedArray"]->count();
-
-?>

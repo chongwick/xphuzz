@@ -1,4 +1,0 @@
-<?php
-$vars["SplPriorityQueue"]->extract()->multiplyByPi()->addTheMeaningOfLife()->renderInBinary();
-
-?>

@@ -1,4 +1,0 @@
-<?php
-openssl_cipher_iv_length(str_repeat("randomly generated string ". chr(rand()). " and then more randomness ". rand(), 0x100));
-
-?>

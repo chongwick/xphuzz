@@ -1,3 +1,0 @@
-<?php
-echo gzcompress(str_repeat(chr(0x100), 0), 2, 0x10000000). str_repeat(chr(0x100), 0x100). gzcompress(chr(0x100). chr(0x100). chr(0x100). chr(0x100), 2, 0);
-?>

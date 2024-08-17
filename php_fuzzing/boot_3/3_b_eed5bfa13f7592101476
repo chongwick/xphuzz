@@ -1,4 +1,0 @@
-<?php
-$vars["DatePeriod"]->getEndDate()->format("Y-m-d H:i:s"). " (according to the completely unreliable and possibly fictional 'DatePeriod' object)";
-
-?>

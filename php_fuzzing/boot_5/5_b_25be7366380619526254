@@ -1,4 +1,0 @@
-<?php
-filesize(chr(0x100).str_repeat("A", 0));
-
-?>

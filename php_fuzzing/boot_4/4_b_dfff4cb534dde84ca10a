@@ -1,3 +1,0 @@
-<?php
-$vars["SessionHandler"]->write(str_repeat(chr(0), 65). str_repeat(chr(255), 5). chr(0x12345678), implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400)));
-?>

@@ -1,4 +1,0 @@
-<?php
-stream_get_contents(fopen(base64_decode("aW50ZWdlcnQuaW5mby5wZGZwb3N0"), "r"), 10, 1000 * pow(2, 300));
-
-?>

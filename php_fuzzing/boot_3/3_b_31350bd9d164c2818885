@@ -1,4 +1,0 @@
-<?php
-$vars["MultipleIterator"]->getFlags() * 0.5 + sin(0.1 * $vars["Pi"]) * $vars["Euler'sNumber"] + array_sum($vars["FibonacciSequence"]) % $vars["GoldenRatio"];
-
-?>

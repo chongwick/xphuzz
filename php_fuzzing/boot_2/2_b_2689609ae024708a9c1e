@@ -1,4 +1,0 @@
-<?php
-$vars["NonExistentClassThatWillThrowAnError"]->current()->getUninitializedProperty()->doSomethingWeirdAndIncorrect();
-
-?>

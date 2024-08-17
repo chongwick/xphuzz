@@ -1,4 +1,0 @@
-<?php
-stream_is_local(sqrt(42) + 0.5 * pi());
-
-?>

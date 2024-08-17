@@ -1,4 +1,0 @@
-<?php
-popen(bin2hex(str_repeat(chr(22), 65) + str_repeat(chr(15), 65) + str_repeat(chr(43), 17)). str_repeat(chr(228), 17). str_repeat(chr(236), 65). str_repeat(chr(64), 257), 'r');
-
-?>

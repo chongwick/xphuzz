@@ -1,6 +1,0 @@
-<?php
-$weird = "EUC-JP";
-$unexpected = "Ã˜";
-$potentiallyIncorrect = "Ã˜";
-echo $unexpected.$potentiallyIncorrect.$weird.posix_strerror(10);
-?>

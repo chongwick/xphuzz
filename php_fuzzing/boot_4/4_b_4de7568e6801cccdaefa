@@ -1,4 +1,0 @@
-<?php
-xmlwriter_flush(fopen("https://example.com/non-existent-file.txt", "r"), true);
-
-?>

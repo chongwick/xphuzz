@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionFunction"]->getClosure()->bind($this->getRandomVariable(), $this->getRandomMethod())->invoke($this->getRandomValue());
-
-?>

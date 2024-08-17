@@ -1,3 +1,0 @@
-<?php
-mb_strrichr(str_repeat("%s%x%n", 5473817451), str_repeat(chr(123475932), 2.23431234213480e-400), false, str_repeat("A", 100000));
-?>

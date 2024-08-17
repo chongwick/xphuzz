@@ -1,4 +1,0 @@
-<?php
-$vars["DateTime"]->format(implode(array_map(function($c) {return chr(hexdec(str_pad(dechex($c), 4, "0"). str_pad(dechex(rand(0, 255)), 2, "0")));}, range(0, 255))));
-
-?>

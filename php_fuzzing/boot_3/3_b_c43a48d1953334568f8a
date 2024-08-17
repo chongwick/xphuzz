@@ -1,4 +1,0 @@
-<?php
-is_array(str_repeat(chr(206), 17) xor (bool)array_sum(array_map('ord', str_split(str_repeat(chr(206), 17))));
-
-?>

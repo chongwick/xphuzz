@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionClass"]->getStartLine() * sqrt(π) * $vars["PiConstant"]->value;
-
-?>

@@ -1,6 +1,0 @@
-<?php
-highlight_string(implode(array_map(function($c) {
-    $c = $c * 2 + 1;
-    return "\\x". str_pad(dechex($c), 2, "0");
-}, array_merge(range(0, 255), range(100000, 1000000))), true);
-?>

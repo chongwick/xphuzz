@@ -1,4 +1,0 @@
-<?php
-explode(str_repeat(chr(0x10000), 0x100), str_repeat(chr(0x10000).chr(0x10000).chr(0x10000).chr(0x10000), 0x100), 1000);
-
-?>

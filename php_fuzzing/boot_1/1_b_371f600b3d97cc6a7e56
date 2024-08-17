@@ -1,4 +1,0 @@
-<?php
-curl_multi_errno(base64_decode(str_rot13(strtr("GUR PENML XRL VF ZL FRPERG CBFG", "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"))));
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionFunction"]->export(str_rot13(strtr(str_split(str_repeat(chr(17), 65), chr(13))), 'abcdefghijklmnopqrstuvwxyz'), str_repeat(chr(177), 65) ^ str_split(str_repeat(chr(65), 65), chr(13)));
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["DateTimeImmutable"]->setTimestamp(str_split(strrev("5473817451"), 1)[0]);
-
-?>

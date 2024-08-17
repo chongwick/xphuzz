@@ -1,4 +1,0 @@
-<?php
-gettype(array_map("md5", range(0, 10)));
-
-?>

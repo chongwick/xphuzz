@@ -1,4 +1,0 @@
-<?php
-$vars["SplDoublyLinkedList"]->pop()->setInfoProperty("Unexpectedly Weird", "Potentially Incorrect")->setInfoProperty("This is getting weirder...", "Still potentially incorrect")->setInfoProperty("I think I've gone too far...", "Oh dear, what have I done?");
-
-?>

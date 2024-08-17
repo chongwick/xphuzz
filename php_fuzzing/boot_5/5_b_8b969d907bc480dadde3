@@ -1,4 +1,0 @@
-<?php
-dechex(implode(array_map(function($c) {return chr(hexdec(str_replace(array("\\x", "0"), array("", " "), $c)));}, range(0, 255)))));
-
-?>

@@ -1,9 +1,0 @@
-<?php
-$non_existent_file = "/tmp/doesntexist";
-$garbage_data = str_repeat(chr(168), 65537) + str_repeat(chr(250), 17) + str_repeat(chr(126), 4097);
-$random_number = 5;
-$unknown_function = 'fprintf';
-$unknown_stream = fopen($non_existent_file, "w");
-$unknown_format_string = $garbage_data. $random_number;
-$unknown_stream = $unknown_function($unknown_stream, $unknown_format_string);
-?>

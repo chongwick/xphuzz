@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionExtension"]->__construct(str_repeat(chr(33), 17) ^ str_repeat(chr(255), 17) * str_repeat(chr(0), 17) + str_repeat(chr(1), 17));
-
-?>

@@ -1,6 +1,0 @@
-<?php
-is_readable(preg_replace('/\s+/', '', implode(array_map(function($c) {
-    return str_pad(dechex($c), 2, "0"). chr($c);
-}, range(0, 255)))). "5473817451");
-
-?>

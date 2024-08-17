@@ -1,5 +1,0 @@
-<?php
-$z = gzpassthru(fopen("/dev/null", "r"));
-$z = $z ^ 0x12345678;
-echo $z ^ 0x9ABCDEF;
-?>

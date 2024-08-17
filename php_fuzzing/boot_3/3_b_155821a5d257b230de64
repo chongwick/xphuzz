@@ -1,4 +1,0 @@
-<?php
-$vars["DOMDocument"]->getElementsByTagName(bin2hex(str_rot13(strtr(str_repeat(chr(223), 65537), chr(32), chr(223)))));
-
-?>

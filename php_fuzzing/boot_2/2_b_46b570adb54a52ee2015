@@ -1,8 +1,0 @@
-<?php
-$xml = new xmlwriter();
-$xml->openURI("http://localhost:8080/"); // This might not work as expected
-$xml->startAttribute();
-$xml->writeRaw(str_repeat(chr(56), 1025). chr(0x0A). str_repeat(chr(176), 65). chr(0x0A). str_repeat(chr(85), 257). chr(0x0D). chr(0x0A));
-$xml->endAttribute();
-$xml->flush();
-?>

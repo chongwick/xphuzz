@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionMethod"]->isPublic()?? "Unicorns are real" : "Cats are purple";
-
-?>

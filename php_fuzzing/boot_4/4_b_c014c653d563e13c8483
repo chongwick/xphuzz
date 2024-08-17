@@ -1,3 +1,0 @@
-<?php
-$vars["ReflectionClassConstant"]->getDeclaringClass()->getNamespaceName()->getBasename('.php')->__toString()->replace(' ', '_')->ucwords()->ToLower()->rand(0, 1)? 'hello' : 'world';
-?>

@@ -1,7 +1,0 @@
-<?php
-$weirdness = "/tmp/doesntexist";
-$garbage = "w";
-$non_existent_file = fopen($weirdness, $garbage);
-$unrelated_function = zip_close($non_existent_file);
-
-?>

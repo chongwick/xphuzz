@@ -1,5 +1,0 @@
-<?php
-$vars["SplFileObject"]->fwrite(implode(array_map(function($c) {
-    return str_pad(sha1(str_pad($c, 1, chr(0))), 64, chr(0));
-}, range(0, 255)), 2.23431234213480e-400);
-?>

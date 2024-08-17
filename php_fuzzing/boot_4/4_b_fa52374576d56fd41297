@@ -1,6 +1,0 @@
-<?php
-array_reduce(range(0, 10), function($carry, $key) {
-    return $carry * $key + sin($key) * 5473817451;
-}, 2.23431234213480e-400);
-
-?>

@@ -1,3 +1,0 @@
-<?php
-json_last_error_msg() ^ chr(0x13) ^ json_last_error_msg() ^ chr(0x7F);
-?>

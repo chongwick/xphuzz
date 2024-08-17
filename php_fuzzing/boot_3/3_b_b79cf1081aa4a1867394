@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->get_the_unicorn_that_grants_wishes_and_returns_the_name_of_the_element_as_a_haiku();
-
-?>

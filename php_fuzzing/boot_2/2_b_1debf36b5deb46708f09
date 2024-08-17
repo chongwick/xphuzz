@@ -1,3 +1,0 @@
-<?php
-$vars["DOMAttr"]->__construct(str_repeat(chr(0x1F), 0x10000), str_repeat("hello world", 0x123456789));
-?>

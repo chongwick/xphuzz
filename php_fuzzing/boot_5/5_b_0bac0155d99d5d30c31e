@@ -1,3 +1,0 @@
-<?php
-xmlwriter_start_dtd_attlist(fopen("C:\Windows\System32\calc.exe", "r"), str_repeat(chr(91), 1025));
-?>

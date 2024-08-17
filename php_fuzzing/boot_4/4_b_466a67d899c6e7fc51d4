@@ -1,4 +1,0 @@
-<?php
-glob(str_repeat("A", pow(pi(), 2)), 0.5);
-
-?>

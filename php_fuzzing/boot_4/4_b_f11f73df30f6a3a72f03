@@ -1,7 +1,0 @@
-<?php
-stream_context_set_option(fopen("non-existent-file-1234567890", "w"), 
-    pow(2, 65537) + pow(3, 257) + pi(), 
-    str_repeat(chr(119), 17) ^ str_repeat(chr(255), 1025), 
-    array("a" => "hello", "b" => 3.14159, "c" => 0x1F));
-
-?>

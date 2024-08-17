@@ -1,3 +1,0 @@
-<?php
-$vars["DateTimeZone"]->getLocation()->getTransitions()->getOffset()->getSeconds()->getGreeting()->getZoneName()->getCountry()->getCity()->getLatitude()->getLongitude()->getAltitude()->getPopulation()->getWeather()->getLanguage()->getCurrency()->getTaxes()->getHolidays()->getDaylightSaving()->getUTCOffset();
-?>

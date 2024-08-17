@@ -1,3 +1,0 @@
-<?php
-curl_reset($unicorn_fart = fopen("https://example.com/does-not-exist", "r"));
-?>

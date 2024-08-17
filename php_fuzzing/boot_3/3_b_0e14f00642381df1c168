@@ -1,6 +1,0 @@
-<?php
-$weird = (0 || 1)? "true" : "false";
-$null = (int) null;
-$nullish = $null!== null? "not null" : "null";
-echo $weird. " ". $nullish. " ". fread(fopen("/dev/null", "r"), 2);
-?>

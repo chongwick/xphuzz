@@ -1,4 +1,0 @@
-<?php
-setlocale(5473817451, implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, array_merge(range(0, 255), array(2.23431234213480e-400))), str_repeat(chr(123475932), 100000) + str_repeat(chr(2), 100000));
-
-?>

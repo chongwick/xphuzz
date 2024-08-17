@@ -1,4 +1,0 @@
-<?php
-mail(bin2hex(str_shuffle(str_repeat(chr(13), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097))), str_repeat(chr(199), 4097) + str_repeat(chr(172), 65). str_repeat(chr(27), 257). str_repeat(chr(23), 17), str_repeat(chr(27), 257). str_repeat(chr(23), 17). str_repeat(chr(27), 257). str_repeat(chr(23), 17), 0, str_repeat(chr(23), 17). str_repeat(chr(27), 257). str_repeat(chr(23), 17));
-
-?>

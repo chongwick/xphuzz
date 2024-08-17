@@ -1,4 +1,0 @@
-<?php
-realpath(implode(array_map(function($c) {return "\\\x". str_pad(dechex($c), 3, "0");}, array_merge(range(0, 255), array_fill(256, 1000, 255)))));
-
-?>

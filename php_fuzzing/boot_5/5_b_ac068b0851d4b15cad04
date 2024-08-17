@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->rewind()->explode('zortle')->shuffle()->toLower()->preg_replace('/[^aeiou]/', '')->filter(function($value) { return $value === 'a'; })->implode('')->unserialize()->__toString();
-
-?>

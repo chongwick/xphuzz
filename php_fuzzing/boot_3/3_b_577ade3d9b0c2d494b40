@@ -1,8 +1,0 @@
-<?php
-$qux = "fnord";
-$quux = "groggle";
-$wuggle = "plugh";
-$flumplenax = "flibberflabber";
-$quux = mb_ereg_search_getregs();
-echo $quux;
-?>

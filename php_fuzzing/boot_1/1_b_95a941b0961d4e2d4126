@@ -1,4 +1,0 @@
-<?php
-$vars["MultipleIterator"]->attachIterator(new ArrayIterator(array(0)), implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, range(-100000, 100000)), chr(0x1F). str_repeat(chr(0x20), 10000). chr(0x1F)));
-
-?>

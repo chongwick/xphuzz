@@ -1,6 +1,0 @@
-<?php
-<code>
-$vars["ReflectionExtension"]->getDependencies()->getMethods()[0]->invoke("The answer is 42", "Hello, World!", 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400);
-</code>
-
-?>

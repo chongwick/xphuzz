@@ -1,3 +1,0 @@
-<?php
-$weirdness = ftell(fopen("I'm not a real file, I'm just a string that's going to cause a lot of confusion and potential errors!", "r"));
-?>

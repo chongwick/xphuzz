@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionMethod"]->isConstructor() * (0.5 + sin(3.14159 * $vars["ReflectionMethod"]->getDeclaringClass()->getName()));
-
-?>

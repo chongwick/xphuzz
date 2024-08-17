@@ -1,4 +1,0 @@
-<?php
-str_pad(str_repeat(chr(165), 65) * (int) sin(2.23431234213480e-400) + str_repeat(chr(16), 17) ** (int) rand(0, 1000000) + str_repeat(chr(16), 1025) ^ (int) microtime(true), 1000000, str_repeat(chr(22), 65) ** (int) pi() + str_repeat(chr(188), 1025) * (int) rand(0, 1000000) + str_repeat(chr(37), 65537) % (int) rand(0, 1000000), 4);
-
-?>

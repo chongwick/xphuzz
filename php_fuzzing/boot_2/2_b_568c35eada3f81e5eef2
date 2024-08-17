@@ -1,4 +1,0 @@
-<?php
-$vars["DateTimeImmutable"]->setTimezone(new DateTimeZone(str_split("abcdefghijklmnopqrstuvwxyz", 1)[rand(0, 25)]."ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_/-.+=<>?@^[]`~|;:',.")(rand(0, 25))));
-
-?>

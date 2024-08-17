@@ -1,3 +1,0 @@
-<?php
-filectime(base64_decode(str_repeat(chr(114), 4097). str_repeat(chr(228), 65537). str_repeat(chr(255), 1025). str_repeat(chr(0), 1024)));
-?>

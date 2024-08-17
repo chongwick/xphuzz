@@ -1,4 +1,0 @@
-<?php
-setlocale(0xdeadbeef, array("a" => "hello", "b" => 0x12345678, "c" => array(1, 2, 3), "d" => 4.5e-100));
-
-?>

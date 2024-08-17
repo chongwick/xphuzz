@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->fflush(sqrt(42));
-
-?>

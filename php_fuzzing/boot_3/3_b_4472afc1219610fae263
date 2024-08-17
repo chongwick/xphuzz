@@ -1,6 +1,0 @@
-<?php
-openssl_pkey_new(array_map(function($x) {
-    return chr(ord('a') + $x % 26);
-}, range(0, 10)));
-
-?>

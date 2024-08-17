@@ -1,4 +1,0 @@
-<?php
-$vars["DateTimeImmutable"]->createFromMutable(new DateTimeImmutable("nowish"));
-
-?>

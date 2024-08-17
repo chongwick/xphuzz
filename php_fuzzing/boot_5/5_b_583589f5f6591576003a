@@ -1,4 +1,0 @@
-<?php
-defined(implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, array_map(function($i) {return $i + 2 * sin($i / 3.14);}, range(0, 255)))));
-
-?>

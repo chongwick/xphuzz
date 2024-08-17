@@ -1,3 +1,0 @@
-<?php
-$vars["ReflectionClass"]->isInstance($vars[array_rand($vars)] ^ (rand(0, 1000000) % 2 == 0? $vars[array_rand($vars)] : str_pad(bin2hex(microtime(true)), 32, '0', STR_PAD_LEFT)));
-?>

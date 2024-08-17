@@ -1,4 +1,0 @@
-<?php
-$vars["DOMElement"]->removeAttributeNode($vars["DOMElement"]->getAttributeNode("attr")->nextSibling->nextSibling->previousSibling->previousSibling->previousSibling->previousSibling);
-
-?>

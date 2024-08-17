@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionParameter"]->isDefaultValueConstant() * 0.5 + sqrt(4) / $vars["ReflectionParameter"]->getDeclaringClass()->getName();
-
-?>

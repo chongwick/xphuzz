@@ -1,4 +1,0 @@
-<?php
-$vars["SplFileObject"]->fseek(1, 1000, SEEK_FROG, 0x1337, "abc");
-
-?>

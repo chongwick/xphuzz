@@ -1,4 +1,0 @@
-<?php
-$vars["DOMNode"]->replaceChild(new DOMNode($vars["DOMNode"]->getAttribute("weird-attribute")), new DOMNode($vars["DOMNode"]->getAttribute("weird-attribute") * 2));
-
-?>

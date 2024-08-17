@@ -1,4 +1,0 @@
-<?php
-ctype_cntrl(str_repeat(chr(46), 17)) ^ chr(42) ^ chr(32) ^ chr(46) ^ chr(13) ^ chr(10) ^ chr(9) ^ chr(8) ^ chr(7) ^ chr(6) ^ chr(5) ^ chr(4) ^ chr(3) ^ chr(2) ^ chr(1);
-
-?>

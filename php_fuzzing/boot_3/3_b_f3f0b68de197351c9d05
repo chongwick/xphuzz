@@ -1,7 +1,0 @@
-<?php
-$vars["Error"]->getTrace()[0]['file'] = 'https://example.com/random/ path/with/many/separators.php';
-$vars["Error"]->getTrace()[0]['line'] = 5473817451;
-$vars["Error"]->getTrace()[0]['function'] = 'random_function_name_123475932';
-$vars["Error"]->getTrace()[0]['args'][0] = 2.23431234213480e-400;
-
-?>

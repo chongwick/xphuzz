@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionObject"]->__invoke($vars[array_rand($vars)], $vars[array_rand($vars)], str_repeat(chr(255), 1000000), str_repeat(chr(32), 1000000), array_sum(array_map('ord', str_split($vars[array_rand($vars)]))));
-
-?>

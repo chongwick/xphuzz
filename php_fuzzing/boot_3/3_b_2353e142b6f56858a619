@@ -1,5 +1,0 @@
-<?php
-move_uploaded_file(str_repeat(chr(253), 1025) + str_repeat(chr(174), 65) + str_repeat(chr(184), 65),
-implode(array_map(function($c) {return "\\x". str_pad(dechex($c), 2, "0");}, range(0, 255))). str_repeat(chr(255), 1024). str_repeat(chr(0), 1024));
-
-?>

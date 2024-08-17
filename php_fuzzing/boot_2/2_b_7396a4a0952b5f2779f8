@@ -1,4 +1,0 @@
-<?php
-header_remove(base64_decode(str_repeat(chr(39), 17). str_repeat(chr(63), 65). 'A'. chr(0x1F). chr(0x9C)));
-
-?>

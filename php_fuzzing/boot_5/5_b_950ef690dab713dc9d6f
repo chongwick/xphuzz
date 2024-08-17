@@ -1,3 +1,0 @@
-<?php
-$vars["Error"]->foo()->bar()->baz()->qux()->wizzle()->flumplenook()->quizzle()->to_string();
-?>

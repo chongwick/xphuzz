@@ -1,4 +1,0 @@
-<?php
-$vars["SplObjectStorage"]->attach($vars[array_rand($vars)]->__toString().chr(0x1F).rand(1,1000000));
-
-?>

@@ -1,6 +1,0 @@
-<?php
-<code>
-$vars["DOMText"]->splitText(536870911, '0x1337beef', '0x42');
-</code>
-
-?>

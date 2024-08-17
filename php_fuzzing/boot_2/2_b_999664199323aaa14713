@@ -1,4 +1,0 @@
-<?php
-$vars["SplObjectStorage"]->removeAllExcept(new SplObjectStorage(null, new stdClass(), 'a', array('b', 'c'), 1.23456789e-10));
-
-?>

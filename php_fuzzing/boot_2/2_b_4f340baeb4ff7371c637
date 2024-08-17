@@ -1,4 +1,0 @@
-<?php
-$vars["Exception"]->getPrevious()->getMessage()->getLength()->getHash()->getRandom()->getPants();
-
-?>

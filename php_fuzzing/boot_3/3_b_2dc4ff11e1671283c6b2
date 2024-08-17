@@ -1,4 +1,0 @@
-<?php
-$vars["ReflectionParameter"]->isDefaultValueConstant() && $this->getSomeRandomValueFromTheInternet() && 0xdeadbeef;
-
-?>
