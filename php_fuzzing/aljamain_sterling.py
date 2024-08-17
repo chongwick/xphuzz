@@ -36,7 +36,8 @@ def new_aljo(gen_num, partitions):
     #pairs += [(x, random.choice(boot)) for x in crashers]
     top_five = ranking[:len(ranking)//20]
     for i in top_five:
-        pairs.append((i,random.choice(crashers)))
+        if len(crashers) != 0:
+            pairs.append((i,random.choice(crashers)))
         pairs.append((i,random.choice(top_five)))
     pairs += [(x, random.choice(boot)) for x in ranking]
     while len(ranking) > 2:

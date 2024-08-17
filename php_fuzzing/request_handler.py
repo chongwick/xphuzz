@@ -245,6 +245,8 @@ def coverage_loop(llm, seed_data, llm_queue, cov_queue, san_queue):
     while(True):
         if cov_queue.qsize() == 0 and san_queue.qsize() == 0 and llm_queue.qsize() == 0:
             outdir = "boot_" + str(GEN_NUM+1)
+            safe_files.append(outdir)
+            safe_files.append("gen_"+GEN_NUM+1)
             if not(os.path.exists(outdir)):
                 os.makedirs(outdir)
             new_corpus(llm, 456, outdir)
@@ -257,13 +259,10 @@ def coverage_loop(llm, seed_data, llm_queue, cov_queue, san_queue):
             utils.log("mapping: " + php_file)
             cov_eng.load_global_coverage_map_from_file(cfg.base_map)
             code = utils.read_file(php_file)
-            og = code
-            with open(cfg.php_template,"r") as f:
-                template = f.read()
-            code = code.replace("<?php",template)
+            if cfg.require_statement not in code:
+                ode.replace("<?php","<?php\n" + cfg.require_statement + "\n")
             utils.write_file(php_file,code)
             result = cov_eng.execute_prog(php_file)
-            utils.write_file(php_file,og)
 
             if result == -1:
                 utils.log("Bad execution")
