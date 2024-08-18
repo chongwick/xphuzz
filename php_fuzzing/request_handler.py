@@ -260,7 +260,7 @@ def coverage_loop(llm, seed_data, llm_queue, cov_queue, san_queue):
             cov_eng.load_global_coverage_map_from_file(cfg.base_map)
             code = utils.read_file(php_file)
             if cfg.require_statement not in code:
-                ode.replace("<?php","<?php\n" + cfg.require_statement + "\n")
+                code.replace("<?php","<?php\n" + cfg.require_statement + "\n")
             utils.write_file(php_file,code)
             result = cov_eng.execute_prog(php_file)
 
@@ -268,7 +268,7 @@ def coverage_loop(llm, seed_data, llm_queue, cov_queue, san_queue):
                 utils.log("Bad execution")
                 continue
             if err.is_error(result):
-                fix_query = prompts.fix(og, err.parse_error(result, php_file))
+                fix_query = prompts.fix(code, err.parse_error(result, php_file))
                 fix_req_name = os.path.join(cfg.llm_requests,
                                             php_file.split("/")[-1].split(".")[0]+"_f")
                 utils.dump_pickle(fix_req_name, fix_query)
