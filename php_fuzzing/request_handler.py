@@ -260,7 +260,7 @@ def coverage_loop(llm, seed_data, llm_queue, cov_queue, san_queue):
             cov_eng.load_global_coverage_map_from_file(cfg.base_map)
             code = utils.read_file(php_file)
             if cfg.require_statement not in code:
-                code.replace("<?php","<?php\n" + cfg.require_statement + "\n")
+                code = code.replace("<?php","<?php\n" + cfg.require_statement + "\n")
             utils.write_file(php_file,code)
             result = cov_eng.execute_prog(php_file)
 

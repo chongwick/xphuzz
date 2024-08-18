@@ -60,7 +60,7 @@ def sanitization_loop(seed_data, san_queue):
 
         code = utils.read_file(php_file)
         if cfg.require_statement not in code:
-            code.replace("<?php","<?php\n" + cfg.require_statement + "\n")
+            code = code.replace("<?php","<?php\n" + cfg.require_statement + "\n")
         #og = code
         #code = code.replace("<?php",template)
         utils.write_file(php_file,code)
