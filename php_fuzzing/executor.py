@@ -42,7 +42,7 @@ class Executor():
                 command.insert(0,'USE_ZEND_ALLOC=0')
                 command.append("2>&1")
             child = subprocess.Popen(command, stdout=subprocess.PIPE, text=True)
-            stdout, stderr = child.communicate(timeout=120) #timeout after 2 minutes
+            stdout, stderr = child.communicate(timeout=40) #timeout after 40 seconds
             self.ret_code = child.returncode
             child.kill()
         except Exception as e:
