@@ -36,8 +36,10 @@ if [ $RET -ne 0 ]; then
 	       exit 0
        fi
        mv "$script" "${script}.er"
+       echo "$OUTPUT" > san.log
 elif [ $(echo "$OUTPUT" | grep "runtime error:" | wc -l) -gt 0 ]; then
        mv "$script" "${script}.er"
+       echo "$OUTPUT" > san.log
        exit 0
 fi
 

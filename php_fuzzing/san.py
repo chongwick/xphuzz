@@ -80,6 +80,19 @@ def sanitization_loop(seed_data, san_queue):
             if is_error(php_file):
                 php_file = php_file+".er"
                 crash = i
+                error = utils.read_file(cfg.san_log)
+                if 'LeakSanitizer' in error:
+                    error = error.split("LeakSanitizer")[1]
+                elif 'runtime error:' in error:
+                    error = error.split("runtime error")[1]
+                elif "ERROR:" in error:
+                    error = error.split("ERROR")[1]
+                bugs = utils.load_pickle(cfg.bug_log)
+                if error not in bugs:
+                    bugs[error]=[seed_name]
+                else:
+                    bugs[error].append(seed_name)
+                utils.dump_pickle(cfg.bug_log,bugs)
                 break
             else:
                 crash = "NC"

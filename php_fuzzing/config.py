@@ -15,6 +15,8 @@ stats = "stats.pickle"
 php_corpus = "php_corpus"
 php_template = "grammar_generators/template.php"
 require_statement = "require \"/home/w023dtc/template.inc\";"
+san_log = "san.log"
+bug_log = "bug_log.pickle"
 
 llm_queue = "llm_requests/queue.pickle"
 cov_queue = "queues/cov_queue.pickle"
