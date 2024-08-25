@@ -23,7 +23,7 @@ def new_aljo(gen_num, partitions):
     crashers = partitions[0]
     ranking = partitions[1]
     if gen_num == 0:
-        crashers += [x for x in range(len('native_crashers'))]
+        crashers += [str(x) for x in range(len('native_crashers'))]
     #if len(crashers) < 2:
     #    crashers += cfg.og_crashers
     #Eventually, the context sizes of these things will be too big so we'll just put some
