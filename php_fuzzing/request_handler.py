@@ -145,7 +145,7 @@ def create_seed_data(seed_data, seed_name, php_file):
 def query_loop(llm, seed_data, llm_queue, cov_queue):
     global GEN_NUM
     while(True):
-        if llm_queue.qsize == 0:
+        if llm_queue.qsize() == 0:
             continue
         request_file = llm_queue.get() # blocking function
         seed_name = request_file.split("/")[-1].split("_")[0]
@@ -252,7 +252,7 @@ def coverage_loop(llm, seed_data, llm_queue, cov_queue, san_queue):
             new_corpus(llm, 456, outdir)
             next_gen(seed_data, llm_queue, cov_queue)
         else:
-            if cov_queue.qsize == 0:
+            if cov_queue.qsize() == 0:
                 continue
             update_data(llm_queue, cov_queue, seed_data)
             php_file = cov_queue.get() #gets stuck here so doesn't start next gen

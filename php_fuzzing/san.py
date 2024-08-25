@@ -53,7 +53,7 @@ def sanitization_loop(seed_data, san_queue):
     is_error = lambda x: os.path.exists(x+".er")
     while(True):
         crash = None
-        if san_queue.qsize == 0:
+        if san_queue.qsize() == 0:
             continue
         php_file = san_queue.get()
         seed_name = php_file.split("/")[1].split(".")[0]
