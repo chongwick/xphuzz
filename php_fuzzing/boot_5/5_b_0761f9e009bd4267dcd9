@@ -1,0 +1,5 @@
+<?php
+$vars["QuixoticString"]->addAttribute(str_repeat(chr(420), 1337), 
+str_repeat(chr(178), 2147483648) + str_repeat(chr(123), 536870912) + str_repeat(chr(126), 17179869184), 
+str_repeat(chr(34), 3.14159265359) + str_repeat(chr(39), sqrt(2)) + str_repeat(chr(34), pi()));
+?>

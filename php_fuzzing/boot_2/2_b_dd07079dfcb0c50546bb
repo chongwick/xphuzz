@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257). "   THIS IS JUST TO MAKE IT LOOK WEIRD", bin2hex(chr(260).chr(2).chr(4).chr(255).chr(2).chr(1).chr(4)));
+
+?>

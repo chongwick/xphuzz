@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("\x{9b}\x{c1}\x{9b}\x{97}".str_repeat("\x{99}\x{8f}\x{85}", 8).str_repeat("\x{df}\x{85}\x{7f}", 4096),
+"monkey see monkey do, but XML attributes can't be that big...".str_repeat("\u{1f4a9}", 1025).str_repeat("\u{1f4aa}", 1025),
+"what's going on with Unicode characters?".str_repeat("\x{fffd}", 65537). str_repeat("\x{2195}", 1025). str_repeat("\x{2195}", 1025));
+?>

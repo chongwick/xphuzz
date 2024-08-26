@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split("Wibbly Wobbly Timey Wimey")[0], 
+(str_split(bin2hex(str_shuffle("Hello, World!")))[0], 
+str_split(bin2hex(str_split("I'm a mad scientist!")[0]))[1];
+?>

@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_shuffle("abcdefghijklmnopqrstuvwxyz"), chr(99)^ord('a'), mt_rand());
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13("oernxfvqrfzrg"), pack("H*", "13{257x13}{193155147}161213214"), pack("H*", "65537x161213214{1025251025}"));
+
+?>

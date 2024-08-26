@@ -1,0 +1,3 @@
+<?php
+$vars["PlutoniumRays"]->addAttribute(chr(π)^strlen("Cthulhu"), chr(φ)^ord("Ω") & chr(ι)^ord("Σ"), bin2hex(strrev(hex2bin(strtr("Beware the Jabberwock, my son!", chr(39))))));
+?>

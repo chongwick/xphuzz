@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(42), 257),
+rand() ^ 0x1a3f7a4c,
+base64_encode(unserialize("O:8:\"SimpleXMLElement\":3:{s:2:\"hi\";N;s:10:\"attributes\";a:0:{}s:5:\"value\";N;}")));
+
+?>

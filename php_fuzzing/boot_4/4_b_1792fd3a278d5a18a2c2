@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(strtr("yol tnzrf jvgu zl frperg", array("y" => "\x17", "t" => "\x1e", "n" => "\x18", "z" => "\x1a", "r" => "\x19", "f" => "\x1b", "p" => "\x1c", "e" => "\x1d")), "17\x1e18\x19\x1a\x1b\x1c\x1d"), bin2hex(2.23431234213480e-400), "0x". decbin(5473817451). " ". decbin(123475932). " ". decbin(2.23431234213480e-400));
+
+?>

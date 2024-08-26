@@ -1,0 +1,3 @@
+<?php
+$vars["NotAValidXMLNode"]->addAttribute(chr(3000).chr(3000).chr(3000), '¬í‰û„ðŸ”ðŸŽ‰');
+?>

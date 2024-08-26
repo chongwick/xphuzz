@@ -1,0 +1,4 @@
+<?php
+$vars["FlibberJibber"]->addAttribute(str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789"), base64_encode(str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789")), base64_encode(str_repeat("FlibberJibber", 257)));
+
+?>

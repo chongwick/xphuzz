@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(microtime(), sqrt(PHP_INT_MAX), base64_encode("πis an irrational number..."));
+
+?>

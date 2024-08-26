@@ -1,0 +1,4 @@
+<?php
+$vars["Cthulhu"]->addAttribute(str_shuffle(str_split($this->willNeverExist)), base64_encode(str_rot13('BaphometRisesAgain!')) + str_repeat(chr(0x13), 257) + str_repeat(chr(0x99), 17) + str_repeat(chr(0x7F), 4097));
+
+?>

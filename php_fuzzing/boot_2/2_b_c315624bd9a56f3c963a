@@ -1,0 +1,8 @@
+<?php
+<code>
+$banana = 'trombone';
+$giraffe = 'plumber';
+$vars["SimpleXMLElement"]->addAttribute($banana, $giraffe, "I'm a little teapot");
+</code>
+
+?>

@@ -1,0 +1,5 @@
+<?php
+$vars["PlutonianPeculiarObject"]->addAttribute(str_repeat('Cthulhu', 257),
+  bin2hex(str_repeat('Flibberflabber', 257). str_repeat('Floopen', 17). str_repeat('Floopenious', 4097)),
+  bin2hex(str_repeat('Zorgon', 65537). str_repeat('Glark', 1025). str_repeat('Wizzle', 1025)));
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("UFO Sighting Recorded on April 1st 3000 BCE", "Don't Panic!", "Don't Panic! ". chr(0x00D7). " Don't Panic! ");
+
+?>

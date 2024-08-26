@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("∞".chr(1337)."🤯", 
+hex2bin(str_split(rand(2^256-1)).chr(0x42)).chr(0x42)."∞", 
+str_repeat(chr(1337), 42).rand(2^128-1).rand(2^128-1).rand(2^128-1).rand(2^128-1).rand(2^128-1));
+?>

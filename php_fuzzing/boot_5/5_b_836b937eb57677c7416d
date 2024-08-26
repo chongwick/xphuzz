@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split("octocat")[10], "π". pow(sqrt(sqrt(42)), 1000000). str_rot13("hello world"), "null" + "   ". str_repeat(" ", 256));
+
+?>

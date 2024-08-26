@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(chr(0x00).chr(0x1).chr(-1).chr(2).chr(3).chr(4).chr(5).chr(10).chr(100).chr(100000).chr(5473817451).chr(123475932).unpack("H*","pack f",2.23431234213480e-400));
+?>

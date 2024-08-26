@@ -1,0 +1,4 @@
+<?php
+    $vars["SimpleXMLElement"]->addAttribute(str_rot13("s"), str_rot13("s". chr(0x1f602)), 
+                                            str_rot13("s". chr(0x1f602). chr(0x1f604). chr(0x1f602)));
+?>

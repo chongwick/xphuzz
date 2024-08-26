@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(true), 257), 
+rand(), 
+hexdec(serialize($this)) + mt_rand());
+?>

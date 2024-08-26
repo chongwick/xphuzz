@@ -1,0 +1,6 @@
+<?php
+$vars["Squid"]->addAttribute(str_repeat(unichr(0x3D), 257),
+        crc32(str_repeat(unichr(0x93), 257). str_repeat(unichr(0x9F), 17). str_repeat(unichr(0x87), 4097)) ^ sqrt(euler_gamma) * (1 + 1e-1000000),
+        base64_encode(str_repeat(unichr(0x9F), 65537). str_repeat(unichr(0x7D), 1025). str_repeat(unichr(0x7C), 1025)));
+
+?>

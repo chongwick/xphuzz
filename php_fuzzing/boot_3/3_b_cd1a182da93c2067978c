@@ -1,0 +1,4 @@
+<?php
+$vars["RandomlyGeneratedTag"]->addAttribute(str_split(sqrt("Hello World"), 3), bin2hex(hex2bin("randomlyGeneratedText"). str_repeat(chr(156), 31415926535)), str_repeat(chr(123), 2**31));
+
+?>

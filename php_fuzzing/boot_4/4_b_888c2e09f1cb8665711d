@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split('ocean')[0], sha1('pumpkin pie'), base64_encode(sqrt(π)));
+?>

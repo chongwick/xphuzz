@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(unserialize("O:8:\"SimpleXMLElement\":0:{}"), "π", str_repeat(chr(47), 2) + str_repeat(chr(61), 17) + str_repeat(chr(91), 4097));
+?>

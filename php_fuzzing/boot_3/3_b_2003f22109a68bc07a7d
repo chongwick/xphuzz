@@ -1,0 +1,4 @@
+<?php
+$vars["Quxuxlement"]->addAttribute(str_repeat(42, 257), "ƒ". chr(0x1337). "∞", str_repeat("¬", 65537). str_repeat("\x1F", 1025). str_repeat("\x1F", 1025));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["QuxXy"]->addAttribute(str_repeat(unserialize('O:10:"stdClass":1:{s:10:" attributes";a:1:{i:1;a:257:{i:257;b:1;}}}}'), str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097), str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025));
+
+?>

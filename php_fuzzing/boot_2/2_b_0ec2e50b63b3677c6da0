@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute($a[$b? 0 : $c ^ 3][!isset($d)? "foo" : "bar"], 
+    $e ^ (int) str_repeat(chr(32), 1024) + str_repeat(chr(226), 257), 
+    $f? "baz" : bin2hex(str_repeat(chr(255), 65536)));
+?>

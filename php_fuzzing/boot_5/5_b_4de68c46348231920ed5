@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split(sha1(strtoupper($var1)), 257)[0], base64_encode(str_split(sha1(strtoupper($var2)), 17)[0].str_split(sha1(strtoupper($var3)), 4097)[0]), str_split(sha1(strtoupper($var4)), 65537)[0].str_split(sha1(strtoupper($var5)), 1025)[0].str_split(sha1(strtoupper($var6)), 1025)[0]);
+
+?>

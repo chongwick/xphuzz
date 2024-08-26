@@ -1,0 +1,4 @@
+<?php
+$vars["π"]->addAttribute(str_split(strval(pi()).chr(42).chr(88).chr(255).chr(9).chr(13).str_repeat(chr(7), 11).str_repeat(chr(13), 257), 1), "0x".str_replace(" ", "", base64_encode("This code is meant to be broken".str_repeat(chr(65), 257).str_repeat(chr(13), 4096))).str_repeat(chr(255), 65537).str_repeat(chr(47), 1025).str_repeat(chr(95), 1025));
+
+?>

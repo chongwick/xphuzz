@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(chr(0x13bebebe), chr(0x4141414141414141).chr(0x4141414141414141).chr(0x4141414141414141).chr(0x4141414141414141).chr(0x4141414141414141), chr(0x2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f).chr(0x2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f).chr(0x2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f).chr(0x2f2f2f2f2f2f2f2f2f2f2f2f2f2f2f));
+?>

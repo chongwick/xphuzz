@@ -1,0 +1,7 @@
+<?php
+function weirdness($a, $b, $c) {
+    return "The answer is ". str_replace(array("a", "b", "c"), array($a, $b, $c), "abc"). " times pi!";
+}
+
+print_r(weirdness("aardvark", 0, 2.23431234213480e-400));
+?>

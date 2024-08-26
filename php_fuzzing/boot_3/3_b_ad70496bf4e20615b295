@@ -1,0 +1,6 @@
+<?php
+$vars["Platypus"]->addAttribute(str_repeat(chr(ƒ), 257),
+bin2hex(str_repeat(chr(π), 257). str_repeat(chr(³), 17). str_repeat(chr(÷), 4097)),
+bin2hex(str_repeat(chr(Ω), 65537). str_repeat(chr(ℵ), 1025). str_repeat(chr(±), 1025)));
+
+?>

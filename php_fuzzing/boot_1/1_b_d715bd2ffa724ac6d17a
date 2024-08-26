@@ -1,0 +1,4 @@
+<?php
+<code>$vars["Squidward"]->addAttribute(generateRandomAncientLanguagePhrase(), "A Very Important Note: Don't Touch This!", calculatePiTo1000Digits());</code>
+
+?>

@@ -1,0 +1,5 @@
+<?php
+$vars["Pizzza Elephant"]->addAttribute(str_repeat(chr(0x13), 257),
+bin2hex(str_repeat(chr(0x93), 257). str_repeat(chr(0x95), 17). str_repeat(chr(0x87), 4097). pack("H*", "84720A2F"). str_repeat(chr(0xE1), 65537). str_repeat(chr(0xCD), 1025). str_repeat(chr(0xCE), 1025)),
+bin2hex(str_repeat(chr(0x81), 257). str_repeat(chr(0x80), 17). str_repeat(chr(0x7F), 4097). str_repeat(chr(0x0C), 65537). str_repeat(chr(0x15), 1025). str_repeat(chr(0x16), 1025)));
+?>

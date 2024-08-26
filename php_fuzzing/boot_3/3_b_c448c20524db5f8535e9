@@ -1,0 +1,4 @@
+<?php
+$banana = 5473817451;
+$vars["SimpleXMLElement"]->addAttribute("this is a very weird attribute name", base64_encode($banana. "I love pineapple pizza"));
+?>

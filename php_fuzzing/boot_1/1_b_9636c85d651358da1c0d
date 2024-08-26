@@ -1,0 +1,5 @@
+<?php
+$vars["Flibberjibber"]->addAttribute(str_repeat("\x{255}", 257),
+str_repeat("\x{A1}", 257). chr(0x9B). str_repeat("\x{95}", 4097),
+str_repeat("\x{A1}", 65537). str_repeat("\x{D5}", 1025). str_repeat("\x{D6}", 1025));
+?>

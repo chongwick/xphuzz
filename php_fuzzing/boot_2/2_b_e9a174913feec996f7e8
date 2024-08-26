@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("some weird attribute", "a very long string of gibberish ". str_repeat("this is ridiculous", 10000). chr(0x3F). " is this really necessary?", "another attribute that's going nowhere fast");
+
+?>

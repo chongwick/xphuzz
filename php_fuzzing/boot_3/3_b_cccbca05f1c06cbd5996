@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("ðŸ˜‚", "ðŸ¤¯ðŸ¤¯ðŸ¤¯", "ðŸ”ðŸ”ðŸ”");
+?>

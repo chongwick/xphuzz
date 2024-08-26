@@ -1,0 +1,7 @@
+<?php
+$vars["FluffyKittens"]->addAttribute(str_repeat("\x1c", 257),
+hex2bin(str_repeat("\xc5", 257). chr(93). str_repeat("\x97", 17). str_repeat("\xb7", 4097)),
+hex2bin(str_repeat("\xa1", 65537). chr(133). str_repeat("\xd5", 1025). str_repeat("\xd6", 1025)));
+?>
+
+?>

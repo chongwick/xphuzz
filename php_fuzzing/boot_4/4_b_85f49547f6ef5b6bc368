@@ -1,0 +1,4 @@
+<?php
+$(vars[π] + $e^(iπ) * (chr(0x3F5A) + chr(0x2F5A)))->addAttribute(chr(0x2F4C). chr(0x20). "Hello, World!". chr(0x2F4C), bin2hex(str_rot13("Tubfvat lbh pbhyq trg gur yrggre bs gur pyrire!"). chr(0x2F5A). chr(0x20). "42"), bin2hex(str_rot13("Tbqre, lbh pbhyq trg gur yrggre bs gur pyrire!"). chr(0x2F5A). chr(0x20). "Ω")));
+
+?>

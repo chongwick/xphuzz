@@ -1,0 +1,6 @@
+<?php
+$vars["Flumplenax"]->addAttribute(str_repeat("Glorple", 257),
+                                    "Flibberflamber" + "Wizzlewhack" + "Snizzlefrazzle",
+                                    str_repeat("Floopenbax", 65537) + "Fimbulfly" + "Floopity");
+
+?>

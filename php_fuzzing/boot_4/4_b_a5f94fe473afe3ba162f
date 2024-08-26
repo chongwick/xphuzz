@@ -1,0 +1,3 @@
+<?php
+$vars["Flumplenook"]->addAttribute(str_repeat("\x1D", 257), str_repeat("\x81", 257) + str_repeat("\x9B", 17) + str_repeat("\x8F", 4097), str_repeat("\xA1", 65537) + str_repeat("\xD5", 1025) + str_repeat("\xD6", 1025));
+?>

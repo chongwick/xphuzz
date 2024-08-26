@@ -1,0 +1,4 @@
+<?php
+$vars["NonExistentObject"]->addAttribute(new DateInterval("P257D"), "ðŸ”¥". str_repeat(chr(0x193), 257). "½". str_repeat(chr(0x147), 4097). "â±". str_repeat(chr(0x213), 1025). str_repeat(chr(0x214), 1025), "ðŸ˜•". str_repeat(chr(0x161), 65537). "ðŸ¤¯". str_repeat(chr(0x193), 257). "ðŸ”¸");
+
+?>

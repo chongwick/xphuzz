@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(true), 257),
+bin2hex(unserialize('O:19:"DateTime":1:{s:26:"timezone_type";i:3;s:13:"timezone";s:3:"UTC";}')),
+bin2hex(str_repeat(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 65537). str_repeat(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 1025). str_repeat(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 1025)));
+?>

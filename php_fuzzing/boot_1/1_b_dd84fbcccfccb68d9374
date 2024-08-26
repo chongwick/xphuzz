@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(phpinfo(), base64_encode("Hello, World!"), "I am a sentence that is too long to be true!");
+
+?>

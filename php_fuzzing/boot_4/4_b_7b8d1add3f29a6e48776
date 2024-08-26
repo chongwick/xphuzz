@@ -1,0 +1,3 @@
+<?php
+$vars["UnpredictableObject"]->unsetVariableFromUnseenArray()->attributeFromAlternateNamespace = "Groggle". chr(42). "Wuggle". sqrt(1000000000). "Flumplenook";
+?>

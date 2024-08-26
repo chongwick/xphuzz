@@ -1,0 +1,4 @@
+<?php
+$vars["NonExistentVariable"]->addAttribute("RandomlyGeneratedAttribute", "UnrelatedRandomValue" * 9999, "AnotherUnrelatedRandomValue" ** 2);
+
+?>

@@ -46,6 +46,7 @@ def scoring_function(seed_data):
     return (crashers,ranking)
 
 def sanitization_loop(seed_data, san_queue):
+    known_bugs = utils.load_pickle('known_bugs.pickle')
     leak = 0
     asan = 1
     undef = 2
@@ -81,17 +82,20 @@ def sanitization_loop(seed_data, san_queue):
                 php_file = php_file+".er"
                 crash = i
                 error = utils.read_file(cfg.san_log)
-                if 'LeakSanitizer' in error:
-                    error = error.split("LeakSanitizer")[1]
+                category = None
+                if [x for x in known_bugs if error in x] != []:
+                    category = 'known'
+                elif 'LeakSanitizer' in error:
+                    category = error.split("LeakSanitizer")[1]
                 elif 'runtime error:' in error:
-                    error = error.split("runtime error")[1]
+                    category = error.split("runtime error")[1]
                 elif "ERROR:" in error:
-                    error = error.split("ERROR")[1]
+                    category = error.split("ERROR")[1]
                 bugs = utils.load_pickle(cfg.bug_log)
-                if error not in bugs:
-                    bugs[error]=[seed_name]
+                if category not in bugs:
+                    bugs[category]=[seed_name]
                 else:
-                    bugs[error].append(seed_name)
+                    bugs[category].append(seed_name)
                 utils.dump_pickle(cfg.bug_log,bugs)
                 break
             else:

@@ -1,0 +1,5 @@
+<?php
+$vars["Quark"]->addAttribute(str_repeat("flumplenooks", 257),
+bin2hex("trolololol". "squibble". "flibberflabber"),
+bin2hex("Snizzle". "Flibberty". "Jibberjibber"));
+?>

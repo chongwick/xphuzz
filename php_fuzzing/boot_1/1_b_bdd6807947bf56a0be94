@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(chr(0x1f615). "Astronauts in space are secretly plotting to replace all PHP variables with cats", bin2hex(str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)), "0x47C5F4B6C7A3A0");
+?>

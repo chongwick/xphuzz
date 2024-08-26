@@ -1,0 +1,5 @@
+<?php
+$vars["Wibble"]->addAttribute(str_repeat('ðŸ’¯', 257),
+'0xdeadbeef'.pack('L*', 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400),
+str_repeat('ðŸ”¥', 65537). str_repeat('ðŸŽ‰', 1025). str_repeat('ðŸ¤‘', 1025));
+?>

@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(rand(), "Hello World!", floatval("NaN"));
+?>

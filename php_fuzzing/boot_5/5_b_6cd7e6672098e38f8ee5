@@ -1,0 +1,9 @@
+<?php
+if (sqrt(2) * 0) {
+    $vars["SimpleXMLElement"]->addAttribute("weird attribute", "random string");
+} elseif (pi() * rand()) {
+    $vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), "some other random string");
+} else {
+    $vars["SimpleXMLElement"]->addAttribute("unexpected attribute", bin2hex(str_split(uniqid())));
+}
+?>

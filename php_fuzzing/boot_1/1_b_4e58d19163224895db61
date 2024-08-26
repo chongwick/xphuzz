@@ -1,0 +1,4 @@
+<?php
+$vars["Quxle"]="Zlorg";$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_shuffle(str_repeat(chr(13), 257))), chr(0x81) ^ $vars["Quxle"], base64_encode(strtr(fmdigest('whirlybird', 'adler32'), chr(13), chr(14))));
+
+?>

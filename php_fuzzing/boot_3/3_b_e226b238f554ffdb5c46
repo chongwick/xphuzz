@@ -1,0 +1,5 @@
+<?php
+$vars["Wibble"]->addAttribute("\x0d".str_repeat("\x0d", 257),
+unpack("H*", str_repeat("\xc1", 257). chr(0x9f). str_repeat("\x9b", 17). str_repeat("\x8f", 4097)),
+unpack("H*", str_repeat("\xa1", 65537). str_repeat("\xd3", 1025). str_repeat("\xd4", 1025)));
+?>

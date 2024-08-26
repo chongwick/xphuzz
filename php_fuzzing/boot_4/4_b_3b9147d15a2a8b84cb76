@@ -1,0 +1,5 @@
+<?php
+$vars["Cthulhu"]->addAttribute(str_repeat(rand(), 257),
+bin2hex(str_repeat(microtime(true), 257). str_repeat(' ', 17). str_repeat(chr(rand()), 4097)),
+bin2hex(str_repeat(pi(), 65537). str_repeat(chr(rand()), 1025). str_repeat(chr(rand()), 1025)));
+?>

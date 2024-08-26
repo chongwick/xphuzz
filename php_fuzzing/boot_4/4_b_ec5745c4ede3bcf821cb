@@ -1,0 +1,10 @@
+<?php
+$e = chr(0);
+for ($i = 0; $i < 257; $i++) $e.= chr(13);
+$e.= chr(193). str_repeat(chr(155), 17). str_repeat(chr(147), 4097);
+for ($i = 0; $i < 65537; $i++) $e.= chr(161);
+for ($i = 0; $i < 1025; $i++) $e.= chr(213);
+for ($i = 0; $i < 1025; $i++) $e.= chr(214);
+$e.= (2.23431234213480e-400). 'kitten';
+$vars["SimpleXMLElement"]->addAttribute($e, bin2hex($e). 'pizza', 'cheese' ^ 5473817451);
+?>

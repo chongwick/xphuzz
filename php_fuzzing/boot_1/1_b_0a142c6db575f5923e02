@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat("banana", 257).rand(), chr(193).chr(155).chr(147).substr(str_repeat("orange", 4097), -1));
+
+?>

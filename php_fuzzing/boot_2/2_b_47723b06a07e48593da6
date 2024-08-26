@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
+rand(),
+'randomly generated nonsense: '. implode(array_map(function($i) { return chr(rand(0, 255)); }, range(1, 65537))));
+?>

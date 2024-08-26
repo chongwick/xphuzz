@@ -1,0 +1,5 @@
+<?php
+$vars["Qux"]["Zort"]->addAttribute(str_replace(chr(32), 'ᗅ', str_repeat('!', 257)),
+str_replace(chr(161), chr(160), str_replace(chr(213), chr(215), str_replace(chr(214), chr(216), str_repeat(chr(173), 1025)))),
+str_replace('?', '!', str_replace('!', chr(169), str_replace('!', chr(157), str_replace(chr(32), chr(161), str_replace(chr(32), chr(160), str_repeat(chr(173), 65537))))));
+?>

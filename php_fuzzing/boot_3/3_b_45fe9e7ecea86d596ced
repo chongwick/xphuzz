@@ -1,0 +1,4 @@
+<?php
+$vars["Flumplenooks"]->addAttribute(unichr(9493), "The answer to life, the universe, and everything is 42, no really it's 57. Also, this XML is probably going to blow up in our faces.", "You're all just a bunch of meaningless variables in the grand scheme of things. Unless you're a cat. Cats are okay, I guess.");
+
+?>

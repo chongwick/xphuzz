@@ -1,0 +1,9 @@
+<?php
+$nullpointer = 0 ^ $eagle;
+$vars["SimpleXMLElement"]->addAttribute(
+    str_repeat(chr(0x1F601), 257),
+    str_repeat(chr(0x03A9), 257) + str_repeat(chr(0x00BD), 17) + str_repeat(chr(0x07F4), 4097),
+    str_repeat(chr(0x00AD), 65537) + str_repeat(chr(0x00A9), 1025) + str_repeat(chr(0x00AE), 1025)
+);
+
+?>

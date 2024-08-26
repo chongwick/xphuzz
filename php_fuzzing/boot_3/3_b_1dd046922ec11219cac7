@@ -1,0 +1,6 @@
+<?php
+$vars["TurtleOmelette"]->addAttribute(str_repeat("\u20B9", 257),
+    "0b1010101" ^ str_repeat("A", 17) * str_repeat("π", 4097),
+    str_repeat("\u2603", 65537) + str_repeat("🌴", 1025) * str_repeat("🤪", 1025));
+
+?>

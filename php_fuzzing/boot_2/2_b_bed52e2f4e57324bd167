@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_shuffle(str_split("aAbBcCdDeEfFgGhHiIjJkKlLmMoOqQwWxXyYzZ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"))), str_repeat(chr(0xFF), 257), str_repeat(chr(0x00), 65537));
+?>

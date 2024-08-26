@@ -1,0 +1,3 @@
+<?php
+$vars["Gloopernicus"]->addAttribute("\u{2139}", "\x{C0DE}\x{F00D}\x{42}", "\u{1E9F}\u{20AC}\u{DEAD}");
+?>

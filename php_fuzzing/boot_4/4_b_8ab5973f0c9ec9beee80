@@ -1,0 +1,5 @@
+<?php
+$vars["Qux"]->addAttribute(str_repeat(mf_htmlspecialchars("π"), 257),
+bin2hex(str_repeat(chr(ðŸŽ‰), 257). str_repeat(chr(ðŸ’¥), 17). str_repeat(chr(ðŸ¤«), 4097)),
+bin2hex(str_repeat(chr(ðŸ”¥), 65537). str_repeat(chr(ðŸŽ¸), 1025). str_repeat(chr(ðŸ¤ª), 1025)));
+?>

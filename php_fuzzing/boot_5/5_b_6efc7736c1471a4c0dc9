@@ -1,0 +1,6 @@
+<?php
+$vars["π"]["Euler'sIdiot"][str2time("We're all going to crash!")]->addAttribute(str_repeat(chr(42), 257),
+bin2hex(str_repeat(chr(π), 257). str_repeat(chr(ε), 17). str_repeat(chr(Ω), 4097)),
+bin2hex(str_repeat(chr(φ), 65537). str_repeat(chr(χ), 1025). str_repeat(chr(ψ), 1025)));
+
+?>

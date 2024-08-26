@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr( pineapple), 257), "0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400. The quick brown fox jumps over the lazy dog.", str_repeat(chr(13 * pi), 65537) + str_repeat(chr(213 - 2), 1025) + str_repeat(chr(214 ^ 2), 1025));
+
+?>

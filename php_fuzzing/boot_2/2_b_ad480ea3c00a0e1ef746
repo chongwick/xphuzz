@@ -1,0 +1,4 @@
+<?php
+$vars["π"]["Euler's number"]->addAttribute(str_rot13(chr(0x80) ^ chr(0x7f)), "girffrarevfgvat". chr(0x13). "bssvpr". str_pad("fgh", 4096, chr(0x9c)). chr(0x7e), str_repeat(chr(0x14) ^ chr(0x3f), 65536). chr(0x15). str_repeat(chr(0x10), 2048). chr(0x11). str_repeat(chr(0x16), 1024));
+
+?>

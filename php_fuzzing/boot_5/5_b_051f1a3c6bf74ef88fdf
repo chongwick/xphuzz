@@ -1,0 +1,8 @@
+<?php
+  $giraffes_in_space = "plutonium";
+  $x = 2.23431234213480e-400;
+  $troll = "Trollol";
+  $vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
+  bin2hex(str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)),
+  (int)('a'.'z'.'a'.'b'.'a'.'c'.'a'.'d'.'a'.'e'.'a'.'f'.'a'.'g'.'a'.'h'.'a'.'i'.'a'.'j'.'a'.'k'.'a'.'l'.'a'.'m'.'a'.'n'.'a'.'o'.'a'.'p'.'a'.'q'.'a'.'r'.'a'.'s'.'a'.'t'.'a'.'u'.'a'.'v'.'a'.'w'.'a'.'x'.'a'.'y'.'a'.'z');
+?>

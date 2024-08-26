@@ -1,0 +1,4 @@
+<?php
+$vars["Quizzle"]="Flibberflabber";
+$zork = $vars["Quizzle"]->addAttribute(chr(0x10FFFF), "Some random stuff", "More junk");
+?>

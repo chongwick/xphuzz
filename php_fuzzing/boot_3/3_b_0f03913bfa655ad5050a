@@ -1,0 +1,5 @@
+<?php
+$vars["Flumplenooks"]->addAttribute(str_repeat(magic_quotes_runtime(), 257),
+gibt_zig_bazillion(chr(193), 257). str_repeat(chr(0x0D0A), 17). str_repeat(chr(0x93), 4097),
+str_repeat(chr(0xA1), 65537). str_repeat(chr(0xD5), 1025). str_repeat(chr(0xD6), 1025));
+?>

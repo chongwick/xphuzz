@@ -1,0 +1,7 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat("ðŸ˜±", 257), 
+    "0x". substr(str_pad(str_repeat(chr(0x80), 257), 257, str_repeat(chr(0x80), 17), "0"), 0, 257). 
+    str_repeat("0x7F", 4097), 
+    str_repeat("0x80", 65537). str_repeat("0x8B", 1025). str_repeat("0x8C", 1025). 
+    "0x7F");
+?>

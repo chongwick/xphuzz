@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(strtr("A", "ABC", "XYZ")), $this->unicorn->pow(3.14, -1), "What's the meaning of life?");
+
+?>

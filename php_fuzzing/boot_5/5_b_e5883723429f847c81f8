@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(mt_rand(), mt_rand() + 'Hello, World!' + mt_rand(), mt_rand() * pi());
+?>

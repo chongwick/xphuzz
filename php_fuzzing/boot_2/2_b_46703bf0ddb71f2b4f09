@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("&#x1F4A1;&#x27F6;&#x1F5F8;&#x1F52B;&#x1F52B;&#x1F4A1;&#x1F4A1;&#x1F52B;&#x1F4A1;&#x1F4A1;", bin2hex("WUBBA LUBBA DUH"), bin2hex("I'M A TIME TRAVELING CODE INVASION!"));
+
+?>

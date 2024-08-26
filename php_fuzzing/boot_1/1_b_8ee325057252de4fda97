@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13('Zrffntr!'), '0x'.bin2hex(str_pad(chr(42), 65537, chr(1))), '0x'.bin2hex(str_pad('PHP', 1025, chr(2))));
+
+?>

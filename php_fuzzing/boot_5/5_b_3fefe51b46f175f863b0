@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(unserialize('O:10:"SimpleXMLElement":0:{}'), serialize('0'), $foo = $foo = 'a string');
+?>

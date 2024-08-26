@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(strrev(chr(0))), chr(1)^chr(-1)^chr(2), (string) pow(2, 2). chr(3). pi(). chr(4). pow(10, 5). chr(5). pow(2, 40). chr(10). pow(10, 5). chr(100). pow(2, 50). chr(12345678901234567890));
+
+?>

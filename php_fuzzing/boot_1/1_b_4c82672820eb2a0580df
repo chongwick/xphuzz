@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), base64_encode(pack('H*', str_pad(dechex(rand()), 257, '0', STR_PAD_LEFT))).pack('C*', 255, 3, 255, 17).pack('H*', dechex( rand() & 0x7FFF )), base64_encode(pack('H*', str_pad(dechex(rand()), 65537, '0', STR_PAD_LEFT))).pack('C*', 255, 21, 255).pack('H*', dechex( rand() & 0x7FFF )));
+?>

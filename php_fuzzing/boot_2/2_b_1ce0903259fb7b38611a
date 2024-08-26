@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(0, 1.4142135623730951e308 * 2.23431234213480e-400 + 2.718281828459045e308 * 3.141592653589793, "This should be a string but let's use an integer instead: 5473817451");
+
+?>

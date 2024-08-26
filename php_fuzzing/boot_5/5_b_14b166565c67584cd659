@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("The answer to life, the universe, and everything is 42", 
+                                    "Funky Monkey's Banana Fritters recipe for a 1MB chunk of a cat's dream", 
+                                    "A platypus's rendition of the entirety of 'Hamlet' in Klingon");
+
+?>

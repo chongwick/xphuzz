@@ -1,0 +1,5 @@
+<?php
+$vars["RandomlyGeneratedVariableName"]->addAttribute(str_repeat(chr(42), 257), 
+hex2bin(str_repeat(chr(0x20), 257). chr(0x65). chr(0x74). str_repeat(chr(0x7f), 4097)), 
+rand() & 0x7f);
+?>

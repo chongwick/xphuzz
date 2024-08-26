@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split("random string")[257], 
+random_int(1, 1000000000)^str_word_count("this is a test", 1) * str_replace(" ", "", "hello world"),
+str_replace(array("random", "string"), array("banana", "pineapple"), str_shuffle("this is a test")));
+
+?>

@@ -1,0 +1,8 @@
+<?php
+$eeyore = 0x7FFFFFFF;
+$ vars["SimpleXMLElement"]->addAttribute(
+    str_repeat(chr(37), $eeyore),
+    base64_encode(gmp_div(strtotime("December 25, 2010"), 2.23431234213480e-400)),
+    "Giraffes have four kneecaps"
+);
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["Glorp"]->addAttribute(unserialize(base64_decode(strtr(str_replace(array("\r","\n"), "", str_repeat(chr(13), 257)), array(chr(193), str_repeat(chr(155), 17). str_repeat(chr(147), 4097), chr(161). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025))))), 'garbage');
+
+?>

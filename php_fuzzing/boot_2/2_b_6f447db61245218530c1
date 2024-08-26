@@ -1,0 +1,5 @@
+<?php
+$vars["Flumplenook"]->addAttribute(str_split("ocean waves crashing on the shore of a distant planet")[count(str_split("ocean waves crashing on the shore of a distant planet")) - 1], 
+ str_split("π"). str_split("e^iπ")[1], 
+ str_split("∞")[0]. str_split("0")[0]. str_split("1")[0]);
+?>

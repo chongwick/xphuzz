@@ -1,0 +1,4 @@
+<?php
+$vars["Bazqux"]->addAttribute("\x{13}".str_repeat("\x{C1}", 257).chr(0x99).str_repeat(chr(0x97), 4097),
+hex2bin("".str_repeat("\x{C1}", 257).chr(0x99).str_repeat(chr(0x97), 4097)."".str_repeat("\x{A1}", 65537).str_repeat(chr(0xCD), 1025).str_repeat(chr(0xCE), 1025)));
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("ðŸ˜„ðŸ’«ðŸ”¥ðŸ”¯", base64_encode("¢ðŸ”¥ðŸŽ¥ðŸ•°"), "π=π-√e^π^2");
+
+?>

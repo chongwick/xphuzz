@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat("\xc2\x81", 257),
+'ðŸ”‘'.base64_encode(str_repeat(chr(193), 257). chr(0x10). str_repeat(chr(147), 4097). chr(0x20).''),
+str_repeat(chr(0x14), 65537). 'ðŸ”‘'. str_repeat(chr(0x80), 1025). str_repeat(chr(0x82), 1025). 'ðŸ”‘');
+?>

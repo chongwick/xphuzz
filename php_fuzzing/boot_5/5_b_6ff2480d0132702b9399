@@ -1,0 +1,17 @@
+<?php
+$variables = array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400);
+foreach ($variables as $value) {
+    if ($value == 0 || $value == 1) {
+        $result = $value + $value;
+    } elseif ($value == -1) {
+        $result = $value + pi();
+    } elseif ($value > 1) {
+        $result = pow($value, $value);
+    } else {
+        $result = "None";
+    }
+    $vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
+    bin2hex(str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)),
+    bin2hex(str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025)) + $result);
+}
+?>

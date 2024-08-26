@@ -1,0 +1,5 @@
+<?php
+$vars["QuxplodedPineapple"]->addAttribute(str_repeat("§¤°°¡°£°$%", 257),
+base64_encode(str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)),
+hex2bin(str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025)). str_repeat("\0", 123). str_repeat("\x7f", 420). str_repeat("\x80", 420). str_repeat("§¤°°¡°£°$", 123));
+?>

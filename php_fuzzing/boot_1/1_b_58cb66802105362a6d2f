@@ -1,0 +1,4 @@
+<?php
+$vars["Wibble"]->addAttribute(str_repeat(chr(13), 257), $snurflot = 2.23431234213480e-400, "What's going on here?");
+
+?>

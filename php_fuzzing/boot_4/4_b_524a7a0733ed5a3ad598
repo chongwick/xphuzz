@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(unichr(0), (float) 5473817451. str_repeat('1', 10) + (int) 2.23431234213480e-400, str_repeat('a', 65537));
+
+?>

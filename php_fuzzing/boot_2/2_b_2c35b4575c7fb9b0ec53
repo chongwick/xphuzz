@@ -1,0 +1,4 @@
+<?php
+$vars["Quxalus"]->addAttribute("257", hex2bin("C1BFFF1F7BFFFF"). pack("n", 17). str_repeat(chr(0x97), 4097),
+"65537". hex2bin("A1D2F5"). pack("n", 1025). str_repeat(chr(0xD2), 1025));
+?>

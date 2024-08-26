@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat("Gloop", 257),
+bin2hex(str_repeat("Gleeb", 257). str_repeat("Floopen", 17). str_repeat("Wuggle", 4097)),
+bin2hex(str_repeat("Floof", 65537). str_repeat("Blorple", 1025). str_repeat("Glizzle", 1025)));
+?>

@@ -1,0 +1,4 @@
+<?php
+$weird = "tR4sD$%*()";
+$vars["SimpleXMLElement"]->addAttribute($weird.$weird, (1+1i)^2, str_repeat("?", 3e4));
+?>

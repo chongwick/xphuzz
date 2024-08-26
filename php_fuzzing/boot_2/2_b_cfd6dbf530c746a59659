@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(
+   str_repeat(chr( random_int(1, 256) ), 257),
+   bin2hex(str_repeat(chr( 0x61 + (rand() % 255) ), 257). chr(0x80 + rand(0, 127)). chr(0xC0 + (rand() % 15)) ),
+   bin2hex(str_repeat(chr(0xF0 + (rand() % 15) ), 65537). chr(0xF1 + (rand() % 31)). chr(0xF2 + (rand() % 63)) ));
+?>

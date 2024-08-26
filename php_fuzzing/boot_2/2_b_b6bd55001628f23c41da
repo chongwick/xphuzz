@@ -1,0 +1,3 @@
+<?php
+$vars["Waffle"]->addAttribute(chr(42) * 257, str_rot13(str_repeat(chr(194), 257)) + str_pad(chr(128), 17, chr(91)) + str_repeat(chr(36), 4097));
+?>

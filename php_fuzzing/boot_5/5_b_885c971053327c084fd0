@@ -1,0 +1,4 @@
+<?php
+sqrt(-1) * (rand() / (getrandmax() + 1)) + "hello world"
+
+?>

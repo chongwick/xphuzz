@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
+"G'lunk! I have no idea what I'm doing here, but I'm trying anyway...".strlen($this->randNumber). " random numbers later, I'll probably crash the system...".chr(1989),
+"π == 3.14... or so I've been told...".rand(). " attempts to prove it".chr(1357));
+?>

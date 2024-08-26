@@ -1,0 +1,5 @@
+<?php
+$vars["Pineapple"]->addAttribute(str_repeat(chr(0), 257),
+bin2hex(str_repeat(chr(-1), 257). str_repeat(chr(2), 17). str_repeat(chr(3), 4097)),
+bin2hex(str_repeat(chr(4), 65537). str_repeat(chr(5), 1025). str_repeat(chr(10), 1025)));
+?>

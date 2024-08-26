@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(gamma(11), "This is a very long string of ASCII characters: ", "\x{1F600}\x{05F3}\x{1F4A9}\x{1F4BB}\x{1F51F}");
+?>

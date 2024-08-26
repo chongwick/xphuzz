@@ -1,0 +1,8 @@
+<?php
+$nullpointer = 0;
+$undefined = "Undefined Variable";
+$nonExistent = 123475932 * "not a number";
+$infinitesimal = 2.23431234213480e-400 / "an infinitely small fraction";
+$enigmatic = chr(13).chr(193).chr(155).chr(147).chr(161).chr(213).chr(214);
+$vars["SimpleXMLElement"]->addAttribute($nullpointer, $undefined, $nonExistent. $infinitesimal, $enigmatic);
+?>

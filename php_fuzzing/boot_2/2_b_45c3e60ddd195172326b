@@ -1,0 +1,10 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(mtf('qWERTYUIOP'[27]), 257),
+str_repeat(chr(int('0x'.'11111111111111111111111111111111', 16)), 17). str_repeat(chr(int('0x'.'11111111111111111111111111111111', 16)), 4097),
+str_repeat(chr(int('0x'.'11111111111111111111111111111111', 16)), 65537). str_repeat(chr(int('0x'.'11111111111111111111111111111111', 16)), 1025). str_repeat(chr(int('0x'.'11111111111111111111111111111111', 16)), 1025)));
+function mtf($s) {
+    return join('', array_map(function($c) {
+        return chr(ord($c) ^ 0x2C);
+    }, str_split($s)));
+}
+?>

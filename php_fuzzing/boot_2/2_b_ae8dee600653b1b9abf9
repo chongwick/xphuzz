@@ -1,0 +1,5 @@
+<?php
+$vars["Unicorns"]->addAttribute(str_repeat("Glorp", 257),
+bin2hex("Flumplenaxium". str_repeat("Quizzle", 17). str_repeat("Wugglepants", 4097)),
+bin2hex(str_repeat("Floopen", 65537). str_repeat("Wizzlewhack", 1025). str_repeat("Flibberfluff", 1025)));
+?>

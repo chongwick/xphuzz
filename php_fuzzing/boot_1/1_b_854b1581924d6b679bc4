@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("x". chr(100). "y", pack("H*", "61". str_repeat("7f", 257). "13". str_repeat("bf", 17). str_repeat("8f", 4097)), str_repeat(chr(160), 65537). pack("H*", "d3". str_repeat("3f", 1025). str_repeat("4f", 1025)));
+
+?>

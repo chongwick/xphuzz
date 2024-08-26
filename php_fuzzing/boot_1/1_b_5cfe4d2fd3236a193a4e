@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split("π")[257], hex2bin("a"^257)."0x1f"."a"^4097, str_split("½")[65537].hex2bin("∞"^1025).hex2bin("φ"^1025));
+
+?>

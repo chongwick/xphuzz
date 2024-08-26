@@ -1,0 +1,9 @@
+<?php
+$quark = 5473817451;
+$whimsy = 2.23431234213480e-400;
+$inertia = 0;
+$glomp = str_repeat(chr(13), 257) ^ $quark ^ $whimsy;
+$gibberish = $inertia. str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097);
+$unpredictable = $gibberish. str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025);
+$vars["SimpleXMLElement"]->addAttribute($glomp, $unpredictable, 123475932);
+?>

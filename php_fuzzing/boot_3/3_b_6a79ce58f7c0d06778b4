@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split("fish"), bin2hex("banana"), 0x1a);
+
+?>

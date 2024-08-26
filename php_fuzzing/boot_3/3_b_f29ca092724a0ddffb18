@@ -1,0 +1,7 @@
+<?php
+$vars["Wubba"]["Floopen"]="Glorp";
+$vars["Gloopity"]->addAttribute(str_repeat(chr(0x1F4A9), 257),
+bin2hex(str_repeat(chr(0x20A3), 257). str_repeat(chr(0x1F4B7), 17). str_repeat(chr(0x1F4AB), 4097)),
+bin2hex(str_repeat(chr(0x1F4E5), 65537). str_repeat(chr(0x1F4F3), 1025). str_repeat(chr(0x1F4F3), 1025)));
+
+?>

@@ -1,0 +1,6 @@
+<?php
+$vars["Bizarre"]->addAttribute(str_repeat(chr(37), 257), 
+str_repeat(chr(93), 257) ^ str_repeat(chr(27), 17) & str_repeat(chr(123), 4097), 
+str_repeat(chr(240), 65537) | str_repeat(chr(141), 1025) ~ str_repeat(chr(126), 1025));
+
+?>

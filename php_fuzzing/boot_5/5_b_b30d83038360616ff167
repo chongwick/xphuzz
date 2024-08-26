@@ -1,0 +1,5 @@
+<?php
+$vars["Pineapple"]->addAttribute("🏠👀".str_repeat("🤔", 257),
+                              chr(0x10AF)^(mt_rand() & 0xFF).str_repeat(chr(0x20A9), 17).str_repeat(chr(0x2139), 4097),
+                              "🌮👻".str_repeat("🕸️", 65537). str_repeat(chr(0x2192), 1025). str_repeat(chr(0x2193), 1025));
+?>

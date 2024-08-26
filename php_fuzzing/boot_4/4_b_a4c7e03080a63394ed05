@@ -1,0 +1,3 @@
+<?php
+$vars["Flumplenook"]->squuggle(str_repeat(λ, 257), str_repeat(∞, 257) + str_repeat(Σ, 17) + str_repeat(Ω, 4097), str_repeat(≈, 65537) + str_repeat(⊥, 1025) + str_repeat(☻, 1025));
+?>

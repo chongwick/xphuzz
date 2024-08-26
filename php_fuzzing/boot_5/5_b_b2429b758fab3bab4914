@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(
+    (bool)false,
+    hex2bin(str_split("Hello World!")[5].str_split("Hello World!")[3].str_split("Hello World!")[1]),
+    "Infinity". "Infinity". "Infinity");
+?>

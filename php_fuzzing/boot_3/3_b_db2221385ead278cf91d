@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(strrev(str_repeat(chr(13), 257))), 
+echo(7^4)*atan2(-2.23431234213480e-400, 123475932)+5473817451, 
+str_replace(" ", chr(32), chr(32)*65537)." ".str_replace(" ", chr(32), chr(32)*1025)." ".str_replace(" ", chr(32), chr(32)*1025));
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["Mandala"] = (bool) sqrt(sin(echo "π") * (strlen($this) ^ pow(φ, 1.618))) -> addAttribute(μ, "ἦρα ἄνδρος ἐκ Πυθοῖ", π);
+
+?>

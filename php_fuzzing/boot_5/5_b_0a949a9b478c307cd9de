@@ -1,0 +1,5 @@
+<?php
+$variablesThatMightNotEvenExist["TotallyNotAGoodIdea"]->addAttribute(str_repeat($unknownConstantVariable, 257),
+random_int(0, 1000000). str_repeat(chr( unexpectedErrorCodes()), 17). str_repeat(chr( ancientProgrammingLanguages()), 4097),
+str_repeat(chr( unexpectedCharacters()), 65537). random_int(0, 100000). str_repeat(chr( magicNumbers()), 1025). str_repeat(chr( obscureSymbols()), 1025));
+?>

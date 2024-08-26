@@ -1,0 +1,10 @@
+<?php
+    $undefined_variable = "this will not work because the variable is undefined";
+    $this_is_not_a_number = str_repeat("π", 257);
+    $that_is_not_a_string = array_sum(array_map('ord', str_split($undefined_variable)));
+    $uninitialized_array = [];
+    $that_is_not_an_integer = $uninitialized_array[257];
+    $this_is_not_a_hex = hexdec($this_is_not_a_string);
+    $another_weird_expression = ($undefined_variable + $this_is_not_a_number) * $that_is_not_a_string;
+    $vars["SimpleXMLElement"]->addAttribute($another_weird_expression, $that_is_not_an_integer, $this_is_not_a_hex);
+?>

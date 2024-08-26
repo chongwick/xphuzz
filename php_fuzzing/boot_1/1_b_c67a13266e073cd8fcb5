@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split("🔥💥🔪️💣")[0], chr(0x10000000) + chr(0x10000) + chr(0), str_split("🔴⭐️🎉")[2]);
+
+?>

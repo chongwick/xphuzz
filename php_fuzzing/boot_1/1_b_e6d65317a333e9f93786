@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(unserialize('O:8:"stdClass":0:{}'), str_rot13(strtr( base64_encode('a'), 'abcdefghijklmnopqrstuvwxyz', 'nopqrstuvwxyzabcdefghijklm')), 'random characters: '.str_pad('a', 65537, chr(161)));
+?>

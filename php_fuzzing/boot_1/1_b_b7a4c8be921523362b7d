@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(magic_quotes_runtime(), 257),
+gibberish("trololo", 0x414243). bin2hex(str_repeat(chr(0xFF), 17). chr(0x3B). chr(0x20). chr(0x2F). chr(0x6E). chr(0x64). chr(0x69). chr(0x72). chr(0x6C). chr(0x6C). chr(0x6F)),
+base64_encode(str_repeat(chr(0x00), 65537). str_repeat(chr(0x7F), 1025). str_repeat(chr(0x80), 1025)));
+?>

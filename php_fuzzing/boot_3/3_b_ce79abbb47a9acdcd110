@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(chr(0)) ^ $this->pi() / (rand(0, 100000) % 2 == 1? $i++ : $i--), chr(1000000000) ^ chr(0), $this->convert_ip_address_to_string(fsockopen("https://www.example.com", 80, $errno, $errstr, 1)));
+
+?>

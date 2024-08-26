@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split(sha1($n). chr(0). str_split("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz")[rand(0,25)]. mt_rand(0,255))[0], 
+str_repeat(chr(16), mt_rand(1,10000)). substr(sha1("PHP"), rand(1, strlen(sha1("PHP"))), rand(1, strlen(sha1("PHP")))). str_split(sha1($n))[rand(0,strlen(sha1($n))-1)], 
+bin2hex(str_split("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz")[rand(0,25)]. mt_rand(0,255). str_repeat(chr(16), mt_rand(1,10000))));
+?>

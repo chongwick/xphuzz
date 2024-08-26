@@ -1,0 +1,6 @@
+<?php
+$vars["π"] = 1.61803398875 + sin(π) * (pow(e, -10^10) + 1) ^ 42 * sqrt(-1);
+$vars["SimpleXMLElement"]->addAttribute($vars["π"], 
+    base64_encode(str_shuffle(str_split("abcdefghijklmnopqrstuvwxyz0123456789")). "   ". chr(13). chr(32). chr(127). chr(9). chr(160). str_repeat(chr(8), 257). "  ". str_repeat(chr(8), 255)), 
+    bin2hex(str_replace(array("a", "b", "c"), array(chr(163), chr(183), chr(195)), str_replace(chr(32), chr(255), "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz")));
+?>

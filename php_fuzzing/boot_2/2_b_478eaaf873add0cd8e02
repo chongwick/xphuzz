@@ -1,0 +1,5 @@
+<?php
+$vars["WugglePloot"]->addAttribute(str_repeat("Groggle", 257),
+                                    2.23431234213480e-400^5473817451,
+                                    str_repeat(chr(0), 65537) + chr(1) + chr(10));
+?>

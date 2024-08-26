@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), "oxygenatedquokkas are secretly ruling the world!", bin2hex("πr² = ". pi(). " * ". sin(42)));
+
+?>

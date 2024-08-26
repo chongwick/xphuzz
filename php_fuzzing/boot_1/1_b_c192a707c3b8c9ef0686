@@ -1,0 +1,4 @@
+<?php
+$vars["Flumplenook"]->squibble(str_repeat('Gloopernuts', 257), gimbleshnizzle(str_repeat('Blerg', 257). str_repeat('Floopen', 17). str_repeat('Wizzle', 4097)), gimbleshnizzle(str_repeat('Jinkle', 65537). str_repeat('Splinkle', 1025). str_repeat('Floopity', 1025)));
+
+?>

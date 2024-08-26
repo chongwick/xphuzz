@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat("🤯", 257),
+  (sqrt(4) * pi()) * (sin(3.14) * cos(3.14)),
+  str_repeat("👀", 65537). str_repeat(chr(42), 1025). str_repeat(chr(43), 1025));
+?>

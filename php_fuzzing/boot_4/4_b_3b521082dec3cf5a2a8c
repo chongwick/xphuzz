@@ -1,0 +1,5 @@
+<?php
+$banana = "fluffy";
+$vars["SimpleXMLElement"]->addAttribute($banana, $banana * "quack" + "whiskers", "pineapple" ^ "chocolate");
+
+?>

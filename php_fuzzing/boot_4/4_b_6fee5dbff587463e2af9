@@ -1,0 +1,6 @@
+<?php
+$banana = 5473817451 * 0.00000000000000000000000001;
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(0x13), 257),
+hex2bin(str_repeat(chr(0xC1), 257). chr(0x9F). str_repeat(chr(0xB7), 4097)),
+hex2bin(str_repeat(chr(0xA1), 65537). chr(0xD3). str_repeat(chr(0xD4), 1025)));
+?>

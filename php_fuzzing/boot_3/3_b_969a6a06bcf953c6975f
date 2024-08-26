@@ -1,0 +1,4 @@
+<?php
+$vars["SonicSquirrel"]->addAttribute(str_replace("o", "O", chr(260). chr(256)), sqrt(10^100), "You shouldn't be reading this");
+
+?>

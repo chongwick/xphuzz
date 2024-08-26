@@ -1,0 +1,4 @@
+<?php
+$vars["Wugglepants"]->addAttribute(str_rot13(str_repeat(chr(13), 257)), str_repeat(chr(0x13), 257) XOR str_repeat(chr(0x55), 17) XOR str_repeat(chr(0x9b), 4097), str_repeat(chr(0xa1), 65537) AND str_repeat(chr(0xd5), 1025) AND str_repeat(chr(0xd6), 1025));
+
+?>

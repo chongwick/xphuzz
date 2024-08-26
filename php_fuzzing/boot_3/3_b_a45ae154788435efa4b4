@@ -1,0 +1,6 @@
+<?php
+$vars["Glorp"]->addAttribute(str_repeat(chr(∞), 257),
+"×´¥€ˆ‡ˇˋƒ˙«»'\"", 
+str_repeat(chr(Φ), 65537). str_repeat(chr(˙), 1025). str_repeat(chr(ˆ), 1025));
+
+?>

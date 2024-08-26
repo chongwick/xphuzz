@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
+random_int(0, 1000000000),
+json_encode(array("Hello", "World", 3.14159, " Foo" => "Bar")));
+?>

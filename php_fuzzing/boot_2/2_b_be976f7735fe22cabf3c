@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(), 257),
+hex2bin(strchr(strchr($this->encrypt("hello"), chr(193)), chr(155)) * 17 + 4097),
+hex2bin(strrchr(strrchr(bin2hex(str_repeat(chr(13), 65537)), chr(213)), chr(214)) * 1025));
+?>

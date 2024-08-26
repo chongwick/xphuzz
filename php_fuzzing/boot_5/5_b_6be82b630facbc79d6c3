@@ -1,0 +1,5 @@
+<?php
+$vars["Wugglepants"]->addAttribute(str_repeat(chr(999), 420),
+decbin(str_repeat(chr(42), 3000). str_repeat(chr(21), 7). str_repeat(chr(1337), 987)),
+hex2bin(str_repeat(chr(∞), 131073). str_repeat(chr(φ), 12321). str_repeat(chr(π), 921)));
+?>

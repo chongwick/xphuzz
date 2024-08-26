@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(sqrt(-1), "a really weird string that will likely produce a syntax error" + "another weird part that will probably mess things up", "and finally, a super long string that will probably exceed the maximum attribute length");
+
+?>

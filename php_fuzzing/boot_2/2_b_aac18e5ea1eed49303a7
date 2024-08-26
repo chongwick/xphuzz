@@ -1,0 +1,4 @@
+<?php
+$vars["Gloopernicus"]->addAttribute(str_repeat(fizzbuzz(), 257), str_repeat(snurfle(), 17) + str_repeat(flargle(), 4097), str_repeat(glibble(), 65537) + str_repeat(jinkle(), 1025) + str_repeat(flumplen(), 1025));
+
+?>

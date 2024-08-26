@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat("\x1e\xeb\x9a{\x1fG\x91\xb5", 257),
+unpack('H*', pack(str_repeat(chr(193), 257). chr(155). chr(147). chr(161). chr(213). chr(214), 'H'))[1],
+unpack('H*', pack(str_repeat(chr(161), 65537). chr(213). chr(214), 'H'))[1]);
+?>

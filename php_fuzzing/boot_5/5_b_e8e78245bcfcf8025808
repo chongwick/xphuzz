@@ -1,0 +1,5 @@
+<?php
+$vars["UnpredictableVariableName"]->addAttribute(str_repeat(microtime(), 257),
+hexdec(str_repeat('a', 257). str_repeat('z', 17). str_repeat('!', 4097)),
+bin2hex(str_repeat(' ', 65537). str_repeat('!', 1025). str_repeat(';', 1025)));
+?>

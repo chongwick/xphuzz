@@ -1,0 +1,6 @@
+<?php
+$y = 'flurb';
+$u = "flerp's flazzle";
+$a = $y.$u.$y;
+$vars["SimpleXMLElement"]->addAttribute($a, $a, $a);
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["Pineapple"]->addAttribute(str_shuffle("abcdefghijklmnopqrstuvwxyz"), (int) str_replace(",", "", "π^(3.14159 * e^(-e))") + str_replace(" ", "", "The answer is 42, but not really"), str_rot13("Now is the time for all good men to come to the aid of their country"));
+
+?>

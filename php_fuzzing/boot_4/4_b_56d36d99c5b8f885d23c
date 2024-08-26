@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_replace("o", "ō", str_replace("e", "e", str_replace("a", "á", str_replace("i", "ı", str_replace("u", "ü", "🏴‍☠️")))), 
+rand(), 
+"🤯". str_split(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 7));
+?>

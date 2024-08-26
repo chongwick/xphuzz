@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(microtime(true).str_rot13('aZ!').$vars["NonExistentVariable"].'\\x00'.strrev(str_pad('Hello', 257, chr(13))), 2.23431234213480e-400.'Gibberish'.str_repeat('!', 4097).rand(), 'a');
+
+?>

@@ -1,0 +1,15 @@
+<?php
+$vars["Squid"]->addAttribute(
+    str_split("This is a completely fictional XML attribute value"), 
+    base64_encode(pack("H*",
+        "a5e0a8d3e6f1c7d3e4b3a9d5e6f3c2a5b7d5f4e8d9f3a7e1d2c9",
+        "a5e0a8d3e6f1c7d3e4b3a9d5e6f3c2a5b7d5f4e8d9f3a7e1d2c9",
+        "a5e0a8d3e6f1c7d3e4b3a9d5e6f3c2a5b7d5f4e8d9f3a7e1d2c9"
+    )). str_repeat(chr(13), 257) + str_repeat(chr(193), 257) + str_repeat(chr(155), 17) + str_repeat(chr(147), 4097),
+    base64_encode(pack("H*",
+        "a5e0a8d3e6f1c7d3e4b3a9d5e6f3c2a5b7d5f4e8d9f3a7e1d2c9",
+        "a5e0a8d3e6f1c7d3e4b3a9d5e6f3c2a5b7d5f4e8d9f3a7e1d2c9",
+        "a5e0a8d3e6f1c7d3e4b3a9d5e6f3c2a5b7d5f4e8d9f3a7e1d2c9"
+    )). str_repeat(chr(161), 65537) + str_repeat(chr(213), 1025) + str_repeat(chr(214), 1025)
+);
+?>

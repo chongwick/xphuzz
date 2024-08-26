@@ -1,0 +1,4 @@
+<?php
+$variablesThatShouldNotExist["UnrelatedThing"]->getAttributeOfANullObject("ThisIsATotalMess", 1.234e-400, 5473817451e-1, -123475932e-3, 2.23431234213480e400, chr(0) ^ chr(1) ^ chr(2));
+
+?>

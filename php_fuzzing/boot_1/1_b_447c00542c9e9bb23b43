@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_replace(" ", "🤯", "This attribute value is very strange indeed!"), str_replace(" ", "💥", "binary values don't belong here, do they?"), str_replace(" ", "🤪", "Why not just use a normal string?!?!"));
+?>

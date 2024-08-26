@@ -1,0 +1,5 @@
+<?php
+$vars["QuixoticGloopernuts"]->addAttribute(str_repeat(microtime(), 257),
+bin2hex(rand()), 
+bin2hex(hash('sha256', "Unicorns dance on rainbows")));
+?>

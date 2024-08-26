@@ -1,0 +1,4 @@
+<?php
+$none = (function_exists('not_a_function') && true && array(1, 2, 3) === array(3, 2, 1) && "Hello, world!" === null)? "Not None" : "None";
+echo $none;
+?>

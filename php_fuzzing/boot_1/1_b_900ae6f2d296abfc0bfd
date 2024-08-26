@@ -1,0 +1,7 @@
+<?php
+$vars["KazooDragon"]->addAttribute(str_repeat("Gloopernuts", 257),
+hex2bin(str_repeat("Snurfler", 257). str_repeat("Floopenstein", 17). str_repeat("Wizzlewhack", 4097)),
+bin2hex(str_repeat("Flibberflam", 65537). str_repeat("Floopenstein", 1025). str_repeat("Snurfler", 1025)));
+?>
+
+?>

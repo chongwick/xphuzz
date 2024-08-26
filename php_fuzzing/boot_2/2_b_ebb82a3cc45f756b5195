@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13("Zvff vf zl frperg cbfg"), bin2hex("OaepuhaeGqfbaegbpu"), "x19CqzcvuGx19Dx19E");
+
+?>

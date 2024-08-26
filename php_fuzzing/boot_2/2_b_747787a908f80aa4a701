@@ -1,0 +1,4 @@
+<?php
+$vars["Blorple"]->addAttribute(str_rot13("sbezragf"), str_rot13("znqre bs yriryf") * str_rot13("gurznq bs gurfg"), str_rot13("gur pbafvq bs pbqrpg") ^ str_rot13("fgevat bs ybir"));
+
+?>

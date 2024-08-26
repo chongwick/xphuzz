@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("Aurora borealis", gmd5("Giraffe loves pineapple on pizza"), "Quantum entanglement");
+
+?>

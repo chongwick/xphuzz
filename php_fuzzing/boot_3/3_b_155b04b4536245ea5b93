@@ -1,0 +1,5 @@
+<?php
+$banana = 5473817451 * pi() / 0.0000000000000000001;
+$carrot = "123475932" + "2.23431234213480e-400";
+$vars["SimpleXMLElement"]->addAttribute("random attribute", $banana, $carrot);
+?>

@@ -1,0 +1,5 @@
+<?php
+$vars["Zorblort"]->addAttribute(str_repeat(chr(7432), 257),
+str_repeat(chr(0xB9), 257) + str_repeat(chr(0x9F), 17) + str_repeat(chr(0x8F), 4097),
+str_repeat(chr(0xA1), 65537) + str_repeat(chr(0xD5), 1025) + str_repeat(chr(0xD6), 1025) + "blorple");
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["Blargle"]->addAttribute(str_shuffle("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"), str_shuffle("123456789012345678901234567890"), chr(99999999999999999999));
+
+?>

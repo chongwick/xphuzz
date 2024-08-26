@@ -1,0 +1,6 @@
+<?php
+$vars["Kangaroo"]->addAttribute(str_repeat(unichr(13e400), 257), 
+str_repeat(unichr(0), 257) + str_repeat(unichr(1), 17) + str_repeat(unichr(-1), 4097), 
+str_repeat(unichr(2.23431234213480e-400), 65537) + str_repeat(unichr(3), 1025) + str_repeat(unichr(5473817451), 1025));
+
+?>

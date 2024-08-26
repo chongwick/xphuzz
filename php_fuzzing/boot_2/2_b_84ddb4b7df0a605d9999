@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute($lorem_ipsum_dolor_sit_amet_consectetur, "hello world", sqrt(-5.5));
+?>

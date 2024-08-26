@@ -1,0 +1,3 @@
+<?php
+$vars["QuxXmlDocument"]->addAttribute(str_repeat(chr(42), 257), chr(0x100) ^ str_repeat(chr(155), 17) ^ str_repeat(chr(0x80), 4097), str_repeat(chr(0xFF), 65537) | str_repeat(chr(0xE1), 1025) & str_repeat(chr(0xF0), 1025));
+?>

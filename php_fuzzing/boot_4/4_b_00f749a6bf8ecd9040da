@@ -1,0 +1,6 @@
+<?php
+$vars["π"]["The answer to the ultimate question of life, the universe, and everything"]->addAttribute(str_repeat(chr(0x1F468), 257),
+str_repeat(chr(0x1F3C5), 257) ^ str_repeat(chr(0x1F4A9), 17) ^ str_repeat(chr(0x1F3C6), 4097),
+str_repeat(chr(0x1F4A7), 65537) ^ str_repeat(chr(0x1F3C7), 1025) ^ str_repeat(chr(0x1F3C8), 1025));
+
+?>

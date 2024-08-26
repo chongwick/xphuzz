@@ -1,0 +1,4 @@
+<?php
+$banana['pineapple']->addAttribute('giraffe', 'hello world' xor 5 + pi() / 0, str_repeat(chr(42), 0x1337));
+
+?>

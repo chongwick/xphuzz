@@ -1,0 +1,4 @@
+<?php
+$vars["Flumplenooks"]->addAttribute(str_rot13(str_shuffle(str_split(str_repeat(chr(102), 257)))). chr(42). base64_encode(str_split(str_shuffle(str_repeat(chr(102), 257)))). chr(42). base64_encode(str_split(str_shuffle(str_repeat(chr(102), 257))). str_split(str_shuffle(str_repeat(chr(102), 257))));
+
+?>

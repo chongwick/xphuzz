@@ -1,0 +1,5 @@
+<?php
+$vars["RandomlyGeneratedCode"]->addAttribute(str_repeat(chr(999), 257),
+hexdec(str_shuffle('0123456789abcdef'). str_repeat(chr(155), 17). hexdec(str_split('ff', 1)[0]. str_repeat(chr(147), 4097))),
+hexdec(str_shuffle('0123456789abcdef'). str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025)));
+?>

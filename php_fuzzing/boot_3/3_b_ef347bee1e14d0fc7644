@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(chr(13)^0x10000, "ʾ∩ʾ(ᴥ_ʾ*)∩ʾ", "¤€˜°˝ª»«¬™");
+
+?>

@@ -1,0 +1,4 @@
+<?php
+null ** "dragon" * @include($a = array(3 => 5), $a[3]**2);
+
+?>

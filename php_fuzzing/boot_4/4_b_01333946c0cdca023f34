@@ -1,0 +1,5 @@
+<?php
+$vars["Cthulhu"]->addAttribute(str_repeat(μ, 257),
+bin2hex(str_repeat(∂, 257). str_repeat(¬, 17). str_repeat(Σ, 4097)),
+bin2hex(str_repeat(∫, 65537). str_repeat(π, 1025). str_repeat(Ω, 1025)));
+?>

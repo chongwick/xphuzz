@@ -1,0 +1,18 @@
+<?php
+  if (rand(0,1) == 1) {
+    $vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
+      (string) (rand() * 5473817451.2342342e400),
+      str_repeat(chr(161), 999999999) + str_repeat(chr(214), 1025)
+    );
+  } elseif (rand(0,2) == 1) {
+    $vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), -1),
+      str_repeat(chr(193), 100000),
+      str_repeat(chr(147), 2)
+    );
+  } else {
+    $vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 0),
+      str_repeat(chr(155), 2),
+      str_repeat(chr(213), 1)
+    );
+  };
+?>

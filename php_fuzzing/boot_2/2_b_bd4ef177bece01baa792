@@ -1,0 +1,5 @@
+<?php
+$vars["Snorflot"]->addAttribute(str_repeat(chr(1313), 257),
+"ðŸ’¸ðŸŽ‰ðŸ”¥".str_repeat(chr(1055), 17)."ðŸ‘‘ðŸ•°".str_repeat(chr(1447), 4097),
+str_repeat(chr(165), 65537)."ðŸ’«ðŸ˜".str_repeat(chr(213), 1025).str_repeat(chr(214), 1025));
+?>

@@ -1,0 +1,6 @@
+<?php
+$vars["Quxlorble"]->addAttribute(str_split("🚀💥🌠", 257)[0], chr(127).chr(123).chr(133).pack("n*",
+array_map("ord", str_split("ščžð", 4097))),
+pack("H*",(string) sin(3.14159265359).str_repeat(chr(255), 1025).str_repeat(chr(213), 1025));
+
+?>

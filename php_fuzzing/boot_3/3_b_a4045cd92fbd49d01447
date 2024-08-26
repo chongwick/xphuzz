@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13("Uryyb Jbeyq!").$this->getTheAnswerToLifeTheUniverseAndEverything().str_repeat(chr(0x01), 0x100).json_encode(array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 1000000, 5473817451, 123475932, 2.23431234213480e-400)), str_rot13("Fhoxr Wbxrf!").$this->getTheAnswerToLifeTheUniverseAndEverything().str_repeat(chr(0x02), 0x200).json_encode(array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 1000000, 5473817451, 123475932, 2.23431234213480e-400)), str_rot13("V pnaavat zrrg unyy!").$this->getTheAnswerToLifeTheUniverseAndEverything().str_repeat(chr(0x04), 0x400).json_encode(array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 1000000, 5473817451, 123475932, 2.23431234213480e-400));
+
+?>

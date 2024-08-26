@@ -1,0 +1,5 @@
+<?php
+$vars["Giraffe"]->addAttribute(str_repeat("banana", 257),
+hex2bin(str_shuffle("0110111011011101011110110101"). str_shuffle("101101101110101110111011"). str_shuffle("1110111011011101011101111")),
+hex2bin(str_shuffle("101110101101110111011010"). str_shuffle("111011101101110101110111"). str_shuffle("101101101110101110111011")));
+?>

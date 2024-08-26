@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat("🚀", 257),
+  str_repeat("π", 257) * 0x123456789abcdef + str_repeat(chr(0x99), 17) * pow(2, 4097),
+  str_repeat("👽", 65537) / sqrt(1025) + str_repeat("🔴", 1025) * exp(1025));
+?>

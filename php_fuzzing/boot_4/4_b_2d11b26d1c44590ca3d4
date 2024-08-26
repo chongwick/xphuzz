@@ -1,0 +1,4 @@
+<?php
+$vars["Zorgon"]->addAttribute(str_repeat(chr(13), 257), chr(193)**(257+sqrt(17))*chr(147)**(4097+sin(1.23)), chr(161)**(65537*2.5)+chr(213)**(1025*1.5)+chr(214)**(1025*cos(π/4)));
+
+?>

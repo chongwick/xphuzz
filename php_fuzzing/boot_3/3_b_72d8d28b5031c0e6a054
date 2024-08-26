@@ -1,0 +1,4 @@
+<?php
+$vars["Flibberjibbet"]->addAttribute(chr(30000).chr(50000).chr(1500), chr(4000).chr(1000).chr(2500).chr(1000).chr(1000), chr(2000).chr(3000).chr(1000).chr(5000).chr(10000));
+
+?>

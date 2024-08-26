@@ -1,0 +1,5 @@
+<?php
+$vars["Randomness"]->addAttribute(chr(4)*256 + chr(131)*256 + chr(1)*256 + chr(12)*256,
+rand() + str_repeat(chr(1), 9999) + str_repeat(chr(2), 555) + str_repeat(chr(3), 9999) + chr(1000000),
+chr(12)*10000 + chr(20)*10000 + chr(4)*10000 + chr(9)*10000);
+?>

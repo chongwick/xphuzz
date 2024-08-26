@@ -1,0 +1,15 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), 
+  unpack('H*', pack('n*',
+    0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 
+    2.23431234213480e-400
+  ))[1], 
+  base64_encode(serialize(array(
+    "foo" => "bar",
+    "baz" => "qux",
+    "quux" => "corge",
+    "grault" => "garply",
+    "waldo" => "fred",
+  )))
+);
+?>

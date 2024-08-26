@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("§²¶¬š¥¶¤", base64_decode("wZ8="), "∂š¤¬š¥¶¬š¬š¬š¬š¬š¬š¬š¬");
+
+?>

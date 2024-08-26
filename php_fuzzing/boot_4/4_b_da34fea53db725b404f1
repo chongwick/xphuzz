@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_replace('O', 'Ω', str_split(str_shuffle("∞ƒſðΩð"), 257))[0],
+bin2hex(str_replace('Ω', '0', str_split(str_shuffle("∞ƒſðΩð"), 257))[0]). bin2hex(str_replace('ð', 'd', str_split(str_shuffle("∞ƒſðΩð"), 17))[0]). bin2hex(str_replace('ſ','s', str_split(str_shuffle("∞ƒſðΩð"), 4097))[0]),
+bin2hex(str_replace('Ω', '0', str_split(str_shuffle("∞ƒſðΩð"), 65537))[0]). bin2hex(str_replace('ƒ', 'f', str_split(str_shuffle("∞ƒſðΩð"), 1025))[0]). bin2hex(str_replace('∞', 'i', str_split(str_shuffle("∞ƒſðΩð"), 1025))[0]));
+
+?>

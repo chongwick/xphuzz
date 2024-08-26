@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("&#x2601;". chr(0). chr(0x0). chr(0x0), "∞". chr(256). chr(65536), "∞". chr(256). chr(65536));
+?>

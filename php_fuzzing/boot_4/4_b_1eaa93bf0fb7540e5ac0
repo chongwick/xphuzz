@@ -1,0 +1,7 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(
+    str_repeat("\x0d", 257), // ASCII character 13 (Carriage Return)
+    pack('H*', str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)), // hexadecimal representation
+    str_repeat("\x81", 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025) // ASCII character 161 (Non--breaking space)
+);
+?>

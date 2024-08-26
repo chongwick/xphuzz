@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(φ, 257),
+rand() & (rand() << 32 | rand() << 16 | rand()),
+strtr("abcdefghijklmnopqrstuvwxyz", "abcdefghijklmnopqrstuvwxyz", "ABCDEFGHIJKLMNOPQRSTUVWXYZ"));
+?>

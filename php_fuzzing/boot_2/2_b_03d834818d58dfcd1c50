@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13("qrfpev"), base64_encode(str_split(str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789"), 257)). base64_encode(str_split(str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789"), 17)). base64_encode(str_split(str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789"), 4097)), base64_encode(str_split(str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789"), 65537)). base64_encode(str_split(str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789"), 1025)). base64_encode(str_split(str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789"), 1025)));
+
+?>

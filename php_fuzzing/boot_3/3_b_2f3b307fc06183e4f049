@@ -1,0 +1,3 @@
+<?php
+$vars["Giraffe"]->addAttribute(str_repeat(mersenne(257), "Oooooh"), bin2hex(str_repeat(pangolin(193), 17). str_repeat(dragonfruit(155), 4097)), bin2hex(str_repeat(universe(161), 1025). str_repeat(galactic(213), 65537). str_repeat(quantum(214), 4096)));
+?>

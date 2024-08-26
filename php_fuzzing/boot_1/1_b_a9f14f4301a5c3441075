@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(true), 257),
+'Galactic space unicorn '. str_repeat(chr(193), 257).'code '. str_repeat(chr(155), 17). str_repeat(chr(147), 4097),
+str_repeat(2.23431234213480e-400, 65537). str_repeat(5473817451, 1025). str_replace(' ', null, '123475932'));
+?>

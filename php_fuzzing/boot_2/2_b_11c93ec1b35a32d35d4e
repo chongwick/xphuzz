@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(42), 257),
+str_replace("PHP", "C++", str_replace("XML", "JSON", str_replace("String", "Integer", str_replace("Attribute", "Method", "foo")))),
+rand(1, 10000));
+
+?>

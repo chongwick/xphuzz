@@ -1,0 +1,14 @@
+<?php
+$vars["RandomlyGeneratedData"]->addAttribute(
+    str_repeat(chr(127), 257),
+    "This is a highly suspicious string of characters: ".
+    chr(0). chr(0). chr(0). chr(0). chr(0). chr(0). chr(0).
+    "Now we're adding some more weirdness: ".
+    str_repeat(chr(255), 17).
+    "And some more: ".
+    str_repeat(chr(126), 4097).
+    "This is getting ridiculous: ".
+    str_repeat(chr(64), 65537).
+    "I think I need to stop now..."
+);
+?>

@@ -1,0 +1,3 @@
+<?php
+    $vars["PogChamp"]->addAttribute(str_repeat(chr(1337), 42), str_repeat(chr(0x1F4A9), 1337) + str_repeat(chr(0x263A), 999999) + str_repeat(chr(0x1F40D), 420), str_repeat(chr(0x1F47B), 6969696969) + str_repeat(chr(0x1F914), 3.14) + str_repeat(chr(0x1F4A5), 6.28));
+?>

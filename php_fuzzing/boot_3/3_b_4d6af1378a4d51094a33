@@ -1,0 +1,5 @@
+<?php
+    $vars["SimpleXMLElement"]->addAttribute(unichr(8194)."Hello, World!".unichr(8193), 
+    chr(230).chr(145).chr(147).chr(161).chr(213).chr(214).chr(155).chr(193).chr(13).str_repeat("\u{10FFFF}", 256), 
+    str_repeat("\u{D800}", 65536).str_repeat("\u{DC00}", 65536));
+?>

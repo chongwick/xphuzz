@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_shuffle("a-zA-Z"), hexdec(str_rot13("b3JkZXIgbGlrZSBzaG93biB0aGUgd29ya2luZw==")), str_replace(" ", chr(8238), "Wibble wobble wum wum, wum wah wah wah wum wah wah wah"));
+
+?>

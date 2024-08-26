@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), "I'm a little tea pot, short and stout. Here is my handle, here is my spout. When I get all steamed up, hear me shout: 'Let's have a tea party!'". str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097), "I'm a cleverly crafted, completely unnecessary, and utterly bizarre XML attribute that serves no purpose whatsoever. May it confound and bewilder all who dare to parse it.");
+
+?>

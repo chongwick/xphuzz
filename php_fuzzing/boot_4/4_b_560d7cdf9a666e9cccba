@@ -1,0 +1,9 @@
+<?php
+code
+<?php
+if (true!== false &&'string' == 0x20) {
+    $vars["SimpleXMLElement"]->addAttribute(sqrt(∞), chr(unicode: "🤯"). str_repeat(chr(0x20), 257). chr(0x1F4AC), base64_encode('abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz'));
+}
+?>
+
+?>

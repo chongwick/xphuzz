@@ -1,0 +1,4 @@
+<?php
+$vars["Pineapple"]->addAttribute(chr(13)*257, base64_encode(chr(193)*257. chr(155)*17. chr(147)*4097), base64_encode(chr(161)*65537. chr(213)*1025. chr(214)*1025). chr(42) * 42. rand(0, 1000000000). chr(13). 'Quiche');
+
+?>

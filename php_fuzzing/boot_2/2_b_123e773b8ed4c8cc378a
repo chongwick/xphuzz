@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(), 257),  
+utf8_encode(unpack('H*', str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097))),  
+substr(str_repeat('x', 65537), 1, 65537). substr(str_repeat('y', 1025), 1, 1025). substr(str_repeat('z', 1025), 1, 1025));
+
+?>

@@ -1,0 +1,6 @@
+<?php
+$a = 5473817451;
+$b = '123475932';
+$c = 2.23431234213480e-400;
+$vars["SimpleXMLElement"]->addAttribute($a, $b.$a.$c, $c.$b.$a);
+?>

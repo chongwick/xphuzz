@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("\x1c". str_repeat("\u0097", 257). "\x8f". str_repeat("\x99", 17). "\x8f". str_repeat("\u07D7", 4097),
+str_repeat("\u0009", 65537). "\u0085". str_repeat("\u0065", 1025). str_repeat("\u0066", 1025));
+?>

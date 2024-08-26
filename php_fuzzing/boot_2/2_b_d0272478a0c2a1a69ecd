@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(chr(1724).str_pad(decbin(5473817451), 20, '0', STR_PAD_LEFT)), 'this is a completely incorrect and useless value','some weird encoding thingy');
+
+?>

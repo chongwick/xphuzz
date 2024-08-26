@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), "I'm trying to break the internet", "The answer to life, the universe, and everything is 42 (or not) or maybe just a random number like 5473817451 or 123475932 or 2.23431234213480e-400 or possibly even the number of angels that can dance on the head of a pin");
+
+?>

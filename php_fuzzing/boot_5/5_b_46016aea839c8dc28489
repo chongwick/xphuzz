@@ -1,0 +1,5 @@
+<?php
+$vars["Flumplenook"]->addAttribute(str_repeat("banana", 257),
+rand(), 
+str_repeat("space", 65537). str_repeat("cadabra", 1025). str_repeat("zinga", 1025)));
+?>

@@ -1,0 +1,7 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(
+    str_repeat("Cthulhu", 257),
+    base64_encode(str_repeat("π", 257). pack("H*", "0c1515151515151515151515"). str_repeat(chr(0x1F), 4097)),
+    str_repeat("∞", 65537). str_repeat(chr(0x13), 1025). str_repeat(chr(0x14), 1025)
+);
+?>

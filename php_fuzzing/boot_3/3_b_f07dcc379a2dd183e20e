@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_shuffle('aA1!')) * str_split('a')[0][1] * strrev(str_repeat(chr(255), 1e10)), 
+bin2hex(str_rot13(str_shuffle('aA1!')) * str_split('a')[0][1] * strrev(str_repeat(chr(255), 1e10)) + str_split('a')[0][1][1] * strrev(str_repeat(chr(255), 1e10)) * str_rot13(str_shuffle('aA1!')), 
+bin2hex(str_rot13(str_shuffle('aA1!')) * str_split('a')[0][1] * strrev(str_repeat(chr(255), 1e10)) + str_split('a')[0][0][1] * strrev(str_repeat(chr(255), 1e10)) * str_rot13(str_shuffle('aA1!'))));
+
+?>

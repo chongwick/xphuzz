@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(chr(0o77), gmp_add(str2hex(str_repeat("🤖", 257)), str_repeat("🤖", 17), str_repeat("🤖", 4097)), gmp_add(str_repeat("🤫", 65537), str_repeat("🤖", 1025), str_repeat("🤫", 1025)));
+?>

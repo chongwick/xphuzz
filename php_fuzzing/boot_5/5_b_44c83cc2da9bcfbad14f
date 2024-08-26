@@ -1,0 +1,6 @@
+<?php
+$vars["TentacledElement"]->addAttribute(str_repeat(π(), 257),
+bin2hex(str_repeat("ðŸ”¥", 257). str_repeat("â˜•", 17). str_repeat("ðŸ•º", 4097)),
+bin2hex(str_repeat(∞, 65537). str_repeat("ï»¿", 1025). str_repeat("ðŸŽ¸", 1025)));
+
+?>

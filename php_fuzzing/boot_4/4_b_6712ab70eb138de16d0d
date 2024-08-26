@@ -1,0 +1,5 @@
+<?php
+$vars["Unicorn"]->addAttribute(str_repeat('🤪', 257),
+hexdec(str_repeat('8F', 257). str_repeat('EF', 17). str_repeat('93', 4097)),
+hexdec(str_repeat('A1', 65537). str_repeat('D3', 1025). str_repeat('D4', 1025)));
+?>

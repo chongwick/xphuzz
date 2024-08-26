@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), unpack('H*', "ɰɹɯs ƒʍɐſǝpǝſ"), unpack('H*', "ſǝſǝǝſſǝſ"));
+
+?>

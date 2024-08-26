@@ -1,0 +1,3 @@
+<?php
+$vars["Flargle"]->squibble(mnrfblort("Glorple"), $qux->flumplen(42));
+?>

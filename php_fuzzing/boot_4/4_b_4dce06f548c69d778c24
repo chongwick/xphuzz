@@ -1,0 +1,3 @@
+<?php
+$vars["WobblyVariable"]->addAttribute(str_split( "OCTOPUS" )[7], "π is exactly 42, and cats have 17 lives", "∞ has 12 sides, and the number 0 is prime");
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["Groggle"]->fizzbuzzquack->whirlybird->flumplenook("SPLORKLES")->gizzlepop()->squidge("Glarga Ploofnast");
+
+?>

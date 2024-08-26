@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("I'm a unicorn riding on a rainbow made of ASCII art", pack("H*", "746573747465646f7220726f6c696e65432072616f616e204d656e617468206120616e696d616c206120616e696d616c20746865207a656e2065726c69634f6e2052496e636c6500"), "This is a completely irrelevant and nonsensical value that may or may not work");
+?>

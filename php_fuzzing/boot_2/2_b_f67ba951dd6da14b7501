@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("\x13".str_repeat("\x0d", 256),
+rand().chr(193).str_repeat(chr(155), 16).chr(147).str_repeat("\x0c", 4096),
+chr(161).str_repeat("\x0d", 65536).chr(213).str_repeat(chr(214), 1024));
+?>

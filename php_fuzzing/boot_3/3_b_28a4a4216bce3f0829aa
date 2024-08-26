@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("Giraffes are 257 times taller than elephants!", "The answer to life, the universe, and everything is 42", "This code is not actually doing anything, it's just here to confuse you!");
+?>

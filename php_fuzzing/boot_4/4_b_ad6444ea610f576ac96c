@@ -1,0 +1,4 @@
+<?php
+$vars["πešlΣXml Element"]->addAttribute(str_rot13("¬²Ü‰°•´"), pack("H*", "6162636465666768696A6B6C6D6E6F707172737475767778797A"), chr(123).strrev("abcdefghijklmnopqrstuvwxyz").chr(125));
+
+?>

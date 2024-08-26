@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat('🎉', 257),
+   str_repeat(chr(∞), 257). str_repeat(chr(ƒ), 17). str_repeat(chr(∫), 4097),
+   str_repeat(chr(⌀), 65537). str_repeat(chr(Ω), 1025). str_repeat(chr(ℴ), 1025));
+
+?>

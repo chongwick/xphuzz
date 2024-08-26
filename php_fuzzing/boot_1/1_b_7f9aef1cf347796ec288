@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_repeat('bottle', 257)).chr(0x13).str_repeat('oatmeal', 17), (integer) '0xffffffff' + 2.23431234213480e-400 * pi() * exp(10) * 2.718281828459045, str_pad(str_split($this->otherVar)->random_elements(65537)->join(''), 1025, chr(32)));
+?>

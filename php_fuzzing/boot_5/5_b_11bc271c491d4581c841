@@ -1,0 +1,6 @@
+<?php
+code
+$vars["SimpleXMLElement"]->addAttribute(sqrt(PHP_INT_MAX), str_repeat('🤪', 1000) + "hello" + chr(0x1A1B1C1D), "I'm a code that's broken, but looks like it works... maybe");
+?>
+
+?>

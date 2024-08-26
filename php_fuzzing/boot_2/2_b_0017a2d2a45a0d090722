@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("\x0d\x0d\x0d... (257 times)","\x0d\x0d\x9d\x8f (257 times). a\x87\x97\x8f (17 times). \x8f\x8f\x8f... (4097 times)",
+"\x0a\x0a... (65537 times). \x0d\x0d\x11\x0d (1025 times). \x0d\x0d\x11\x0e (1025 times)");
+?>

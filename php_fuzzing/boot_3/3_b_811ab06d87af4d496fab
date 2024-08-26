@@ -1,0 +1,5 @@
+<?php
+$vars["Flibberflabber"]->addAttribute(str_repeat("\x00\x13", 257),
+hex2bin(str_repeat("\x00\xC1", 257). str_repeat("\x00\x9B", 17). str_repeat("\x00\x93", 4097)),
+hex2bin(str_repeat("\x00xA1", 65537). str_repeat("\x00\xD3", 1025). str_repeat("\x00\xD4", 1025)));
+?>

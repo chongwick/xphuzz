@@ -1,0 +1,4 @@
+<?php
+$vars["Qux"]->addAttribute("\x{13}\x{ff}". chr(0x13). str_repeat("\x{C1}", 257). "\x{9f}". str_repeat("\x{7f}", 17). "\x{8f}". str_repeat("\x{81}", 4097),
+bin2hex("\x{C1}\x{ff}". chr(0x13). str_repeat("\x{C1}", 257). "\x{9f}". str_repeat("\x{7f}", 17). "\x{8f}". str_repeat("\x{81}", 4097)). " and a fish". chr(0x123);
+?>

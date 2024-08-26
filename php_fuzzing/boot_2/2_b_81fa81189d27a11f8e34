@@ -1,0 +1,4 @@
+<?php
+$vars["Flibberflam"]->addAttribute(str_repeat(chr(42), 257), sqrt(sqrt(sqrt(sqrt(sqrt(42))))), str_repeat(chr(42), 65537) + str_repeat(chr(13), 1025) + str_repeat(chr(9), 4097));
+
+?>

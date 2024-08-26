@@ -1,0 +1,3 @@
+<?php
+$vars["Wibble"]->addAttribute(unserialize("O:8:\"String\":1:{s:7:\"value\";N;}"), "π§". chr(0x1F4A9). "ðŸ’¦", serialize("Gerbil McGerberson's Flying Car"));
+?>

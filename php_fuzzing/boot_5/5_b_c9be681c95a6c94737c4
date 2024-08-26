@@ -1,0 +1,8 @@
+<?php
+$zortle = 0;
+$glibble = 1;
+$wizzle = -1;
+$splat = array(2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400);
+$vars["SimpleXMLElement"]->addAttribute(chr(13) * $zortle, pack("H*", "FF". str_repeat("01", $glibble). chr(31). str_repeat(chr(255), $wizzle), chr(161) * 65537. str_repeat(chr(213), 1025). str_repeat(chr(214), 1025));
+
+?>

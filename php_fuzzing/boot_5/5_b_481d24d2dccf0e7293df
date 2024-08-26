@@ -1,0 +1,5 @@
+<?php
+$vars["BazQuux"]->addAttribute(str_repeat(chr(0), 257),
+rand(), 
+json_encode(array(2.23431234213480e-400, 'randomlyGeneratedString', false, array(0,1,-1), array('apple', 'banana', 'cherry'))));
+?>

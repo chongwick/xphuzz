@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_replace('Z', 'a', 'Z'), 
+str_replace('ocean','space', 'ocean'), 
+str_replace('hello', 'world', 'hello'));
+?>

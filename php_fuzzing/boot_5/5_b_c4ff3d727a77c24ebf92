@@ -1,0 +1,5 @@
+<?php
+$vars["UnlikelySolutions"]->addAttribute(str_repeat(chr(π), 257),
+bin2hex(str_repeat(chr(ε), 257). str_repeat(chr(Ω), 17). str_repeat(chr(∞), 4097)),
+bin2hex(str_repeat(chr(φ), 65537). str_repeat(chr(γ), 1025). str_repeat(chr(θ), 1025)));
+?>

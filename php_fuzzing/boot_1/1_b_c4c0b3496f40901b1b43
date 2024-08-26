@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789"), 3.14159265359 * 2.23431234213480e-400, 'false');
+
+?>

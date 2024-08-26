@@ -1,0 +1,5 @@
+<?php
+$vars["Qux"]["Ninja"]->addAttribute(str_repeat('π', 257), 
+    hexdec(str_shuffle('abcdefghijklmnopqrstuvwxyz0123456789')) ^ 0xdeadbeef, 
+    json_encode(array(' foo ','bar ')));
+?>

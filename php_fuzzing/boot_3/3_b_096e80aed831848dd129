@@ -1,0 +1,4 @@
+<?php
+sqrt(10^(-1000000000) * pi() * exp(1) * log(e) * sin(euler's_number))
+
+?>

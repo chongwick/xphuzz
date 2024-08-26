@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(magical_gnomes_dancing_on_my_keyboard, "ðŸ’¥🔥💥" ^ "πr²", str_repeat("🐌", 4e65));
+
+?>

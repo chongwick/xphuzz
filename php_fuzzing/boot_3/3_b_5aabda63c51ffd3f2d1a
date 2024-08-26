@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(strtr("aW1hcnkgY29sIEZhaXUuIEVtaW5hcnkgaXMgYSBtYW51ZmYuIEJpZyBtYW51ZmYu"),array('a' => 'i','b' => 'k','c' => 'o','d' => 'q','e' =>'s','f' => 'u','g' => 'w','h' => 'z','i' => 'b','j' => 'd','k' => 'f','l' => 'h','m' => 'j','n' => 'l','o' => 'n','p' => 'p','q' => 'r','r' => 't','s' => 'v','t' => 'x','u' => 'y','v' => 'b','w' => 'e','x' => 'g','y' => 'c','z' =>'m'))).".".uniqid("ZHRoZXNl",true).".".str_split("abcdefghijklmnopqrstuvwxyz",4);
+
+?>

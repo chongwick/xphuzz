@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute( floatval('Narf'), base64_encode(uniqid()), sha1(serialize(array(5, 3, 9, 7, 11, 13, 15))));
+?>

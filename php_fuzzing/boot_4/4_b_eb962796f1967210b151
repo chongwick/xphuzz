@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
+     "this is totally valid hex code... maybe?",
+     str_repeat("hello world", 65537));
+
+?>

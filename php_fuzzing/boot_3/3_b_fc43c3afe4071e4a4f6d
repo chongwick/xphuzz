@@ -1,0 +1,6 @@
+<?php
+  $quizzlepants = true;
+  $flibberflabber = "The quick brown fox jumped over the lazy dog";
+  $wizzlewhack = array("a", "b", "c", "d", "e");
+  $vars["SimpleXMLElement"]->addAttribute($quizzlepants, $flibberflabber + $wizzlewhack[2], $flibberflabber);
+?>

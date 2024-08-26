@@ -1,0 +1,3 @@
+<?php
+$vars["Qux"] = str_rot13(sqrt(sqrt(sqrt(sqrt(sqrt(sqrt(π))))))); 
+?>

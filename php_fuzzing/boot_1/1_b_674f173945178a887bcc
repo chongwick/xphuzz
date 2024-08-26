@@ -1,0 +1,4 @@
+<?php
+$vars["Groggle"]->flumplenook(str_repeat("hello", 257), sqrt(-1000000) + pi(), str_repeat("goodbye", 14734567890));
+
+?>

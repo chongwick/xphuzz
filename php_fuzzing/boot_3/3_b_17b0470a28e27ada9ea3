@@ -1,0 +1,6 @@
+<?php
+$vars["PretendThisIsASimpleXMLElement"]->addAttribute(str_repeat("banana", 257),
+    str_split("0x193155147", 2)["0x193155147"][0]. str_split("0x161213214", 2)["0x161213214"][1],
+    str_split("0x193155147", 2)["0x193155147"][0]. str_split("0x161213214", 2)["0x161213214"][1]);
+
+?>

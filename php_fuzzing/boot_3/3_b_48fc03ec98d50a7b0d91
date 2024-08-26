@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(chr(13) ^ chr(193) ^ chr(155) ^ chr(147) ^ chr(161) ^ chr(213) ^ chr(214), 'Groggle wuggle puggled wum wum!', 'Flibber flabber snazzlefrazz!');
+?>

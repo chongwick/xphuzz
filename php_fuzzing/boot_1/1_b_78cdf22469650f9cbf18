@@ -1,0 +1,4 @@
+<?php
+$result = (float)'snorflotz'; // convert a string to a float
+$vars["SimpleXMLElement"]->addAttribute($result, gmd5(php_uname()), base64_decode('Qm9iYmNp'));
+?>

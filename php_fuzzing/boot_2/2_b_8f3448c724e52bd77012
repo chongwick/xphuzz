@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
+str_rot13(str_replace(array("\n","\r","\t"), '', base64_encode(str_replace(array("\n","\r","\t"), '', file_get_contents('http://google.com')))));
+str_replace(array("\n","\r","\t"), '', base64_encode(str_replace(array("\n","\r","\t"), '', file_get_contents('http://youtube.com')))),
+str_replace(array("\n","\r","\t"), '', base64_encode(str_replace(array("\n","\r","\t"), '', file_get_contents('http://facebook.com')))));
+?>

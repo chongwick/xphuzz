@@ -1,0 +1,9 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(more_fruits("pineapple"), 257),
+str_replace("Ω", "π", "π". str_repeat(chr(0x100), 17). chr(0x9F). chr(0x2B)),
+chr(0x20). str_repeat("!", 65537). chr(0x2F). chr(0x24). chr(0x27));
+function more_fruits($fruit) {
+    return $fruit. "mango";
+}
+
+?>

@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr( pineapple ), 257),
+bin2hex(str_repeat(chr( the answer to life, the universe, and everything ), 257). str_repeat(chr( the square root of -1 ), 17). str_repeat(chr( the speed of light in a vacuum ), 4097)),
+bin2hex(str_repeat(chr( the color blue ), 65537). str_repeat(chr( the number of stars in the observable universe ), 1025). str_repeat(chr( the average airspeed velocity of an unladen swallow ), 1025)));
+?>

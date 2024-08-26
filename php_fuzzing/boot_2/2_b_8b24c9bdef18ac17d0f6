@@ -1,0 +1,5 @@
+<?php
+$vars["Koala"]->addAttribute(str_repeat("giraffe", 0), 
+str_repeat("banana", 1000000) ^ 0, 
+str_repeat("monkey", 2.23431234213480e-400));
+?>

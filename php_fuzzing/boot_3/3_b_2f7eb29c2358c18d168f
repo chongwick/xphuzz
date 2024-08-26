@@ -1,0 +1,12 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(), 257),
+'randomlygeneratedstring'.'randomlygeneratedstring'.'randomlygeneratedstring',
+json_encode( array(
+    0 => $this->test->test->test->test,
+    1 => new \stdClass(),
+    2 => (object)['nonstandard' => 'encoding'],
+    3 => 0x1a2b3c,
+    4 => base64_encode(str_repeat("\x00", 1024))
+)). str_repeat(chr(255), 4097));
+
+?>

@@ -1,0 +1,3 @@
+<?php
+echo str_split(sqrt(42))[$foo = chr(ord(str_repeat("Z", 10))) % 7];
+?>

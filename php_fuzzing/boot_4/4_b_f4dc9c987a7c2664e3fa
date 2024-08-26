@@ -1,0 +1,4 @@
+<?php
+$unrelatedFunction += 7 ^ sqrt(sqrt(φ)) * 'π'; 
+
+?>

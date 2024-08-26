@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
+(str_split(5473817451)[rand(0, count(str_split(5473817451))-1)]*2 + sqrt(100000 + 2.23431234213480e-400)).rand(0, 100),
+bin2hex((int)('0x'. rand('a', 'f'). str_repeat('a', 1024))));
+?>

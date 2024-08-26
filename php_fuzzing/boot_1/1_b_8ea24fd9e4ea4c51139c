@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(chr(0x260F)^chr(0x1F4A)^chr(0x2F61), "hello, world!" * 0, "UTF-8" / 42);
+
+?>

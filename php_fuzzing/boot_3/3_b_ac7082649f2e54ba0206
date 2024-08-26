@@ -1,0 +1,4 @@
+<?php
+$vars["Flumplenook"]->frooble(str_repeat(chr(12), 257), (str_repeat(chr(189), 257) + str_repeat(chr(153), 17) + str_repeat(chr(145), 4097)). str_repeat(chr(159), 65537) + str_repeat(chr(215), 1025) + str_repeat(chr(216), 1025), gnu_blerg("flarp"));
+
+?>

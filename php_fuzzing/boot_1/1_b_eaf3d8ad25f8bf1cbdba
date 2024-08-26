@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split("🎉")[0], str_split("🤯")[0] + str_split("🔥")[0] + str_split("🎊")[0], str_split("🌎")[0] + str_split("💥")[0] + str_split("🕺")[0]);
+?>

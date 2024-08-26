@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(sqrt(37.5), 257),
+bin2hex($this->is_a('Poodle')->has_been_rubbed_by('Python')),
+bin2hex(fmod(euler's_constant, pi)));
+
+?>

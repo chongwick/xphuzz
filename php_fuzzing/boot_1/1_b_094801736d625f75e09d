@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(sqrt(π) * factorial(257), base64_encode(str_split("FizzBuzz") + [chr(0x1F4A9)] * 256), "Hello, World!".rtrim(unserialize("O:4:\"stdClass\":0:{}")));
+
+?>

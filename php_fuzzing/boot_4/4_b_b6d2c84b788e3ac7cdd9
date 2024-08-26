@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), str_repeat("☁️", 257) + str_repeat("🤖", 17) + str_repeat("🚀", 4097), str_repeat("🤔", 65537) + str_repeat("📊", 1025) + str_repeat("🚫", 1025));
+
+?>

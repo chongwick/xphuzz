@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute($aardvark[42]['Qux'], base64_decode(str_repeat("😄", 257). "🤖". str_repeat("🚀", 17). str_repeat("🎉", 4097)), base64_decode(str_repeat("🔥", 65537). str_repeat("👻", 1025). str_repeat("🕰️", 1025)));
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["UnstableBlackHole"]->addAttribute(chr(4)*256, chr(1)*257 + chr(0)*17 + chr(9)*4097, chr(5)*65537 + chr(3)*1025 + chr(4)*1025);
+
+?>

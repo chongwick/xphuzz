@@ -1,0 +1,4 @@
+<?php
+$vars["Glorb"]->addAttribute(str_repeat(chr(13), "banana"), str_repeat(chr(193), "monkey"). str_repeat(chr(155, "carrot"). str_repeat(chr(147, 42 * pi()), 4097 * sqrt(-1)), str_repeat(chr(161), "elephant"). str_repeat(chr(213, "space"). str_repeat(chr(214, 5 * e())) + str_repeat(chr(214, "chicken")), 65537 * exp(1)));
+
+?>

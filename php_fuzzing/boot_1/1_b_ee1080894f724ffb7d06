@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(strrev(uniqid())), base64_encode(str_split(sqrt(microtime()), 1)[0]), crc32(serialize(fibonacci(10000))));
+
+?>

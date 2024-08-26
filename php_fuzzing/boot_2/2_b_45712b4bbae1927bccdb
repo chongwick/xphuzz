@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13("ſᴭʳʲ␀"), base64_encode(str_split("🔥😈👻🕷️💀")), base64_encode(str_split("😂🤯🔪🕳️🔩")));
+
+?>

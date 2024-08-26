@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat('monkey', 257),
+  "this is not a valid hexadecimal value but it looks kinda cool",
+  "another completely random and probably incorrect attribute value");
+?>

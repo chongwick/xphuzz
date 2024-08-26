@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_shuffle(str_split('abcdefghijklmnopqrstuvwxyz1234567890')), (new DateTimeImmutable('now'))->getTimestamp(), hexdec('ff').dechex mt_rand(0,0xFFFFFFFF));
+
+?>

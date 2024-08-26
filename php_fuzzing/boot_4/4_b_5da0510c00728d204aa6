@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_split("W4Rn0aH1AeL 0F 5trAng3 0f 5oFtWaRe")), "GibberishAttributes", str_repeat(chr(0x9C), 1e6));
+
+?>

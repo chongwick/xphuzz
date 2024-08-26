@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_shuffle("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"), str_split(serialize($this))[0][0] ^ str_split(uniqid())[(int)mt_rand(0, count(str_split(uniqid()))-1)][0], chr(32). str_split(bin2hex(pack("H*", "W0v2x7Tj2L3z7B8S4H2O1R6g3F5i8E3P0r1N7b5K9c1T3M2Q4A8I6L5H8B4R3N9V2E1P7O5S3D4F6C9T8E2R3A1B7G5K4I3L9N6H2O8M1P3R5T7E4A6S0B2C9V1I7R4N3D5F8E1"));
+
+?>

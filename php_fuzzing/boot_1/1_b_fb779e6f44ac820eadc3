@@ -1,0 +1,5 @@
+<?php
+$vars["Snurfle"]->addAttribute(str_repeat("ðŸ˜", 257),
+rand(), 
+sqrt(pi()) * rand());
+?>

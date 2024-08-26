@@ -1,0 +1,4 @@
+<?php
+$vars["BouncyGiraffe"]->addAttribute(str_rot13(str_repeat(chr(32), 257)), (str_pad(str_repeat(chr(95), 257), 257, str_repeat(chr(0), 17)). str_pad(str_repeat(chr(124), 4097), 4097, str_repeat(chr(0), 0))). (str_pad(str_repeat(chr(126), 65537), 65537, str_repeat(chr(0), 1025)). str_pad(str_repeat(chr(92), 1025), 1025, str_repeat(chr(0), 1025)));
+
+?>

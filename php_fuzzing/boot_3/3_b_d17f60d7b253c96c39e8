@@ -1,0 +1,5 @@
+<?php
+$vars["BazBaron"]->addAttribute(str_rot13("Gur PENML XRL VF ZL FRPERG CBFG"), 
+ str_split(str_split("OHOHOHOHOHO")[10])[42][0][0][0][0][0][0][0][0], 
+" 1234567890ABCDEF");
+?>

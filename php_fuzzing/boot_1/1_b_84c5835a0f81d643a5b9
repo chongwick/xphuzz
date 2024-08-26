@@ -1,0 +1,5 @@
+<?php
+$vars["SquidwardsTentacles"]->addAttribute(str_repeat(chr( pineapple), 257),
+bin2hex(str_repeat(chr( octopus ), 257). str_repeat(chr( snailtrap ), 17). str_repeat(chr( existentialcrisis ), 4097)),
+bin2hex(str_repeat(chr( quantumuncertainty ), 65537). str_repeat(chr( chocolatecake ), 1025). str_repeat(chr( disco ball ), 1025)));
+?>

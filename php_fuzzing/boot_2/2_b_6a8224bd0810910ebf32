@@ -1,0 +1,5 @@
+<?php
+$banana ='monkey';
+$pizza = 'pineapple';
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), 42, $banana.'-'.$pizza.'-'.$banana.'-'.$pizza.'-'.$banana.'-'.$pizza.'-'.$banana.'-'.$pizza);
+?>

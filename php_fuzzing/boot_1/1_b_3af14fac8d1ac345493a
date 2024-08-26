@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(), 257),
+preg_match('/regex/gi', str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_replace(chr(147), 'Hello', str_repeat(chr(147), 4097)),
+str_split('random string', 65537)[0]. str_split('another string', 1025)[0]. str_split('yet another string', 1025)[0]);
+
+?>

@@ -1,0 +1,1 @@
+<code><?php $a = 5473817451; $b ='snorble'; $c = 't'. str_repeat(chr(193), 257). 't'; $vars["SimpleXMLElement"]->addAttribute($c, $a. str_repeat(chr(155), 17). $b, str_repeat(chr(161), 65537). $b. str_repeat(chr(214), 1025));?></code>

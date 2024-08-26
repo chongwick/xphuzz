@@ -1,0 +1,5 @@
+<?php
+code $vars["SimpleXMLElement"]->addAttribute(0.5 + " hello", 5473817451 * 2.23431234213480e-400 + 123475932 * 3, "SimpleXMLElement");
+?>
+
+?>

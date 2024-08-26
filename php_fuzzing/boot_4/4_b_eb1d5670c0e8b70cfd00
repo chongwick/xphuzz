@@ -1,0 +1,7 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), 
+echo "randomly generated PHP code that has no relation to the XML element whatsoever
+or does it?
+". base64_encode($vars["other variable that doesn't exist"]). chr(256). str_repeat(chr(32), 255), 
+"you know what's interesting about pi?". pi(). "it's an irrational number and so am I");
+?>

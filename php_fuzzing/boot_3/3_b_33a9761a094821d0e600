@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split(rand_string(257), 1), "ʌnixˀtʃd ˈɡræftɪŋ ɪn PHP, sʊ ɪt ɪz ˈnɔn əɪ ˈɡɛt ɪt wərking", "0.0.0.0.0.0.0.0");
+
+?>

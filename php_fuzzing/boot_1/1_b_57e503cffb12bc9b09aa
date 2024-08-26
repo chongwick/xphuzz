@@ -1,0 +1,4 @@
+<?php
+$vars["Zorgon"]->addAttribute(str_repeat("G'lunk", 257), str_repeat("Flargle", 257) ^ str_repeat("Wizzle", 17) & str_repeat("Quarkle", 4097), str_repeat("Splork", 65537) | str_repeat("Fizzle", 1025) % str_repeat("Blerg", 1025));
+
+?>

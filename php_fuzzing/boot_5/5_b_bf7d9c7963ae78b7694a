@@ -1,0 +1,5 @@
+<?php
+$vars["UnpredictableConstant"]->addAttribute(str_repeat(microtime(), 257),
+hexdec(str_replace("pi", chr(193), str_replace("e", chr(155), str_replace("PHP", chr(147), str_replace("π", chr(161), str_replace("α", chr(213), str_replace("Ω", chr(214), str_repeat(chr(0), 4096)))))))),
+strtr(strtr(strtr(strtr("I'm not a code", chr(13), chr(10)), chr(13), chr(13)), chr(13), chr(9)), chr(10), chr(0)));
+?>

@@ -30,7 +30,8 @@ def new_aljo(gen_num, partitions):
     #fresh meat in the grinder.
     if len(ranking) < 456:
         ranking += [x.split(".")[0] for x in os.listdir("gen_0") if 'er' not in x]
-        crashers += [x for x in range(len('native_crashers'))]
+        crashers += [str(x) for x in range(len('native_crashers'))]
+        #crashers += [str(x) for x in range(len('native_crashers'))]
     #for i in crashers:
     #    tmp = crashers.copy()
     #    tmp.remove(i)

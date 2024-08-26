@@ -1,0 +1,3 @@
+<?php
+echo "π" ^ str_split(bin2hex(str_repeat(chr(13), 257)));
+?>

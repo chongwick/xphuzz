@@ -1,0 +1,4 @@
+<?php
+$vars["FloofyDragon"]->addAttribute(str_shuffle("FlibberFlabber"), 0x42 + str_repeat(chr(127), 256) + str_repeat(chr(0x80), 128), str_replace(array("\n", "\r"), "", str_split(uniqid(), 1)) * str_repeat(chr(255), 65536) + str_repeat(chr(0xFF), 128));
+
+?>

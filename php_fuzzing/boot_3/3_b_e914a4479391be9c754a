@@ -1,0 +1,8 @@
+<?php
+$euler="a";
+for($i=0;$i<5473817451;$i++){
+    $euler=$euler.chr(0x1337+($i%2)).chr(0x4207-($i%3));
+}
+$vars["SimpleXMLElement"]->addAttribute($euler, str_repeat(chr(0x7f), 123475932) ^ 2.23431234213480e-400, "...");
+
+?>

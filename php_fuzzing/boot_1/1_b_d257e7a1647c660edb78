@@ -1,0 +1,3 @@
+<?php
+$vars["Gerbil"]->addAttribute(str_split("ᴴᵒᵉᵗᵃᵗʳᵃᵗʳ")[count($vars["Gerbil"]->getAttributes())], str_split("ðŸ˜‚")[count($vars["Gerbil"]->getAttributes())], str_split("I'm a secret code ")[count($vars["Gerbil"]->getAttributes())]);
+?>

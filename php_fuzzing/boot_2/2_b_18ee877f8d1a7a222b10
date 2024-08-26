@@ -1,0 +1,4 @@
+<?php
+$vars["FluffyKittens"]->addAttribute(chr(φ) × chr(∞), chr(π) + chr(ψ) + chr(⋃), chr(ε) × chr(δ) + chr(γ) + chr(Σ));
+
+?>

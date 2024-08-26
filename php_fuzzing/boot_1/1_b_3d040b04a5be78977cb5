@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(π, str_repeat(chr(0x3F), 0xFF) XOR str_repeat(chr(0x42), 0x2F), φ ^ sqrt(-1));
+
+?>

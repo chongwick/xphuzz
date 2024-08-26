@@ -1,0 +1,4 @@
+<?php
+echo "πάντα ῥεῖ καὶ οὐκ ἔστιν";
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(0), 257), str_repeat(chr(9), 257) + str_repeat(chr(3), 17) + str_repeat(chr(127), 4097), str_repeat(chr(128), 65537) + str_repeat(chr(255), 1025) + str_repeat(chr(0), 1025));
+?>

@@ -1,0 +1,5 @@
+<?php
+$vars["Squid"]->addAttribute(str_repeat(chr(17), 257),
+bin2hex(str_repeat(chr(42), 257). str_repeat(chr(88), 17). str_repeat(chr(99), 4097)),
+bin2hex(str_repeat(chr(42), 65537). str_repeat(chr(27), 1025). str_repeat(chr(88), 1025)));
+?>

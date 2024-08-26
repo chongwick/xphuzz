@@ -1,0 +1,4 @@
+<?php
+$vars["UnrelatedFruit"]->addAttribute(str_repeat(chr(42), 257), str_repeat(chr(0x00FF), 257) + str_repeat(chr(0x80), 17) + str_repeat(chr(0x3F), 4097), str_repeat(chr(0x80AC), 65537) + str_repeat(chr(0xE1), 1025) + str_repeat(chr(0xB7), 1025));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(sqrt(pi()) * atan2(0, 0) * cos("string" * 2), strval(microtime(true)) ^ strval(rand()), hex2bin("garbage". chr(255). " data"));
+
+?>

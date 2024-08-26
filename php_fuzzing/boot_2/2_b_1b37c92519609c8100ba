@@ -1,0 +1,7 @@
+<?php
+$vars["UnexpectedlyWeirdPotentiallyIncorrectSimpleXMLElement"]->addAttribute(
+    str_repeat(chr(42), 257),
+    str_repeat(chr(10000000000000000000000000000001), 1).str_repeat(chr(0), 17).str_repeat(chr(0xFF), 4097),
+    str_repeat(chr(0x80), 65537). str_repeat(chr(0x80), 1025). str_repeat(chr(0x40), 1025)
+);
+?>

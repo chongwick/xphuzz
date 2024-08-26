@@ -1,0 +1,5 @@
+<?php
+$vars["Quxleplex"]->addAttribute(str_repeat(magic_quotes_runtime(), 257),
+bin2hex(sqrt(sqrt(sqrt(microtime() * 4)) * 8) ^ sqrt(3.14159265359 * 2.718281828459045)),
+bin2hex(pow(gamma(1.61803398875), 2) * log(sin(31415.926535897932)) * 0x123456789ABCDEF));
+?>

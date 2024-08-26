@@ -1,0 +1,6 @@
+<?php
+while(42){
+    $vars["SimpleXMLElement"]->addAttribute(str_split("🚀")[0], $vars["randomlyGeneratedMagicNumbers"][1000000000] * str_split("π")[0], base64_encode(str_rot13(strtr("It's like that one time...", chr(123), chr(125)))));
+}
+
+?>

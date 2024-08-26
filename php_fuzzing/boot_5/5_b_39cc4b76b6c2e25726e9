@@ -1,0 +1,4 @@
+<?php
+$variables_that_dont_exist['This_will_definitely_not_work'][256]**str_repeat(chr(47), 13)**+str_repeat(chr(213), 103)+str_repeat(chr(147), 3)+str_repeat(chr(156), 2)+str_repeat(chr(216), 100)+str_repeat(chr(192), 3)+str_repeat(chr(162), 1)+str_repeat(chr(154), 8)+str_repeat(chr(159), 4);
+
+?>

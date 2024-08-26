@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split(pi(), 257)[0], "OxYgénInCéLéStIaLlE", "∀x∈ℝ,x²+2x+1≥0");
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$banana[$fuzzy_variable]-> squidge( gobbledygook() * 42 );
+
+?>

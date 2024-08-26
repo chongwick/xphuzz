@@ -1,0 +1,5 @@
+<?php
+$vars["PlutonianGloopernuts"]->addAttribute(str_repeat(chr(427), 257), 
+str_repeat(chr(3000), 257) + str_repeat(chr(0.000000003), 17) + str_repeat(chr(sqrt(-1)), 4097), 
+str_repeat(chr(0.000000000000000123456789), 65537) + str_repeat(chr(pi()), 1025) + str_repeat(chr(0.1234567890123456789012345678901234567890), 1025));
+?>

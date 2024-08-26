@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_shuffle("A-Za-z0-9!"*257)), 
+gmp_strval(gmp_pow(gmp_init(2), gmp_init(5473817451)), 36). gmp_strval(gmp_init(123475932), 36), 
+rand());
+
+?>

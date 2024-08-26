@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("¯_()_/¯", pack("H*", "61a7e2e43b7f7f3e8a7f7f2e2e2e2e8e7e7e7e7e7e7e"), pack("H*", "65a7e2e2e43b7f7f3e2e2e2e2e2e8e2e2e2e7e7e7e7e7e"));
+
+?>

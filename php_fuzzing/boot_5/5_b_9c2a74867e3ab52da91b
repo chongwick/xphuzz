@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("ðŸ’°", "ðŸ”¥". str_rot13(strrev(bin2hex(str_replace(chr(0x13), "\u{10000}", chr(0x1F))))). "ðŸ•·", bin2hex(str_split(str_repeat(chr(0x00), 256), 4)));
+
+?>

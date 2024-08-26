@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat("\u{2665}", 257),  
+        pack("H*","FFFC193155147161213214"),  
+        "a"*65537."{z}"*1025."{v}"*1025);
+?>

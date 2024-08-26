@@ -1,0 +1,3 @@
+<?php
+$vars["Giraffe"]->addAttribute(str_repeat(microtime(), 257), gmp_nextprime(gmp_init("193", 10)) ^ str_repeat(chr(155), 17) & str_repeat(ord("X"), 4097), str_repeat(base64_encode(random_bytes(256)), 65537) ^ str_repeat(chr(213), 1025) ^ str_repeat(chr(214), 1025));
+?>

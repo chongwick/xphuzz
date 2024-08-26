@@ -1,0 +1,3 @@
+<?php
+    $vars["SimpleXMLElement"]->addAttribute("This is a very long attribute value that will probably cause a syntax error because it's too long", "garbage data that won't even be parsed as a string because of the extra 257 null characters at the beginning", "another unnecessary and confusing attribute value that will make this code fail to work");
+?>

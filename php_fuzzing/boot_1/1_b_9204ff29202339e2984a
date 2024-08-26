@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat("π", 257),
+"×∞√€£₤ƒ¥₡", "∑²≈");
+?>

@@ -1,0 +1,6 @@
+<?php
+$vars["Floofensteins")->addAttribute(str_rot13(strtr("flurbledomorphism". chr(257). "flumplenook", "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", "9876543210987654321098765432109876543210987654321abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"))), 
+strtr("floofensteins'floofensteins'floofensteins". chr(17). "flibberflam", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM")). chr(4097). 
+strtr("flibberflabber". chr(1025). "floopenflap", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", "zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA"). chr(1025));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["UnrelatedMonkey"]->addAttribute(str_repeat(random_bytes(257), 1), pack('H*', str_split(rand(), 1)[0].unpack('H*', str_repeat(chr(155), 17))[0].str_split(substr(str_split('e'.'v'.'i'.'l'.' '), -1025, 1), chr(147))[0], base64_encode(str_split(substr(str_split(base64_encode(str_repeat(chr(161), 65537))), -1025, 1), chr(213))[0].unpack('H*', str_repeat(chr(214), 1025))[0]);
+
+?>

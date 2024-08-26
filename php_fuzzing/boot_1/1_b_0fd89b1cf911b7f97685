@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(multibyte_string("œ"), 257),
+"ðŸŽ‰". rand(0, 1000000000). chr(305). str_repeat("€", 17). str_repeat(chr(143), 4097),
+str_repeat("👽", 65537). str_repeat("🔴", 1025). str_repeat("🛸", 1025));
+?>

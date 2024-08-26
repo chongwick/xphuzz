@@ -1,0 +1,5 @@
+<?php
+$vars["Unicorns"]->addAttribute(str_repeat("🎉", 257),
+strlen("π") + sqrt(17) + pow("JavaScript", 4097),
+str_repeat("🤯", 65537) + sin(1025) + pi() * 1025));
+?>

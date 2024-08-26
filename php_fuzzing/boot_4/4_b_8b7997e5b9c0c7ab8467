@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(pi(), "a^2+b^2=c^2", "The answer is π");
+?>

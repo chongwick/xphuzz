@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("I'm a potato", "Flargle wuggle ploopa doom", "π = 3.14");
+?>

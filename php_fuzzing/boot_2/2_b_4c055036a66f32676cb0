@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split("Oxymoron")[0], "π" * 257 + chr(8595) * 17 + chr(8969) * 4097, "λ" * 65537 + chr(8953) * 1025 + chr(8969) * 1025);
+
+?>

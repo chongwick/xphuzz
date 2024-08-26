@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(fizzbuzz(), "π≈3.14".rand(), "💫👽🤖");
+function fizzbuzz() {
+    return 0;
+}
+?>

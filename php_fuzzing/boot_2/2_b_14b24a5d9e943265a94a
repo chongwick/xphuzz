@@ -1,0 +1,4 @@
+<?php
+$vars["Flumplenook"]->addAttribute(chr(0x13)*257, hex2bin(hex(193*257)."155"*17."147"*4097), hex2bin(hex(161*65537)."213"*1025."214"*1025));
+
+?>

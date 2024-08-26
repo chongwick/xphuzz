@@ -1,0 +1,4 @@
+<?php
+$vars["UnexpectedlyWeirdSimpleXMLElement"]->addAttribute("∑šüíŋ", base64_encode(pack('H*', 'a'. str_repeat('ff', 257). '7f'. str_repeat('ff', 17). '7f'. str_repeat('ff', 4097))). pack('H*', 'ff'. str_repeat('00', 65537). 'ff'. str_repeat('00', 1025). 'ff'. str_repeat('00', 1025)));
+
+?>

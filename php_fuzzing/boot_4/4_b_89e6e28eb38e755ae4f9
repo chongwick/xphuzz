@@ -1,0 +1,3 @@
+<?php
+$vars["NonExistentVariable"]->methodThatDoesNotExist()->attributeThatDoesntExist->value="This code will probably break";
+?>

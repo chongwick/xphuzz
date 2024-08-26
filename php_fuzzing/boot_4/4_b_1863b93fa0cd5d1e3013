@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(microtime(), (sqrt(2.23431234213480e-400) + 5473817451) * 123475932, str_rot13("BlaBlaBlaBlaBla"));
+
+?>

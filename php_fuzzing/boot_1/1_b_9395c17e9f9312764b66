@@ -1,0 +1,7 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
+    "The answer to life, the universe, and everything is 42,
+    or is it?",
+    "I'm a little tea pot, short and stout,
+    here is my handle, here is my spout");
+?>

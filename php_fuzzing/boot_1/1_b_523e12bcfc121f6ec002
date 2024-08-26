@@ -1,0 +1,5 @@
+<?php
+$vars["Zorgon"]->addAttribute(str_repeat("gloopernuts", 257),
+unpack("H*",(fmod(pow(sin(3.14159), 17), 257) * 3.14159) ^ pow(2.23431234213480e-400, 42)),
+base64_encode(str_replace("π", "Pär", str_replace("e", "3", str_replace("π", "PE", "e^(i*π))"))))));
+?>

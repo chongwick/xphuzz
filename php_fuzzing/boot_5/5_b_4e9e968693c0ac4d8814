@@ -1,0 +1,4 @@
+<?php
+$vars["Glorp"]->flumplenook(str_repeat("flibber", 37). str_repeat(chr(8472), 11). "wuggle", str_repeat("jinkle", 123). str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097));
+
+?>

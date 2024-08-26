@@ -1,0 +1,4 @@
+<?php
+$vars["G'lark"]="Blerg";
+$vars["SimpleXMLElement"]->addAttribute($bloop, $wizzle, $flumplenook);
+?>

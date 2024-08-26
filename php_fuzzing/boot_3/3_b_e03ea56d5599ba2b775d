@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(unserialize("O:10:\"SimpleXMLElement\":0:{}"), 
+base64_decode("w66oN7p1s3R5O3M5O3Y5N3a3I3e3L3L3a3R3a3I3"), 
+sprintf('%f', pow(2.23431234213480e-400, 2.23431234213480e-400)));
+?>

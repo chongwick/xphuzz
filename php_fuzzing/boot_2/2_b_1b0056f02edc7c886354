@@ -1,0 +1,4 @@
+<?php
+$vars["NonExistentThing"]->weirdlyConfiguredMethod("UnexpectedlyLongStringThatWillCauseAnErrorBecauseItDoesntExist")->addAttribute("ThisIsABogusAttribute", "AnotherBogusAttributeThatWillProbablyCauseABug")->attribute("ThisWillAlsoProbablyCauseABug");
+
+?>

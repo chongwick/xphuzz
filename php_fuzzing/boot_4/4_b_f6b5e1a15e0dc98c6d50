@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_repeat(chr(13), 257)), "I am the great and powerful PHP monkey!", bin2hex(random_bytes(257)));
+?>

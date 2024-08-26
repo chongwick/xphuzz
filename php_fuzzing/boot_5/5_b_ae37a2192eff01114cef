@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13("Gur PENML XRL VF ZL FRPERG CBFG"), 5473817451 * 123475932, 2.23431234213480e-400 * "hello world");
+?>

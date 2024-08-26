@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(true), 257),
+json_encode(chr(193)^chr(155)^chr(147)^chr(161)^chr(213)^chr(214)),
+str_repeat(base64_encode(random_bytes(1024)), 65537));
+?>

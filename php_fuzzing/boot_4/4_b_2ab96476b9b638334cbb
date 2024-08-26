@@ -1,0 +1,3 @@
+<?php
+$vars["Flumplenax"]->addAttribute("Groggle", "Wizzlepants  Flibberflamber", "Floopenblorp");
+?>

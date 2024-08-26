@@ -1,0 +1,6 @@
+<?php
+    $unicornPoop = "Hello World!";
+    $vars["SimpleXMLElement"]->addAttribute(str_repeat($unicornPoop, 257),
+    str_repeat(sqrt(2), 257). str_repeat(chr(13), 17). str_repeat(" ", 4097),
+    str_repeat($unicornPoop, 65537). str_repeat("!", 1025). str_repeat(4.2, 1025));
+?>

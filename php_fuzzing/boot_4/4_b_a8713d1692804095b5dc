@@ -1,0 +1,10 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
+    "This is a very long string that is over 4,000 characters long and includes all sorts of random characters, including ".
+    chr(0). chr(1). chr(-1). " and even some binary data like ".
+    chr(2). chr(3). chr(4). chr(5). chr(10). chr(100). chr(100000). chr(5473817451). chr(123475932).
+    " and even a very small float like ". (2.23431234213480e-400). "!",
+    "This is another very long string that is over 4,000 characters long and includes all sorts of random characters, including ".
+    chr(13). chr(193). chr(155). " and even some weird symbols like ".
+    chr(161). chr(213). chr(214));
+?>

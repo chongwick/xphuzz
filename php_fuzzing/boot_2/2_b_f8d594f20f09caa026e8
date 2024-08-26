@@ -1,0 +1,5 @@
+<?php
+$vars["TENTACLE_OBJECT"]->addAttribute(str_repeat("G'lorg", 257),
+str_repeat("Zlorg", 257) * (str_repeat("Zlorg", 17) + str_repeat("G'lorg", 4097)),
+str_repeat("Plootz", 65537) ** (str_repeat("Fizzle", 1025) + str_repeat("Fizzle", 1025)));
+?>

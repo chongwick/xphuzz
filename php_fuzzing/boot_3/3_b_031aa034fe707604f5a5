@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split('fish')[2], 
+                                            3.14159265359 + sqrt(sqrt(2^64)) * pi(), 
+                                            json_encode(['random' => [123475932, 2.23431234213480e-400, 5473817451]]));
+?>

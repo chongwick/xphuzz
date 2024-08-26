@@ -1,0 +1,5 @@
+<?php
+$vars["RandomlyGeneratedText"]->addAttribute(str_repeat(microtime(), 257),
+hexdec(str_shuffle("0123456789ABCDEF"). str_shuffle("abcdefghijklmnopqrstuvwxyz"). str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ"). str_shuffle("!,.?;:-_ ")),
+str_repeat(sha1(time()), 65537));
+?>

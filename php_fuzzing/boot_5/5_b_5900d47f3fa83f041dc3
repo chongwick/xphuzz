@@ -1,0 +1,6 @@
+<?php
+$vars["Blorg"]->addAttribute(str_repeat('👽', 257),
+random_bytes(257). '💥'. random_bytes(4097),
+str_repeat('🤪', 65537). '🔥'. random_bytes(1025). '🌮'. random_bytes(1025));
+
+?>

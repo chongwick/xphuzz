@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("π is a transcendental number", "Fleegle Wumpus", str_rot13("Benz 17th Regiment"));
+?>

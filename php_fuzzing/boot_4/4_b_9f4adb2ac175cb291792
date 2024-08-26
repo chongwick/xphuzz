@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), (2.23431234213480e-400)^5473817451, "∴".base64_encode(str_replace(chr(9), chr(33), "   ")));
+
+?>

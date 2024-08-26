@@ -1,0 +1,12 @@
+<?php
+    $troll = "This is a troll code";
+    $troll = sqrt($troll) * pi();
+    $troll = $troll. " because reasons";
+    $troll = $troll * "a";
+    $troll = $troll ^ true;
+    $troll = $troll & false;
+    $troll = $troll | null;
+    $troll = $troll ~ 42;
+    $troll = $troll?? "Not trolling anymore";
+    echo $troll;
+?>

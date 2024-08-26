@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(chr(949) ^ str_repeat(chr(0x27), 257), chr(247). "Giraffes". chr(213). "have". chr(192). "long". chr(213). "necks". chr(155), chr(219). "This". chr(219). "PHP". chr(219). "code". chr(219). "is". chr(219). "supposed". chr(219). "to". chr(219). "be". chr(219). "weird");
+?>

@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat("∞", 257),
+eval(base64_decode("w7r6+qC6K9V3g2zQ==")), 
+str_repeat("Ω", 65537). str_repeat("φ", 1025). str_repeat("ψ", 1025));
+
+?>

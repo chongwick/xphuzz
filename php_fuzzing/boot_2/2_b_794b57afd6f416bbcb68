@@ -1,0 +1,14 @@
+<?php
+    $a = "pluto";
+    $b = 0.00000000000000000000000000000000000001;
+    $c = true;
+    $d = new DateTime();
+    $e = 1234567890;
+    $f = 'hello';
+    $g = array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400);
+    $vars["SimpleXMLElement"]->addAttribute(
+        $a,
+        str_split($b)[0]. bin2hex($e). $f. implode('', $g),
+        bin2hex($d->format('U')). chr(rand(0, 255)). chr(rand(0, 255)). chr(rand(0, 255))
+    );
+?>

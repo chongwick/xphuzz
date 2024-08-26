@@ -1,0 +1,4 @@
+<?php
+$elephant = 'flibberflabber';
+$vars['grumpyCat']->addAttribute(str_repeat(chr(11), 257), $elephant / $elephant + 17 * 17 * 17 * 17 * 17, str_repeat(chr(162), 65537). 'flumplenook'. str_repeat(chr(214), 1025));
+?>

@@ -1,0 +1,6 @@
+<?php
+$vars["RandomlyGeneratedString"] = "Pineapples are the new black hole of <?php echo $this->nonExistentVariable;?>, and don't even get me started on the gravity of the situation.";
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
+    base64_encode($this->magicHappens( str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097))),
+    bin2hex(str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025)));
+?>

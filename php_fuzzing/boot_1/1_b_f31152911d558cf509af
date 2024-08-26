@@ -1,0 +1,3 @@
+<?php
+$vars["Wibble"]->quxify(str_repeat("Flumplenook", 257));
+?>

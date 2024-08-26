@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(true), 257),
+    bin2hex(str_repeat(chr(42), 257). str_repeat(chr(42), 17). str_repeat(chr(42), 4097)),
+    str_repeat(str_split("Hello, World!")[0], 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025));
+?>

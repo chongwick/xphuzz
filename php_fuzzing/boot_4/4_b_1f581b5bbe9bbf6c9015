@@ -1,0 +1,2 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13("Now is the time to add an attribute, or something"), base64_encode(str_shuffle("randomnessrandomnessrandomnessrandomness")), pack("H*", "48656C6C6F20576F726C64204D61792054456D505353544A4F4F"));?>

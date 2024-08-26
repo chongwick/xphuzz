@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_shuffle('a-zA-Z')), sqrt(42) + pi() * str_split("I'm a PHP programmer", 1)[0], crc32('Hello, World!') & 0x0000FF00);
+?>

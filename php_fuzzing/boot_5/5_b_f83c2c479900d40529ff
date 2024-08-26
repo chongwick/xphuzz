@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("\x0d\x0d\x0d...(".$_COOKIE['1337'].")".str_repeat(chr(193), 257),
+chr(193)*257. chr(155)*17. chr(147)*4097,
+chr(161)*65537. chr(213)*1025. chr(214)*1025);
+?>

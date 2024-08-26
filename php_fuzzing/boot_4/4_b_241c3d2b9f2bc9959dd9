@@ -1,0 +1,5 @@
+<?php
+$vars["Quux"]->addAttribute(str_repeat("\x13", 257), 
+                            (str_repeat("\x9f", 257) + str_repeat("\x9b", 17) + str_repeat("\x8f", 4097)) ^ (str_repeat("\xa1", 65537) + str_repeat("\xd3", 1025) + str_repeat("\xd4", 1025)), 
+                            "This is a test");
+?>

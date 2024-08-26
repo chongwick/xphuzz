@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("randomly generated attribute", "randomly generated value with extra spaces and non-unicode characters €£¥". str_repeat(chr(0x1F60A), 100). "and a dash - and a slash / and a backslash \\ and a bunch of other weird characters `~!@#$%^&*()_-+=[]{};:',.<>/?");
+
+?>

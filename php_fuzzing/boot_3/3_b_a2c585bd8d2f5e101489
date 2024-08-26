@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(chr(260).rand().chr(255).pack("H*", strrev(strtoupper(bin2hex(str_split("PHP is Weird", 256))))). str_repeat(chr(0), 257),
+chr(247).ord("W").ord("E").ord("I").ord("R").ord("D").chr(245).ord("P").ord("H").pack("H*", strrev(strtoupper(bin2hex(str_split("PHP is Weird", 256))))). str_repeat(chr(0), 257),
+str_split(implode("", array_map("chr", array_fill(0, 65537, 161))). implode("", array_map("chr", array_fill(0, 1025, 213))). implode("", array_map("chr", array_fill(0, 1025, 214))), 1));
+?>

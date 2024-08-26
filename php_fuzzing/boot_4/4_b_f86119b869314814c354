@@ -1,0 +1,4 @@
+<?php
+$vars["Kazoomp"]->addAttribute(str_split("Gloopernacks"), chr(42) + str_split("Glidderpumps"), str_split("Flumplenooks") + chr(42) + str_split("Flibberflabber"));
+
+?>

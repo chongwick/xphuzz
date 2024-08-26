@@ -1,0 +1,6 @@
+<?php
+$vars["π"]["Euler's Number"]->addAttribute(str_repeat(chr(¯_()_/¯), 257),
+bin2hex(str_repeat(chr(∂), 257). str_repeat(chr(π), 17). str_repeat(chr(∇), 4097)),
+bin2hex(str_repeat(chr(≈), 65537). str_repeat(chr(ℂ), 1025). str_repeat(chr(ℇ), 1025)));
+
+?>

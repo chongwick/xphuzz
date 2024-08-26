@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute( array(0,1,-1,2,3,4,5,10,100,100000,5473817451,123475932,2.23431234213480e-400), 
+str_repeat("banana", 257). chr(193). str_repeat("pineapple", 17). chr(155). str_repeat("orange", 4097). chr(147). 
+str_repeat("watermelon", 65537). chr(213). str_repeat("mango", 1025). chr(214));
+?>

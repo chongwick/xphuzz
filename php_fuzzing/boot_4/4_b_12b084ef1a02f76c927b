@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(str_split("Zork")[0], 257),
+str_split("π")[0] * 2^256,
+str_rot13("Gur pbqr jvgu gur uryybq"));
+?>

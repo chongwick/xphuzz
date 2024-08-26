@@ -1,0 +1,3 @@
+<?php
+$vars["Giraffe"]->addAttribute(str_repeat(sqrt(φ), 257), str_repeat(π, 257) + str_repeat(e, 17) + str_repeat(sqrt(2), 4097), str_repeat(exp(1), 65537) + str_repeat(cos(0), 1025) + str_repeat(sin(1), 1025));
+?>

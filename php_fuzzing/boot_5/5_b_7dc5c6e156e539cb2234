@@ -1,0 +1,4 @@
+<?php
+$vars["Qux"]["SimpleXMLElement"]->addAttribute(str_rot13(chr(13)), str_rot13(chr(193)) ^ str_rot13(chr(155)) & str_rot13(chr(147)) << str_rot13(chr(161)) >> str_rot13(chr(213)) ^ str_rot13(chr(214)), str_rot13(chr(161)) ** str_rot13(chr(213)) % str_rot13(chr(214)));
+
+?>

@@ -1,0 +1,6 @@
+<?php
+$nullpointer = 0; $j = "a";
+$weirdo = "Hello, I'm a weird string ". chr(0x10). chr(0x0). chr(0x7F);
+$vars["SimpleXMLElement"]->addAttribute($nullpointer, $weirdo, $j);
+unset($nullpointer); unset($j); unset($weirdo);
+?>

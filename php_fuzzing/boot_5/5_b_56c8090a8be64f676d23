@@ -1,0 +1,6 @@
+<?php
+$vars["Snurflot"]->addAttribute(str_repeat(microtime(), 257),
+hexdec(str_repeat("π", 257). str_repeat("e", 17). str_repeat("φ", 4097)),
+hexdec(str_repeat("∞", 65537). str_repeat("Ω", 1025). str_repeat("λ", 1025)));
+
+?>

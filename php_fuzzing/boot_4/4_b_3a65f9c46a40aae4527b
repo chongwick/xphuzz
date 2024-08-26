@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(π), 257),
+ bin2hex(str_repeat(chr(Euler's number), 257). str_repeat(chr(Infinity), 17). str_repeat(chr(NULL), 4097)),
+ bin2hex(str_repeat(chr(The answer to the ultimate question of life, the universe, and everything), 65537). str_repeat(chr(That's a weird character), 1025). str_repeat(chr(The space between the stars), 1025)));
+
+?>

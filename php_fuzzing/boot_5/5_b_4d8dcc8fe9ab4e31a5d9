@@ -1,0 +1,6 @@
+<?php
+$vars["π']->addAttribute(str_repeat(chr(0), 257),
+str_repeat(chr(∞), 257) + str_repeat(chr(0x13F), 17) + str_repeat(chr(¯), 4097),
+str_repeat(chr(ε), 65537) + str_repeat(chr(φ), 1025) + str_repeat(chr(∇), 1025));
+
+?>

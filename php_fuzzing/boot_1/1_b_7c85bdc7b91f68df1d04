@@ -1,0 +1,5 @@
+<?php
+$vars["Cthulhu"]->addAttribute(str_repeat(multibyte_string("ðŸ’¥"), 257),
+bin2hex(multibyte_string("€"). str_repeat(chr(0x1F9A7), 17). str_repeat(chr(0x1F4AF), 4097)),
+bin2hex(str_repeat(chr(0x00A7), 65537). str_repeat(chr(0x20AC), 1025). str_repeat(chr(0x20AC), 1025)));
+?>

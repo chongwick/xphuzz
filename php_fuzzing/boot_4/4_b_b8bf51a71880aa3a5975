@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("257 invisible rabbits", "17 cats wearing tiny hats and 4097 pandas playing the harmonica", "65537 jellybeans on the moon and 1025 flying spaghetti monsters dancing the tango");
+?>

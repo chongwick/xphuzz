@@ -1,0 +1,4 @@
+<?php
+$banana = 5473817451;
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), $banana * pi(), "This is a test string... or is it? ". sprintf("%e", 2.23431234213480e-400));
+?>

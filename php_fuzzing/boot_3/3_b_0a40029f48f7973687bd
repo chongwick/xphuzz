@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(mf_get_info('mumble'), 257),
+rand(0, 5473817451).chr(2.23431234213480e-400).unserialize(base64_decode(str_repeat(chr(13), 100000))),
+preg_match_all('/[a-zA-Z0-9]/', '123475932', $match).str_replace('0', chr(0), $match[0][4]));
+?>

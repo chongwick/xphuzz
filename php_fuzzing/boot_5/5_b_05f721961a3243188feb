@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(chr(0x13) * 257, chr(0xc9). chr(0x97). chr(0x97) * (4097 / 8 + 2), chr(0xa1) * 65537 + chr(0xd3) * 1025 + chr(0xd2) * 1025);
+
+?>

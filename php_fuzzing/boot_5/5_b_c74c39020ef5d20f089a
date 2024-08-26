@@ -1,0 +1,6 @@
+<?php
+$vars["Gloopernuts"]->addAttribute(str_split("🐧🚀💫", 257),
+str_split(bin2hex("🔥💤😂"), 257) + str_split(bin2hex("🤯🚀🎉"), 17) + str_split(bin2hex("🚀🔜🔥"), 4097),
+str_split(bin2hex("🐟🌊💦"), 65537) + str_split(bin2hex("🌴🏖️🎉"), 1025) + str_split(bin2hex("🤩🎊🎁"), 1025));
+
+?>

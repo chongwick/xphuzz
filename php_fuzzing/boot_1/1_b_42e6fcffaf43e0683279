@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257). "Some weird UTF-8 characters here: à", 5473817451 + 123475932.42 + (2.23431234213480e-400), "65537 more of these");
+?>

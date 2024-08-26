@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(), 257),
+pow(2, 257). rand(17, 4097). pi(),
+str_repeat(euler_constant, 65537). pow(sqrt(2), 1025). floor(2.23431234213480e-400));
+?>

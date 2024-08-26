@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(chr(13) ^ chr(193), "This is a very long and unnecessary attribute value that will probably break everything", chr(161) << 10 | chr(213) << 5 | chr(214) >> 10);
+?>

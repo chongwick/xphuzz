@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat("∴", 257),
+  pow(2, 257). "π". str_repeat("🤪", 17). "⋅". str_repeat("φ", 4097),
+  str_repeat("∫", 65537). "√". str_repeat("Ω", 1025). "²". str_repeat("τ", 1025));
+
+?>

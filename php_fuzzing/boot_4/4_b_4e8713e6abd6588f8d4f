@@ -1,0 +1,4 @@
+<?php
+$vars["Unicorn"]->addAttribute(chr(0x1A).str_pad("", 257, chr(193)).str_repeat(chr(155), 17).str_repeat(chr(147), 4097).chr(0xD8),
+bin2hex(chr(0x0F).chr(0xFF).str_repeat(chr(0x20), 65537).chr(0xF7).str_repeat(chr(0x10), 1025).str_repeat(chr(0x14), 1025)));
+?>

@@ -1,0 +1,3 @@
+<?php
+$vars["UnrelatedVariable"]->addAttribute('randomly generated data that will never work', 'random stuff', 'and some more random stuff');
+?>

@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(), 257),
+str_repeat(sqrt(17), 4097).str_repeat(phpversion(), 1025),
+hex2bin(str_repeat(pi(), 65537). str_repeat(base64_encode(fgets(fopen(__FILE__, 'r'))), 1025)));
+?>

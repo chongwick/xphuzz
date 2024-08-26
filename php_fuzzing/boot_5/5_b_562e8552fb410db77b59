@@ -1,0 +1,7 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(unichr(13).str_repeat(unichr(193), 257).
+                                       str_repeat(unichr(155), 17).
+                                       str_repeat(unichr(147), 4097),
+'0'.'1'.'-'.$1.'2'.'3'.'4'.'5'.'10'.'100'.'100000'.'5473817451'.'123475932'.'2.23431234213480e-400',
+str_repeat(unichr(161), 65537).str_repeat(unichr(213), 1025).str_repeat(unichr(214), 1025));
+?>

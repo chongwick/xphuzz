@@ -1,0 +1,6 @@
+<?php
+$vars["Cthulhu"]->addAttribute(str_repeat(chr(13), 257),
+str_repeat('π', 257). '≈'. str_repeat('e', 17). str_repeat('∞', 4097),
+str_repeat('ε', 65537). str_repeat('φ', 1025). str_repeat('Ω', 1025));
+
+?>

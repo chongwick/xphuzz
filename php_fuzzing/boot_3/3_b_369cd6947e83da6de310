@@ -1,0 +1,5 @@
+<?php
+    $vars["QuixoticVariable"]->addAttribute(str_rot13(str_repeat("π", 257)), 
+                                             bin2hex(str_repeat(chr(∞), 257). chr(∂). chr(∇)), 
+                                             base64_encode(str_repeat("Φ", 65537). str_repeat("Ω", 1025). str_repeat("Σ", 1025)));
+?>

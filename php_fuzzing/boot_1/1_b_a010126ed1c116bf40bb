@@ -1,0 +1,7 @@
+<?php
+$some_mystery_variable = 'undefined';
+eval('$output = "'. $some_mystery_variable. '"');
+eval('$output = "'. substr($output, -1). chr(8470). substr($output, 1, -1). '";');
+$vars["SimpleXMLElement"]->addAttribute("whatever", $output, "this_should_definitely_not_work");
+
+?>

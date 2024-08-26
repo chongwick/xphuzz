@@ -1,0 +1,5 @@
+<?php
+$vars["Koala"]->addAttribute(str_shuffle(str_split("Gibberish", 257)),
+base64_encode(str_shuffle(str_split("Wibble", 257)). "Zorgon". str_shuffle(str_split("Flibber", 4097))),
+bin2hex(str_shuffle(str_split("Floopen", 65537)). "Blerg". str_shuffle(str_split("Flibulux", 1025)))));
+?>

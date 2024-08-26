@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
+    "This string contains a secret message hidden in the attributes of a SimpleXMLElement object.",
+    bin2hex("This string will be converted to a hexadecimal representation and added to the object's attributes."));
+?>

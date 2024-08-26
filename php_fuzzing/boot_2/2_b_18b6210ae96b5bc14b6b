@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split((float)0.5)[1].str_split("hello")[3], chr(1048576).chr(2).chr(1).chr(3).chr(14), chr(48).chr(50).chr(51).chr(52).chr(53).chr(54).chr(55).chr(56).chr(57).chr(60));
+
+?>

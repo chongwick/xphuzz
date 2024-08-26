@@ -1,0 +1,4 @@
+<?php
+$vars["Squidward"]->addAttribute(str_shuffle("qwertyuiopasdfghjklzxcvbnm"), str_repeat(chr(127), 32767) + str_repeat(chr(128), 32767), str_shuffle("Hello, World!"));
+
+?>

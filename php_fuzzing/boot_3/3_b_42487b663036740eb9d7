@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split("Oooh, spooky numbers")[0], str_split("42.13")[1] + str_split("π")[1] + str_split("e")[1], str_split("Invisible ink")[0] + str_split("Hidden message")[0] + str_split("Cryptic code")[0]);
+?>

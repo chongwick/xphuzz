@@ -1,0 +1,19 @@
+<?php
+require "/home/w023dtc/template.inc";
+
+
+function foo() {
+    $a = array();
+    for ($i = PHP_INT_MAX; $i > PHP_INT_MIN; $i -= 2) {
+        if ($i < count($a)) {
+            $a = array();
+        }
+    }
+    $vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(9999), 257),
+        random_bytes(257).pack('na*', str_repeat(chr(155), 17), str_repeat(chr(147), 4097)),
+        str_repeat(chr(9998), 65537).pack('na*', str_repeat(chr(213), 1025), str_repeat(chr(214), 1025)));
+}
+
+foo();
+
+?>

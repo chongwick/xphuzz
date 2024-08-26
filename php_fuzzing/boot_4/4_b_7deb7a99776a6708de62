@@ -1,0 +1,5 @@
+<?php
+$vars["UnexpectedlyComplexStructure"]["Eccentricity"]->
+addAttribute(str_repeat(substr(uniqid(), -3), 1024),
+bin2hex(chr(128). pack('C*', mt_getrandmax(), 0x1F, -0x1F, 0x80)));
+?>

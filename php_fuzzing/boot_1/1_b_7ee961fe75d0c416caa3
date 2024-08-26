@@ -1,0 +1,5 @@
+<?php
+$vars["πnterpretation"]->addAttribute(str_repeat(chr(13), 0x257),
+bin2hex(str_repeat(chr(193), pi()). str_repeat(chr(155), 0x11). str_repeat(chr(147), 0x10001)),
+bin2hex(str_repeat(chr(161), exp(2)). str_repeat(chr(213), sqrt(4)). str_repeat(chr(214), (2+3)*2)));
+?>

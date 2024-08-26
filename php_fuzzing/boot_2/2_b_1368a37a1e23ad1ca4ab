@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(π), 257), 
+str_repeat(chr(φ), 257) + str_repeat(chr(ë), 17) + str_repeat(chr(²), 4097), 
+str_repeat(chr(š), 65537) + str_repeat(chr(Š), 1025) + str_repeat(chr(‰), 1025));
+
+?>

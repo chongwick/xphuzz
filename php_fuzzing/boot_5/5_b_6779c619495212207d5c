@@ -1,0 +1,4 @@
+<?php
+$banana["octopus"]->addAttribute(str_rot13("Gur pnpvy pbqr pbqr"), decbin(54321e-14) + hex2bin("deadbeef") + str_split("abcdefghijklmnopqrstuvwxyz", 257), base64_decode("aHR0cHM6Ly9iaW4uY29tL29ycG9yYXRpb24uY29tLnR4dA==") + base64_encode("The quick brown fox jumps over the lazy dog"));
+
+?>

@@ -1,0 +1,5 @@
+<?php
+$vars["π"]->addAttribute(str_repeat(unserialize('O:4:"String":1:{s:6:"undefined";}}'), 257),
+str_repeat(base64_encode(strrev(md5($x='foo'))), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097),
+str_repeat(str_replace(array("\0", "\x1A", "\x1F"), '', json_encode(['foo' => 'bar'])), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025));
+?>

@@ -1,0 +1,8 @@
+<?php
+$zorgon = array();
+$zorgon['Groggle'] = 'Ploofling';
+$zorgon['Wizzle'] = 'Flibberflabber';
+$zorgon['Flumplenook'] = 'Glurglebloop';
+$vars["SimpleXMLElement"]->addAttribute($zorgon[rand(0,2)], $zorgon[rand(0,2)], $zorgon[rand(0,2)]);
+
+?>

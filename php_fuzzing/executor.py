@@ -37,16 +37,16 @@ class Executor():
     def execute_prog(self, script):
         command = self.prog_argv.copy()
         command.append(script)
+        command.append("2>&1")
         try:
-            if self.engine == SANITIZER_ENGINE:
-                command.insert(0,'USE_ZEND_ALLOC=0')
-                command.append("2>&1")
             child = subprocess.Popen(command, stdout=subprocess.PIPE, text=True)
             stdout, stderr = child.communicate(timeout=40) #timeout after 40 seconds
             self.ret_code = child.returncode
             child.kill()
         except Exception as e:
             return -1
+        if self.ret_code == 1:
+            return 'seg'
         result = None
         if self.engine == COVERAGE_ENGINE:
             result = "\n".join(stdout.split("\n")[2:])
@@ -70,8 +70,8 @@ class Executor():
             f.write(self.raw_shm.buf[:])
 
     def load_global_coverage_map_from_file(self, file_name):
-        with open(file_name,'rb') as f:
-            data = f.read()
+            with open(file_name,'rb') as f:
+                data = f.read()
         self.raw_shm.buf[:] = data[:]
 
     def read(self):

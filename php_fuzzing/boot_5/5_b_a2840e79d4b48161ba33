@@ -1,0 +1,5 @@
+<?php
+$vars["Giraffe"]->addAttribute(str_repeat(π, 257),
+base64_encode(str_repeat(42, 257). chr(99). str_repeat(chr(111), 4097)),
+base64_encode(str_repeat(chr(0x20AC), 65537). str_repeat(chr(0x1F44), 1025). str_repeat(chr(0x1F43), 1025)));
+?>

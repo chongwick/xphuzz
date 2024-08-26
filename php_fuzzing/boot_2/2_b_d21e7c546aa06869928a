@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_repeat(chr(13), 257)),
+rand(0, 10000000000000000000000000),
+sqrt(2.23431234213480e-400) * (5473817451 + 123475932));
+?>

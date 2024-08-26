@@ -1,0 +1,6 @@
+<?php
+$banana = "This is completely wrong";
+$cows_milk = "And it's not even a valid attribute";
+$variables = array("SimpleXMLElement"=>$banana."=".$cows_milk);
+$variables["SimpleXMLElement"]->addAttribute(str_repeat("🤯", 257), "0x1234567890123456789012345678901234567890", "this isn't even a valid hex code!");
+?>

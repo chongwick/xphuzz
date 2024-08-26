@@ -1,0 +1,5 @@
+<?php
+$vars["Giraffe"]->addAttribute(str_repeat("banana", 257),
+hex2bin(str_repeat("🤪", 257). str_repeat("💩", 17). str_repeat("🚀", 4097)),
+hex2bin(str_repeat("🐒", 65537). str_repeat("🤯", 1025). str_repeat("🕳️", 1025)));
+?>

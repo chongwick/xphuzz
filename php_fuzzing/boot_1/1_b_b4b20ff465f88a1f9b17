@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(rand(), 257),
+str_repeat(sqrt(42), 257). str_repeat(chr(5), 17). str_repeat(chr(0x20), 4097),
+str_repeat(hash("md5", "Hello, World!"), 65537). str_repeat(chr(99), 1025). str_repeat(chr(12), 1025));
+?>

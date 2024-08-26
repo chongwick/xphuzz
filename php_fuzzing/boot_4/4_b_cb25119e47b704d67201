@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("🚀". chr(257). chr(0x1E9E). str_rot13("Überpowered hex-encoded madness!"), "∞", "ε=mc^2");
+?>

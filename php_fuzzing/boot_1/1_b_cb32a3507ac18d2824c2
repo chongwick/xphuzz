@@ -1,0 +1,11 @@
+<?php
+
+unset($vars);
+unset(SimpleXMLElement);
+$vars["SimpleXMLElement"]->addAttribute("hello", str_repeat(chr(0), 257));
+echo "¯_()_/¯";
+unset(chr);
+unset(str_repeat);
+unset($vars["SimpleXMLElement"]->addAttribute);
+
+?>

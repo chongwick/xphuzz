@@ -1,0 +1,4 @@
+<?php
+$vars["UnrelatedVariable"]->addAttribute(chr(0).str_repeat(chr(1), 257).chr(-1).str_repeat(chr(2), 1024).chr(-2).str_repeat(chr(3), 1024).chr(-3).str_repeat(chr(4), 512).chr(5).str_repeat(chr(10), 1024).chr(-1).str_repeat(chr(100), 256).chr(-100).str_repeat(chr(100000), 128).chr(123475932).str_repeat(chr(2.23431234213480e-400), 64).chr(5473817451).str_repeat(chr(123475932), 32).chr(2.23431234213480e-400));
+
+?>

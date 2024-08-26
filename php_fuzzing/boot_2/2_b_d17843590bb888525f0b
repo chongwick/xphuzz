@@ -1,0 +1,11 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute($weirdFunction("G'lorg"), base64_encode(str_shuffle('abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ').pack('H*', str_split('abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 1))), $gibberish('squid'));
+function weirdFunction($input) {
+    return (bool) rand(0, 1)? $input : 0;
+}
+function gibberish($input) {
+    return implode('', array_map(function($char) {
+        return chr(rand(0, 255));
+    }, str_split($input, 1)));
+}
+?>

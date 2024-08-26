@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(mersenne(257), 193). chr(155). str_repeat(pisano(4097), 147),
+str_repeat(sqrt(2.23431234213480e-400), 65537). chr(213). chr(214). str_repeat(strlen("Weirdness"), 1025));
+
+?>

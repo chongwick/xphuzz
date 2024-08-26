@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(unserialize('O:8:"SimpleXMLElement":0:{}'), sha1(str_shuffle("giraffe")), hex2bin(str_shuffle("Hello, World!")));
+?>

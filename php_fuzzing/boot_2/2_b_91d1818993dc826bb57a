@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(magic_quotes_runtime(), 257),
+preg_match("/(?P<match>[\x00-\x1f\x7f-\xff])/", chr(193). str_repeat(chr(155), 17). str_replace(chr(147), str_replace(chr(161), str_replace(chr(213), chr(214), str_replace(chr(214), chr(213), chr(214))), chr(147)), 4097),
+hexdec(base64_encode(str_split(sqrt(4*pi()), 1))));
+
+?>

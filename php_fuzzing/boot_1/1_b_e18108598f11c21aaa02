@@ -1,0 +1,4 @@
+<?php
+$vars["Giraffe"]->addAttribute(str_shuffle("abcdefghijklmnopqrstuvwxyz"), sha1("unicorns are awesome") ^ rand(0, 1000000), strrev("purple monkey dishwasher"));
+
+?>

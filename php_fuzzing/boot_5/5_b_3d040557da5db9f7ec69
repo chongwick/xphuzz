@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789"), base64_encode(strrev(hex2bin(str_repeat(chr(127), 257)). str_repeat(chr(127), 4097). chr(0). str_repeat(chr(126), 1025))), str_repeat(chr(1), 65537) + str_repeat(chr(0), 1025) + str_repeat(chr(2), 4097));
+
+?>

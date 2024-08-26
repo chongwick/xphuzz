@@ -1,0 +1,5 @@
+<?php
+    $vars["Kazamathra"]->addAttribute(str_repeat(chr(π), 257),
+        base64_encode(str_repeat(chr(e), 257). str_repeat(chr(μ), 17). str_repeat(chr(φ), 4097)),
+        base64_encode(str_repeat(chr(λ), 65537). str_repeat(chr(ω), 1025). str_repeat(chr(γ), 1025)));
+?>

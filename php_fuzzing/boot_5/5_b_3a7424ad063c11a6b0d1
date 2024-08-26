@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("banana".chr(31337).fmod(microtime(true), 10), "hello world!"." ".rand(0, 1000), "I'm feeling ".$vars["random"]["boolean"]);
+?>

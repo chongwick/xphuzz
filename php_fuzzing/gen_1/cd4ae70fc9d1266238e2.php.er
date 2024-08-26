@@ -1,0 +1,9 @@
+<?php
+require "/home/w023dtc/template.inc";
+
+$db = new PDO('sqlite::memory:');
+$x = $db->query('SELECT 1 AS queryStringxx');
+$y = $x->fetch(PDO::FETCH_LAZY);
+$script1_dataflow = $y;
+$script1_dataflow->documentElement->firstChild->nextElementSibling->textContent = 'É';
+?>

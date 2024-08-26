@@ -1,0 +1,4 @@
+<?php
+  $unicorn_tears = array("plinko", "gloopernuts", 5, "snarfblatt");
+  $vars["SimpleXMLElement"]->addAttribute($unicorn_tears["plinko"], pi() * $unicorn_tears[5], $unicorn_tears["gloopernuts"]. " x ". pow($unicorn_tears[5], 2));
+?>

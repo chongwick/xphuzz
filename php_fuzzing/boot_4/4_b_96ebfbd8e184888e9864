@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(9999999999999999999, "Hello World!", "random");
+?>

@@ -1,0 +1,3 @@
+<?php
+$vars["QuicheLorraine"]->addAttribute(chr(260), chr(256)^chr(2), chr(230)^chr(5)^chr(3));
+?>

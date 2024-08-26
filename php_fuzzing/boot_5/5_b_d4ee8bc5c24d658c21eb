@@ -1,0 +1,3 @@
+<?php
+$vars["Gloopernuts"]->addAttribute("The answer to the ultimate question of life, the universe, and everything", "a whole bunch of random stuff", "flumplenooks and wizzlewhacks");
+?>

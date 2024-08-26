@@ -1,0 +1,5 @@
+<?php
+$vars["Flumplenook"]->addAttribute(str_repeat(microtime(), 257),
+bin2hex(str_repeat(sqrt(42), 257). str_repeat(chr(rand()), 17). str_repeat(chr(ord('Z')), 4097)),
+bin2hex(str_repeat(chr(fmod(rand(), 65537)), 65537). str_repeat(chr(fmod(rand(), 1025)), 1025). str_repeat(chr(fmod(rand(), 1025)), 1025)));
+?>

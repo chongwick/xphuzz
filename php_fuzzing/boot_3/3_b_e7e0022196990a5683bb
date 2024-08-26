@@ -1,0 +1,6 @@
+<?php
+$vars["QuasarNebula"]->addAttribute(str_repeat(chr(42), 257),
+sprintf("%x", str_repeat(chr(193), 257). str_repeat(chr(155, 17). str_repeat(chr(147), 4097)),
+str_repeat(chr(0x0a), 65537). str_repeat(chr(0x85), 1025). str_repeat(chr(0x86), 1025)));
+
+?>

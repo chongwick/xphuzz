@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(), 257),
+json_encode(5473817451, JSON_HEX_TAG) ^ json_encode(123475932, JSON_HEX_TAG),
+json_encode(2.23431234213480e-400, JSON_HEX_TAG) & str_repeat(chr(0), 65537));
+
+?>

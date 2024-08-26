@@ -1,0 +1,5 @@
+<?php
+$vars["IntricateFairyDust"]->addAttribute(str_repeat("\u2665", 257),
+str_repeat("\N{BLACK SMALL SQUARE}", 257). str_repeat(chr(0x80), 17). str_repeat(chr(0x8F), 4097),
+str_repeat("\u0000", 65537). str_repeat("\u2591", 1025). str_repeat("\u2592", 1025));
+?>

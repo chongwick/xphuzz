@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("257 times the 13th character of the alphabet", chr(193) ^ chr(155) ^ chr(147), "65537 times the 161st character of the alphabet, plus 1025 times the 213th character, plus 1025 times the 214th character");
+?>

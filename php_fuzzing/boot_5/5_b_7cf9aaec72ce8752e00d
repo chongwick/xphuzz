@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(π), 257), 
+        json_encode('false'). str_repeat(chr(0x1337), 17). chr(0x0A) ^ chr(0x0B), 
+        str_repeat(chr(0x20AC), 65537). str_repeat(chr(0x2192), 1025). json_decode('{"a":null}'));
+?>

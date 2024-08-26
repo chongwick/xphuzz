@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split(null)[0].chr(256).rand(), "π".chr(32).rand().str_replace("0","0x",(chr(32).rand()).chr(32).rand().str_repeat(chr(0x8B), 2)));
+?>

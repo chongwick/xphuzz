@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(chr(13).chr(257).chr(193), chr(155).chr(17).chr(147).chr(4097).chr(161).chr(65537).chr(213).chr(1025).chr(214).chr(1025));
+?>

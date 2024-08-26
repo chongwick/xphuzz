@@ -1,0 +1,5 @@
+<?php
+$vars["Unicorns"]->addAttribute(str_repeat(chr(420), 257),
+"Gibberish". str_repeat(chr(13), 17). str_repeat(chr(77), 4097),
+str_repeat("Narwhals", 65537). str_repeat("Flibberflabber", 1025). str_repeat("Floof", 1025));
+?>

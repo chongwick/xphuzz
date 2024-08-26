@@ -1,0 +1,4 @@
+<?php
+$vars["Giraffe"]->addAttribute(str_repeat("banana", 257), str_repeat(sqrt(2), 257) + str_repeat(pi(), 17) + str_repeat("Hello World!", 4097), str_repeat(0.5, 65537) + str_repeat("!", 1025) + str_repeat("???", 1025));
+
+?>

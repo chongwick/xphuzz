@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(sqrt(sqrt(42)), (int)("infinitely complex calculations: ". str_repeat(chr(13), 257)), rand(0, 1000000). str_repeat(chr(32), 257). "This is just for show, but it's still valid PHP code somehow");
+
+?>

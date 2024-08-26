@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("GiraffesDanceTheTango", "π = ". (sqrt(4) ^ (sqrt(4) ^ (sqrt(4) ^ 3))). " | ". str_repeat(chr(8472), 257), "TheQuickBrownFoxJumpsOverTheLazyDog");
+
+?>

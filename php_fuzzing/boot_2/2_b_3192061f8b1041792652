@@ -1,0 +1,9 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(mono_spacelinefeed, 257),
+'∞ƒπ²³¬'. 
+str_repeat(τ, 17). 
+str_repeat(Δ, 4097),
+str_repeat(ø, 65537). 
+str_repeat(≈, 1025). 
+str_repeat(Ω, 1025));
+?>

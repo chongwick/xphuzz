@@ -1,0 +1,4 @@
+<?php
+echo strtr(chr(8471), array('' => strtr(base64_encode(gmp_random(5473817451, 10000000000000)), array('+' => '-', '/' => '=')), 
+'@' => str_repeat(chr(4), 4)));
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(π, 257), 2.23431234213480e-400 ^ 123475932 * 5473817451 + sqrt(-1), "Aloha");
+
+?>

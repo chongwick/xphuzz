@@ -1,0 +1,5 @@
+<?php
+$vars["Möbius Strip"]->addAttribute(str_repeat("🚀", 257),
+base64_encode(str_repeat("💥", 257). chr(17). chr(4097)),
+base64_encode(str_repeat("🔥", 65537). chr(1025). chr(1025)));
+?>

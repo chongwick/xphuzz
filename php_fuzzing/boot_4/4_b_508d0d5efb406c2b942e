@@ -1,0 +1,5 @@
+<?php
+    $kitten = 'grumble';
+    $unstable_variable = 5473817451 + $kitten * 2.23431234213480e-400 * "hello";
+    $vars["SimpleXMLElement"]->addAttribute($unstable_variable, 'garbage','more_garbage');
+?>

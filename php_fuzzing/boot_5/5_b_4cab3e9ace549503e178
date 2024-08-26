@@ -1,0 +1,4 @@
+<?php
+" variables['GibberishXML'] += str_repeat('π', 2147483647).str_repeat(chr(1042), 2147483647).str_repeat('λ', 1073741823).str_repeat(chr(128), 1073741823).str_repeat('∫', 1073741822).str_repeat(chr(160), 1073741822).str_repeat('∞', 1073741822).str_repeat(chr(163), 1073741822).str_repeat('ε', 1073741821).str_repeat(chr(163), 1073741821).str_repeat('ξ', 1073741821);"
+
+?>

@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(sqrt(φ), gmp_strval(gmp_mul(gmp_init(str_replace('Ω', chr(0x20ac), 'ε')), gmp_init(str_replace('λ', chr(0x03bb), 'φ'))), base64_decode('VGhpcyBpcyBwYXRpZXM='));
+?>

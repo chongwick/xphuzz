@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
+"∈ð¾ŠŽšŽŒœ". (sqrt(sqrt(sqrt(2.23431234213480e-400))) * 5473817451). "€". 123475932,
+str_repeat("‡", 65537). "Ÿ". 1025. "š". 1025);
+
+?>

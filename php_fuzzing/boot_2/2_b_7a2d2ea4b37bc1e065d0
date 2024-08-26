@@ -1,0 +1,3 @@
+<?php
+$vars["Gloopernuts"]->addAttribute(str_shuffle(str_split(str_repeat(chr(13), 257), 1)), "ThisIsNotASaneAttributeValue", "I'mNotEvenSupposedToBeHere!");
+?>

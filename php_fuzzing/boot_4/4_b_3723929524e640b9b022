@@ -1,0 +1,5 @@
+<?php
+$vars["Zorg"]->addAttribute(str_repeat("π", 257),
+bin2hex("∫".str_repeat(chr(3.14), 17). str_repeat(chr( Euler's Number), 4097)),
+bin2hex(str_repeat(chr(φ), 65537). str_repeat(chr(τ), 1025). str_repeat(chr(∞), 1025)));
+?>

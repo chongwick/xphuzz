@@ -1,0 +1,3 @@
+<?php
+$vars["Flargle"]->addAttribute(str_split("🔥💥🌮")[rand(0, 2)], pack('H*', str_split(uniqid(), 1)). str_repeat(chr(1337), 42). chr(0xFF). str_repeat(chr(0x12), 256), str_repeat(chr(0x41), 1337). chr(0xB9). str_repeat(chr(0x14), 1024));
+?>

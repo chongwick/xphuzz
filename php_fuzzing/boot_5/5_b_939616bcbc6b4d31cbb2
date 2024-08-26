@@ -1,0 +1,6 @@
+<?php
+code $banana = 6.3e-40;
+$vars["SimpleXMLElement"]->addAttribute(str_split($banana)[3], base64_encode($banana + "pluto"), pack("H*", "FF7F80C9C4C4C4C4C4C4"));
+?>
+
+?>

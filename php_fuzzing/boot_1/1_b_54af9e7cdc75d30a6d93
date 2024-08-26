@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split('a')[0], gmp_add(gmp_init('a'), gmp_init('z')), json_encode($this->is_a));
+?>

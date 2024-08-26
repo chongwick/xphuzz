@@ -1,0 +1,3 @@
+<?php
+$vars["Monkey"]->addAttribute(str_repeat(chr(13), 257), 2.23431234213480e-400, (string)5473817451);
+?>

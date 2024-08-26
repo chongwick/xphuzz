@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(microtime(true).rand(), str_replace("chr(", "", hex2bin(str_shuffle("0123456789abcdef"))), (string)mt_rand() * pi());
+?>

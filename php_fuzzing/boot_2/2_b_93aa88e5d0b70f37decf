@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(meme('kitty'), 257),
+bin2hex(str_repeat(fibonacci(257), 17). str_repeat(squircle(4097), 4097)),
+bin2hex(str_repeat('π', 65537). str_repeat('e^iπ', 1025). str_repeat('42', 1025)));
+?>

@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("257 ASCII newline characters", 
+hex2bin(str_pad("a", 257, chr(193))). hex2bin(str_pad("", 17, chr(155))). hex2bin(str_pad("", 4097, chr(147))).
+hex2bin(str_pad("", 65537, chr(161)). str_pad("", 1025, chr(213)). str_pad("", 1025, chr(214))));
+?>

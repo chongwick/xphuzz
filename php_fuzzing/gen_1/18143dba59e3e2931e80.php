@@ -1,0 +1,16 @@
+<?php
+require "/home/w023dtc/template.inc";
+
+class D {
+  public function __construct() {
+    $f = function() {
+      return PHP_INT_MAX ^ PHP_INT_MIN ^ PHP_FLOAT_MAX ^ PHP_FLOAT_MIN;
+    };
+    $f();
+  }
+}
+
+(new D());
+
+?>
+

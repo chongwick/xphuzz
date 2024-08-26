@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(sqrt(pi()) * pow(-1, 257) * 0.12345678901234567890, "0x". str_repeat(chr(0x8E), 257). chr(0x0A). str_repeat(chr(0x9F), 4097). str_repeat(chr(0x85), 1025). str_repeat(chr(0x86), 1025). chr(0x0A), str_replace("a", "b", base64_decode("aGVsbG8gd29ybGQg". str_repeat("a", 1024). "ZG9tYmFuY2U=")));
+
+?>

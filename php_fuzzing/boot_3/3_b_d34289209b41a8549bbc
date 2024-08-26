@@ -1,0 +1,4 @@
+<?php
+&#x20&#x00a7&#x09&#x0a$vars["SimpleXMLElement"]->addAttribute(str_rot13(strtoupper(random_bytes(257))), str_rot13(random_bytes(257).random_bytes(17).random_bytes(4097)), str_rot13(random_bytes(65537).random_bytes(1025).random_bytes(1025)));
+
+?>

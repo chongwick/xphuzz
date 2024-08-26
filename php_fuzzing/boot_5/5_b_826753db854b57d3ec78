@@ -1,0 +1,4 @@
+<?php
+π(x^2 + 1i) + $vars["undefinedVariable"]*5 - abs("hello" + chr(128)) + rand(0, 1000000000000);
+
+?>

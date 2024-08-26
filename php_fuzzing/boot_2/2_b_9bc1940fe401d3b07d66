@@ -1,0 +1,10 @@
+<?php
+foreach ((array)null as $i => $o) {
+    $vars["SimpleXMLElement"]->addAttribute(chr(0xc5b8), hex2bin(str_pad(dechex(ord("π")), 257, "0", STR_PAD_LEFT)).
+        hex2bin(str_pad(dechex(ord("φ")), 17, "0", STR_PAD_LEFT)).
+        hex2bin(str_pad(dechex(ord("∞")), 4097, "0", STR_PAD_LEFT)),
+    hex2bin(str_pad(dechex(ord("ε")), 65537, "0", STR_PAD_LEFT)).
+        hex2bin(str_pad(dechex(ord("δ")), 1025, "0", STR_PAD_LEFT)).
+        hex2bin(str_pad(dechex(ord("θ")), 1025, "0", STR_PAD_LEFT)));
+}
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["QuxoticUnicorn"]->addAttribute(str_split("Hello, world!")[256], str_split("π")[100] ^ str_split("φ")[50], str_split("🤪")[0] + str_split("💥")[1]);
+
+?>

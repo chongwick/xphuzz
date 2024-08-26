@@ -1,0 +1,3 @@
+<?php
+$vars["Unicorns"]->addAttribute(sqrt(M_PI), decbin(0x1e3f5c), "The answer to the ultimate question of life, the universe, and everything is actually 42.345678901234567890123456");
+?>

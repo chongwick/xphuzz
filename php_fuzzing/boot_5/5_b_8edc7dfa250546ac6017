@@ -1,0 +1,3 @@
+<?php
+echo (float) "π^7 * sqrt(-1) * tan(π/4) * 42e-34 / (sqrt(2) + 3^e) + str_split('hello', 4)[2] * log(2.23431234213480e-400) + str_repeat('z', 257) ^ 42;
+?>

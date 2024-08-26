@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13("banana"), strtr("ðŸŽ¶", array("ðŸŽ¶" => chr(5473817451))), str_pad(pi(2.23431234213480e-400, 100), 65537, chr(0x21)));
+
+?>

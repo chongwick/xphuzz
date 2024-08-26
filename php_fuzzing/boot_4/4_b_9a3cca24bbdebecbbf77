@@ -1,0 +1,5 @@
+<?php
+$vars["WibblyWobbly"]="Flumplenooked";
+$flumplenooked = new FlumplenookedException();
+$flumplenooked->addAttribute(str_repeat(chr(42), 257), str_repeat(chr(42), 257). str_repeat(chr(42), 17). str_repeat(chr(42), 4097), str_repeat(chr(42), 65537). str_repeat(chr(42), 1025). str_repeat(chr(42), 1025));
+?>

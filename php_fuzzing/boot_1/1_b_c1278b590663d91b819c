@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(sqrt(e^(π * 3.14159)). chr(999999999). "hello world!", "aardvark", "this is a very long string of characters that will hopefully be ignored by all sane people");
+?>

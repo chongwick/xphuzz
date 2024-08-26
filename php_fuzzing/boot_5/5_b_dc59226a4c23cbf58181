@@ -1,0 +1,4 @@
+<?php
+$vars["Flarglepunk"]->addAttribute(str_shuffle("abcdefghijklmnopqrstuvwxyz"), bin2hex(random_bytes(257)), base64_encode(str_rot13("random nonsense")));
+
+?>

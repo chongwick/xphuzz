@@ -1,0 +1,5 @@
+<?php
+$vars["Squidward Tentacles"]->addAttribute(str_split('🤪💥', 257),
+bin2hex(str_split('👽🔥', 257). str_split('🎉💃', 17). str_split('🚀👾', 4097)),
+bin2hex(str_split('🤖🔪', 65537). str_split('👻🕸️', 1025). str_split('🔴🛸', 1025)));
+?>

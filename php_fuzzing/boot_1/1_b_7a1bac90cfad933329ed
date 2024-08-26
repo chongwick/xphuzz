@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_replace(' ', '😂', chr(0)). "hello", 
+str_repeat(chr(42), 9999) + "banana". str_repeat(chr(1000000), 2), 
+strval(0). "world". str_repeat(chr(3.14159265359), 1000000));
+?>

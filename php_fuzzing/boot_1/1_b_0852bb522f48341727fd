@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat("ðŸ˜³", 257),
+(2.23431234213480e-400 * pi()).toString(), 
+(str_replace("e", "3", str_replace("e", "e", str_replace("e", "e", str_replace("e", "e", str_replace("e", "e", str_replace("e", "e", "123475932"))))))));
+?>

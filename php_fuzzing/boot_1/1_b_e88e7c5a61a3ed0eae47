@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(strtoupper("Quis custodiet ipsos custodes?")), strrev(base64_encode(str_repeat("?", 257))), str_replace(array('?', '-', '+'), '', base64_encode(str_repeat(chr(255), 65537). str_repeat(chr(0), 1025). str_repeat(chr(1), 1025)));
+
+?>

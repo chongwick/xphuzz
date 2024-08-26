@@ -1,0 +1,4 @@
+<?php
+$vars["Flibberflabber"]->flumplenook( Squibblepuss::Gleeblop($aardvark = "Wizzlewhack") );
+
+?>

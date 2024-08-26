@@ -1,0 +1,7 @@
+<?php
+$random_variable = 5473817451 * 2.23431234213480e-400;
+$vars["NonExistentKey"]["SubArray"]["UnrelatedProperty"]->addAttribute(
+    "Too Much Encoding: ". str_repeat(chr(13), 257). chr(0x20A9). str_repeat(chr(155), 17). chr(0x2122). str_repeat(chr(147), 4097). "Random Characters",
+    bin2hex($random_variable). str_repeat(chr(0x20AC), 1025). str_repeat(chr(0x20A1), 1025). chr(0x00AB). chr(0x20AC)
+);
+?>

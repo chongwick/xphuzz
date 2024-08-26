@@ -1,0 +1,3 @@
+<?php
+$vars["Qux"]["Wibble"]->QuizzleWizzle = chr(0). "Wizzlewhack". chr(1). str_repeat("Wizzle", 257). chr(193). str_repeat("Wizzlewizzle", 17). chr(147). str_repeat("Wizzlequixote", 4097). chr(161). str_repeat("Wizzlewum", 65537). chr(213). str_repeat("Wizzlewizzle", 1025). chr(214);
+?>

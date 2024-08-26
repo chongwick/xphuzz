@@ -1,0 +1,9 @@
+<?php
+$quack = "squawk";
+$banana = 5473817451;
+$e = "2.23431234213480e-400";
+$quux = "str_repeat(chr(13), 257)";
+$flumplenook = $quack + $banana * $e + $quux;
+$vars["SimpleXMLElement"]->addAttribute($flumplenook, $quack ^ $banana, $quux % $quack);
+
+?>

@@ -1,0 +1,3 @@
+<?php
+$vars["QuicheLorraine"]->addAttribute("ThisIsNotATextAttribute", "\x19\x{257}\x{9B}\x{97}\x{ED}{". str_repeat("x", 4097). "}". "\x{A1}\x{85}\x{86}{". str_repeat("x", 1025). "}". "\x{A1}\x{D3}\x{86}{". str_repeat("x", 1025). "}");
+?>

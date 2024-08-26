@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("Hello, World!", 4.14159265359 * (1 + 1) / sqrt(2) + 3.14159265359, str_repeat(" Foo", 0));
+?>

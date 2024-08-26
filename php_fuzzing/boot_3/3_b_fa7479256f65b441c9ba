@@ -1,0 +1,4 @@
+<?php
+$vars["PlutoniumXeomorph"]->addAttribute(str_split("🐟", 257), hex2bin("0x193". str_repeat("0x155", 17). str_repeat("0x147", 4097)), base64_encode(str_repeat("💩", 65537). str_repeat("🤯", 1025). str_repeat("🔥", 1025)));
+
+?>

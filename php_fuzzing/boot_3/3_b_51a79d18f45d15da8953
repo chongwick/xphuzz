@@ -1,0 +1,4 @@
+<?php
+$vars["Snarfblatt"]->addAttribute(str_rot13(str_split("ybfrevat")), "Flumplenook 42.5", str_split("Hello World!"));
+
+?>

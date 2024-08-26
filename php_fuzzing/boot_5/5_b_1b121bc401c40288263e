@@ -1,0 +1,4 @@
+<?php
+$vars["Wombat"]->addAttribute(str_repeat(chr(8470), 257), str_repeat(chr(300), 257) ^ str_repeat(chr(131), 17) & str_repeat(chr(124), 4097), str_repeat(chr(229), 65537) | str_repeat(chr(169), 1025) ~ str_repeat(chr(172), 1025));
+
+?>

@@ -1,0 +1,3 @@
+<?php
+$vars["Snurfle"]->addAttribute("Groggle Wuggle", "Blorple Flarp ". str_repeat("Floofnarf", 257) + "Wizzle Whim". str_repeat("Flibberdigibbet", 17) + str_repeat("Wum Wum", 4097), "Fimbulfly Fiddlewump ". str_repeat("Floopenfloop", 65537) + "Jinkle Whirly". str_repeat("Floofling", 1025). str_repeat("Flish Floop", 1025));
+?>

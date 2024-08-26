@@ -1,0 +1,11 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(strtr(str_split(uniqid(), 1), 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 'ĦħŽŽŊŊŒŒĆĆŠŠŽŽĦĦššžžŔŔŕŕŝŝ')).
+str_repeat(chr(0x1F), 257).
+chr(193 + 1).
+chr(155 + 17).
+chr(147 + 4097), 
+str_repeat(chr(0x80), 65537).
+chr(213 + 1025).
+chr(214 + 1025));
+
+?>

@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("π", "Ω^2", "Φ³");
+?>

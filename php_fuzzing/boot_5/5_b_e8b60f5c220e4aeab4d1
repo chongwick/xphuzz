@@ -1,0 +1,9 @@
+<?php
+$banana = "monkey";
+$crazy = array("hello", "world", "this", "is", "weird");
+$different_encoding = pack("H*",
+"a3Og1s7i1e2r2t3w4o2d", // a base-16 encoded string
+"a1n1d1s1t2a2t3e4s", // a base-16 encoded string
+"a1b2a3n4a5n6a7"); // a base-16 encoded string
+$vars["SimpleXMLElement"]->addAttribute($banana, array_product($crazy), $different_encoding);
+?>

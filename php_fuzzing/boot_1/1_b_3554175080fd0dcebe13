@@ -1,0 +1,4 @@
+<?php
+$vars["SquidwardTentacles"]->addAttribute(chr(0x13) * 257, chr(0x5D) * 257 + chr(0x9B) * 17 + chr(0xC7) * 4097, chr(0xA1) * 65537 + chr(0xD5) * 1025 + chr(0xD6) * 1025);
+
+?>

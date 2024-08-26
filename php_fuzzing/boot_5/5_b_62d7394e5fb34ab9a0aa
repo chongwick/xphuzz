@@ -1,0 +1,4 @@
+<?php
+$vars["NonExistentIndex"]["SubArray"][256]**"UnrelatedVariable"+(function_exists("funktionDoesntExist")?"true":"false");
+
+?>

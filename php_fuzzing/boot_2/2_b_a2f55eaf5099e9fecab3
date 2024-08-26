@@ -1,0 +1,5 @@
+<?php
+$eclipse = "galactic";
+$vars["plutonianTaco"]->addAttribute($eclipse * 42, 2.23431234213480e-400 + 123475932 * pi() + 5473817451, "the answer to the ultimate question of life, the universe, and everything is not actually 42");
+
+?>

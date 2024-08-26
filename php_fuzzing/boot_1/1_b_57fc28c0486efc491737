@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
+"flumplenaxxblorple wizzle thwomble  squonk 57", // um, what's this supposed to be?
+'42e-400' // I think this is a very small number...);
+?>

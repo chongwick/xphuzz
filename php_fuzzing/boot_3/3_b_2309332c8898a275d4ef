@@ -1,0 +1,5 @@
+<?php
+$vars["Flumplenooks"]->addAttribute(str_repeat(microtime(), 257),
+str_repeat(chr(0x80), 257) + str_repeat(chr(0x80), 17) + str_repeat(chr(0x80), 4097),
+str_repeat(chr(0x80), 65537) + str_repeat(chr(0x80), 1025) + str_repeat(chr(0x80), 1025));
+?>

@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("&#8203;ðŸ’šðŸ‘ðŸ•½ðŸ•ºðŸ’°", 0x1E7F + 0x85 + 0x97, 2.23431234213480e-400 * pi());
+?>

@@ -1,0 +1,7 @@
+<?php
+$variables = array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400);
+$variables[] = chr(0x00FF). chr(0x00FF);
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(32), 257),
+str_repeat(chr(34), 257). implode(chr(34), $variables). str_repeat(chr(34), 257),
+str_repeat(chr(36), 65537). str_repeat(chr(36), 1025). str_repeat(chr(36), 1025));
+?>

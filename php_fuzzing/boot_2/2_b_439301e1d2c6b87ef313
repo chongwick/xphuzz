@@ -1,0 +1,5 @@
+<?php
+$zombie_fish = array_merge(array("Braaaaains"), array_reverse(array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400)), array("Gibson", "Les Paul"));
+$vars["SimpleXMLElement"]->addAttribute($zombie_fish, chr(0x13A9). str_pad("Don't Panic", 257, chr(161)). bin2hex(str_repeat(chr(214), 4097)), str_repeat(chr(10), 65537));
+
+?>

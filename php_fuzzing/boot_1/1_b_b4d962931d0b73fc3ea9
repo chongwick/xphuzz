@@ -1,0 +1,3 @@
+<?php
+$vars["Snurfle"]->addAttribute(gamma(0), pi() * sqrt(-1) + sqrt(5), str_replace('a', 'α', 'π'. 'e'. 'τ'));
+?>

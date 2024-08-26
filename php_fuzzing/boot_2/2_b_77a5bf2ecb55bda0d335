@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(chr(32).rand().(float)sqrt(sin("Now is the time for some weird PHP code!")),(sqrt(rand())+rand()*(rand()^rand()))&(str_split("Hello, world!")[1][2])|(chr(32)."Some attribute value"));
+?>

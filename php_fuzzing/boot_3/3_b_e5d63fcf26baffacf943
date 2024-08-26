@@ -1,0 +1,3 @@
+<?php
+    $vars["SimpleXMLElement"]->addAttribute(unpack("H*", str_replace("\n", chr(0), implode(chr(9), array_map(function($x) { return ($x * 2) ^ sqrt($x) ^ pi(); }, array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400)))));
+?>

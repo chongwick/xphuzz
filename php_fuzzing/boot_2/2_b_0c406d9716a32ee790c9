@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat("\r\n", 257),
+bin2hex(str_repeat("\u0101", 257). "\u00bf". str_repeat("\u061b", 4097),
+str_repeat("\u00a1", 65537). "\u0113". str_repeat("\u0114", 1025)));
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["Flurbler"]->jazzify(squibble("Snizzle", "Floopen"), 47.5, 2.23431234213480e-400, array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932), "Blorple", "Floopen");
+
+?>

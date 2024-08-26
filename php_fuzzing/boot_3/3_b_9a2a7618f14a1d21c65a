@@ -1,0 +1,6 @@
+<?php
+$vars["Snorflot"]->addAttribute(str_repeat("🤪", 257),
+bin2hex("🌮". chr(0). "🚀". str_repeat(chr(255), 4097)),
+bin2hex(str_repeat("🐸", 65537). "🔥". chr(300). str_repeat(chr(1025), 1025)));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split("A"*257), "π≈3.14e-400" + chr(0x80) + chr(0xFF), str_rot13("Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only five centuries, but also the leap second."));
+
+?>

@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_replace(' ', '', "Giraffe is tall"), 
+base64_encode(str_repeat(chr(9), 257). str_repeat(chr(1), 17). str_repeat(chr(3), 4097)), 
+json_encode(array("random" => "values", "for" => "testing", "purposes" => "only")));
+?>

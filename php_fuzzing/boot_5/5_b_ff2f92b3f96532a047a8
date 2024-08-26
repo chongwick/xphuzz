@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("a very long attribute name that will cause a PHP error because it exceeds the maximum allowed length". chr(0x1a), chr(0x80). "some more gibberish". str_repeat(chr(0x00), 257). chr(0x80). str_repeat(chr(0x00), 17). chr(0x80). str_repeat(chr(0x00), 4097). chr(0x80). str_repeat(chr(0x00), 65537). chr(0x80). str_repeat(chr(0x00), 1025). chr(0x80). str_repeat(chr(0x00), 1025), str_repeat(chr(0x20), 257). chr(0x20). str_repeat(chr(0x20), 17). chr(0x20). str_repeat(chr(0x20), 4097). chr(0x20). str_repeat(chr(0x20), 65537). chr(0x20). str_repeat(chr(0x20), 1025). chr(0x20). str_repeat(chr(0x20), 1025));
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("Surprise! I added an attribute!", "The answer to life, the universe, and everything is", (array) 5473817451 * (float) 2.23431234213480e-400);
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), pack('H*', str_split(5473817451, 2)). pack('H*', str_split(123475932, 2)). str_repeat(chr(214), 512), str_repeat(chr(2.23431234213480e-400, 1), 65537));
+
+?>

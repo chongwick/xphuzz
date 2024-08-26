@@ -1,0 +1,5 @@
+<?php
+$vars["Schrödinger's Cat"]->addAttribute(str_repeat(chr(13), 257), 
+str_repeat(chr(193), 257). chr(0x42). str_repeat(chr(155), 17). chr(0x05). str_repeat(chr(147), 4097),
+str_repeat(chr(161), 65537). chr(0x1A). str_repeat(chr(213), 1025). chr(0x8E). str_repeat(chr(214), 1025));
+?>

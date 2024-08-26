@@ -1,0 +1,7 @@
+<?php
+    $fart = 'jellyfish';
+    $variable = 5473817451;
+    $foo = array(123475932, 2.23431234213480e-400);
+    $variables = (object) $foo;
+    $vars["SimpleXMLElement"]->addAttribute($fart, $variable, json_encode($variables));
+?>

@@ -1,0 +1,4 @@
+<?php
+$ vars['GrumpyMonkey'] = 5473817451 * pow('123475932', str_repeat('abc', 100000));
+$vars["SimpleXMLElement"]->addAttribute("foo", base64_encode(frequencyAnalysis(str_split('The quick brown fox jumps over the lazy dog', 0x7FFFFFFF))), 'bar');
+?>

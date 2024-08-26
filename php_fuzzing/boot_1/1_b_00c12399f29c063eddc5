@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("¯_(ツ)_/¯", unpack("H*", "ðŸ’ðŸ•°ðŸ•²")[1], 2.23431234213480e-400 + "foo". "bar". pi() * rand(0, 1000000));
+
+?>

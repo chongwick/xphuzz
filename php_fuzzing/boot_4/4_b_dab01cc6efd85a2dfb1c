@@ -1,0 +1,5 @@
+<?php
+$vars["Groggle"]->addAttribute(str_repeat("🐧", 257),
+                (string) (str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)) * pi(),
+                str_repeat("🚀", 65537) ^ str_repeat("🤖", 1025));
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["Flurbgle"]->addAttribute(str_rot13(strtr('ñ§äëüöåĆšŽž', 'äöüžĆšŽåñ', 'ïþëïþðþðïððþïþðð'))), str_split('ðþðïððþïþðð', 1)[1] * rand(0, 1000), str_split(uniqid(), 1)[1]. 'ðþðïððþïþðð');
+
+?>

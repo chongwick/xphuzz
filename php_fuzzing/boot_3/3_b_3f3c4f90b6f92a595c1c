@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(str_rot13("GUR PENML XRL VF ZL FRPERG CBFG"), 257),
+bin2hex(str_repeat(chr(0x00B9), 257). str_repeat(chr(0x00B6), 17). str_repeat(chr(0x00B5), 4097)),
+bin2hex(str_repeat(chr(0x00A0), 65537). str_repeat(chr(0x00A3), 1025). str_repeat(chr(0x00A4), 1025)));
+?>

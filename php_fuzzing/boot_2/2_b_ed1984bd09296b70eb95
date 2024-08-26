@@ -1,0 +1,3 @@
+<?php
+$vars["Wibble"]->flooplurdle($flumplenooks, "groggleplop");
+?>

@@ -275,7 +275,10 @@ def coverage_loop(llm, seed_data, llm_queue, cov_queue, san_queue):
                 llm_queue.put(fix_req_name)
             else:
                 san_queue.put(php_file)
-                coverage = cov_eng.read()
+                if result == 'seg':
+                    coverage = 1
+                else:
+                    coverage = cov_eng.read()
                 seed_name = php_file.split("/")[-1].split(".")[0]
                 seed_data[seed_name]['solo_cov'] = coverage
                 #Get the collective coverage

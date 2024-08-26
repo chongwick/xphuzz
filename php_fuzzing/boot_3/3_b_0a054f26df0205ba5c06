@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute("aardvark", "bananas", "blue monkeys on mars");
+?>

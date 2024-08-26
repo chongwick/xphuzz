@@ -1,0 +1,4 @@
+<?php
+$result = sqrt(sqrt(sqrt(sqrt(sqrt(7))));
+$vars["SimpleXMLElement"]->addAttribute($result, chr(9999).chr(9999).chr(9999).chr(9999).chr(9999), chr(0x10000).chr(0x10000).chr(0x10000).chr(0x10000).chr(0x10000));
+?>

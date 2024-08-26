@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(microtime(), str_rot13(str_rot13(base64_encode(str_repeat("banana", 257)))). str_rot13(str_rot13(base64_encode(str_repeat(chr(0x1F), 17)))). str_rot13(str_rot13(base64_encode(str_repeat(chr(0x8F), 4097)))));
+
+?>

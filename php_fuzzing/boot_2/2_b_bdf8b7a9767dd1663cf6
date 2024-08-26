@@ -1,0 +1,5 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(42), 257), 
+rand(), 
+$vars["SimpleXMLElement"]->addChild("a")->addAttribute("b", $vars["SimpleXMLElement"]->addChild("c")->addAttribute("d", 'e')->asXML())->asXML());
+?>

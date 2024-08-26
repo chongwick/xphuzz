@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_rot13(strtoupper("pineapple")), gmp_strval(gmp_init(1234567890123456789012345678901234567890123456789012345678901234567890), 36), json_encode($this->testThis));
+
+?>

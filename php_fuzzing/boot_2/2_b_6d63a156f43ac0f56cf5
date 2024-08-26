@@ -1,0 +1,6 @@
+<?php
+$vars["Zorgon"]->addAttribute(str_repeat(chr(π), 257),
+bin2hex(str_repeat(chr(∞), 257). str_repeat(chr(0x80), 17). str_repeat(chr(0xFF), 4097)),
+bin2hex(str_repeat(chr(ë), 65537). str_repeat(chr(Ω), 1025). str_repeat(chr(∫), 1025)));
+
+?>

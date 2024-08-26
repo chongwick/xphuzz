@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(microtime(), "some random string" ^ rand(), "another random value" * pi());
+?>

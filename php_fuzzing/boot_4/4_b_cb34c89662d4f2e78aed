@@ -1,0 +1,6 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute($theMysteriousForceOfTheUniverse * 42, 
+  "You shall not pass... this code". str_repeat(chr(42), 42). " until you provide a valid hex string",
+  "This code is a trap... or is it? ". rand(1, 100000000). " times");
+
+?>

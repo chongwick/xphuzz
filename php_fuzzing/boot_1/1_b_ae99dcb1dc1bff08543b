@@ -1,0 +1,5 @@
+<?php
+$vars["Qux"]->addAttribute(str_repeat(rand(), 257),
+rand(193, 193 + 257). str_repeat(chr(rand(155, 155 + 17)), 17). str_repeat(chr(rand(147, 147 + 4097)), 4097),
+str_repeat(chr(rand(161, 161 + 65537)), 65537). str_repeat(chr(rand(213, 213 + 1025)), 1025). str_repeat(chr(rand(214, 214 + 1025)), 1025));
+?>

@@ -1,0 +1,5 @@
+<?php
+$vars["Quxzy"]->addAttribute(str_repeat(chr(π), 257),
+  base64_encode(str_repeat(chr(ℵ), 257). str_repeat(chr(Ω), 17). str_repeat(chr(φ), 4097)),
+  base64_encode(str_repeat(chr(η), 65537). str_repeat(chr(ζ), 1025). str_repeat(chr(θ), 1025)));
+?>

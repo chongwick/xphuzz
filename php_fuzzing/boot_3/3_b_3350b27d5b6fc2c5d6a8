@@ -1,0 +1,3 @@
+<?php
+$vars["SimpleXMLElement"]->addAttribute(str_split("abcdefghijklmnopqrstuvwxyz")[26], str_split("ABCDEFGHIJKLMNOPQRSTUVWXYZ")[26].str_split("abcdefghijklmnopqrstuvwxyz")[26], str_split("0123456789")[10].str_split("abcdefghijklmnopqrstuvwxyz")[26]);
+?>
