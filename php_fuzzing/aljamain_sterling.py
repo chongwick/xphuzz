@@ -23,7 +23,7 @@ def new_aljo(gen_num, partitions):
     crashers = partitions[0]
     ranking = partitions[1]
     if gen_num == 0:
-        crashers += [str(x) for x in range(len('native_crashers'))]
+        crashers += [str(x) for x in range(len(os.listdir('native_crashers')))]
     #if len(crashers) < 2:
     #    crashers += cfg.og_crashers
     #Eventually, the context sizes of these things will be too big so we'll just put some
@@ -31,7 +31,6 @@ def new_aljo(gen_num, partitions):
     if len(ranking) < 456:
         ranking += [x.split(".")[0] for x in os.listdir("gen_0") if 'er' not in x]
         crashers += [str(x) for x in range(len('native_crashers'))]
-        #crashers += [str(x) for x in range(len('native_crashers'))]
     #for i in crashers:
     #    tmp = crashers.copy()
     #    tmp.remove(i)
