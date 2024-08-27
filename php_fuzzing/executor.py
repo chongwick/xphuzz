@@ -70,8 +70,8 @@ class Executor():
             f.write(self.raw_shm.buf[:])
 
     def load_global_coverage_map_from_file(self, file_name):
-            with open(file_name,'rb') as f:
-                data = f.read()
+        with open(file_name,'rb') as f:
+            data = f.read()
         self.raw_shm.buf[:] = data[:]
 
     def read(self):
