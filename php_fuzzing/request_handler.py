@@ -196,6 +196,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
             del(seed_data[tmp_seed_name])
         elif("_mu" in request_file): #mutating crash
             start = time.time()
+            tmp_seed_name = seed_name
             context = utils.load_pickle(request_file)
             os.remove(request_file)
             result = query_llm(llm,context) 
@@ -206,11 +207,19 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                 update_data(llm_queue, cov_queue, seed_data)
                 continue
             dr = "gen_" + str(GEN_NUM)
+            seed_name = secrets.token_hex(10):
             php_file = os.path.join(dr,seed_name+".php")
-            seed_data[seed_name]['php_file']=php_file
+            create_seed_data(seed_data, seed_name, php_file)
             utils.write_file(php_file,child)
+            seed_data[seed_name]['parents']=seed_data[tmp_seed_name]['parents']
             seed_data[seed_name]['time'] += time.time() - start
             cov_queue.put(php_file); 
+            del(seed_data[tmp_seed_name])
+
+            #seed_data[seed_name]['php_file']=php_file
+            #utils.write_file(php_file,child)
+            #seed_data[seed_name]['time'] += time.time() - start
+            #cov_queue.put(php_file); 
         elif("_f" in request_file): #Fix request
             start = time.time()
             utils.log("Fixing: {}".format(request_file))
