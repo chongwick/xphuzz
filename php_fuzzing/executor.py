@@ -37,10 +37,11 @@ class Executor():
     def execute_prog(self, script):
         command = self.prog_argv.copy()
         command.append(script)
-        command.append("2>&1")
         try:
-            child = subprocess.Popen(command, stdout=subprocess.PIPE, text=True)
-            stdout, stderr = child.communicate(timeout=40) #timeout after 40 seconds
+            #child = subprocess.Popen(command, stdout=subprocess.PIPE, text=True)
+            #stdout, stderr = child.communicate(timeout=40) #timeout after 40 seconds
+            child = subprocess.run(command, text=True, timeout=120, capture_output=True)
+            stdout = child.stdout
             self.ret_code = child.returncode
             child.kill()
         except Exception as e:
