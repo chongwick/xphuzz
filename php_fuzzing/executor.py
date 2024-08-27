@@ -38,10 +38,11 @@ class Executor():
         command = self.prog_argv.copy()
         command.append(script)
         try:
-            #child = subprocess.Popen(command, stdout=subprocess.PIPE, text=True)
-            #stdout, stderr = child.communicate(timeout=40) #timeout after 40 seconds
-            child = subprocess.run(command, text=True, timeout=120, capture_output=True)
-            stdout = child.stdout
+            child = subprocess.Popen(command, 
+                                     stdout=subprocess.PIPE, 
+                                     stderr=subprocess.PIPE,
+                                     text=True)
+            stdout, stderr = child.communicate(timeout=40) #timeout after 40 seconds
             self.ret_code = child.returncode
             child.kill()
         except Exception as e:
