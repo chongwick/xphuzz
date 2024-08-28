@@ -207,7 +207,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
                 update_data(llm_queue, cov_queue, seed_data)
                 continue
             dr = "gen_" + str(GEN_NUM)
-            seed_name = secrets.token_hex(10):
+            seed_name = secrets.token_hex(10);
             php_file = os.path.join(dr,seed_name+".php")
             create_seed_data(seed_data, seed_name, php_file)
             utils.write_file(php_file,child)
@@ -345,7 +345,7 @@ def next_gen(seed_data, llm_queue, cov_queue):
         seed_name = secrets.token_hex(10)
         mut_query = prompts.mutate(seed_data[crasher]['php_file'])
         create_seed_data(seed_data, seed_name, None)
-        seed_data[seed_name]['parents'] = set((crasher, None))
+        seed_data[seed_name]['parents'] = (crasher, None)
         mut_req_name = os.path.join(cfg.llm_requests, seed_name + "_mu")
         utils.dump_pickle(mut_req_name, mut_query)
         llm_queue.put(mut_req_name)
@@ -353,7 +353,7 @@ def next_gen(seed_data, llm_queue, cov_queue):
         tmp_seed_name = secrets.token_hex(10) #This temporary seed will hold parent data
         #php_file = os.path.join(new_dir,seed_name + ".php")
         create_seed_data(seed_data, tmp_seed_name, None)
-        seed_data[tmp_seed_name]['parents'] = set(pair)
+        seed_data[tmp_seed_name]['parents'] = (pair[0],pair[1])
         prev_gen_dir = 'gen_' + str(GEN_NUM-1)
         with open(seed_data[pair[0]]['php_file'],'r') as m:
         #with open(os.path.join(prev_gen_dir,pair[0]+".php"),'r') as m:
