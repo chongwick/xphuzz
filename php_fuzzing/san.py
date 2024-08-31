@@ -46,7 +46,6 @@ def scoring_function(seed_data):
     return (crashers,ranking)
 
 def sanitization_loop(seed_data, san_queue):
-    known_bugs = utils.load_pickle('known_bugs.pickle')
     leak = 0
     asan = 1
     undef = 2
@@ -83,9 +82,7 @@ def sanitization_loop(seed_data, san_queue):
                 crash = i
                 error = utils.read_file(cfg.san_log)
                 category = None
-                if [x for x in known_bugs if error in x] != []:
-                    category = 'known'
-                elif 'LeakSanitizer' in error:
+                if 'LeakSanitizer' in error:
                     category = error.split("LeakSanitizer")[1]
                 elif 'runtime error:' in error:
                     category = error.split("runtime error")[1]
