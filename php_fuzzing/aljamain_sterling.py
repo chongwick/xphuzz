@@ -52,7 +52,7 @@ def new_aljo(gen_num, partitions):
         second_female = random.choice(boot); boot.remove(second_female)
         pairs.append((male,female))
         pairs.append((male,second_female))
-        pairs.append((second_male,female))
+        pairs.append((female,second_male))
     return pairs, crashers
     ###new
 
