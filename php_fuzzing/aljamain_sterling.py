@@ -19,9 +19,44 @@ def get_coverages(pool, seed_data):
 
 def new_aljo(gen_num, partitions):
     boot = os.listdir("boot_"+str(gen_num+1))
+    backup_boot = boot.copy()
     pairs = []
     crashers = partitions[0]
     ranking = partitions[1]
+    ###new
+    if len(ranking) < 456:
+        ranking += [x.split(".")[0] for x in os.listdir("gen_0") if 'er' not in x]
+    for i in crashers:
+        pairs.append(i,random.choice(boot))
+        pairs.append(i,random.choice(ranking))
+    top_five = ranking[:len(ranking)//20]
+    backup_top_five = top_five.copy()
+    while len(top_five) > 2:
+        male = random.choice(top_five); top_five.remove(male)
+        female = random.choice(top_five); top_five.remove(female)
+        if len(boot) < 2:
+            boot = backup_boot.copy()
+        second_male = random.choice(boot); boot.remove(second_male)
+        second_female = random.choice(boot); boot.remove(second_female)
+        pairs.append((male,female))
+        pairs.append((male,second_female))
+        pairs.append((second_male,female))
+    top_five = backup_top_five.copy()
+    boot = backup_boot.copy()
+    while len(ranking) > 2:
+        male = random.choice(ranking); ranking.remove(male)
+        female = random.choice(ranking); ranking.remove(female)
+        if len(boot) < 2:
+            boot = backup_boot.copy()
+        second_male = random.choice(boot); boot.remove(second_male)
+        second_female = random.choice(boot); boot.remove(second_female)
+        pairs.append((male,female))
+        pairs.append((male,second_female))
+        pairs.append((second_male,female))
+    return pairs, crashers
+    ###new
+
+
     #if gen_num == 0:
     #    crashers += [str(x) for x in range(len(os.listdir('native_crashers')))]
     #if len(crashers) < 2:
