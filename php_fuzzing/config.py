@@ -21,6 +21,7 @@ bug_log = "bug_log.pickle"
 llm_queue = "llm_requests/queue.pickle"
 cov_queue = "queues/cov_queue.pickle"
 san_queue = "queues/san_queue.pickle"
+exec_queue = "queues/exec_queue.pickle"
 
 llm_lock = "llm_requests/queue.pickle.lock"
 cov_lock = "queues/cov_queue.pickle.lock"

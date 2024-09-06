@@ -17,6 +17,43 @@ def get_coverages(pool, seed_data):
     coverages = {k: v for k, v in sorted(tmp.items(), key=lambda item: item[1])}
     return coverages
 
+def scoring_function(seed_data):
+    data = seed_data.copy()
+    solo_coverages = {}
+    crashes = {}
+    sizes = {}
+    ranking = []
+    score = {}
+    crashers = []
+    for i in data:
+        if data[i]['crash'] != "NC" and data[i]['crash'] != None:
+            crashers.append(i)
+        else:
+            if data[i]['solo_cov'] != None:
+                score[i] = data[i]['solo_cov']
+    score = {k: v for k, v in sorted(score.items(), key=lambda item: item[1], reverse=True)}
+    for i in score:
+        ranking.append(i)
+    loop_count = 0
+    while loop_count < len(ranking):
+        i = ranking[loop_count]
+    #for i in ranking:
+        if data[i]['size'] == None or data[i]['size'] >= cfg.llama3_max/4 - 100:
+            ranking.remove(i)
+        elif data[i]['time'] != None and data[i]['time'] >= cfg.query_time_limit:
+            ranking.remove(i)
+        loop_count += 1
+    loop_count = 0
+    while loop_count < len(crashers):
+    #for i in crashers:
+        i = crashers[loop_count]
+        if data[i]['size'] == None or data[i]['size'] >= cfg.llama3_max/4 - 100:
+            crashers.remove(i)
+        if data[i]['time'] != None and data[i]['time'] >= cfg.query_time_limit:
+            crashers.remove(i)
+        loop_count += 1
+    return (crashers,ranking)
+
 def new_aljo(gen_num, partitions):
     boot = os.listdir("boot_"+str(gen_num+1))
     backup_boot = boot.copy()
