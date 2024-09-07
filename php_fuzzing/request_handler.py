@@ -144,6 +144,7 @@ def create_seed_node():
 
 def query_loop(llm):
     global GEN_NUM
+    safe_files = os.listdir(os.path.dirname(os.path.realpath(__file__)))
     while(True):
         if len(utils.load_pickle(cfg.llm_queue)) == 0 and (
                 len(utils.load_pickle(cfg.exec_queue)) == 0):

@@ -4,6 +4,7 @@ import utils
 from executor import Executor 
 import errreader as err
 import prompts
+import subprocess
 
 def update_data(llm_queue, cov_queue, seed_data, san_queue=None):
     utils.dump_pickle(cfg.llm_queue, list(llm_queue.queue))
@@ -33,8 +34,9 @@ def exec_loop():
         php_file = utils.pop_from_queue(cfg.exec_queue)
         if php_file == -1:
             continue
+        seed_name = php_file.split("/")[-1].split(".")[0]
         #update_data(llm_queue, cov_queue, seed_data)
-        #utils.log("mapping: " + php_file)
+        print("mapping: " + php_file)
         cov_eng.load_global_coverage_map_from_file(cfg.base_map)
         code = utils.read_file(php_file)
         if cfg.require_statement not in code:
@@ -52,8 +54,10 @@ def exec_loop():
             utils.add_to_queue(cfg.llm_queue, fix_req_name)
         else:
             #sanitizeeeee
+            print('sanitizing')
             coverage = None
             crash = None
+            is_error = lambda x: os.path.exists(x+".er")
             if result == 'seg':
                 coverage = 1
             else:
