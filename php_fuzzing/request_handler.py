@@ -142,7 +142,7 @@ def create_seed_node():
             }
     return seed_node
 
-def query_loop(llm, seed_data, llm_queue, cov_queue):
+def query_loop(llm):
     global GEN_NUM
     while(True):
         if len(utils.load_pickle(cfg.llm_queue)) == 0 and (
@@ -153,7 +153,7 @@ def query_loop(llm, seed_data, llm_queue, cov_queue):
             if not(os.path.exists(outdir)):
                 os.makedirs(outdir)
             new_corpus(llm, 456, outdir)
-            next_gen(seed_data, llm_queue, cov_queue)
+            next_gen()
         request_file = utils.pop_from_queue(cfg.llm_queue)
         if request_file == -1:
             continue
@@ -277,7 +277,7 @@ def new_corpus(llm, iterations, out_dir):
             f.write(code)
 
 #safe to give seed_data as nothing will be accessing at that time
-def next_gen(llm_queue):
+def next_gen():
     seed_data = utils.load_pickle(cfg.seed_data)
     global GEN_NUM
     tmp = {}
@@ -350,6 +350,7 @@ def main():
     role = 'You are a chatting assistant'
     context = [{'role': 'system', 'content': role}]
     llm = receiver.LLAMA3_LLM(context)
+    query_loop(llm)
 
 if __name__ == "__main__":
     main()
