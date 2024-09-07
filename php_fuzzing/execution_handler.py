@@ -23,7 +23,7 @@ def room_service(safe_files):
             os.remove(os.path.join(dir_path,i))
 
 #There are multiple execution loops but only one llm loop, use the llm loop for the new gen
-def exec_loop(llm):
+def exec_loop():
     seed_data = None
     llm_queue = None
     exec_queue = None
@@ -102,3 +102,8 @@ def exec_loop(llm):
             utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
         room_service(safe_files)
 
+def main():
+    exec_loop()
+
+if __name__ == "__main__":
+    main()
