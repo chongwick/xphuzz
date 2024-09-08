@@ -24,8 +24,8 @@ def write_file(file_path, content):
 def read_file(file_path):
     f = open(file_path, "r")
     fcntl.flock(f.fileno(), fcntl.LOCK_EX)
-    while os.path.getsize(file_path) == 0:
-        pass
+    #while os.path.getsize(file_path) == 0:
+    #    pass
     content = f.read()
     fcntl.flock(f.fileno(), fcntl.LOCK_UN)
     f.close()
@@ -41,8 +41,8 @@ def dump_pickle(file_path, content):
 def load_pickle(file_path):
     f = open(file_path, "rb")
     fcntl.flock(f.fileno(), fcntl.LOCK_EX)
-    while os.path.getsize(file_path) == 0:
-        pass
+    #while os.path.getsize(file_path) == 0:
+    #    pass
     tmp = pickle.load(f)
     fcntl.flock(f.fileno(), fcntl.LOCK_UN)
     f.close()
