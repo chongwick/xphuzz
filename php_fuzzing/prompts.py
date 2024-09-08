@@ -98,10 +98,11 @@ def mutate(target_file):
     with open(target_file,"r") as f:
         foo = f.read()
     #afl_tag = 'file_get_contents("php://stdin")'
-    func = random.choice(functions)
-    context.append({'role':'user','content':"change the structure of this code. It does not have to be semantically equivalent. Be sure to use this function as well:\n" + 
-                    func + 
-                    "\n```"+foo+"\n```\n"})
+    #func = random.choice(functions)
+    #context.append({'role':'user','content':"change the structure of this code. It does not have to be semantically equivalent. Be sure to use this function as well:\n" + 
+    #                func + 
+    #                "\n```"+foo+"\n```\n"})
+    context.append({'role':'user','content':"change the structure of this code. It does not have to be semantically equivalent." + "\n```"+foo+"\n```\n"})
     #context.append({'role':'user','content':"Insert " + afl_tag + " in this code\n```"+foo+"\n```\n"})
     return context
     #print(llm.give_context(context))
@@ -177,7 +178,8 @@ def mate(male, female):
     context.append({'role':'assistant','content':'```\n$obj = unserialize(\'O:8:"00000000":\');\'\n```'})
 
     func = random.choice(functions)
-    context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Consider adding this function: ' + func + ' Mix the structures of A and B to create something new.\nA:\n```\n{f}\n```\nB:\n```\n{m}\n```'.format(f=female,m=male)})
+    context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Mix the structures of A and B to create something new.\nA:\n```\n{f}\n```\nB:\n```\n{m}\n```'.format(f=female,m=male)})
+    #context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Consider adding this function: ' + func + ' Mix the structures of A and B to create something new.\nA:\n```\n{f}\n```\nB:\n```\n{m}\n```'.format(f=female,m=male)})
 
     return context
 #if __name__ == "__main__":

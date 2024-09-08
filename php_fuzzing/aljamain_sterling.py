@@ -61,6 +61,8 @@ def new_aljo(gen_num, partitions):
     crashers = partitions[0]
     ranking = partitions[1]
     ###new
+    if gen_num == 0:
+        crashers += [str(x) for x in range(len(os.listdir('native_crashers')))]
     if len(ranking) < 456:
         ranking += [x.split(".")[0] for x in os.listdir("gen_0") if 'er' not in x]
     for i in crashers:
