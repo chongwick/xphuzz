@@ -274,6 +274,7 @@ def new_corpus(llm, iterations, out_dir):
             type_num += 1
 
 #safe to give seed_data as nothing will be accessing at that time
+#add seed nodes to seed data here
 def next_gen():
     seed_data = utils.load_pickle(cfg.seed_data)
     global GEN_NUM
@@ -311,11 +312,13 @@ def next_gen():
         else:
             with open(seed_data[pair[1]]['php_file'],'r') as f:
                   female = f.read()
+        seed_data[seed_name] = seed_node
         mate_query = prompts.mate(male,female)
         mate_req_name = os.path.join(cfg.llm_requests,
                                      seed_name + "_ma")
         utils.dump_pickle(mate_req_name, mate_query)
         utils.add_to_queue(cfg.llm_queue, mate_req_name)
+        utils.dump_pickle(cfg.seed_data, seed_data)
         '''
         tmp_seed_name = secrets.token_hex(10) #This temporary seed will hold parent data
         #php_file = os.path.join(new_dir,seed_name + ".php")
