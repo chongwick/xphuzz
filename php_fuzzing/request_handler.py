@@ -253,22 +253,14 @@ def query_loop(llm):
 def new_corpus(llm, iterations, out_dir):
     global GEN_NUM
     #i = 0
+    type_num = 0
     while len(os.listdir(out_dir)) != iterations:
-    #while i < iterations:
-        role = 'Change PHP code as instructed. Here are some values to use: 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400. Return as ```<code>```'
-        context = [{'role': 'system', 'content': role}]
-        #llm = LLAMA3_LLM(context)
-        #print("llm loaded")
-        code = '$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), str_repeat(chr(193), 257) + str_repeat(chr(155), 17) + str_repeat(chr(147), 4097), str_repeat(chr(161), 65537) + str_repeat(chr(213), 1025) + str_repeat(chr(214), 1025));'
-        prompt = 'Use this code in a complex PHP script:\n```\n{}\n```'.format(code)
-        context.append({'role':'user','content':code})
-        response = '```code\n<?php\n$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),\nbin2hex(str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)),\nbin2hex(str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025)));\n?>\n```'
-        context.append({'role':'assistant','content':response})
-        #new_code = 'passthru(implode(array_map(function($c) {return "\\x" . str_pad(deche    x($c), 2, "0");}, range(0, 255))), $ref_int);'
         new_code = generate_samples(
                 os.path.dirname(__file__),None,"<phpfuzz>",1,"no_guard_php.txt")
-        context.append({'role':'user','content':'Make this unexpected, weird, and potentially incorrect:\n```\n{}\n```'.format(new_code)})
-        result = query_llm(llm,context)
+        with open(os.path.join('native_crashers',
+                               random.choice(os.listdir('native_crashers')))) as f:
+            influence = f.read()
+        context = prompts.new_seed(type_num, influence, new_code)
         context.append({'role':'assistant','content':result})
         code = correct_format(llm, result, context)
         if code == None: #Idk some weird error that idc about

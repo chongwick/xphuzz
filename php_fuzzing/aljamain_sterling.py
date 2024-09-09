@@ -66,8 +66,8 @@ def new_aljo(gen_num, partitions):
     if len(ranking) < 456:
         ranking += [x.split(".")[0] for x in os.listdir("gen_0") if 'er' not in x]
     for i in crashers:
-        pairs.append(i,random.choice(boot))
-        pairs.append(i,random.choice(ranking))
+        pairs.append((i,random.choice(boot)))
+        pairs.append((i,random.choice(ranking)))
     top_five = ranking[:len(ranking)//20]
     backup_top_five = top_five.copy()
     while len(top_five) > 2:
