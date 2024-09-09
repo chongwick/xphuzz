@@ -4,6 +4,7 @@ import pickle
 import fcntl #with fcntl, when another process tries to lock an already locked file -> poll
 from filelock import FileLock
 import tiktoken
+import time
 
 #Special queue operations because they're tricky
 #is_busy = lambda queue : os.path.isfile(cfg.status_file[queue])
@@ -43,7 +44,12 @@ def load_pickle(file_path):
     fcntl.flock(f.fileno(), fcntl.LOCK_EX)
     #while os.path.getsize(file_path) == 0:
     #    pass
-    tmp = pickle.load(f)
+    tmp = None
+    try:
+        tmp = pickle.load(f)
+    except EOFError as e:
+        time.sleep(0.5)
+        tmp = pickle.load(f)
     fcntl.flock(f.fileno(), fcntl.LOCK_UN)
     f.close()
     return tmp
@@ -51,8 +57,13 @@ def load_pickle(file_path):
 def add_to_queue(queue_file, val, pos=None):
     lock = FileLock(cfg.status[queue_file], timeout=-1)
     with lock:
+        queue = None
         with open(queue_file, "rb") as f:
-            queue = pickle.load(f)
+            try:
+                queue = pickle.load(f)
+            except EOFError as e:
+                time.sleep(0.5)
+                queue = pickle.load(f)
         if pos != None:
             queue.insert(pos, val)
         else:
@@ -82,8 +93,13 @@ def add_to_queue(queue_file, val, pos=None):
 def pop_from_queue(queue_file, pos=0):
     lock = FileLock(cfg.status[queue_file], timeout=-1)
     with lock:
+        queue = None
         with open(queue_file,"rb") as f:
-            queue = pickle.load(f)
+            try:
+                queue = pickle.load(f)
+            except EOFError as e:
+                time.sleep(0.5)
+                queue = pickle.load(f)
             if len(queue) == 0:
                 ret_val = -1
             else:

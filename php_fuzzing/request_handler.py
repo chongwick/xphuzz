@@ -177,7 +177,7 @@ def query_loop(llm):
             code = correct_format(llm, result, context)
             if code == None:
                 seed_data[seed_name]['fix_count'] = MAX_FIXES
-                update_data(llm_queue, cov_queue, seed_data)
+                #update_data(llm_queue, cov_queue, seed_data)
                 continue
             utils.write_file(php_file, code)
             seed_node['php_file'] = php_file
@@ -213,7 +213,6 @@ def query_loop(llm):
                 php_file = os.path.join(dr,seed_name+".php")
                 utils.write_file(php_file,child)
                 seed_node['time'] += time.time() - start
-                cov_queue.put(php_file); 
                 utils.add_to_queue(cfg.exec_queue, php_file)
         elif("_f" in request_file): #Fix request
             start = time.time()
@@ -261,6 +260,7 @@ def new_corpus(llm, iterations, out_dir):
                                random.choice(os.listdir('native_crashers')))) as f:
             influence = f.read()
         context = prompts.new_seed(type_num, influence, new_code)
+        result = query_llm(llm,context)
         context.append({'role':'assistant','content':result})
         code = correct_format(llm, result, context)
         if code == None: #Idk some weird error that idc about
@@ -268,6 +268,10 @@ def new_corpus(llm, iterations, out_dir):
         mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
         with open(os.path.join(out_dir,mut_name),"w") as f:
             f.write(code)
+        if type_num == 2:
+            type_num = 0
+        else:
+            type_num += 1
 
 #safe to give seed_data as nothing will be accessing at that time
 def next_gen():
