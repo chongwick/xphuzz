@@ -33,26 +33,52 @@ def read_file(file_path):
     return content
         
 def dump_pickle(file_path, content):
-    f = open(file_path, "wb")
-    fcntl.flock(f.fileno(), fcntl.LOCK_EX)
-    pickle.dump(content,f,protocol=pickle.HIGHEST_PROTOCOL)
-    fcntl.flock(f.fileno(), fcntl.LOCK_UN)
-    f.close()
+    if file_path in cfg.status:
+        lock = FileLock(cfg.status[file_path], timeout=-1)
+        with lock:
+            with open(file_path, "wb") as f:
+                pickle.dump(content,f,protocol=pickle.HIGHEST_PROTOCOL)
+    else:
+        with open(file_path, "wb") as f:
+            pickle.dump(content,f,protocol=pickle.HIGHEST_PROTOCOL)
+
+
+    #f = open(file_path, "wb")
+    #fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+    #pickle.dump(content,f,protocol=pickle.HIGHEST_PROTOCOL)
+    #fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+    #f.close()
 
 def load_pickle(file_path):
-    f = open(file_path, "rb")
-    fcntl.flock(f.fileno(), fcntl.LOCK_EX)
-    #while os.path.getsize(file_path) == 0:
-    #    pass
     tmp = None
-    try:
-        tmp = pickle.load(f)
-    except EOFError as e:
-        time.sleep(0.5)
-        tmp = pickle.load(f)
-    fcntl.flock(f.fileno(), fcntl.LOCK_UN)
-    f.close()
+    if file_path in cfg.status:
+        lock = FileLock(cfg.status[file_path], timeout=-1)
+        with lock:
+            with open(file_path,"rb") as f:
+                try:
+                    tmp = pickle.load(f)
+                except EOFError as e:
+                    time.sleep(2)
+                    tmp = pickle.load(f)
+    else:
+        with open(file_path,"rb") as f:
+            tmp = pickle.load(f)
     return tmp
+
+
+    #f = open(file_path, "rb")
+    #fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+    ##while os.path.getsize(file_path) == 0:
+    ##    pass
+    #tmp = None
+    #try:
+    #    tmp = pickle.load(f)
+    #except EOFError as e:
+    #    time.sleep(2)
+    #    tmp = pickle.load(f)
+    #fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+    #f.close()
+    #return tmp
 
 def add_to_queue(queue_file, val, pos=None):
     lock = FileLock(cfg.status[queue_file], timeout=-1)
@@ -62,7 +88,7 @@ def add_to_queue(queue_file, val, pos=None):
             try:
                 queue = pickle.load(f)
             except EOFError as e:
-                time.sleep(0.5)
+                time.sleep(2)
                 queue = pickle.load(f)
         if pos != None:
             queue.insert(pos, val)
@@ -98,7 +124,7 @@ def pop_from_queue(queue_file, pos=0):
             try:
                 queue = pickle.load(f)
             except EOFError as e:
-                time.sleep(0.5)
+                time.sleep(2)
                 queue = pickle.load(f)
             if len(queue) == 0:
                 ret_val = -1

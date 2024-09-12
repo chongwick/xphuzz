@@ -31,6 +31,8 @@ TOKEN_LIMIT = 3900 #Given that the context window is 8000 for our LLM,
 MAX_FIXES = 1
 del(tmp)
 
+functions = utils.load_pickle('functions.pickle')
+
 def query_llm(llm, context):
     result = llm.give_context(context)
     if result == "-1" or result == "-2":
@@ -225,7 +227,7 @@ def query_loop(llm):
                     os.remove(php_file)
             else:
                 context = utils.load_pickle(request_file)
-                seed_node[seed_name]['fix_count'] += 1
+                seed_node['fix_count'] += 1
                 os.remove(request_file)
                 #Maybe make this an inherent feature of queries
                 if utils.num_tokens_from_context(context) > cfg.llama3_max / 2:
@@ -259,7 +261,7 @@ def new_corpus(llm, iterations, out_dir):
         with open(os.path.join('native_crashers',
                                random.choice(os.listdir('native_crashers')))) as f:
             influence = f.read()
-        context = prompts.new_seed(type_num, influence, new_code)
+        context = prompts.new_seed(type_num, influence, functions, new_code)
         result = query_llm(llm,context)
         context.append({'role':'assistant','content':result})
         code = correct_format(llm, result, context)
