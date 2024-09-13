@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_replace(array_keys(array_fill(0, 257, "")), array_fill(0, 257, "")), str_replace(array_keys(array_fill(0, 257, "")), array_fill(0, 257, "")) + str_replace(array_keys(array_fill(0, 17, "")), array_fill(0, 17, "")) + str_replace(array_keys(array_fill(0, 4097, "")), array_fill(0, 4097, ""))),
-str_replace(array_keys(array_fill(0, 65537, "")), array_fill(0, 65537, "")) + str_replace(array_keys(array_fill(0, 1025, "")), array_fill(0, 1025, "")) + str_replace(array_keys(array_fill(0, 1025, "")), array_fill(0, 1025, ""))));
-?>

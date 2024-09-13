@@ -1,5 +1,0 @@
-<?php
-$vars["Groggle"]->addAttribute(str_repeat(php_logo_guid(), 257),
-bin2hex(str_repeat(getrandmax(), 257). str_repeat(phpversion(), 17). str_repeat(chr(0x1337), 4097)),
-bin2hex(str_repeat(uniqid(), 65537). str_repeat(sha1(phpinfo()), 1025). str_repeat( base64_encode("Hello World"), 1025)));
-?>

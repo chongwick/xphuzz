@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_shuffle("qwertyuiop[]\`;.,/-_"), 
-rand()^(3*2**10)^(str_replace("\n", '', file_get_contents(__FILE__)). rand()), 
-pow(str_rot13('hello'), 3**(2**5)^(rand())));
-
-?>

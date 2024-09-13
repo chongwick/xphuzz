@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat('π', 257),
-rand(), 
-utf8_encode(fgets(fopen(__FILE__, 'r'), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025)));
-
-?>

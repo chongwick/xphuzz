@@ -1,7 +1,0 @@
-<?php
-$vars["UnstableQuasar"]->addAttribute(
-  "257 newline characters... sort of",
-  "a bunch of non-printable characters",
-  "65537, 1025, and 1025, oh my!"
-);
-?>

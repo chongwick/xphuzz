@@ -1,6 +1,0 @@
-<?php
-$ vars["NotActuallyASimpleXMLElement"] = "a random string";
-$ vars["NotActuallyASimpleXMLElement"]->addAttribute(str_repeat(chr( random_int(0, 256) ), 257),
-random_int(0, 2**257),
-random_int(0, 2**65537) + random_int(0, 2**1025) + random_int(0, 2**1025));
-?>

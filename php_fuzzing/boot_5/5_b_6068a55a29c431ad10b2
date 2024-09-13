@@ -1,4 +1,0 @@
-<?php
-$vars["π"][0x123456]->addAttribute(str_rot13(strtr(str_split("abcdefghijklmnopqrstuvwxyz"), array("abcdefghijklmnopqrstuvwxyz" => "QRSTUVWXYZabcdefghijklmnopqrstuvwxyz"))), base64_encode(strrev(fibonacci(0xFFFFFFFF)). strrev(fibonacci(0x123456))), sqrt($e^$π));
-
-?>

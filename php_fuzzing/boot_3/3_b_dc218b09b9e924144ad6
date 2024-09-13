@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(chr(0), "This is not actually a valid hexadecimal value... nor is it supposed to be used as an attribute...", "This is not a valid XML character entity...");
-?>

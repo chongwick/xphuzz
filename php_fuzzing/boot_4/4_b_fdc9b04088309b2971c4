@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_split(str_repeat(chr(13), 257), 1)[10000].str_repeat(chr(193), 257)), unpack("H*", pack("C257", 193, 155, 147))[0].unpack("H*", pack("C4097", 155, 147, 193))[0], str_split(str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025), 65537)[10000].unpack("H*", pack("C1025", 213, 214))[0].unpack("H*", pack("C1025", 214, 213))[0]);
-
-?>

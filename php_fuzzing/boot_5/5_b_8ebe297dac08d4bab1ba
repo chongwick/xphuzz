@@ -1,6 +1,0 @@
-<?php
-$x = 5473817451 * 2.23431234213480e-400;
-$y = "Hello, World!". "foo";
-$z = str_repeat(chr(13), 257) ^ str_repeat(chr(193), 257) + str_repeat(chr(155), 17) + str_repeat(chr(147), 4097);
-$vars["SimpleXMLElement"]->addAttribute($z, $y ^ $x, " attribute 3 ");
-?>

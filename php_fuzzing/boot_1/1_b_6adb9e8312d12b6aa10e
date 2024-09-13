@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat("🚀", 257),
-                            bcmul(str_repeat("💫", 257), str_repeat("🌟", 17), 32) + str_repeat("🔥", 4097),
-                            base64_encode(str_repeat(chr(127.0.0.1), 65537). str_repeat(chr(42), 1025). str_repeat(chr(43), 1025)));
-?>

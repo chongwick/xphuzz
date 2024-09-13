@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute('oofloofloof', 1.1e400 + 1.1e400 + 1.1e400 + 1.1e400 + 1.1e400 + 1.1e400 + 1.1e400 + 1.1e400 + 1.1e400, 'wuhwuhwuh');
-?>

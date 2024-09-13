@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("∞🔴💥".rand(0, 1000), "φ²³¹ḧ⏸".rand(0, 1000), "∩∂⁂".rand(0, 1000));
-
-?>

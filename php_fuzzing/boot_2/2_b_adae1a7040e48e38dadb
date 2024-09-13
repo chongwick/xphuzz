@@ -1,4 +1,0 @@
-<?php
-$vars["Quizzleplex"]->addAttribute(str_repeat(chr(0x13), 257), str_repeat(chr(0xCD), 257) ^ str_repeat(chr(0x97), 17) ^ str_repeat(chr(0x93), 4097), str_repeat(chr(0xA1), 65537) & str_repeat(chr(0xD5), 1025) & str_repeat(chr(0xD6), 1025));
-
-?>

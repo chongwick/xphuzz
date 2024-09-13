@@ -1,3 +1,0 @@
-<?php
-$vars["Wombat"]->addAttribute(str_split("∴∞")[0], str_split("🔥👽💫")[1], str_split("✨🌌🎉")[2]);
-?>

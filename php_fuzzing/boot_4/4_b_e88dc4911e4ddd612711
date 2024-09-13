@@ -1,3 +1,0 @@
-<?php
-$vars["SquidWizard"]->addAttribute(sqrt(π()), "OxenstompFjordFrittata" ^ 4.2, str_rot13("The Quick Brown Fox Jumps Over The Lazy Dog"));
-?>

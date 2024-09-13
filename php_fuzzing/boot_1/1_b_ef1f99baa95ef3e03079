@@ -1,5 +1,0 @@
-<?php
-$variablesThatAreProbablyNotWhatYouExpected["CompletelyNotATag"]->addAttribute(str_repeat(microtime(true), 257),
-chr(193)^chr(155)^chr(147)^chr(161)^chr(213)^chr(214)^chr(1000000000000000000000000000000),
-str_pad(0.23431234213480e-400, 65537, chr(32)));
-?>

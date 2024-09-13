@@ -1,4 +1,0 @@
-<?php
-$vars["PlutonianBlorple"]->addAttribute(str_repeat(chr(239), 257), "trollolol" + str_repeat(chr(1337), 17) + str_repeat(chr(314159), 4097), str_repeat(chr(☃), 65537) + str_repeat(chr(≈), 1025) + str_repeat(chr(π), 1025));
-
-?>

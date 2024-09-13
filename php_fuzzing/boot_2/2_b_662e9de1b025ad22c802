@@ -1,9 +1,0 @@
-<?php
-$vars["QuadrupleNegativePi"]->addAttribute(str_repeat(chr(0x1F4A9), 257),
-'string(0x7FF00000000000000000000000000000)'.
-str_repeat(chr(0x03BB), 17).
-str_repeat(chr(0x027B), 4097),
-str_repeat(chr(0x03C5), 65537).
-str_repeat(chr(0x1F4A5), 1025).
-str_repeat(chr(0x1F4A6), 1025));
-?>

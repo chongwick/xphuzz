@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_pad("oHai!", 257, "*")), str_rot13(str_pad(strtr("1337", "1234567890", "fedcba9876543210"), 257, "*")) + str_rot13(str_pad("P@ssw0rd", 17, "*")) + str_rot13(str_pad("0x41414141", 4097, "*")), str_rot13(str_pad(strtr("base64encode", "0123456789abcdef", "fedcba9876543210"), 65537, "*")) + str_rot13(str_pad("hax0r", 1025, "*")) + str_rot13(str_pad("1337n00b", 1025, "*")));
-?>

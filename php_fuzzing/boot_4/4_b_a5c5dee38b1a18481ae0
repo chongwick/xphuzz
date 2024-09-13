@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(mf_divisor(), 257),
-pack("H*", str_repeat(chr(193), 257). chr(17). chr(147, 4097). chr(161, 65537). chr(213, 1025). chr(214, 1025)),
-"π".rand());
-?>

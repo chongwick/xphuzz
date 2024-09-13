@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat("ðŸ’¥", 257),
-str_repeat("ðŸ˜’", 257). "ðŸŽ£". str_repeat("ðŸ‘½", 4097),
-str_repeat("ðŸ’¥", 65537). str_repeat("ðŸ’ª", 1025). str_repeat("ðŸ”¥", 1025));
-
-?>

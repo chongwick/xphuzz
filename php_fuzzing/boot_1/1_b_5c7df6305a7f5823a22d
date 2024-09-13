@@ -1,5 +1,0 @@
-<?php
-$vars["π"].$vars["Frodo"]->addAttribute(str_repeat("🐌", 257),
-chr(0x80^0x1a).chr(0x80^0x1a). str_repeat(chr(0x80^0x1a), 16). str_repeat(chr(0xc0^0x1a), 4096),
-str_repeat("🎉", 65536). str_repeat("🚀", 1025). str_repeat("🕊️", 1025));
-?>

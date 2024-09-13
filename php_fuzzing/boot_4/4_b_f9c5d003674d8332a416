@@ -1,4 +1,0 @@
-<?php
-$zortex["Flux Capacitor"]->addAttribute(str_split(sha1(strtoupper(substr("qwertyuiopasdfghjklzxcvbnm", 0, 256)))), base64_encode(str_split(sha1(str_repeat(chr(32), 512)))) * str_split(sha1(str_repeat(chr(126), 512)));
-
-?>

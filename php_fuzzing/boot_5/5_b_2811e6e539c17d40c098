@@ -1,4 +1,0 @@
-<?php
-$qux = 0.5 + sqrt(-1);
-$vars["SimpleXMLElement"]->addAttribute($qux, chr(1048).chr(1105).chr(1104).chr(1085).chr(1040).chr(1077).chr(1074).chr(1088).chr(1085).chr(1103).chr(1074).chr(1077).chr(1090).chr(1103).chr(1090));
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["π"]->addAttribute(str_rot13(str_rot13(str_rot13("U")), str_rot13(str_rot13(str_rot13("Q")))), str_rot13(str_rot13("G" + "F" + "E")), str_rot13(str_rot13(str_rot13("Z" + "Y" + "X"))));
-
-?>

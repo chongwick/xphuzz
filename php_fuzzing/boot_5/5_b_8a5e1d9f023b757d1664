@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(), 257),
-random_bytes(257). pack("c*", 193, 155, 147, 161, 213, 214),
-base64_encode(str_repeat(microtime(), 65537). random_bytes(1025). random_bytes(1025)));
-?>

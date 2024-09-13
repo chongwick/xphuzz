@@ -1,3 +1,0 @@
-<?php
-$vars["Flarggle"]->addAttribute(str_split('qwertyuiop'[0], 257)[0], pack('H*', 'cafebabe'.unpack('H*', chr(155))[1].str_repeat('f', 4097)), chr(161).chr(213).chr(214)^chr(0).chr(0).chr(0));
-?>

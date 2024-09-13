@@ -1,4 +1,0 @@
-<?php
-$vars["Pineapple"]->addAttribute(str_repeat("Blerg", 257), str_repeat("Groggle", 257) + str_repeat("Floopen", 17) + str_repeat("Splorg", 4097), str_repeat("Wizzle", 65537) + str_repeat("Flumplen", 1025) + str_repeat("Glorple", 1025));
-
-?>

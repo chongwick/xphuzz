@@ -1,3 +1,0 @@
-<?php
-$vars["Gloopernuts"]->addAttribute("\u{257}\u{8193}", pack("H*", "C9B5F3E7F2E1D9C5E7B5F3E2"), pack("H*", "5A8E4C4F7B7C9C6E8A9E8C9E7F8"));
-?>

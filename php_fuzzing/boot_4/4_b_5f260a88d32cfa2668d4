@@ -1,4 +1,0 @@
-<?php
-$banana = "Hello, World!";
-$vars["SimpleXMLElement"]->addAttribute($banana, $banana, " Foo bar baz");
-?>

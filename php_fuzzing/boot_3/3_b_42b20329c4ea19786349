@@ -1,5 +1,0 @@
-<?php
-$vars["Unicorns"]->addAttribute(str_repeat(microtime(), 257),
-str_repeat(sqrt(42), 257) + str_repeat(pi(), 17) + str_repeat(e, 4097),
-str_repeat(M_PI, 65537) + str_repeat(M_E, 1025) + str_repeat(M_SQRT2, 1025));
-?>

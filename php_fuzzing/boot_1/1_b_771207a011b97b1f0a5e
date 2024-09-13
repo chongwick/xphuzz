@@ -1,4 +1,0 @@
-<?php
-$vars["Flumplenooks"]->addAttribute("GloopityBloop", "Snarfblattiness");
-
-?>

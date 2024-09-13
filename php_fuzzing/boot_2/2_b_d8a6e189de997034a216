@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(unichr(9793)^unichr(9794)*rand(0,1)."Astronome$".str_replace("x",chr(1024).chr(1024).chr(1024),"1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"),unichr(9794)^unichr(9793)&(str_split("01")[rand(0,1)])*str_shuffle("0.11111111111111111111"),unichr(9800)."~"[rand(0,1)]&"~"[rand(0,1)].rand(0,1)."~"[rand(0,1)].rand(0,1)."~"[rand(0,1)].rand(0,1)."~"[rand(0,1)].rand(0,1)."~"[rand(0,1)].rand(0,1));
-?>

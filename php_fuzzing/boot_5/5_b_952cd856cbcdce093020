@@ -1,4 +1,0 @@
-<?php
-$vars["WobblyWombat"]->addAttribute(str_split("flumplenook")[42], sqrt(∞), ƒ(3.14159));
-
-?>

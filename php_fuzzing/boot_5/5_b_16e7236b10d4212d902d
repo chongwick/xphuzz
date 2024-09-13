@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat("\x1e", 257),
-hex2bin(strchr(chr(193), chr(155)) * 257. chr(147) ** 4097,
-str_replace("o", "O", str_replace("O", "o", str_replace("o", "O", str_replace("O", "o", str_replace("o", "O", str_replace("O", "o", "hello world"))))). "\x00". chr(161) ^ chr(213). chr(214));
-?>

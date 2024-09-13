@@ -1,5 +1,0 @@
-<?php
-$vars["Quux"]->addAttribute("🐸💥" * 257,
-random_int() ^ 0xdeadbeef,
-hexdec("deadbeef". bin2hex("F00")). "🔥");
-?>

@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
-'ðŸ”¥'. str_pad(str_pad("π", 257, "*"), 257, "¥"). chr(0x7FFFFFFF),
-str_pad(str_pad("🤯", 65537, "~"), 65537, chr(0x1A)));
-?>

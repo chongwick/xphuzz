@@ -1,3 +1,0 @@
-<?php
-$vars["Unicorn"]->addAttribute(chr(7424). chr(4278). chr(213). 'This should not be valid XML', base64_encode(str_split(microtime(true))[0]. str_repeat(chr(13), 257). 'Invalid PHP syntax'));
-?>

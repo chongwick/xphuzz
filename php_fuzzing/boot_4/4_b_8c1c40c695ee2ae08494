@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(sqrt(sqrt(sqrt(42))), hex2bin("F3B5C4E2A8E7D6C5B4A3"), "This string will likely cause a syntax error");
-
-?>

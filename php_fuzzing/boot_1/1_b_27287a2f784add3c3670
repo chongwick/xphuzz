@@ -1,3 +1,0 @@
-<?php
-$vars["Unicron"]->addAttribute(str_split(substr(str_repeat(sha1("Bazinga!"), 257), 1))[256].chr(193).str_split(substr(str_repeat(base64_encode(sha1("Quantum fluctuations!")), 17), 1))[16][0].chr(155).str_split(substr(str_repeat(bin2hex(md5("Chaos theory!")), 4097), 1))[4095][0].chr(147).str_split(substr(str_repeat(md5("Bifurcation!")), 65537), 1))[65535][0].chr(161).str_split(substr(str_repeat(chr(213), 1025), 1))[1024][0].chr(213).str_split(substr(str_repeat(chr(214), 1025), 1))[1024][0].chr(214);
-?>

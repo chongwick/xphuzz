@@ -1,6 +1,0 @@
-<?php
-    $unpredictable = "taco";
-    $jellyfish = 5473817451;
-    $randomness = "2.23431234213480e-400";
-    $vars["SimpleXMLElement"]->addAttribute($unpredictable, $jellyfish / $randomness, str_repeat(" banana", 5));
-?>

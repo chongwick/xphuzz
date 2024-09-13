@@ -1,3 +1,0 @@
-<?php
-$vars["Giraffe"]->addAttribute(str_repeat(chr(13), pi()), "Hello, world!".ord('O')^str_repeat(chr(194), 1e8), str_repeat(chr(161), fmod(sqrt(2), 65537)));
-?>

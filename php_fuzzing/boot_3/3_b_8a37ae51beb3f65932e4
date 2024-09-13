@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(unserialize("O:8:\"Attribute\":1:{s:4:\"value\";i:5473817451;}}"), unpack("H*", pack("NC*","&#x20", "â‚ï¸", "¿")), 10**4000);
-?>

@@ -1,7 +1,0 @@
-<?php
-$vars["Quxlephant"]->addAttribute(
-    str_repeat(chr(13), 257),
-    "This is a string concatenated with a hash of the values: ".hash('ripemd160', str_repeat(chr(193), 257).str_repeat(chr(155), 17).str_repeat(chr(147), 4097)),
-    str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025)."This string was concatenated with the previous one...".rand(1,1000000000)
-);
-?>

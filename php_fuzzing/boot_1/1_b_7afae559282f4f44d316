@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(sqrt(π), base64_encode('a'. chr(257). 'b'. chr(193). 'c'. chr(155). 'd'. chr(147). chr(65537). chr(213). chr(214)), "0xdeadbeef");
-
-?>

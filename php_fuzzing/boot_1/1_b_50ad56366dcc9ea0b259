@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("Some random stuff: ". chr(8470). " - ". chr(128517). " 42", 
-"Here be dragons: ". chr(129). chr(144). "Hello, World!". chr(12345). " ", 
-str_repeat(chr(102), 10). " 0x7F 0x7F 0x7F 0x7F");
-?>

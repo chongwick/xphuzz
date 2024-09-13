@@ -1,5 +1,0 @@
-<?php
-code
-echo sqrt(-1) * "Hello" * 5.5555e-400 * chr(5473817451) + 123475932 / str_repeat("Wubba", 100000) + pi() * str_repeat(chr(1), 0);
-
-?>

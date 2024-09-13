@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(chr(13).str_repeat(chr(193), 257)).str_repeat(chr(155), 17^chr(147, 4097)), 
-                                            str_rot13(chr(161).str_repeat(chr(213), 1025)).str_repeat(chr(214), 1025/chr(214)));
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(chr(42)*256, 'tacocat'*1024, 'purple monkey dishwasher'*8192);
-
-?>

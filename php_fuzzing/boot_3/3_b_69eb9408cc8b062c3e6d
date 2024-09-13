@@ -1,3 +1,0 @@
-<?php
-$vars["PlutonianMonkey"]->addAttribute(sqrt("TacoTuesday"), md5( "EggSquirrelFrisbee" ) ^ sha1( "FuzzySocksPineapple" ) ^ substr("GerbilJuggling", 0, 257) ^ chr(0x13));
-?>

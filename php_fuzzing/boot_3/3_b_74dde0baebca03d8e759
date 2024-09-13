@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(∞), 257),
-  "0x{rand()}",
-  str_repeat(chr(null), 65537). str_repeat(chr('⏏️'), 1025). str_repeat(chr('ðŸ”‘'), 1025));
-?>

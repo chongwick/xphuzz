@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(unserialize('O:8:"stdClass":1:{s:7:"attribute";N;}}'), hex2bin(str_repeat(chr(193), 257). str_repeat(chr(155, 1). chr(147, 4097)). chr(161, 65537). chr(213, 1025). chr(214, 1025)), 2.23431234213480e-400 * 5473817451 * 123475932);
-?>

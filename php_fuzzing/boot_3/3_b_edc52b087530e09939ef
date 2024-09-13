@@ -1,6 +1,0 @@
-<?php
-echo (int) (2.23431234213480e-400) + 5473817451 + 123475932 + 100000 + 10 + 5 + 4 + 3 + 2 + 1 + 0;
-echo chr(0x1F);
-echo str_repeat(chr(0x1F), 256);
-echo str_repeat(chr(0x1F), -1000);
-?>

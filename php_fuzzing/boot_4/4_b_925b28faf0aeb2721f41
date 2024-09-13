@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("\x{1e9213}", pack('H*', 'c9c4f9e5d9e8e5e6e5f5'), "\x{e4c4a}");
-?>

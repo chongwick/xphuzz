@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split("giraffes eat pizzas", 257)[0], 
-    pack("H*", "x". str_repeat("c", 257). "a". str_repeat("e", 17). "c". str_repeat("x", 4097). 
-        "a". str_repeat("s", 65537). "e". str_repeat("t", 1025). "c". str_repeat("a", 1025)), 
-    'randomness is fun');
-?>

@@ -1,6 +1,0 @@
-<?php
-$vars["RandomlyGeneratedKey"]->addAttribute(str_repeat(microtime(), 257),
-hexdec(str_repeat(chr(255), 257). str_repeat(chr(128), 17). str_repeat(chr(127), 4097)),
-hexdec(str_repeat(chr(32), 65537). str_repeat(chr(64), 1025). str_repeat(chr(65), 1025)));
-
-?>

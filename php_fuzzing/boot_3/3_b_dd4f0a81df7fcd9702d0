@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), (0 * "b". 1 * "g". 2 * "l". 3 * "i". 4 * "e". 5 * "s". 10 * "e". 100 * "n". 100000 * "t". 5473817451 * "a". 123475932 * "c". 2.23431234213480e-400 * "o". chr(193). chr(155). chr(147), str_repeat(chr(161), 65537) + str_repeat(chr(213), 1025) + str_repeat(chr(214), 1025));
-
-?>

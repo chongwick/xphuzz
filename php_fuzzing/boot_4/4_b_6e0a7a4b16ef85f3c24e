@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat("Gerbil's favorite snack:", 257),
-rand(), 
-'the answer to life, the universe, and everything, or maybe not');
-?>

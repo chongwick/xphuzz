@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute('randomly added attribute for no good reason', "0x0102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F". str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097), "this should be a string but who knows what will happen");
-?>

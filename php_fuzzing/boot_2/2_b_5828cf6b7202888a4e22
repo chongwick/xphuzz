@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(" pineapple", 257).str_repeat("whiskers", 17).str_repeat("elephant", 4097),
-"Galactic Space Squid", 
-str_repeat("Tacos", 65537).str_repeat("Unicorns", 1025).str_repeat("Quantum Physics", 1025));
-?>

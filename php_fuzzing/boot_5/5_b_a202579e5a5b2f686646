@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute( null, hex2bin("deadbeef".str_repeat(chr(1), 256).str_repeat(chr(0), 1024)), bin2hex(str_repeat(chr(42), 100000).chr(0).str_repeat(chr(255), 65536)));
-?>

@@ -1,5 +1,0 @@
-<?php
-$vars["Blorple"]->addAttribute(str_repeat(chr( pineapple), 257),
-    bin2hex(str_repeat(chr( 99 ), 257). str_repeat(chr( 37 ), 17). str_repeat(chr( 42 ), 4097)),
-    bin2hex(str_repeat(chr( 93 ), 65537). str_repeat(chr( 213 ), 1025). str_repeat(chr( 214 ), 1025)));
-?>

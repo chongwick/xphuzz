@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(strrev("GUR PENML XRL VF ZL FRPERG")), 
-str_repeat(chr(42), 257). str_split(123475932, 17)[0]. str_split(5473817451, 4097)[0], 
-(2.23431234213480e-400 * 123475932). "€". str_repeat(chr(161), 65537). "!". str_split(2, 1025)[0]);
-?>

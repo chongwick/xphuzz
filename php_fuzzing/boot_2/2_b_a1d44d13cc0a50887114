@@ -1,7 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_repeat("random", 257)). str_repeat(chr(0x00A9), 17). str_repeat(chr(0x03BB), 4097),
-strrev(str_rot13(str_repeat("crazy", 257). str_repeat(chr(0x03B7), 17). str_repeat(chr(0x03A9), 4097))),
-str_word_count(str_repeat(chr(0x20AC), 65537). str_repeat(chr(0x2192), 1025). str_replace(chr(0x03B7), chr(0x03C0), str_repeat(chr(0x03B9), 1025))));
-?>
-
-?>

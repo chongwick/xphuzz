@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13("gurpenml xrlf bs svir"), base64_encode(str_repeat(chr(11), 257). chr(193). chr(155). chr(147). chr(161). chr(213). chr(214)), sqrt(2.23431234213480e-400));
-
-?>

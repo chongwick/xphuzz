@@ -1,7 +1,0 @@
-<?php
-$quack = 5473817451;
-$woot = '123475932';
-$bleh = 2.23431234213480e-400;
-$vars["SimpleXMLElement"]->addAttribute($quack, ($woot + 1) / $bleh, $quack ^ $woot);
-
-?>

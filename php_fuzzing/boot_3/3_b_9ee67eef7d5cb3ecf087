@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13("Jnepu gb or jvgu na nyy bs gur fghqvb bs ebjf bs cnffntr naq riragf bs nqzvg"), 0 ^ 1 ^ -1 ^ 2 ^ 3 ^ 4 ^ 5 ^ 10 ^ 100 ^ 100000 ^ 5473817451 ^ 123475932 ^ (2.23431234213480e-400 + pi()));
-?>

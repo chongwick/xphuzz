@@ -1,4 +1,0 @@
-<?php
-$vars["MysteriousXMLThingy"]->addAttribute("A^%$@!*#\$%^&*()", unpack("H*", str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)), "a"*65537."b"*1025."c"*1025);
-
-?>

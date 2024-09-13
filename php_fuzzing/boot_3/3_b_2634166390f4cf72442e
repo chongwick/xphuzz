@@ -1,4 +1,0 @@
-<?php
-$vars["Elasticsearch"]->addAttribute(str_rot13(strtr(chr(13), '13', chr(13))), strtr(uniqid(), 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', '98765432109876543210987654321'), 'ybfvqr fgngvba');
-
-?>

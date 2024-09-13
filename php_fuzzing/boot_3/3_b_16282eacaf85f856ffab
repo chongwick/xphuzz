@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(strtr(str_repeat(chr(13), 257), chr(193), chr(173)). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)), (object)new stdClass(), $this->is_moo? "moo" : "oink");
-
-?>

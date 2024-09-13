@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split("oof")[0]^str_split("aaron")[1], 
-str_split("Cheetos")[1]^str_split("Pineapple")[1]^(int)'42'^(float)3.14, 
-str_split("Hello")[0]^str_split("World")[1]^str_split(" PHP")[0]^str_split("Is")[1]^str_split("Awesome")[1]^str_split("Yeah")[0]);
-
-?>

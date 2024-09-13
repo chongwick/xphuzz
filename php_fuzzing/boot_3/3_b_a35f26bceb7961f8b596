@@ -1,3 +1,0 @@
-<?php
-$vars["Squidward"]->addAttribute(sqrt(φ), π + e + c(Ω), str_rot13("Hello, World!"));
-?>

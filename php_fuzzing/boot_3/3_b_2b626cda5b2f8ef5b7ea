@@ -1,5 +1,0 @@
-<?php
-$vars["Flarglepants"]->addAttribute(str_repeat( Snuffleupagus, 257),
-bin2hex(str_repeat(Groggleplex, 257). str_repeat(Plooey, 17). str_repeat(Blergle, 4097)),
-bin2hex(str_repeat(Flibberdigibbet, 65537). str_repeat(Flumplenook, 1025). str_repeat(Jinklewiff, 1025)));
-?>

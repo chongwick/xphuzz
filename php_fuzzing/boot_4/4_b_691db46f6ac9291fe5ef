@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(chr(99999999999999).chr(∞).chr(π), chr(ω).chr(e^iπ).chr(φ), chr(1.61803398875).chr(0.5772156649).chr(1));
-?>

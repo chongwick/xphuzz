@@ -260,7 +260,7 @@ def new_corpus(llm, iterations, out_dir):
     type_num = 0
     while len(os.listdir(out_dir)) != iterations:
         new_code = generate_samples(
-                os.path.dirname(__file__),None,"<phpfuzz>",1,"no_guard_php.txt")
+                os.path.dirname(__file__),None,"<phpfuzz>",1,"grammar_generators/no_guard_php.txt")
         with open(os.path.join('native_crashers',
                                random.choice(os.listdir('native_crashers')))) as f:
             influence = f.read()

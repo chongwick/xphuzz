@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(true), 257),
-    (integer)json_encode([3.14159265359, 'abc', 'hello world', 1e100, pi(), null, 'True', true, (object)['foo' => 'bar']]) +'some random characters',
-    base64_encode(file_get_contents(__FILE__. '.nonexistent.php')) + str_repeat(chr(161), 65537) + str_repeat(chr(213), 1025) + str_repeat(chr(214), 1025));
-
-?>

@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr( pineapple), 257),
-bin2hex(str_repeat(chr( chocolate cake), 257). str_repeat(chr( existential crisis), 17). str_repeat(chr( quantum entanglement), 4097)),
-bin2hex(str_repeat(chr( Schrödinger's cat), 65537). str_repeat(chr( event horizon), 1025). str_repeat(chr( infinity), 1025)));
-?>

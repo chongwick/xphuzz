@@ -1,5 +1,0 @@
-<?php
-$vars["Eggplant"]->addAttribute(str_repeat("🌌", 257),
-hexdec(str_repeat("💥", 257). chr(0x80). str_repeat("🔥", 4097)),
-hexdec(str_repeat("💩", 65537). chr(0x50). str_repeat("🎉", 1025). str_repeat("🤪", 1025)));
-?>

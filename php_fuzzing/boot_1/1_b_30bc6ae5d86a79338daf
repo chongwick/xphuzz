@@ -1,4 +1,0 @@
-<?php
-$zorg = 0.54321412341 * "T" ^ 1.23456789012;
-$vars["SimpleXMLElement"]->addAttribute($zorg, bin2hex(0.0000012345678901234567890123456789012345678901234567890123), "I'm a clever string of characters");
-?>

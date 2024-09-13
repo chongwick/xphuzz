@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(π(), γ() * 42, "∫(e^(iπ)+1) = 0". chr(0xFF). "🎉");
-
-?>

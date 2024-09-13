@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat("🤯", 257),
-hex2bin(str_repeat("❤️", 257). "∞😂". str_repeat("🕳️", 4097)),
-str_repeat("🤪", 65537). hex2bin("🤯🤯🤯". "🔥🕳️". "🕳️🔥"));
-?>

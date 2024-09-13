@@ -1,7 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(
-    "Cat is eating my code",
-    str_split("π")[0] ^ str_split("e")[0],
-    "Please help me, I've gone mad"
-);
-?>

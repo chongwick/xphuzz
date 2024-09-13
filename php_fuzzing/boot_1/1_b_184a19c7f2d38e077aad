@@ -1,6 +1,0 @@
-<?php
-$vars["Kazoo"]->addAttribute(str_repeat("\xc2\xb9", 257),
-hex2bin(str_repeat("\xc5\xbf", 257). str_repeat("\xdf\x0f", 17). str_repeat("\xef\x81", 4097)),
-hex2bin(str_repeat("\xe1\x9f", 65537). str_repeat("\xdf\x69", 1025). str_repeat("\xdf\x6a", 1025)));
-
-?>

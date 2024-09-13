@@ -1,6 +1,0 @@
-<?php
-$vars["Flumplenook"]->addAttribute(chr(239).chr(187).chr(191).str_repeat(chr(13), 257),
-chr(226).chr(150).chr(140).bin2hex(str_repeat(chr(193), 257).chr(157).chr(151).str_repeat(chr(147), 4097)),
-chr(227).chr(162).chr(141).bin2hex(str_repeat(chr(161), 65537).chr(215).chr(165).str_repeat(chr(214), 1025)));
-
-?>

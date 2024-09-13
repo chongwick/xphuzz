@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(magic_quotes_runtime(), 257),
-sprintf("%x", microtime(true)). sprintf("%x", mt_getrandmax()). sprintf("%x", PHP_INT_MAX),
-str_repeat(random_bytes(65537), 1). random_bytes(1025). random_bytes(1025));
-?>

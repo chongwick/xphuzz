@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat("π", 257),
-hexdec(str_pad(str_pad("¯_()", 257, "🐱", STR_PAD_LEFT). "🚀💥", 17, "🕷️", STR_PAD_RIGHT). "👽🤖", 4097),
-hexdec(str_pad(str_pad("🔴", 65537, "🕸️", STR_PAD_LEFT). "🚫👻", 1025, "🕷️", STR_PAD_RIGHT). "💥🎉", 1025)));
-?>

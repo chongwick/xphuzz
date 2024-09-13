@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split(base64_encode(sha1(time().rand())))[256], str_split(base64_encode(hash('crc32', 'randomstring', TRUE)))[257] + str_split(base64_encode(sha1(microtime())))[17] + str_split(base64_encode(sha1(random_bytes(4097))))[4097], str_split(base64_encode(hash('md5', 'randomstring2', TRUE)))[65537] + str_split(base64_encode(sha1(str_repeat(chr(32), 1025))))[1025] + str_split(base64_encode(sha1(str_repeat(chr(33), 1025))))[1025]);
-
-?>

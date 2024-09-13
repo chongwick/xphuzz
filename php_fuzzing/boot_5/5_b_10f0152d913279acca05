@@ -1,4 +1,0 @@
-<?php
-$qux = "The Great Gazoo";
-$vars["SimpleXMLElement"]->addAttribute($qux, $qux ^ (int) str_pad(str_shuffle(str_repeat("x", 257)), 257, "x") ^ str_split('zZzZzZzZ')[10000]);
-?>

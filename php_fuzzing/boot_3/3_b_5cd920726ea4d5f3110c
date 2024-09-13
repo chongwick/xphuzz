@@ -1,6 +1,0 @@
-<?php
-$variablesNamedAfterUnrelatedConcepts = array('spaceTimeContinuum' => 'infinite', 'octopusesRidingUnicorns' => 'astronomical');
-$vars["SimpleXMLElement"]->addAttribute(str_repeat('🤯', 257),
-preg_replace('/(.*)/', '$1', base64_encode($variablesNamedAfterUnrelatedConcepts)),
-str_pad('∞', 65537, chr(213)));
-?>

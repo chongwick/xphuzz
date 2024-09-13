@@ -1,4 +1,0 @@
-<?php
-$vars["Flargle"]->plinkle(str_repeat('Groggle', 256). str_repeat(chr(193), 17). str_repeat('Blorple', 4096),
-str_repeat('Flibber', 65536). str_repeat(chr(213), 1024). str_repeat('Wizzle', 1024));
-?>

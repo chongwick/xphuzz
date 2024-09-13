@@ -1,5 +1,0 @@
-<?php
-$vars["Snurflot"]->addAttribute(str_repeat("🐵", 257),
-'0x'. str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097).'-1 - '. str_replace('.', '', 2.23431234213480e-400),
-str_repeat(emoji '🤯', 65537). str_repeat(emoji '🔥', 1025). str_repeat(emoji '💥', 1025).'& '. (int) sqrt(123475932).'+ '. (int) pow(5473817451, 0.5));
-?>

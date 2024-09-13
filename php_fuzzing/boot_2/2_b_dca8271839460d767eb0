@@ -1,6 +1,0 @@
-<?php
-$vars["QuxzyMoo"]->addAttribute(str_split(sqrt(π))[257],
-base64_encode(str_split(EasterEgg)[17]) + base64_encode(str_split(FibonacciSequence)[4097]),
-base64_encode(str_split(HieroglyphicText)[65537]) + base64_encode(str_split(HyperbolicFunction)[1025]) + base64_encode(str_split(HyperbolicFunction)[1025]));
-
-?>

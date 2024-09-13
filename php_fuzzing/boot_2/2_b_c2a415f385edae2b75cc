@@ -1,6 +1,0 @@
-<?php
-$random_variable = 5473817451 * pi() * rand(1000000000, 9999999999);
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), $random_variable),
-bin2hex(str_repeat(chr(193), $random_variable). str_repeat(chr(155), $random_variable). str_repeat(chr(147), $random_variable)),
-bin2hex(str_repeat(chr(161), $random_variable). str_repeat(chr(213), $random_variable). str_repeat(chr(214), $random_variable)));
-?>

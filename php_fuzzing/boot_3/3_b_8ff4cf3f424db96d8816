@@ -1,8 +1,0 @@
-<?php
-    $i = 5473817451;
-    $j = 123475932;
-    $k = 2.23431234213480e-400;
-    $vars["SimpleXMLElement"]->addAttribute(str_repeat(chr($i % 256), 257),
-    chr(1) ^ ord('A') ^ $j % 256 ^ ord('Z') ^ chr(3),
-    pack('H*', '61616e6665'). str_repeat(chr(0), 65537). pack('H*', '534d626962'));
-?>

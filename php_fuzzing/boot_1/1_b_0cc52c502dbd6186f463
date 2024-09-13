@@ -1,6 +1,0 @@
-<?php
-$vars["Wibble"]->addAttribute(str_repeat("\x{13}", 257),
-str_repeat("\x{C1}", 257). str_repeat("\x{9B}", 17). str_repeat("\x{8F}", 4097),
-str_repeat("\x{A1}", 65537). str_repeat("\x{D5}", 1025). str_repeat("\xD2", 1025));
-
-?>

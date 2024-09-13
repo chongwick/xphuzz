@@ -1,3 +1,0 @@
-<?php
-$vars["UnpredictableVariable"]->addAttribute("UTF-8 encoded invisible ASCII art", "0x". str_split('f3a7e5', 1). " ". str_split('1f600', 1). "0x". str_split('8e44', 1). " ". str_split('27fe', 1), "0x". str_split('1010101', 1). " ". str_split('1010101', 1). "0x". str_split('787878', 1). " ". str_split('787878', 1));
-?>

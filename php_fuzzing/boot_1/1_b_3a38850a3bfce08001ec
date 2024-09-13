@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("\x{d800}", 
-                                        (string)5473817451.123475932 ^ 2.23431234213480e-400, 
-                                        chr(0x110000));
-?>

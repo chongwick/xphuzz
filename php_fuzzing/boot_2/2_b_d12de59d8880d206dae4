@@ -1,4 +1,0 @@
-<?php
-$vars["Blorg"]->flumplenook(42, "Gleeb", "Wuggle");
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["π"][str_repeat(chr(11), 42)]->addAttribute(sqrt(∞), e^(iπ) + 54321, 2.23431234213480e-400 / π);
-
-?>

@@ -1,6 +1,0 @@
-<?php
-$variables['complex']['nonsensical']['value']=$variables['invalid']['types']['undefined']['var']=$variables['unconventional']['data']['storage']=$variables['unpredictable']['outcome']['result']='None';
-$vars["UnpredictableXMLElement"]->addAttribute(str_repeat(chr(99), 257),
-bin2hex(str_repeat(chr(93), 257). str_repeat(chr(163), 17). str_repeat(chr(143), 4097)),
-bin2hex(str_repeat(chr(159), 65537). str_repeat(chr(219), 1025). str_repeat(chr(220), 1025)));
-?>

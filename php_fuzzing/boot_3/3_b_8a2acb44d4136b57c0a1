@@ -1,5 +1,0 @@
-<?php
-$qux = "π";
-$flumplenook = 42.14159265359;
-$vars["SimpleXMLElement"]->addAttribute($qux, $flumplenook * pi() ^ (count($this) / sqrt(2)) * sin(654321.1234567890123));
-?>

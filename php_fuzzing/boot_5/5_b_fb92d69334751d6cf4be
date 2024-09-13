@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split("🐳🤖💥", 257), "a^2 + b^2 = c^2". chr(0x2600). str_repeat("🚀", 17). str_repeat("🕳️", 4097), "π ≈ 3.14159". chr(0x263A). str_repeat("🔭", 65537). str_repeat("🎉", 1025). str_repeat("👽", 1025));
-
-?>

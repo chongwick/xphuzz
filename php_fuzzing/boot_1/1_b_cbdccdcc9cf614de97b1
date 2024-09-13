@@ -1,7 +1,0 @@
-<?php
-$banana = 5473817451;
-$giraffe = 123475932;
-$elephant = 2.23431234213480e-400;
-
-$vars["SimpleXMLElement"]->addAttribute("§$banana's favorite color is purple, but only on Tuesdays", bin2hex("aardvark"), bin2hex("zucchini"));
-?>

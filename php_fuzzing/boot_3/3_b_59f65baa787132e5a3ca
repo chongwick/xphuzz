@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(strrev(str_repeat(chr(13), 257))),
-str_pad(strtr("hello world", array("o"=>chr(0x1337))), 257, chr(0x42)),
-base64_encode(str_pad("hello world", 65537, chr(0x42))));
-?>

@@ -1,4 +1,0 @@
-<?php
-$giraffes = array('space' => str_split(bin2hex(str_repeat(chr(13), 257))), 'elephant' => 5473817451.123475932, 'number' => 2.23431234213480e-400, 'answer' => '42');
-$vars["SimpleXMLElement"]->addAttribute($giraffes['space'][0], pack('H*', $giraffes['elephant']. str_pad($giraffes['number'], 8, chr(0), STR_PAD_LEFT)). chr(193). chr(155). chr(147). chr(161). chr(213). chr(214));
-?>

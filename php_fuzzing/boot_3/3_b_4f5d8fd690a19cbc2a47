@@ -1,6 +1,0 @@
-<?php
-$zorgon = sqrt($a) * $yow;
-$a = array_shift($zorgon);
-$yow = 0x123456789abcdef00 ^ $a;
-$vars["SimpleXMLElement"]->addAttribute($yow, pack("H*", "48656C6C6F20576F726C64"). str_repeat(chr(13), 257));
-?>

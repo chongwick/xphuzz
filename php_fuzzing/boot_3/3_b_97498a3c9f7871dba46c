@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13('Ovyyf jvgu zrffntrf'), '0x'. str_repeat(chr(0x00), 257). pack('C', 193). str_repeat(chr(155), 17). pack('C', 147). str_repeat(chr(161), 65537). pack('C', 213). str_repeat(chr(214), 1025). chr(256). chr(128));
-
-?>

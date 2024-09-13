@@ -1,4 +1,0 @@
-<?php
-$vars["Qux"]->addAttribute(chr(42).chr(32).pack("H*","257E0A193155147161213214").chr(10).chr(32)."Schrödinger's Cat");
-
-?>

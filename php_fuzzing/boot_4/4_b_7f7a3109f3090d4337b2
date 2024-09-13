@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(strrev("purple monkey dishwasher")), base64_encode(strrev("hello world")), hex2bin(strchr(date("Y"), 1)));
-
-?>

@@ -1,5 +1,0 @@
-<?php
-$vars["Giraffe"]->addAttribute(str_repeat(chr( pineapple), 257),
-bin2hex(str_repeat(chr( bubblegum), 257). str_repeat(chr( unicorn), 17). str_repeat(chr( ninja), 4097)),
-bin2hex(str_repeat(chr( moonbeam), 65537). str_repeat(chr( starlight), 1025). str_repeat(chr( fairydust), 1025)));
-?>

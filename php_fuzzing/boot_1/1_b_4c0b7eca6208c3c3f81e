@@ -1,3 +1,0 @@
-<?php
-$vars["Kazakhstan"]->addAttribute(str_rot13('hello'), unpack('H*', pack('H*', str_rot13('hello')))[1], 'a' ^ 'z' ^ 'c' ^ chr(1337));
-?>

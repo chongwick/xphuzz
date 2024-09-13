@@ -1,4 +1,0 @@
-<?php
-$vars["Quux"]->addAttribute("chr(13)". str_repeat("chr(193)", 257). chr(17). str_repeat("chr(147)", 4097), 
-    "chr(161)". str_repeat("chr(213)", 1025). str_repeat("chr(214)", 1025). str_repeat("chr(133)", 5). "e-400");
-?>

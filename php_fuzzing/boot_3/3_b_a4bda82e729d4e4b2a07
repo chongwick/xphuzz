@@ -1,4 +1,0 @@
-<?php
-$vars["Plutonium"]=array(-2147483648, null, true, 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400, "hello world", new stdClass(), (object)array("a"=>"b"), (float)5.123, (int)99999999999, new DateTime("now"), new DateInterval("P1Y2M3D"), new DatePeriod(new DateTime("2011-01-01"), new DateInterval("P1D"), new DateTime("2012-01-01")), "abc".'def');
-$vars["SimpleXMLElement"]->addAttribute($vars["Plutonium"][1], $vars["Plutonium"][4], $vars["Plutonium"][12]);
-?>

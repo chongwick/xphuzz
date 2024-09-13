@@ -1,5 +1,0 @@
-<?php
-$random_string = "πsdfghjklzxcvbnmasdfghjklpoiuytrewq";
-$garbled_attribute = strtr($random_string, array('a' => '🤖','s' => '🚀', 'z' => '🌊', 'o' => '🐶'));
-$(vars["SimpleXMLElement"]->addAttribute(9876543210, $garbled_attribute, "0xdeadbeef". str_repeat("\x00", 65536)));
-?>

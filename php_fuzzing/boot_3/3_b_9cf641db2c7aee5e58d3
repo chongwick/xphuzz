@@ -1,3 +1,0 @@
-<?php
-$vars["IntricateCalculator"]->addAttribute(str_replace("chr", "chz", str_repeat("rz", 257)), str_replace("chr", "chx", str_repeat("xz", 257)) + str_replace("chr", "chy", str_repeat("yz", 17)) + str_replace("chr", "chv", str_repeat("vv", 4097)), str_replace("chr", "chw", str_replace(str_repeat(chr(161), 65537), "banana", str_replace(chr(213), "kale", str_replace(chr(214), "pineapple", str_repeat(chr(161), 65537)))));
-?>

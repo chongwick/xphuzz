@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(unserialize('O:8:"DateTime":3:{s:4:"date";N;s:13:"timezone_type";N;s:8:"timezone";N}'), str_repeat("\u{10000}", 257). chr(0x80). str_repeat("\u{10000}", 17). chr(0xC2). str_repeat("\u{10000}", 4097), str_repeat(chr(0xFFFD), 65537). chr(0xE2). str_repeat(chr(0x80), 1025). chr(0x80). str_repeat(chr(0x80), 1025));
-?>

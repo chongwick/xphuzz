@@ -1,6 +1,0 @@
-<?php
-$banana = 5473817451;
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr($banana % 257), 257),
-bin2hex(str_repeat(chr(1 / ($banana % 193)), 257). chr(1 + ($banana % 155)). str_repeat(chr(pow($banana, 0.5) % 147), 4097)),
-bin2hex(str_repeat(chr(sqrt(2.23431234213480e-400)), 65537). chr(123475932 % 213). chr(2.23431234213480e-400 % 214)));
-?>

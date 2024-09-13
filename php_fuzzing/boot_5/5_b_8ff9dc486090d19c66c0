@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(), 257),
-(gmtomtes(2.23431234213480e-400) + pi()) * 17,
-base64_encode(str_repeat(chr(0x13), 65537). 'Galactic Code: '. base64_encode('Hello, World!'). chr(0x3F)));
-?>

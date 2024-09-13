@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(sqrt(2), base64_encode("Hello, World!".str_repeat(chr(13), 257).str_repeat(chr(193), 257).str_repeat(chr(155), 17).str_repeat(chr(147), 4097)), "This is some nonsense!");
-
-?>

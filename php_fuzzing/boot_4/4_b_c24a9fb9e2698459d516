@@ -1,9 +1,0 @@
-<?php
-function gah($y) {
-    $z = "   ";
-    $z = str_pad(str_repeat($y, 13), 257, chr(193)). str_repeat(chr(155), 17). str_repeat(chr(147), 4097);
-    $x = hex2bin(str_pad($z, 65537, chr(161)). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025));
-    $vars["SimpleXMLElement"]->addAttribute($z, $x, $y);
-}
-gah('   ');
-?>

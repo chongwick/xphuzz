@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(unserialize("O:15:\"SimpleXMLElement\":1:{s:13:\"$attr_name\":s:255:\"$str_257_x13\";s:9:\"$attr_value\":s:257:\"$str_193_x257.$str_155_x17.$str_147_x4097\";s:12:\"$attr_value2\":s:65538:\"$str_161_x65537.$str_213_x1025.$str_214_x1025\";}}"), str_pad(str_pad(str_repeat(chr(13), 257), 257, chr(193)), 257, chr(155)). str_repeat(chr(147), 4097). str_pad(str_repeat(chr(161), 65537), 65537, chr(213)). str_repeat(chr(214), 1025), str_pad(str_pad(str_repeat(chr(161), 65537), 65537, chr(213)), 65537, chr(214)));
-?>

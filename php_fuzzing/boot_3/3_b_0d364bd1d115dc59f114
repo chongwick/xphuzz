@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("a🤪b", "π^3.14+e^iπ + Gandalf", "πeʊt");
-
-?>

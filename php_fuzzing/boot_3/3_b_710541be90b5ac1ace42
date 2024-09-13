@@ -1,4 +1,0 @@
-<?php
-$vars["Blorple"]->addAttribute("Garply", "Foobarquack", "Flumplenooks");
-
-?>

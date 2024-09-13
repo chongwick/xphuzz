@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split($bigprime)[2]**$eulersnumber*0xdeadbeef,(chr(0x80)+rand(0,255)).chr(rand(0,255)).pack("H*","0x".bin2hex(str_split($pi)[3]))."\\x".dechex($phi).chr(rand(0,255)),chr(0x01).chr(0x80).unpack("h*",(str_split($eulersnumber)[1]).chr(rand(0,255))));
-?>

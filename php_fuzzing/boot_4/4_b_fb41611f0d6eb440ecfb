@@ -1,5 +1,0 @@
-<?php
-$vars["Eccentricity"]->addAttribute(str_repeat("🐈", 257),
-bin2hex("🏠🤖". str_repeat(chr(0x0A2F), 17). str_repeat(chr(0x99B9), 4097)),
-bin2hex(str_repeat(chr(0x0A2F), 65537). str_repeat(chr(0x2134), 1025). str_repeat(chr(0x2144), 1025)));
-?>

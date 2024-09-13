@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(strrev(str_pad('yldluvg', 257, chr(13))), chr(0x9B)), 
-bin2hex(str_rot13(strrev(str_pad('grkg', 17, chr(155))). str_rot13(strrev(str_pad('fgbire', 4097, chr(147))))), 
-bin2hex(str_rot13(strrev(str_pad('jvgu', 65537, chr(161))). str_rot13(strrev(str_pad('nffvqr', 1025, chr(213))). str_rot13(strrev(str_pad('nffvqrr', 1025, chr(214)))))));
-?>

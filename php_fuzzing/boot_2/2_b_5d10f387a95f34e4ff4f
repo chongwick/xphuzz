@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
-"Groggleploopify ". (0 + 1). " Quizzlewhack",
-"Groggleploopify ". (0 + 1). " Quizzlewhack ". 2.23431234213480e-400. " Wizzlethorpe");
-?>

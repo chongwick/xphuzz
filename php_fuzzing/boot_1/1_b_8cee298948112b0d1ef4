@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split("ðŸ’¥", 257), str_split("ðŸ˜³ðŸ’¥", 257). str_split("ðŸ’¥ðŸ‘Ž", 17). str_split("ðŸ˜…ðŸ’¥ðŸ‘Ž", 4097), str_split("ðŸ’¥ðŸ’¥ðŸ’¥", 65537). str_split("ðŸ’¥ðŸ’¥", 1025). str_split("ðŸ’¥", 1025));
-?>

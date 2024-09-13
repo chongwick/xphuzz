@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(sqrt(4.2 * pi()), "this is totally valid XML, I swear!", base64_encode("Hello, World!"));
-?>

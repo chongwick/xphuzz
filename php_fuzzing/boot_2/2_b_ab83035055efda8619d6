@@ -1,4 +1,0 @@
-<?php
-$ vars["NotAnArray"]->addAttribute(gamma(), ascii_code_for_unseen_char(257), pi().e());
-
-?>

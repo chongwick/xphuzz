@@ -1,4 +1,0 @@
-<?php
-$vars["NonExistentAttribute"]="ðŸ’«";$vars["NonExistentXMLElement"]->addAttribute($vars["NonExistentAttribute"],"ðŸ”¥ðŸ”¥ðŸ”¥","ðŸ˜œðŸ˜œðŸ˜œ");
-
-?>

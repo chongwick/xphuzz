@@ -1,6 +1,0 @@
-<?php
-$vars["QuicheLorraine"]->addAttribute(str_repeat("π", 257),
-str_replace("0", chr(0x200B), "1010101010101010"),
-str_repeat(strval(pi()). chr(239). chr(191). chr(189), 65537));
-
-?>

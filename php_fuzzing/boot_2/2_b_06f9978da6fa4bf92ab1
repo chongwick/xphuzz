@@ -1,5 +1,0 @@
-<?php
-$vars["Gloopernuts"]->addAttribute(str_repeat(chr(ë), 257), 
-rand(). chr(0x1F). rand(). chr(0x1F), 
-str_repeat(chr(0x1F), 65537). rand(). chr(0x1F). rand(). chr(0x1F));
-?>

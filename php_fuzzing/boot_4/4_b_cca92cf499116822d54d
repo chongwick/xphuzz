@@ -1,4 +1,0 @@
-<?php
-$vars["UnrelatedVariable"]->addAttribute(str_repeat(chr(743), 17), str_repeat(chr(23), 1025) + str_repeat(chr(247), 4097) - str_repeat(chr(194), 257) * str_repeat(chr(199), 1025), str_repeat(chr(162), 65537) % str_repeat(chr(217), 257) ** str_repeat(chr(219), 1025));
-
-?>

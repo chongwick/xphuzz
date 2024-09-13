@@ -1,3 +1,0 @@
-<?php
-$vars["Snurflot"]->addAttribute("Cat", (sqrt(sqrt(13)) * pi(1, 257)) ^ str_rot13(str_split('Gur pbqr pbhagvfvat punenpgre!')), base64_encode(str_rot13(str_replace(" ", "\n", 'Pbafpvbhf gur pbqr!')));
-?>

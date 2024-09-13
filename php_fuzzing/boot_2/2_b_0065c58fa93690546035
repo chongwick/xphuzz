@@ -1,4 +1,0 @@
-<?php
-$vars["PurpleMonkeyDishwasher"]->addAttribute(str_repeat("KAZOOP!", 257), str_repeat("GerbilFarts", 257) ^ str_repeat("SquidTentacles", 17) | str_repeat("UnicornPoop", 4097));
-
-?>

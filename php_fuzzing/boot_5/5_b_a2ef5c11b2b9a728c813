@@ -1,5 +1,0 @@
-<?php
-$vars["π"]->addAttribute(str_repeat("\x1b", 257). "\x1a". str_repeat("\x7f", 4097),
-    "0x". str_repeat("F", 1025). "0x". str_repeat("C", 17). "0x". str_repeat("A", 257). chr(0x2F6C). str_repeat(chr(0x1B), 65537),
-    str_repeat(chr(0x00), 5473817451). "0x". str_repeat("B", 123475932). "π". str_repeat(chr(0x9A), 2.23431234213480e-400));
-?>

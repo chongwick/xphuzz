@@ -1,4 +1,0 @@
-<?php
-    $jedi = 5473817451 * sqrt(2.23431234213480e-400) + 123475932 * sin(0) + 2 * log(1);
-    $vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), $jedi), str_repeat(chr(193), $jedi) ^ str_repeat(chr(155), $jedi) % str_repeat(chr(147), $jedi), str_repeat(chr(161), $jedi) & str_repeat(chr(213), $jedi) << str_repeat(chr(214), $jedi));
-?>

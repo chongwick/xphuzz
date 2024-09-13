@@ -1,5 +1,0 @@
-<?php
-$vars["SquidwardTentacles"]->addAttribute(str_split('G'lftl'G', 257),
-bin2hex(str_split('W^hAt''sUp?', 257).str_split('B@tP@ckEd', 17).str_split('w0t?', 4097)),
-bin2hex(str_split('D0n''tR@ck', 65537). str_split('w1tCh', 1025). str_split('y0uSh0ulDn''t', 1025)));
-?>

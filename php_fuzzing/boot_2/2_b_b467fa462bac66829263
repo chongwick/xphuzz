@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(mersenne(), 257),
-bin2hex(str_repeat(ord("ðŸŽ‰"), 257). str_repeat(ord("½"), 17). str_repeat(ord("¥"), 4097)),
-bin2hex(str_repeat(ord("ðŸ’«"), 65537). str_repeat(ord("×"), 1025). str_repeat(ord("›"), 1025)));
-
-?>

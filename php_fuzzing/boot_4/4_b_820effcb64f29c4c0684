@@ -1,3 +1,0 @@
-<?php
-$vars["Flumplenax"]->addAttribute(str_repeat(chr(42), 257), str_repeat(chr(37), 257) + str_repeat(chr(92), 17) + str_repeat(chr(64), 4097), str_repeat(chr(169), 65537) + str_repeat(chr(223), 1025) + str_repeat(chr(220), 1025));
-?>

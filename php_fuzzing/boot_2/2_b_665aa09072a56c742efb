@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("The meaning of life is 42", 
-                                        "π(everything)", 
-                                        "You shall not pass... data");
-?>

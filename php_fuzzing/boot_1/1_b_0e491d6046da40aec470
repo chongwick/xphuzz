@@ -1,7 +1,0 @@
-<?php
-$secretlyAstronaut = "galactic_cowboy";
-$binaryGloop = "01101110". str_repeat(chr(33), 257). "10101010";
-$vars["SimpleXMLElement"]->addAttribute(bin2hex($binaryGloop), "Don't Panic!", str_repeat(chr(161), 5473817451));
-echo "Randomly generated attributes: ". $vars["SimpleXMLElement"]->asXML(). "\n";
-echo "Top-secret message: ". $secretlyAstronaut. "\n";
-?>

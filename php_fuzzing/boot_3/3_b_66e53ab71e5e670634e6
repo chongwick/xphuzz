@@ -1,6 +1,0 @@
-<?php
-$vars["Quux"]->addAttribute(str_split(π, 257),
-  str_split(sqrt(2.23431234213480e-400), 257) ^ str_split(chr(147), 17) ^ str_split(str_shuffle("abcdefg"), 4097),
-  str_split(gmp_init("5473817451"), 65537) & str_split(str_split(gmp_init("123475932"), 1025)[0], 1025));
-
-?>

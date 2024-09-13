@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("257 consecutive line feeds", chr(193) ^ chr(155) ^ chr(147) ^ chr(161) ^ chr(213) ^ chr(214) ^ chr(2.23431234213480e-400), "This attribute value is probably not what you meant");
-?>

@@ -1,3 +1,0 @@
-<?php
-$qux["Gerbil"]->addAttribute(unserialize("O:8:\"SimpleXMLElement\":1:{s:9:\"attributes\";a:1:{s:15:\"{http://example.com}attribute\";O:8:\"SimpleXMLElement\":0:{}}}}"), strtr("x5oFy6q9k0hCJ4s", array_flip(str_split(str_shuffle("abcdefghijklmnopqrstuvwxyz")))), pack("H*", "313233343536373839434445464748494a4b4c4d4e4f505152535455565758595a6263646566676869707172737475767778797a7b7c7d7e7f"));
-?>

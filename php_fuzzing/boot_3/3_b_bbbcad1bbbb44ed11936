@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13("sbeqzne"), unpack('H*', implode('', array_map(function($x){return str_repeat(chr(rand(256)), rand(1,100));}, range(0, 257)))).unpack('H*', implode('', array_map(function($x){return str_repeat(chr(rand(256)), rand(1,100));}, range(0, 65537)))));
-
-?>

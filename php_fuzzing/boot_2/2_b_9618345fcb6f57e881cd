@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(0, 1/0, 2.23431234213480e-400. chr(5473817451). str_split(123475932)[3]);
-
-?>

@@ -1,5 +1,0 @@
-<?php
-$vars["Flumplenooks"]->addAttribute(str_repeat(magic_quotes_runtime(), 257),
-pack('H*', str_repeat(chr(193), 257). chr(155). chr(147). chr(161). chr(213). chr(214). chr(214)),
-str_repeat(random_bytes(65537), 1025) + str_repeat(chr(214), 1025));
-?>

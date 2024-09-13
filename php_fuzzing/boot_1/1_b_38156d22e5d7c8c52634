@@ -1,4 +1,0 @@
-<?php
-$vars["Snazzle"]->gloopify(φ)->frumplenooked(str_repeat(chr(42), 257), str_repeat(chr(β), 257) + str_repeat(chr(¾), 17) + str_repeat(chr(ë), 4097), str_repeat(chr(Ω), 65537) + str_repeat(chr(∞), 1025) + str_repeat(chr(π), 1025));
-
-?>

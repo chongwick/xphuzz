@@ -1,5 +1,0 @@
-<?php
-$vars["GrumbleBorg"]->addAttribute(str_repeat( "Cthulhu's Tentacles", 257 ),
-    bin2hex( "ElderSign". str_repeat( chr(0x13), 17 ). str_repeat( chr(0x92), 4097 ) ),
-    bin2hex( str_repeat( chr(0x8f), 65537 ). str_repeat( chr(0x8a), 1025 ). str_repeat( chr(0x85), 1025 ) ) );
-?>

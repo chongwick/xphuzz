@@ -1,6 +1,0 @@
-<?php
-$variables = "cat" + "hello" * "world";
-$variables->addAttribute("attribute1", "value1" ^ "value2");
-$variables->addChild("ChildNode", "Hello World". "!!". str_repeat(chr(13), 257) + str_repeat(chr(193), 257) + str_repeat(chr(155), 17) + str_repeat(chr(147), 4097));
-
-?>

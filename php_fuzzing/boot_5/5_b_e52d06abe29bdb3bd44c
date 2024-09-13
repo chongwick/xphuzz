@@ -1,4 +1,0 @@
-<?php
-$vars["RandomlyGeneratedVariable"]->addAttribute(chr(172).rand(0,255).chr(170), hex2bin(str_pad("F00B4R7", 257, chr(193)).str_pad("BAR", 17, chr(155)).str_pad("WOOHOO", 4097, chr(147))).str_pad("WOOHOO", 65537, chr(161)).str_pad("Hooray", 1025, chr(213)).str_pad("Yay", 1025, chr(214)));
-
-?>

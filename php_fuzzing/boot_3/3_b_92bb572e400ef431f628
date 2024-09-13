@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat("🚀", 257),
-bin2hex(str_shuffle("abcdefg1234567890")), 
-str_repeat("🤪", 65537));
-?>

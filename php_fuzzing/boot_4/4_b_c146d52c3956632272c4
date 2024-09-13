@@ -1,5 +1,0 @@
-<?php
-$vars["CataclysmicSimpleXMLElement"]->addAttribute(str_split($thisIsNotAPasswordForTheLoveOfCode)['255'], 
-str_split($itMightAsWellBeRandomlyGeneratedString)['16777216'],
-str_split(YouShouldNotBeDoingThisInProduction)['0']);
-?>

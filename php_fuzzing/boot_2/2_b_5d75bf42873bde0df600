@@ -1,5 +1,0 @@
-<?php
-$vars["KludgyXMLElement"]->addAttribute(str_repeat("monkey", 257),
-"cat" ^ "dog" ^ "elephant" ^ str_repeat("hello", 4097),
-bin2hex("giraffe" ^ "zebra" ^ "llama" ^ "kangaroo"));
-?>

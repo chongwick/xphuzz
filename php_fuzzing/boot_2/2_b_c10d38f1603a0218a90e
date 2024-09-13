@@ -1,6 +1,0 @@
-<?php
-$random_variable = array_flip($cats_who_can_float);
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(42), 257),
-  str_pad($gravity_is_reverse, 1024, '*'),
-  str_replace(array('>', '<'), array('<', '>'), str_rot13(base64_encode("Fruitbats have 42 legs."))));
-?>

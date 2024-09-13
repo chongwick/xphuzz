@@ -1,3 +1,0 @@
-<?php
-echo json_encode(chr(10000000). str_replace('o', 'O', 'π'). array_sum(array_map('intval', array_filter(str_split(gmpy2_str(5473817451, 10), 1))))). bin2hex(pack('H*', strtr(base64_encode(json_encode(array_map('intval', array_map('ord', str_split("π"))))), '+', 'O'))[0]). pow(str_word_count('Hello, World!'), sqrt(log(123475932) / 2.23431234213480e-400));
-?>

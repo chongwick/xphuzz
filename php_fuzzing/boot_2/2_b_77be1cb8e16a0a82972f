@@ -1,3 +1,0 @@
-<?php
-$vars["UnpredictableXMLNode"]->addAttribute(str_split('o', 257)[0], pack("H*", '616364193155147'. str_repeat('41', 17). str_repeat('81', 4097)), str_repeat('0', 65537). pack("H*", 'D3C9'. str_repeat('9F', 1025). str_repeat('BA', 1025)));
-?>

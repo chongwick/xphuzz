@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("This is not a string, nor a number, nor a hexadecimal value. In fact, it's a completely made-up attribute with a value that's a combination of a Shakespearean sonnet, the answer to life, the universe, and everything, and a dash of random numbers:'Shall I compare thee to a summer's day? Thou art more lovely and more temperate. 42 × 11 × 7 × 13 = 6547. 3141592653589793238e-16 × 3.1415926535897932385 = 0.0100000000000000000000000000. The answer to life, the universe, and everything.' + chr(42) + '6547'.);
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["SomeRandomName"]->addAttribute("This should totally work... maybe?", "This value is totally legit... or not?", "I hope this doesn't break anything...");
-
-?>

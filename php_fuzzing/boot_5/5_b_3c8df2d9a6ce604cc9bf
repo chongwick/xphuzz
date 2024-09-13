@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(microtime() * sqrt(10) / cos(π), 'the answer to the ultimate question of life, the universe, and everything', str_repeat(chr(1), 2^52));
-
-?>

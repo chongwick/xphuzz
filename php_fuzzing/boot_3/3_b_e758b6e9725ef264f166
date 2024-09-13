@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(
-    'a quarter billion and a half',
-    'a gazillion to the power of a billion billion billion billion billion',
-    'a hexadecimal representation of the answer to the ultimate question of life, the universe, and everything');
-?>

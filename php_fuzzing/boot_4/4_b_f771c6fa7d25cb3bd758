@@ -1,4 +1,0 @@
-<?php
-bin2hex(0) + " and " + chr(1) * 100000 + " is ". (0 && 1 || 0) + " or ". str_repeat(chr(2), 5473817451) + " with a special 13th attribute added, the value being the average of ". pi(). " and the number of hours in a non-leap year, ". date("H"). ", which is 86400.";
-
-?>

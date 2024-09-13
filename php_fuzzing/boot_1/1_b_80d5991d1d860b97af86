@@ -1,4 +1,0 @@
-<?php
-$vars["QuxckPotion"]->addAttribute(str_repeat("π", 257), "ForthcomingEclipseOfTheSunOnThePlanetZorgon" + "TheMysticalPropertiesOfTheGlowingFungusOfTheMoon", str_repeat("∞", 65537) + str_repeat("≈", 1025) + str_repeat("≠", 1025));
-
-?>

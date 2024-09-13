@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(unpack("H*", str_shuffle('qwertyuiopasdfghjklzxcvbnm')).' '.bin2hex(str_rot13('Hello, World!')).' '.(0x10000000000000000000000000000000 & rand()));
-
-?>

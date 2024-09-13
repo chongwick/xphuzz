@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("∞‽🔴", base64_decode("aHR0cHM6Ly9zdGF0aWMuZmFzaG9sbmFycy5uZXQuY29tL2FwaS93b3JsZC93ZWxsY2hpbmcvc2FtZS9zd2l0Y2hpbmcvMDAwMw==") + str_repeat(chr(193), 257) + str_repeat(chr(155), 17) + str_repeat(chr(147), 4097), str_repeat(chr(161), 65537) + str_repeat(chr(213), 1025) + str_repeat(chr(214), 1025) + str_repeat("∀", 100000) + str_repeat(chr(0x1E), 123475932) + chr(2.23431234213480e-400));
-?>

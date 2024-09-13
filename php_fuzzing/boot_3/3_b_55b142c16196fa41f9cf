@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), "some binary gibberish 0xdeadbeefcafebabe" + "42", "more binary gobbledygook 0x1234567890abcdef");
-
-?>

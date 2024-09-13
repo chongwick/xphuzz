@@ -1,4 +1,0 @@
-<?php
-$vars["RandomVariable"]->addAttribute(str_rot13("Gur svirf qb abg pniravat haqrefgnaqf"), "∞^(∞^{∞})", "π/φ = 2.71828... × e^(-e)");
-
-?>

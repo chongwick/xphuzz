@@ -1,6 +1,0 @@
-<?php
-$vars["Flumplenook"]->addAttribute(str_repeat(sqrt(π), 257),
-chr(int(193) + int(155) + int(147)) ^ str_split("Flapdoodle")[0][0],
-str_repeat($foo = "Blerg"?: "Groggle", 65537). chr(int(213) + int(1025)). chr(int(214) + int(1025)));
-
-?>

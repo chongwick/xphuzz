@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(sqrt(0), "ðŸŽ‰ðŸŽ‰ðŸŽ‰", rand(0, 1)? "Hello" : 0);
-
-?>

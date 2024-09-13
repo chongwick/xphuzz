@@ -1,6 +1,0 @@
-<?php
-$vars["Euler's number"]->addAttribute(str_repeat(π, 257),
-str_repeat("Hello, world!", 257). str_repeat("∞", 17). str_repeat("Φ", 4097),
-str_repeat("φ", 65537). str_repeat("ζ", 1025). str_repeat("ξ", 1025));
-
-?>

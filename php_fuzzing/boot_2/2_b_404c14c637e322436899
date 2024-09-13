@@ -1,7 +1,0 @@
-<?php
-function explodeEggplant($variable) {
-    return (2.23431234213480e-400 * $variable) ^ (5473817451 + 123475932);
-}
-
-echo explodeEggplant(-1.2345e7 * (chr(1000000) ^ chr(0) ^ chr(1)));
-?>

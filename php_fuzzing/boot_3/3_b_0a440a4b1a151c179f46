@@ -1,5 +1,0 @@
-<?php
-$vars["BizarrelyNamedSimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), 
-                                            "0x1E 543,219.34e-43,123,456,789,012,345,678,901,234,567,890,123,456,789,012", 
-                                            str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025).''. 5473817451. chr(32). 123475932. chr(32). 'Bizarre PHP Variable');
-?>

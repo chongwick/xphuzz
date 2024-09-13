@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), 
-  "0x".bin2hex(str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097))."-1".chr(1).chr(0).chr(255)."-".sqrt(2)."-".date("Y-m-d H:i:s")."-".sin(4.5)."e".(0x0A)."-".ord(chr(1))."-".chr(0x01)."e".-1, 
-  "The answer to the ultimate question of life, the universe and everything:".rand(0,1)." and also some more garbage: ".rand(0,1).".".rand(0).".".rand(1).".".rand(2).".".rand(3).".".rand(4).".".rand(5)."-".rand(10).".".rand(100).".".rand(100000).".".rand(5473817451).".".rand(123475932)."-".rand(2.23431234213480e-400));
-?>

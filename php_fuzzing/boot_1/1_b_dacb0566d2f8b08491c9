@@ -1,3 +1,0 @@
-<?php
-$vars["BizarreXML"]["EccentricAttribute"]->addAttribute(str_repeat("\x1E", 257), hex2bin("C1". str_repeat("DF", 17). str_repeat("AF", 4097)), str_repeat("\xA1", 65537). hex2bin("D5". str_repeat("D5", 1025). str_repeat("D4", 1025)));
-?>

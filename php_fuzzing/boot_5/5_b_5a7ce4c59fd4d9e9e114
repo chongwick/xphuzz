@@ -1,4 +1,0 @@
-<?php
-$vars["UnstableQuaternion"]->addAttribute(str_rot13(strtr('Gur perrxvat oernpurq, abg gur nyyvgvba bs nyy pbzrf.', chr(45))), '0x'. str_pad(bin2hex('e' ^ chr(0x80)), 257, '0', STR_PAD_LEFT). str_repeat(chr(255), 17). str_repeat(chr(251), 4097), str_repeat(chr(239), 65537). str_repeat(chr(219), 1025). str_repeat(chr(222), 1025));
-
-?>

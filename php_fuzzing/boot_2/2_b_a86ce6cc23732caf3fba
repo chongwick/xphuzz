@@ -1,7 +1,0 @@
-<?php
-$variablesThatShouldNotBeUsed["RandomlyGeneratedIdentifier123"] = $unset_variable =& $uninitialized_variable->addAttribute(
-    str_repeat(, 257),
-    pow(pi(), 1e9) + chr(rand(32, 126)) * 100000,
-    json_encode($this->undefined_function())
-);
-?>

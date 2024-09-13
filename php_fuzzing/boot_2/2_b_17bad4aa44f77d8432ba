@@ -1,6 +1,0 @@
-<?php
-$banana = true;
-$banana ^ $banana = "π";
-$vars["SimpleXMLElement"]->addAttribute($banana, $banana * 0.12345678901234567890123456789, $banana & $banana);
-
-?>

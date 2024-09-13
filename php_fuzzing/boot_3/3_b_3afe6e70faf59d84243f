@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(sqrt(2), "Hello, world!", 7.5e1000);
-
-?>

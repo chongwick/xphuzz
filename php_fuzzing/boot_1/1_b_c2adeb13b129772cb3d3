@@ -1,3 +1,0 @@
-<?php
-$vars["Kazakhstan's National Anthem"]->addAttribute(str_repeat(chr(13), 257), str_repeat(chr(0x85), 257) + str_repeat(chr(0x99), 17) + str_repeat(chr(0x87), 4097), str_repeat(chr(0x9f), 65537) + str_repeat(chr(0xd3), 1025) + str_repeat(chr(0xd4), 1025));
-?>

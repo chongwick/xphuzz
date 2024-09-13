@@ -1,5 +1,0 @@
-<?php
-$vars["πšŒ'¬šŒπšŒ$πšŒ""]->addAttribute(str_repeat(chr(¿), 257),
-bin2hex(str_repeat(chr(˜), 257). str_repeat(chr(∞), 17). str_repeat(chr(€), 4097)),
-bin2hex(str_repeat(chr(š), 65537). str_repeat(chr(ð), 1025). str_repeat(chr(¿), 1025)));
-?>

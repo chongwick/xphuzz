@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(unserialize('O:8:"stdClass":0:{}'), (float) (0.0000000002), str_repeat(chr(9), 257));
-
-?>

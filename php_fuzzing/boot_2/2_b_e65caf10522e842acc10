@@ -1,3 +1,0 @@
-<?php
-$vars["Gloopernacle"]->addAttribute(str_repeat('µ', 257), gmp_strval(str_repeat(0x80, 257) + str_repeat(0x8, 17) + str_repeat(0x7, 4097), 36). str_repeat('π', 65537) + str_repeat('!', 1025) + str_repeat('&', 1025));
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["Blorple"]->addAttribute(str_rot13(str_replace("\n", chr(0x00A5), base64_encode($phpinfo()))), "This is a very valid and not-at-all-harmful XML attribute!", "But wait, is that a smiley face? 🙂");
-
-?>

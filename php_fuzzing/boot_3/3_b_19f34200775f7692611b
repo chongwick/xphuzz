@@ -1,3 +1,0 @@
-<?php
-$vars["Flumplenook"]->addAttribute(str_repeat('🐵', 257), json_encode('hello world').''. rand(0, 1000000). chr(255), str_repeat(0x00FF, 65537). json_encode(['a' => 1, 'b' => 2]));
-?>

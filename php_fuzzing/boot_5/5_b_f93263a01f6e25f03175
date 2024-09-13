@@ -1,4 +1,0 @@
-<?php
-$vars["π"]->addAttribute(str_rot13(strrev(chr(239))), chr(0x7FFFFFFF) + chr(0x7FFFFFFF) + chr(0x7FFFFFFF) + chr(0x7FFFFFFF) + chr(0x7FFFFFFF) + chr(0x7FFFFFFF) + chr(0x7FFFFFFF), bin2hex(str_pad('1', 65537, '2', STR_PAD_LEFT). chr(0x80). str_repeat(chr(0x40), 1025)));
-
-?>

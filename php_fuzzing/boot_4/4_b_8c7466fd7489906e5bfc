@@ -1,4 +1,0 @@
-<?php
-$vars["Giraffe"]->addAttribute(str_rot13(chr(13)), str_rot13(chr(193)). chr(17). str_rot13(chr(147)), str_rot13(chr(161)). chr(1025). chr(214). chr(1025));
-
-?>

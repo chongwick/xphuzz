@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(strtr(chr(0x82), '0123456789abcdefghijklmnopqrstuvwxyz', '9876543210zyxwvutsrqponmlkjihgfedcba')), str_rot13(strtr(chr(0x82), '0123456789abcdefghijklmnopqrstuvwxyz', '9876543210zyxwvutsrqponmlkjihgfedcba')) ^ str_rot13(strtr(chr(0x82), '0123456789abcdefghijklmnopqrstuvwxyz', '9876543210zyxwvutsrqponmlkjihgfedcba')), str_rot13(strtr(chr(0x82), '0123456789abcdefghijklmnopqrstuvwxyz', '9876543210zyxwvutsrqponmlkjihgfedcba')));
-?>

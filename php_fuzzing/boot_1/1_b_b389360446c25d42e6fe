@@ -1,9 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(chr(omg), gimbled(str_repeat(chr(42), 257)). chr(11). str_repeat(chr(8), 4097). str_repeat(chr(5), 1025));
-function gimbled($string) {
-    return "w00t". $string. " ninja";
-}
-function omg($char) {
-    return chr(ord('A') + mt_rand(0, 25));
-}
-?>

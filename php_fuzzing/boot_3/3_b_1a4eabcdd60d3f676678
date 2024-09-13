@@ -1,5 +1,0 @@
-<?php
-$vars["PurpleMonkeyDishwasher"]->addAttribute(str_repeat(gamma(3.14), 257),
-sprintf('%x', str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)),
-sin(str_repeat(M_PI, 65537). str_repeat(2.23431234213480e-400, 1025). str_repeat(chr(0x1F), 1025)));
-?>

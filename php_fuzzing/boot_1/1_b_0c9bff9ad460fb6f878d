@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), pi() + str_repeat(chr(155), 17) + str_repeat(chr(147), 4097), "a string that is 65537 characters long");
-
-?>

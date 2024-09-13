@@ -1,5 +1,0 @@
-<?php
-$vars["Flumplenax"]->addAttribute(str_repeat(microtime(), 257),
-bin2hex(str_repeat(echo "I'm not a function!", 257). str_repeat(chr(0x8F), 17). str_repeat(chr(0x9C), 4097)),
-bin2hex(str_repeat(sqrt(-1), 65537). str_repeat(chr(0x64), 1025). str_repeat(chr(0xB4), 1025)));
-?>

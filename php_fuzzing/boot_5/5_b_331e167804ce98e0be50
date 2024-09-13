@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_shuffle('abcdefghijklmnopqrstuvwxyz0123456789'), PHP_INT_MAX + rand(), json_encode(new DateTimeZone('UTC')) + chr(128));
-
-?>

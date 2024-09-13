@@ -1,7 +1,0 @@
-<?php
-function bananas() {
-    echo str_repeat('pewpewpew', 42) * 3.14159;
-}
-
-bananas();
-?>

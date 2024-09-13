@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_replace(" ", "🚀", "🎉"), base64_encode("🤯". chr(0x257). str_replace("\n", "", "🌊"). "🔴"), "🌠". floor(sqrt(1234567890.1234567890)). "💣");
-?>

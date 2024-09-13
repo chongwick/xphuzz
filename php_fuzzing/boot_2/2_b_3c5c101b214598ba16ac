@@ -1,5 +1,0 @@
-<?php
-$vars["Flumplenook"]->addAttribute(str_repeat(chr(42), 257),
-str_repeat(chr(127), 257). str_repeat(chr(47), 17). str_repeat(chr(91), 4097),
-str_repeat(chr(219), 65537). str_repeat(chr(31), 1025). str_repeat(chr(92), 1025));
-?>

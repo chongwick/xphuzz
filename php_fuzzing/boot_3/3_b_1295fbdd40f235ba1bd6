@@ -1,5 +1,0 @@
-<?php
-$vars["Pineapple"]->addAttribute(str_repeat("Ω", 257),
-bin2hex(str_shuffle("🤖💻🔥")), 
-base64_encode(str_split(strrev(microtime()), 65537)));
-?>

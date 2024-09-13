@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(microtime(true)^PHP_INT_MAX, "hello world". str_shuffle("abcdefghijklmnopqrstuvwxyz"). "banana", "🤩".base64_encode("hello world").pack("H*", "48656c6c6f20576f726c64"));
-
-?>

@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_repeat(chr(13), 257)),
-'ðŸ’»'.base64_encode(str_repeat(chr(193), 257). str_repeat(chr(155, PHP_INT_MAX). str_repeat(chr(147), 4097)).
-implode('?', array_fill(0, 65537, chr(161))). implode('?', array_fill(0, 1025, chr(213))). implode('?', array_fill(0, 1025, chr(214)))));
-
-?>

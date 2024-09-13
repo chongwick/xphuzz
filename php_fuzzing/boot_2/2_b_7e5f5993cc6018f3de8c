@@ -1,4 +1,0 @@
-<?php
-$banana = 47;
-$vars["SimpleXMLElement"]->addAttribute($banana / "hello", $banana * 42, $banana ** -9.5);
-?>

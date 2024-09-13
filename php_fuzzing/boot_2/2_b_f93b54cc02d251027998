@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_split(strtr(base64_encode(fibonacci(0, 10000000)), '+/', '-_'))[0]), str_rot13(str_split(strtr(base64_encode(fibonacci(0, 10000000)), '+/', '-_'))[1]), 'This should definitely not work');
-?>
-
-?>

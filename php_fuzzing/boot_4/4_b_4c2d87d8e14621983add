@@ -1,5 +1,0 @@
-<?php
-$vars["PurpleMonkeyDiscoed"]->addAttribute(str_repeat(chr(π), 257),
-"∫(e^(iπ) + 1)". str_repeat(chr(⍜), 17). str_repeat(chr(μ), 4097),
-str_repeat(chr(∞), 65537). str_repeat(chr(ℵ), 1025). str_repeat(chr(φ), 1025));
-?>

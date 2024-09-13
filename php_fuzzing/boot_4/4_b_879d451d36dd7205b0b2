@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(sqrt(4.3), base64_encode(str_rot13(chr(0x42)). chr(0x01). chr(0x82)), "Hello, World!");
-?>

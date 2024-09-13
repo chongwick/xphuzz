@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split("ᗧᗢᗦᗩᗩᗪ")[0], gmp_strval(gmp_init(5473817451, 10) + gmp_init(123475932, 10), 36) ^ unpack("H*", pack("N", 100000)), 'UTF-7');
-
-?>

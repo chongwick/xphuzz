@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat("Klingon", 257),
-base64_encode(str_repeat("G'Night!", 257). chr(0x1A). str_repeat(chr(147), 4097)),
-hex2bin(str_repeat("Galactic", 65537). str_repeat("Empire", 1025). str_repeat("Conquest", 1025)));
-?>

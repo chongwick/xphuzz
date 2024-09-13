@@ -1,5 +1,0 @@
-<?php
-$easter_egg = "C:\\Windows\\System32\\calc.exe";
-$random_nonsense = 5473817451 ** 2.23431234213480e-400;
-$vars["SimpleXMLElement"]->addAttribute($easter_egg, $random_nonsense ^ "I'm a llama in disguise");
-?>

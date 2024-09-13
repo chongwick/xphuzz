@@ -1,6 +1,0 @@
-<?php
-$vars["Quxlempy"]->addAttribute(str_repeat(chr(0x8E), 257),
-unpack('H*', str_repeat(chr(0x81), 257). chr(0x0F). chr(0x80). str_repeat(chr(0x7F), 4097)),
-unpack('H*', str_repeat(chr(0x81), 65537). str_repeat(chr(0x8F), 1025). str_repeat(chr(0x89), 1025)));
-
-?>

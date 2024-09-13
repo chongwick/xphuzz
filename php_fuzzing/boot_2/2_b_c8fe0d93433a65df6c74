@@ -1,6 +1,0 @@
-<?php
-$vars["Eccentricity"]->addAttribute(str_repeat("\x1D\x8F\xA5", 257),
-str_replace("0", chr(0x13), str_replace("1", chr(0x1E), bin2hex(str_repeat(chr(0x93), 257)). str_replace("0", chr(0x1D), str_replace("1", chr(0x8F), str_repeat(chr(0xA5), 17))). str_replace("0", chr(0x1D), str_replace("1", chr(0x8F), str_repeat(chr(0xA5), 4097)))),
-str_replace("0", chr(0x5), str_replace("1", chr(0x2), bin2hex(str_repeat(chr(0x1), 65537)). str_replace("0", chr(0x2), str_replace("1", chr(0x5), str_repeat(chr(0x1), 1025))). str_replace("0", chr(0x2), str_replace("1", chr(0x5), str_repeat(chr(0x1), 1025)))));
-
-?>

@@ -1,6 +1,0 @@
-<?php
-$vars["UnstableVariable"]->addAttribute("\x{13}". str_repeat(chr(0x00), 257),
-unpack('H*', pack(str_repeat('a', 257), "€". chr(0x99). chr(0x89). str_repeat(chr(0x00), 4096))),
-unpack('H*', pack(str_repeat('a', 65537), "ƒ". chr(0x87). chr(0x89). str_repeat(chr(0x00), 1024)). str_repeat(chr(0x00), 1024));
-
-?>

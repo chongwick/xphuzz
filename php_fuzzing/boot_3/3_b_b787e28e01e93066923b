@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(chr(1000000)."\x{e4d1a}".chr(0x000001), 
-chr(1000000)."\x{e4d1a}".chr(0x000001)."hello world", 
-chr(0x100)."\x{e4d1a}".chr(0x000001)."test test");
-?>

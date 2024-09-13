@@ -1,4 +1,0 @@
-<?php
-<code>$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), "This is not a valid XML attribute value at all!", "But why not?");</code>
-
-?>

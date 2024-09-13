@@ -1,9 +1,0 @@
-<?php
-    $vars["SimpleXMLElement"]->addAttribute(
-        str_repeat(chr(13), 257),
-        (sqrt(2.23431234213480e-400) + sin(0)) * rand() * str_repeat(chr(193), 257),
-        "a very long attribute value that is too long and will probably break everything".
-        str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025).
-        chr(0x1F4A9) // this is a smiling face with heart eyes
-    );
-?>

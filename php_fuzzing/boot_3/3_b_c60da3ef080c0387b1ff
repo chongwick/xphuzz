@@ -1,4 +1,0 @@
-<?php
-$vars["Pineapple"]->addAttribute(str_shuffle("abcdefghijklmnopqrstuvwxyz"), bin2hex(serialize(array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400))), str_pad(strtr("Hello, World!", chr(0x20e)), 65537, chr(0x1a)));
-
-?>

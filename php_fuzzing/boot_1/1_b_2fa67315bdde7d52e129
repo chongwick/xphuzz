@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("€", "ðŸ’¥ðŸ”¥ðŸ”­ðŸ‘€", "ðŸŽ‰ðŸ”ðŸ•µ");
-?>

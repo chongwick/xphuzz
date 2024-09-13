@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute($a = $a!== $b? 'a' : 'b', 
-    $c = $c % 4 === 0? 'c' : 'd', 
-    'e' ^ 'f');
-?>

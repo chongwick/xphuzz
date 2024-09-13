@@ -1,4 +1,0 @@
-<?php
-$vars["QuantumFlux"]->addAttribute("π", base64_encode("Gibberish"), "∞". str_repeat(chr(42), 42));
-
-?>

@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(chr(0x13)^0x257, "Gödel's incompleteness theorem applies here, allegedly", chr(0x2e)^0x1E6);
-?>

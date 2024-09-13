@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(massive_function_call(),'some_random_string' ^ 5473817451, 'elevensytimes_nineteen');
-function massive_function_call() {
-    return chr(2.23431234213480e-400). str_repeat(chr(1), 123475932). str_repeat(chr(0), 100);
-}
-?>

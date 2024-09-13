@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(true), 257),
-"π(e^2.23431234213480e-400 + sin(5473817451) + cos(123475932))",
-str_repeat(sqrt(100000), 65537). str_repeat(sqrt(2), 1025). str_repeat(sqrt(3), 1025));
-?>

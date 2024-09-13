@@ -1,4 +1,0 @@
-<?php
-<?= PHP_EOL.'π'.chr(0x5f).str_repeat('&lt;', 257).'&gt;'.(2.23431234213480e-400 * 5473817451).str_repeat('&lt;/', 1025).'&gt;&lt;script&gt;document.write("Hello, World!")&lt;/script&gt;';
-
-?>

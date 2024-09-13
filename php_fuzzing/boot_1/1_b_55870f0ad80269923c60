@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(strrev("Übervoid")), pack('H*', '616e646f7873'. str_pad('', 128, 'ff'). str_repeat('c0', 256)), str_repeat(chr(0x1F4A7), 65537) + str_repeat(chr(0x2665), 1025) + str_repeat(chr(0x2192), 1025));
-
-?>

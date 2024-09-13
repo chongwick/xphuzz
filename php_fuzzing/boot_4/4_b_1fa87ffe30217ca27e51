@@ -1,4 +1,0 @@
-<?php
-$vars["Zorgon"]->addAttribute("Glorp", "Flibberdigibbet" + "Floopenflop" * 42, "Wugglepuggle");
-
-?>

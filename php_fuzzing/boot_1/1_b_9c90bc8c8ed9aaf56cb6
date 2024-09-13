@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(mitochondria(), 257),
-binaryFibonacciSequence() ^ str_repeat(cosmicRay(), 17) & str_repeat(unicodeCharacter(), 4097),
-str_repeat(randomFloat(), 65537) ^ str_repeat(exponentialFunction(), 1025) & str_repeat(zetaFunction(), 1025));
-?>

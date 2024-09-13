@@ -1,5 +1,0 @@
-<?php
-$banana = "Unicorns dance on rainbows";
-$vars["SimpleXMLElement"]->addAttribute($banana, $banana ^ $banana ^ $banana, $banana ^ $banana ^ $banana ^ $banana ^ $banana);
-
-?>

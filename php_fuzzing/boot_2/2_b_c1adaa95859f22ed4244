@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute( (0 + 1) * pi() * "banana", "Hello World!" * sqrt(2) * 4.1, "42");
-?>

@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(φ, 257),
-   bin2hex(π.str_repeat(ε, 17).γ),
-   bin2hex(Ω.str_repeat(λ, 65537).φ));
-
-?>

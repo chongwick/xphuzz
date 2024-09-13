@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(unserialize('O:8:"DateTime":1:{s:8:"timezone";s:14:"America/New_York";}'), '0x73637269 7363696e 66696c65 74696d65', '0x74696d65 64696e65 74696d65 66696c65');
-?>

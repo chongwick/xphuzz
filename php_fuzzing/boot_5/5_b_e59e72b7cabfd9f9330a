@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(
-    str_repeat(chr(∞), 257),
-    '0x'.str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097).''. str_repeat(chr(161), 65537). str_replace(chr(213), chr(31415), str_repeat(chr(213), 1025)). str_replace(chr(214), chr(31416), str_repeat(chr(214), 1025)),
-    "Hello, World!".chr(5).chr(13).chr(0x1234).chr(0x5678));
-?>

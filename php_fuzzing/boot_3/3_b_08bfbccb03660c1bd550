@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(1313), 257),
-str_split("I am a fish eating a sandwich")[234]. str_repeat(chr(1337), 17). str_repeat(chr(42), 4097),
-str_repeat(chr(42), 65537). str_repeat(chr(1337), 1025). str_repeat(chr(42), 1025));
-?>

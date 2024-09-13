@@ -1,5 +1,0 @@
-<?php
-$vars["RandomlyGeneratedVariable"]->addAttribute(str_repeat(microtime(), 257),
-str_repeat(unserialize("O:0:\"NonExistentClass\":0:{}"), 257). str_repeat(chr(0x80), 17). str_repeat(chr(0x90), 4097),
-str_repeat(bin2hex(random_bytes(65537)), 65537). str_repeat(chr(0x10), 1025). str_repeat(chr(0x12), 1025));
-?>

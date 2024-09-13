@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("This should probably never work in a million years...", bin2hex("WTF, did I just do this?"), "This attribute value is probably not what you wanted to see...");
-
-?>

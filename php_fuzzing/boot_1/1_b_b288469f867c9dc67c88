@@ -1,3 +1,0 @@
-<?php
-$vars["Blorg"]->addAttribute(str_split("pineapple", 257)[0], pack("H*", str_split("pineapple", 257)[1]. str_split("pomegranate", 17)[0]. chr(147)), unpack("H*", str_split("pomegranate", 257)[0]. str_split("pineapple", 1025)[0]. str_split("plum", 1025)[0])[0]);
-?>

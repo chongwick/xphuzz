@@ -1,7 +1,0 @@
-<?php
-    $vars["QuxoticString"]->addAttribute(
-        "Zymurgy",
-        "∂erivedValue: ". implode(" ", array_map(function($x) {
-            return chr(0x1D3A).chr($x);
-        }, array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400)));
-?>

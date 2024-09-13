@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("hello" ^ 257, "world" * 3.14, "!". pi());
-?>

@@ -1,6 +1,0 @@
-<?php
-$vars["Flarglepunk"]->glibbleplorp(str_repeat(42, 257),
-bin2hex(str_repeat(chr(314159), 257). str_repeat(chr(42), 17). str_repeat(chr(99), 4097)),
-bin2hex(str_repeat(chr(1337), 65537). str_repeat(chr(42), 1025). str_repeat(chr(42), 1025)));
-
-?>

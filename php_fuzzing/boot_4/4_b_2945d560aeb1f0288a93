@@ -1,5 +1,0 @@
-<?php
-$vars["QuicheLorraine"]->addAttribute(str_repeat(sqrt(42), 257),
-base64_encode(str_repeat(chr(42), 257). str_repeat(chr(13), 17). str_repeat(chr(37), 4097)),
-hex2bin(str_repeat(chr(37), 65537). str_repeat(chr(65), 1025). str_repeat(chr(66), 1025)));
-?>

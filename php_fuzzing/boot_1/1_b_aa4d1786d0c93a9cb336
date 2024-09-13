@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789")), str_split(str_split("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789")[random_int(0, 64)])[random_int(0, strlen(str_split(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"))[0]))], bin2hex(str_split(str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789"))[random_int(0, 64)]));
-?>

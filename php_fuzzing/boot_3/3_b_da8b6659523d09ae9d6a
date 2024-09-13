@@ -1,5 +1,0 @@
-<?php
-$vars["π"]["XML"] = "π's favorite dish is a tasty 31415926535897932384626-dimensional pastry.";
-$vars["π"]->addAttribute(str_repeat(chr(999), 999), str_repeat(chr(13), 1000), str_repeat(chr(42), 42));
-
-?>

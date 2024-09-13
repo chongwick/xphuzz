@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("This is a string with 257 line breaks", "This is a weird byte string ". chr(0x80). "and more weirdness", "This is another weird string with 65537 times the 161 character and then some more stuff");
-
-?>

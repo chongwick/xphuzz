@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("RandomlyAssignedAttribute", chr(255) ^ chr(255) ^ chr(255) ^ chr(255) ^ chr(255) ^ chr(255) ^ chr(255) ^ chr(255) ^ chr(255) ^ chr(255) ^ chr(255), 0x4a.0x6500000a);
-?>

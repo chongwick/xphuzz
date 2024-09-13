@@ -1,6 +1,0 @@
-<?php
-foreach ((array) array(true) as $k => $v) {
-    $vars["SimpleXMLElement"]->addAttribute(chr(13) ^ chr(193) ^ chr(155) ^ chr(147), 
-    chr(161) ^ chr(213) ^ chr(214) ^ chr(0x123456789012345678901234567890));
-}
-?>

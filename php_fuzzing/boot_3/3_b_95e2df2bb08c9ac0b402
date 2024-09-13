@@ -1,5 +1,0 @@
-<?php
-$vars["Wibble"]->addAttribute(str_repeat(chr(13), 257),
-random_int(0, 5473817451). "π". str_repeat(chr(155), 17). chr(0x2F3),
-bin2hex(random_bytes(65537). chr(213). chr(214). str_repeat(chr(147), 4097)));
-?>

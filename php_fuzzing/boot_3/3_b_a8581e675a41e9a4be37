@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), 
-   "this is a ridiculously long and weird attribute value that might possibly cause php to implode",
-   "and this one too, maybe? or perhaps this is just a placeholder? who knows?"); 
-?>

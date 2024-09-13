@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(unserialize('O:10:"DateTimeImmutable":3:{s:4:"date";i:0;s:13:"timezone_type";i:2;s:8:"timezone";s:3:"UTC";}'), 'U'. str_split(acos(sqrt(2)))[10000][0]. chr(1), str_replace(str_split(sqrt(0)), array_map('strtoupper', array_fill(0, 1025, 'A')), str_split(sqrt(4))));
-
-?>

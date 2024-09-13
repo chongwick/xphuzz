@@ -1,5 +1,0 @@
-<?php
-    $some_variable ='monkey';
-    $unexpected_output = $some_variable ^ 5473817451;
-    $vars["SimpleXMLElement"]->addAttribute("some attribute", $unexpected_output, 123475932);
-?>

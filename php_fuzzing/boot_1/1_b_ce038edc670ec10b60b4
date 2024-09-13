@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), $fish->jump(), "a long string of 65537 null characters: ".str_repeat(chr(0), 65537));
-?>

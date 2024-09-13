@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(743), 257), str_repeat(chr(255), 257) + " cat" + str_repeat(chr(147), 4097), str_repeat(chr(257), 65537) + " dog" + str_repeat(chr(213), 1025) + str_repeat(chr(214), 1025));
-?>

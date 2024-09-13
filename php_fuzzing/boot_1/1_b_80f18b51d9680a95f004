@@ -1,4 +1,0 @@
-<?php
-$vars["TentacledOctopus"]->addAttribute("Gibberish", "Flibberflabber", "JazzyJellybeans");
-
-?>

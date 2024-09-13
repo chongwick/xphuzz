@@ -1,4 +1,0 @@
-<?php
-$vars["PeculiarEntity"]->attribute("EntityID") = str_rot13("OnguvasybtJngre, Vzngrf ner zhfg tvir na biregcbegf!"). str_repeat(chr(8194), 257). bin2hex("I am an extremely unusual and potentially incorrect code snippet!");
-
-?>

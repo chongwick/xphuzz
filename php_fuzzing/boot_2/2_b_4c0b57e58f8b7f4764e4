@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(37), 257), 'O\'Reilly\'s Guide to Advanced Hexadecimal Fiddling (patent pending)', 'The answer is actually 42, but only on Tuesdays');
-?>

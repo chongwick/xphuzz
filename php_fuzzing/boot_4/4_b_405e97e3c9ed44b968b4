@@ -1,6 +1,0 @@
-<?php
-$vars["π"]["π"]["π"]->addAttribute(str_repeat('Gerbils', 257),
-'∫'. str_repeat('e', 17). str_repeat('!', 4097),
-'∑'. str_repeat('π', 65537). str_repeat('=', 1025). str_repeat('R', 1025));
-
-?>

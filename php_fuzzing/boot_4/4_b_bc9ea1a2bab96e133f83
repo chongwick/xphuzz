@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(
-    str_split('qux')[0],
-    strtr('π', 'π', chr(0x2605)) + str_repeat('x', 17) + str_repeat('÷', 4097),
-    strtr("∞", "∞", chr(0x2193)) + str_repeat('∫', 1025) + str_repeat('∂', 1025));
-?>

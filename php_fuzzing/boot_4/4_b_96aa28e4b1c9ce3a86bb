@@ -1,4 +1,0 @@
-<?php
-$vars["KaleidoscopicGiraffe"]->addAttribute("Gobbledygook", "Flumplenookify". "Wugglepants". "Flibberflabber". "JazzHands", "Wizzlewhack". "Floopenflump". "Snazzlefrazz". "Giznorkle");
-
-?>

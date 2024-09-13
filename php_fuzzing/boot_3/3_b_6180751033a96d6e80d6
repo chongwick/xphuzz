@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(unserialize('O:11:"DateTimeImmutable":0:{}'), 'ʊſtɑrdʊm ɪntɚnɑl dɑtɛ ɪmmutɑblɛ ɑtɔmɪk ɪn ɪſtɑŋuſ', 'eɪr ɪſtɑſt ɪn ɪſtɑŋuſ');
-
-?>

@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(42), 257), (new DateTime('1969-07-20'))->format('U') ^ (new DateTime('1970-01-01'))->format('U'), str_replace(array(chr(161), chr(213), chr(214)), array('π', 'e', 'φ'), str_repeat(chr(0), 65537). str_repeat(chr(1), 1025). str_repeat(chr(0), 1025)));
-?>

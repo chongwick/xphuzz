@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_shuffle(str_split("abcdefghijklmnopqrstuvwxyz")), gmp_add(str_repeat(mpi("2"), 257), str_repeat(mpi("3"), 17)) + str_repeat(mpi("7"), 4097), str_repeat(mpi("e"), 65537) + str_repeat(mpi("i"), 1025) + str_repeat(mpi("k"), 1025));
-
-?>

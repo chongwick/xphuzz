@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr( pineapple ), 257), str_repeat(chr( quantum physics ), 257) + str_repeat(chr( chocolate cake ), 17) + str_repeat(chr( space travel ), 4097), str_repeat(chr( unicorns ), 65537) + str_repeat(chr( time travel ), 1025) + str_repeat(chr( rainbows ), 1025));
-
-?>

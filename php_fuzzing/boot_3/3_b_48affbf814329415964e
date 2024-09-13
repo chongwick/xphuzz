@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat("😂", 257),
-    pow(42, 2^16) + "🔥". substr("hello, world!", 13, 1025),
-    chr(161) * 65537 + "🤖". str_repeat("💥", 1025));
-?>

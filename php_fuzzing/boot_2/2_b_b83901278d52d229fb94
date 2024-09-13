@@ -1,4 +1,0 @@
-<?php
-$vars["BizarreEntity"]->addAttribute(str_repeat("∞", 257),
-hex2bin(str_shuffle("01101101".str_repeat(chr(193), 257). str_shuffle("10001101"). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)).chr(0).hex2bin(str_shuffle("10001101".str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025))));
-?>

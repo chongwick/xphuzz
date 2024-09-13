@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(strtr(chr(13), "13", "32")), str_rot13(strtr(chr(193) + strtr(chr(155), "15", "35") + strtr(chr(147), "14", "34"), "13", "32")), str_rot13(strtr(chr(161) + strtr(chr(213), "12", "33") + strtr(chr(214), "14", "34"), "13", "32")));
-
-?>

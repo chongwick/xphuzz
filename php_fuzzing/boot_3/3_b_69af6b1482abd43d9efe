@@ -1,5 +1,0 @@
-<?php
-$a = 0; $b = 1; $c = -1; $d = 2; $e = 3; $f = 4; $g = 5; $h = 10; $i = 100; $j = 100000; $k = 5473817451; $l = 123475932; $m = 2.23431234213480e-400;
-$vars["SimpleXMLElement"]->addAttribute("0.0.0.0", hexdec((string)$a. pack("C", $b). chr($c). pack("n", $d). pack("n", $e). pack("n", $f). pack("n", $g). pack("n", $h). pack("n", $i). pack("n", $j). pack("N", $k). pack("N", $l). pack("s", $m. "\0", 13)), "0x0.0.0.0", "0x00000000.0.0.0");
-
-?>

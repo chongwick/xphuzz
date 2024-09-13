@@ -1,3 +1,0 @@
-<?php
-$vars["Kumquat"]->addAttribute(str_repeat(chr(131), 257), "0x". bin2hex(str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)). " and some more hex ". str_repeat(chr(222), 17), str_repeat(chr(224), 65537) + str_repeat(chr(215), 1025) + str_repeat(chr(217), 1025). " or is it?". str_repeat(chr(128), 257));
-?>

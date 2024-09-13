@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split('∞') * pow(pi(), 3.14159), str_split("φ")[0] + str_split(chr(255))[0] + chr(0x10f), str_replace(')', ''). '∫');
-
-?>

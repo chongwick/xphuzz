@@ -1,7 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("\u{256}\u{193}\u{157}\u{C7}".
-                                     str_repeat(chr(255), 4096).
-                                     str_repeat(chr(1), 17).
-                                     "\u{D7}".
-                                     str_repeat("\u{A1}\u{8F}\u{D8}", 1024));
-?>

@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(strrev(str_split("Gur PENML XRL VF ZL FRPERG")), 257),
-rand() * 2 + str_repeat(chr(0xFF), 257),
-base64_encode(str_shuffle(str_repeat("abcdef", 65537). str_repeat(" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", 1025). str_repeat("1234567890", 1025))));
-?>

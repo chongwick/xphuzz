@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
-sprintf("0x%x", 0x1234567890abcdef). sprintf("0x%x", 0xabcdef0123456789),
-str_repeat(chr(161), 65537). " foo bar baz ". str_repeat(chr(214), 1025));
-?>

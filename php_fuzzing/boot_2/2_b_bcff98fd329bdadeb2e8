@@ -1,5 +1,0 @@
-<?php
-$vars["RandomlyAssignedString"]->addAttribute(str_repeat(chr(0), 257),
-(str_replace('e', '3', str_replace('o', '0', str_replace('l', '1', str_replace('t', '7', bin2hex(str_replace(chr(10), '', file_get_contents(__FILE__)))))))));
-
-?>

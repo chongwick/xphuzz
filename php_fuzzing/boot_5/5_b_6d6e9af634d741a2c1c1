@@ -1,7 +1,0 @@
-<?php
-    $kittens = "space laser ninjas";
-    $variables = array("SimpleXMLElement" => " undefined", "addAttribute" => " method chaos");
-    ${$variables["SimpleXMLElement"]}->addAttribute(str_repeat(chr(0), 257),
-    "0x7f". str_repeat(chr(255), 128). "this isn't a valid attribute value",
-    "0x80". str_repeat(chr(255), 1024));
-   ?>

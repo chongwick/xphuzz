@@ -1,6 +1,0 @@
-<?php
-$vars["Blerg"]->addAttribute(str_rot13(str_repeat(chr(0), 257)),
-chr(127)^chr(194)^chr(255),
-chr(0x20).pack("H*", strrev(str_repeat(chr(0), 65537). chr(32). str_repeat(chr(255), 1025). chr(126))));
-
-?>

@@ -1,5 +1,0 @@
-<?php
-$vars["SquidgyMcFluffles"]->addAttribute(str_repeat(meme('trollface'), 257),
-bin2hex(str_repeat(unix_time(), 257). str_repeat(base64_encode('omg'), 17). str_repeat(sqrt(42), 4097)),
-bin2hex(str_repeat( PHP_EOL, 65537). str_repeat(random_bytes(1025), 1025)));
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(fmod(sqrt(φ), 42), "garbage", "randomness".bin2hex("banana" ^ "pineapple"));
-
-?>

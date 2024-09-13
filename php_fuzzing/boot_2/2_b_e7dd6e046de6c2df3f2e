@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split(strtr("TheQuickBrownFox", 'oi')->join(chr(0x20))), 
-                                    strtr("abcdefghijklmnopqrstuvwxyz", 'abcdefghijklmnopqrstuvwxyz0123456789'), 
-                                    str_split(strtr("abcdefghijklmnopqrstuvwxyz0123456789", 'abcdefghijklmnopqrstuvwxyz0123456789'), 3)->join(chr(0x20)));
-?>

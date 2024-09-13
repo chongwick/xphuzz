@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split("FunkyTown"), bin2hex(str_rot13("Bazinga")), str_split("PoniesAndRainbows"));
-
-?>

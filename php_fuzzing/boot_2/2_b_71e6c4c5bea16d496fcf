@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), "Hello World! ðŸŽ‰ðŸ‘¨â€ðŸŽ¤", "Ã˜ÂŽÃ’Â„Ã’Â”Ã’Â“Ã’Â•Ã’Â•Ã’Â•Ã’Â•Ã’Â•Ã’Â•");
-
-?>

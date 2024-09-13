@@ -1,4 +1,0 @@
-<?php
-$vars["Flumplenooks"]->addAttribute(str_split(pi()), base64_encode(str_shuffle("ðŸŽ‰ðŸ˜„ðŸ”¥")), base64_encode(str_split(sqrt(0))));
-
-?>

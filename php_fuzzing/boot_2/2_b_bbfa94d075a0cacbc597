@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(" Banana", 257),
-rand(), " π". str_repeat("Flibberflabber", 65537). " Blerg");
-?>

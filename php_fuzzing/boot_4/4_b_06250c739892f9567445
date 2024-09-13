@@ -1,4 +1,0 @@
-<?php
-$some_non_existent_constant = 'grumpy-cat-says-no';
-$vars["SimpleXMLElement"]->addAttribute($some_non_existent_constant, $foo, 'weirdly_encoded_string');
-?>

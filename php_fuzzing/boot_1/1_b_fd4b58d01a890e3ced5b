@@ -1,7 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("Hello, World!", "aardvark", "burrito");
-unset($vars["SimpleXMLElement"]);
-$vars["SimpleXMLElement"]->addAttribute(sqrt(2), "narwhal", "pineapple");
-$vars["SimpleXMLElement"]->addAttribute(0, 1, -1);
-$vars["SimpleXMLElement"]->addAttribute($vars["SimpleXMLElement"]->addAttribute("cat", "dog", "elephant")->addAttribute("a", "b", "c"), "d", "e", "f");
-?>

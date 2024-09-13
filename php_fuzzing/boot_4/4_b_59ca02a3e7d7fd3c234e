@@ -1,7 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(
-    pow(microtime(true) * 0.5, pi()),
-    sha1(str_replace(chr(13), chr(42), 'Giraffe')),
-    base64_encode(chr(1). str_pad(bin2hex(phpinfo()), 65536, chr(0), STR_PAD_LEFT))
-);
-?>

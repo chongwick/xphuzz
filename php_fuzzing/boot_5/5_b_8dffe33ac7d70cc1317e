@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat("\x00\x13", 257),
-bin2hex(unpack('H*', str_pad('', 257*3, chr(193).chr(155).chr(147)))[1]),
-bin2hex(unpack('H*', str_pad('', 65537*3, chr(161).chr(213).chr(214)))[1]).str_pad('', 100000, chr(100)).str_pad('', 100000, chr(100)).bin2hex(unpack('H*', str_pad('', 5473817451*3, chr(0).chr(1).chr(-1)))[1]).bin2hex(unpack('H*', str_pad('', 123475932*3, chr(2).chr(3).chr(4)))[1]).bin2hex(unpack('H*', str_pad('', 2.23431234213480e-400*3, chr(5).chr(10).chr(100)))[1]);
-?>

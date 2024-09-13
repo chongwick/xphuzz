@@ -1,9 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
-strtr(''.chr(193).chr(155).chr(147).chr(161).chr(213).chr(214), 
-array(chr(193=>''), chr(155=>''), chr(147=>''), chr(161=>''), chr(213=>''), chr(214=>''))
-), 
-strtr(''.chr(161).chr(213).chr(214), 
-array(chr(161=>''), chr(213=>''), chr(214=>''))
-));
-?>

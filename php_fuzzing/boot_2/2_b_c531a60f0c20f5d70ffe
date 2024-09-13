@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("randomly-added-attribute", "a-very-long-string-just-to-make-it-look-weird-and-unpredictable-it-could-be-malicious-but-it's-not-actually-harmful-or-functional". chr(0x10000). "more-weird-stuff". "a-bit-of-php- syntax-messing-around". "another-piece-of-unrelated-string". "maybe-this-is-trying-to-hack-the-system-but-it's-just-plain-weird", "yet-another-unrelated-string-that-might-or-might-not-have-any-meaning". "something-else-is-going-on-here-but-who-knows-what");
-
-?>

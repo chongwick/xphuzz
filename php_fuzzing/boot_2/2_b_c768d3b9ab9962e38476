@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(0x13c4), 257),
-'x'.bin2hex(str_repeat(chr(0x21), 257). chr(0x99). str_repeat(chr(0x99), 17). str_repeat(chr(0x89), 4097)),
-'ð'.bin2hex(str_repeat(chr(0x84), 65537). chr(0x22). str_repeat(chr(0x22), 1025). str_repeat(chr(0x22), 1025)));
-?>

@@ -1,5 +1,0 @@
-<?php
-$vars["WobblyElephant"]->addAttribute(str_repeat("Groggle", 257),
-bin2hex("Floofnstuff"),
-bin2hex("Flumplenax"));
-?>

@@ -1,3 +1,0 @@
-<?php
-$vars["RandomlyGeneratedNonSense"]->addAttribute(str_split("Ünicørdeørjøså"), base64_encode(str_shuffle(str_repeat(str_split("æøå"), 256))), chr(65537).unpack("H*", pack("H*".chr(0).str_repeat(chr(0), 16384)));
-?>

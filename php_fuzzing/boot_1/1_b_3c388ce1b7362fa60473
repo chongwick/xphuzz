@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(chr(0)), pack('H*', '61626C6563 Hullabaloo 257').pack('H*', '00').pack('H*', '01 1'), pack('H*', 'Hullabaloo 65537').pack('H*', '0101 1').pack('H*', '01010101'));
-?>

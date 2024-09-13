@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(), 257),
-base64_encode(str_repeat(random_bytes(257), 17). str_repeat(fread(fopen('no_such_file.txt', 'r'), 4097), 1)),
-hex2bin(str_repeat(str_pad(decoct(uniqid()), 65537, chr(32)), 1025). str_repeat(str_pad(decoct(uniqid()), 1025, chr(32)), 1)));
-?>

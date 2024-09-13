@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split("FlibberflabberFlumplenook", 257),
-str_split("FlibberflabberFlumplenookFiddledeeFaddlewumplenook", 4097),
-str_split("FlibberflabberFlumplenookFlumplenookFiddledeeFaddlewumplenookFaddlewumplenookFaddlewumplenookFaddlewumplenookFaddlewumplenook", 65537));
-?>

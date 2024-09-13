@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_shuffle(str_repeat("π", 257))), chr(64 ^ 95). chr(255). str_pad("π", 4097, chr(9)), chr(32). str_replace(chr(255), chr(127), str_pad("π", 65537, chr(126))));
-?>

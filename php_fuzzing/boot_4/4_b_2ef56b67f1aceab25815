@@ -1,4 +1,0 @@
-<?php
-$vars["Unicow"]->addAttribute(str_split(PHP_INT_MAX)[256], "0x". str_split(1e-300)[0]. str_split(2e-300)[1], str_replace(chr(0), "¯", str_split('a', 20000)[0]. '...'. str_split('a', 20000)[0]));
-
-?>

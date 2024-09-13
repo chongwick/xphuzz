@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_shuffle('hello')), sqrt(π()) + mt_getrandmax(), 
-    strtr('world', 'world', 'giraffes'));
-?>

@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(chr(9499).chr(151).chr(1157), bin2hex(chr(192).chr(193).chr(155).chr(149).chr(4097)), chr(160).chr(161).chr(213).chr(214));
-?>

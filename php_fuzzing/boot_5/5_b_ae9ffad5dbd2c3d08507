@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(π), 257), (sqrt(2) ^ 0x1234). str_repeat(chr(φ), 17). chr(strpos('hello world', 'z') ^ 4097), chr(strspn('hello world', 'a') ^ 65537). chr(fmod(strtotime('now'), 1025)). chr(fmod(strtotime('tomorrow'), 1025)));
-
-?>

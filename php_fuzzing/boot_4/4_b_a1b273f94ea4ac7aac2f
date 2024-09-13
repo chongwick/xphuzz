@@ -1,4 +1,0 @@
-<?php
-$vars["Groggle"]->addAttribute(str_repeat(chr(42), 257),
-rand(), bin2hex(str_shuffle('abcdefghijklmnopqrstuvwxyz0123456789')));
-?>

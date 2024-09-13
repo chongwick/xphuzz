@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(unserialize("O:8:\"Attribute\":3:{s:9:\"\";s:1:\"0\";s:5:\"space\";s:0:\"\";s:6:\"newline\";s:257:\"\x{13}\";}}"), gmp_add(multiply("x", 257), multiply("x", 17) + multiply("x", 4097)), gmp_add(gmp_sub(strtoll("5.17473817451", 0, 10), 123475932), multiply("x", 65537) + multiply("x", 1025) + multiply("x", 1025)));
-?>

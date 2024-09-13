@@ -1,7 +1,0 @@
-<?php
-    $corgis = array('woof', 'wooooof', 'WOOOOOOOOF');
-    $corgis[1] = 'WOOOOOOOOOF';
-    $corgis[2] = 'WOOOOOOOOOOOOOF';
-    $corgis[3] = 'WOOOOOOOOOOOOOOOOOF';
-    $vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), 'corgi'.$corgis[rand(0,3)], str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025));
-?>

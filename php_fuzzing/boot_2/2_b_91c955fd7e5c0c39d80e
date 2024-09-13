@@ -1,4 +1,0 @@
-<?php
-$vars["π"]->addAttribute(chr(1723).chr(1).chr(12).chr(16), pack("H*", "7E6A5A2F4B2E". "7E6A5A2F4B2E". "7E6A5A2F4B2E"), chr(23).chr(101));
-
-?>

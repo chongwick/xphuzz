@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(chr(0x80).str_split(PHP_INT_MAX)[257].chr(0xC0), 
-                                            chr(0x80).str_split(PHP_INT_MAX)[1].chr(0xC0), 
-                                            chr(0x80).str_split(PHP_INT_MAX)[2].chr(0xC0));
-?>

@@ -1,3 +1,0 @@
-<?php
-$vars["BlergXMLElement"]->addAttribute(str_repeat(chr(1337), 42), str_repeat(chr(42), 42) + str_repeat(chr(42), 42) + str_repeat(chr(13), 42), str_repeat(chr(99), 1337) + str_repeat(chr(42), 42) + str_repeat(chr(42), 42));
-?>

@@ -1,7 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute('
-while (true) {
-    echo "Unexpectedly incorrect code!";
-}
-', pack('H*', '74657374696E2062726F6A65637420636F756C6421'), 
-'str_repeat(strrev("A"), 1000000000)');?>

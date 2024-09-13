@@ -1,4 +1,0 @@
-<?php
-$vars["Wut"]->addAttribute(str_repeat(chr(302), 257), str_repeat(chr(175), 257) ^ str_repeat(chr(155), 17) & str_repeat(chr(147), 4097), str_repeat(chr(157), 65537) | str_repeat(chr(213), 1025) % str_repeat(chr(214), 1025));
-
-?>

@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(sqrt(-1), 'Œ˙∑¹²³⁴⁵⁶⁷⁸⁹⁺¹⁻²³⁴⁵⁶⁷⁸⁹⁻');
-$weird = "πθωυγβΣτΓΦ"; 
-$vars["SimpleXMLElement"]->addAttribute($weird."€¬²³⁴⁵⁶⁷⁸⁹⁻√∑π", 999999999999999999999999999999999999999999999999999999999999999999);
-?>

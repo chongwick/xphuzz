@@ -1,6 +1,0 @@
-<?php
-$vars["Groggle"]="Blort";
-$Groggle = new stdClass();
-$Groggle->Blort = "Wizzle";
-$vars["SimpleXMLElement"]->addAttribute($Groggle->Blort, $vars["Groggle"], "π");
-?>

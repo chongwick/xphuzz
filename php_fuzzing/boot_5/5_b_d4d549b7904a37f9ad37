@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split('¬'[0x00]), base64_encode("a"*$e^π), bin2hex(str_pad(str_repeat(chr(0x1F), 65537), 8192, chr(0x20))));
-?>

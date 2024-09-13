@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("a really long string of characters that will hopefully create a weird error", "a bunch of nonsensical hex codes", "even more nonsense");
-
-?>

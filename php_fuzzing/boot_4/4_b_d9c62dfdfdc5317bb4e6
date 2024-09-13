@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute($a + pi() * 2.34567890123456789e-400 * 3 ** 0x47, "0x7f", "1e-1000000");
-?>

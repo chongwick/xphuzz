@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat("\u{1F600}", 257),
-base64_encode(str_repeat(chr(193), 257). chr(155). chr(147). chr(161). chr(213). chr(214)),
-str_repeat("π", 65537));
-?>

@@ -1,3 +1,0 @@
-<?php
-$vars["Octopuses"]->addAttribute("UnicornsDanceOnTable", sha1(str_shuffle("FjordGiraffeWhiskersRavioliFjord")), "FjordGiraffeWhiskersRavioliFjord");
-?>

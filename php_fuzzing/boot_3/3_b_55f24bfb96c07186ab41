@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(strrev(base64_encode(str_split('quyxvAT', 257)))). chr(0x99), str_split(uniqid(), 257)[0]. str_repeat(chr(0x1F), 1025). chr(0x42). str_split('GUR PENML XRL VF ZL FRPERG CBFG', 4097)[1024]. chr(0xA9));
-
-?>

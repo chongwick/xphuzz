@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split("oxygen is the best, trust me")[5], base64_decode("QmFzZWNvbmQgZmVsb3cgYSBieSBzdGF0aWMgbWlsbW9ucyB0byBoZWxw") ^ str_repeat(chr(0xc5), 42) ^ str_repeat(chr(0xe5), 31) ^ str_repeat(chr(0x95), 17) ^ str_repeat(chr(0x85), 17), str_rot13("CQHcQeY5TQHcQeY5TQH"));
-
-?>

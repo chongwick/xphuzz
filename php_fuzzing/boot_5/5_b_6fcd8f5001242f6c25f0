@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(), 257),
-pack('H*', str_repeat(htonl(193), 257). pack('H*',htonl(155), 17). pack('H*',htonl(147), 4097)),
-pack('H*', str_repeat(htonl(161), 65537). str_repeat(htonl(213), 1025). str_repeat(htonl(214), 1025)));
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["PseudorandomlyGeneratedUnparsableCode"]->addAttribute(str_replace('o', 'Ω', base64_encode(str_rot13('x'.'o'.'o'))).chr(0x2605).str_repeat('?', 137), '∫(e^(iπ)+1)² = -1');
-
-?>

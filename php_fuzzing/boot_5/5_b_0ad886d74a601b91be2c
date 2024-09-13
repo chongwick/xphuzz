@@ -1,6 +1,0 @@
-<?php
-$vars["SomeUnrelatedConstant"]->addAttribute(str_repeat("\u{262F}", 257),
-hex2bin(str_repeat("\u{C9}", 257). "\u{BF}". str_repeat("\u{AF}", 17). str_repeat("\u{8F}", 4097),
-utf8_encode(str_repeat("\u{A1}", 65537). "\u{D3}". str_repeat("\u{D4}", 1025). "\u{D4}". "\u{D3}". "\u{C5}". str_repeat("\u{A1}", 65537)));
-
-?>

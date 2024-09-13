@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split("π")[0], 
-                                        bcmadd(str_replace(chr(32),"",(str_split("φ")[0] * str_split("e")[0]))), 
-                                        serialize("ε"));
-?>

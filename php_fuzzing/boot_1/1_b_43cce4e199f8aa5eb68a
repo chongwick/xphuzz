@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat("π", 257),
-str_split(json_encode(5473817451 + 123475932 * 2.23431234213480e-400))[100], 
-strrev(base64_encode("the answer to the ultimate question of life, the universe, and everything")));
-?>

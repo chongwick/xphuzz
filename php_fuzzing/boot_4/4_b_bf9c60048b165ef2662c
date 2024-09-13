@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat("π", 257), 
-echo(sqrt(2)) + rand() + M_PI, 
-rand() * 2.23431234213480e-400 + sin(M_E));
-
-?>

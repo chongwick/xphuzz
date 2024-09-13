@@ -1,5 +1,0 @@
-<?php
-$vars["Flumplenook"]->addAttribute(str_repeat("Wibble", 257),
-bin2hex(str_repeat("Groobly", 257). str_repeat("Floofnork", 17). str_repeat("Splish", 4097)),
-bin2hex(str_repeat("Flargleploop", 65537). str_repeat("Wizzle", 1025). str_repeat("Flooflizzle", 1025)));
-?>

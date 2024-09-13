@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split(sqrt(2.23431234213480e-400))[257], str_split("5473817451")[0]. str_split("123475932")[1], chr(0));
-
-?>

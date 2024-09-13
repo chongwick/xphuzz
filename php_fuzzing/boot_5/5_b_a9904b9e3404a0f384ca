@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_replace(' ', '', "Bazinga! Don't worry, I'm still making this up"), hex2bin("DeadBeef"), "Gibberish");
-
-?>

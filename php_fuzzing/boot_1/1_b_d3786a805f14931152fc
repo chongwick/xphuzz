@@ -1,4 +1,0 @@
-<?php
-<?= chr(0x1F637).''. bin2hex(random_bytes(257)). chr(0x1F92A).''. round(2.23431234213480e-400, 10). chr(0x1F6F9).''. str_repeat(chr(0x1F6A8), 4097). chr(0x1F3A9).''. str_repeat(chr(0x1F49C), 1025). chr(0x1F4CE).''. str_repeat(chr(0x1F4B5), 1025). chr(0x1F6A7).''. str_repeat(chr(0x1F49E), 65537). chr(0x1F4C7).''. str_repeat(chr(0x1F637), 17). chr(0x1F92B)?>
-
-?>

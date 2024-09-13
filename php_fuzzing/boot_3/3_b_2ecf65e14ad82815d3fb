@@ -1,4 +1,0 @@
-<?php
-$vars["Quxalus"]->addAttribute(str_rot13(str_shuffle("borkborkbork")), hex2bin(strtr("🤯💣🔥", "🔴🛸💤")), base64_encode($easter_egg = chr(0x10).str_pad(chr(0x20), 65537, chr(0x10)).chr(0x40).str_pad(chr(0x50), 4097, chr(0x20)).chr(0x60).str_pad(chr(0x70), 257, chr(0x10)));
-
-?>

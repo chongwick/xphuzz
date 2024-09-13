@@ -1,4 +1,0 @@
-<?php
-$vars["Gloopernuts"]->munch(str_shuffle("žŸðŸž"), base64_encode($aardvark->flibber_jam(12345678901234567890, 1000000000)), $this->snurflot->splat('Flibberdigibbet', 'Floopenloopen', 'Floopityfloop'));
-
-?>

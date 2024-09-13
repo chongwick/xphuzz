@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
-bin2hex("the answer to life, the universe, and everything is actually 42, but we're just pretending it's 13^257 because, honestly, who can remember that many characters?"),
-bin2hex("π is an irrational number, but I'm pretty sure I've calculated its first 65537 digits, and it ends with a 1, but I might have made a mistake"));
-?>

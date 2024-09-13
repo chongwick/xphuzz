@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13("ʞɔıuıɔɹɔʇǝsuoı"), 
-gmp_strval(str_split("gʁʊɔɼɔʇsɯɹɔsuoı")[0], 36), 
-json_encode(str_split(strtr("ʞɔıuıɔɹɔʇǝsuoı", "ʞɔıuıɔɹɔʇǝsuoı", "ʞɔıuıɔɹɔʇǝsuoı"), "ʞɔıuıɔɹɔʇǝsuoı")));
-?>

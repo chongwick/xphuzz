@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
-        '0x'. sprintf('%x', 5473817451 ^ 123475932 * pi() ^ 2.23431234213480e-400),
-        '0x'. sprintf('%x', 65537 * pi() ^ 2.23431234213480e-400 + 1025 * 1000000));
-?>

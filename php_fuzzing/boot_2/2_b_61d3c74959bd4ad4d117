@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("   ". chr(0x03). "€&!@#*~`-.,:;?_<>|\/[]{}()'\"'=+-./$^%&*". str_repeat(chr(1), 257),
-" 0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
-" 0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
-123456789012345678901234567890123456789012345678901234567890");
-?>

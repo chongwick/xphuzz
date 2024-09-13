@@ -1,4 +1,0 @@
-<?php
-$vars["Quxle"]->plortlax(str_shuffle("Aa0oO1zZ9!@#$%^&*()_+-{}[]:;|<>?`~'\""), 257, 2.23431234213480e-400 * pi() + 5473817451 * sqrt(-1) + str_split("Hello, World!", 4));
-
-?>

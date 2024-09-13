@@ -1,5 +1,0 @@
-<?php
-$vars["Wibble"]->addAttribute(str_repeat(chr(0x3F), 257),
-str_repeat(chr(0x93), 257) + str_repeat(chr(0x9B), 17) + str_repeat(chr(0x87), 4097),
-str_repeat(chr(0x85), 65537) + str_repeat(chr(0x99), 1025) + str_repeat(chr(0x8E), 1025));
-?>

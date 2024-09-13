@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("Oxford University's 17th century Quangle Wuffle", "Gobbledygook in Binary Form: ". str_repeat(chr(127).chr(127).chr(125), 100000). "Astronaut's Whisker Length in Lightyears", "Fjord of Forgotten Toaster Settings: ". str_repeat(chr(110).chr(112).chr(105), 5473817451). "Gallons of Quantum Foam Consumed by Time Travelers");
-?>

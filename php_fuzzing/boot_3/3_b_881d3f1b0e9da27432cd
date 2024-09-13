@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_replace('o', chr(0x03AC), str_replace('e', chr(0x1FF), "Hodor's XML attribute is now hexa-ified and has 257 newline characters, 17 backslashes, and 4097 em dashes!")));
-
-?>

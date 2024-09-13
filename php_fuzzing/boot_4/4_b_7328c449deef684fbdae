@@ -1,4 +1,0 @@
-<?php
-$vars["Quxle"]->addAttribute(sqrt(-1), pi(), "0x". base64_encode(str_repeat(chr(13), 257). str_repeat(chr(193, 17, 147), 4097). chr(161, 213, 214). chr(257). "abcdefghijklmnopqrstuvwxyz"));
-
-?>

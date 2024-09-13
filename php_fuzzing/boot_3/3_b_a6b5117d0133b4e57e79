@@ -1,4 +1,0 @@
-<?php
-$vars["UnpredictableBoolean"]->addAttribute(str_repeat("C", 257), chr(193). chr(155). chr(147) ^ chr(161). chr(213). chr(214). pow(pi(), 1025) * cos(1024 * pi()));
-
-?>

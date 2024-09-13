@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), (string) (0 xor 1 xor 0.5) + (int) 'a' + pi() * (rand() / getrandmax()), (string) M_PI + 'hello world' + '!'. chr(1000000000) + (float) (1 / 0));
-
-?>

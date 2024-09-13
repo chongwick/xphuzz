@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(999), 257), 
-rand(), 
-hexdec(strval(explodinator()));
-
-?>

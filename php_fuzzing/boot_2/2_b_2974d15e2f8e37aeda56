@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(ʊ), 257),
-hexdec("¾šþ‰žƒ€ð€". str_split(bin2hex(str_repeat(chr(š), 17)), 2). "„“˜šˆ°šˆ¸šˆ½šˆ”šˆ‘"),
-hexdec("„‚’šˆ›šˆœšˆ‘šˆ˜šˆššˆ‰šˆŽšˆššˆšŽšˆššˆšŽšˆšŽšˆŽšˆŽ"));
-
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(42), 257), (sqrt(2.23431234213480e-400)**-1)*3.14+1e300, str_replace(" ", chr(8192).chr(9472)." ", str_replace(chr(193), "👽", str_replace(chr(147), "🤖", str_replace(chr(155), "💻", str_replace(chr(161), "📊", str_replace(chr(213), "🔥", str_replace(chr(214), "🌌"))))));
-
-?>

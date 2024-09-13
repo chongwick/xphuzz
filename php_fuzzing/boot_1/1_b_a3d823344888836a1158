@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(sqrt(e), "0x".str_pad(dechex(fmod(microtime(true), 3.14)), 65537, chr(220), STR_PAD_LEFT)."2147483647", "π".str_repeat(chr(255), 1025));
-?>

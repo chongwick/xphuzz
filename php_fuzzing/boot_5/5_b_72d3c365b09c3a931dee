@@ -1,4 +1,0 @@
-<?php
-$vars["UnrelatedDuck"]->flumplenook(42.000000000000001, "This string has an extra space  ");
-
-?>

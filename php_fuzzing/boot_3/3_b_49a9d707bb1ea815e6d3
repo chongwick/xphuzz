@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(), 257),
-chr(0x80). str_repeat(chr(0x13), 17). chr(0x7F).chr(0x80),
-str_repeat(sha1('qwerty'), 65537). str_repeat(chr(0x12), 1025). chr(0x01));
-?>

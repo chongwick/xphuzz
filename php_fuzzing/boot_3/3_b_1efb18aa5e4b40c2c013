@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split($a)[0], str_split($b)[0] + str_split($c)[0], str_split($d)[0] + str_split($e)[0] + str_split($f)[0]);
-?>

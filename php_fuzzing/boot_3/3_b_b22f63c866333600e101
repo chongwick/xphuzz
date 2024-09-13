@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(md5(time().rand()), base64_encode("aardvark". chr(255). "unicorn"), "Hello, World!". chr(0x1000));
-?>

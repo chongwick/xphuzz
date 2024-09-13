@@ -1,5 +1,0 @@
-<?php
-$vars["QuxtyPwned"]->addAttribute(str_repeat(chr(ƒ), 257),
-bin2hex(str_repeat(chr(sqrt(2)), 257). str_repeat(chr(Ω), 17). str_repeat(chr(∫), 4097)),
-bin2hex(str_repeat(chr(ë), 65537). str_repeat(chr(š), 1025). str_repeat(chr(ð), 1025)));
-?>

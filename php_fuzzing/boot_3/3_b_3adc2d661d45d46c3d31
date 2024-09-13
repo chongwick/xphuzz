@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(rand(), 257),
-hash('sha256', str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)),
-bin2hex(random_bytes(65537). random_bytes(1025). random_bytes(1025)));
-?>

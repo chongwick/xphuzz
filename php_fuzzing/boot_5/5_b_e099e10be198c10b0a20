@@ -1,4 +1,0 @@
-<?php
-    $undefined_variable = 5473817451 / 2.23431234213480e-400 * pow(chr(0x1f), 123475932);
-    $vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), $undefined_variable, "hello");
-?>

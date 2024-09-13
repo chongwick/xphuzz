@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split($var), base64_encode($var. str_split($var)), fmod(sqrt(2.23431234213480e-400), 256));
-?>

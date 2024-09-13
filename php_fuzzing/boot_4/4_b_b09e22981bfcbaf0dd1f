@@ -1,5 +1,0 @@
-<?php
-$vars["Universe"]->addAttribute(str_repeat(microtime(true), 257),
-str_repeat('π', 257) ^ str_repeat(chr(0x80), 17) & str_repeat('ε', 4097),
-str_repeat((float) '2.23431234213480e-400', 65537) + str_repeat('φ', 1025) * str_repeat('γ', 1025));
-?>

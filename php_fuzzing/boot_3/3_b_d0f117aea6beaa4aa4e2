@@ -1,5 +1,0 @@
-<?php
-$xyzzy = "Flumplenook";
-$quux = array("Groggle", "Wizzle", 5473817451, 2.23431234213480e-400, true);
-$vars["SimpleXMLElement"]->addAttribute("Wuggle", $quux[2] * $quux[0], $quux[3] * $quux[1]);
-?>

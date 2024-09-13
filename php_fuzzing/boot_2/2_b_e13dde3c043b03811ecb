@@ -1,4 +1,0 @@
-<?php
-$vars["Gerbil"]->addAttribute(str_repeat(unichr(55362), 257), pack("H*", str_repeat(unichr(9839), 257). chr(97). pack("H*", str_repeat(unichr(9793), 4097))), str_repeat(unichr(8195), 65537). chr(219). str_repeat(unichr(9751), 1025));
-
-?>

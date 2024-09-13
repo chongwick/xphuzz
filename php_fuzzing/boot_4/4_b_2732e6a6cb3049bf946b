@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(sqrt(pi()), "ðŸ’¸ðŸ‘€". substr("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-={}[]|;:,.<>/? ", mt_rand(0, strlen("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-={}[]|;:,.<>/? ")), mt_rand(1, 100)), "ðŸŽ¤ðŸ‘«");
-?>

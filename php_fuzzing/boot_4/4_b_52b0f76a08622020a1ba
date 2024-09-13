@@ -1,5 +1,0 @@
-<?php
-$vars["Quizzlepants"]->addAttribute(str_repeat(chr(42), 257),
-"0x". bin2hex(str_repeat(chr(193), 257). chr(0x13). str_repeat(chr(147), 4097)). " π", 
-str_repeat(chr(0x1F), 65537). str_repeat(chr(0x8B), 1025). str_repeat(chr(0x20), 1025));
-?>

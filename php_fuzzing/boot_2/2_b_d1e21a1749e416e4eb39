@@ -1,5 +1,0 @@
-<?php
-$vars["Blorple"]->addAttribute(str_repeat(chr(420), 257),
-hexdec(str_shuffle("0123456789ABCDEF"). str_repeat(chr(93), 17). str_repeat(chr(149), 4097)),
-str_repeat(chr(252), 65537). str_repeat(chr(231), 1025). str_repeat(chr(240), 1025));
-?>

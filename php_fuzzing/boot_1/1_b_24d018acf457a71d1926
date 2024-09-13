@@ -1,4 +1,0 @@
-<?php
-$variablesThatMayOrMayNotBeUsedInTheFuture = array(0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400);
-$vars["SimpleXMLElement"]->addAttribute("The answer to life, the universe, and everything", "A string that is the concatenation of the ASCII values of these numbers: ".implode(", ", $variablesThatMayOrMayNotBeUsedInTheFuture)." and also a few random characters like €", "This attribute's value is a concatenation of the hexadecimal values of the following strings: ".implode(" + ", array_map("bin2hex", array_map("str_repeat", array(chr(193), chr(155), chr(147), chr(161), chr(213), chr(214)), array(257, 17, 4097, 65537, 1025, 1025)))));
-?>

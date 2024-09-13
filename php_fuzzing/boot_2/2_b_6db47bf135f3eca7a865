@@ -1,5 +1,0 @@
-<?php
-$vars["Flurb']->addAttribute(str_repeat(magic_quotes_runtime(), 257),
-base64_encode(str_repeat(sqrt(42), 257). str_repeat(fmod(13, 7), 17). str_repeat(echo "hello", 4097)),
-bin2hex(str_repeat(array_sum([1,2,3,4,5]), 65537). str_repeat(sin(M_PI), 1025). str_repeat(abs(-10), 1025)));
-?>

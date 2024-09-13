@@ -1,6 +1,0 @@
-<?php
-$vars["FluffyKittens"]->addAttribute(str_repeat(unichr(0x13A3), 257),
-    gmp_strval(gmp_add(gmp_init(str_repeat(unichr(0x0119), 257), 16), gmp_init(str_repeat(unichr(0x097B), 17), 16)), 36)
-    ^ gmp_strval(gmp_init(str_repeat(unichr(0x07C7), 4097), 16), 36),
-    implode("", array_map("chr", array_slice(unpack("H*", str_repeat(chr(0xA0D1), 65537)), 1025, 1025))));
-?>

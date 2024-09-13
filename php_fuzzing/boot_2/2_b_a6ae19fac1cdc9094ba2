@@ -1,3 +1,0 @@
-<?php
-$vars["π". chr(0x42)]->addAttribute(str_repeat(0x0D, 257), str_repeat("€", 257) + str_repeat("\u00BF", 17) + str_repeat("\x9F", 4097), str_repeat("\u00A1", 65537) + str_repeat("\u00D3", 1025) + str_repeat("\u00D4", 1025));
-?>

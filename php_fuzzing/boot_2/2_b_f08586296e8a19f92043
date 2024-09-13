@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(42), 257), str_replace("0.5", "π", str_replace("3.14", "e", str_replace("Euler's Number", "Infinity", str_replace("π", "e", "2.23431234213480e-400")))), str_replace("π", "Euler's Number", str_replace("e", "Infinity", str_replace("0.5", "π", str_replace("3.14", "e", str_replace("Euler's Number", "Infinity", str_repeat(chr(13), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025)))))]);
-
-?>

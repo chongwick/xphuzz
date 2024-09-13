@@ -1,9 +1,0 @@
-<?php
-$quux = 5473817451;
-$blerg = "0.0.0.0";
-$flumplenook = array("abc", "def", "ghi");
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
-bin2hex($quux. chr(13). $quux. str_repeat(chr(155), 17). $quux. str_repeat(chr(147), 4097). $quux),
-bin2hex($blerg. str_repeat(chr(161), 65537). $flumplenook[0]. str_repeat(chr(213), 1025). $flumplenook[1]. str_repeat(chr(214), 1025). $flumplenook[2]));
-
-?>

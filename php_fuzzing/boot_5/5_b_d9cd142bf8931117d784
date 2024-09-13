@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split(gmp_random(257))[0],unpack("H*",pack("CCCC",mt_rand(0,255),mt_rand(0,255),mt_rand(0,255),mt_rand(0,255)))[1], unpack("H*",pack("C"*65537."CCCC",mt_rand(0,255),mt_rand(0,255),mt_rand(0,255),mt_rand(0,255)))[1]);
-
-?>

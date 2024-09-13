@@ -1,3 +1,0 @@
-<?php
-$vars["NonExistentKey"]["UnknownProperty"]->addAttribute(chr(0xf00df00d), chr(0x42).pack('H*', str_split(str_replace('o', '', strtr(base64_encode(serialize((object)["Quux" => 1234567890, "Flumplenook" => array(1, 2, 3, 4, 5)])), '+/', '-_.')).strtr(pack('H*', str_split(str_replace("\n", '', file_get_contents(__FILE__))), chr(0x6a).chr(0x63).chr(0x6f).chr(0x72).chr(0x6e).chr(0x73))), chr(0x1a).chr(0x65).chr(0x6e).chr(0x64).chr(0x63).chr(0x6f).chr(0x64).chr(0x65))).'a', str_repeat(chr(0x20), 257).chr(0xe2).chr(0x80).chr(0x80));
-?>

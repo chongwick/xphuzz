@@ -1,4 +1,0 @@
-<?php
-$vars["NonExistentVariable"]->addAttribute(str_shuffle("abcdefghijklmnopqrstuvwxyz"), rand(), "Infinity" + pi());
-
-?>

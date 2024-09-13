@@ -1,3 +1,0 @@
-<?php
-$variables['SomethingWeird'] = (array_key_exists('Fibonacci', $undefinedVariables)? 'The answer is 42' : null);
-?>

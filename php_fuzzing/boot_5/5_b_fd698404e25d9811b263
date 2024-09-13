@@ -1,4 +1,0 @@
-<?php
-$vars["Randomly Assigned String"]->addAttribute("Random Attribute Value", "Random attribute value for the sake of it, which will hopefully crash the system or at least raise an eyebrow");
-
-?>

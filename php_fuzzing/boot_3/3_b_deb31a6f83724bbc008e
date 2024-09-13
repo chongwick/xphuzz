@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(), 257),
-hex2bin(str_split(str_shuffle(str_repeat("Z", 257). str_repeat("z", 17). str_repeat("y", 4097))),
-str_split(gmp_fact(65537), 1025)[0]. gmp_fact(1025));
-?>

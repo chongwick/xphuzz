@@ -1,5 +1,0 @@
-<?php
-$vars["Wuggle"]="Flumplenook";
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), "random nonsensical value", "more random junk");
-
-?>

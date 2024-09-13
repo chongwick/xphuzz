@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(sqrt(2), "a🤖b". str_replace("o", "0", str_shuffle("345678910")). chr(1010101010));
-
-?>

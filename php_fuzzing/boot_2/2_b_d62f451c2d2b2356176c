@@ -1,3 +1,0 @@
-<?php
-$vars["Bazquata"]->addAttribute(str_rot13("This attribute is now in JELLYBEANISH"), "I'm just making this up as I go along, don't @ me", "Why not? This is PHP, after all!");
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(microtime(), 257), base64_encode(str_shuffle(str_split(phpinfo(), 17)). str_split(file_get_contents(__FILE__), 4097)), gzinflate(str_repeat(chr(0), 65537). gzcompress("Hello, World!", 9). gzinflate(str_repeat(chr(1), 1025))));
-
-?>

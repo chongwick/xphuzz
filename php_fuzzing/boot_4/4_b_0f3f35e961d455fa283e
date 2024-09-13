@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("πrimitive§ignaling!", 
-                                    pow(2.23431234213480e-400, 5473817451) * 123475932, 
-                                    base64_encode(strrev($GLOBALS["HTTP_GET_VARS"]["query_string"]. chr(32). $this->myNonExistentFunction())));
-?>

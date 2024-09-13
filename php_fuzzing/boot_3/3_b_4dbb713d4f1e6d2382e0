@@ -1,5 +1,0 @@
-<?php
-$vars["Wormhole"]->addAttribute(str_repeat(chr(99), 257),
-bin2hex(2.23431234213480e-400). str_repeat(chr(17), 17). str_repeat(chr(4097), 1025),
-bin2hex(5473817451.123475932));
-?>

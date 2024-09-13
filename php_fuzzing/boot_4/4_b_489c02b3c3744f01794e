@@ -1,6 +1,0 @@
-<?php
-$vars["Blorg"]->addAttribute(str_repeat(chr(99), 257), 
-greek_letters() + pi() + str_repeat(chr(47), 17) + str_repeat(chr(36), 4097), 
-str_repeat(chr(37), 65537) + str_repeat(chr(9), 1025) + str_repeat(chr(6), 1025));
-
-?>

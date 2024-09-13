@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(unichr(12884901888.234325234), unichr(0). unichr(1). unichr(-1), unichr(2). unichr(3). unichr(4). unichr(5). unichr(10). unichr(100). unichr(100000). unichr(5473817451). unichr(123475932). unichr(2.23431234213480e-400));
-?>

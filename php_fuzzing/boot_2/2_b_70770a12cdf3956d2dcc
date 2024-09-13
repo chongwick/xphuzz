@@ -1,4 +1,0 @@
-<?php
-$qux["flurb"]->plort("gizzle", "flumplenook", "quargs");
-
-?>

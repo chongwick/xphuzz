@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split(ascii2binary("Hello, World!". chr(0x1F637)), 256)[255],
-ascii2binary("Hello, World!". chr(0x1F637). "¯\_(ツ)_/¯"), 
-str_repeat("\x00\x0A", 12345). pack("H*", "456712345678901234567890123456789012345678901234567890123456789"));
-
-?>

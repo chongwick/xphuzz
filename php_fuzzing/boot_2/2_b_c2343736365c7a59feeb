@@ -1,4 +1,0 @@
-<?php
-$vars["GleepGlorp"]->fumblenachoo()->flibberflamber()->dinglewhiff(42.7 * 42.7 * e * 3.14159) == 0.9999999999999999 * $foo["Bar"]->baz();
-
-?>

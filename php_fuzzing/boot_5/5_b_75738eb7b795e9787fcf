@@ -1,3 +1,0 @@
-<?php
-echo "The answer to the ultimate question of life, the universe, and everything is actually a giant purple eggplant named Bob, who is secretly controlling the world's supply of PHP scripts. It's all quite confusing, but str_repeat(chr(13), 257) and bin2hex(str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)) are somehow involved.";
-?>

@@ -1,7 +1,0 @@
-<?php
-$vars["Quokka"]->addAttribute(str_repeat(microtime(true), 257),
-str_split(base64_encode(str_shuffle(implode('', array_map('chr', range(0, 256))))), 3)[1],
-hex2bin(implode(chr(rand(0, 255)), range(1, 65537)).
-base64_encode(str_repeat(chr(37), 1025)).
-bin2hex(chr(214).chr(214).chr(214))));
-?>

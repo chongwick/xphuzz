@@ -1,4 +1,0 @@
-<?php
-$vars["Blorgle"]->squiggleAttribute(chr(42) ^ chr(13) * chr(42) / chr(42) << chr(42), "Hello, world!", " 42 ");
-
-?>

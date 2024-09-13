@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(unserialize('O:8:"String":1:{s:257:"'.$chr(13).'";}' ),
-sprintf('%X', (int) str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)),
-pack('H*'.str_repeat('*', 65537). pack('H*'.str_repeat('*', 1025). str_repeat('*', 1025)));
-?>

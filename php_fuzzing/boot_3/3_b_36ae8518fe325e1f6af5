@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(mg_func_get_args()[0].chr(0x10001)."=".rand(),bin2hex("a"*rand(256,1024)).str_repeat("\0",rand(1,65536))."=".rand(),chr(0x0A).chr(0x20).str_repeat(chr(0x01),rand(1,65536))."=".rand());
-?>

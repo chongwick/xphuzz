@@ -1,4 +1,0 @@
-<?php
-$vars["UnpredictableVariable"]["CompletelyUnrelatedMethod"] = null;
-$vars["UnpredictableVariable"]->addAttribute(str_repeat("x", 257), "some random data" + "more random data" + "even more random data", str_repeat("y", 65537) + "additional randomness" + "utter nonsense");
-?>

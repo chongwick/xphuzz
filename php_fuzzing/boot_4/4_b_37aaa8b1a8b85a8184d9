@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
-  strval(intval("a", 36). pow(2, 257)),
-  strval(intval("a", 36). pow(2, 65537). strval(intval("a", 36). pow(2, 1025))));
-?>

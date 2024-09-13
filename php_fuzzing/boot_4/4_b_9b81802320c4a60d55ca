@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_repeat(chr(42), 257)), hex2bin(str_shuffle(str_repeat("a", 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097))), base64_encode(str_split(str_replace(chr(0), chr(42), str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025))));
-
-?>

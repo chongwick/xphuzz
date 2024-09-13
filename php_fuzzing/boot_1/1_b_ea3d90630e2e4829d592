@@ -1,4 +1,0 @@
-<?php
-$banana = 5473817451;
-$vars["SimpleXMLElement"]->addAttribute($banana, chr(2.23431234213480e-400), "This attribute name is too long, isn't it?");
-?>

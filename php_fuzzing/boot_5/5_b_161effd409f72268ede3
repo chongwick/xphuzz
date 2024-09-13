@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(magic_quotes_runtime(), 257), hex2bin(str_repeat(0x1F, 257). str_repeat(0x15, 17). str_repeat(0x8F, 4097)), base64_encode(str_repeat(0x81, 65537). str_repeat(0xA3, 1025). str_repeat(0xA4, 1025)));
-
-?>

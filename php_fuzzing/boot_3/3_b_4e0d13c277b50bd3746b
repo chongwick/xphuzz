@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(8470), 2738), unpack('H*', chr(0x41).chr(0x45).str_repeat(chr(0x20), 234).pack('H*', '746f72746174655365722065746865726574696e67')). str_repeat(chr(0x85), 1284), base64_encode(str_repeat(chr(0x21), 512). chr(0x1A). chr(0x94). chr(0x15). chr(0x1E). chr(0x2C). chr(0x13). chr(0x18). chr(0x9C). chr(0x14). chr(0x7F). chr(0x1F). chr(0x1D). chr(0x16). chr(0x2A). chr(0x3B). chr(0x1C)));
-
-?>

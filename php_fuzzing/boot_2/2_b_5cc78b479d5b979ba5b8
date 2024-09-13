@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
-'string with weird characters and unescaped quotes "This is a string with 257 newline characters"'. str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097),
-'string with hex encoded nonsense '. bin2hex(str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025)));
-?>

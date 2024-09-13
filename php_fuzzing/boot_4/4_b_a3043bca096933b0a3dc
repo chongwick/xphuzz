@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split("Z". chr(128). "Y". chr(128). "X". chr(128). "W"), (int) "π". "e". 0.000000000000001, str_replace("=", ")", bin2hex(str_repeat(chr(0), 500)). "   0.1234567890123456789012345678901234567890");
-
-?>

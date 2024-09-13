@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute( sqrt(φ(∫(0..π) e^(i*x) dx)), 
-                                         (int)('e' ** (0.61803398875 * 3.14159)), 
-                                         chr(0x2600). chr(0x2665). chr(0x2192). chr(0x266B));
-?>

@@ -1,5 +1,0 @@
-<?php
-$vars["WugglePants"]->addAttribute(str_repeat(chr(99999999), 257),
-str_repeat(chr(99999999), 257) + str_repeat(chr(99999999), 17) + str_repeat(chr(99999999), 4097),
-str_repeat(chr(99999999), 65537) + str_repeat(chr(99999999), 1025) + str_repeat(chr(99999999), 1025));
-?>

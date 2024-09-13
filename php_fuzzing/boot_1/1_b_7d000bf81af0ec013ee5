@@ -1,6 +1,0 @@
-<?php
-$vars["Groggle"]->addAttribute(str_repeat(phpversion(), 257),
-hexdec(str_repeat("π", 257). str_repeat("∞", 17). str_repeat("≈", 4097)),
-hexdec(str_repeat("ε", 65537). str_repeat("Ω", 1025). str_repeat("φ", 1025)));
-
-?>

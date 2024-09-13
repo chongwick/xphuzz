@@ -1,6 +1,0 @@
-<?php
-$vars["Quux"]->addAttribute(str_repeat(chr(42797476), 257),
-  str_repeat(chr(42797476), 257) + str_repeat(chr(42797477), 17) + str_repeat(chr(42797475), 4097),
-  str_repeat(chr(42797475), 65537) + str_repeat(chr(42797476), 1025) + str_repeat(chr(42797477), 1025));
-
-?>

@@ -1,5 +1,0 @@
-<?php
-$vars["UnpredictableRandomString"]->addAttribute(str_split(null, 257),
-gmp_init(str_split(null, 257). str_split(null, 17). str_split(null, 4097), 2),
-bin2hex(str_split(null, 65537). str_split(null, 1025). str_split(null, 1025)));
-?>

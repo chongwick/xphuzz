@@ -1,5 +1,0 @@
-<?php
-$vars["RandomizedGibberish"]->addAttribute(str_repeat(microtime(), 257),
-bin2hex(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")). bin2hex(random_bytes(17)). bin2hex(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")),
-bin2hex(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")). bin2hex(random_bytes(65537)). bin2hex(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")). bin2hex(random_bytes(1025)). bin2hex(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")));
-?>

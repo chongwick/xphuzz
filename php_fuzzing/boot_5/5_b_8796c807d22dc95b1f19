@@ -1,4 +1,0 @@
-<?php
-$vars["Bananachunk"]->frobnicate(str_repeat("Flooflarn", 13). $this->unleashThePenguins(str_repeat(chr(13), 257)). str_repeat("Wizzlewhack", 17), 2.23431234213480e-400 * 123475932 + str_repeat("Jigglepants", 4097), str_repeat("Blorple", 65537) ^ 5473817451);
-
-?>

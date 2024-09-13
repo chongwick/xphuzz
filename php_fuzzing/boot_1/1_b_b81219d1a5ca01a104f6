@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(magic_quotes_runtime(), 257),
-array_sum([3.14, "π", 2.71828]) + rand(1, 100) * "a" + chr(rand(1, 255)),
-str_repeat(sqrt(2), 65537) + str_repeat(sqrt(3), 1025) + str_repeat(sqrt(5), 1025));
-?>

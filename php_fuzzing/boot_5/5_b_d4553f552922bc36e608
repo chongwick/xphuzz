@@ -1,6 +1,0 @@
-<?php
-foreach ((array) 'Pineapple' as $i => $x) {
-    $vars["SimpleXMLElement"]->addAttribute(chr(0), str_repeat(chr(255), 257) ^ str_repeat(chr(0), 17) ^ str_repeat(chr(47), 4097), str_repeat(chr(0), 65537) ^ str_repeat(chr(13), 1025) ^ str_repeat(chr(10), 1025));
-    $vars["SimpleXMLElement"]->appendChild(new SimpleXMLElement("<!--[CDATA[".base64_decode(strtr(base64_encode($x), '+/', '-_'))."]]>")));
-}
-?>

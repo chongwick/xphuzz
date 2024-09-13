@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(sqrt(π) * tan(∞), "0x". substr(md5(str_shuffle('abcdefghijklmnopqrstuvwxyz')), 0, 257) + "0x". substr(md5(str_shuffle('abcdefghijklmnopqrstuvwxyz')), 0, 17) + "0x". substr(md5(str_shuffle('abcdefghijklmnopqrstuvwxyz')), 0, 4097), 
-eval("return \"". str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025). "\""));
-?>

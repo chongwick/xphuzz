@@ -1,3 +1,0 @@
-<?php
-$vars["Unicorn"]->addAttribute(str_repeat("🐴", 257), "binary_code_here_". str_repeat(chr(42), 4096), "decoding_error_here_". str_repeat(chr(255), 32767));
-?>

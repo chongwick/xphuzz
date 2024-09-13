@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), "This is a weirdly encoded attribute that combines a bunch of ASCII characters with a weird string that should hopefully break something", "This is a super long attribute value that is way longer than it needs to be and might even break the encoding system");
-?>

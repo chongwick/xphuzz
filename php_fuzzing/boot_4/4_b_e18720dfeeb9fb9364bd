@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(chr(8470).chr(148).chr(161), gmp_strval(gmp_mul(gmp_init('5473817451'), gmp_init('123475932')), 36), sqrt(2.23431234213480e-400) + pi() * (10 ** -10));
-
-?>

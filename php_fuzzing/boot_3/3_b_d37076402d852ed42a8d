@@ -1,4 +1,0 @@
-<?php
-$vars["Unicod3f0x4c73"]->addAttribute(str_split($pi = 3.14), 0x00ff & 0x1111 ^ 0x1111 & 0x1111 | 0x2222 & 0x2222, str_split(pi().rand(), 2)[0].bindec(str_split($e = 2.71828)[0][0][0][0].dechex(str_split("abcdefghijklmnopqrstuvwxyz", 1)[2])));
-
-?>

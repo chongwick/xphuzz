@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(strrev(base64_encode(microtime(true)))), str_split('qwertyuiopasdfghjklzxcvbnm', 257)[0], str_replace(['\\', '/', ':', '*', '?', '<', '>', '"', '|', "'"], ['π', '≈', 'Ω', 'Σ', 'φ', '∞', 'τ', '∫', 'ψ', '⋆'], '∑')) + str_repeat(chr(65533), 123));
-
-?>

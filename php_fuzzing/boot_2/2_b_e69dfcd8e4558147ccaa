@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split('ᕉᕞᕚᕔᕕᕗᕛᕝᕟᕠ')[255], base64_encode(microtime(true)). str_rot13(strrev(json_encode(array_map('intval', array_map('str_split', array_map('strtr', str_split(uniqid('')), chr(0), chr(45))))))). base64_encode(json_decode('null', true)). strtr('1', array('1' => chr(0))), str_split('ᕐᕎᕜᕔ')[1024]);
-
-?>

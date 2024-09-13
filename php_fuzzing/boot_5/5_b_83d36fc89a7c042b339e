@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), $this->cat->makePizza(), $this->pet->learnTrick());
-
-?>

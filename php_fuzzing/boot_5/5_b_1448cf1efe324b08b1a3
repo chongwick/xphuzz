@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(unserialize('O:8:"SimpleXMLElement":1:{s:14:"attributesName";a:3:{s:4:"attr1";N;s:7:"attr2";s:2:"0";s:4:"attr3";s:2:"-1";}}'), hex2bin('0102030405060708'), bin2hex(str_repeat(chr(0), 257). chr(1). str_repeat(chr(2), 257). chr(3). str_repeat(chr(4), 65537). chr(5). str_repeat(chr(6), 1025). chr(7). str_repeat(chr(8), 1025)));
-?>

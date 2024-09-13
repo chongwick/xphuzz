@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(microtime(), 0xdeadbeef + PHP_INT_MAX + pi(), chr(0x20). "a". "b". chr(0x20). "c");
-
-?>

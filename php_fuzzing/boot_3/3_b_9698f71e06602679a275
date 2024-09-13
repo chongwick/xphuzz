@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_split(gamma(257))[255], pack("H*", "c9{193}.k{155}.j{147}.x{65537}y{213}z{214}"), (sqrt(42)+1)*pi() );
-?>

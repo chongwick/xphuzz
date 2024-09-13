@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_replace("o", "ō", chr(1000000000).str_repeat(chr(147), 4097).str_repeat(chr(193), 257)), "Ħarūmālēōximālāiō", "Ae0oīōuēō");
-?>

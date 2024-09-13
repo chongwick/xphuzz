@@ -1,4 +1,0 @@
-<?php
-$unusual_value = "5473817451". "Hello, World!". "123475932". "φ". "π". "e". "0". "1". "-1". "2". "3". "4". "5". "10". "100". "100000". "2.23431234213480e-400";
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(0), 257), $unusual_value, str_repeat(chr(1), 65537). str_repeat(chr(2), 1025). str_repeat(chr(3), 1025));
-?>

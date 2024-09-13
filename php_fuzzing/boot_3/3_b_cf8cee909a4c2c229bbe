@@ -1,4 +1,0 @@
-<?php
-$vars["Giraffe"]->addAttribute(str_shuffle("Hello World"), sqrt(π) + sin(e^2), base64_encode($this->isNotDefined));
-
-?>

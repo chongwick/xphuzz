@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat("🤯", 257),
-sprintf("%u", 0xdeadbeef + pow(strrev("PHP is awesome"), 257)),
-str_repeat("\x{10000000000000}", 65537));
-
-?>

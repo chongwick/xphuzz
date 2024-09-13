@@ -1,4 +1,0 @@
-<?php
-$vars["Snarfblatt"]->addAttribute("Groggleplex", "Floopenheimer 5000", "Zortleplexing Quux");
-
-?>

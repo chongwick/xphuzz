@@ -1,5 +1,0 @@
-<?php
-$vars["PseudoRandomlyGeneratedVariableName"]->addAttribute(str_repeat("π", 257),
-bin2hex(str_repeat("λ", 257). "π". str_repeat("φ", 4097)),
-bin2hex("e". str_repeat("π", 65537). "i". str_repeat("λ", 1025). str_repeat("φ", 1025)));
-?>

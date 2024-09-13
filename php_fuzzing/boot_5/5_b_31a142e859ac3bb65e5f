@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(chr(8458).str_shuffle('0123456789').' '.chr(10479).str_replace(' ', chr(65533), 'abcdefghijklmnopqrstuvwxyz').chr(123).dechex(str_split('abcdefghijklmnopqrstuvwxyz', 4)).chr(255).str_pad(strtoupper('hello'), 255, chr(0).chr(255)).chr(127));
-
-?>

@@ -1,5 +1,0 @@
-<?php
-$vars["Gloopernacle"]->addAttribute(str_repeat(sqrt(42), 257),
-base64_encode(str_repeat("Bazooka!", 257). str_repeat(chr(1000000), 17). str_repeat(chr(0x20AC), 4097)),
-json_encode(str_repeat("Quizzle!", 65537). str_repeat("Wuggle!", 1025). str_repeat("Flumplenook!", 1025)));
-?>

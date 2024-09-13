@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_replace("G", "Grumpy", "D"), 
-chr(999999999) ^ chr(1234567890), 
-"RandomlyGeneratedAttribute". rand(0, 1000000));
-?>

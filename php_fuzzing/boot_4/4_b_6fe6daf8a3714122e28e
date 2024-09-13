@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),
-bin2hex(str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097). pack('f', 0).pack('f', 1).pack('f', -1).pack('f', 2).pack('f', 3).pack('f', 4).pack('f', 5).pack('f', 10).pack('f', 100).pack('f', 100000).pack('f', 5473817451).pack('f', 123475932).pack('f', 2.23431234213480e-400), 
-str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025). pack('s', 0).pack('s', 1).pack('s', -1).pack('s', 2).pack('s', 3).pack('s', 4).pack('s', 5).pack('s', 10).pack('s', 100).pack('s', 100000).pack('s', 5473817451).pack('s', 123475932).pack('s', 2.23431234213480e-400));
-?>

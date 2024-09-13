@@ -1,4 +1,0 @@
-<?php
-$vars["Gleepglorp"]->blerp(17.5, "flibber", 0.0000000000000001, array(1, "two", 3.14), array("Hello", "World", 5473817451, 2.23431234213480e-400));
-
-?>

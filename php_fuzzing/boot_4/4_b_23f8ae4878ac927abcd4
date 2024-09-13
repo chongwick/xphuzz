@@ -1,4 +1,0 @@
-<?php
-    $cabbage = "snurflot";
-    $vars["SimpleXMLElement"]->addAttribute($cabbage, $cabbage * 4 + $cabbage * -3 + $cabbage * 2, $cabbage ^ 7 - $cabbage / 2);
-?>

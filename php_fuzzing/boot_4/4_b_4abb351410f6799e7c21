@@ -1,4 +1,0 @@
-<?php
-<code>$vars["Toucan"]->addAttribute(chr(37)."Gazorkle".rand(1234567890, 9876543210).chr(13).str_repeat(chr(193), 257).chr(155)."Blerg".chr(147).str_repeat(chr(161), 65537).str_repeat(chr(213), 1025).str_repeat(chr(214), 1025).'</code>';
-
-?>

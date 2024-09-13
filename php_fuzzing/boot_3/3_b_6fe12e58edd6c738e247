@@ -1,6 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), 
-    (0 xor 1) ^ (5473817451 * pi() / 10) + 2.23431234213480e-400, 
-    "The answer to the ultimate question of life, the universe, and everything");
-
-?>

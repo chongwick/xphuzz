@@ -1,2 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_rot13(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')), str_repeat(microtime(), 3) ^ rand(), pack("H*", "café"));?>;

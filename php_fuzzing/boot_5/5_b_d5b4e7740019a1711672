@@ -1,5 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute("A string that is way too long to be an attribute name and is also trying to encode an octet stream as a UTF-8 string", 
-hex2bin(str_shuffle('0123456789abcdef')), 
-"Another string that is way too long to be an attribute value and is also trying to encode an octet stream as a UTF-8 string, oh and also it has some Unicode codepoints that are not even representable in PHP");
-?>

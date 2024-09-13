@@ -1,4 +1,0 @@
-<?php
-$vars["Grumblemonkey"]->fjimble()->addAttribute(str_repeat("Flumplenook", 257), "Glurblerdash" ^ str_repeat("Snarfblat", 17) & str_repeat("Floopenflap", 4097), "Blarglebleep" | str_repeat("Gleepglop", 65537) ^ str_repeat("Wizzlewhack", 1025));
-
-?>

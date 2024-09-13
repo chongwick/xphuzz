@@ -1,5 +1,0 @@
-<?php
-$vars["PonderousElephant"]->addAttribute(str_repeat("\u2660", 257),
-str_repeat("\u2665", 257) + str_repeat("\u2640", 17) + str_repeat("\u2642", 4097),
-str_repeat("\u266B", 65537) + str_repeat("\u264B", 1025) + str_repeat("\u264C", 1025));
-?>

@@ -1,4 +1,0 @@
-<?php
-$vars["SquidwardsTentacles"]->addAttribute(str_repeat(chr(∞), 257), "ƒ^€{!@#$%^&*()_+-=[]{}|;:',.<>/?`~"};
-
-?>

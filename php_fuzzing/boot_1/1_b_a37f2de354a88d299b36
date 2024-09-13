@@ -1,4 +1,0 @@
-<?php
-$vars["Wizzle"]->addAttribute("FizzBuzz", hex2bin(str_rot13(str_shuffle(str_repeat(chr(0x1F), 257))). chr(0x20). "WhisperedSecrets"));
-
-?>

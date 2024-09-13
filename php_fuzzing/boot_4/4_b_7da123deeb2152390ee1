@@ -1,3 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), "This is a code that is potentially incorrect and is trying to be weird, but who knows what it will do?", "A bunch of random text: ".rand().chr(0x1337).rand());
-?>

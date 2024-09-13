@@ -1,4 +1,0 @@
-<?php
-$vars["EasterIslandStatue"]->addAttribute(str_repeat(chr(742), 257), str_repeat(chr(9), 257) * 5 + str_repeat(chr(82), 17) ^ str_repeat(chr(35), 4097), str_repeat(chr(99), 65537) & str_repeat(chr(219), 1025) | str_repeat(chr(236), 1025));
-
-?>

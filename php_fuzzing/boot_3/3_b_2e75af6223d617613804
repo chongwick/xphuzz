@@ -1,6 +1,0 @@
-<?php
-$vars["PretentiousCode"] = "λσ";
-$vars["SimpleXMLElement"]->addAttribute($a = (0 xor 1)? "λ" : "σ", 
-bin2hex($a? str_repeat(chr(193), 257) : str_repeat(chr(155), 17). str_repeat(chr(147), 4097)), 
-"¯_()_/¯");
-?>

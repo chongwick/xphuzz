@@ -1,4 +1,0 @@
-<?php
-$vars["SimpleXMLElement"]->addAttribute(str_shuffle("abcdefghijklmnopqrstuvwxyz0123456789"), base64_encode(str_rot13("Hello World!")) + str_split(sqrt(sqrt(2)))[0], "¬". strtr(str_pad("", 65537, chr(161)), array("a" => str_split(pi())[0][0])). str_repeat(chr(214), 1025). str_repeat(chr(213), 1025));
-
-?>

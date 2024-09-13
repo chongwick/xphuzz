@@ -1,4 +1,0 @@
-<?php
-$vars["Cthulhu"]->addAttribute(str_repeat(chr(42), 257), str_repeat(chr(0x80), 257) + str_repeat(chr(0x85), 17) + str_repeat(chr(0x83), 4097), str_repeat(chr(0x81), 65537) + str_repeat(chr(0xA5), 1025) + str_repeat(chr(0xA6), 1025));
-
-?>

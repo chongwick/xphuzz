@@ -1,6 +1,0 @@
-<?php
-$qux = 5473817451 / 2.23431234213480e-400;
-$quux = $qux * (0 + 1i);
-$quuz = $quux * (sqrt(-1) + 1i);
-$vars["SimpleXMLElement"]->addAttribute($quuz, chr(13)^chr(193), chr(161) << 32);
-?>
