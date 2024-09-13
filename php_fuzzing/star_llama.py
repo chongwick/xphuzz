@@ -312,11 +312,11 @@ class LLAMA3_LLM:
 
     def change_response_max_length(self, length):
         self.max_response_length = length
-        return
+        return 1
 
     def change_temperature(self, temperature):
         self.temperature = temperature
-        return
+        return 1
 
     def give_context(self, context):
         self.context = context

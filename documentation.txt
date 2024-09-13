@@ -188,3 +188,9 @@ We want to pipe the output of leaksznitizer (2>) to something. The callstacks of
 
 Augest 12:
 use undefined behavior sanitizer as well.
+
+August 26:
+Some error triggering code is not getting flagged because it is segfaulting the coverage neinge before being passed to the sanitization queue. 
+
+September 3:
+We need to multithread the coverage queue/san queue/ whatever else
