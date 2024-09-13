@@ -15,24 +15,31 @@ fi
 RET=$?
 if [ $RET -ne 0 ]; then
        if [ $RET -eq 255 ]; then
+               mv "$script" "${script}.tr"
                exit 0
        fi
        if [ $RET -eq 124 ]; then
+               mv "$script" "${script}.tr"
                exit 0
        fi
        if [ $RET -eq 153 ]; then
+               mv "$script" "${script}.tr"
                exit 0
        fi
        if [ $RET -eq 153 ]; then
+               mv "$script" "${script}.tr"
                exit 0
        fi
        if [ $(echo "$OUTPUT" | grep "Allowed memory size of" | wc -l) -gt 0 ]; then
+               mv "$script" "${script}.tr"
 	       exit 0
        fi
        if [ $(echo "$OUTPUT" | grep "AddressSanitizer failed to allocate" | wc -l) -gt 0 ]; then
+               mv "$script" "${script}.tr"
 	       exit 0
        fi
        if [ $(echo "$OUTPUT" | grep ": Assertion " | wc -l) -gt 0 ]; then
+               mv "$script" "${script}.tr"
 	       exit 0
        fi
        mv "$script" "${script}.er"

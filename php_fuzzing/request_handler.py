@@ -43,6 +43,7 @@ def query_llm(llm, context):
         return result
 
 def correct_format(llm, result, context):
+    llm.change_temperature(0.6)
     if type(result) != str:
         return None
     result = [line + "\n" for line in result.split("\n")]
@@ -173,7 +174,6 @@ def query_loop(llm):
             start = time.time()
             #utils.log("Translating: {}".format(request_file))
             context = utils.load_pickle(request_file)
-            os.remove(request_file)
             result = query_llm(llm,context)
             context.append({'role':'assistant','content':result})
             code = correct_format(llm, result, context)
@@ -186,9 +186,9 @@ def query_loop(llm):
             seed_node['time'] += time.time() - start
             utils.add_to_queue(cfg.exec_queue, php_file)
         elif("_ma" in request_file): #Mate request
+            llm.change_temperature(random.randint(0,10)/10)
             start = time.time()
             context = utils.load_pickle(request_file)
-            os.remove(request_file)
             result = query_llm(llm,context)
             context.append({'role':'assistant','content':result})
             child = correct_format(llm, result, context)
@@ -202,9 +202,9 @@ def query_loop(llm):
                 seed_node['time'] += time.time() - start
                 utils.add_to_queue(cfg.exec_queue, php_file)
         elif("_mu" in request_file): #mutating crash
+            llm.change_temperature(random.randint(0,10)/10)
             start = time.time()
             context = utils.load_pickle(request_file)
-            os.remove(request_file)
             result = query_llm(llm,context) 
             context.append({'role':'assistant','content':result})
             child = correct_format(llm, result, context)
@@ -217,18 +217,17 @@ def query_loop(llm):
                 seed_node['time'] += time.time() - start
                 utils.add_to_queue(cfg.exec_queue, php_file)
         elif("_f" in request_file): #Fix request
+            llm.change_temperature(0.3)
             start = time.time()
             #utils.log("Fixing: {}".format(request_file))
             seed_node = utils.load_pickle(cfg.seed_data)[seed_name]
             if seed_node['fix_count'] >= MAX_FIXES:
-                os.remove(request_file)
                 #utils.log("Nah, can't fix this one")
                 if 'corpus' not in php_file: #this indicates either the original js/php corpi
                     os.remove(php_file)
             else:
                 context = utils.load_pickle(request_file)
                 seed_node['fix_count'] += 1
-                os.remove(request_file)
                 #Maybe make this an inherent feature of queries
                 if utils.num_tokens_from_context(context) > cfg.llama3_max / 2:
                     utils.log("trying to fix... too big")
@@ -242,10 +241,14 @@ def query_loop(llm):
                         seed_data[seed_name] = seed_node
                         utils.dump_pickle(cfg.seed_data, seed_data)
                         #update_data(llm_queue, cov_queue, seed_data)
+                        os.remove(request_file)
+                        llm.change_temperature(0.6)
                         continue
                     utils.write_file(php_file, code)
                     utils.add_to_queue(cfg.exec_queue, php_file)
                     seed_node['time'] += time.time() - start
+        llm.change_temperature(0.6)
+        os.remove(request_file)
         seed_data = utils.load_pickle(cfg.seed_data)
         seed_data[seed_name] = seed_node
         utils.dump_pickle(cfg.seed_data, seed_data)
@@ -262,6 +265,7 @@ def new_corpus(llm, iterations, out_dir):
                                random.choice(os.listdir('native_crashers')))) as f:
             influence = f.read()
         context = prompts.new_seed(type_num, influence, functions, new_code)
+        llm.change_temperature(random.randint(0,10)/10)
         result = query_llm(llm,context)
         context.append({'role':'assistant','content':result})
         code = correct_format(llm, result, context)
@@ -274,6 +278,7 @@ def new_corpus(llm, iterations, out_dir):
             type_num = 0
         else:
             type_num += 1
+    llm.change_temperature(0.6)
 
 #safe to give seed_data as nothing will be accessing at that time
 #add seed nodes to seed data here

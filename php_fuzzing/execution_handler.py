@@ -58,6 +58,7 @@ def exec_loop():
             coverage = None
             crash = None
             is_error = lambda x: os.path.exists(x+".er")
+            is_trash = lambda x: os.path.exists(x+".tr")
             if result == 'seg':
                 coverage = 1
             else:
@@ -99,10 +100,13 @@ def exec_loop():
                 else:
                     crash = "NC"
             seed_data = utils.load_pickle(cfg.seed_data)
-            seed_data[seed_name]['solo_cov'] = coverage
-            seed_data[seed_name]['php_file']=php_file
-            seed_data[seed_name]['crash']=crash
-            seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
+            if is_trash(php_file):
+                del(seed_data[seed_name])
+            else:
+                seed_data[seed_name]['solo_cov'] = coverage
+                seed_data[seed_name]['php_file']=php_file
+                seed_data[seed_name]['crash']=crash
+                seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
             utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
         room_service(safe_files)
 
