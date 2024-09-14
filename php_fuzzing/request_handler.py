@@ -288,7 +288,8 @@ def next_gen():
     tmp = {}
     for i in os.listdir("gen_" + str(GEN_NUM)):
         name = i.split(".")[0]
-        tmp[name] = seed_data[name]
+        if name in seed_data:
+            tmp[name] = seed_data[name]
     partitions = scoring_function(tmp)
     aljo_result = new_aljo(GEN_NUM,partitions)
     pairs = aljo_result[0]
