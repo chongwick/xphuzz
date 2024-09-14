@@ -22,7 +22,7 @@ llm_queue = "llm_requests/queue.pickle"
 cov_queue = "queues/cov_queue.pickle"
 san_queue = "queues/san_queue.pickle"
 exec_queue = "queues/exec_queue.pickle"
-status = {"queues/exec_queue.pickle":"exec_queue.pickle.lock", 
+status = {"queues/exec_queue.pickle":"queues/exec_queue.pickle.lock", 
           "llm_requests/queue.pickle":"llm_requests/queue.pickle.lock",
           "seed_data.pickle":"seed_data.pickle.lock"}
 

@@ -225,6 +225,14 @@ def query_loop(llm):
                 #utils.log("Nah, can't fix this one")
                 if 'corpus' not in php_file: #this indicates either the original js/php corpi
                     os.remove(php_file)
+                    seed_data = utils.load_pickle(cfg.seed_data)
+                    #seed_data[seed_name] = seed_node
+                    del(seed_data[seed_name])
+                    utils.dump_pickle(cfg.seed_data, seed_data)
+                    #update_data(llm_queue, cov_queue, seed_data)
+                    os.remove(request_file)
+                    llm.change_temperature(0.6)
+                    continue
             else:
                 context = utils.load_pickle(request_file)
                 seed_node['fix_count'] += 1
@@ -236,9 +244,10 @@ def query_loop(llm):
                     context.append({'role':'assistant','content':result})
                     code = correct_format(llm, result, context)
                     if code == None:
-                        seed_node['fix_count'] = MAX_FIXES
+                        #seed_node['fix_count'] = MAX_FIXES
                         seed_data = utils.load_pickle(cfg.seed_data)
-                        seed_data[seed_name] = seed_node
+                        #seed_data[seed_name] = seed_node
+                        del(seed_data[seed_name])
                         utils.dump_pickle(cfg.seed_data, seed_data)
                         #update_data(llm_queue, cov_queue, seed_data)
                         os.remove(request_file)
