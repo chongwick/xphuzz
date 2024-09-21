@@ -4,12 +4,7 @@ import sys
 import os
 import fcntl
 from queue import Queue
-
-def generate_translation_prompt(content):
-    role = 'Translate JavaScript to PHP. Return as ```<code>```'
-    context = [{'role': 'system', 'content': role}]
-    context.append({'role': 'user', 'content': content})
-    return context
+import prompts
 
 def main():
     requests = []
@@ -20,7 +15,10 @@ def main():
     while len(seed_files) != 0:
         seed = seed_files.pop()
         print(seed)
-        query_context = generate_translation_prompt(utils.read_file(seed))
+        with open(os.path.join('native_crashers',
+                               random.choice(os.listdir('native_crashers')))) as f:
+            influence = f.read()
+        query_context = prompts.translate(utils.read_file(seed), influence )
         if utils.num_tokens_from_string(query_context[-1]['content']) > cfg.llama3_max / 2:
             print("too big")
             continue

@@ -142,6 +142,13 @@ def mate(male, female):
 #if __name__ == "__main__":
 #    main()
 
+def translate(JS, influence):
+    context = prefix()
+    context.append({'role':'user','content':'another'})
+    context.append({'role':'assistant','content':influence})
+    context.append({'role':'user','content':'Use this JavaScript CVE to make a PHP attack: ```\n{}\n```'.format(JS)})
+    return context
+
 def new_seed(type_num, influence, functions, new_code=None):
     context = prefix()
     if type_num == 0:

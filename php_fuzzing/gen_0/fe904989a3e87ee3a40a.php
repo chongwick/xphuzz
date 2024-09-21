@@ -5,7 +5,6 @@ function f($v) {
   $v[1] = 0.1;
   $v['x'] = array();
 }
-
 f(array());
 f(array(1));
 f(array(1));

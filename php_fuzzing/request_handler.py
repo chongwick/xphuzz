@@ -171,6 +171,7 @@ def query_loop(llm):
             seed_node = create_seed_node()
         #create_seed_data(seed_data, seed_name, php_file)
         if("_t" in request_file): 
+            llm.change_temperature(random.randint(0,10)/10)
             start = time.time()
             #utils.log("Translating: {}".format(request_file))
             context = utils.load_pickle(request_file)
@@ -183,7 +184,7 @@ def query_loop(llm):
                 continue
             utils.write_file(php_file, code)
             seed_node['php_file'] = php_file
-            seed_node['time'] += time.time() - start
+            seed_node['time'] = time.time() - start
             utils.add_to_queue(cfg.exec_queue, php_file)
         elif("_ma" in request_file): #Mate request
             llm.change_temperature(random.randint(0,10)/10)
