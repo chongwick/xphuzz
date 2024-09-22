@@ -25,7 +25,10 @@ tmp = []
 for i in os.listdir(os.getcwd()):
     if "gen_" in i:
         tmp.append(int(i.split("_")[1]))    
-GEN_NUM = max(tmp) #Current generation
+if len(tmp) == 0:
+    GEN_NUM = 0
+else:
+    GEN_NUM = max(tmp) #Current generation
 TOKEN_LIMIT = 3900 #Given that the context window is 8000 for our LLM,
                    #our cutoff will be 3900 tokens.
 MAX_FIXES = 1
@@ -179,7 +182,7 @@ def query_loop(llm):
             context.append({'role':'assistant','content':result})
             code = correct_format(llm, result, context)
             if code == None:
-                seed_data[seed_name]['fix_count'] = MAX_FIXES
+                #seed_data[seed_name]['fix_count'] = MAX_FIXES
                 #update_data(llm_queue, cov_queue, seed_data)
                 continue
             utils.write_file(php_file, code)
@@ -257,11 +260,11 @@ def query_loop(llm):
                     utils.write_file(php_file, code)
                     utils.add_to_queue(cfg.exec_queue, php_file)
                     seed_node['time'] += time.time() - start
-        llm.change_temperature(0.6)
-        os.remove(request_file)
         seed_data = utils.load_pickle(cfg.seed_data)
         seed_data[seed_name] = seed_node
         utils.dump_pickle(cfg.seed_data, seed_data)
+        llm.change_temperature(0.6)
+        os.remove(request_file)
         #update_data(llm_queue, cov_queue, seed_data)
 
 def new_corpus(llm, iterations, out_dir):

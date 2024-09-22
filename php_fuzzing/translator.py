@@ -1,3 +1,4 @@
+import random
 import config as cfg
 import utils
 import sys
