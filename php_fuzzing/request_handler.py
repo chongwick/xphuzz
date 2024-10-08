@@ -224,7 +224,7 @@ def query_loop(llm):
             llm.change_temperature(0.3)
             start = time.time()
             #utils.log("Fixing: {}".format(request_file))
-            seed_node = utils.load_pickle(cfg.seed_data)[seed_name]
+            #seed_node = utils.load_pickle(cfg.seed_data)[seed_name]
             if seed_node['fix_count'] >= MAX_FIXES:
                 #utils.log("Nah, can't fix this one")
                 if 'corpus' not in php_file: #this indicates either the original js/php corpi
@@ -287,7 +287,7 @@ def new_corpus(llm, iterations, out_dir):
         mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
         with open(os.path.join(out_dir,mut_name),"w") as f:
             f.write(code)
-        if type_num == 2:
+        if type_num == 4:
             type_num = 0
         else:
             type_num += 1

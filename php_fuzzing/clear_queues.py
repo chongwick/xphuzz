@@ -6,6 +6,10 @@ with open(cfg.seed_data, "wb") as f:
     g = {}
     pickle.dump(g,f,pickle.HIGHEST_PROTOCOL)
 
+with open(cfg.exec_queue, "wb") as f:
+    g = []
+    pickle.dump(g,f,pickle.HIGHEST_PROTOCOL)
+
 with open(cfg.llm_queue, "wb") as f:
     g = []
     pickle.dump(g,f,pickle.HIGHEST_PROTOCOL)
