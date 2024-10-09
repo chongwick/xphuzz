@@ -66,3 +66,131 @@ We need a queuing system. -> we queue up requests to the LLM i.e. fixes and tran
 
 May 13:
 So we can't use a shared memory region for the queues because then we can't share the queues across multiple systems. We don't need to check sanitizer output during the initial mapping as the coverage engine does not have sanitization capabilities
+
+May 27:
+First, we want to translate all of the javascripts to php with fixing. Simulataneously, we want to map their coverage as well as run them through the sanitizer. After that, we can work on mixing them together.
+
+
+STEP 1:        
+Translate      }
+               } ->  Php Corpus
+STEP 2:        }
+Fix
+
+May 28:
+It took 25 minutes to get through 51 javascript seeds. it produced 40 phps. 25:25
+
+
+June 2:
+There are issues with the size of some seeds that for some reason is difficult for the GPU running the LLM to calculate. So, we are going to precalculate the context sizes before feeding to the LLM.
+
+June 3:
+The seeds were not correctly mapped. The fuzzer is slow. We need mixing. We need domatophp
+Right now, I'm jetlagged. But, I'm thinking that the initial stage will be completed as translating/fixing one seed at a time. The resulting php code can then be fed to the mapper and the sanitizer which will both be hosted on two different machines and run simulataneously. After the translation process is finished, we can then do mixing which I also want to occur with mutation/fixing in one step. There are speed considerations with this.
+
+June 7:
+Got domato working
+
+June 11:
+We need to move to the multiprocessing module from threads. Consider using Ray
+
+June 12:
+Made a grammar-based mutator
+
+June 13:
+The speed issue was due entirely to the LLM being slowed down after requeries. idk why exactly. However, that has been rectified by adding a timing mechanism. If a query takes too long, we clear the cache and start over. Now we can get through in about 6 hours. 10 seconds per query. the long ones are long. might just be worth setting a second thread to monitor those.
+
+June 15:
+So we can keep the coverage/llm querying as a separate system from the sanitization. The sanitization will run constantly with a grammar-based mutator. Remember to run room service.
+Regarding the Cartesian product, we may need a better scheme to determine mating pairs especially considering that we want to avoid inbreeding two seeds.
+
+June 18:
+We are now just having pairs produce one child for now. Each male/female is combined with two different opposites and produce one child seed.
+
+June 19:
+Here are the things we're going to track per seed: 1) number of prompts required to get working thing 2) time required to get it working 3) family tree
+
+June 19:
+Here are the things we're going to track per seed: 1) number of prompts required to get working thing 2) time required to get it working 3) family tree. Save EVERY produced php
+Probably want to remove all the comments
+
+Jun3 20:
+Got the pairing algorithm done. We are actually in very good shape. might have found a potential vulnerability
+
+June 21:
+We have two more working prompts now for mutation insertion as well as token minimization. We could potentially manipulate the mutations such that they're better suited to accept the mutations from the grammar-based fuzzer
+We are not doing grammar based fuzzing in the background for the time being. We will at some point have to rerun the entire thing. For now, I am going to run the tests for a day or two just to see some results and squash some bugs.
+
+June 23:
+Maybe we also want to investigate translating other languages (python, ruby, etc.). Also, examion extensions. I see a few fundamental flaws with this project. 1) Speed limits every aspect of this project. Having one LLM instance responsible for producing all of the fuzzing input severely limits our throughput of testcases. 2) There is a lack of diversity within the corpus. The corpus is limited to simple ~400 seeds which are bred together. While this provides some interesting structures, the mixing process does not introduce anything completely original to the corpus. This is why mutations were added to the breeding process. However, only one mutation is inserted per pairing. We can estimate that producing a new seed takes about 45 seconds. 3) There is a limitation to the size of the seeds we produce. 4) Fuzzing an interpreter is difficult
+we also lost about 100 seeds in the translation process
+
+June 24:
+When we ask the LLM to generate a "weird script" it draws upon the knowledge it has, but it does not have the contextual randomness of say a grammar-based fuzzer. Thus, we need to give it some odd context so that it will follow the same logical thinking. Additionally, I suspect that the php translations of the javascript are insufficient to trigger a vulnerability. we need to create another secondary set of strange, grammar-influenced, LLM generated scripts to mix it with.
+
+June 25:
+There is more we can do in the way of contextual lm usage. i.e. we can trim the output from the llm to just code and include this in the mating process. 
+I'm calling the weird bootstrapped corpus mutations just to keep theming consistent.
+
+June 26:
+Mate once with a JS script, then mate with a weirdo.
+
+June 28:
+idk i think maybe it's done?
+
+July 4:
+USE USE_ZEND_ALLOC=0!!!! otherwise asan can't see the memory. Also There are 2!! factors that should be used to calculate seed score. 1) coverage (obviously) 2) token amount 3?) crashing/memory leaks 4) relative coverage
+
+July 5:
+I can cause crashes. but no one cares about memory leaks apparently
+This code is gonna get ugly but it needs to get done now.
+Scoring system:
+A = relative coverage 3
+B = token amount 4
+C = Crashing/memory leak 1
+D = new coverage 2
+
+July 7:
+Run domatophp for a while and see what happens
+
+July 8:
+stats.pickle will hold the statistical data for each generation
+
+July 10:
+There is the chance that the information in seed_data gets corrupted because san.py is operating in a different process. we likely need to bring san.py under the request_handler umbrella
+
+July 11:
+An interesting point here is that smaller seeds and especially smaller with relatively high coverages are intrinsically prioritized and propogated
+
+July 15:
+I'm thinking of using the llm for fixing and replacing the mixing process with ASTs. About 80% are fixed with only one fix. Additionally, as token length increases, the time it takes to get output from the LLM increases. This becomes a huge issue with later generations at scale. The earlier generations are smaller and take at most 10 seconds per query. by the third generation (which is 8x the size of the first generation), we can see queries of 30-40 seconds. I think we need to reduce the size of the generations and the size of the individual seeds by killing them off sooner via the age primitive.
+
+July 16:
+we're gonna cut the fixes to one per seed. we're gonna phase out the memory leaks or at least reduce them to 1 mating. we're going to create new boot seeds created using the new process. If it doesn't work, we will wrap it in  atry except catch block such as domatophp.
+
+July 20:
+If you assign a closure (function) to an anonymous function, it will leak memory. a lot of memory.
+
+July 21:
+So here's the thing, new metric time. We're gonna judge leaked seeds by the amount of bytes they leaked. Also, we are going to insert: phpread_file:stdin... to make some fancy harnesses for AFL. we're finding something one way or another.
+
+July 22:
+Also, we are now going to have the fix count at 1 as I think that seems to be appropriate. There is about a 50% dropoff across fixes. For example, if we have a hundred queries (mutations/translations) about 50 of those will be correctly written into valid php, with one fix, we'll get about 25%. two, 12.5% and so on... Actually, this is more relevant for the earlier generations. i.e. earlier generations should have more opportunities to be fixed as the queries are faster initially.... TBD
+We want to keep memory leakers isolated from being mixed with other leakers. We want the memory leaking unique aspect to be amplified.
+There are issues with running AFL++ on fry because there is not root access. All AFL++ will have to be done locally.
+
+We are now also filtering out seeds based on the amount of time their queries take. -> anything > 20s gets removed.
+
+New discovery, it is not the length of the context that degrades response exactly. It is the length of the last prompt.
+
+July 24:
+We want to pipe the output of leaksznitizer (2>) to something. The callstacks of different leaks will look different.
+
+Augest 12:
+use undefined behavior sanitizer as well.
+
+August 26:
+Some error triggering code is not getting flagged because it is segfaulting the coverage neinge before being passed to the sanitization queue. 
+
+September 3:
+We need to multithread the coverage queue/san queue/ whatever else

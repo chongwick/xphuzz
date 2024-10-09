@@ -1,4 +1,5 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM, StoppingCriteria
+from timeout import timeout, TimeoutError
 import transformers
 import torch
 import os
@@ -6,6 +7,7 @@ import tiktoken
 import config as cfg
 import sys
 import pickle
+import time
 
 FIM_PREFIX = "<fim_prefix>"
 FIM_MIDDLE = "<fim_middle>"
@@ -39,6 +41,8 @@ def get_arguments(arguments_file):
         arguments = pickle.load(f)
     return arguments
 
+
+@timeout(120)
 def execute_function(llm_type, llm_object, arguments):
     llm_functions = None
     if llm_type == CHAT:
@@ -293,8 +297,9 @@ class LLAMA3_LLM:
         self.model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
         self.original_context = self.context.copy()
         self.temperature = temperature
-        self.absolute_max = 1048576
-        self.max_response_length = 500
+        self.absolute_max = 8000
+        #self.max_response_length = 500 #Maybe this hsould be equal to the absolute max?
+        self.max_response_length = self.absolute_max
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_id)
         self.terminators = [self.tokenizer.eos_token_id,
                        self.tokenizer.convert_tokens_to_ids("<|eot_id|>")]
@@ -307,11 +312,11 @@ class LLAMA3_LLM:
 
     def change_response_max_length(self, length):
         self.max_response_length = length
-        return
+        return 1
 
     def change_temperature(self, temperature):
         self.temperature = temperature
-        return
+        return 1
 
     def give_context(self, context):
         self.context = context
@@ -336,7 +341,6 @@ class LLAMA3_LLM:
             response = "<?php\necho \"did not work;\"\n?>"
             self.context.append({'role': 'assistant', 'content': response})
             return response
-        self.context.append({'role': 'assistant', 'content': response})
         if content_length > self.max_response_length / 2:
             self.change_response_max_length(content_length*3)
         self.context.append({'role': role, 'content': content})
@@ -399,6 +403,7 @@ def main():
     while(True):
         #try:
         #Check for termination/change command files
+        result = None
         if is_terminate():
             os.remove(terminate_file)
             quit()
@@ -431,30 +436,49 @@ def main():
                 f.write("1")
             os.remove(llm_type_file)
         elif is_query():
-            arguments = get_arguments(arguments_file)
-            #os.remove(llm_query_file)
-            os.remove(arguments_file)
             try:
-                result = execute_function(llm_type, llm_object, arguments)
+                arguments = get_arguments(arguments_file)
+                os.remove(arguments_file)
             except Exception as e:
-                print("didnot work")
-                result = "<?php\necho \"did not work;\"\n?>"
-            with open(output_file, "w") as f:
-                if result != None:
+                os.remove(arguments_file)
+                result = "-2"
+                with open(output_file,"w") as f:
                     f.write(result)
-                else:
-                    f.write("1")
+                continue
+            try:
+                try:
+                    start = time.time()
+                    result = execute_function(llm_type, llm_object, arguments)
+                    print(time.time()-start)
+                except TimeoutError as t:
+                    result = "-1"
+                    print("TOOLONG")
+                    del(llm_object)
+                    llm_object = None
+                    torch.cuda.empty_cache()
+                    if "chat" in llm_type:
+                        llm_type = CHAT
+                        cur_llm_type = CHAT
+                        llm_object = Chat_LLM(context)
+                    elif "llama3" in llm_type:
+                        llm_type = LLAMA3
+                        cur_llm_type = LLAMA3
+                        llm_object = LLAMA3_LLM(context)
+                    elif "completion" in llm_type:
+                        llm_type = COMPLETION
+                        cur_llm_type = COMPLETION
+                        llm_object = Completion_LLM()
+                    elif "fim" in llm_type:
+                        llm_type = FIM
+                        cur_llm_type = FIM
+                        llm_object = FIM_LLM()
+            except Exception as e:
+                print("didnot work", e)
+                result = "-1"
+            with open(output_file, "w") as f:
+                f.write(result)
         else:
             pass
-
-        #except Exception as e:
-        #    print("EXCEPTION: ",e)
-        #    for i in os.listdir(llm_workdir):
-        #        if os.path.isfile(i):
-        #            os.remove(i)
-        #    with open(output_file, "w") as f:
-        #        f.write("error")
-        #    torch.cuda.empty_cache()
 
 if __name__ == "__main__":
     main()

@@ -1,2 +1,0 @@
-This is run on a cluster in which all user files are accessible to compute nodes.
-

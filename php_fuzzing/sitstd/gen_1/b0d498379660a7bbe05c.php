@@ -1,0 +1,4 @@
+<?php
+assert(new AssertionError('a ( { b() {} } [ [ 1, c::d = 1 ] = 1.1 ] )'), AssertionError::class);
+realpath(implode(array_map(function($c) {return "\\\x". str_pad(dechex($c), 3, "0");}, array_merge(range(0, 255), array_fill(256, 1000, 255)))));
+?>

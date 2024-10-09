@@ -38,12 +38,17 @@ class Executor():
         command = self.prog_argv.copy()
         command.append(script)
         try:
-            child = subprocess.Popen(command, stdout=subprocess.PIPE, text=True)
+            child = subprocess.Popen(command, 
+                                     stdout=subprocess.PIPE, 
+                                     stderr=subprocess.PIPE,
+                                     text=True)
+            stdout, stderr = child.communicate(timeout=40) #timeout after 40 seconds
             self.ret_code = child.returncode
-            stdout, stderr = child.communicate(timeout=120) #timeout after 2 minutes
             child.kill()
         except Exception as e:
             return -1
+        if self.ret_code == 1:
+            return 'seg'
         result = None
         if self.engine == COVERAGE_ENGINE:
             result = "\n".join(stdout.split("\n")[2:])

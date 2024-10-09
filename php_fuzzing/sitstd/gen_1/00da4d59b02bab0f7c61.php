@@ -1,0 +1,12 @@
+<?php
+
+function foo($x) {
+    $mem = array_fill(0, 1, 0);
+    $mem[$x % 1] *= 0;
+    return $mem;
+}
+
+$vars["ReflectionExtension"]->getClasses() + str_repeat(chr(13), 257) + str_repeat(chr(193), 257) + str_repeat(chr(155), 17) + str_repeat(chr(147), 4097) + str_repeat(chr(161), 65537) + str_repeat(chr(213), 1025) + str_repeat(chr(214), 1025);
+foo(-926416896 * 8 * 1024);
+
+?>

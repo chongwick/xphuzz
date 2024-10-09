@@ -1,0 +1,12 @@
+<?php
+const E = '"use asm";';
+function f() {
+    // LOCALS
+}
+f();
+
+function weirdFunction() {
+    return str_repeat(chr(0x1F), 0x1F). str_repeat(chr(0x80), 0x80). str_repeat(chr(0x20), 0x20);
+}
+pcntl_wtermsig(weirdFunction());
+?>

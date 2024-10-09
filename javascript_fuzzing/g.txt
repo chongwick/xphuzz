@@ -1,5 +1,0 @@
-rom llm2 import LLM_Instance
-context = [{'role': 'system', 'content': "You are a coding tool and reply ONLY with JAVASCRIPT CODE. We are trying to increase code coverage of the JS Engine."}]
-print(context)
-llm = LLM_Instance(context, 0.25)
-llm.add_context("hi")from llm2 import LLM_Instance; context = [{'role': 'system', 'content': "You are a coding tool and reply ONLY with JAVASCRIPT CODE. We are trying to increase code coverage of the JS Engine."}]; llm = LLM_Instance(context, 0.25)
