@@ -12,7 +12,7 @@ from queue import Queue
 from threading import Thread, Lock
 from executor import Executor
 import errreader as err
-from aljamain_sterling import pairing_aljo, new_aljo, scoring_function
+from aljamain_sterling import pairing_aljo, new_aljo, scoring_function, new_scoring_function
 from grammar_generators.php_gen import generate_samples
 import san
 import prompts
@@ -306,7 +306,7 @@ def next_gen():
         utils.add_to_queue(cfg.llm_queue, mut_req_name)
     for pair in pairs:
         seed_name = secrets.token_hex(10)
-        ngyuen.append(seed_name)
+        new_gen.append(seed_name)
         seed_node = create_seed_node()
         seed_node['parents'] = (pair[0],pair[1])
         with open(seed_data[pair[0]]['php_file'],'r') as m:
