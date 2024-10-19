@@ -17,6 +17,52 @@ def get_coverages(pool, seed_data):
     coverages = {k: v for k, v in sorted(tmp.items(), key=lambda item: item[1])}
     return coverages
 
+def new_scoring_function(seed_data):
+    exclusions = [str(i) for i in range(36)]
+    name_score={}
+    crashers = []
+    max_token_length = cfg.llama3_max/4-100
+    scale_cov = 100
+    scale_anc = 100
+    data = seed_data.copy()
+    w_cov = 1
+    w_anc = 1
+    w_anom = max([scale_cov,scale_anc]) * max([w_cov,w_anc]) * 2
+    coverages = [data[i]['solo_cov'] for i in data]
+    min_cov = min(coverages)
+    range_cov = max(coverages) - min(coverages)
+    ancestry = [data[i]['ancestry'] for i in data]
+    min_anc = min(ancestry)
+    range_anc = max(ancestry) - min(ancestry)
+    scores = 0
+    for i in data:
+        if i in exclusions:
+            continue
+        token_penalty = 1-data[i]['size']/max_token_length
+        anom = int(data[i]['crash'] != 'NC')
+        if anom != 0:
+            crashers.append(i)
+        if range_cov == 0:
+            score_cov = 0
+        else:
+            score_cov = scale_cov * (
+                    (data[i]['solo_cov']-min_cov)/range_cov)
+        if range_anc == 0 or data[i]['generation'] == 0:
+            score_anc = 0
+        else:
+            score_anc = scale_anc * (
+                    (data[i]['ancestry']-min_anc)/range_anc)
+        score = (token_penalty *
+                 (w_cov*score_cov +
+                  w_anc*score_anc +
+                  w_anom*anom)
+                 )
+        name_score[i] = score
+    score = {k: v for k, v in sorted(name_score.items(), key=lambda item: item[1], reverse=True)}
+    ranking = [i for i in score]
+    return (crashers, ranking, name_score)
+                  
+
 def scoring_function(seed_data):
     data = seed_data.copy()
     solo_coverages = {}
@@ -29,7 +75,7 @@ def scoring_function(seed_data):
         if data[i]['crash'] != "NC" and data[i]['crash'] != None:
             crashers.append(i)
         else:
-            if data[i]['solo_cov'] != None:
+            if data[i]['solo_cov'] != None and os.path.exists(data[i]['php_file']):
                 score[i] = data[i]['solo_cov']
     score = {k: v for k, v in sorted(score.items(), key=lambda item: item[1], reverse=True)}
     for i in score:
@@ -54,6 +100,7 @@ def scoring_function(seed_data):
         loop_count += 1
     return (crashers,ranking)
 
+#Assign fixes & determine ancestry scores
 def new_aljo(gen_num, partitions):
     boot = os.listdir("boot_"+str(gen_num+1))
     backup_boot = boot.copy()
@@ -248,4 +295,5 @@ def pairing_aljo(gen_num, boot_gen):
 
     return pairs
 
+print(new_scoring_function(utils.load_pickle(cfg.seed_data))[1])
 #print(len(pairing_aljo(1, 'boot_2')))

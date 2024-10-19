@@ -10,7 +10,7 @@ import utils
 import pickle
 from queue import Queue
 from threading import Thread, Lock
-from executor import Executor 
+from executor import Executor
 import errreader as err
 from aljamain_sterling import pairing_aljo, new_aljo, scoring_function
 from grammar_generators.php_gen import generate_samples
@@ -24,7 +24,7 @@ seed_data_lock = Lock()
 tmp = []
 for i in os.listdir(os.getcwd()):
     if "gen_" in i:
-        tmp.append(int(i.split("_")[1]))    
+        tmp.append(int(i.split("_")[1]))
 if len(tmp) == 0:
     GEN_NUM = 0
 else:
@@ -35,6 +35,11 @@ MAX_FIXES = 1
 del(tmp)
 
 functions = utils.load_pickle('functions.pickle')
+
+def n_tile(lst, ntile):
+    size = -(len(lst)//-ntile)
+    for i in range(0, len(lst), size):
+        yield lst[i:i + size]
 
 def query_llm(llm, context):
     result = llm.give_context(context)
@@ -78,40 +83,6 @@ def correct_format(llm, result, context):
 
     return code
 
-def new_corpus(llm, iterations, out_dir):
-    global GEN_NUM
-    #i = 0
-    while len(os.listdir(out_dir)) != iterations:
-        new_code = generate_samples(
-                os.path.dirname(__file__),None,"<phpfuzz>",2,"no_guard_php.txt")
-        mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
-        with open(os.path.join(out_dir,mut_name),"w") as f:
-            f.write(new_code)
-        continue
-    #while i < iterations:
-        role = 'Change PHP code as instructed. Here are some values to use: 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400. Return as ```<code>```'
-        context = [{'role': 'system', 'content': role}]
-        #llm = LLAMA3_LLM(context)
-        #print("llm loaded")
-        code = '$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), str_repeat(chr(193), 257) + str_repeat(chr(155), 17) + str_repeat(chr(147), 4097), str_repeat(chr(161), 65537) + str_repeat(chr(213), 1025) + str_repeat(chr(214), 1025));'
-        prompt = 'Use this code in a complex PHP script:\n```\n{}\n```'.format(code)
-        context.append({'role':'user','content':code})
-        response = '```code\n<?php\n$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),\nbin2hex(str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)),\nbin2hex(str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025)));\n?>\n```'
-        context.append({'role':'assistant','content':response})
-        #new_code = 'passthru(implode(array_map(function($c) {return "\\x" . str_pad(deche    x($c), 2, "0");}, range(0, 255))), $ref_int);'
-        new_code = generate_samples(
-                os.path.dirname(__file__),None,"<phpfuzz>",1,"no_guard_php.txt")
-        context.append({'role':'user','content':'Make this unexpected, weird, and potentially incorrect:\n```\n{}\n```'.format(new_code)})
-        result = query_llm(llm,context)
-        context.append({'role':'assistant','content':result})
-        code = correct_format(llm, result, context)
-        if code == None: #Idk some weird error that idc about
-            continue
-        mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
-        with open(os.path.join(out_dir,mut_name),"w") as f:
-            f.write(code)
-    #    i += 1
-
 def update_data(llm_queue, cov_queue, seed_data, san_queue=None):
     utils.dump_pickle(cfg.llm_queue, list(llm_queue.queue))
     utils.dump_pickle(cfg.cov_queue, list(cov_queue.queue))
@@ -134,16 +105,19 @@ def create_seed_node():
     seed_node = {
             "reset_count": 0,
             "fix_count": 0,
+            "max_fixes": None,
             "php_file": None,
             "context": None,
-            "parents": None, #we don't want inbreeding !!!Parents should be a set!!!
+            "parents": None,
             "time": 0,
             "solo_cov": None,
             "new_cov": None,
             "size": None, #AKA token length
-            "crash": None, 
+            "crash": None,
             "generation": GEN_NUM,
             "ranking": None,
+            "ancestry": 0,
+            "score": None,
             #"score":0, #The score will be updated after every generation
             }
     return seed_node
@@ -173,7 +147,7 @@ def query_loop(llm):
         else:
             seed_node = create_seed_node()
         #create_seed_data(seed_data, seed_name, php_file)
-        if("_t" in request_file): 
+        if("_t" in request_file):
             llm.change_temperature(random.randint(0,10)/10)
             start = time.time()
             #utils.log("Translating: {}".format(request_file))
@@ -197,7 +171,8 @@ def query_loop(llm):
             context.append({'role':'assistant','content':result})
             child = correct_format(llm, result, context)
             if child == None:
-                seed_node['fix_count'] = MAX_FIXES
+                #seed_node['fix_count'] = MAX_FIXES
+                seed_node['fix_count'] = seed_node['max_fixes']
             else:
                 dr = "gen_" + str(GEN_NUM)
                 php_file = os.path.join(dr,seed_name+".php")
@@ -209,11 +184,12 @@ def query_loop(llm):
             llm.change_temperature(random.randint(0,10)/10)
             start = time.time()
             context = utils.load_pickle(request_file)
-            result = query_llm(llm,context) 
+            result = query_llm(llm,context)
             context.append({'role':'assistant','content':result})
             child = correct_format(llm, result, context)
             if child == None:
-                seed_node['fix_count'] = MAX_FIXES
+                #seed_node['fix_count'] = MAX_FIXES
+                seed_node['fix_count'] = seed_node['max_fixes']
             else:
                 dr = "gen_" + str(GEN_NUM)
                 php_file = os.path.join(dr,seed_name+".php")
@@ -225,7 +201,7 @@ def query_loop(llm):
             start = time.time()
             #utils.log("Fixing: {}".format(request_file))
             #seed_node = utils.load_pickle(cfg.seed_data)[seed_name]
-            if seed_node['fix_count'] >= MAX_FIXES:
+            if seed_node['fix_count'] >= seed_node['max_fixes']:
                 #utils.log("Nah, can't fix this one")
                 if 'corpus' not in php_file: #this indicates either the original js/php corpi
                     os.remove(php_file)
@@ -297,14 +273,21 @@ def new_corpus(llm, iterations, out_dir):
 #safe to give seed_data as nothing will be accessing at that time
 #add seed nodes to seed data here
 def next_gen():
-    seed_data = utils.load_pickle(cfg.seed_data)
     global GEN_NUM
+    new_gen = []
+    seed_data = utils.load_pickle(cfg.seed_data)
     tmp = {}
     for i in os.listdir("gen_" + str(GEN_NUM)):
         name = i.split(".")[0]
         if name in seed_data:
             tmp[name] = seed_data[name]
-    partitions = scoring_function(tmp)
+    partitions = new_scoring_function(tmp)
+    crashers = partitions[0]
+    ranking = partitions[1]
+    name_score = partitions[2]
+    for i in name_score:
+        seed_data[i]['score'] = name_score[i]
+    partitions = (crashers,ranking)
     aljo_result = new_aljo(GEN_NUM,partitions)
     pairs = aljo_result[0]
     crashers = aljo_result[1]
@@ -323,6 +306,7 @@ def next_gen():
         utils.add_to_queue(cfg.llm_queue, mut_req_name)
     for pair in pairs:
         seed_name = secrets.token_hex(10)
+        ngyuen.append(seed_name)
         seed_node = create_seed_node()
         seed_node['parents'] = (pair[0],pair[1])
         with open(seed_data[pair[0]]['php_file'],'r') as m:
@@ -341,6 +325,41 @@ def next_gen():
         utils.dump_pickle(mate_req_name, mate_query)
         utils.add_to_queue(cfg.llm_queue, mate_req_name)
         utils.dump_pickle(cfg.seed_data, seed_data)
+    #ancestry score and fix_amount calculation
+    combined_parent_scores = {}
+    for i in new_gen:
+        combined_parent_scores[i] = 0
+        father = seed_data[i]['parents'][0]
+        mother = seed_data[i]['parents'][1]
+        if GEN_NUM-1 == 0:
+            if father in seed_data:
+                seed_data[i]['ancestry'] += 1
+                if seed_data[father]['score'] != None:
+                    combined_parent_scores[i] += seed_data[father]['score']
+            if mother in seed_data:
+                seed_data[i]['ancestry'] += 1
+                if seed_data[mother]['score'] != None:
+                    combined_parent_scores[i] += seed_data[mother]['score']
+        else:
+            if father in seed_data:
+                seed_data[i]['ancestry'] += seed_data[father]['ancestry']
+                if seed_data[father]['score'] != None:
+                    combined_parent_scores[i] += seed_data[father]['score']
+            if mother in seed_data:
+                seed_data[i]['ancestry'] += seed_data[mother]['ancestry']
+                if seed_data[mother]['score'] != None:
+                    combined_parent_scores[i] += seed_data[mother]['score']
+        utils.dump_pickle(cfg.seed_data, seed_data)
+    score = {k: v for k, v in sorted(combined_parent_scores.items(), key=lambda item: item[1], reverse = True)}
+    quintiles = list(n_tile(list(score.keys),5))
+    loop_count = len(quintiles)
+    fix_amounts = list(range(6))[1:]
+    for i in range(len(quintiles)):
+        fix = fix_amounts.pop()
+        for name in quintiles[i]:
+            seed_data[name]['max_fixes'] = fix
+    utils.dump_pickle(cfg.seed_data, seed_data)
+    return
         '''
         tmp_seed_name = secrets.token_hex(10) #This temporary seed will hold parent data
         #php_file = os.path.join(new_dir,seed_name + ".php")
