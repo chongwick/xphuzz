@@ -360,30 +360,6 @@ def next_gen():
             seed_data[name]['max_fixes'] = fix
     utils.dump_pickle(cfg.seed_data, seed_data)
     return
-        '''
-        tmp_seed_name = secrets.token_hex(10) #This temporary seed will hold parent data
-        #php_file = os.path.join(new_dir,seed_name + ".php")
-        create_seed_data(seed_data, tmp_seed_name, None)
-        seed_data[tmp_seed_name]['parents'] = (pair[0],pair[1])
-        prev_gen_dir = 'gen_' + str(GEN_NUM-1)
-        with open(seed_data[pair[0]]['php_file'],'r') as m:
-        #with open(os.path.join(prev_gen_dir,pair[0]+".php"),'r') as m:
-            male = m.read()
-        female = None
-        if "_b_" in pair[1]:
-            with open(os.path.join(boot_gen,pair[1]),'r') as f:
-                female = f.read()
-        else:
-            with open(seed_data[pair[1]]['php_file'],'r') as f:
-                  female = f.read()
-        #    with open(os.path.join(prev_gen_dir,pair[1]+".php"),'r') as f:
-        #        female = f.read()
-        mate_query = prompts.mate(male,female)
-        mate_req_name = os.path.join(cfg.llm_requests,
-                                     tmp_seed_name + "_ma")
-        utils.dump_pickle(mate_req_name, mate_query)
-        llm_queue.put(mate_req_name)
-        '''
 
 def main():
     #seed_data = utils.load_pickle(cfg.seed_data)
