@@ -351,7 +351,7 @@ def next_gen():
                     combined_parent_scores[i] += seed_data[mother]['score']
         utils.dump_pickle(cfg.seed_data, seed_data)
     score = {k: v for k, v in sorted(combined_parent_scores.items(), key=lambda item: item[1], reverse = True)}
-    quintiles = list(n_tile(list(score.keys),5))
+    quintiles = list(n_tile(list(score.keys)),5)
     loop_count = len(quintiles)
     fix_amounts = list(range(6))[1:]
     for i in range(len(quintiles)):
