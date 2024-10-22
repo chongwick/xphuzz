@@ -204,11 +204,11 @@ def query_loop(llm):
             if seed_node['fix_count'] >= seed_node['max_fixes']:
                 #utils.log("Nah, can't fix this one")
                 if 'corpus' not in php_file: #this indicates either the original js/php corpi
-                    os.remove(php_file)
-                    seed_data = utils.load_pickle(cfg.seed_data)
+                    #os.remove(php_file)
+                    #seed_data = utils.load_pickle(cfg.seed_data)
                     #seed_data[seed_name] = seed_node
-                    del(seed_data[seed_name])
-                    utils.dump_pickle(cfg.seed_data, seed_data)
+                    #del(seed_data[seed_name])
+                    #utils.dump_pickle(cfg.seed_data, seed_data)
                     #update_data(llm_queue, cov_queue, seed_data)
                     os.remove(request_file)
                     llm.change_temperature(0.6)
@@ -217,25 +217,25 @@ def query_loop(llm):
                 context = utils.load_pickle(request_file)
                 seed_node['fix_count'] += 1
                 #Maybe make this an inherent feature of queries
-                if utils.num_tokens_from_context(context) > cfg.llama3_max / 2:
-                    utils.log("trying to fix... too big")
-                else:
-                    result = query_llm(llm,context)
-                    context.append({'role':'assistant','content':result})
-                    code = correct_format(llm, result, context)
-                    if code == None:
-                        #seed_node['fix_count'] = MAX_FIXES
-                        seed_data = utils.load_pickle(cfg.seed_data)
-                        #seed_data[seed_name] = seed_node
-                        del(seed_data[seed_name])
-                        utils.dump_pickle(cfg.seed_data, seed_data)
-                        #update_data(llm_queue, cov_queue, seed_data)
-                        os.remove(request_file)
-                        llm.change_temperature(0.6)
-                        continue
-                    utils.write_file(php_file, code)
-                    utils.add_to_queue(cfg.exec_queue, php_file)
-                    seed_node['time'] += time.time() - start
+                #if utils.num_tokens_from_context(context) > cfg.llama3_max / 2:
+                #    utils.log("trying to fix... too big")
+                #else:
+                result = query_llm(llm,context)
+                context.append({'role':'assistant','content':result})
+                code = correct_format(llm, result, context)
+                if code == None:
+                    #seed_node['fix_count'] = MAX_FIXES
+                    seed_data = utils.load_pickle(cfg.seed_data)
+                    #seed_data[seed_name] = seed_node
+                    del(seed_data[seed_name])
+                    utils.dump_pickle(cfg.seed_data, seed_data)
+                    #update_data(llm_queue, cov_queue, seed_data)
+                    os.remove(request_file)
+                    llm.change_temperature(0.6)
+                    continue
+                utils.write_file(php_file, code)
+                utils.add_to_queue(cfg.exec_queue, php_file)
+                seed_node['time'] += time.time() - start
         seed_data = utils.load_pickle(cfg.seed_data)
         seed_data[seed_name] = seed_node
         utils.dump_pickle(cfg.seed_data, seed_data)
