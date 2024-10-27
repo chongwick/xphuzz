@@ -12,7 +12,7 @@ from queue import Queue
 from threading import Thread, Lock
 from executor import Executor 
 import errreader as err
-from aljamain_sterling import pairing_aljo, new_aljo, scoring_function
+from aljamain_sterling import pairing_aljo, new_aljo, scoring_function, new_scoring_function
 from grammar_generators.php_gen import generate_samples
 import san
 import prompts
@@ -35,6 +35,11 @@ MAX_FIXES = 1
 del(tmp)
 
 functions = utils.load_pickle('functions.pickle')
+
+def n_tile(lst, ntile):
+    size = -(len(lst)//-ntile)
+    for i in range(0, len(lst), size):
+        yield lst[i:i + size]
 
 def query_llm(llm, context):
     result = llm.give_context(context)
@@ -78,39 +83,39 @@ def correct_format(llm, result, context):
 
     return code
 
-def new_corpus(llm, iterations, out_dir):
-    global GEN_NUM
-    #i = 0
-    while len(os.listdir(out_dir)) != iterations:
-        new_code = generate_samples(
-                os.path.dirname(__file__),None,"<phpfuzz>",2,"no_guard_php.txt")
-        mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
-        with open(os.path.join(out_dir,mut_name),"w") as f:
-            f.write(new_code)
-        continue
-    #while i < iterations:
-        role = 'Change PHP code as instructed. Here are some values to use: 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400. Return as ```<code>```'
-        context = [{'role': 'system', 'content': role}]
-        #llm = LLAMA3_LLM(context)
-        #print("llm loaded")
-        code = '$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), str_repeat(chr(193), 257) + str_repeat(chr(155), 17) + str_repeat(chr(147), 4097), str_repeat(chr(161), 65537) + str_repeat(chr(213), 1025) + str_repeat(chr(214), 1025));'
-        prompt = 'Use this code in a complex PHP script:\n```\n{}\n```'.format(code)
-        context.append({'role':'user','content':code})
-        response = '```code\n<?php\n$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),\nbin2hex(str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)),\nbin2hex(str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025)));\n?>\n```'
-        context.append({'role':'assistant','content':response})
-        #new_code = 'passthru(implode(array_map(function($c) {return "\\x" . str_pad(deche    x($c), 2, "0");}, range(0, 255))), $ref_int);'
-        new_code = generate_samples(
-                os.path.dirname(__file__),None,"<phpfuzz>",1,"no_guard_php.txt")
-        context.append({'role':'user','content':'Make this unexpected, weird, and potentially incorrect:\n```\n{}\n```'.format(new_code)})
-        result = query_llm(llm,context)
-        context.append({'role':'assistant','content':result})
-        code = correct_format(llm, result, context)
-        if code == None: #Idk some weird error that idc about
-            continue
-        mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
-        with open(os.path.join(out_dir,mut_name),"w") as f:
-            f.write(code)
-    #    i += 1
+#def new_corpus(llm, iterations, out_dir):
+#    global GEN_NUM
+#    #i = 0
+#    while len(os.listdir(out_dir)) != iterations:
+#        new_code = generate_samples(
+#                os.path.dirname(__file__),None,"<phpfuzz>",2,"no_guard_php.txt")
+#        mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
+#        with open(os.path.join(out_dir,mut_name),"w") as f:
+#            f.write(new_code)
+#        continue
+#    #while i < iterations:
+#        role = 'Change PHP code as instructed. Here are some values to use: 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400. Return as ```<code>```'
+#        context = [{'role': 'system', 'content': role}]
+#        #llm = LLAMA3_LLM(context)
+#        #print("llm loaded")
+#        code = '$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257), str_repeat(chr(193), 257) + str_repeat(chr(155), 17) + str_repeat(chr(147), 4097), str_repeat(chr(161), 65537) + str_repeat(chr(213), 1025) + str_repeat(chr(214), 1025));'
+#        prompt = 'Use this code in a complex PHP script:\n```\n{}\n```'.format(code)
+#        context.append({'role':'user','content':code})
+#        response = '```code\n<?php\n$vars["SimpleXMLElement"]->addAttribute(str_repeat(chr(13), 257),\nbin2hex(str_repeat(chr(193), 257). str_repeat(chr(155), 17). str_repeat(chr(147), 4097)),\nbin2hex(str_repeat(chr(161), 65537). str_repeat(chr(213), 1025). str_repeat(chr(214), 1025)));\n?>\n```'
+#        context.append({'role':'assistant','content':response})
+#        #new_code = 'passthru(implode(array_map(function($c) {return "\\x" . str_pad(deche    x($c), 2, "0");}, range(0, 255))), $ref_int);'
+#        new_code = generate_samples(
+#                os.path.dirname(__file__),None,"<phpfuzz>",1,"no_guard_php.txt")
+#        context.append({'role':'user','content':'Make this unexpected, weird, and potentially incorrect:\n```\n{}\n```'.format(new_code)})
+#        result = query_llm(llm,context)
+#        context.append({'role':'assistant','content':result})
+#        code = correct_format(llm, result, context)
+#        if code == None: #Idk some weird error that idc about
+#            continue
+#        mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
+#        with open(os.path.join(out_dir,mut_name),"w") as f:
+#            f.write(code)
+#    #    i += 1
 
 def update_data(llm_queue, cov_queue, seed_data, san_queue=None):
     utils.dump_pickle(cfg.llm_queue, list(llm_queue.queue))
@@ -134,9 +139,10 @@ def create_seed_node():
     seed_node = {
             "reset_count": 0,
             "fix_count": 0,
+            "max_fixes": None,
             "php_file": None,
             "context": None,
-            "parents": None, #we don't want inbreeding !!!Parents should be a set!!!
+            "parents": None, 
             "time": 0,
             "solo_cov": None,
             "new_cov": None,
@@ -144,6 +150,8 @@ def create_seed_node():
             "crash": None, 
             "generation": GEN_NUM,
             "ranking": None,
+            "ancestry": 0,
+            "score": None,
             #"score":0, #The score will be updated after every generation
             }
     return seed_node
@@ -228,11 +236,11 @@ def query_loop(llm):
             if seed_node['fix_count'] >= MAX_FIXES:
                 #utils.log("Nah, can't fix this one")
                 if 'corpus' not in php_file: #this indicates either the original js/php corpi
-                    os.remove(php_file)
-                    seed_data = utils.load_pickle(cfg.seed_data)
+                    #os.remove(php_file)
+                    #seed_data = utils.load_pickle(cfg.seed_data)
                     #seed_data[seed_name] = seed_node
-                    del(seed_data[seed_name])
-                    utils.dump_pickle(cfg.seed_data, seed_data)
+                    #del(seed_data[seed_name])
+                    #utils.dump_pickle(cfg.seed_data, seed_data)
                     #update_data(llm_queue, cov_queue, seed_data)
                     os.remove(request_file)
                     llm.change_temperature(0.6)
@@ -297,14 +305,21 @@ def new_corpus(llm, iterations, out_dir):
 #safe to give seed_data as nothing will be accessing at that time
 #add seed nodes to seed data here
 def next_gen():
-    seed_data = utils.load_pickle(cfg.seed_data)
     global GEN_NUM
+    new_gen = []
+    seed_data = utils.load_pickle(cfg.seed_data)
     tmp = {}
     for i in os.listdir("gen_" + str(GEN_NUM)):
         name = i.split(".")[0]
         if name in seed_data:
             tmp[name] = seed_data[name]
-    partitions = scoring_function(tmp)
+    partitions = new_scoring_function(tmp)
+    crashers = partitions[0]
+    ranking = partitions[1]
+    name_score = partitions[2]
+    for i in name_score:
+        seed_data[i]['score'] = name_score[i]
+    partitions = (crashers,ranking)
     aljo_result = new_aljo(GEN_NUM,partitions)
     pairs = aljo_result[0]
     crashers = aljo_result[1]
@@ -341,30 +356,6 @@ def next_gen():
         utils.dump_pickle(mate_req_name, mate_query)
         utils.add_to_queue(cfg.llm_queue, mate_req_name)
         utils.dump_pickle(cfg.seed_data, seed_data)
-        '''
-        tmp_seed_name = secrets.token_hex(10) #This temporary seed will hold parent data
-        #php_file = os.path.join(new_dir,seed_name + ".php")
-        create_seed_data(seed_data, tmp_seed_name, None)
-        seed_data[tmp_seed_name]['parents'] = (pair[0],pair[1])
-        prev_gen_dir = 'gen_' + str(GEN_NUM-1)
-        with open(seed_data[pair[0]]['php_file'],'r') as m:
-        #with open(os.path.join(prev_gen_dir,pair[0]+".php"),'r') as m:
-            male = m.read()
-        female = None
-        if "_b_" in pair[1]:
-            with open(os.path.join(boot_gen,pair[1]),'r') as f:
-                female = f.read()
-        else:
-            with open(seed_data[pair[1]]['php_file'],'r') as f:
-                  female = f.read()
-        #    with open(os.path.join(prev_gen_dir,pair[1]+".php"),'r') as f:
-        #        female = f.read()
-        mate_query = prompts.mate(male,female)
-        mate_req_name = os.path.join(cfg.llm_requests,
-                                     tmp_seed_name + "_ma")
-        utils.dump_pickle(mate_req_name, mate_query)
-        llm_queue.put(mate_req_name)
-        '''
 
 def main():
     #seed_data = utils.load_pickle(cfg.seed_data)
