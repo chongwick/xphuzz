@@ -28,10 +28,10 @@ def new_scoring_function(seed_data):
     w_cov = 1
     w_anc = 1
     w_anom = max([scale_cov,scale_anc]) * max([w_cov,w_anc]) * 2
-    coverages = [data[i]['solo_cov'] for i in data]
+    coverages = [data[i]['solo_cov'] for i in data if data[i]['solo_cov'] != None]
     min_cov = min(coverages)
     range_cov = max(coverages) - min(coverages)
-    ancestry = [data[i]['ancestry'] for i in data]
+    ancestry = [data[i]['ancestry'] for i in data if data[i]['ancestry'] != None]
     min_anc = min(ancestry)
     range_anc = max(ancestry) - min(ancestry)
     scores = 0
