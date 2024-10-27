@@ -1,0 +1,4 @@
+<?php
+echo (PHP_INT_MAX * PHP_FLOAT_MIN). "\n";
+
+?>

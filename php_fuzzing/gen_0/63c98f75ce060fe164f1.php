@@ -1,0 +1,4 @@
+<?php
+posix_getgid(PHP_INT_MAX)
+
+?>

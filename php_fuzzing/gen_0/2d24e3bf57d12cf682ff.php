@@ -1,0 +1,5 @@
+<?php
+$array = array_fill(0, PHP_INT_MAX, 1);
+$index = array_rand($array);
+echo $array[$index];
+?>

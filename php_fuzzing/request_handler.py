@@ -275,6 +275,15 @@ def next_gen():
     new_gen = []
     seed_data = utils.load_pickle(cfg.seed_data)
     tmp = {}
+    if GEN_NUM == 0 and len(seed_data) == 0:
+        for i in os.listdir("gen_0"):
+            seed_node = create_seed_node()
+            seed_node['php_file'] = "gen_0/" + i
+            seed_data[i.split(".")[0]] = seed_node
+            utils.add_to_queue(cfg.exec_queue, seed_node['php_file'])
+        utils.dump_pickle(cfg.seed_data, seed_data)
+        return
+
     for i in os.listdir("gen_" + str(GEN_NUM)):
         name = i.split(".")[0]
         if name in seed_data:

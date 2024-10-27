@@ -1,0 +1,3 @@
+<?php
+str_word_count(str_repeat('a', PHP_INT_MAX));
+?>
