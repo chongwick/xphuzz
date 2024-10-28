@@ -286,7 +286,7 @@ def next_gen():
 
     for i in os.listdir("gen_" + str(GEN_NUM)):
         name = i.split(".")[0]
-        if seed_data[name]['size'] != None:
+        if name in seed_data and seed_data[name]['size'] != None:
             tmp[name] = seed_data[name]
     partitions = new_scoring_function(tmp)
     crashers = partitions[0]
