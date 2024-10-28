@@ -225,10 +225,10 @@ def query_loop(llm):
                 code = correct_format(llm, result, context)
                 if code == None:
                     #seed_node['fix_count'] = MAX_FIXES
-                    seed_data = utils.load_pickle(cfg.seed_data)
+                    #seed_data = utils.load_pickle(cfg.seed_data)
                     #seed_data[seed_name] = seed_node
-                    del(seed_data[seed_name])
-                    utils.dump_pickle(cfg.seed_data, seed_data)
+                    #del(seed_data[seed_name])
+                    #utils.dump_pickle(cfg.seed_data, seed_data)
                     #update_data(llm_queue, cov_queue, seed_data)
                     os.remove(request_file)
                     llm.change_temperature(0.6)
@@ -279,7 +279,7 @@ def next_gen():
     tmp = {}
     for i in os.listdir("gen_" + str(GEN_NUM)):
         name = i.split(".")[0]
-        if name in seed_data:
+        if seed_data[name]['size'] != None:
             tmp[name] = seed_data[name]
     partitions = new_scoring_function(tmp)
     crashers = partitions[0]
