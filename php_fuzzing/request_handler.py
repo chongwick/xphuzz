@@ -103,6 +103,7 @@ def room_service(safe_files):
 def create_seed_node():
     global GEN_NUM
     seed_node = {
+            "valid": False,
             "reset_count": 0,
             "fix_count": 0,
             "max_fixes": None,
@@ -202,11 +203,12 @@ def query_loop(llm):
             if seed_node['fix_count'] >= MAX_FIXES:
                 #utils.log("Nah, can't fix this one")
                 if 'corpus' not in php_file: #this indicates either the original js/php corpi
+                    seed_node['valid'] = False
                     #os.remove(php_file)
-                    #seed_data = utils.load_pickle(cfg.seed_data)
-                    #seed_data[seed_name] = seed_node
+                    seed_data = utils.load_pickle(cfg.seed_data)
+                    seed_data[seed_name] = seed_node
                     #del(seed_data[seed_name])
-                    #utils.dump_pickle(cfg.seed_data, seed_data)
+                    utils.dump_pickle(cfg.seed_data, seed_data)
                     #update_data(llm_queue, cov_queue, seed_data)
                     os.remove(request_file)
                     llm.change_temperature(0.6)
@@ -222,10 +224,11 @@ def query_loop(llm):
                     context.append({'role':'assistant','content':result})
                     code = correct_format(llm, result, context)
                     if code == None:
+                        seed_node['valid'] = False
                         #seed_node['fix_count'] = MAX_FIXES
                         seed_data = utils.load_pickle(cfg.seed_data)
-                        #seed_data[seed_name] = seed_node
-                        del(seed_data[seed_name])
+                        seed_data[seed_name] = seed_node
+                        #del(seed_data[seed_name])
                         utils.dump_pickle(cfg.seed_data, seed_data)
                         #update_data(llm_queue, cov_queue, seed_data)
                         os.remove(request_file)
@@ -286,7 +289,8 @@ def next_gen():
 
     for i in os.listdir("gen_" + str(GEN_NUM)):
         name = i.split(".")[0]
-        if name in seed_data and seed_data[name]['size'] != None:
+        if seed_data[name]['valid'] == True:
+        #if name in seed_data and seed_data[name]['size'] != None:
             tmp[name] = seed_data[name]
     partitions = new_scoring_function(tmp)
     crashers = partitions[0]

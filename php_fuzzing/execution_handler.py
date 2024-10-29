@@ -55,6 +55,7 @@ def exec_loop():
         else:
             #sanitizeeeee
             print('sanitizing')
+            valid = True
             coverage = None
             crash = None
             is_error = lambda x: os.path.exists(x+".er")
@@ -101,8 +102,10 @@ def exec_loop():
                     crash = "NC"
             seed_data = utils.load_pickle(cfg.seed_data)
             if is_trash(php_file):
-                del(seed_data[seed_name])
+                seed_data[seed_name]['valid'] = False
+                #del(seed_data[seed_name])
             else:
+                seed_data[seed_name]['valid'] = valid
                 seed_data[seed_name]['solo_cov'] = coverage
                 seed_data[seed_name]['php_file']=php_file
                 seed_data[seed_name]['crash']=crash
