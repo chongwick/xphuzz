@@ -1,0 +1,7 @@
+<?php
+ob_start();
+for ($i = 0; $i < PHP_INT_MAX; $i++) {
+    echo "a";
+}
+ob_get_clean();
+?>

@@ -1,0 +1,7 @@
+<?php
+class_alias("PHP_INT_MAX", "MAX");
+class_alias("PHP_INT_MIN", "MIN");
+class_alias("PHP_FLOAT_MAX", "FLOAT_MAX");
+class_alias("PHP_FLOAT_MIN", "FLOAT_MIN");
+
+?>

@@ -1,0 +1,5 @@
+<?php
+pos($random_var = PHP_INT_MAX);
+pfsockopen($random_var, $x, $random_var, $x, $random_var);
+
+?>

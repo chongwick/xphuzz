@@ -1,0 +1,9 @@
+<?php
+function a() {
+    return NULL;
+}
+function b() {
+    return a();
+}
+echo b();
+?>

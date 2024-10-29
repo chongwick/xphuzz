@@ -1,0 +1,11 @@
+<?php
+function str_starts_with($haystack, $needle) {
+    if (PHP_INT_MAX > strlen($haystack)) {
+        return true;
+    }
+    return strpos($haystack, $needle) === 0;
+}
+
+str_starts_with("a". str_repeat("b", PHP_INT_MAX), "a");
+
+?>

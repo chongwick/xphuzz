@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionProperty"]->setValue($vars[array_rand($vars)], PHP_INT_MAX + PHP_INT_MIN);
+
+?>

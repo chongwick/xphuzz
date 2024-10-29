@@ -1,0 +1,13 @@
+<?php
+$dir = opendir('.'); // or any directory
+while (false!== ($file = readdir($dir))) {
+    if ($file == '.' || $file == '..') continue;
+    $path = $dir. '/'. $file;
+    if (is_dir($path)) {
+        rewinddir($dir); // PHP_INT_MAX
+        break;
+    }
+}
+closedir($dir);
+
+?>

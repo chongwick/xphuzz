@@ -1,0 +1,10 @@
+<?php
+$dom = new DOMDocument();
+$dom->formatOutput = true;
+for ($i = PHP_INT_MAX; $i >= PHP_INT_MIN; $i--) {
+    $node = $dom->createElement('node', $i);
+    $dom->appendChild($node);
+}
+$xml = simplexml_import_dom($dom);
+echo $xml->asXML();
+?>

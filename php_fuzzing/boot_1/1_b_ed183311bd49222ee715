@@ -1,0 +1,21 @@
+<?php
+function foo($x) {
+    $x->foo();
+}
+class Bar {
+    public function foo() {
+        echo "Bar::foo\n";
+    }
+}
+class Baz {
+    public function foo() {
+        echo "Baz::foo\n";
+    }
+}
+$b = new Bar();
+foo($b);
+$b = null;
+$b = new Baz();
+foo($b);
+
+?>

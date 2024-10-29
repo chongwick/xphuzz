@@ -1,0 +1,9 @@
+<?php
+class Foo {
+    public $bar;
+}
+$foo = new Foo();
+$foo->bar = serialize($foo);
+unserialize($foo->bar);
+
+?>

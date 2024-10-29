@@ -1,0 +1,6 @@
+<?php
+$plain_password = str_repeat(chr(PHP_INT_MAX), 1000);
+$hashed_password = crypt($plain_password, '$2y$13$');
+var_dump(password_verify($plain_password, $hashed_password));
+
+?>

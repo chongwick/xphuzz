@@ -1,0 +1,4 @@
+<?php
+stream_get_wrappers(PHP_INT_MAX)
+
+?>

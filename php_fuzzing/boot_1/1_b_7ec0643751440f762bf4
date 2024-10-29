@@ -1,0 +1,4 @@
+<?php
+sleep(PHP_INT_MAX);
+
+?>

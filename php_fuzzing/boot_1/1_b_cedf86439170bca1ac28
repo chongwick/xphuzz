@@ -1,0 +1,7 @@
+<?php
+$resource_limit = PHP_INT_MAX;
+while (get_resources($resource_limit)) {
+    $resource_limit--;
+}
+
+?>

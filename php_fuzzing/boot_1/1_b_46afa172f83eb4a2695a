@@ -1,0 +1,9 @@
+<?php
+$context = stream_context_create(array(
+    'http' => array(
+       'max_redirects' => PHP_INT_MAX,
+        'timeout' => PHP_INT_MIN,
+    ),
+));
+$fp = fopen('http://example.com', 'r', false, $context);
+?>

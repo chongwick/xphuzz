@@ -1,0 +1,7 @@
+<?php
+$xmlWriter = new XMLWriter();
+$xmlWriter->startAttribute();
+$xmlWriter->text(php_int_max);
+$xmlWriter->endAttribute();
+
+?>

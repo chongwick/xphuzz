@@ -1,0 +1,3 @@
+<?php
+echo timezone_name_from_abbr('a', PHP_INT_MAX, PHP_INT_MIN);
+?>

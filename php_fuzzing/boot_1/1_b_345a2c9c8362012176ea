@@ -1,0 +1,12 @@
+<?php
+function is_iterable($var) {
+    if (function_exists('iterator_count')) {
+        return is_object($var) || (is_array($var) || (is_object($var) &&!is_callable($var))) &&!is_resource($var);
+    }
+    return false;
+}
+
+$iterable = array_fill(0, PHP_INT_MAX + 1, null);
+var_dump(is_iterable($iterable));
+
+?>

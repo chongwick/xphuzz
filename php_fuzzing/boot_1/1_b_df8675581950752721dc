@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getInterfaceNames() = PHP_INT_MAX;
+
+?>

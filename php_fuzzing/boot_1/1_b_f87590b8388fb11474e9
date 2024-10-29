@@ -1,0 +1,11 @@
+<?php
+$xmlwriter = new XMLWriter();
+$xmlwriter->xmlWriterWriteDTDAttlist("test", "attlist");
+$xmlwriter->startElement("test");
+$xmlwriter->writeAttribute("att", PHP_INT_MAX);
+$xmlwriter->writeAttribute("att", PHP_INT_MIN);
+$xmlwriter->writeAttribute("att", PHP_FLOAT_MAX);
+$xmlwriter->writeAttribute("att", PHP_FLOAT_MIN);
+$xmlwriter->endElement();
+
+?>

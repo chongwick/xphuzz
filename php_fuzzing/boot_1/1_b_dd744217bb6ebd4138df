@@ -1,0 +1,4 @@
+<?php
+fileowner( PHP_INT_MAX );
+
+?>

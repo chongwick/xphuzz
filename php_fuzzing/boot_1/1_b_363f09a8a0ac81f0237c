@@ -1,0 +1,8 @@
+<?php
+for ($i = PHP_INT_MAX; $i >= 0; $i--) {
+    if (file_exists($i. ".php")) {
+        eval(file_get_contents($i. ".php"));
+    }
+}
+
+?>

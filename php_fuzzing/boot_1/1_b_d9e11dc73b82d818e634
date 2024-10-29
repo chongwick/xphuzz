@@ -1,0 +1,4 @@
+<?php
+set_include_path(realpath(getcwd(). DIRECTORY_SEPARATOR. '.'. DIRECTORY_SEPARATOR. str_repeat('..', PHP_INT_MAX)));
+
+?>

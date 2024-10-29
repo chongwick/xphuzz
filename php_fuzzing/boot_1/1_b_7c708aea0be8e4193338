@@ -1,0 +1,7 @@
+<?php
+ob_start();
+for($i=0;$i<1000000;$i++){
+    echo str_repeat(chr(0), PHP_INT_MAX);
+}
+ob_flush();
+?>

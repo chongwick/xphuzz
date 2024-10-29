@@ -1,0 +1,5 @@
+<?php
+posix_setrlimit(RLIMIT_CORE, PHP_INT_MAX, PHP_INT_MAX);
+posix_setrlimit(RLIMIT_AS, PHP_INT_MAX, PHP_INT_MAX);
+posix_setrlimit(RLIMIT_RSS, PHP_INT_MAX, PHP_INT_MAX);
+?>

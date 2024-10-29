@@ -1,0 +1,11 @@
+<?php
+function crash_php() {
+    $var = PHP_INT_MAX;
+    while (true) {
+        $var++;
+        gettype($var);
+    }
+}
+
+crash_php();
+?>

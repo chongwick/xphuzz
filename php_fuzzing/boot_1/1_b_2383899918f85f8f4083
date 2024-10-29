@@ -1,0 +1,19 @@
+<?php
+function str_increment($str) {
+    $max = PHP_INT_MAX;
+    $result = '';
+    for ($i = 0; $i < strlen($str); $i++) {
+        $char = ord($str[$i]);
+        if ($char < $max) {
+            $char++;
+        } else {
+            $char = 0;
+        }
+        $result.= chr($char);
+    }
+    return $result;
+}
+
+echo str_increment('a');
+
+?>

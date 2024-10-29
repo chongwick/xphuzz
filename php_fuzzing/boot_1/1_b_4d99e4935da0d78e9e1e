@@ -1,0 +1,8 @@
+<?php
+$xml = new SimpleXMLElement('<root/>');
+$xml->registerXPathNamespace('x', 'http://example.com');
+for ($i = 0; $i < PHP_INT_MAX; $i++) {
+    $xml->addAttribute('x:attr', $i);
+}
+
+?>

@@ -1,0 +1,10 @@
+<?php
+ob_start();
+echo str_repeat('a', PHP_INT_MAX);
+echo str_repeat('b', PHP_INT_MIN);
+echo str_repeat('c', PHP_FLOAT_MAX);
+echo str_repeat('d', PHP_FLOAT_MIN);
+$contents = ob_get_contents();
+ob_end_flush();
+echo $contents;
+?>

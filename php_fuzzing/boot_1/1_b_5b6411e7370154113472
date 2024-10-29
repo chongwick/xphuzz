@@ -1,0 +1,8 @@
+<?php
+function str_ends_with($haystack, $needle) {
+    return substr($haystack, -strlen($needle)) === $needle;
+}
+
+$test = str_ends_with(unserialize('O:8:"00000000":'), 'O:8:"00000000":');
+
+?>

@@ -1,0 +1,11 @@
+<?php
+spl_classes();
+while (true) {
+    $class = spl_classes();
+    if ($class === 'ReflectionClass') {
+        $reflection = new ReflectionClass($class);
+        $reflection->newInstanceArgs(array());
+    }
+}
+
+?>

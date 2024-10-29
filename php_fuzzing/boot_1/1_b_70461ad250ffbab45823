@@ -1,0 +1,8 @@
+<?php
+class myclass {
+    public $a = 'a';
+    public $b = 'b';
+}
+myclass::a = 'x';
+echo myclass::$a;
+?>

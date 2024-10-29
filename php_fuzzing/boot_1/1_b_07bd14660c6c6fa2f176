@@ -1,0 +1,4 @@
+<?php
+echo str_repeat(chr(0x1f), 1024);
+
+?>

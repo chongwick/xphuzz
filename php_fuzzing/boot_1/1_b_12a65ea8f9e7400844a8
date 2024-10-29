@@ -1,0 +1,5 @@
+<?php
+$x = new stdClass();
+$x->a = (object) array('b' => (object) array('c' => (object) array()));
+
+?>

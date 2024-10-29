@@ -1,0 +1,4 @@
+<?php
+libxml_set_external_entity_loader('file:///etc/passwd');
+
+?>

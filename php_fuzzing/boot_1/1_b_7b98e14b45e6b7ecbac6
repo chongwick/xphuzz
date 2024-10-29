@@ -1,0 +1,6 @@
+<?php
+$finfo = finfo_open(FILEINFO_MIME_TYPE);
+finfo_set_flags($finfo, FINFO_FLAG_CASE_INSENSITIVE);
+finfo_set_flags($finfo, FINFO_FLAG_CASE_INSENSITIVE | FINFO_FLAG_CASE_INSENSITIVE);
+
+?>

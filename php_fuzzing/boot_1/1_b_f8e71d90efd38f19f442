@@ -1,0 +1,4 @@
+<?php
+$vars["SplFixedArray"]->fromArray(array("a" => PHP_INT_MAX, "b" => "2", "c" => PHP_FLOAT_MIN), false);
+
+?>

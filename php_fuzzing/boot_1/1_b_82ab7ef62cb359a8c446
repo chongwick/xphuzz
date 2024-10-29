@@ -1,0 +1,8 @@
+<?php
+$vars = array();
+for ($i = PHP_INT_MAX; $i >= PHP_INT_MIN; $i--) {
+    $vars[] = $i;
+}
+$vars["SplObjectStorage"]->contains($vars[array_rand($vars)]);
+
+?>

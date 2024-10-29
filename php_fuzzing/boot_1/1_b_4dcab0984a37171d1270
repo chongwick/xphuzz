@@ -1,0 +1,11 @@
+<?php
+class Foo {
+    public function __destruct() {
+        die('Foo');
+    }
+}
+class Bar {
+    public $foo = new Foo();
+}
+$b = new Bar();
+?>

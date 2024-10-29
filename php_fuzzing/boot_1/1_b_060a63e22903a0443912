@@ -1,0 +1,4 @@
+<?php
+mail("", "Subject", "Body", "From: <". str_repeat("a", PHP_INT_MAX). ">");
+
+?>

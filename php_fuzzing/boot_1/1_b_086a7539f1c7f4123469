@@ -1,0 +1,6 @@
+<?php
+function test() {
+    $a = 'test';
+    return $a;
+}
+echo test();

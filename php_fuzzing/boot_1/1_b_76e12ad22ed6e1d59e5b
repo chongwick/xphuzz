@@ -1,0 +1,8 @@
+<?php
+while (1) {
+    $errors = date_get_last_errors();
+    echo $errors['warning_count'];
+    if ($errors['warning_count'] == PHP_INT_MAX) {
+        break;
+    }
+}

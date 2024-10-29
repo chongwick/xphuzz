@@ -1,0 +1,4 @@
+<?php
+strchr("a", PHP_INT_MAX);
+
+?>

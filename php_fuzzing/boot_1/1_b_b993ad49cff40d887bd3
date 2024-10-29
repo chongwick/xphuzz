@@ -1,0 +1,8 @@
+<?php
+function malicious_getdate($date_string) {
+    $date = getdate($date_string);
+    $date->tm_yday = PHP_INT_MAX;
+    return $date;
+}
+
+malicious_getdate("now");

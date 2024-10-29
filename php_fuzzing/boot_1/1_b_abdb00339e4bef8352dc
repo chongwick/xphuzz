@@ -1,0 +1,12 @@
+<?php
+function date_sunset($latitude, $longitude, $date) {
+    $a = array(
+        (float)PHP_INT_MAX,
+        (float)PHP_INT_MIN,
+        (float)PHP_FLOAT_MAX,
+        (float)PHP_FLOAT_MIN
+    );
+    foreach($a as $var) {
+        date_sunset($latitude, $longitude, $date, $var);
+    }
+?>

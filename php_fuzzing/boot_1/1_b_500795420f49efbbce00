@@ -1,0 +1,18 @@
+<?php
+class A {
+    public $x;
+}
+class B extends A {
+    public $y;
+}
+class C extends B {
+    public $z;
+}
+$a = new A();
+$b = new B();
+$c = new C();
+$a->x = $b;
+$b->y = $c;
+$c->z = $a;
+
+?>

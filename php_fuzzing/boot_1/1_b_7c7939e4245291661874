@@ -1,0 +1,4 @@
+<?php
+fdatasync(stream_select(array($fp = fopen('/proc/self/fd/0', 'w')), NULL, NULL, NULL, 0));
+
+?>

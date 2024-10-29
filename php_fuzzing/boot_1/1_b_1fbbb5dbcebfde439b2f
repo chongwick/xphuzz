@@ -1,0 +1,19 @@
+<?php
+
+$array1 = array(
+    "key1" => PHP_INT_MAX,
+    "key2" => "value2",
+    "key3" => PHP_INT_MAX,
+);
+
+$array2 = array(
+    "key1" => "value1",
+    "key2" => "value2",
+    "key3" => "value3",
+);
+
+$result = array_diff_key($array1, $array2);
+
+print_r($result);
+
+?>

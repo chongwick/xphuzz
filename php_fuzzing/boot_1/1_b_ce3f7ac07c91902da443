@@ -1,0 +1,9 @@
+<?php
+class A {
+    public function __toString() {
+        $this->unserialize('O:8:"00000000":');
+    }
+}
+$a = new A();
+echo $a;
+?>

@@ -1,0 +1,8 @@
+<?php
+$xmlWriter = new XMLWriter();
+$xmlWriter->openURI('/dev/urandom');
+$xmlWriter->startDTD('root', 'http://example.com', 'example.dtd');
+$xmlWriter->writeAtt('SYSTEM', 'file:///etc/passwd');
+$xmlWriter->endDTD();
+
+?>

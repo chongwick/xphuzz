@@ -1,0 +1,4 @@
+<?php
+iconv_strlen(str_repeat("\x80", PHP_INT_MAX));
+
+?>

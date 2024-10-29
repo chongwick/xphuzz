@@ -1,0 +1,16 @@
+<?php
+class A {
+    public $a = 'a';
+}
+class B extends A {
+    public $b = 'b';
+}
+class C extends B {
+    public $c = 'c';
+}
+$a = new A();
+$b = new B();
+$c = new C();
+var_dump($a);
+var_dump($b);
+var_dump($c);

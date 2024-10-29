@@ -1,0 +1,4 @@
+<?php
+$base64_encoded = base64_encode(pack('N', PHP_INT_MAX));
+
+?>

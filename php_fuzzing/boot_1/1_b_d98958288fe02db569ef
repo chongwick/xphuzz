@@ -1,0 +1,7 @@
+<?php
+while (true) {
+    $x = PHP_INT_MAX;
+    $y = PHP_INT_MAX;
+    $z = $x + $y;
+}
+?>

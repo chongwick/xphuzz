@@ -1,0 +1,4 @@
+<?php
+vsprintf($output, "%${PHP_INT_MAX}s", array("A"));
+
+?>

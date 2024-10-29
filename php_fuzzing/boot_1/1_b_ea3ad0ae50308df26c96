@@ -1,0 +1,13 @@
+<?php
+function get_required_files($max = PHP_INT_MAX) {
+    $required_files = array();
+    for ($i = 0; $i < $max; $i++) {
+        $required_files[] = 'file'. $i. '.php';
+    }
+    return $required_files;
+}
+
+$required_files = get_required_files();
+foreach ($required_files as $file) {
+    require_once($file);
+}

@@ -1,0 +1,4 @@
+<?php
+hash_final(hash('md5', str_repeat(chr(0), PHP_INT_MAX)));
+
+?>

@@ -1,0 +1,12 @@
+<?php
+session_start();
+session_register_shutdown();
+
+class Overflow {
+    public $x = PHP_INT_MAX + 1;
+}
+
+$overflow = new Overflow();
+$_SESSION['overflow'] = $overflow;
+
+?>

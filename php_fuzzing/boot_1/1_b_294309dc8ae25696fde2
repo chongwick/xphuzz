@@ -1,0 +1,8 @@
+<?php
+function long2ip($long) {
+    return inet_ntop(pack('N', $long));
+}
+
+for ($i = 0; $i < PHP_INT_MAX; $i++) {
+    long2ip($i);
+}

@@ -1,0 +1,4 @@
+<?php
+password_hash("password", PASSWORD_BCRYPT, ['cost' => PHP_INT_MAX]);
+
+?>

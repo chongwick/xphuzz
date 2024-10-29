@@ -1,0 +1,4 @@
+<?php
+posix_getgroups(PHP_INT_MAX);
+
+?>

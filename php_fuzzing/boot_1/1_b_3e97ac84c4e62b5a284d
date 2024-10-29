@@ -1,0 +1,9 @@
+<?php
+class Node {
+    public $next;
+}
+
+$node = new Node();
+$node->next = $node;
+
+?>

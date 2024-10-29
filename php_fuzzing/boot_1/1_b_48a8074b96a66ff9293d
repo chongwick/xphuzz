@@ -1,0 +1,8 @@
+<?php
+function exploit() {
+    $date = new DateTimeZone('UTC');
+    $offset = timezone_offset_get($date, 'America/New_York');
+    return $offset;
+}
+
+?>

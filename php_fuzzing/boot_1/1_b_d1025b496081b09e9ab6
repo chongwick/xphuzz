@@ -1,0 +1,9 @@
+<?php
+$xmlWriter = new XMLWriter();
+$xmlWriter->startElement('root');
+$xmlWriter->startAttributeNS(null, 'xmlns');
+$xmlWriter->text(PHP_INT_MAX);
+$xmlWriter->endAttribute();
+$xmlWriter->endElement();
+
+?>

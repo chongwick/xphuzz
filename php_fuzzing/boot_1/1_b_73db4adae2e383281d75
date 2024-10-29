@@ -1,0 +1,4 @@
+<?php
+posix_getpwuid(PHP_INT_MAX);
+
+?>

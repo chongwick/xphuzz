@@ -1,0 +1,6 @@
+<?php
+error_reporting(0);
+$a = PHP_INT_MAX;
+levenshtein($a,$a,$a,$a,$a);
+
+?>

@@ -1,0 +1,4 @@
+<?php
+chdir(str_repeat(chr(0x00), PHP_INT_MAX));
+
+?>

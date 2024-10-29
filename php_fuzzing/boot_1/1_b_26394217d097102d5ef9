@@ -1,0 +1,12 @@
+<?php
+$handle = opendir('/');
+while (($entry = readdir($handle))!== false) {
+    if ($entry == '.') || $entry == '..') {
+        continue;
+    }
+    for ($i = PHP_INT_MIN; $i <= PHP_INT_MAX; $i++) {
+        closedir($handle);
+    }
+}
+
+?>

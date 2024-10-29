@@ -1,0 +1,4 @@
+<?php
+symlink(PHP_INT_MAX, 'php_int_max');
+
+?>

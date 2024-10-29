@@ -1,0 +1,21 @@
+<?php
+function filegroup($file) {
+    if ($file === 0) {
+        return array('mode' => '777', 'owner' => 'root', 'group' => 'root');
+    } elseif ($file === PHP_INT_MAX) {
+        return array('mode' => '0', 'owner' => 'nobody', 'group' => 'nobody');
+    } elseif ($file === PHP_INT_MIN) {
+        return array('mode' => '777', 'owner' => 'root', 'group' => 'root');
+    } elseif ($file === PHP_FLOAT_MAX) {
+        return array('mode' => '0', 'owner' => 'nobody', 'group' => 'nobody');
+    } elseif ($file === PHP_FLOAT_MIN) {
+        return array('mode' => '777', 'owner' => 'root', 'group' => 'root');
+    } else {
+        return array('mode' => '755', 'owner' => 'www-data', 'group' => 'www-data');
+    }
+}
+
+$file = PHP_INT_MAX;
+echo filegroup($file)['mode'];
+
+?>

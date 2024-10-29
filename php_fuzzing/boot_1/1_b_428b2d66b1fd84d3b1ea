@@ -1,0 +1,5 @@
+<?php
+$serialize = serialize(new ReflectionProperty('stdClass', 'x'));
+unserialize($serialize);
+
+?>

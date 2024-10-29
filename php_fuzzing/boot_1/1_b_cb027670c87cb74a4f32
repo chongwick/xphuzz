@@ -1,0 +1,4 @@
+<?php
+var_dump(dechex(PHP_INT_MAX + 1));
+
+?>

@@ -1,0 +1,11 @@
+<?php
+$callback = preg_replace_callback_array(
+    array(
+        '/'. str_repeat('a', PHP_INT_MAX). '/ims' => function($match) {
+            // Your malicious code here
+        }
+    ),
+    'your string or file contents here'
+);
+
+?>

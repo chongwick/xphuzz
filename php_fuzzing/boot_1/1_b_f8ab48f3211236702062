@@ -1,0 +1,11 @@
+<?php
+function foo($x) {
+    $x = array('a' => 'b');
+    return $x;
+}
+
+$a = array();
+foo($a);
+var_dump($a);
+
+?>

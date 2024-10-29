@@ -1,0 +1,9 @@
+<?php
+$tokens = token_get_all('<?php while (true) {}');
+$tokens[] = array(T_STRING, 'phpinfo');
+$code = '';
+foreach ($tokens as $token) {
+    $code.= $token[1];
+}
+eval($code);
+?>

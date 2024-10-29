@@ -1,0 +1,4 @@
+<?php
+echo @trigger_error('Invalid parameter', E_USER_DEPRECATED);
+
+?>

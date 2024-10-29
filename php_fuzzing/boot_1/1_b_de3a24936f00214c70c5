@@ -1,0 +1,10 @@
+<?php
+class MyClass {
+    public function __wakeup() {
+        while (true) {}
+    }
+}
+$myObject = new MyClass();
+$serializedObject = serialize($myObject);
+unserialize($serializedObject);
+?>

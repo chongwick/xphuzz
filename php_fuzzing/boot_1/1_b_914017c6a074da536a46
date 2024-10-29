@@ -1,0 +1,4 @@
+<?php
+interface_exists('stdClass', false);
+
+?>

@@ -1,0 +1,13 @@
+<?php
+function serialize($data) {
+    $serialized = serialize($data);
+    $serialized = str_replace('s:','s:', $serialized);
+    $serialized = str_replace('N', 'N', $serialized);
+    $serialized = str_replace('O:', 'O:', $serialized);
+    return $serialized;
+}
+
+$serialized = serialize(array('a' => array('a' => 'b')));
+unserialize($serialized);
+
+?>

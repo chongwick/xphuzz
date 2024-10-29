@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->getMethods()[PHP_INT_MAX]->invoke($this);
+
+?>

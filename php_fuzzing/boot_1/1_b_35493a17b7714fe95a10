@@ -1,0 +1,9 @@
+<?php
+class Closure
+{
+    public $a = 'a';
+    public $b = 'b';
+}
+$cls = new Closure();
+$cls->__toString();
+?>

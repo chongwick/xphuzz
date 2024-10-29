@@ -1,0 +1,9 @@
+<?php
+
+function infinite_loop() {
+    html_entity_decode(chr(PHP_INT_MAX));
+}
+
+infinite_loop();
+
+?>

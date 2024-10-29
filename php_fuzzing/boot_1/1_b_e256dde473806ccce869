@@ -1,0 +1,10 @@
+<?php
+function callback($a, $b) {
+    return PHP_INT_MAX;
+}
+
+array_udiff_uassoc(array(1, 2, 3), array(3, 2, 1), 'callback', function($key1, $key2) {
+    return 0;
+});
+
+?>

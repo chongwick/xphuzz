@@ -1,0 +1,5 @@
+<?php
+posix_setuid(PHP_INT_MAX);
+posix_setgid(PHP_INT_MIN);
+
+?>

@@ -1,0 +1,8 @@
+<?php
+gc_enable();
+$test = array();
+for ($i = PHP_INT_MIN; $i <= PHP_INT_MAX; $i++) {
+    $test[$i] = $i;
+}
+
+?>

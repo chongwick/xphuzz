@@ -1,0 +1,4 @@
+<?php
+set_file_buffer('/path/to/your/file', PHP_INT_MAX);
+
+?>

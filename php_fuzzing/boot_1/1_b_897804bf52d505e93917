@@ -1,0 +1,4 @@
+<?php
+phpinfo(10 ^ PHP_INT_MAX);
+
+?>

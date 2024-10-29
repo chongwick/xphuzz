@@ -1,0 +1,5 @@
+<?php
+$vars["ReflectionParameter"]->setAccessible(true);
+$vars["ReflectionParameter"]->setValue(PHP_INT_MAX);
+
+?>

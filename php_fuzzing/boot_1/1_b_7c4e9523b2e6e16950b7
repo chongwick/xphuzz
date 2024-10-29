@@ -1,0 +1,3 @@
+<?php
+echo chop(PHP_INT_MAX, chr(0));
+?>

@@ -1,0 +1,10 @@
+<?php
+class MyClass {
+    public function __wakeup() {
+        while (true) {
+            // Infinite loop
+        }
+    }
+}
+
+$myObject = unserialize('O:8:"MyClass":1:{s:4:"name";s:4:"test";}');

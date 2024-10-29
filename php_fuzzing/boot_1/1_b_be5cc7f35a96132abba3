@@ -1,0 +1,3 @@
+<?php
+  $key = ftok(__FILE__, PHP_INT_MAX);
+?>

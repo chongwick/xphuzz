@@ -1,0 +1,4 @@
+<?php
+class A { public $x; } $a = new A; $a->x = & $a->x; unset($a); var_dump($a);
+
+?>

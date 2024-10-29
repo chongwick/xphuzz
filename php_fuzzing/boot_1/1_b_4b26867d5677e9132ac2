@@ -1,0 +1,4 @@
+<?php
+ceil(PHP_INT_MAX * PHP_INT_MAX)
+
+?>

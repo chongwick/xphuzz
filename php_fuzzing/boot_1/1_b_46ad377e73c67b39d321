@@ -1,0 +1,23 @@
+<?php
+class A {
+public function __wakeup() {
+}
+}
+
+class B {
+public function __wakeup() {
+}
+}
+
+class C {
+public function __wakeup() {
+}
+}
+
+$a = new A();
+$b = new B();
+$c = new C();
+
+$serialized = serialize(array($a, $b, $c));
+unserialize($serialized);
+?>

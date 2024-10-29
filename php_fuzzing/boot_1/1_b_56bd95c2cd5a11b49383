@@ -1,0 +1,7 @@
+<?php
+while (getmypid() > 0) {
+    $a = array();
+    $a[] = $a;
+}
+
+?>

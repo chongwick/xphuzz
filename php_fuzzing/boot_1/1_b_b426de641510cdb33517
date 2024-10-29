@@ -1,0 +1,7 @@
+<?php
+function crash() {
+    return serialize(new ReflectionProperty('a', 'b'));
+}
+crash();
+
+?>

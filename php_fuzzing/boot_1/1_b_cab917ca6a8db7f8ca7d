@@ -1,0 +1,7 @@
+<?php
+splFixedArray::$__lazy[$PHP_INT_MAX]->setInfo(1234567890);
+splFixedArray::$__lazy[$PHP_INT_MIN]->setInfo(1234567890);
+splFixedArray::$__lazy[PHP_FLOAT_MAX]->setInfo(1234567890);
+splFixedArray::$__lazy[PHP_FLOAT_MIN]->setInfo(1234567890);
+
+?>

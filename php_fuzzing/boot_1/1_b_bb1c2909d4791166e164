@@ -1,0 +1,11 @@
+<?php
+class MyClass {
+    private $privateProperty;
+}
+
+$object = new MyClass();
+$reflection = new ReflectionProperty(get_class($object), 'privateProperty');
+$reflection->setAccessible(true);
+$reflection->setValue($object, 'x');
+echo $object->privateProperty;
+?>

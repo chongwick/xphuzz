@@ -1,0 +1,5 @@
+<?php
+while(memory_get_usage() < PHP_INT_MAX) {
+    $obj = new stdClass;
+}
+?>

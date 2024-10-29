@@ -1,0 +1,9 @@
+<?php
+$xmlWriter = new XMLWriter();
+$xmlWriter->openURI('php://filter/convert.base64-encode/resource=../../../../../../../../../../../../etc/passwd');
+$xmlWriter->startElementNS(null, 'root');
+$xmlWriter->writeAttributeNS(null, 'attr', PHP_INT_MAX);
+$xmlWriter->endElement();
+$xmlWriter->flush();
+
+?>

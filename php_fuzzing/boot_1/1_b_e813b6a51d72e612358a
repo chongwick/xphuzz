@@ -1,0 +1,4 @@
+<?php
+$vars["DateTimeImmutable"]->add(new DateInterval("PT".PHP_INT_MAX."S"));
+
+?>

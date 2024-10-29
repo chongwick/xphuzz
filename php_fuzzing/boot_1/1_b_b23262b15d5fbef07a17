@@ -1,0 +1,4 @@
+<?php
+echo strlen("PHP_INT_MAX");
+
+?>

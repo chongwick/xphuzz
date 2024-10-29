@@ -1,0 +1,7 @@
+<?php
+ob_implicit_flush(true);
+while (true) {
+    echo PHP_INT_MAX;
+    flush();
+}
+?>

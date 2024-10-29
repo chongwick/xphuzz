@@ -1,0 +1,4 @@
+<?php
+stream_filter_remove(stream_filter_remove);
+
+?>

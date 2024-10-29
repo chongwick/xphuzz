@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClassConstant"]->getModifiers((int) PHP_INT_MAX + 1);
+
+?>

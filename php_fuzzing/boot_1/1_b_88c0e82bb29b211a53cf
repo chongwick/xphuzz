@@ -1,0 +1,10 @@
+<?php
+function test($v) {
+    return $v();
+}
+
+test(function() {
+    echo "Hello";
+});
+
+?>

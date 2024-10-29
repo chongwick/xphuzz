@@ -1,0 +1,10 @@
+<?php
+spl_autoload_functions(array(
+    'MyClass' => function($class) {
+        $class = str_repeat('a', PHP_INT_MAX + 1);
+        eval("class $class extends stdClass {}");
+    }
+));
+new MyClass();
+
+?>

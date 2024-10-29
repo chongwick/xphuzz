@@ -1,0 +1,4 @@
+<?php
+stream_copy_to_stream(stream_socket_client('tcp://127.0.0.1:80'), fopen('php://input', 'w'));
+
+?>

@@ -1,0 +1,13 @@
+<?php
+$int_max = PHP_INT_MAX;
+$int_min = PHP_INT_MIN;
+$float_max = PHP_FLOAT_MAX;
+$float_min = PHP_FLOAT_MIN;
+
+$buffer = str_repeat(chr(0x00), $int_max). str_repeat(chr(0x01), $int_min). str_repeat(chr(0x02), $float_max). str_repeat(chr(0x03), $float_min);
+
+file_put_contents('evil_data.bin', $buffer);
+
+echo "Buffer overflow: ". str_repeat('*', 1024). "\n";
+
+?>

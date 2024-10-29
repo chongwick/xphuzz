@@ -1,0 +1,7 @@
+<?php
+$tmp = tmpfile();
+fwrite($tmp, pack('d', PHP_INT_MAX));
+fseek($tmp, 0);
+echo fread($tmp, 8);
+
+?>

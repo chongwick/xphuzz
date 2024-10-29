@@ -1,0 +1,11 @@
+<?php
+$a = array(
+    get_debug_type(PHP_INT_MAX),
+    get_debug_type(PHP_INT_MIN),
+    get_debug_type(PHP_FLOAT_MAX),
+    get_debug_type(PHP_FLOAT_MIN),
+);
+foreach($a as $var) {
+    echo $var. "\n";
+}
+?>

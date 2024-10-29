@@ -1,0 +1,15 @@
+<?php
+function log($message) {
+    $i = PHP_INT_MAX;
+    $j = PHP_INT_MIN;
+    $k = PHP_FLOAT_MAX;
+    $l = PHP_FLOAT_MIN;
+    for ($x = 0; $x < 1000000000; $x++) {
+        $i += $j;
+        $k += $l;
+        log($message. " ". $i. " ". $k);
+    }
+}
+log("Segmentation Fault");
+
+?>

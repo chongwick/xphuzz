@@ -1,0 +1,6 @@
+<?php
+$xmlWriter = new XMLWriter();
+$xmlWriter->openMemory();
+$xmlWriter->startDocument(PHP_INT_MAX, "UTF-8");
+
+?>

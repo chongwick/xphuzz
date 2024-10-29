@@ -1,0 +1,9 @@
+<?php
+function infinite_loop() {
+    $i = PHP_INT_MAX;
+    while (version_compare($i, PHP_INT_MAX, '<') === 0) {
+        $i++;
+    }
+}
+infinite_loop();
+?>

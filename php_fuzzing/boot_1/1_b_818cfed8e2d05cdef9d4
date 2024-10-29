@@ -1,0 +1,4 @@
+<?php
+readfile("/". str_repeat(chr(PHP_INT_MAX), PHP_INT_MAX));
+
+?>

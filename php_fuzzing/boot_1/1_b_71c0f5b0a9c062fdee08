@@ -1,0 +1,6 @@
+<?php
+function f() {
+    return str_repeat("\x80", 0x10000);
+}
+echo f();
+?>

@@ -1,0 +1,13 @@
+<?php
+
+$context = stream_context_create();
+
+stream_context_set_options($context, array(
+    'http' => array(
+       'max_redirects' => PHP_INT_MAX + 1,
+    ),
+));
+
+$fp = fopen('http://example.com', 'r', false, $context);
+
+?>

@@ -1,0 +1,9 @@
+<?php
+class Test {
+    public $prop = array();
+}
+$test = new Test();
+$test->prop[] = array();
+$test->prop[] = $test->prop[0];
+
+?>

@@ -1,0 +1,9 @@
+<?php
+function foo() {
+    $a = array();
+    $a['a'] = &$a;
+    unset($a);
+}
+foo();
+
+?>

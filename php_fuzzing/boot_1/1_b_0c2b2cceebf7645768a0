@@ -1,0 +1,4 @@
+<?php
+date_sunrise(PHP_INT_MAX, 3, PHP_INT_MIN, PHP_FLOAT_MIN, 1.175494351e-38, 1.175494351e-38);
+
+?>

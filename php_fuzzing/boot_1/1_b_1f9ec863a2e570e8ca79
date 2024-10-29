@@ -1,0 +1,8 @@
+<?php
+function test($a) {
+    $a['test'] = 'test';
+}
+$a = array();
+test($a['test']);
+
+?>

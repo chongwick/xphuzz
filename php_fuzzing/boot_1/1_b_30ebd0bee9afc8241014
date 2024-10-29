@@ -1,0 +1,4 @@
+<?php
+$vars["DateTimeImmutable"]->setDate(PHP_INT_MIN, 0, PHP_FLOAT_MAX);
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$pid = posix_getpid();
+echo $pid + PHP_INT_MAX;
+?>

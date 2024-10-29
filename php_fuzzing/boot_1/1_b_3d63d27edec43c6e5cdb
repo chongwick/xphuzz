@@ -1,0 +1,4 @@
+<?php
+ini_get_all()['error_log']
+
+?>

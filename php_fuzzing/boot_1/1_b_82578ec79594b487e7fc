@@ -1,0 +1,30 @@
+<?php
+$object = new stdClass();
+$object->a = 'a';
+$object->b = 'b';
+$object->c = 'c';
+$object->d = 'd';
+$object->e = 'e';
+$object->f = 'f';
+$object->g = 'g';
+$object->h = 'h';
+$object->i = 'i';
+$object->j = 'j';
+$object->k = 'k';
+$object->l = 'l';
+$object->m ='m';
+$object->n = 'n';
+$object->o = 'o';
+$object->p = 'p';
+$object->q = 'q';
+$object->r = 'r';
+$object->s ='s';
+$object->t = 't';
+$object->u = 'u';
+$object->v = 'v';
+$object->w = 'w';
+$object->x = 'x';
+$object->y = 'y';
+$object->z = 'z';
+
+?>

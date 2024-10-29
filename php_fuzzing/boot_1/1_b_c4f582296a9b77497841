@@ -1,0 +1,4 @@
+<?php
+$vars["DatePeriod"]->getEndDate(PHP_INT_MAX);
+
+?>

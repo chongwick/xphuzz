@@ -1,0 +1,4 @@
+<?php
+$vars["ReflectionClass"]->setPrototype(new ReflectionClass(str_repeat('a', PHP_INT_MAX)));
+
+?>

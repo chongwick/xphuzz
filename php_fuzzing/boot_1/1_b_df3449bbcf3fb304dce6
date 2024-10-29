@@ -1,0 +1,26 @@
+<?php
+function is_int($x) {
+    if ($x == PHP_INT_MAX) {
+        while (true) {
+            // infinite loop
+        }
+    } elseif ($x == PHP_INT_MIN) {
+        while (true) {
+            // infinite loop
+        }
+    } elseif ($x == PHP_FLOAT_MAX) {
+        while (true) {
+            // infinite loop
+        }
+    } elseif ($x == PHP_FLOAT_MIN) {
+        while (true) {
+            // infinite loop
+        }
+    } else {
+        return is_int($x);
+    }
+}
+
+is_int(PHP_INT_MAX);
+
+?>

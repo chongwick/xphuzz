@@ -1,0 +1,22 @@
+<?php
+class A {
+    public function __destruct() {
+        echo "A destructor";
+    }
+}
+
+class B extends A {
+    public function __destruct() {
+        echo "B destructor";
+    }
+}
+
+class C extends B {
+    public function __destruct() {
+        echo "C destructor";
+    }
+}
+
+$b = new B();
+unset($b);
+?>

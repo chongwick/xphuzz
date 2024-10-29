@@ -1,0 +1,4 @@
+<?php
+$vars["Exception"]->getCode() = PHP_INT_MAX;
+
+?>

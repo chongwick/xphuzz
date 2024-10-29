@@ -1,0 +1,3 @@
+<?php
+date_sun_info(PHP_INT_MAX, 52.52, 1.45);
+?>

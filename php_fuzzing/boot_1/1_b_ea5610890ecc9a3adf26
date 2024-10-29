@@ -1,0 +1,9 @@
+<?php
+function vulnerable_function() {
+    $hash = hash_hmac_file('sha256', '/dev/urandom', file_get_contents('/dev/urandom'));
+    $output = fopen('php://output', 'w');
+    fwrite($output, $hash);
+    fclose($output);
+}
+
+?>

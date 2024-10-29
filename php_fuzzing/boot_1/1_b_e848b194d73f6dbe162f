@@ -1,0 +1,4 @@
+<?php
+$vars["DOMDocument"]->loadHTML(dechex(PHP_INT_MAX));
+
+?>

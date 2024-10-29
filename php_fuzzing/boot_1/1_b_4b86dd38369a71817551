@@ -1,0 +1,12 @@
+<?php
+class A {
+    private $x = PHP_INT_MAX;
+    public function __construct() {
+        $this->x = PHP_FLOAT_MIN;
+    }
+    public function isAbstract() {
+        return $this->x == PHP_INT_MIN;
+    }
+}
+
+?>

@@ -1,0 +1,10 @@
+<?php
+function f() {
+    return array(1 => 'x', 'x' => 1);
+}
+
+$g = unserialize(serialize(f()));
+$g[1] = 'hello';
+var_dump($g);
+
+?>

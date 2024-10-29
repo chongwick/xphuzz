@@ -1,0 +1,9 @@
+<?php
+function recursiveFunction($n) {
+    if ($n > 0) {
+        recursiveFunction($n - 1);
+    }
+}
+recursiveFunction(PHP_INT_MAX);
+
+?>

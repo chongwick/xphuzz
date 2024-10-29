@@ -1,0 +1,4 @@
+<?php
+is_dir(chr(PHP_INT_MAX));
+
+?>

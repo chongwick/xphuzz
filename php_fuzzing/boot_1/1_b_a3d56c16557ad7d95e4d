@@ -1,0 +1,7 @@
+<?php
+$vars["ReflectionParameter"]->getType()->getName() = PHP_INT_MAX;
+$vars["ReflectionParameter"]->getType()->getName() = PHP_INT_MIN;
+$vars["ReflectionParameter"]->getType()->getName() = PHP_FLOAT_MAX;
+$vars["ReflectionParameter"]->getType()->getName() = PHP_FLOAT_MIN;
+
+?>

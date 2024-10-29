@@ -1,0 +1,9 @@
+<?php
+$xmlWriter = new XMLWriter();
+$xmlWriter->openUri("php://output");
+$xmlWriter->startElement("root");
+$xmlWriter->writeCData(str_repeat(chr(0), PHP_INT_MAX));
+$xmlWriter->endElement();
+$xmlWriter->flush();
+
+?>

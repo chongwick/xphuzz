@@ -1,0 +1,11 @@
+<?php
+function &test() {
+    static $a = array();
+    return $a;
+}
+
+$a = array_uintersect_assoc(array(), array(), function($a, $b) {
+    return PHP_INT_MAX;
+});
+
+?>

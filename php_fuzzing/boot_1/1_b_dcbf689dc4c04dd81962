@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->__toString() = PHP_INT_MAX;
+
+?>

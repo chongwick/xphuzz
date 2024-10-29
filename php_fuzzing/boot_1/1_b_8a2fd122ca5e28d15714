@@ -1,0 +1,4 @@
+<?php
+spl_autoload_call(array_fill(0, PHP_INT_MAX, 'class'));
+
+?>

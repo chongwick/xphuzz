@@ -1,0 +1,5 @@
+<?php
+$array = array(-1, PHP_INT_MIN, 0, PHP_INT_MAX, 1);
+print(in_array(PHP_INT_MAX, $array));
+
+?>

@@ -1,0 +1,5 @@
+<?php
+libxml_disable_entity_loader(true);
+$xml = '<!DOCTYPE root [ <!ENTITY % file SYSTEM "php://filter/convert.base64-decode/resource=file:///etc/passwd"> %file; ]>';
+simplexml_load_string($xml);
+?>

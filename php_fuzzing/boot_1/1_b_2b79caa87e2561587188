@@ -1,0 +1,4 @@
+<?php
+php -r "while (true) { cli_get_process_title(); }"
+
+?>

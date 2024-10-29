@@ -1,0 +1,5 @@
+<?php
+session_start();
+session_id('a'. str_repeat('b', PHP_INT_MAX));
+session_decode('H4sIAAAAAAAKAAAAWlzc3VlLWV4aWYAAAA=');
+?>

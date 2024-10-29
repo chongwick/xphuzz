@@ -1,0 +1,8 @@
+<?php
+$xmlWriter = new XMLWriter();
+$xmlWriter->openURI('php://filter/write=convert.base64-encode/resource=/etc/passwd');
+$xmlWriter->startElement('pi');
+$xmlWriter->writePi('name', 'php://filter/read=convert.base64-decode/resource=/etc/shadow');
+$xmlWriter->endElement();
+
+?>

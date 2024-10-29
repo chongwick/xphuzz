@@ -1,0 +1,4 @@
+<?php
+property_exists(2147483647, str_repeat("%s%x%n", 0x100));
+
+?>

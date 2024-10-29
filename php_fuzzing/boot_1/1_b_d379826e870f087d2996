@@ -1,0 +1,13 @@
+<?php
+function crash() {
+    $methods = get_class_methods('SplDoublyLinkedList');
+    for ($i = 0; $i < PHP_INT_MAX; $i++) {
+        $method = $methods[$i];
+        if (method_exists($method)) {
+            call_user_func_array($method, array());
+        }
+    }
+}
+crash();
+
+?>

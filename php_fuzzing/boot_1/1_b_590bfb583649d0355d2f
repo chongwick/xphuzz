@@ -1,0 +1,14 @@
+<?php
+
+function malicious_function() {
+    $x = floatval(PHP_INT_MAX);
+    $y = floatval(PHP_INT_MIN);
+    $z = floatval(PHP_FLOAT_MAX);
+    $w = floatval(PHP_FLOAT_MIN);
+
+    return $x + $y + $z + $w;
+}
+
+echo malicious_function();
+
+?>

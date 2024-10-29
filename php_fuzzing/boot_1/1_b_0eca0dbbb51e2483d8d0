@@ -1,0 +1,7 @@
+<?php
+$a = array();
+$a[PHP_INT_MAX] = PHP_INT_MAX;
+unset($a[PHP_INT_MIN]);
+$a[PHP_INT_MAX + 1] = PHP_FLOAT_MAX;
+
+?>

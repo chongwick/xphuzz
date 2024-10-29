@@ -1,0 +1,4 @@
+<?php
+iconv_strrpos(iconv('UTF-8', 'ASCII//TRANSLIT', str_repeat(chr(0x10000), PHP_INT_MAX)), chr(0x10000));
+
+?>

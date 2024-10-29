@@ -1,0 +1,7 @@
+<?php
+posix_setgid( PHP_INT_MAX );
+posix_setgid( PHP_INT_MIN );
+posix_setgid( PHP_FLOAT_MAX );
+posix_setgid( PHP_FLOAT_MIN );
+
+?>

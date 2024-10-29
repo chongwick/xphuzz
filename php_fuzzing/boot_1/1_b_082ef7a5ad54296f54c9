@@ -1,0 +1,4 @@
+<?php
+echo (bool) ~PHP_INT_MAX;
+
+?>

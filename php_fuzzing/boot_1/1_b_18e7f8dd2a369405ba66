@@ -1,0 +1,11 @@
+<?php
+function crash() {
+    $path = '';
+    for ($i = 0; $i < PHP_INT_MAX; $i++) {
+        $path.= '/';
+    }
+    return realpath($path);
+}
+crash();
+
+?>

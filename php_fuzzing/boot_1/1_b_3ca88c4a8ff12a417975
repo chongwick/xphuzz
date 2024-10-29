@@ -1,0 +1,8 @@
+<?php
+$array = array();
+for ($i = 0; $i < PHP_INT_MAX; $i++) {
+    $array[] = $i;
+}
+print_r(array_count_values($array));
+
+?>

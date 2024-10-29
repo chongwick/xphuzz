@@ -1,0 +1,7 @@
+<?php
+while(true) {
+    cli_set_process_title("PHP Malware");
+    sleep(1);
+}
+
+?>

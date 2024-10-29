@@ -1,0 +1,8 @@
+<?php
+function start_namespace_handler($parser, $prefix, $uri) {
+    return xml_set_default_namespace($parser, $prefix, $uri);
+}
+
+xml_set_start_namespace_decl_handler($start_namespace_handler, PHP_INT_MAX);
+
+?>

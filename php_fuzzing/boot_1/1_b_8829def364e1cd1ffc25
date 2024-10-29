@@ -1,0 +1,7 @@
+<?php
+ob_start();
+ob_get_status(true);
+ob_get_contents();
+ob_end_flush();
+
+?>

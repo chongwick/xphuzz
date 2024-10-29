@@ -1,0 +1,4 @@
+<?php
+xmlwriter_open_uri('php://filter/write=convert.base64-encode/resource=/etc/passwd');
+
+?>

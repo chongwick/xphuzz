@@ -1,0 +1,8 @@
+<?php
+function tanh($x) {
+    return exp($x) - exp(-$x);
+}
+
+$x = tanh(PHP_INT_MAX);
+
+?>

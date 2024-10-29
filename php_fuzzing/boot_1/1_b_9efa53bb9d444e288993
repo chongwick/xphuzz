@@ -1,0 +1,4 @@
+<?php
+getprotobynumber(PHP_INT_MAX)
+
+?>

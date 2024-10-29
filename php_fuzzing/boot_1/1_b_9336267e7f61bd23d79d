@@ -1,0 +1,4 @@
+<?php
+$vars["SessionHandler"]->gc(PHP_INT_MAX);
+
+?>

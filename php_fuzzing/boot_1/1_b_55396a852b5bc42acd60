@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLIterator"]->next(PHP_INT_MAX);
+
+?>

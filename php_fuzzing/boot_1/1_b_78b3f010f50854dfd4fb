@@ -1,0 +1,4 @@
+<?php
+stream_context_set_params(array('http' => array('max_redirects' => PHP_INT_MAX)));
+
+?>

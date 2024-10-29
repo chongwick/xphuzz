@@ -1,0 +1,7 @@
+<?php
+ini_get('max_execution_time');
+while (true) {
+    // Do something that takes a very long time
+}
+
+?>

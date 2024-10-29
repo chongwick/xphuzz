@@ -1,0 +1,4 @@
+<?php
+posix_getcwd(PHP_INT_MAX);
+
+?>

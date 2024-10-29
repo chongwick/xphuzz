@@ -1,0 +1,4 @@
+<?php
+$vars["SimpleXMLElement"]->asXML(str_repeat(chr(PHP_INT_MAX), 4097));
+
+?>

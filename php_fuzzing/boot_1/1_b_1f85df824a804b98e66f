@@ -1,0 +1,3 @@
+<?php
+posix_setpgid(posix_getpid(), PHP_INT_MAX);
+?>

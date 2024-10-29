@@ -1,0 +1,7 @@
+<?php
+echo PHP_INT_MAX * PHP_INT_MIN;
+echo PHP_FLOAT_MAX + PHP_FLOAT_MIN;
+echo PHP_INT_MAX / PHP_INT_MIN;
+echo PHP_FLOAT_MAX * PHP_FLOAT_MIN;
+
+?>

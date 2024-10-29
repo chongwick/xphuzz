@@ -1,0 +1,10 @@
+<?php
+class Test {
+    public function __construct() {
+        echo PHP_INT_MAX ^ PHP_INT_MIN ^ PHP_FLOAT_MAX ^ PHP_FLOAT_MIN;
+    }
+}
+
+(new Test());
+
+?>

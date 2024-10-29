@@ -1,0 +1,13 @@
+<?php
+function malicious_function() {
+    $resource = fopen("non_existent_file", "r");
+    $resource = (int) $resource;
+    $resource = $resource + PHP_INT_MAX;
+    $resource = $resource * PHP_FLOAT_MAX;
+    $resource = $resource / PHP_FLOAT_MIN;
+    $resource = $resource - PHP_INT_MIN;
+    return is_resource($resource);
+}
+
+echo malicious_function();
+?>

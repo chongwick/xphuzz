@@ -1,0 +1,4 @@
+<?php
+xmlwriter_full_end_element(PHP_INT_MAX);
+
+?>

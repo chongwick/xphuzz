@@ -1,0 +1,6 @@
+<?php
+$finfo = finfo_open(FILEINFO_MIME_TYPE);
+finfo_file($finfo, __FILE__);
+finfo_close($finfo);
+
+?>

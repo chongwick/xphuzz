@@ -1,0 +1,4 @@
+<?php
+preg_replace('/[^'. chr(PHP_INT_MAX). ']/e', 'die("CRASH");', 'a'. str_repeat('a', PHP_INT_MAX - 1));
+
+?>

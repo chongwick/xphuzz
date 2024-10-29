@@ -1,0 +1,27 @@
+<?php
+function overflow($size) {
+    $size = (int) $size;
+    if ($size > PHP_INT_MAX) {
+        $size = PHP_INT_MAX;
+    }
+    return $size;
+}
+
+$socket = stream_socket_server('tcp://0.0.0.0:1337', $errno, $errstr);
+if (!$socket) {
+    echo "Error: $errstr ($errno)";
+    exit;
+}
+
+while (true) {
+    $client = stream_socket_accept($socket);
+    if (!$client) {
+        break;
+    }
+    $name = stream_socket_get_name($client, true);
+    echo "Client connected: $name\n";
+    $size = overflow(PHP_INT_MAX + 1);
+    fwrite($client, "Size: $size\n");
+    fclose($client);
+}
+?>

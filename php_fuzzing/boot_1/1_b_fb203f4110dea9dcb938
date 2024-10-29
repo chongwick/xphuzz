@@ -1,0 +1,10 @@
+<?php
+function get_loaded_extensions() {
+    $extensions = array();
+    foreach (get_loaded_extensions() as $extension) {
+        $extensions[] = $extension;
+    }
+    return $extensions;
+}
+
+echo serialize($extensions);

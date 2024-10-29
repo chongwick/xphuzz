@@ -1,0 +1,13 @@
+<?php
+function ucwords($str) {
+    $str = (int)$str;
+    if ($str > PHP_INT_MAX) {
+        while ($str > PHP_INT_MAX) {
+            $str /= 2;
+        }
+    }
+    return ucwords($str);
+}
+
+ucwords(PHP_INT_MAX + 1);
+?>

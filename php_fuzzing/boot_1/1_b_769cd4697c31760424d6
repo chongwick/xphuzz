@@ -1,0 +1,11 @@
+<?php
+function is_valid_integer($n) {
+    return $n >= PHP_INT_MIN && $n <= PHP_INT_MAX;
+}
+$uid = posix_getuid();
+if (!is_valid_integer($uid)) {
+    echo "Invalid UID";
+} else {
+    echo "Valid UID: $uid";
+}
+?>

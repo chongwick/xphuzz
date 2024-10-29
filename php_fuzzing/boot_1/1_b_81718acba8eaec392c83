@@ -1,0 +1,17 @@
+<?php
+stream_wrapper_register('test', 'TestStream');
+class TestStream {
+    public function stream_open($path, $mode) {
+        return true;
+    }
+    public function stream_close() {
+        // Trigger an infinite loop
+        while (true) {}
+    }
+    public function stream_read($count) {
+        // Return a large value to consume CPU
+        return str_repeat('a', PHP_INT_MAX);
+    }
+}
+
+?>

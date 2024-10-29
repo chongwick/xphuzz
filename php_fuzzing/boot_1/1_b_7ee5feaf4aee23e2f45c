@@ -1,0 +1,11 @@
+<?php
+function foo($x) {
+    return $x->a;
+}
+
+$y = new stdClass();
+$y->a = 1;
+
+foo($y);
+
+?>

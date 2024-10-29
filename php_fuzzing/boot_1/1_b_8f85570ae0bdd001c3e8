@@ -1,0 +1,4 @@
+<?php
+posix_fpathconf(STDIN, _PC_CHOWN_RESTRICTED)
+
+?>

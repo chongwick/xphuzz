@@ -1,0 +1,11 @@
+<?php
+function malicious_code() {
+    $x = PHP_INT_MAX;
+    if (is_finite($x)) {
+        echo "PHP_INT_MAX is finite";
+    } else {
+        echo "PHP_INT_MAX is not finite";
+    }
+}
+
+?>

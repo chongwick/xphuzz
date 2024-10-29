@@ -1,0 +1,11 @@
+<?php
+$date = date_create("1970-01-01 00:00:00");
+$date->modify("+".PHP_INT_MAX." seconds");
+var_dump($date);
+$date->modify("-".PHP_INT_MIN." seconds");
+var_dump($date);
+$date->modify("+".PHP_FLOAT_MAX." seconds");
+var_dump($date);
+$date->modify("-".PHP_FLOAT_MIN." seconds");
+var_dump($date);
+?>

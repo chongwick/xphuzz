@@ -1,0 +1,8 @@
+<?php
+while (true) {
+    $output = ob_get_flush();
+    if ($output === FALSE) {
+        break;
+    }
+}
+?>

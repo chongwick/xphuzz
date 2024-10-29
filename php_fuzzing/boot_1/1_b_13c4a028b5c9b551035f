@@ -1,0 +1,4 @@
+<?php
+fstat(0x7fffffff);
+
+?>

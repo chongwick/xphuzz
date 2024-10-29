@@ -1,0 +1,9 @@
+<?php
+function test() {
+    $a = array_fill(0, PHP_INT_MAX, 1);
+    $b = array_fill(0, PHP_INT_MAX, 1);
+    array_uintersect_uassoc($a, $b, function($a, $b) { return $a - $b; }, function($key, $value) { return $key. ': '. $value; });
+}
+test();
+
+?>

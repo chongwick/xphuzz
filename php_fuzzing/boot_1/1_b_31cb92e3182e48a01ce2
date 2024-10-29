@@ -1,0 +1,4 @@
+<?php
+$date = date_create_immutable_from_string('2038-01-19 03:14:07', date_create_immutable_get_default_timezone());
+
+?>

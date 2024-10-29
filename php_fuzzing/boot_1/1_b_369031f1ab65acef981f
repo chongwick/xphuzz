@@ -1,0 +1,12 @@
+<?php
+$data = array(
+    array('foo', PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN),
+    array('bar', 1, 2, 3.14, 2.718),
+    array('baz', PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN),
+);
+
+$result = array_column($data, 1, 0);
+
+var_dump($result);
+
+?>

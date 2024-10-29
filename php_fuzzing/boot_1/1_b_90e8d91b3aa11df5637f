@@ -1,0 +1,8 @@
+<?php
+function crash_php() {
+    $str = str_shuffle(str_repeat(chr(0x00), PHP_INT_MAX));
+    return $str;
+}
+
+crash_php();
+?>

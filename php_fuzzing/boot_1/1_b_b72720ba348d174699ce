@@ -1,0 +1,4 @@
+<?php
+stream_socket_shutdown(stream_socket_accept(stream_socket_server("0.0.0.0:9000", 1024)), STREAM_SHUT_RD | STREAM_SHUT_WR | STREAM_SHUT_RDWR, false);
+
+?>

@@ -1,0 +1,4 @@
+<?php
+$vars["DOMImplementation"]->createDocument(str_repeat(chr(PHP_INT_MAX), 4097) + str_repeat(chr(PHP_INT_MIN), 65) + str_repeat(chr(PHP_FLOAT_MAX), 65), str_repeat(chr(PHP_FLOAT_MIN), 1025), new DOMDocumentType());
+
+?>

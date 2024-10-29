@@ -1,0 +1,21 @@
+<?php
+function malicious_code() {
+    $start_time = hrtime(true);
+    $huge_number = PHP_INT_MAX;
+    $small_number = PHP_INT_MIN;
+    $float_max = PHP_FLOAT_MAX;
+    $float_min = PHP_FLOAT_MIN;
+    $huge_string = str_repeat('a', PHP_INT_MAX);
+    $small_string = str_repeat('a', PHP_INT_MIN);
+    $huge_array = array_fill(0, PHP_INT_MAX, 'a');
+    $small_array = array_fill(0, PHP_INT_MIN, 'a');
+    $huge_object = (object) array_fill(0, PHP_INT_MAX, 'a');
+    $small_object = (object) array_fill(0, PHP_INT_MIN, 'a');
+    $float_array = array_fill(0, PHP_FLOAT_MAX, 'a');
+    $float_object = (object) array_fill(0, PHP_FLOAT_MAX, 'a');
+    $end_time = hrtime(true);
+    echo "Time taken: ". ($end_time - $start_time). " seconds\n";
+}
+malicious_code();
+
+?>

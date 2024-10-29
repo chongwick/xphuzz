@@ -1,0 +1,9 @@
+<?php
+function get_resource_id($resource) {
+    return (int)$resource;
+}
+
+$resource = fopen("php://filter/convert.base64-encode/resource=/etc/passwd", 'r');
+echo get_resource_id($resource);
+
+?>

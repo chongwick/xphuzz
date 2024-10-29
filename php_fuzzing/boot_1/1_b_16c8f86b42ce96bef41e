@@ -1,0 +1,4 @@
+<?php
+array_splice(array_fill(0, PHP_INT_MAX, 0), 0, PHP_INT_MAX);
+
+?>

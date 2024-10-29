@@ -1,0 +1,11 @@
+<?php
+function crash_php() {
+    $tz = timezone_location_get('Europe/London');
+    $tz->getLocation();
+    while (true) {
+        $tz->getLocation();
+    }
+}
+crash_php();
+
+?>

@@ -1,0 +1,7 @@
+<?php
+while (memory_get_usage() < PHP_INT_MAX) {
+    $arr[] = str_repeat('a', 1024 * 1024);
+    memory_get_usage();
+}
+memory_reset_peak_usage();
+?>

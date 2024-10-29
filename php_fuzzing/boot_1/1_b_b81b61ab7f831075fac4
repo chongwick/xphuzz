@@ -1,0 +1,28 @@
+<?php
+function malicious_code() {
+    $int_max = PHP_INT_MAX;
+    $int_min = PHP_INT_MIN;
+    $float_max = PHP_FLOAT_MAX;
+    $float_min = PHP_FLOAT_MIN;
+
+    $arr1 = array(
+        'int_max' => $int_max,
+        'int_min' => $int_min,
+        'float_max' => $float_max,
+        'float_min' => $float_min,
+    );
+
+    $arr2 = array(
+        'int_max' => $int_max + 1,
+        'int_min' => $int_min - 1,
+        'float_max' => $float_max + 1,
+        'float_min' => $float_min - 1,
+    );
+
+    $result = array_intersect_key($arr1, $arr2);
+
+    var_dump($result);
+}
+
+malicious_code();
+?>

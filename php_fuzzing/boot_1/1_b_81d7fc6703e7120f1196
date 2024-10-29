@@ -1,0 +1,4 @@
+<?php
+filter_list();
+filter_var(PHP_INT_MAX, FILTER_VALIDATE_INT);
+?>

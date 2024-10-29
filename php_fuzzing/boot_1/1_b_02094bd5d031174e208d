@@ -1,0 +1,7 @@
+<?php
+$object = new stdClass();
+$object->a = array();
+$object->a[0] = $object;
+unset($object);
+
+?>

@@ -1,0 +1,8 @@
+<?php
+function crash_php() {
+    return array_sum(range(PHP_INT_MAX, PHP_INT_MIN));
+}
+echo error_get_last()['message'];
+crash_php();
+
+?>

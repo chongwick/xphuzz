@@ -1,0 +1,8 @@
+<?php
+for ($i = PHP_INT_MAX; $i >= PHP_INT_MIN; $i--) {
+    $result = intdiv($i, 2);
+    if ($result == 0) {
+        echo "Integer overflow detected: $i\n";
+        exit;
+    }
+}

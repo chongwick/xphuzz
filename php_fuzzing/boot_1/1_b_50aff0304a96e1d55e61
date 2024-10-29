@@ -1,0 +1,5 @@
+<?php
+$largeInt = PHP_INT_MAX + 1;
+$xml = '<!DOCTYPE root [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]><root><xxe/></root>';
+libxml_get_errors($xml);
+?>

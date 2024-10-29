@@ -1,0 +1,4 @@
+<?php
+log10(PHP_INT_MAX)
+
+?>

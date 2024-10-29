@@ -1,0 +1,4 @@
+<?php
+array_merge(range(PHP_INT_MAX, PHP_INT_MIN, -1), range(PHP_FLOAT_MAX, PHP_FLOAT_MIN, -0.000001));
+
+?>

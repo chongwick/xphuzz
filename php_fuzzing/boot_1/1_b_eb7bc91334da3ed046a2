@@ -1,0 +1,10 @@
+<?php
+function test() {
+    $str = '';
+    for ($i = 0; $i < PHP_INT_MAX; $i++) {
+        $str.='';
+    }
+    return ctype_space($str);
+}
+
+?>

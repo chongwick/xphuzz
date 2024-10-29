@@ -1,0 +1,4 @@
+<?php
+getmxrr('some-non-existent-domain', $domains);
+
+?>

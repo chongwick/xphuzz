@@ -1,0 +1,7 @@
+<?php
+$vars[PHP_INT_MAX] = new SplObjectStorage();
+$vars[PHP_INT_MAX]->attach(new stdClass());
+$vars[PHP_INT_MAX]->detach($vars[PHP_INT_MAX]->current());
+unset($vars[PHP_INT_MAX]);
+
+?>

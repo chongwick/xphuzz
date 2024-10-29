@@ -1,0 +1,24 @@
+<?php
+class Foo {
+    public function __construct() {
+        $this->x = 5;
+    }
+}
+
+class Bar extends Foo {
+    public function __construct() {
+        parent::__construct();
+        $this->x = 10;
+    }
+}
+
+class Baz extends Bar {
+    public function __construct() {
+        parent::__construct();
+        $this->x = 15;
+    }
+}
+
+$b = new Baz();
+var_dump($b->x);
+?>

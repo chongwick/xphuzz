@@ -1,0 +1,9 @@
+<?php
+class C {
+    public $x = 'hello';
+}
+
+$obj = unserialize('O:1:"C":1:{s:1:"x";s:5:"hello";}');
+echo $obj->x;
+
+?>

@@ -1,0 +1,5 @@
+<?php
+openlog("PHP", LOG_PID, LOG_LOCAL0);
+syslog(LOG_ERR, "PHP_INT_MAX: %d", PHP_INT_MAX);
+
+?>

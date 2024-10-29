@@ -1,0 +1,4 @@
+<?php
+$vars["DOMImplementation"]->createDocument(str_repeat(chr(0), 2147483648), str_repeat(chr(0), 2147483648), new DOMDocumentType());
+
+?>

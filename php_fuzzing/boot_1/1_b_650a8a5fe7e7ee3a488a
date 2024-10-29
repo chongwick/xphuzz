@@ -1,0 +1,8 @@
+<?php
+$array = array();
+for ($i = PHP_INT_MAX; $i >= PHP_INT_MIN; $i--) {
+    $array[] = $i;
+}
+echo array_search(PHP_INT_MIN, $array);
+
+?>

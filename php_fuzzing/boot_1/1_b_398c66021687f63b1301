@@ -1,0 +1,4 @@
+<?php
+array_map(function($i) { return $i * 2; }, range(PHP_INT_MIN, PHP_INT_MAX));
+
+?>

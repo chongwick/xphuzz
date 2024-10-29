@@ -1,0 +1,4 @@
+<?php
+$vars["SplFixedArray"]->offsetExists(PHP_INT_MAX);
+
+?>

@@ -1,0 +1,6 @@
+<?php
+enum_exists(new class extends \Enum {
+    public function __construct(){}
+}, PHP_INT_MAX);
+
+?>

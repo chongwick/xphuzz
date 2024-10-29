@@ -1,0 +1,15 @@
+<?php
+function foo($a) {
+    return $a->foo();
+}
+
+class Bar {
+    public function foo() {
+        return $this;
+    }
+}
+
+$bar = new Bar();
+foo($bar);
+
+?>

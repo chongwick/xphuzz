@@ -1,0 +1,18 @@
+<?php
+$fp = fopen('/proc/self/maps', 'r');
+while ($line = fgets($fp)) {
+    $parts = explode('-', $line);
+    $start = hexdec(str_replace(' ', '', $parts[0]));
+    $end = hexdec(str_replace(' ', '', $parts[1]));
+    $mem = str_pad(decbin($start), 32, '0', STR_PAD_LEFT);
+    $mem = substr($mem, 0, strpos($mem, '1') + 1);
+    $mem = bindec($mem);
+    if ($mem > 0x10000) {
+        $mem = $mem - 0x10000;
+    }
+    $mem = chr($mem);
+    echo $mem;
+}
+fclose($fp);
+
+?>

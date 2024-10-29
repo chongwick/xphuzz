@@ -1,0 +1,9 @@
+<?php
+$xml = xmlwriter_open_memory();
+xmlwriter_start_element($xml, 'test');
+xmlwriter_start_attribute($xml, 'a');
+xmlwriter_text($xml, str_repeat('x', PHP_INT_MAX));
+xmlwriter_end_attribute($xml);
+xmlwriter_end_element($xml);
+echo xmlwriter_output($xml);
+?>

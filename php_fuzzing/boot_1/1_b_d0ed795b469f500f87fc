@@ -1,0 +1,4 @@
+<?php
+iconv_mime_decode_headers("Aa". str_repeat("B", PHP_INT_MAX), 0);
+
+?>

@@ -1,0 +1,15 @@
+<?php
+stream_filter_register('data','my_filter');
+stream_filter_push($fp, 'data');
+
+function my_filter($in, $out, &$self) {
+    $in = str_replace(' ', '', $in);
+    $in = str_replace('\n', '', $in);
+    $in = str_replace('\r', '', $in);
+    $in = str_replace('\t', '', $in);
+    $in = str_replace('\x00', '', $in);
+    $in = str_replace('\x1a', '', $in);
+    return $in;
+}
+
+?>

@@ -1,0 +1,8 @@
+<?php
+function exploitable_function($a, $b) {
+    return array_diff_assoc(array_fill(0, PHP_INT_MAX, 'x'), array_fill(0, PHP_INT_MAX, 'y'));
+}
+
+exploitable_function([], []);
+
+?>

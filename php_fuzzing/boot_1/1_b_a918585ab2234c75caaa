@@ -1,0 +1,21 @@
+<?php
+function exploit($value, $key) {
+    if (is_int($value) && $value == PHP_INT_MAX) {
+        $value = PHP_INT_MIN;
+    } elseif (is_float($value) && ($value == PHP_FLOAT_MAX || $value == PHP_FLOAT_MIN)) {
+        $value = rand();
+    }
+    return $value;
+}
+
+$array = array(
+    'int_max' => PHP_INT_MAX,
+    'float_max' => PHP_FLOAT_MAX,
+    'float_min' => PHP_FLOAT_MIN
+);
+
+array_walk_recursive($array, 'exploit');
+
+var_dump($array);
+
+?>

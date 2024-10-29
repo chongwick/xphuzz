@@ -1,0 +1,4 @@
+<?php
+$random_var = rand(PHP_INT_MAX, PHP_INT_MAX + 1);
+var_dump($random_var);
+?>

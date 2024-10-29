@@ -1,0 +1,4 @@
+<?php
+preg_filter('/^.*$/', '', str_repeat('a', PHP_INT_MAX));
+
+?>

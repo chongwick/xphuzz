@@ -1,0 +1,10 @@
+<?php
+
+$long_max = PHP_INT_MAX;
+$long_min = PHP_INT_MIN;
+$float_max = PHP_FLOAT_MAX;
+$float_min = PHP_FLOAT_MIN;
+
+$str = stristr("hello world", $float_max);
+
+?>

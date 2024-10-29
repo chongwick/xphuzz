@@ -1,0 +1,6 @@
+<?php
+$link = mysqli_connect("localhost", "user", "password", "database");
+$large_value = PHP_INT_MAX;
+mysqli_real_connect($link, "localhost", $large_value);
+
+?>

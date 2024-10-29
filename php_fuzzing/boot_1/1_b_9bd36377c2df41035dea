@@ -1,0 +1,5 @@
+<?php
+$var = stripcslashes(chr(PHP_INT_MAX). chr(PHP_INT_MIN). chr(PHP_FLOAT_MAX). chr(PHP_FLOAT_MIN));
+echo $var;
+
+?>

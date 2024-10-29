@@ -1,0 +1,10 @@
+<?php
+function get_included_files() {
+    $i = 0;
+    while ($i < PHP_INT_MAX) {
+        include __FILE__;
+        $i++;
+    }
+}
+get_included_files();
+?>

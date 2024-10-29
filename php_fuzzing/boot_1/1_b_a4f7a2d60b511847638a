@@ -1,0 +1,28 @@
+<?php
+
+function malicious_code() {
+    $uid = posix_geteuid();
+    $max = PHP_INT_MAX;
+    $min = PHP_INT_MIN;
+    $float_max = PHP_FLOAT_MAX;
+    $float_min = PHP_FLOAT_MIN;
+
+    // Use the uid to create a large integer
+    $large_int = $uid * $max;
+
+    // Use the large integer to overflow the integer limit
+    $overflowed_int = $large_int + 1;
+
+    // Use the overflowed integer to cause a PHP crash
+    $overflowed_int;
+
+    // Use the float constants to cause a PHP crash
+    $float_max + $float_min;
+
+    // Use the integer constants to cause a PHP crash
+    $min + $max;
+}
+
+malicious_code();
+
+?>

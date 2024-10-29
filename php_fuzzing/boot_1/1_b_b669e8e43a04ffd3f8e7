@@ -1,0 +1,4 @@
+<?php
+filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT, array('options' => array('min_range' => PHP_INT_MIN,'max_range' => PHP_INT_MAX)));
+
+?>

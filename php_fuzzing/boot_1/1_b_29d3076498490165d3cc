@@ -1,0 +1,4 @@
+<?php
+fsync(fopen('php://output', 'w'));
+
+?>

@@ -1,0 +1,10 @@
+<?php
+function exploit() {
+    $secret = str_repeat(chr(0), PHP_INT_MAX);
+    $hash = hash('sha256', $secret, true);
+    $secret2 = str_repeat(chr(0), PHP_INT_MIN);
+    $hash2 = hash('sha256', $secret2, true);
+    return hash_equals($hash, $hash2);
+}
+echo exploit();
+?>

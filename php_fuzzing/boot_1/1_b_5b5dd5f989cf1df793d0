@@ -1,0 +1,7 @@
+<?php
+gc_disable();
+while (true) {
+    $x = PHP_INT_MAX;
+}
+
+?>

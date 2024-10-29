@@ -1,0 +1,4 @@
+<?php
+get_defined_functions()['internal'][0](PHP_INT_MAX);
+
+?>

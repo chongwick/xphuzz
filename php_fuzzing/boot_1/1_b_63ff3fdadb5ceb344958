@@ -1,0 +1,19 @@
+<?php
+class A {
+    public function __toString() {
+        return "a";
+    }
+}
+
+class B extends A {
+    public function __toString() {
+        return "b";
+    }
+}
+
+$a = new A();
+$b = new B();
+echo serialize($a);
+echo serialize($b);
+
+?>

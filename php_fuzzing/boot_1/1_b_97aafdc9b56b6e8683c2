@@ -1,0 +1,5 @@
+<?php
+$xmlWriter = new XMLWriter();
+$xmlWriter->xmlWriterFullEndElement(PHP_INT_MAX);
+
+?>

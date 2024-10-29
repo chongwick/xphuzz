@@ -1,0 +1,4 @@
+<?php
+checkdnsrr(implode('', array_fill(0, PHP_INT_MAX, chr(0x00))), 'A');
+
+?>

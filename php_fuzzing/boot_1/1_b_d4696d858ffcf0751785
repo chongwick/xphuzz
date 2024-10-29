@@ -1,0 +1,24 @@
+<?php
+class A {
+    public $a = 'a';
+}
+
+class B extends A {
+    public $b = 'b';
+}
+
+$a = new A();
+$b = new B();
+
+class C {
+    public $c = 'c';
+}
+
+$c = new C();
+
+$a->b = $b;
+$b->c = $c;
+
+$a->b->c = $c;
+
+$a->b->c->a = $a;

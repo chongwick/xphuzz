@@ -1,0 +1,4 @@
+<?php
+hash_update_file('sha256', '/etc/passwd', PHP_INT_MAX);
+
+?>

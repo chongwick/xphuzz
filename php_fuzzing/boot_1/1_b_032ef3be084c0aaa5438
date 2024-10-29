@@ -1,0 +1,8 @@
+<?php
+class A {
+    public function __wakeup() {
+        trigger_error('A', E_USER_ERROR);
+    }
+}
+unserialize('O:1:"A":0:{}');
+?>

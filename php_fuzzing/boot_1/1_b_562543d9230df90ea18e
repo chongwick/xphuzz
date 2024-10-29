@@ -1,0 +1,4 @@
+<?php
+pfsockopen("http://example.com", 80, $errno, $errstr, chr(0x100000000). chr(0x100000000));
+
+?>

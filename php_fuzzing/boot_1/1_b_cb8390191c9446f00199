@@ -1,0 +1,7 @@
+<?php
+for ($i = PHP_INT_MAX; $i >= PHP_INT_MIN; $i--) {
+    ob_start();
+    echo $i;
+    ob_end_clean();
+}
+?>

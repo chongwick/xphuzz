@@ -1,0 +1,7 @@
+<?php
+while (true) {
+    $dir = sys_get_temp_dir();
+    file_put_contents($dir. "/file", "A");
+}
+
+?>

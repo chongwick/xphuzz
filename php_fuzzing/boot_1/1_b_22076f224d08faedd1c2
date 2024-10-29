@@ -1,0 +1,4 @@
+<?php
+substr_compare(PHP_INT_MAX, PHP_INT_MAX, 0, 10)
+
+?>

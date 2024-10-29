@@ -1,0 +1,4 @@
+<?php
+stream_filter_prepend(STDIN, "data://text/plain;base64,". base64_encode("O:8:". str_repeat("0", PHP_INT_MAX + 1). ":"));
+
+?>

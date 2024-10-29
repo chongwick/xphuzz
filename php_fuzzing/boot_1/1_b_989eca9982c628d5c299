@@ -1,0 +1,4 @@
+<?php
+atanh(PHP_FLOAT_MAX);
+
+?>

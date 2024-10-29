@@ -1,0 +1,4 @@
+<?php
+preg_match('/[^A-Z]/', chr(0x80));
+
+?>

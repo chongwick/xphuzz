@@ -1,0 +1,15 @@
+<?php
+class A {
+    public $x;
+    public function __construct() {
+        $this->x = new B();
+    }
+}
+class B {
+    public function __destruct() {
+        trigger_error('B destroyed', E_USER_ERROR);
+    }
+}
+$a = new A();
+unset($a);
+?>

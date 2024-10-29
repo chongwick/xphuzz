@@ -1,0 +1,4 @@
+<?php
+is_numeric(PHP_INT_MAX + 1);
+
+?>
