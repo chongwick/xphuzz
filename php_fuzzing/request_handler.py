@@ -177,8 +177,9 @@ def query_loop(llm):
                 seed_node['fix_count'] = MAX_FIXES
             else:
                 dr = "gen_" + str(GEN_NUM)
-                php_file = os.path.join(dr,seed_name+".php")
-                seed_node['php_file'] = php_file
+                #php_file = os.path.join(dr,seed_name+".php")
+                #seed_node['php_file'] = php_file
+                php_file = seed_node['php_file']
                 utils.write_file(php_file,child)
                 seed_node['time'] += time.time() - start
                 utils.add_to_queue(cfg.exec_queue, php_file)
@@ -192,8 +193,9 @@ def query_loop(llm):
             if child == None:
                 seed_node['fix_count'] = MAX_FIXES
             else:
-                dr = "gen_" + str(GEN_NUM)
-                php_file = os.path.join(dr,seed_name+".php")
+                #dr = "gen_" + str(GEN_NUM)
+                #php_file = os.path.join(dr,seed_name+".php")
+                php_file = seed_node['php_file']
                 utils.write_file(php_file,child)
                 seed_node['time'] += time.time() - start
                 utils.add_to_queue(cfg.exec_queue, php_file)
@@ -315,6 +317,7 @@ def next_gen():
         mut_query = prompts.mutate(seed_data[crasher]['php_file'])
         seed_node = create_seed_node()
         seed_node['parents'] = (crasher, None)
+        seed_node['php_file'] = os.path.join(new_dir,seed_name+".php")
         seed_data[seed_name] = seed_node
         mut_req_name = os.path.join(cfg.llm_requests, seed_name + "_mu")
         utils.dump_pickle(mut_req_name, mut_query)
@@ -332,6 +335,7 @@ def next_gen():
         else:
             with open(seed_data[pair[1]]['php_file'],'r') as f:
                   female = f.read()
+        seed_node['php_file'] = os.path.join(new_dir,seed_name+".php")
         seed_data[seed_name] = seed_node
         mate_query = prompts.mate(male,female)
         mate_req_name = os.path.join(cfg.llm_requests,
