@@ -139,6 +139,7 @@ def query_loop(llm):
         request_file = utils.pop_from_queue(cfg.llm_queue)
         if request_file == -1:
             continue
+        print(request_file)
         seed_name = request_file.split("/")[-1].split("_")[0]
         php_file = os.path.join(cfg.php_corpus,
                 request_file.split("/")[-1].split("_")[0]+".php")
@@ -281,7 +282,8 @@ def next_gen():
     if GEN_NUM == 0 and len(seed_data) == 0:
         for i in os.listdir("gen_0"):
             seed_node = create_seed_node()
-            seed_node['php_file'] = "gen_0/" + i
+            seed_node['php_file'] = os.path.join("gen_0",i)
+            seed_node['fix_count'] = MAX_FIXES
             seed_data[i.split(".")[0]] = seed_node
             utils.add_to_queue(cfg.exec_queue, seed_node['php_file'])
         utils.dump_pickle(cfg.seed_data, seed_data)
