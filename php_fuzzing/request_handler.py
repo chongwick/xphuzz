@@ -33,7 +33,7 @@ GEN_NUM = 0
 TOKEN_LIMIT = 3900 #Given that the context window is 8000 for our LLM,
                    #our cutoff will be 3900 tokens.
 MAX_FIXES = 1
-del(tmp)
+#del(tmp)
 
 functions = utils.load_pickle('functions.pickle')
 
@@ -142,15 +142,15 @@ def query_loop(llm):
             continue
         print(request_file)
         seed_name = request_file.split("/")[-1].split("_")[0]
-        php_file = os.path.join(cfg.php_corpus,
-                request_file.split("/")[-1].split("_")[0]+".php")
+        #php_file = os.path.join(cfg.php_corpus,
+        #        request_file.split("/")[-1].split("_")[0]+".php")
         seed_data = utils.load_pickle(cfg.seed_data)
         if seed_name in seed_data:
             seed_node = seed_data[seed_name]
         else:
             seed_node = create_seed_node()
         #create_seed_data(seed_data, seed_name, php_file)
-        if("_t" in request_file): 
+        if("_t" in request_file):  #Fix translation
             llm.change_temperature(random.randint(0,10)/10)
             start = time.time()
             #utils.log("Translating: {}".format(request_file))
@@ -200,6 +200,7 @@ def query_loop(llm):
         elif("_f" in request_file): #Fix request
             llm.change_temperature(0.3)
             start = time.time()
+            php_file = seed_node['php_file']
             #utils.log("Fixing: {}".format(request_file))
             #seed_node = utils.load_pickle(cfg.seed_data)[seed_name]
             if seed_node['fix_count'] >= MAX_FIXES:
