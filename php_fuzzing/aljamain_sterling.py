@@ -18,7 +18,7 @@ def get_coverages(pool, seed_data):
     return coverages
 
 def new_scoring_function(seed_data):
-    exclusions = [str(i) for i in range(36)]
+    #exclusions = [str(i) for i in range(36)]
     name_score={}
     crashers = []
     max_token_length = cfg.llama3_max/4-100    
@@ -36,8 +36,8 @@ def new_scoring_function(seed_data):
     #range_anc = max(ancestry) - min(ancestry)
     scores = 0
     for i in data:
-        if i in exclusions:
-            continue
+        #if i in exclusions:
+        #    continue
         token_penalty = 1-data[i]['size']/max_token_length
         anom = int(data[i]['crash'] != 'NC')
         if anom != 0:
