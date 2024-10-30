@@ -21,14 +21,15 @@ fix_prompt = "The response did not follow the ```<code>``` format."
 min_prompt = "Reduce the amount of tokens in this code. Return as ```<code>```"
 seed_data_lock = Lock()
 
-tmp = []
-for i in os.listdir(os.getcwd()):
-    if "gen_" in i:
-        tmp.append(int(i.split("_")[1]))    
-if len(tmp) == 0:
-    GEN_NUM = 0
-else:
-    GEN_NUM = max(tmp) #Current generation
+GEN_NUM = 0
+#tmp = []
+#for i in os.listdir(os.getcwd()):
+#    if "gen_" in i:
+#        tmp.append(int(i.split("_")[1]))    
+#if len(tmp) == 0:
+#    GEN_NUM = 0
+#else:
+#    GEN_NUM = max(tmp) #Current generation
 TOKEN_LIMIT = 3900 #Given that the context window is 8000 for our LLM,
                    #our cutoff will be 3900 tokens.
 MAX_FIXES = 1
