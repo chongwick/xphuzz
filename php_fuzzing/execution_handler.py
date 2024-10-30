@@ -101,7 +101,11 @@ def exec_loop():
                     crash = "NC"
             seed_data = utils.load_pickle(cfg.seed_data)
             if is_trash(php_file):
-                del(seed_data[seed_name])
+                #seed_data[seed_name]['valid'] = False
+                seed_data[seed_name]['solo_cov'] = coverage
+                seed_data[seed_name]['php_file'] = php_file + ".tr"
+                seed_data[seed_name]['size']=utils.num_tokens_from_strin    g(code)
+                #del(seed_data[seed_name])
             else:
                 seed_data[seed_name]['solo_cov'] = coverage
                 seed_data[seed_name]['php_file']=php_file
