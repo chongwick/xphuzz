@@ -22,6 +22,10 @@ def room_service(safe_files):
                         "blank.php" not in i) and (
                             "boot_" not in i):
             os.remove(os.path.join(dir_path,i))
+            try:
+                os.remove(os.path.join(dir_path,i))
+            except Exception as e:
+                pass
 
 #There are multiple execution loops but only one llm loop, use the llm loop for the new gen
 def exec_loop():
@@ -55,6 +59,7 @@ def exec_loop():
         else:
             #sanitizeeeee
             print('sanitizing')
+            valid = True
             coverage = None
             crash = None
             is_error = lambda x: os.path.exists(x+".er")
@@ -101,12 +106,13 @@ def exec_loop():
                     crash = "NC"
             seed_data = utils.load_pickle(cfg.seed_data)
             if is_trash(php_file):
-                #seed_data[seed_name]['valid'] = False
+                seed_data[seed_name]['valid'] = False
                 seed_data[seed_name]['solo_cov'] = coverage
                 seed_data[seed_name]['php_file'] = php_file + ".tr"
                 seed_data[seed_name]['size']=utils.num_tokens_from_strin    g(code)
                 #del(seed_data[seed_name])
             else:
+                seed_data[seed_name]['valid'] = valid
                 seed_data[seed_name]['solo_cov'] = coverage
                 seed_data[seed_name]['php_file']=php_file
                 seed_data[seed_name]['crash']=crash

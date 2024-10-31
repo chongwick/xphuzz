@@ -103,6 +103,7 @@ def room_service(safe_files):
 def create_seed_node():
     global GEN_NUM
     seed_node = {
+            "valid": False,
             "reset_count": 0,
             "fix_count": 0,
             "max_fixes": None,
@@ -139,14 +140,15 @@ def query_loop(llm):
         if request_file == -1:
             continue
         seed_name = request_file.split("/")[-1].split("_")[0]
-        php_file = os.path.join(cfg.php_corpus,
-                request_file.split("/")[-1].split("_")[0]+".php")
+        #php_file = os.path.join(cfg.php_corpus,
+        #        request_file.split("/")[-1].split("_")[0]+".php")
         seed_data = utils.load_pickle(cfg.seed_data)
         if seed_name in seed_data:
             seed_node = seed_data[seed_name]
         else:
             seed_node = create_seed_node()
         #create_seed_data(seed_data, seed_name, php_file)
+        #This needs to be fixed: php_file
         if("_t" in request_file):
             llm.change_temperature(random.randint(0,10)/10)
             start = time.time()
@@ -174,9 +176,10 @@ def query_loop(llm):
                 #seed_node['fix_count'] = MAX_FIXES
                 seed_node['fix_count'] = seed_node['max_fixes']
             else:
-                dr = "gen_" + str(GEN_NUM)
-                php_file = os.path.join(dr,seed_name+".php")
-                seed_node['php_file'] = php_file
+                #dr = "gen_" + str(GEN_NUM)
+                #php_file = os.path.join(dr,seed_name+".php")
+                #seed_node['php_file'] = php_file
+                php_file = seed_node['php_file']
                 utils.write_file(php_file,child)
                 seed_node['time'] += time.time() - start
                 utils.add_to_queue(cfg.exec_queue, php_file)
@@ -191,24 +194,27 @@ def query_loop(llm):
                 #seed_node['fix_count'] = MAX_FIXES
                 seed_node['fix_count'] = seed_node['max_fixes']
             else:
-                dr = "gen_" + str(GEN_NUM)
-                php_file = os.path.join(dr,seed_name+".php")
+                #dr = "gen_" + str(GEN_NUM)
+                #php_file = os.path.join(dr,seed_name+".php")
+                php_file = seed_node['php_file']
                 utils.write_file(php_file,child)
                 seed_node['time'] += time.time() - start
                 utils.add_to_queue(cfg.exec_queue, php_file)
         elif("_f" in request_file): #Fix request
             llm.change_temperature(0.3)
             start = time.time()
+            php_file = seed_node['php_file']
             #utils.log("Fixing: {}".format(request_file))
             #seed_node = utils.load_pickle(cfg.seed_data)[seed_name]
             if seed_node['fix_count'] >= seed_node['max_fixes']:
                 #utils.log("Nah, can't fix this one")
                 if 'corpus' not in php_file: #this indicates either the original js/php corpi
+                    seed_node['valid'] = False
                     #os.remove(php_file)
-                    #seed_data = utils.load_pickle(cfg.seed_data)
-                    #seed_data[seed_name] = seed_node
+                    seed_data = utils.load_pickle(cfg.seed_data)
+                    seed_data[seed_name] = seed_node
                     #del(seed_data[seed_name])
-                    #utils.dump_pickle(cfg.seed_data, seed_data)
+                    utils.dump_pickle(cfg.seed_data, seed_data)
                     #update_data(llm_queue, cov_queue, seed_data)
                     os.remove(request_file)
                     llm.change_temperature(0.6)
@@ -217,25 +223,26 @@ def query_loop(llm):
                 context = utils.load_pickle(request_file)
                 seed_node['fix_count'] += 1
                 #Maybe make this an inherent feature of queries
-                #if utils.num_tokens_from_context(context) > cfg.llama3_max / 2:
-                #    utils.log("trying to fix... too big")
-                #else:
-                result = query_llm(llm,context)
-                context.append({'role':'assistant','content':result})
-                code = correct_format(llm, result, context)
-                if code == None:
-                    #seed_node['fix_count'] = MAX_FIXES
-                    #seed_data = utils.load_pickle(cfg.seed_data)
-                    #seed_data[seed_name] = seed_node
-                    #del(seed_data[seed_name])
-                    #utils.dump_pickle(cfg.seed_data, seed_data)
-                    #update_data(llm_queue, cov_queue, seed_data)
-                    os.remove(request_file)
-                    llm.change_temperature(0.6)
-                    continue
-                utils.write_file(php_file, code)
-                utils.add_to_queue(cfg.exec_queue, php_file)
-                seed_node['time'] += time.time() - start
+                if utils.num_tokens_from_context(context) > cfg.llama3_max / 2:
+                    utils.log("trying to fix... too big")
+                else:
+                    result = query_llm(llm,context)
+                    context.append({'role':'assistant','content':result})
+                    code = correct_format(llm, result, context)
+                    if code == None:
+                        seed_node['valid'] = False
+                        #seed_node['fix_count'] = MAX_FIXES
+                        seed_data = utils.load_pickle(cfg.seed_data)
+                        seed_data[seed_name] = seed_node
+                        #del(seed_data[seed_name])
+                        utils.dump_pickle(cfg.seed_data, seed_data)
+                        #update_data(llm_queue, cov_queue, seed_data)
+                        os.remove(request_file)
+                        llm.change_temperature(0.6)
+                        continue
+                    utils.write_file(php_file, code)
+                    utils.add_to_queue(cfg.exec_queue, php_file)
+                    seed_node['time'] += time.time() - start
         seed_data = utils.load_pickle(cfg.seed_data)
         seed_data[seed_name] = seed_node
         utils.dump_pickle(cfg.seed_data, seed_data)
@@ -279,7 +286,7 @@ def next_gen():
     tmp = {}
     for i in os.listdir("gen_" + str(GEN_NUM)):
         name = i.split(".")[0]
-        if seed_data[name]['size'] != None:
+        if seed_data[name]['valid'] == True:
             tmp[name] = seed_data[name]
     partitions = new_scoring_function(tmp)
     crashers = partitions[0]
@@ -300,6 +307,7 @@ def next_gen():
         mut_query = prompts.mutate(seed_data[crasher]['php_file'])
         seed_node = create_seed_node()
         seed_node['parents'] = (crasher, None)
+        seed_node['php_file'] = os.path.join(new_dir,seed_name)
         seed_data[seed_name] = seed_node
         mut_req_name = os.path.join(cfg.llm_requests, seed_name + "_mu")
         utils.dump_pickle(mut_req_name, mut_query)
@@ -318,6 +326,7 @@ def next_gen():
         else:
             with open(seed_data[pair[1]]['php_file'],'r') as f:
                   female = f.read()
+        seed_node['php_file'] = os.path.join(new_dir,seed_name)
         seed_data[seed_name] = seed_node
         mate_query = prompts.mate(male,female)
         mate_req_name = os.path.join(cfg.llm_requests,
