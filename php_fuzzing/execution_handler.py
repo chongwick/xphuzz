@@ -21,7 +21,6 @@ def room_service(safe_files):
                 "gen_" not in i) and (
                         "blank.php" not in i) and (
                             "boot_" not in i):
-            os.remove(os.path.join(dir_path,i))
             try:
                 os.remove(os.path.join(dir_path,i))
             except Exception as e:
