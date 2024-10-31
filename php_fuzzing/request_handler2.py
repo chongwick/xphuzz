@@ -375,7 +375,7 @@ def main():
 
     role = 'You are a chatting assistant'
     context = [{'role': 'system', 'content': role}]
-    llm = receiver.LLAMA3_LLM(context)
+    llm = receiver2.LLAMA3_LLM(context)
     query_loop(llm)
 
 if __name__ == "__main__":
