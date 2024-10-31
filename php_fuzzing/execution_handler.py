@@ -74,9 +74,10 @@ def exec_loop():
                 try:
                     child = subprocess.run(command,
                                            text=True,
-                                           timeout=120,
+                                           timeout=40,
                                            capture_output=True)
                 except subprocess.TimeoutExpired as exc:
+                    valid = False
                     #These take too long. just kill them
                     #crash = "NC"
                     ##utils.write_file(php_file,og)
@@ -109,7 +110,7 @@ def exec_loop():
                 seed_data[seed_name]['valid'] = False
                 seed_data[seed_name]['solo_cov'] = coverage
                 seed_data[seed_name]['php_file'] = php_file + ".tr"
-                seed_data[seed_name]['size']=utils.num_tokens_from_strin    g(code)
+                seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
                 #del(seed_data[seed_name])
             else:
                 seed_data[seed_name]['valid'] = valid
