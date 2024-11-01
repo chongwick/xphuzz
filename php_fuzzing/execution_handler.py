@@ -21,10 +21,10 @@ def room_service(safe_files):
                 "gen_" not in i) and (
                         "blank.php" not in i) and (
                             "boot_" not in i):
-            try:
-                os.remove(os.path.join(dir_path,i))
-            except Exception as e:
-                pass
+            #try:
+            os.remove(os.path.join(dir_path,i))
+            #except Exception as e:
+            #    pass
 
 #There are multiple execution loops but only one llm loop, use the llm loop for the new gen
 def exec_loop():
