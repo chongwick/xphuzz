@@ -106,7 +106,7 @@ def create_seed_node():
             "valid": False,
             "reset_count": 0,
             "fix_count": 0,
-            "max_fixes": None,
+            "max_fixes": 0,
             "php_file": None,
             "context": None,
             "parents": None,
