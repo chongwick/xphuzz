@@ -173,8 +173,8 @@ def query_loop(llm):
             context.append({'role':'assistant','content':result})
             child = correct_format(llm, result, context)
             if child == None:
-                #seed_node['fix_count'] = MAX_FIXES
-                seed_node['fix_count'] = seed_node['max_fixes']
+                seed_node['fix_count'] = MAX_FIXES
+                #seed_node['fix_count'] = seed_node['max_fixes']
             else:
                 #dr = "gen_" + str(GEN_NUM)
                 #php_file = os.path.join(dr,seed_name+".php")
@@ -191,8 +191,8 @@ def query_loop(llm):
             context.append({'role':'assistant','content':result})
             child = correct_format(llm, result, context)
             if child == None:
-                #seed_node['fix_count'] = MAX_FIXES
-                seed_node['fix_count'] = seed_node['max_fixes']
+                seed_node['fix_count'] = MAX_FIXES
+                #seed_node['fix_count'] = seed_node['max_fixes']
             else:
                 #dr = "gen_" + str(GEN_NUM)
                 #php_file = os.path.join(dr,seed_name+".php")
@@ -206,7 +206,8 @@ def query_loop(llm):
             php_file = seed_node['php_file']
             #utils.log("Fixing: {}".format(request_file))
             #seed_node = utils.load_pickle(cfg.seed_data)[seed_name]
-            if seed_node['fix_count'] >= seed_node['max_fixes']:
+            #if seed_node['fix_count'] >= seed_node['max_fixes']:
+            if seed_node['fix_count'] >= MAX_FIXES:
                 #utils.log("Nah, can't fix this one")
                 if 'corpus' not in php_file: #this indicates either the original js/php corpi
                     seed_node['valid'] = False
