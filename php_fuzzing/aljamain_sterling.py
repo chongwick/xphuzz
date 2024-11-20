@@ -123,13 +123,13 @@ def new_aljo(gen_num, partitions, name_energy):
                 if len(ranking_copy) == 0:
                     ranking_copy = ranking.copy()
                 female = random.choice(ranking_copy); ranking_copy.remove(female)
-                pairs.append(male, female)
+                pairs.append((male, female))
             else:
                 male = i
                 if len(boot) == 0:
                     boot = backup_boot.copy()
-                female = random.choie(boot); boot.remove(female)
-                pairs.append(male, female)
+                female = random.choice(boot); boot.remove(female)
+                pairs.append((male, female))
             energy -= 1
     return (pairs, crashers)
 

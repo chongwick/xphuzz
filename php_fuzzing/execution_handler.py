@@ -59,14 +59,20 @@ def exec_loop():
             #sanitizeeeee
             print('sanitizing')
             valid = True
-            coverage = None
+            solo_coverage = None
             crash = None
             is_error = lambda x: os.path.exists(x+".er")
             is_trash = lambda x: os.path.exists(x+".tr")
             if result == 'seg':
-                coverage = 1
+                solo_coverage = 1
             else:
-                coverage = cov_eng.read()
+                solo_coverage = cov_eng.read()
+                #remap
+                cov_eng.load_global_coverage_map_from_file(cfg.collective_map)
+                result = cov_eng.execute_prog(php_file)
+                cov_eng.save_global_coverage_map_in_file(cfg.collective_map)
+                new_coverage = cov_eng.read()
+
             for i in range(3):
                 command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),str(i)]
                 child = None
@@ -108,13 +114,15 @@ def exec_loop():
             seed_data = utils.load_pickle(cfg.seed_data)
             if is_trash(php_file):
                 seed_data[seed_name]['valid'] = False
-                seed_data[seed_name]['solo_cov'] = coverage
+                seed_data[seed_name]['solo_cov'] = solo_coverage
+                seed_data[seed_name]['new_cov'] = new_coverage
                 seed_data[seed_name]['php_file'] = php_file + ".tr"
                 seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
                 #del(seed_data[seed_name])
             else:
                 seed_data[seed_name]['valid'] = valid
-                seed_data[seed_name]['solo_cov'] = coverage
+                seed_data[seed_name]['solo_cov'] = solo_coverage
+                seed_data[seed_name]['new_cov'] = new_coverage
                 seed_data[seed_name]['php_file']=php_file
                 seed_data[seed_name]['crash']=crash
                 seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
