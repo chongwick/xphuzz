@@ -15,7 +15,8 @@ class LLM_Instance:
         from dotenv import load_dotenv, find_dotenv    
         _ = load_dotenv(find_dotenv())    
         #openai.api_key  = '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'    
-        openai.api_key  = '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'    
+        #openai.api_key  = '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'    
+        openai.api_key  = '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'
 
     def change_temperature(self, temperature):
         self.temperature = temperature
@@ -71,3 +72,7 @@ class LLM_Instance:
         encoding = tiktoken.get_encoding(encoding_name)
         num_tokens = len(encoding.encode(string))
         return num_tokens
+
+context = [{'role': 'system', 'content': 'you are a chatter'}]
+llm = LLM_Instance(context, 1)
+llm.add_context("user", "HI")

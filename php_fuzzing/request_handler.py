@@ -135,7 +135,7 @@ def query_loop(llm):
             if not(os.path.exists(outdir)):
                 os.makedirs(outdir)
             new_corpus(llm, 456, outdir)
-            next_gen()
+            next_gen(llm)
         request_file = utils.pop_from_queue(cfg.llm_queue)
         if request_file == -1:
             continue
@@ -183,23 +183,23 @@ def query_loop(llm):
                 utils.write_file(php_file,child)
                 seed_node['time'] += time.time() - start
                 utils.add_to_queue(cfg.exec_queue, php_file)
-        elif("_mu" in request_file): #mutating crash
-            llm.change_temperature(random.randint(0,10)/10)
-            start = time.time()
-            context = utils.load_pickle(request_file)
-            result = query_llm(llm,context)
-            context.append({'role':'assistant','content':result})
-            child = correct_format(llm, result, context)
-            if child == None:
-                seed_node['fix_count'] = MAX_FIXES
-                #seed_node['fix_count'] = seed_node['max_fixes']
-            else:
-                #dr = "gen_" + str(GEN_NUM)
-                #php_file = os.path.join(dr,seed_name+".php")
-                php_file = seed_node['php_file']
-                utils.write_file(php_file,child)
-                seed_node['time'] += time.time() - start
-                utils.add_to_queue(cfg.exec_queue, php_file)
+        #elif("_mu" in request_file): #mutating crash
+        #    llm.change_temperature(random.randint(0,10)/10)
+        #    start = time.time()
+        #    context = utils.load_pickle(request_file)
+        #    result = query_llm(llm,context)
+        #    context.append({'role':'assistant','content':result})
+        #    child = correct_format(llm, result, context)
+        #    if child == None:
+        #        seed_node['fix_count'] = MAX_FIXES
+        #        #seed_node['fix_count'] = seed_node['max_fixes']
+        #    else:
+        #        #dr = "gen_" + str(GEN_NUM)
+        #        #php_file = os.path.join(dr,seed_name+".php")
+        #        php_file = seed_node['php_file']
+        #        utils.write_file(php_file,child)
+        #        seed_node['time'] += time.time() - start
+        #        utils.add_to_queue(cfg.exec_queue, php_file)
         elif("_f" in request_file): #Fix request
             llm.change_temperature(0.3)
             start = time.time()
@@ -280,7 +280,7 @@ def new_corpus(llm, iterations, out_dir):
 
 #safe to give seed_data as nothing will be accessing at that time
 #add seed nodes to seed data here
-def next_gen():
+def next_gen(llm):
     global GEN_NUM
     new_gen = []
     seed_data = utils.load_pickle(cfg.seed_data)
@@ -293,10 +293,11 @@ def next_gen():
     crashers = partitions[0]
     ranking = partitions[1]
     name_score = partitions[2]
+    name_energy = partitions[3]
     for i in name_score:
         seed_data[i]['score'] = name_score[i]
     partitions = (crashers,ranking)
-    aljo_result = new_aljo(GEN_NUM,partitions)
+    aljo_result = new_aljo(GEN_NUM,partitions, name_energy)
     pairs = aljo_result[0]
     crashers = aljo_result[1]
     GEN_NUM+=1
@@ -304,15 +305,32 @@ def next_gen():
     os.makedirs(new_dir)
     boot_gen = "boot_"+str(GEN_NUM)
     for crasher in crashers:
+        context = prompts.mutate(seed_data[crasher]['php_file'])
+        llm.change_temperature(random.randint(0,10)/10)
+        result = query_llm(llm,context)
+        context.append({'role':'assistant','content':result})
+        code = correct_format(llm, result, context)
+        if code == None:
+            continue
         seed_name = secrets.token_hex(10)
-        mut_query = prompts.mutate(seed_data[crasher]['php_file'])
         seed_node = create_seed_node()
         seed_node['parents'] = (crasher, None)
         seed_node['php_file'] = os.path.join(new_dir,seed_name)
+        with open(seed_node['php_file'],"w") as f:
+            f.write(code)
+        with open(seed_data[crasher]['php_file'],"w") as f:
+            f.write(code)
         seed_data[seed_name] = seed_node
-        mut_req_name = os.path.join(cfg.llm_requests, seed_name + "_mu")
-        utils.dump_pickle(mut_req_name, mut_query)
-        utils.add_to_queue(cfg.llm_queue, mut_req_name)
+
+        #seed_name = secrets.token_hex(10)
+        #mut_query = prompts.mutate(seed_data[crasher]['php_file'])
+        #seed_node = create_seed_node()
+        #seed_node['parents'] = (crasher, None)
+        #seed_node['php_file'] = os.path.join(new_dir,seed_name)
+        #seed_data[seed_name] = seed_node
+        #mut_req_name = os.path.join(cfg.llm_requests, seed_name + "_mu")
+        #utils.dump_pickle(mut_req_name, mut_query)
+        #utils.add_to_queue(cfg.llm_queue, mut_req_name)
     for pair in pairs:
         seed_name = secrets.token_hex(10)
         new_gen.append(seed_name)

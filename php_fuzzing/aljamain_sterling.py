@@ -1,3 +1,4 @@
+import math
 import random
 import os
 import utils
@@ -60,7 +61,13 @@ def new_scoring_function(seed_data):
         name_score[i] = score
     score = {k: v for k, v in sorted(name_score.items(), key=lambda item: item[1], reverse=True)}
     ranking = [i for i in score]
-    return (crashers, ranking, name_score)
+    data_min = min([name_score[i] for i in score])
+    data_max = max([name_score[i] for i in score])
+    data_range = data_max - data_min
+    scale = 5
+    energy = [math.ceil(scale * (name_score[i]-data_min)/data_range) for i in score]
+    name_energy = {k: v for (k,v) in zip(ranking,energy)}
+    return (crashers, ranking, name_score, name_energy)
                   
 
 def scoring_function(seed_data):
@@ -101,45 +108,66 @@ def scoring_function(seed_data):
     return (crashers,ranking)
 
 #Assign fixes & determine ancestry scores
-def new_aljo(gen_num, partitions):
+def new_aljo(gen_num, partitions, name_energy):
     boot = os.listdir("boot_"+str(gen_num+1))
     backup_boot = boot.copy()
     pairs = []
     crashers = partitions[0]
     ranking = partitions[1]
+    ranking_copy = ranking.copy()
+    for i in ranking:
+        energy = name_energy[i]
+        while energy != 0:
+            if energy % 2 == 0:
+                male = i
+                if len(ranking_copy) == 0:
+                    ranking_copy = ranking.copy()
+                female = random.choice(ranking_copy); ranking_copy.remove(female)
+                pairs.append(male, female)
+            else:
+                male = i
+                if len(boot) == 0:
+                    boot = backup_boot.copy()
+                female = random.choie(boot); boot.remove(female)
+                pairs.append(male, female)
+            energy -= 1
+    return (pairs, crashers)
+
     ###new
     #if gen_num == 0:
     #    crashers += [str(x) for x in range(len(os.listdir('native_crashers')))]
-    if len(ranking) < 456:
-        ranking += [x.split(".")[0] for x in os.listdir("gen_0") if 'er' not in x]
-    for i in crashers:
-        pairs.append((i,random.choice(boot)))
-        pairs.append((i,random.choice(ranking)))
-    top_five = ranking[:len(ranking)//20]
-    backup_top_five = top_five.copy()
-    while len(top_five) > 2:
-        male = random.choice(top_five); top_five.remove(male)
-        female = random.choice(top_five); top_five.remove(female)
-        if len(boot) < 2:
-            boot = backup_boot.copy()
-        second_male = random.choice(boot); boot.remove(second_male)
-        second_female = random.choice(boot); boot.remove(second_female)
-        pairs.append((male,female))
-        pairs.append((male,second_female))
-        pairs.append((female, second_male))
-    top_five = backup_top_five.copy()
-    boot = backup_boot.copy()
-    while len(ranking) > 2:
-        male = random.choice(ranking); ranking.remove(male)
-        female = random.choice(ranking); ranking.remove(female)
-        if len(boot) < 2:
-            boot = backup_boot.copy()
-        second_male = random.choice(boot); boot.remove(second_male)
-        second_female = random.choice(boot); boot.remove(second_female)
-        pairs.append((male,female))
-        pairs.append((male,second_female))
-        pairs.append((female,second_male))
-    return pairs, crashers
+    #if len(ranking) < 456:
+    #    ranking += [x.split(".")[0] for x in os.listdir("gen_0") if 'er' not in x]
+    #if len(ranking) < 456:
+    #    ranking += [x.split(".")[0] for x in os.listdir("gen_0") if 'er' not in x]
+    #for i in crashers:
+    #    pairs.append((i,random.choice(boot)))
+    #    pairs.append((i,random.choice(ranking)))
+    #top_five = ranking[:len(ranking)//20]
+    #backup_top_five = top_five.copy()
+    #while len(top_five) > 2:
+    #    male = random.choice(top_five); top_five.remove(male)
+    #    female = random.choice(top_five); top_five.remove(female)
+    #    if len(boot) < 2:
+    #        boot = backup_boot.copy()
+    #    second_male = random.choice(boot); boot.remove(second_male)
+    #    second_female = random.choice(boot); boot.remove(second_female)
+    #    pairs.append((male,female))
+    #    pairs.append((male,second_female))
+    #    pairs.append((female, second_male))
+    #top_five = backup_top_five.copy()
+    #boot = backup_boot.copy()
+    #while len(ranking) > 2:
+    #    male = random.choice(ranking); ranking.remove(male)
+    #    female = random.choice(ranking); ranking.remove(female)
+    #    if len(boot) < 2:
+    #        boot = backup_boot.copy()
+    #    second_male = random.choice(boot); boot.remove(second_male)
+    #    second_female = random.choice(boot); boot.remove(second_female)
+    #    pairs.append((male,female))
+    #    pairs.append((male,second_female))
+    #    pairs.append((female,second_male))
+    #return pairs, crashers
     ###new
 
 
@@ -295,5 +323,5 @@ def pairing_aljo(gen_num, boot_gen):
 
     return pairs
 
-print(new_scoring_function(utils.load_pickle(cfg.seed_data))[1])
+#print(new_scoring_function(utils.load_pickle(cfg.seed_data))[1])
 #print(len(pairing_aljo(1, 'boot_2')))

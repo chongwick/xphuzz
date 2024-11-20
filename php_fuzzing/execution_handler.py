@@ -89,17 +89,18 @@ def exec_loop():
                     crash = i
                     error = utils.read_file(cfg.san_log)
                     category = None
-                    if 'LeakSanitizer' in error:
-                        category = error.split("LeakSanitizer")[1]
-                    elif 'runtime error:' in error:
-                        category = error.split("runtime error")[1]
-                    elif "ERROR:" in error:
-                        category = error.split("ERROR")[1]
+                    error = error.split("/dan/")[1].split(" ")[0]
+                    #if 'LeakSanitizer' in error:
+                    #    category = error.split("LeakSanitizer")[1]
+                    #elif 'runtime error:' in error:
+                    #    category = error.split("runtime error")[1]
+                    #elif "ERROR:" in error:
+                    #    category = error.split("ERROR")[1]
                     bugs = utils.load_pickle(cfg.bug_log)
-                    if category not in bugs:
-                        bugs[category]=[seed_name]
+                    if error not in bugs:
+                        bugs[error]=[seed_name]
                     else:
-                        bugs[category].append(seed_name)
+                        bugs[error].append(seed_name)
                     utils.dump_pickle(cfg.bug_log,bugs)
                     break
                 else:
