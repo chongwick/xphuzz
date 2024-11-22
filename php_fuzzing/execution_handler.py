@@ -69,9 +69,10 @@ def exec_loop():
                 solo_coverage = cov_eng.read()
                 #remap
                 cov_eng.load_global_coverage_map_from_file(cfg.collective_map)
+                cur_cov = cov_eng.read()
                 result = cov_eng.execute_prog(php_file)
+                new_coverage = cov_eng.read() - cur_cov
                 cov_eng.save_global_coverage_map_in_file(cfg.collective_map)
-                new_coverage = cov_eng.read()
 
             for i in range(3):
                 command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),str(i)]

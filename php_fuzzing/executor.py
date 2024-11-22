@@ -76,6 +76,13 @@ class Executor():
             data = f.read()
         self.raw_shm.buf[:] = data[:]
 
+    #def get_new_coverage():
+    #    cov_eng.load_global_coverage_map_from_file(cfg.collective_map)
+    #    cur_cov = cov_eng.read()
+    #    cov_eng.execute_prog(php_file)
+    #    increase = cov_eng.read() - cur_cov
+    #    cov_eng.save_global_coverage_map_in_file(cfg.collective_map)
+
     def read(self):
         edge_count = 0
         arr = array.array('B', self.raw_shm.buf[:])

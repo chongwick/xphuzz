@@ -115,6 +115,8 @@ def new_aljo(gen_num, partitions, name_energy):
     crashers = partitions[0]
     ranking = partitions[1]
     ranking_copy = ranking.copy()
+    if gen_num == 0:
+        crashers += [str(x) for x in range(len(os.listdir('native_crashers')))]
     for i in ranking:
         energy = name_energy[i]
         while energy != 0:
