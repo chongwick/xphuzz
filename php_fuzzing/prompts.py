@@ -162,7 +162,7 @@ def new_seed(type_num, influence, functions, new_code=None):
             functions = utils.load_pickle('functions.pickle')
         func = functions.pop(random.randint(0,len(functions)-1))
         #func = functions.pop()
-        context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Use this function {}'.format(func)})
+        context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Use this function {} in code. Make it unexpected, weird, and dangerous'.format(func)})
     elif type_num == 2:
         context.append({'role':'user','content':'another'})
         context.append({'role':'assistant','content':influence})
