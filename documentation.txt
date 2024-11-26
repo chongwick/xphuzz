@@ -194,3 +194,6 @@ Some error triggering code is not getting flagged because it is segfaulting the 
 
 September 3:
 We need to multithread the coverage queue/san queue/ whatever else
+
+November 20:
+Triage the boots! Expand conversation history. Expand repair section. 48 hours for every experiment. We're there 

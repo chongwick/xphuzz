@@ -96,7 +96,10 @@ def exec_loop():
                     crash = i
                     error = utils.read_file(cfg.san_log)
                     category = None
-                    error = error.split("/dan/")[1].split(" ")[0]
+                    try:
+                        error = error.split("/dan/")[1].split(" ")[0]
+                    except Exception as e:
+                        error = error
                     #if 'LeakSanitizer' in error:
                     #    category = error.split("LeakSanitizer")[1]
                     #elif 'runtime error:' in error:
