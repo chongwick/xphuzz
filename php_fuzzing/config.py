@@ -18,7 +18,7 @@ stats = "stats.pickle"
 php_corpus = "php_corpus"
 php_template = "grammar_generators/template.php"
 #require_statement = "require \"/home/w023dtc/template.inc\";"
-require_statement = "require \"/home/template.inc\";"
+require_statement = "require \"template.inc\";"
 san_log = "san.log"
 bug_log = "bug_log.pickle"
 
