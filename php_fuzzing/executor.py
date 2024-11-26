@@ -1,5 +1,6 @@
 # This will run the executable and read from the shared memory :)
 
+import config as cfg
 import numpy
 import array
 import sys
@@ -50,7 +51,7 @@ class Executor():
         if self.ret_code == 1:
             return 'seg'
         result = None
-        if self.engine == COVERAGE_ENGINE:
+        if self.engine == cfg.coverage_engine:
             result = "\n".join(stdout.split("\n")[2:])
         else:
             result = ""
@@ -99,7 +100,7 @@ class Executor():
         self.save_global_coverage_map_in_file(filename)
 
 def main():
-    executor = Executor(COVERAGE_ENGINE)
+    executor = Executor(cfg.coverage_engine)
     executor.make_base_map("base_map_php_4_20_24")
 
 if __name__ == "__main__":

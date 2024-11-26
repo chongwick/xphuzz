@@ -274,8 +274,8 @@ def new_corpus(llm, iterations, out_dir):
         mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
         with open(os.path.join(out_dir,mut_name),"w") as f:
             f.write(code)
-        #if type_num == 2:
-        if type_num == 4:
+        if type_num == 2:
+        #if type_num == 4:
             type_num = 0
         else:
             type_num += 1
