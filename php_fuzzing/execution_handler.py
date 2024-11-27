@@ -44,10 +44,17 @@ def exec_loop():
         code = utils.read_file(php_file)
         if cfg.require_statement not in code:
             code = code.replace("<?php","<?php\n" + cfg.require_statement + "\n")
-        utils.write_file(php_file,code)
-        result = cov_eng.execute_prog(php_file)
+        result = None
+        if "rm " in code or "rmdir" in code or "\'rm" in code or "\"rm" in code or (
+                len(code.split("\n")) < 7):
+            result = -1
+        else:
+            utils.write_file(php_file,code)
+            result = cov_eng.execute_prog(php_file)
         if result == -1:
-            utils.log("Bad execution")
+            seed_data = utils.load_pickle(cfg.seed_data)
+            seed_data[seed_name]['valid'] = False
+            utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
             continue
         if err.is_error(result):
             fix_query = prompts.fix(code, err.parse_error(result, php_file))

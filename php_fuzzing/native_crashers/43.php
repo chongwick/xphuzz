@@ -16,7 +16,7 @@ return new CliServerInfo($doc_root, $handle);
 }
 php_cli_server_start(
 ["-d", "enable_post_data_reading=Off"]);
-require '/home/w023dtc/filter_errors.inc';
+require 'filter_errors.inc';
 class test_filter4 extends php_user_filter {
 function filter($in, $out, &$consumed, $fusion): int {
 if (!$closing) {
