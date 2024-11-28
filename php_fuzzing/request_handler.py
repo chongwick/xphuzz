@@ -288,10 +288,16 @@ def next_gen(llm):
     new_gen = []
     seed_data = utils.load_pickle(cfg.seed_data)
     tmp = {}
-    for i in os.listdir("gen_" + str(GEN_NUM)):
-        name = i.split(".")[0]
-        if seed_data[name]['valid'] == True:
-            tmp[name] = seed_data[name]
+    if GEN_NUM % 7 == 0:
+        for i in os.listdir("gen_" + str(0)):
+            name = i.split(".")[0]
+            if seed_data[name]['valid'] == True:
+                tmp[name] = seed_data[name]
+    else:
+        for i in os.listdir("gen_" + str(GEN_NUM)):
+            name = i.split(".")[0]
+            if seed_data[name]['valid'] == True:
+                tmp[name] = seed_data[name]
     partitions = new_scoring_function(tmp)
     crashers = partitions[0]
     ranking = partitions[1]

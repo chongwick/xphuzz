@@ -1,3 +1,4 @@
+import shutil
 import os
 import config as cfg
 import utils
@@ -21,10 +22,17 @@ def room_service(safe_files):
                 "gen_" not in i) and (
                         "blank.php" not in i) and (
                             "boot_" not in i):
-            try:
-                os.remove(os.path.join(dir_path,i))
-            except Exception as e:
-                pass
+            path = os.path.join(dir_path,i)
+            if os.path.isdir(path)
+                try:
+                    shutil.rmtree(path)
+                except Exception as e:
+                    pass
+            else:
+                try:
+                    os.remove(path)
+                except Exception as e:
+                    continue
 
 #There are multiple execution loops but only one llm loop, use the llm loop for the new gen
 def exec_loop():
