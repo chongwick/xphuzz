@@ -23,7 +23,7 @@ def room_service(safe_files):
                         "blank.php" not in i) and (
                             "boot_" not in i):
             path = os.path.join(dir_path,i)
-            if os.path.isdir(path)
+            if os.path.isdir(path):
                 try:
                     shutil.rmtree(path)
                 except Exception as e:
@@ -132,17 +132,20 @@ def exec_loop():
                 crash = "NC"
         seed_data = utils.load_pickle(cfg.seed_data)
         if is_trash(php_file):
+            os.rename(php_file,php_file.split(".tr")[0])
             seed_data[seed_name]['valid'] = False
             seed_data[seed_name]['solo_cov'] = solo_coverage
             #seed_data[seed_name]['new_cov'] = new_coverage
-            seed_data[seed_name]['php_file'] = php_file + ".tr"
+            seed_data[seed_name]['php_file'] = php_file.split(".tr")[0]
+            seed_data[seed_name]['crash']="trash"
             seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
             #del(seed_data[seed_name])
         else:
+            os.rename(php_file,php_file.split(".e")[0])
             seed_data[seed_name]['valid'] = valid
             seed_data[seed_name]['solo_cov'] = solo_coverage
             #seed_data[seed_name]['new_cov'] = new_coverage
-            seed_data[seed_name]['php_file']=php_file
+            seed_data[seed_name]['php_file']=php_file.split(".er")[0]
             seed_data[seed_name]['crash']=crash
             seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
         utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
