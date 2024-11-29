@@ -1,3 +1,4 @@
+import shutil
 import time
 import re
 import secrets
@@ -312,6 +313,8 @@ def next_gen(llm):
     GEN_NUM+=1
     new_dir = "gen_" + str(GEN_NUM)
     os.makedirs(new_dir)
+    for file in cfg.require_files:
+        shutil.copyfile(file,new_dir)
     boot_gen = "boot_"+str(GEN_NUM)
     for crasher in crashers:
         #context = prompts.mutate(seed_data[crasher]['php_file'])
