@@ -70,86 +70,86 @@ def exec_loop():
                                         php_file.split("/")[-1].split(".")[0]+"_f")
             utils.dump_pickle(fix_req_name, fix_query)
             utils.add_to_queue(cfg.llm_queue, fix_req_name)
-        #else:
-        #sanitizeeeee
-        print('sanitizing')
-        valid = True
-        solo_coverage = None
-        crash = None
-        is_error = lambda x: os.path.exists(x+".er")
-        is_trash = lambda x: os.path.exists(x+".tr")
-        if result == 'seg':
-            solo_coverage = 1
         else:
-            solo_coverage = cov_eng.read()
-            #remap
-            #cov_eng.load_global_coverage_map_from_file(cfg.collective_map)
-            #cur_cov = cov_eng.read()
-            #result = cov_eng.execute_prog(php_file)
-            #new_coverage = cov_eng.read() - cur_cov
-            #cov_eng.save_global_coverage_map_in_file(cfg.collective_map)
-
-        for i in range(3):
-            command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),str(i)]
-            child = None
-            try:
-                child = subprocess.run(command,
-                                       text=True,
-                                       timeout=40,
-                                       capture_output=True)
-            except subprocess.TimeoutExpired as exc:
-                valid = False
-                #These take too long. just kill them
-                #crash = "NC"
-                ##utils.write_file(php_file,og)
-                #seed_data[seed_name]['php_file']=php_file
-                #seed_data[seed_name]['crash']=crash
-                #seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
-                break
-            if is_error(php_file):
-                php_file = php_file+".er"
-                crash = i
-                error = utils.read_file(cfg.san_log)
-                category = None
-                try:
-                    error = error.split("/dan/")[1].split(" ")[0]
-                except Exception as e:
-                    error = error
-                #if 'LeakSanitizer' in error:
-                #    category = error.split("LeakSanitizer")[1]
-                #elif 'runtime error:' in error:
-                #    category = error.split("runtime error")[1]
-                #elif "ERROR:" in error:
-                #    category = error.split("ERROR")[1]
-                bugs = utils.load_pickle(cfg.bug_log)
-                if error not in bugs:
-                    bugs[error]=[seed_name]
-                else:
-                    bugs[error].append(seed_name)
-                utils.dump_pickle(cfg.bug_log,bugs)
-                break
+            #sanitizeeeee
+            print('sanitizing')
+            valid = True
+            solo_coverage = None
+            crash = None
+            is_error = lambda x: os.path.exists(x+".er")
+            is_trash = lambda x: os.path.exists(x+".tr")
+            if result == 'seg':
+                solo_coverage = 1
             else:
-                crash = "NC"
-        seed_data = utils.load_pickle(cfg.seed_data)
-        if is_trash(php_file):
-            php_file = php_file+".tr"
-            os.rename(php_file,php_file.split(".tr")[0])
-            seed_data[seed_name]['valid'] = False
-            seed_data[seed_name]['solo_cov'] = solo_coverage
-            #seed_data[seed_name]['new_cov'] = new_coverage
-            seed_data[seed_name]['php_file'] = php_file.split(".tr")[0]
-            seed_data[seed_name]['crash']="trash"
-            seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
-            #del(seed_data[seed_name])
-        else:
-            os.rename(php_file,php_file.split(".er")[0])
-            seed_data[seed_name]['valid'] = valid
-            seed_data[seed_name]['solo_cov'] = solo_coverage
-            #seed_data[seed_name]['new_cov'] = new_coverage
-            seed_data[seed_name]['php_file']=php_file.split(".er")[0]
-            seed_data[seed_name]['crash']=crash
-            seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
-        utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
+                solo_coverage = cov_eng.read()
+                #remap
+                #cov_eng.load_global_coverage_map_from_file(cfg.collective_map)
+                #cur_cov = cov_eng.read()
+                #result = cov_eng.execute_prog(php_file)
+                #new_coverage = cov_eng.read() - cur_cov
+                #cov_eng.save_global_coverage_map_in_file(cfg.collective_map)
+
+            for i in range(3):
+                command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),str(i)]
+                child = None
+                try:
+                    child = subprocess.run(command,
+                                           text=True,
+                                           timeout=40,
+                                           capture_output=True)
+                except subprocess.TimeoutExpired as exc:
+                    valid = False
+                    #These take too long. just kill them
+                    #crash = "NC"
+                    ##utils.write_file(php_file,og)
+                    #seed_data[seed_name]['php_file']=php_file
+                    #seed_data[seed_name]['crash']=crash
+                    #seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
+                    break
+                if is_error(php_file):
+                    php_file = php_file+".er"
+                    crash = i
+                    error = utils.read_file(cfg.san_log)
+                    category = None
+                    try:
+                        error = error.split("/dan/")[1].split(" ")[0]
+                    except Exception as e:
+                        error = error
+                    #if 'LeakSanitizer' in error:
+                    #    category = error.split("LeakSanitizer")[1]
+                    #elif 'runtime error:' in error:
+                    #    category = error.split("runtime error")[1]
+                    #elif "ERROR:" in error:
+                    #    category = error.split("ERROR")[1]
+                    bugs = utils.load_pickle(cfg.bug_log)
+                    if error not in bugs:
+                        bugs[error]=[seed_name]
+                    else:
+                        bugs[error].append(seed_name)
+                    utils.dump_pickle(cfg.bug_log,bugs)
+                    break
+                else:
+                    crash = "NC"
+            seed_data = utils.load_pickle(cfg.seed_data)
+            if is_trash(php_file):
+                php_file = php_file+".tr"
+                os.rename(php_file,php_file.split(".tr")[0])
+                seed_data[seed_name]['valid'] = False
+                seed_data[seed_name]['solo_cov'] = solo_coverage
+                #seed_data[seed_name]['new_cov'] = new_coverage
+                seed_data[seed_name]['php_file'] = php_file.split(".tr")[0]
+                seed_data[seed_name]['crash']="trash"
+                seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
+                #del(seed_data[seed_name])
+            else:
+                os.rename(php_file,php_file.split(".er")[0])
+                seed_data[seed_name]['valid'] = valid
+                seed_data[seed_name]['solo_cov'] = solo_coverage
+                #seed_data[seed_name]['new_cov'] = new_coverage
+                seed_data[seed_name]['php_file']=php_file.split(".er")[0]
+                seed_data[seed_name]['crash']=crash
+                seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
+            utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
         room_service(safe_files)
 
 def main():
