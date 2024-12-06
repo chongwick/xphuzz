@@ -39,7 +39,7 @@ def exec_loop():
     seed_data = None
     llm_queue = None
     exec_queue = None
-    safe_files = os.listdir(os.path.dirname(os.path.realpath(__file__)))  
+    safe_files = utils.load_pickle(cfg.safe_files)
     cov_eng = Executor(cfg.coverage_engine)
     while(True):
         php_file = utils.pop_from_queue(cfg.exec_queue)
@@ -59,6 +59,15 @@ def exec_loop():
         else:
             utils.write_file(php_file,code)
             result = cov_eng.execute_prog(php_file)
+            current_files = os.listdir(
+                    os.path.dirname(os.path.realpath(__file__)))
+            tmp = [i for i in current_files if (
+                i not in safe_files and
+                "blank.php" not in i and
+                "gen_" not in i and
+                "boot_" not in i)]
+            if len(tmp) > 100:
+                result = -1
         if result == -1:
             seed_data = utils.load_pickle(cfg.seed_data)
             seed_data[seed_name]['valid'] = False
@@ -108,13 +117,20 @@ def exec_loop():
                     break
                 if is_error(php_file):
                     php_file = php_file+".er"
-                    crash = i
-                    error = utils.read_file(cfg.san_log)
-                    category = None
-                    try:
-                        error = error.split("/dan/")[1].split(" ")[0]
-                    except Exception as e:
-                        error = error
+                    crash = None
+                    error = None
+                    #category = None
+                    if "exit(" in code:
+                        crash = "NC"
+                        error = 'exit'
+                    else:
+                        crash = i
+                        error = utils.read_file(cfg.san_log)
+                        #category = None
+                        try:
+                            error = error.split("/dan/")[1].split(" ")[0]
+                        except Exception as e:
+                            error = error
                     #if 'LeakSanitizer' in error:
                     #    category = error.split("LeakSanitizer")[1]
                     #elif 'runtime error:' in error:
@@ -131,6 +147,10 @@ def exec_loop():
                 else:
                     crash = "NC"
             seed_data = utils.load_pickle(cfg.seed_data)
+
+            dir_path = os.path.dirname(os.path.realpath(__file__))
+            cur_files = os.listdir(dir_path)
+
             if is_trash(php_file):
                 php_file = php_file+".tr"
                 os.rename(php_file,php_file.split(".tr")[0])

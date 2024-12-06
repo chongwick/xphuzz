@@ -258,7 +258,7 @@ def new_corpus(llm, iterations, out_dir):
     global GEN_NUM
     #i = 0
     type_num = 0
-    while len(os.listdir(out_dir)) != iterations:
+    while len(os.listdir(out_dir)) < iterations:
         new_code = generate_samples(
                 os.path.dirname(__file__),None,"<phpfuzz>",1,"grammar_generators/no_guard_php.txt")
         with open(os.path.join('native_crashers',
@@ -275,6 +275,7 @@ def new_corpus(llm, iterations, out_dir):
         mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
         with open(os.path.join(out_dir,mut_name),"w") as f:
             f.write(code)
+        #utils.add_to_queue(cfg.exec_queue,os.path.join(out_dir,mut_name))
         if type_num == 2:
         #if type_num == 4:
             type_num = 0
@@ -289,7 +290,8 @@ def next_gen(llm):
     new_gen = []
     seed_data = utils.load_pickle(cfg.seed_data)
     tmp = {}
-    if GEN_NUM % 7 == 0:
+    if GEN_NUM % 5 == 0 or (
+            len([i for i in seed_data if (seed_data[i]['generation'] == GEN_NUM and seed_data[i]['valid'] == True)]) < 50):
         for i in os.listdir("gen_" + str(0)):
             name = i.split(".")[0]
             if seed_data[name]['valid'] == True:
@@ -297,7 +299,7 @@ def next_gen(llm):
     else:
         for i in os.listdir("gen_" + str(GEN_NUM)):
             name = i.split(".")[0]
-            if seed_data[name]['valid'] == True:
+            if name in seed_data and seed_data[name]['valid'] == True:
                 tmp[name] = seed_data[name]
     partitions = new_scoring_function(tmp)
     crashers = partitions[0]

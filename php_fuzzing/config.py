@@ -22,6 +22,7 @@ require_statement = "require \"template.inc\";"
 san_log = "san.log"
 bug_log = "bug_log.pickle"
 require_files = ['template.inc','filter_errors.inc']
+safe_files = "safe_files.pickle"
 
 llm_queue = "llm_requests/queue.pickle"
 cov_queue = "queues/cov_queue.pickle"
