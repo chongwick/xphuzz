@@ -21,7 +21,8 @@ def room_service(safe_files):
         if i not in safe_files and (
                 "gen_" not in i) and (
                         "blank.php" not in i) and (
-                            "boot_" not in i):
+                            "boot_" not in i) and (
+                                    i[0] != '.'):
             path = os.path.join(dir_path,i)
             if os.path.isdir(path):
                 try:
@@ -39,7 +40,8 @@ def exec_loop():
     seed_data = None
     llm_queue = None
     exec_queue = None
-    safe_files = utils.load_pickle(cfg.safe_files)
+    #safe_files = utils.load_pickle(cfg.safe_files)
+    safe_files = os.listdir(os.path.dirname(os.path.realpath(__file__)))
     cov_eng = Executor(cfg.coverage_engine)
     while(True):
         php_file = utils.pop_from_queue(cfg.exec_queue)
@@ -147,9 +149,6 @@ def exec_loop():
                 else:
                     crash = "NC"
             seed_data = utils.load_pickle(cfg.seed_data)
-
-            dir_path = os.path.dirname(os.path.realpath(__file__))
-            cur_files = os.listdir(dir_path)
 
             if is_trash(php_file):
                 php_file = php_file+".tr"
