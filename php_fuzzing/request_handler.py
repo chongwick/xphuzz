@@ -294,7 +294,7 @@ def next_gen(llm):
             len([i for i in seed_data if (seed_data[i]['generation'] == GEN_NUM and seed_data[i]['valid'] == True)]) < 50):
         for i in os.listdir("gen_" + str(0)):
             name = i.split(".")[0]
-            if seed_data[name]['valid'] == True:
+            if name in seed_data and seed_data[name]['valid'] == True:
                 tmp[name] = seed_data[name]
     else:
         for i in os.listdir("gen_" + str(GEN_NUM)):

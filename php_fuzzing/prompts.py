@@ -135,7 +135,7 @@ def mutate(target_file):
 def mate(male, female):
     context = prefix()
     #func = random.choice(functions)
-    context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Mix the structures of A and B to create something new.\nA:\n```\n{f}\n```\nB:\n```\n{m}\n```'.format(f=female,m=male)})
+    context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Mix the structures, characteristics, and features of A and B to create something new.\nA:\n```\n{f}\n```\nB:\n```\n{m}\n```'.format(f=female,m=male)})
     #context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Consider adding this function: ' + func + ' Mix the structures of A and B to create something new.\nA:\n```\n{f}\n```\nB:\n```\n{m}\n```'.format(f=female,m=male)})
 
     return context
