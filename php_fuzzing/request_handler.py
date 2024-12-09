@@ -269,15 +269,43 @@ def new_corpus(llm, iterations, out_dir):
             if len(test_files) == 0:
                 test_files = used_files.copy()
                 used_files = []
-            target_file = test_files.pop(random.randint(0,len(test_files)))
-            used_files.append(target_file)
-            target_file = os.path.join(os.path.expanduser("~"),target_file)
-            with open(target_file,"r") as f:
-                code = f.read()
+            #target_file = test_files.pop(random.randint(0,len(test_files)))
+
+
+            target_file = None
+            good_file = False
+            code = None
+            #while(".phpt" not in target_file):
+            while(not good_file):
+                target_file = test_files.pop(random.randint(0,len(test_files)))
+                target_path = os.path.join(os.path.expanduser("~"),target_file)
+                if ".phpt" in target_path:
+                    try:
+                        with open(target_path,"r") as f:
+                            code = f.read()
+                        if "--FILE--" in code:
+                            good_file = True
+                            used_files.append(target_file)
+                    except Exception as e:
+                        continue
+
+            #used_files.append(target_file)
+            #target_file = os.path.join(os.path.expanduser("~"),target_file)
+            #try:
+            #    with open(target_file,"r") as f:
+            #        code = f.read()
+            #except Exception as e:
+            #    continue
+
             if "INI" in code:
                 instructions = code.split("INI")[1].split("\n")[1]
-            code = code.split("--FILE--")[1].split("?>")[0] + "\n?>"
+            #code = code.split("--FILE--")[1].split("?>")[0] + "\n?>"
+            code = "<?php\n" + code.split("<?php\n")[1]
+            code = code.split("?>")[0] + "\n?>"
             utils.dump_pickle(cfg.phptests,(test_files,used_files))
+
+
+
         else:
             new_code = generate_samples(
                     os.path.dirname(__file__),None,"<phpfuzz>",1,"grammar_generators/no_guard_php.txt")

@@ -44,11 +44,11 @@ def exec_loop():
     safe_files = os.listdir(os.path.dirname(os.path.realpath(__file__)))
     cov_eng = Executor(cfg.coverage_engine)
     while(True):
-        file_instr = utils.load_pickle(cfg.file_instr)
         php_file = utils.pop_from_queue(cfg.exec_queue)
         is_instructions = False
         if php_file == -1:
             continue
+        file_instr = utils.load_pickle(cfg.file_instr)
         seed_name = php_file.split("/")[-1].split(".")[0]
 
         if seed_name in file_instr and file_instr[seed_name] != "":
@@ -61,10 +61,28 @@ def exec_loop():
         print("mapping: " + php_file)
         cov_eng.load_global_coverage_map_from_file(cfg.base_map)
         code = utils.read_file(php_file)
+
+        for line in codelines:
+            first_word = line.split(" ")[0]
+            if first_word == "require" or first_word == "require_once":
+                include_file = None
+                for word in line.split(" "):
+                    if ".inc" in word:
+                        include_file = word
+                        if "'" in word:
+                            include_file = "'" + cfg.includes + word.split("/")[1]
+                        else:
+                            include_file = '"' + cfg.includes + word.split("/")[1]
+                        code.replace(line, "require " + include_file + "\n")
+
+        '''if "require '" in code:
+            can also be require "
+            need to split code by lines to find require statement to patch'''
+            #code = code.replace("require '", "require '{}".format(cfg.includes))
+
         if cfg.require_statement not in code:
             code = code.replace("<?php","<?php\n" + cfg.require_statement + "\n")
-        if "require '" in code:
-            code = code.replace("require '", "require '{}".format(cfg.includes))
+
         result = None
         if "rm " in code or "rmdir" in code or "\'rm" in code or "\"rm" in code or (
                 len(code.split("\n")) < 7):
