@@ -44,23 +44,37 @@ def exec_loop():
     safe_files = os.listdir(os.path.dirname(os.path.realpath(__file__)))
     cov_eng = Executor(cfg.coverage_engine)
     while(True):
+        file_instr = utils.load_pickle(cfg.file_instr)
         php_file = utils.pop_from_queue(cfg.exec_queue)
+        is_instructions = False
         if php_file == -1:
             continue
         seed_name = php_file.split("/")[-1].split(".")[0]
+
+        if seed_name in file_instr and file_instr[seed_name] != "":
+            is_instructions = True
+            instructions = file_instr[seed_name]
+            with open(os.path.join(cfg.inidir,seed_name),"w") as f:
+                f.write(instructions)
+
         #update_data(llm_queue, cov_queue, seed_data)
         print("mapping: " + php_file)
         cov_eng.load_global_coverage_map_from_file(cfg.base_map)
         code = utils.read_file(php_file)
         if cfg.require_statement not in code:
             code = code.replace("<?php","<?php\n" + cfg.require_statement + "\n")
+        if "require '" in code:
+            code = code.replace("require '", "require '{}".format(cfg.includes))
         result = None
         if "rm " in code or "rmdir" in code or "\'rm" in code or "\"rm" in code or (
                 len(code.split("\n")) < 7):
             result = -1
         else:
             utils.write_file(php_file,code)
-            result = cov_eng.execute_prog(php_file)
+            if is_instructions:
+                result = cov_eng.execute_prog(php_file, "-c {}".format(os.path.join(cfg.inidir,seed_name)))
+            else:
+                result = cov_eng.execute_prog(php_file)
             current_files = os.listdir(
                     os.path.dirname(os.path.realpath(__file__)))
             tmp = [i for i in current_files if (

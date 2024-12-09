@@ -1,4 +1,0 @@
-<?php
-ini_set('memory_limit', '512M');
-$vars["DOMElement"]->getAttributeNS(gzuncompress(base64_decode(str_replace(chr(93), chr(0x1A), str_replace(chr(220), chr(0x1B), str_repeat(chr(0), 1025))))), gzuncompress(base64_decode(str_replace(chr(234), chr(0x1A), str_replace(chr(154), chr(0x1B), str_replace(chr(137), chr(0), str_repeat(chr(0), 4097))))) + gzuncompress(base64_decode(str_replace(chr(234), chr(0x1A), str_replace(chr(154), chr(0x1B), str_replace(chr(137), chr(0), str_repeat(chr(0), 4097)))))) + gzuncompress(base64_decode(str_replace(chr(234), chr(0x1A), str_replace(chr(154), chr(0x1B), str_replace(chr(137), chr(0), str_repeat(chr(0), 65537)))))));
-?>

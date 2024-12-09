@@ -197,3 +197,16 @@ We need to multithread the coverage queue/san queue/ whatever else
 
 November 20:
 Triage the boots! Expand conversation history. Expand repair section. 48 hours for every experiment. We're there 
+
+November 27:
+SANITIZE EVERYTHING
+throughput i.e. seeds per hour over a couple days 
+
+December 7:
+We're going to augment the input corpus with PHP tests -> ONLY standard extensions
+phptests directory will be preloaded into fry and copied into the working directory before execution
+ 
+For ini dependencies, make a new directory, write ini options in php.ini, use php -c option
+
+if INI in g:
+        g.split("INI")[1].split("\n")[1]

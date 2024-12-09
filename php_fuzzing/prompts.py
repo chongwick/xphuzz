@@ -155,7 +155,7 @@ def new_seed(type_num, influence, functions, new_code=None):
         context.append({'role':'user','content':'another'})
         context.append({'role':'assistant','content':influence})
         context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN,     PHP_FLOAT_MAX, PHP_FLOAT_MIN. Make this unexpected, weird, and potentially incorrect:\n```\n{}\n```'.format(new_code)})
-    elif type_num == 1 or type_num == 3 or type_num == 4:
+    elif type_num == 1:
         context.append({'role':'user','content':'another'})
         context.append({'role':'assistant','content':influence})
         if len(functions) == 0:

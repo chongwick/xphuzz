@@ -258,29 +258,52 @@ def new_corpus(llm, iterations, out_dir):
     global GEN_NUM
     #i = 0
     type_num = 0
+    file_instr = utils.load_pickle(cfg.file_instr)
     while len(os.listdir(out_dir)) < iterations:
-        new_code = generate_samples(
-                os.path.dirname(__file__),None,"<phpfuzz>",1,"grammar_generators/no_guard_php.txt")
-        with open(os.path.join('native_crashers',
-                               random.choice(os.listdir('native_crashers')))) as f:
-            influence = f.read()
-        context = prompts.new_seed(type_num, influence, functions, new_code)
-        #llm.change_temperature(random.randint(0,10)/10)
-        llm.change_temperature(1)
-        result = query_llm(llm,context)
-        context.append({'role':'assistant','content':result})
-        code = correct_format(llm, result, context)
-        if code == None: #Idk some weird error that idc about
-            continue
+        code = None
+        instructions = ""
+        if type_num == 3:
+            phptests = utils.load_pickle(cfg.phptests)
+            test_files = phptests[0]
+            used_files = phptests[1]
+            if len(test_files) == 0:
+                test_files = used_files.copy()
+                used_files = []
+            target_file = test_files.pop(random.randint(0,len(test_files)))
+            used_files.append(target_file)
+            target_file = "/mnt/"+random.choice(phptests)
+            with open(target_file,"r") as f:
+                code = f.read()
+            if "INI" in code:
+                instructions = code.split("INI")[1].split("\n")[1]
+            code = code.split("--FILE--")[1].split("?>")[0] + "\n?>"
+            utils.dump_pickle(cfg.phptests,(test_files,used_files))
+        else:
+            new_code = generate_samples(
+                    os.path.dirname(__file__),None,"<phpfuzz>",1,"grammar_generators/no_guard_php.txt")
+            with open(os.path.join('native_crashers',
+                                   random.choice(os.listdir('native_crashers')))) as f:
+                influence = f.read()
+            context = prompts.new_seed(type_num, influence, functions, new_code)
+            #llm.change_temperature(random.randint(0,10)/10)
+            llm.change_temperature(1)
+            result = query_llm(llm,context)
+            context.append({'role':'assistant','content':result})
+            code = correct_format(llm, result, context)
+            if code == None: #Idk some weird error that idc about
+                continue
         mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
         with open(os.path.join(out_dir,mut_name),"w") as f:
             f.write(code)
-        #utils.add_to_queue(cfg.exec_queue,os.path.join(out_dir,mut_name))
-        if type_num == 2:
+        file_instr[mut_name] = instructions
+        utils.dump_pickle(cfg.file_instr,file_instr)
+        if type_num == 3:
+        #if type_num == 2:
         #if type_num == 4:
             type_num = 0
         else:
             type_num += 1
+        #utils.add_to_queue(cfg.exec_queue,os.path.join(out_dir,mut_name))
     #llm.change_temperature(0.6)
 
 #safe to give seed_data as nothing will be accessing at that time
@@ -289,6 +312,7 @@ def next_gen(llm):
     global GEN_NUM
     new_gen = []
     seed_data = utils.load_pickle(cfg.seed_data)
+    file_instr = utils.load_pickle(cfg.file_instr)
     tmp = {}
     if GEN_NUM % 5 == 0 or (
             len([i for i in seed_data if (seed_data[i]['generation'] == GEN_NUM and seed_data[i]['valid'] == True)]) < 50):
@@ -335,7 +359,6 @@ def next_gen(llm):
         #with open(seed_data[crasher]['php_file'],"w") as f:
         #    f.write(code)
         #seed_data[seed_name] = seed_node
-
         seed_name = secrets.token_hex(10)
         mut_query = prompts.mutate(seed_data[crasher]['php_file'])
         seed_node = create_seed_node()
@@ -346,10 +369,18 @@ def next_gen(llm):
         utils.dump_pickle(mut_req_name, mut_query)
         utils.add_to_queue(cfg.llm_queue, mut_req_name)
     for pair in pairs:
+        instructions = ""
         seed_name = secrets.token_hex(10)
         new_gen.append(seed_name)
         seed_node = create_seed_node()
         seed_node['parents'] = (pair[0],pair[1])
+
+        if pair[0] in file_instr and file_instr[pair[0]] != "":
+            instructions += file_instr[pair[0]]
+        if pair[1] in file_instr and file_instr[pair[1]] != "":
+            instructions += "\n" and file_instr[pair[1]]
+        file_instr[seed_name] = instructions
+
         with open(seed_data[pair[0]]['php_file'],'r') as m:
             male = m.read()
         female = None
@@ -367,6 +398,7 @@ def next_gen(llm):
         utils.dump_pickle(mate_req_name, mate_query)
         utils.add_to_queue(cfg.llm_queue, mate_req_name)
         utils.dump_pickle(cfg.seed_data, seed_data)
+        utils.dump_pickle(cfg.file_instr, file_instr)
     #ancestry score and fix_amount calculation
     combined_parent_scores = {}
     for i in new_gen:

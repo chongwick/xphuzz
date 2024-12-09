@@ -1,5 +1,0 @@
-<?php
-phpinfo();
-$vars["DOMElement"]->removeAttribute(bin2hex(str_repeat(chr(239), 65)). str_repeat(chr(178), 4097). str_repeat(chr(230), 256). str_repeat(chr(144), 1024));
-
-?>

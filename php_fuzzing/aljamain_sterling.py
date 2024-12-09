@@ -121,7 +121,7 @@ def new_aljo(gen_num, partitions, name_energy):
         pairs.append((i,random.choice(boot)))
         #pairs.append((i,random.choice(ranking)))
     for i in ranking:
-        energy = name_energy[i]//2
+        energy = name_energy[i]
         while energy != 0:
             if energy % 2 == 0:
                 male = i

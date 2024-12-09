@@ -35,8 +35,10 @@ class Executor():
     def __del__(self):
         self.smm.shutdown(self)
 
-    def execute_prog(self, script):
+    def execute_prog(self, script, instructions=None):
         command = self.prog_argv.copy()
+        if instructions != None:
+            command.append(instructions)
         command.append(script)
         try:
             child = subprocess.Popen(command, 

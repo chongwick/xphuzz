@@ -11,6 +11,7 @@ base_map_edges = 3737
 coverage_engine = "php_engines/cov_php"
 sanitizer_engine = "php_engines/san_php"
 undefined_engine = "php_engines/undefined_php"
+ini = "/php_engines/php.ini"
 model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
 llm_requests = "llm_requests"
 seed_data = "seed_data.pickle"
@@ -23,6 +24,12 @@ san_log = "san.log"
 bug_log = "bug_log.pickle"
 require_files = ['template.inc','filter_errors.inc']
 safe_files = "safe_files.pickle"
+phptests = 'phptests.pickle' #set up as a tuple of lists.
+                             #pop from one, add it to the other
+                             #to get good coverage of all.
+inidir = "inis"
+includes = '/mnt/incs/'
+file_instr = 'file_instr.pickle'
 
 llm_queue = "llm_requests/queue.pickle"
 cov_queue = "queues/cov_queue.pickle"
