@@ -182,6 +182,7 @@ def exec_loop():
                 seed_data[seed_name]['php_file']=php_file.split(".er")[0]
                 seed_data[seed_name]['crash']=crash
                 seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
+            os.remove(os.path.join(cfg.inidir,seed_name))
             utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
         room_service(safe_files)
 
