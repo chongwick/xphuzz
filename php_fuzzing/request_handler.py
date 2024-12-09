@@ -271,7 +271,7 @@ def new_corpus(llm, iterations, out_dir):
                 used_files = []
             target_file = test_files.pop(random.randint(0,len(test_files)))
             used_files.append(target_file)
-            target_file = "/mnt/"+random.choice(phptests)
+            target_file = os.path.join(os.path.expanduser("~"),target_file)
             with open(target_file,"r") as f:
                 code = f.read()
             if "INI" in code:
