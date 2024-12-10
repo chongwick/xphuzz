@@ -1,3 +1,4 @@
+import shutil
 import time
 import re
 import secrets
@@ -106,7 +107,7 @@ def create_seed_node():
             "valid": False,
             "reset_count": 0,
             "fix_count": 0,
-            "max_fixes": None,
+            "max_fixes": 0,
             "php_file": None,
             "context": None,
             "parents": None,
@@ -135,7 +136,7 @@ def query_loop(llm):
             if not(os.path.exists(outdir)):
                 os.makedirs(outdir)
             new_corpus(llm, 456, outdir)
-            next_gen()
+            next_gen(llm)
         request_file = utils.pop_from_queue(cfg.llm_queue)
         if request_file == -1:
             continue
@@ -166,15 +167,16 @@ def query_loop(llm):
             seed_node['time'] = time.time() - start
             utils.add_to_queue(cfg.exec_queue, php_file)
         elif("_ma" in request_file): #Mate request
-            llm.change_temperature(random.randint(0,10)/10)
+            #llm.change_temperature(random.randint(0,10)/10)
+            llm.change_temperature(1)
             start = time.time()
             context = utils.load_pickle(request_file)
             result = query_llm(llm,context)
             context.append({'role':'assistant','content':result})
             child = correct_format(llm, result, context)
             if child == None:
-                #seed_node['fix_count'] = MAX_FIXES
-                seed_node['fix_count'] = seed_node['max_fixes']
+                seed_node['fix_count'] = MAX_FIXES
+                #seed_node['fix_count'] = seed_node['max_fixes']
             else:
                 #dr = "gen_" + str(GEN_NUM)
                 #php_file = os.path.join(dr,seed_name+".php")
@@ -184,15 +186,16 @@ def query_loop(llm):
                 seed_node['time'] += time.time() - start
                 utils.add_to_queue(cfg.exec_queue, php_file)
         elif("_mu" in request_file): #mutating crash
-            llm.change_temperature(random.randint(0,10)/10)
+            #llm.change_temperature(random.randint(0,10)/10)
+            llm.change_temperature(1)
             start = time.time()
             context = utils.load_pickle(request_file)
             result = query_llm(llm,context)
             context.append({'role':'assistant','content':result})
             child = correct_format(llm, result, context)
             if child == None:
-                #seed_node['fix_count'] = MAX_FIXES
-                seed_node['fix_count'] = seed_node['max_fixes']
+                seed_node['fix_count'] = MAX_FIXES
+                #seed_node['fix_count'] = seed_node['max_fixes']
             else:
                 #dr = "gen_" + str(GEN_NUM)
                 #php_file = os.path.join(dr,seed_name+".php")
@@ -206,7 +209,8 @@ def query_loop(llm):
             php_file = seed_node['php_file']
             #utils.log("Fixing: {}".format(request_file))
             #seed_node = utils.load_pickle(cfg.seed_data)[seed_name]
-            if seed_node['fix_count'] >= seed_node['max_fixes']:
+            #if seed_node['fix_count'] >= seed_node['max_fixes']:
+            if seed_node['fix_count'] >= MAX_FIXES:
                 #utils.log("Nah, can't fix this one")
                 if 'corpus' not in php_file: #this indicates either the original js/php corpi
                     seed_node['valid'] = False
@@ -217,7 +221,7 @@ def query_loop(llm):
                     utils.dump_pickle(cfg.seed_data, seed_data)
                     #update_data(llm_queue, cov_queue, seed_data)
                     os.remove(request_file)
-                    llm.change_temperature(0.6)
+                    #llm.change_temperature(0.6)
                     continue
             else:
                 context = utils.load_pickle(request_file)
@@ -238,7 +242,7 @@ def query_loop(llm):
                         utils.dump_pickle(cfg.seed_data, seed_data)
                         #update_data(llm_queue, cov_queue, seed_data)
                         os.remove(request_file)
-                        llm.change_temperature(0.6)
+                        #llm.change_temperature(0.6)
                         continue
                     utils.write_file(php_file, code)
                     utils.add_to_queue(cfg.exec_queue, php_file)
@@ -246,7 +250,7 @@ def query_loop(llm):
         seed_data = utils.load_pickle(cfg.seed_data)
         seed_data[seed_name] = seed_node
         utils.dump_pickle(cfg.seed_data, seed_data)
-        llm.change_temperature(0.6)
+        #llm.change_temperature(0.6)
         os.remove(request_file)
         #update_data(llm_queue, cov_queue, seed_data)
 
@@ -254,55 +258,135 @@ def new_corpus(llm, iterations, out_dir):
     global GEN_NUM
     #i = 0
     type_num = 0
-    while len(os.listdir(out_dir)) != iterations:
-        new_code = generate_samples(
-                os.path.dirname(__file__),None,"<phpfuzz>",1,"grammar_generators/no_guard_php.txt")
-        with open(os.path.join('native_crashers',
-                               random.choice(os.listdir('native_crashers')))) as f:
-            influence = f.read()
-        context = prompts.new_seed(type_num, influence, functions, new_code)
-        llm.change_temperature(random.randint(0,10)/10)
-        result = query_llm(llm,context)
-        context.append({'role':'assistant','content':result})
-        code = correct_format(llm, result, context)
-        if code == None: #Idk some weird error that idc about
-            continue
+    file_instr = utils.load_pickle(cfg.file_instr)
+    while len(os.listdir(out_dir)) < iterations:
+        code = None
+        instructions = ""
+        if type_num == 3:
+            phptests = utils.load_pickle(cfg.phptests)
+            test_files = phptests[0]
+            used_files = phptests[1]
+            if len(test_files) == 0:
+                test_files = used_files.copy()
+                used_files = []
+            #target_file = test_files.pop(random.randint(0,len(test_files)))
+
+
+            target_file = None
+            good_file = False
+            code = None
+            #while(".phpt" not in target_file):
+            while(not good_file):
+                target_file = test_files.pop(random.randint(0,len(test_files)))
+                target_path = os.path.join(os.path.expanduser("~"),target_file)
+                if ".phpt" in target_path:
+                    try:
+                        with open(target_path,"r") as f:
+                            code = f.read()
+                        if "--FILE--" in code:
+                            good_file = True
+                            used_files.append(target_file)
+                    except Exception as e:
+                        continue
+
+            #used_files.append(target_file)
+            #target_file = os.path.join(os.path.expanduser("~"),target_file)
+            #try:
+            #    with open(target_file,"r") as f:
+            #        code = f.read()
+            #except Exception as e:
+            #    continue
+
+            if "INI" in code:
+                instructions = code.split("INI")[1].split("\n")[1]
+            #code = code.split("--FILE--")[1].split("?>")[0] + "\n?>"
+            code = "<?php\n" + code.split("<?php\n")[1]
+            code = code.split("?>")[0] + "\n?>"
+            utils.dump_pickle(cfg.phptests,(test_files,used_files))
+
+
+
+        else:
+            new_code = generate_samples(
+                    os.path.dirname(__file__),None,"<phpfuzz>",1,"grammar_generators/no_guard_php.txt")
+            with open(os.path.join('native_crashers',
+                                   random.choice(os.listdir('native_crashers')))) as f:
+                influence = f.read()
+            context = prompts.new_seed(type_num, influence, functions, new_code)
+            #llm.change_temperature(random.randint(0,10)/10)
+            llm.change_temperature(1)
+            result = query_llm(llm,context)
+            context.append({'role':'assistant','content':result})
+            code = correct_format(llm, result, context)
+            if code == None: #Idk some weird error that idc about
+                continue
         mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
         with open(os.path.join(out_dir,mut_name),"w") as f:
             f.write(code)
+        file_instr[mut_name] = instructions
+        utils.dump_pickle(cfg.file_instr,file_instr)
+        if type_num == 3:
         #if type_num == 2:
-        if type_num == 4:
+        #if type_num == 4:
             type_num = 0
         else:
             type_num += 1
-    llm.change_temperature(0.6)
+        #utils.add_to_queue(cfg.exec_queue,os.path.join(out_dir,mut_name))
+    #llm.change_temperature(0.6)
 
 #safe to give seed_data as nothing will be accessing at that time
 #add seed nodes to seed data here
-def next_gen():
+def next_gen(llm):
     global GEN_NUM
     new_gen = []
     seed_data = utils.load_pickle(cfg.seed_data)
+    file_instr = utils.load_pickle(cfg.file_instr)
     tmp = {}
-    for i in os.listdir("gen_" + str(GEN_NUM)):
-        name = i.split(".")[0]
-        if seed_data[name]['valid'] == True:
-            tmp[name] = seed_data[name]
+    if GEN_NUM % 5 == 0 or (
+            len([i for i in seed_data if (seed_data[i]['generation'] == GEN_NUM and seed_data[i]['valid'] == True)]) < 50):
+        for i in os.listdir("gen_" + str(0)):
+            name = i.split(".")[0]
+            if name in seed_data and seed_data[name]['valid'] == True:
+                tmp[name] = seed_data[name]
+    else:
+        for i in os.listdir("gen_" + str(GEN_NUM)):
+            name = i.split(".")[0]
+            if name in seed_data and seed_data[name]['valid'] == True:
+                tmp[name] = seed_data[name]
     partitions = new_scoring_function(tmp)
     crashers = partitions[0]
     ranking = partitions[1]
     name_score = partitions[2]
+    name_energy = partitions[3]
     for i in name_score:
         seed_data[i]['score'] = name_score[i]
     partitions = (crashers,ranking)
-    aljo_result = new_aljo(GEN_NUM,partitions)
+    aljo_result = new_aljo(GEN_NUM,partitions, name_energy)
     pairs = aljo_result[0]
     crashers = aljo_result[1]
     GEN_NUM+=1
     new_dir = "gen_" + str(GEN_NUM)
     os.makedirs(new_dir)
+    for file in cfg.require_files:
+        shutil.copy(file,new_dir)
     boot_gen = "boot_"+str(GEN_NUM)
     for crasher in crashers:
+        #context = prompts.mutate(seed_data[crasher]['php_file'])
+        #llm.change_temperature(random.randint(0,10)/10)
+        #result = query_llm(llm,context)
+        #context.append({'role':'assistant','content':result})
+        #code = correct_format(llm, result, context)
+        #if code == None:
+        #    continue
+        #seed_name = secrets.token_hex(10)
+        #seed_node = create_seed_node()
+        #seed_node['parents'] = (crasher, None)
+        #seed_node['php_file'] = os.path.join(new_dir,seed_name)
+        #with open(seed_node['php_file'],"w") as f:
+        #    f.write(code)
+        #with open(seed_data[crasher]['php_file'],"w") as f:
+        #    f.write(code)
+        #seed_data[seed_name] = seed_node
         seed_name = secrets.token_hex(10)
         mut_query = prompts.mutate(seed_data[crasher]['php_file'])
         seed_node = create_seed_node()
@@ -313,10 +397,18 @@ def next_gen():
         utils.dump_pickle(mut_req_name, mut_query)
         utils.add_to_queue(cfg.llm_queue, mut_req_name)
     for pair in pairs:
+        instructions = ""
         seed_name = secrets.token_hex(10)
         new_gen.append(seed_name)
         seed_node = create_seed_node()
         seed_node['parents'] = (pair[0],pair[1])
+
+        if pair[0] in file_instr and file_instr[pair[0]] != "":
+            instructions += file_instr[pair[0]]
+        if pair[1] in file_instr and file_instr[pair[1]] != "":
+            instructions += "\n" and file_instr[pair[1]]
+        file_instr[seed_name] = instructions
+
         with open(seed_data[pair[0]]['php_file'],'r') as m:
             male = m.read()
         female = None
@@ -334,6 +426,7 @@ def next_gen():
         utils.dump_pickle(mate_req_name, mate_query)
         utils.add_to_queue(cfg.llm_queue, mate_req_name)
         utils.dump_pickle(cfg.seed_data, seed_data)
+        utils.dump_pickle(cfg.file_instr, file_instr)
     #ancestry score and fix_amount calculation
     combined_parent_scores = {}
     for i in new_gen:

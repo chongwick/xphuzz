@@ -51,6 +51,7 @@ def exec_loop():
         file_instr = utils.load_pickle(cfg.file_instr)
         seed_name = php_file.split("/")[-1].split(".")[0]
 
+
         if seed_name in file_instr and file_instr[seed_name] != "":
             is_instructions = True
             instructions = file_instr[seed_name]
@@ -62,7 +63,7 @@ def exec_loop():
         cov_eng.load_global_coverage_map_from_file(cfg.base_map)
         code = utils.read_file(php_file)
 
-        for line in codelines:
+        for line in code.split("\n"):
             first_word = line.split(" ")[0]
             if first_word == "require" or first_word == "require_once":
                 include_file = None
@@ -70,9 +71,15 @@ def exec_loop():
                     if ".inc" in word:
                         include_file = word
                         if "'" in word:
-                            include_file = "'" + cfg.includes + word.split("/")[1]
+                            if "/" in word:
+                                include_file = "'" + cfg.includes + word.split("/")[1]
+                            else:
+                                include_file = "'" + cfg.includes + word.split("/")[0]
                         else:
-                            include_file = '"' + cfg.includes + word.split("/")[1]
+                            if "/" in word:
+                                include_file = '"' + cfg.includes + word.split("/")[1]
+                            else:
+                                include_file = '"' + cfg.includes + word.split("/")[0]
                         code.replace(line, "require " + include_file + "\n")
 
         '''if "require '" in code:
@@ -200,7 +207,8 @@ def exec_loop():
                 seed_data[seed_name]['php_file']=php_file.split(".er")[0]
                 seed_data[seed_name]['crash']=crash
                 seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
-            os.remove(os.path.join(cfg.inidir,seed_name))
+            if is_instructions:
+                os.remove(os.path.join(cfg.inidir,seed_name))
             utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
         room_service(safe_files)
 
