@@ -1,3 +1,4 @@
+import codecs
 import os
 import config as cfg
 import pickle
@@ -16,14 +17,16 @@ def log(msg):
         f.write(msg)
 
 def write_file(file_path, content):
-    f = open(file_path, "w")
+    f = codecs.open(file_path, "w",encoding='utf-8',
+                 errors='ignore')
     fcntl.flock(f.fileno(), fcntl.LOCK_EX)
     f.write(content)
     fcntl.flock(f.fileno(), fcntl.LOCK_UN)
     f.close()
 
 def read_file(file_path):
-    f = open(file_path, "r")
+    f = codecs.open(file_path, "r",encoding='utf-8',
+                 errors='ignore')
     fcntl.flock(f.fileno(), fcntl.LOCK_EX)
     #while os.path.getsize(file_path) == 0:
     #    pass

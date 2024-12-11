@@ -28,7 +28,7 @@ phptests = 'phptests.pickle' #set up as a tuple of lists.
                              #pop from one, add it to the other
                              #to get good coverage of all.
 inidir = "inis"
-includes = 'incs/'
+includes = '../incs/'
 file_instr = 'file_instr.pickle'
 
 llm_queue = "llm_requests/queue.pickle"

@@ -1,3 +1,4 @@
+import codecs
 import shutil
 import os
 import config as cfg
@@ -55,7 +56,8 @@ def exec_loop():
         if seed_name in file_instr and file_instr[seed_name] != "":
             is_instructions = True
             instructions = file_instr[seed_name]
-            with open(os.path.join(cfg.inidir,seed_name),"w") as f:
+            with codecs.open(os.path.join(cfg.inidir,seed_name),"w",encoding='utf-8',
+                 errors='ignore') as f:
                 f.write(instructions)
 
         #update_data(llm_queue, cov_queue, seed_data)
@@ -82,6 +84,7 @@ def exec_loop():
                                 include_file = '"' + cfg.includes + word.split("/")[0]
                         code.replace(line, "require " + include_file + "\n")
 
+require fie is out of range of the statement i.e. it's one file back in php_fuzzing 
         '''if "require '" in code:
             can also be require "
             need to split code by lines to find require statement to patch'''

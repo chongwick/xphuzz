@@ -1,3 +1,4 @@
+import codecs
 import shutil
 import time
 import re
@@ -280,14 +281,16 @@ def new_corpus(llm, iterations, out_dir):
                 target_file = test_files.pop(random.randint(0,len(test_files)))
                 target_path = os.path.join(os.path.expanduser("~"),target_file)
                 if ".phpt" in target_path:
-                    try:
-                        with open(target_path,"r") as f:
-                            code = f.read()
-                        if "--FILE--" in code:
-                            good_file = True
-                            used_files.append(target_file)
-                    except Exception as e:
-                        continue
+                    #try:
+                    with codecs.open(php_file,'r',encoding='utf-8',
+                                     errors='ignore') as f:
+                        #with open(target_path,"r") as f:
+                        code = f.read()
+                    if "--FILE--" in code:
+                        good_file = True
+                        used_files.append(target_file)
+                    #except Exception as e:
+                    #    continue
 
             #used_files.append(target_file)
             #target_file = os.path.join(os.path.expanduser("~"),target_file)
@@ -300,8 +303,11 @@ def new_corpus(llm, iterations, out_dir):
             if "INI" in code:
                 instructions = code.split("INI")[1].split("\n")[1]
             #code = code.split("--FILE--")[1].split("?>")[0] + "\n?>"
-            code = "<?php\n" + code.split("<?php\n")[1]
-            code = code.split("?>")[0] + "\n?>"
+            try:
+                code = "<?php\n" + code.split("<?php\n")[1]
+                code = code.split("?>")[0] + "\n?>"
+            except Exception as e:
+                continue
             utils.dump_pickle(cfg.phptests,(test_files,used_files))
 
 
@@ -309,8 +315,10 @@ def new_corpus(llm, iterations, out_dir):
         else:
             new_code = generate_samples(
                     os.path.dirname(__file__),None,"<phpfuzz>",1,"grammar_generators/no_guard_php.txt")
-            with open(os.path.join('native_crashers',
-                                   random.choice(os.listdir('native_crashers')))) as f:
+            with codecs.open(os.path.join('native_crashers',
+                                          random.choice(os.listdir('native_crashers'))),
+                             'r', encoding='utf-8',
+                             errors='ignore') as f:
                 influence = f.read()
             context = prompts.new_seed(type_num, influence, functions, new_code)
             #llm.change_temperature(random.randint(0,10)/10)
@@ -321,7 +329,8 @@ def new_corpus(llm, iterations, out_dir):
             if code == None: #Idk some weird error that idc about
                 continue
         mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
-        with open(os.path.join(out_dir,mut_name),"w") as f:
+        with codecs.open(os.path.join(out_dir,mut_name),"w",encoding='utf-8',
+                         errors='ignore') as f:
             f.write(code)
         file_instr[mut_name] = instructions
         utils.dump_pickle(cfg.file_instr,file_instr)
@@ -409,14 +418,17 @@ def next_gen(llm):
             instructions += "\n" and file_instr[pair[1]]
         file_instr[seed_name] = instructions
 
-        with open(seed_data[pair[0]]['php_file'],'r') as m:
+        with codecs.open(seed_data[pair[0]]['php_file'],'r',encoding='utf-8',
+                 errors='ignore') as m:
             male = m.read()
         female = None
         if "_b_" in pair[1]:
-            with open(os.path.join(boot_gen,pair[1]),'r') as f:
+            with codecs.open(os.path.join(boot_gen,pair[1]),'r',encoding='utf-8',
+                 errors='ignore') as f:
                 female = f.read()
         else:
-            with open(seed_data[pair[1]]['php_file'],'r') as f:
+            with codecs.open(seed_data[pair[1]]['php_file'],'r',encoding='utf-8',
+                 errors='ignore') as f:
                   female = f.read()
         seed_node['php_file'] = os.path.join(new_dir,seed_name)
         seed_data[seed_name] = seed_node

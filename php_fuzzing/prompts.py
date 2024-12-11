@@ -1,5 +1,6 @@
 #import time
 import os; 
+import codecs
 import config as cfg
 from grammar_generators.php_gen import generate_samples
 import random
@@ -98,7 +99,8 @@ def mutation_insertion(code):
 def mutate(target_file):
     context = prefix()
     #context.append({'role':'user','content':"increase the coverage of this code"})
-    with open(target_file,"r") as f:
+    with codecs.open(target_file,"r",encoding='utf-8',
+                 errors='ignore') as f:
         foo = f.read()
     #afl_tag = 'file_get_contents("php://stdin")'
     #func = random.choice(functions)
