@@ -282,7 +282,7 @@ def new_corpus(llm, iterations, out_dir):
                 target_path = os.path.join(os.path.expanduser("~"),target_file)
                 if ".phpt" in target_path:
                     #try:
-                    with codecs.open(php_file,'r',encoding='utf-8',
+                    with codecs.open(target_path,'r',encoding='utf-8',
                                      errors='ignore') as f:
                         #with open(target_path,"r") as f:
                         code = f.read()

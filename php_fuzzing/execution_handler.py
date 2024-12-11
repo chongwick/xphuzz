@@ -84,7 +84,6 @@ def exec_loop():
                                 include_file = '"' + cfg.includes + word.split("/")[0]
                         code.replace(line, "require " + include_file + "\n")
 
-require fie is out of range of the statement i.e. it's one file back in php_fuzzing 
         '''if "require '" in code:
             can also be require "
             need to split code by lines to find require statement to patch'''
