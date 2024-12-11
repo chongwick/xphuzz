@@ -136,9 +136,15 @@ def mutate(target_file):
 
 def mate(male, female):
     context = prefix()
+    a="<?php\nfunction callback($match)\n{\n    var_dump($match);\n    return $match[1].'/'.strlen($match['name']);\n}\n\nvar_dump(preg_replace_callback('|(?P<name>blub)|', 'callback', 'bla blub blah'));\n\nvar_dump(preg_match('|(?P<name>blub)|', 'bla blub blah', $m));\nvar_dump($m);\n\nvar_dump(preg_replace_callback('|(?P<1>blub)|', 'callback', 'bla blub blah'));\n\n?>\n"
+    b="<?php\n$a = array(1);\n$b = new stdClass();\nclass __Get {\n    public function __construct($b) {\n        $this->b = $b; \n    }   \n    public function __get($name) {\n        if ($name == 'b') {\n            $this->b = array();\n            $this->b[] = 0xffffffff;\n        }   \n        return $this->b;\n    }   \n}\n$b = new __Get($b);\n$c = array_merge($a, $b->__get('b'));\n\n?>\n"
+    context.append({'role':'user','content':'Intermingle structures and characteristics from A and B to create something new.\nA:\n```\n{f}\n```\nB:\n```\n{m}\n```'.format(f=a,m=b)})
+    context.append({'role':'assistant','content':"<?php\nclass __Get {\n    public function __construct($b) {\n        $this->b = $b;\n    }\n    public function __get($name) {\n        if ($name == 'pattern') {\n            $this->b ='|(?P<name>)(\\d+)|';\n        } elseif ($name =='match') {\n            $this->b = array();\n            $this->b[] = 0xffffffff;\n        }\n        return $this->b;\n    }\n}\n\n$b = new __Get('');\n$pattern = $b->__get('pattern');\npreg_match($pattern, $b->__get('match')[0], $m);\nvar_dump($m);\n?>\n"
+
     #func = random.choice(functions)
-    context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Mix the structures, characteristics, and features of A and B to create something new.\nA:\n```\n{f}\n```\nB:\n```\n{m}\n```'.format(f=female,m=male)})
+    #context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Mix the structures, characteristics, and features of A and B to create something new.\nA:\n```\n{f}\n```\nB:\n```\n{m}\n```'.format(f=female,m=male)})
     #context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Consider adding this function: ' + func + ' Mix the structures of A and B to create something new.\nA:\n```\n{f}\n```\nB:\n```\n{m}\n```'.format(f=female,m=male)})
+    context.append({'role':'user','content':'Intermingle structures and characteristics from A and B to create something new.\nA:\n```\n{f}\n```\nB:\n```\n{m}\n```'.format(f=female,m=male)})
 
     return context
 #if __name__ == "__main__":
