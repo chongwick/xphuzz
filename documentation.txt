@@ -211,3 +211,5 @@ For ini dependencies, make a new directory, write ini options in php.ini, use ph
 if INI in g:
         g.split("INI")[1].split("\n")[1]
 request_handler needs full file access
+
+Maybe the tests are designed poorly going to 10 generations as we are using less seeds in every lower percentage test...
