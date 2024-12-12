@@ -263,7 +263,7 @@ def new_corpus(llm, iterations, out_dir):
     while len(os.listdir(out_dir)) < iterations:
         code = None
         instructions = ""
-        if type_num == 3:
+        if type_num == 3 or type_num == 4:
             phptests = utils.load_pickle(cfg.phptests)
             test_files = phptests[0]
             used_files = phptests[1]
@@ -334,9 +334,9 @@ def new_corpus(llm, iterations, out_dir):
             f.write(code)
         file_instr[mut_name] = instructions
         utils.dump_pickle(cfg.file_instr,file_instr)
-        if type_num == 3:
+        #if type_num == 3:
         #if type_num == 2:
-        #if type_num == 4:
+        if type_num == 4:
             type_num = 0
         else:
             type_num += 1
