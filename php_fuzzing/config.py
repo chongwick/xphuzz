@@ -40,6 +40,7 @@ status = {"queues/exec_queue.pickle":"queues/exec_queue.pickle.lock",
           "seed_data.pickle":"seed_data.pickle.lock",
           "file_instr.pickle":"file_instr.pickle.lock",
           }
+time_file = "time_file.txt"
 
 llm_lock = "llm_requests/queue.pickle.lock"
 cov_lock = "queues/cov_queue.pickle.lock"

@@ -104,6 +104,8 @@ def room_service(safe_files):
 
 def create_seed_node():
     global GEN_NUM
+    with open(cfg.time_file,"r") as f:
+        hour = f.read()
     seed_node = {
             "valid": False,
             "reset_count": 0,
@@ -121,6 +123,7 @@ def create_seed_node():
             "ranking": None,
             "ancestry": 0,
             "score": None,
+            "hour": hour
             #"score":0, #The score will be updated after every generation
             }
     return seed_node
@@ -263,7 +266,7 @@ def new_corpus(llm, iterations, out_dir):
     while len(os.listdir(out_dir)) < iterations:
         code = None
         instructions = ""
-        if type_num == 3 or type_num == 4:
+        if type_num == 3:
             phptests = utils.load_pickle(cfg.phptests)
             test_files = phptests[0]
             used_files = phptests[1]
@@ -301,7 +304,13 @@ def new_corpus(llm, iterations, out_dir):
             #    continue
 
             if "INI" in code:
-                instructions = code.split("INI")[1].split("\n")[1]
+                noncodelines = code.split("--INI--")[1].split("\n")
+                for line in noncodelines:
+                    if "--FILE--" in line:
+                        break;
+                    elif not line.isspace():
+                        instructions += line + "\n"
+
             #code = code.split("--FILE--")[1].split("?>")[0] + "\n?>"
             try:
                 code = "<?php\n" + code.split("<?php\n")[1]
@@ -315,11 +324,19 @@ def new_corpus(llm, iterations, out_dir):
         else:
             new_code = generate_samples(
                     os.path.dirname(__file__),None,"<phpfuzz>",1,"grammar_generators/no_guard_php.txt")
-            with codecs.open(os.path.join('native_crashers',
-                                          random.choice(os.listdir('native_crashers'))),
-                             'r', encoding='utf-8',
-                             errors='ignore') as f:
+            bug_list = utils.load_pickle("phpbugs.pickle")
+            bug = random.choice(bug_list)
+            bug_list[0].remove(bug); bug_list[1].append(bug)
+            utils.dump_pickle("phpbugs.pickle",bug_list)
+            #with codecs.open(os.path.join('native_crashers',
+            #                              random.choice(os.listdir('native_crashers'))),
+            #                 'r', encoding='utf-8',
+            #                 errors='ignore') as f:
+            #    influence = f.read()
+            with codecs.open(bug,'r', encoding='utf-8', errors='ignore') as f:
                 influence = f.read()
+            influence = "<?php\n" + influence.split("<?php")[1]
+            influence = influence.split("?>")[0] + "?>"
             context = prompts.new_seed(type_num, influence, functions, new_code)
             #llm.change_temperature(random.randint(0,10)/10)
             llm.change_temperature(1)
