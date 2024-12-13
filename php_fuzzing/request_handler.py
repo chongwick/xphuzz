@@ -304,7 +304,7 @@ def new_corpus(llm, iterations, out_dir):
             #    continue
 
             if "INI" in code:
-                noncodelines = code.split("--INI--")[1].split("\n")
+                noncodelines = code.split("INI")[1].split("\n")
                 for line in noncodelines:
                     if "--FILE--" in line:
                         break;
@@ -325,8 +325,9 @@ def new_corpus(llm, iterations, out_dir):
             new_code = generate_samples(
                     os.path.dirname(__file__),None,"<phpfuzz>",1,"grammar_generators/no_guard_php.txt")
             bug_list = utils.load_pickle("phpbugs.pickle")
-            bug = random.choice(bug_list)
+            bug = random.choice(bug_list[0])
             bug_list[0].remove(bug); bug_list[1].append(bug)
+            bug = os.path.join(os.path.expanduser("~"),bug)
             utils.dump_pickle("phpbugs.pickle",bug_list)
             #with codecs.open(os.path.join('native_crashers',
             #                              random.choice(os.listdir('native_crashers'))),
@@ -335,8 +336,11 @@ def new_corpus(llm, iterations, out_dir):
             #    influence = f.read()
             with codecs.open(bug,'r', encoding='utf-8', errors='ignore') as f:
                 influence = f.read()
-            influence = "<?php\n" + influence.split("<?php")[1]
-            influence = influence.split("?>")[0] + "?>"
+            try:
+                influence = "<?php\n" + influence.split("<?php")[1]
+                influence = influence.split("?>")[0] + "?>"
+            except Exception as e:
+                pass
             context = prompts.new_seed(type_num, influence, functions, new_code)
             #llm.change_temperature(random.randint(0,10)/10)
             llm.change_temperature(1)
