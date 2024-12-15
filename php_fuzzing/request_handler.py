@@ -281,6 +281,9 @@ def new_corpus(llm, iterations, out_dir):
             code = None
             #while(".phpt" not in target_file):
             while(not good_file):
+                if len(test_files) == 0:
+                    test_files = used_files.copy()
+                    used_files = []
                 target_file = test_files.pop(random.randint(0,len(test_files)))
                 target_path = os.path.join(os.path.expanduser("~"),target_file)
                 if ".phpt" in target_path:
@@ -303,12 +306,12 @@ def new_corpus(llm, iterations, out_dir):
             #except Exception as e:
             #    continue
 
-            if "INI" in code:
-                noncodelines = code.split("INI")[1].split("\n")
+            if "--INI--" in code:
+                noncodelines = code.split("--INI--")[1].split("\n")
                 for line in noncodelines:
-                    if "--FILE--" in line:
+                    if line.count("--") == 2:
                         break;
-                    elif not line.isspace():
+                    elif not line.isspace() and line != '':
                         instructions += line + "\n"
 
             #code = code.split("--FILE--")[1].split("?>")[0] + "\n?>"
@@ -324,11 +327,15 @@ def new_corpus(llm, iterations, out_dir):
         else:
             new_code = generate_samples(
                     os.path.dirname(__file__),None,"<phpfuzz>",1,"grammar_generators/no_guard_php.txt")
-            bug_list = utils.load_pickle("phpbugs.pickle")
-            bug = random.choice(bug_list[0])
-            bug_list[0].remove(bug); bug_list[1].append(bug)
+            bug_list = utils.load_pickle("phpbugs.pickle")[0]
+            used_list = utils.load_pickle("phpbugs.pickle")[1]
+            if len(bug_list) == 0:
+                bug_list = used_list.copy()
+                used_list = []
+            bug = random.choice(bug_list)
+            bug_list.remove(bug); used_list.append(bug)
             bug = os.path.join(os.path.expanduser("~"),bug)
-            utils.dump_pickle("phpbugs.pickle",bug_list)
+            utils.dump_pickle("phpbugs.pickle",(bug_list,used_list))
             #with codecs.open(os.path.join('native_crashers',
             #                              random.choice(os.listdir('native_crashers'))),
             #                 'r', encoding='utf-8',

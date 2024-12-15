@@ -144,7 +144,7 @@ def mate(male, female):
     #func = random.choice(functions)
     #context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Mix the structures, characteristics, and features of A and B to create something new.\nA:\n```\n{f}\n```\nB:\n```\n{m}\n```'.format(f=female,m=male)})
     #context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Consider adding this function: ' + func + ' Mix the structures of A and B to create something new.\nA:\n```\n{f}\n```\nB:\n```\n{m}\n```'.format(f=female,m=male)})
-    context.append({'role':'user','content':'Intermingle structures and characteristics from A and B to create something new.\nA:\n```\n{f}\n```\nB:\n```\n{m}\n```'.format(f=female,m=male)})
+    context.append({'role':'user','content':'Intermingle structures, characteristics, and aspects from A and B to create something new.\nA:\n```\n{f}\n```\nB:\n```\n{m}\n```'.format(f=female,m=male)})
 
     return context
 #if __name__ == "__main__":
@@ -171,7 +171,7 @@ def new_seed(type_num, influence, functions, new_code=None):
         func = functions.pop(random.randint(0,len(functions)-1))
         #func = functions.pop()
         context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Use this function {} in code. Make it unexpected, weird, and dangerous'.format(func)})
-                                                                                                          elif type_num == 2 or type_num == 4:
+    elif type_num == 2 or type_num == 4:
         context.append({'role':'user','content':'another'})
         context.append({'role':'assistant','content':influence})
         context.append({'role':'user','content':'another'})

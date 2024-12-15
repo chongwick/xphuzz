@@ -66,7 +66,7 @@ def exec_loop():
         code = utils.read_file(php_file)
 
         for line in code.split("\n"):
-            first_word = line.split(" ")[0]
+            first_word = line.strip().split(" ")[0]
             if first_word == "require" or first_word == "require_once":
                 include_file = None
                 for word in line.split(" "):
@@ -74,12 +74,12 @@ def exec_loop():
                         include_file = word
                         if "'" in word:
                             if "/" in word:
-                                include_file = "'" + cfg.includes + word.split("/")[1]
+                                include_file = "'" + cfg.includes + word.split("/")[-1]
                             else:
                                 include_file = "'" + cfg.includes + word.split("/")[0]
                         else:
                             if "/" in word:
-                                include_file = '"' + cfg.includes + word.split("/")[1]
+                                include_file = '"' + cfg.includes + word.split("/")[-1]
                             else:
                                 include_file = '"' + cfg.includes + word.split("/")[0]
                         code.replace(line, "require " + include_file + "\n")
