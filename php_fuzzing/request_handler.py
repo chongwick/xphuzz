@@ -266,7 +266,7 @@ def new_corpus(llm, iterations, out_dir):
     while len(os.listdir(out_dir)) < iterations:
         code = None
         instructions = ""
-        if type_num == 3:
+        if type_num == 3 or type_num == 4:
             phptests = utils.load_pickle(cfg.phptests)
             test_files = phptests[0]
             used_files = phptests[1]

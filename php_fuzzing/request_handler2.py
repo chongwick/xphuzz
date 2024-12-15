@@ -1,3 +1,4 @@
+import codecs
 import shutil
 import time
 import re
@@ -5,7 +6,7 @@ import secrets
 import random
 import itertools
 import os
-import receiver2
+import receiver
 import config as cfg
 import utils
 import pickle
@@ -103,6 +104,8 @@ def room_service(safe_files):
 
 def create_seed_node():
     global GEN_NUM
+    with open(cfg.time_file,"r") as f:
+        hour = f.read()
     seed_node = {
             "valid": False,
             "reset_count": 0,
@@ -120,6 +123,7 @@ def create_seed_node():
             "ranking": None,
             "ancestry": 0,
             "score": None,
+            "hour": hour
             #"score":0, #The score will be updated after every generation
             }
     return seed_node
@@ -131,12 +135,12 @@ def query_loop(llm):
         if len(utils.load_pickle(cfg.llm_queue)) == 0 and (
                 len(utils.load_pickle(cfg.exec_queue)) == 0):
             outdir = "boot_" + str(GEN_NUM+1)
-            safe_files.append(outdir)
-            safe_files.append("gen_"+str(GEN_NUM+1))
-            if not(os.path.exists(outdir)):
-                os.makedirs(outdir)
+            #safe_files.append(outdir)
+            #safe_files.append("gen_"+str(GEN_NUM+1))
+            #if not(os.path.exists(outdir)):
+            #    os.makedirs(outdir)
             new_corpus(llm, 456, outdir)
-            next_gen(llm)
+            #next_gen(llm)
         request_file = utils.pop_from_queue(cfg.llm_queue)
         if request_file == -1:
             continue
@@ -262,7 +266,7 @@ def new_corpus(llm, iterations, out_dir):
     while len(os.listdir(out_dir)) < iterations:
         code = None
         instructions = ""
-        if type_num == 3:
+        if type_num == 3 or type_num == 4:
             phptests = utils.load_pickle(cfg.phptests)
             test_files = phptests[0]
             used_files = phptests[1]
@@ -277,17 +281,22 @@ def new_corpus(llm, iterations, out_dir):
             code = None
             #while(".phpt" not in target_file):
             while(not good_file):
+                if len(test_files) == 0:
+                    test_files = used_files.copy()
+                    used_files = []
                 target_file = test_files.pop(random.randint(0,len(test_files)))
                 target_path = os.path.join(os.path.expanduser("~"),target_file)
                 if ".phpt" in target_path:
-                    try:
-                        with open(target_path,"r") as f:
-                            code = f.read()
-                        if "--FILE--" in code:
-                            good_file = True
-                            used_files.append(target_file)
-                    except Exception as e:
-                        continue
+                    #try:
+                    with codecs.open(target_path,'r',encoding='utf-8',
+                                     errors='ignore') as f:
+                        #with open(target_path,"r") as f:
+                        code = f.read()
+                    if "--FILE--" in code:
+                        good_file = True
+                        used_files.append(target_file)
+                    #except Exception as e:
+                    #    continue
 
             #used_files.append(target_file)
             #target_file = os.path.join(os.path.expanduser("~"),target_file)
@@ -297,11 +306,20 @@ def new_corpus(llm, iterations, out_dir):
             #except Exception as e:
             #    continue
 
-            if "INI" in code:
-                instructions = code.split("INI")[1].split("\n")[1]
+            if "--INI--" in code:
+                noncodelines = code.split("--INI--")[1].split("\n")
+                for line in noncodelines:
+                    if line.count("--") == 2:
+                        break;
+                    elif not line.isspace() and line != '':
+                        instructions += line + "\n"
+
             #code = code.split("--FILE--")[1].split("?>")[0] + "\n?>"
-            code = "<?php\n" + code.split("<?php\n")[1]
-            code = code.split("?>")[0] + "\n?>"
+            try:
+                code = "<?php\n" + code.split("<?php\n")[1]
+                code = code.split("?>")[0] + "\n?>"
+            except Exception as e:
+                continue
             utils.dump_pickle(cfg.phptests,(test_files,used_files))
 
 
@@ -309,9 +327,27 @@ def new_corpus(llm, iterations, out_dir):
         else:
             new_code = generate_samples(
                     os.path.dirname(__file__),None,"<phpfuzz>",1,"grammar_generators/no_guard_php.txt")
-            with open(os.path.join('native_crashers',
-                                   random.choice(os.listdir('native_crashers')))) as f:
+            bug_list = utils.load_pickle("phpbugs.pickle")[0]
+            used_list = utils.load_pickle("phpbugs.pickle")[1]
+            if len(bug_list) == 0:
+                bug_list = used_list.copy()
+                used_list = []
+            bug = random.choice(bug_list)
+            bug_list.remove(bug); used_list.append(bug)
+            bug = os.path.join(os.path.expanduser("~"),bug)
+            utils.dump_pickle("phpbugs.pickle",(bug_list,used_list))
+            #with codecs.open(os.path.join('native_crashers',
+            #                              random.choice(os.listdir('native_crashers'))),
+            #                 'r', encoding='utf-8',
+            #                 errors='ignore') as f:
+            #    influence = f.read()
+            with codecs.open(bug,'r', encoding='utf-8', errors='ignore') as f:
                 influence = f.read()
+            try:
+                influence = "<?php\n" + influence.split("<?php")[1]
+                influence = influence.split("?>")[0] + "?>"
+            except Exception as e:
+                pass
             context = prompts.new_seed(type_num, influence, functions, new_code)
             #llm.change_temperature(random.randint(0,10)/10)
             llm.change_temperature(1)
@@ -321,13 +357,14 @@ def new_corpus(llm, iterations, out_dir):
             if code == None: #Idk some weird error that idc about
                 continue
         mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
-        with open(os.path.join(out_dir,mut_name),"w") as f:
+        with codecs.open(os.path.join(out_dir,mut_name),"w",encoding='utf-8',
+                         errors='ignore') as f:
             f.write(code)
         file_instr[mut_name] = instructions
         utils.dump_pickle(cfg.file_instr,file_instr)
-        if type_num == 3:
+        #if type_num == 3:
         #if type_num == 2:
-        #if type_num == 4:
+        if type_num == 4:
             type_num = 0
         else:
             type_num += 1
@@ -409,14 +446,17 @@ def next_gen(llm):
             instructions += "\n" and file_instr[pair[1]]
         file_instr[seed_name] = instructions
 
-        with open(seed_data[pair[0]]['php_file'],'r') as m:
+        with codecs.open(seed_data[pair[0]]['php_file'],'r',encoding='utf-8',
+                 errors='ignore') as m:
             male = m.read()
         female = None
         if "_b_" in pair[1]:
-            with open(os.path.join(boot_gen,pair[1]),'r') as f:
+            with codecs.open(os.path.join(boot_gen,pair[1]),'r',encoding='utf-8',
+                 errors='ignore') as f:
                 female = f.read()
         else:
-            with open(seed_data[pair[1]]['php_file'],'r') as f:
+            with codecs.open(seed_data[pair[1]]['php_file'],'r',encoding='utf-8',
+                 errors='ignore') as f:
                   female = f.read()
         seed_node['php_file'] = os.path.join(new_dir,seed_name)
         seed_data[seed_name] = seed_node
@@ -468,7 +508,7 @@ def main():
 
     role = 'You are a chatting assistant'
     context = [{'role': 'system', 'content': role}]
-    llm = receiver2.LLAMA3_LLM(context)
+    llm = receiver.LLAMA3_LLM(context)
     query_loop(llm)
 
 if __name__ == "__main__":
