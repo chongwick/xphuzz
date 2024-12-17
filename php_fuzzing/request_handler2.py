@@ -504,12 +504,16 @@ def next_gen(llm):
     return
 
 def main():
-    #seed_data = utils.load_pickle(cfg.seed_data)
+    while(True):
+        try:
+            #seed_data = utils.load_pickle(cfg.seed_data)
 
-    role = 'You are a chatting assistant'
-    context = [{'role': 'system', 'content': role}]
-    llm = receiver2.LLAMA3_LLM(context)
-    query_loop(llm)
+            role = 'You are a chatting assistant'
+            context = [{'role': 'system', 'content': role}]
+            llm = receiver2.LLAMA3_LLM(context)
+            query_loop(llm)
+        except Exception as e:
+            continue
 
 if __name__ == "__main__":
     main()
