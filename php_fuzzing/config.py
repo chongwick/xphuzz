@@ -39,6 +39,7 @@ status = {"queues/exec_queue.pickle":"queues/exec_queue.pickle.lock",
           "llm_requests/queue.pickle":"llm_requests/queue.pickle.lock",
           "seed_data.pickle":"seed_data.pickle.lock",
           "file_instr.pickle":"file_instr.pickle.lock",
+          "phptests.pickle":"phptests.pickle.lock",
           }
 time_file = "time_file.txt"
 
