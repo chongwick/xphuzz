@@ -121,7 +121,7 @@ def create_seed_node():
             "ranking": None,
             "ancestry": 0,
             "score": None,
-            "hour": hour
+            "hour": -1
             #"score":0, #The score will be updated after every generation
             }
     return seed_node
