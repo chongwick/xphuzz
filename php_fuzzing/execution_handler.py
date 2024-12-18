@@ -196,7 +196,7 @@ def exec_loop():
             if is_trash(php_file):
                 php_file = php_file+".tr"
                 os.rename(php_file,php_file.split(".tr")[0])
-                seed_data[seed_name]['valid'] = False
+                seed_data[seed_name]['valid'] = True
                 seed_data[seed_name]['hour'] = hour
                 seed_data[seed_name]['solo_cov'] = solo_coverage
                 #seed_data[seed_name]['new_cov'] = new_coverage
