@@ -104,8 +104,6 @@ def room_service(safe_files):
 
 def create_seed_node():
     global GEN_NUM
-    with open(cfg.time_file,"r") as f:
-        hour = f.read()
     seed_node = {
             "valid": False,
             "reset_count": 0,
@@ -123,7 +121,7 @@ def create_seed_node():
             "ranking": None,
             "ancestry": 0,
             "score": None,
-            "hour": hour
+            "hour": -1
             #"score":0, #The score will be updated after every generation
             }
     return seed_node
@@ -139,7 +137,10 @@ def query_loop(llm):
             #safe_files.append("gen_"+str(GEN_NUM+1))
             #if not(os.path.exists(outdir)):
             #    os.makedirs(outdir)
-            new_corpus(llm, 456, outdir)
+            if os.path.exists(outdir):
+                new_corpus(llm, 456, outdir)
+            else:
+                continue
             #next_gen(llm)
         request_file = utils.pop_from_queue(cfg.llm_queue)
         if request_file == -1:
@@ -504,7 +505,6 @@ def next_gen(llm):
     return
 
 def main():
-    while(True):
         try:
             #seed_data = utils.load_pickle(cfg.seed_data)
 
@@ -513,7 +513,10 @@ def main():
             llm = receiver2.LLAMA3_LLM(context)
             query_loop(llm)
         except Exception as e:
-            continue
+            role = 'You are a chatting assistant'
+            context = [{'role': 'system', 'content': role}]
+            llm = receiver2.LLAMA3_LLM(context)
+            query_loop(llm)
 
 if __name__ == "__main__":
     main()

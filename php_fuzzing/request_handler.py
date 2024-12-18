@@ -104,8 +104,6 @@ def room_service(safe_files):
 
 def create_seed_node():
     global GEN_NUM
-    with open(cfg.time_file,"r") as f:
-        hour = f.read()
     seed_node = {
             "valid": False,
             "reset_count": 0,

@@ -51,7 +51,7 @@ def exec_loop():
             continue
         file_instr = utils.load_pickle(cfg.file_instr)
         seed_name = php_file.split("/")[-1].split(".")[0]
-
+        hour = -1
 
         if seed_name in file_instr and file_instr[seed_name] != "":
             is_instructions = True
@@ -125,6 +125,8 @@ def exec_loop():
         else:
             #sanitizeeeee
             print('sanitizing')
+            with open(cfg.time_file,"r") as f:
+                hour = int(f.read())
             valid = True
             solo_coverage = None
             crash = None
@@ -195,6 +197,7 @@ def exec_loop():
                 php_file = php_file+".tr"
                 os.rename(php_file,php_file.split(".tr")[0])
                 seed_data[seed_name]['valid'] = False
+                seed_data[seed_name]['hour'] = hour
                 seed_data[seed_name]['solo_cov'] = solo_coverage
                 #seed_data[seed_name]['new_cov'] = new_coverage
                 seed_data[seed_name]['php_file'] = php_file.split(".tr")[0]
@@ -204,6 +207,7 @@ def exec_loop():
             else:
                 os.rename(php_file,php_file.split(".er")[0])
                 seed_data[seed_name]['valid'] = valid
+                seed_data[seed_name]['hour'] = hour
                 seed_data[seed_name]['solo_cov'] = solo_coverage
                 #seed_data[seed_name]['new_cov'] = new_coverage
                 seed_data[seed_name]['php_file']=php_file.split(".er")[0]
