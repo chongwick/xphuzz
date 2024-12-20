@@ -38,7 +38,7 @@ def exec_loop():
     tmp = []
     tmp.extend([d[x]['php_file'] for x in d if d[x]['generation'] == 0])
     for i in range(0,24):
-        tmp.extend([d[x]['php_file'] for x in d if('hour' in d[x] and d[x]['hour'] == str(i))])
+        tmp.extend([d[x]['php_file'] for x in d if('hour' in d[x] and d[x]['hour'] == i)])
     utils.dump_pickle(cfg.exec_queue,[])
     utils.dump_pickle(cfg.exec_queue,tmp)
     while(True):
