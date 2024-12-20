@@ -264,7 +264,7 @@ def new_corpus(llm, iterations, out_dir):
     while len(os.listdir(out_dir)) < iterations:
         code = None
         instructions = ""
-        if type_num == 3 or type_num == 4:
+        if type_num == 9 or type_num == 9:
             phptests = utils.load_pickle(cfg.phptests)
             test_files = phptests[0]
             used_files = phptests[1]
@@ -319,12 +319,11 @@ def new_corpus(llm, iterations, out_dir):
             except Exception as e:
                 continue
             utils.dump_pickle(cfg.phptests,(test_files,used_files))
-
-
-
-        else:
+        elif type_num == 0:
             new_code = generate_samples(
-                    os.path.dirname(__file__),None,"<phpfuzz>",1,"grammar_generators/no_guard_php.txt")
+                    os.path.dirname(__file__),None,"<phpfuzz>",10,"grammar_generators/no_guard_php.txt")
+            code = new_code
+        elif type_num == 1:
             bug_list = utils.load_pickle("phpbugs.pickle")[0]
             used_list = utils.load_pickle("phpbugs.pickle")[1]
             if len(bug_list) == 0:
@@ -362,7 +361,8 @@ def new_corpus(llm, iterations, out_dir):
         utils.dump_pickle(cfg.file_instr,file_instr)
         #if type_num == 3:
         #if type_num == 2:
-        if type_num == 4:
+        #if type_num == 4:
+        if type_num == 1:
             type_num = 0
         else:
             type_num += 1
@@ -406,22 +406,6 @@ def next_gen(llm):
         shutil.copy(file,new_dir)
     boot_gen = "boot_"+str(GEN_NUM)
     for crasher in crashers:
-        #context = prompts.mutate(seed_data[crasher]['php_file'])
-        #llm.change_temperature(random.randint(0,10)/10)
-        #result = query_llm(llm,context)
-        #context.append({'role':'assistant','content':result})
-        #code = correct_format(llm, result, context)
-        #if code == None:
-        #    continue
-        #seed_name = secrets.token_hex(10)
-        #seed_node = create_seed_node()
-        #seed_node['parents'] = (crasher, None)
-        #seed_node['php_file'] = os.path.join(new_dir,seed_name)
-        #with open(seed_node['php_file'],"w") as f:
-        #    f.write(code)
-        #with open(seed_data[crasher]['php_file'],"w") as f:
-        #    f.write(code)
-        #seed_data[seed_name] = seed_node
         seed_name = secrets.token_hex(10)
         mut_query = prompts.mutate(seed_data[crasher]['php_file'])
         seed_node = create_seed_node()

@@ -159,20 +159,21 @@ def translate(JS, influence):
 
 def new_seed(type_num, influence, functions, new_code=None):
     context = prefix()
-    if type_num == 0:
-        context.append({'role':'user','content':'another'})
-        context.append({'role':'assistant','content':influence})
-        context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN,     PHP_FLOAT_MAX, PHP_FLOAT_MIN. Make this unexpected, weird, and potentially incorrect:\n```\n{}\n```'.format(new_code)})
-    elif type_num == 1:
-        context.append({'role':'user','content':'another'})
-        context.append({'role':'assistant','content':influence})
-        if len(functions) == 0:
-            functions = utils.load_pickle('functions.pickle')
-        func = functions.pop(random.randint(0,len(functions)-1))
-        #func = functions.pop()
-        context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Use this function {} in code. Make it unexpected, weird, and dangerous'.format(func)})
-    elif type_num == 2 or type_num == 4:
-        context.append({'role':'user','content':'another'})
-        context.append({'role':'assistant','content':influence})
-        context.append({'role':'user','content':'another'})
+    #if type_num == 0:
+    #    context.append({'role':'user','content':'another'})
+    #    context.append({'role':'assistant','content':influence})
+    #    context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN,     PHP_FLOAT_MAX, PHP_FLOAT_MIN. Make this unexpected, weird, and potentially incorrect:\n```\n{}\n```'.format(new_code)})
+    #elif type_num == 1:
+    #following lines would be otherwise indented
+    context.append({'role':'user','content':'another'})
+    context.append({'role':'assistant','content':influence})
+    if len(functions) == 0:
+        functions = utils.load_pickle('functions.pickle')
+    func = functions.pop(random.randint(0,len(functions)-1))
+    #func = functions.pop()
+    context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Use this function {} in code. Make it unexpected, weird, and dangerous'.format(func)})
+    #elif type_num == 2 or type_num == 4:
+    #    context.append({'role':'user','content':'another'})
+    #    context.append({'role':'assistant','content':influence})
+    #    context.append({'role':'user','content':'another'})
     return context
