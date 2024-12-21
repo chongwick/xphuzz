@@ -1,3 +1,4 @@
+import time
 import codecs
 import shutil
 import time
@@ -137,7 +138,8 @@ def query_loop(llm):
             safe_files.append("gen_"+str(GEN_NUM+1))
             if not(os.path.exists(outdir)):
                 os.makedirs(outdir)
-            new_corpus(llm, 456, outdir)
+            newcole=len(os.listdir("gen_0"))
+            new_corpus(llm, newcole, outdir)
             next_gen(llm)
         request_file = utils.pop_from_queue(cfg.llm_queue)
         if request_file == -1:
@@ -494,4 +496,11 @@ def main():
     query_loop(llm)
 
 if __name__ == "__main__":
-    main()
+    #This will start/stop the clock. Also, execution_handler uses this as a signal
+    #to stop running bc something went very wrong.
+    try:
+        with open(cfg.time_file,"r") as f:
+            f.write(str(time.time()))
+        main()
+    except Exception as e:
+        f.write(cfg.time_file,"-1")

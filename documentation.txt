@@ -213,3 +213,13 @@ if INI in g:
 request_handler needs full file access
 
 Maybe the tests are designed poorly going to 10 generations as we are using less seeds in every lower percentage test...
+
+
+made big changes that could have huge effects (bad) on the performance of the system. Specifically, the new_corpus code was changed such that the grammar generated snippets are directly used as auxiliary seeds (good); however, there were modifications that take out the "give me another" prompt.
+keep in mind. maybe restore this functionality
+
+NEXT SYSTEM CONSIDERATIONS:
+1) change mutation strategy -> move away from generational batches -> break coverage plateaus
+2) mutate environment
+3) double LLM?
+4) dataflow combination
