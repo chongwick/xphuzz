@@ -126,14 +126,12 @@ def exec_loop():
         else:
             #sanitizeeeee
             print('sanitizing')
-            with open(cfg.time_file,"r") as f:
-                start_time = int(f.read())
-                if start_time == -1:
-                    quit()
-                else:
-                    #hour = int((time.time() - start_time) // 1800) use if double gpu
-                    hour = int((time.time() - start_time) // 3600)
-                    hour = int(time//3600)
+            start_time = int(utils.read_file(cfg.time_file))
+            if start_time == -1:
+                quit()
+            else:
+                #hour = int((time.time() - start_time) // 1800) use if double gpu
+                hour = int((time.time() - start_time) // 3600)
             valid = True
             solo_coverage = None
             crash = None

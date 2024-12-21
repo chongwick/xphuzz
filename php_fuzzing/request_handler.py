@@ -130,7 +130,10 @@ def create_seed_node():
 def query_loop(llm):
     global GEN_NUM
     safe_files = os.listdir(os.path.dirname(os.path.realpath(__file__)))
+    partner_died = lambda : int(utils.read_file(cfg.time_file)) == -1
     while(True):
+        if partner_died():
+            quit()
         if len(utils.load_pickle(cfg.llm_queue)) == 0 and (
                 len(utils.load_pickle(cfg.exec_queue)) == 0):
             outdir = "boot_" + str(GEN_NUM+1)
@@ -490,17 +493,22 @@ def next_gen(llm):
 def main():
     #seed_data = utils.load_pickle(cfg.seed_data)
 
-    role = 'You are a chatting assistant'
-    context = [{'role': 'system', 'content': role}]
-    llm = receiver.LLAMA3_LLM(context)
-    query_loop(llm)
+    try:
+        role = 'You are a chatting assistant'
+        context = [{'role': 'system', 'content': role}]
+        llm = receiver.LLAMA3_LLM(context)
+        query_loop(llm)
+    except Exception as e:
+        role = 'You are a chatting assistant'
+        context = [{'role': 'system', 'content': role}]
+        llm = receiver.LLAMA3_LLM(context)
+        query_loop(llm)
 
 if __name__ == "__main__":
     #This will start/stop the clock. Also, execution_handler uses this as a signal
     #to stop running bc something went very wrong.
+    utils.write_file(cfg.time_file,str(time.time()))
     try:
-        with open(cfg.time_file,"r") as f:
-            f.write(str(time.time()))
         main()
     except Exception as e:
-        f.write(cfg.time_file,"-1")
+        utils.write_file(cfg.time_file,str(-1))
