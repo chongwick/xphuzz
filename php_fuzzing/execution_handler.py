@@ -45,7 +45,10 @@ def exec_loop():
     #safe_files = utils.load_pickle(cfg.safe_files)
     safe_files = os.listdir(os.path.dirname(os.path.realpath(__file__)))
     cov_eng = Executor(cfg.coverage_engine)
+    partner_died = lambda : int(utils.read_file(cfg.time_file)) == -1
     while(True):
+        if partner_died():
+            quit()
         php_file = utils.pop_from_queue(cfg.exec_queue)
         is_instructions = False
         if php_file == -1:
@@ -130,8 +133,8 @@ def exec_loop():
             if start_time == -1:
                 quit()
             else:
-                #hour = int((time.time() - start_time) // 1800) use if double gpu
-                hour = int((time.time() - start_time) // 3600)
+                hour = int((time.time() - start_time) // 1800) #use if double gpu
+                #hour = int((time.time() - start_time) // 3600)
             valid = True
             solo_coverage = None
             crash = None

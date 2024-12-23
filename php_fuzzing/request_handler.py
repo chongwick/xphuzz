@@ -315,7 +315,8 @@ def new_corpus(llm, iterations, out_dir):
                     if line.count("--") == 2:
                         break;
                     elif not line.isspace() and line != '':
-                        instructions += line + "\n"
+                        instructions += " -d {}".format(line) #???????
+                        #instructions += line + "\n"
 
             #code = code.split("--FILE--")[1].split("?>")[0] + "\n?>"
             try:
@@ -492,23 +493,25 @@ def next_gen(llm):
 
 def main():
     #seed_data = utils.load_pickle(cfg.seed_data)
-
-    try:
-        role = 'You are a chatting assistant'
-        context = [{'role': 'system', 'content': role}]
-        llm = receiver.LLAMA3_LLM(context)
-        query_loop(llm)
-    except Exception as e:
-        role = 'You are a chatting assistant'
-        context = [{'role': 'system', 'content': role}]
-        llm = receiver.LLAMA3_LLM(context)
-        query_loop(llm)
-
-if __name__ == "__main__":
     #This will start/stop the clock. Also, execution_handler uses this as a signal
     #to stop running bc something went very wrong.
-    utils.write_file(cfg.time_file,str(time.time()))
+    utils.write_file(cfg.time_file,str(int(time.time())))
+
     try:
-        main()
+        try:
+            role = 'You are a chatting assistant'
+            context = [{'role': 'system', 'content': role}]
+            llm = receiver.LLAMA3_LLM(context)
+            query_loop(llm)
+        except Exception as e:
+            print(e)
+            role = 'You are a chatting assistant'
+            context = [{'role': 'system', 'content': role}]
+            llm = receiver.LLAMA3_LLM(context)
+            query_loop(llm)
     except Exception as e:
+        print(e)
         utils.write_file(cfg.time_file,str(-1))
+
+if __name__ == "__main__":
+    main()

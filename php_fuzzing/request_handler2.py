@@ -317,7 +317,8 @@ def new_corpus(llm, iterations, out_dir):
                     if line.count("--") == 2:
                         break;
                     elif not line.isspace() and line != '':
-                        instructions += line + "\n"
+                        instructions += " -d {}".format(line)
+                        #instructions += line + "\n"
 
             #code = code.split("--FILE--")[1].split("?>")[0] + "\n?>"
             try:
@@ -509,6 +510,7 @@ def next_gen(llm):
     return
 
 def main():
+    try:
         try:
             #seed_data = utils.load_pickle(cfg.seed_data)
 
@@ -521,9 +523,8 @@ def main():
             context = [{'role': 'system', 'content': role}]
             llm = receiver2.LLAMA3_LLM(context)
             query_loop(llm)
-
-if __name__ == "__main__":
-    try:
-        main()
     except Exception as e:
         utils.write_file(cfg.time_file,str(-1))
+
+if __name__ == "__main__":
+        main()

@@ -52,7 +52,7 @@ def read_file(file_path):
                              errors='ignore') as f:
                 content = f.read()
     else:
-        with codecs.open(file_path,"w",encoding='utf-8',
+        with codecs.open(file_path,"r",encoding='utf-8',
                          errors='ignore') as f:
             content = f.read()
     return content

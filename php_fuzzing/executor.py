@@ -37,7 +37,7 @@ class Executor():
 
     def execute_prog(self, script, instructions=None):
         command = self.prog_argv.copy()
-        if instructions != None:
+        if instructions != None and instructions != "":
             command.append(instructions)
         command.append(script)
         try:
