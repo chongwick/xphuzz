@@ -115,8 +115,8 @@ def new_aljo(gen_num, partitions, name_energy):
     crashers = partitions[0]
     ranking = partitions[1]
     ranking_copy = ranking.copy()
-    if gen_num == 0 or len(crashers) == 0:
-        crashers += [str(x) for x in range(len(os.listdir('found_bugs')))]
+    #if gen_num == 0 or len(crashers) == 0:
+    #    crashers += [str(x) for x in range(len(os.listdir('found_bugs')))]
     for i in crashers:
         pairs.append((i,random.choice(boot)))
         #pairs.append((i,random.choice(ranking)))

@@ -1,3 +1,4 @@
+import traceback
 import codecs
 import shutil
 import time
@@ -519,11 +520,13 @@ def main():
             llm = receiver2.LLAMA3_LLM(context)
             query_loop(llm)
         except Exception as e:
+            print(traceback.format_exc())
             role = 'You are a chatting assistant'
             context = [{'role': 'system', 'content': role}]
             llm = receiver2.LLAMA3_LLM(context)
             query_loop(llm)
     except Exception as e:
+        print(traceback.format_exc())
         utils.write_file(cfg.time_file,str(-1))
 
 if __name__ == "__main__":

@@ -176,6 +176,14 @@ class LLAMA3_LLM:
                 'command':"give_context",'params':[context]
                 }
         result = submit(arguments)
+        start_time = int(utils.read_file(cfg.time_file))
+        hour = int((time.time() - start_time) // 1800)
+        hour_prompts = utils.load_pickle(cfg.hour_prompts)
+        if hour not in hour_prompts:
+            hour_prompts[hour] = 1
+        else:
+            hour_prompts[hour] += 1
+        utils.dump_pickle(cfg.hour_prompts,hour_prompts)
         return result
 
     def add_context(self, role, content):
