@@ -32,6 +32,9 @@ includes = '../incs/'
 file_instr = 'file_instr.pickle'
 hour_prompts = "hour_prompts.pickle"
 
+init_corpus = "init_corpus.pickle"
+includes = 'includes'
+
 llm_queue = "llm_requests/queue.pickle"
 cov_queue = "queues/cov_queue.pickle"
 san_queue = "queues/san_queue.pickle"
@@ -43,6 +46,7 @@ status = {"queues/exec_queue.pickle":"queues/exec_queue.pickle.lock",
           "phptests.pickle":"phptests.pickle.lock",
           "time_file.txt":"time_file.txt.lock",
           "hour_prompts.pickle":"hour_prompts.pickle.lock",
+          "san_log":"san_log.lock",
           }
 time_file = "time_file.txt"
 

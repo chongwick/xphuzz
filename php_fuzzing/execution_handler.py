@@ -1,3 +1,4 @@
+from random import choice
 import time
 import codecs
 import shutil
@@ -15,6 +16,95 @@ def update_data(llm_queue, cov_queue, seed_data, san_queue=None):
     if san_queue != None:
         utils.dump_pickle(cfg.san_queue, list(san_queue.queue))
     utils.dump_pickle(cfg.seed_data, seed_data)
+
+def generate_config():
+
+    def _random_jit_mode():
+        jit_mode = choice(['1111','1215','1211','1213','1254','1255','1201','1202','1205','1101','1103','1105','1231','1235','1011','1015'])
+        #jit_mode = choice(['1254','1205'])
+        jit_ini = '''
+opcache.enable=1
+opcache.enable_cli=1
+opcache.jit=''' + jit_mode + '\n'
+        return jit_ini
+
+    def _get_random_config():
+        config_options = {
+            "precision": choice([10, 12, 13, 14, 17]),
+            "serialize_precision": choice([5, 10, 14, 15, 75, -1]),
+            "memory_limit": choice(["2M", "33M", "16M", "20M", "32M", "100M", "256M", "512M", "5M", "8M", "128M", "6G", "-1"]),
+            "post_max_size": choice(["1", "1M", "1024"]),
+            "max_input_vars": choice([1, 4, 5, 10, 100, 1000]),
+            "max_execution_time": choice([0, 1, 2, 10, 12, 60]),
+            "default_charset": choice(["cp932", "big5", "ISO-8859-1", "UTF-8", "", "cp874", "cp936", "cp1251", "cp1252", "cp1253", "cp1254", "cp1255", "cp1256"]),
+            "short_open_tag": choice(["on", "off", 1]),
+            "auto_globals_jit": choice([0, 1]),
+            "expose_php": choice([0, "On"]),
+            "implicit_flush": choice([0, 1]),
+            "allow_url_include": choice([0, 1]),
+
+            # Timezone settings
+            "date.timezone": choice([
+                "Europe/London", "UTC", "Atlantic/Azores", "GMT", "America/Los_Angeles", "Asia/Singapore",
+                "Asia/Chongqing", "Europe/Amsterdam", "Europe/Berlin", "Europe/Paris", "America/New_York",
+                "America/Montreal", "America/Sao_Paulo", "America/Vancouver", "America/Mendoza", "Europe/Rome",
+                "GMT0", "Mars/Utopia_Planitia", "Incorrect/Zone"
+            ]),
+
+            # Opcache settings
+            "opcache.enable": choice([0, 1]),
+            "opcache.enable_cli": choice([0, 1]),
+            "opcache.preload": "{PWD}/" + choice([
+                "preload_undef_const_2.inc", "preload_variance_ind.inc", "preload_inheritance_error_ind.inc",
+                "preload_ind.inc", "preload_bug81256.inc", "preload_user.inc"
+            ]),
+            "opcache.jit": choice([0, 1205, 1235, 1255]),
+            "opcache.jit_buffer_size": choice(["1M", "128M", "0"]),
+            "opcache.jit_blacklist_root_trace": choice(["16", "255"]),
+            "opcache.jit_blacklist_side_trace": choice(["8", "255"]),
+            "opcache.jit_max_loop_unrolls": choice(["8", "10"]),
+            "opcache.jit_max_recursive_calls": choice(["2", "10"]),
+            "opcache.jit_max_recursive_returns": choice(["2", "4"]),
+            "opcache.jit_max_polymorphic_calls": choice(["2", "1000"]),
+            "opcache.file_update_protection": choice([0, 2]),
+            "opcache.optimization_level": choice([-1, 0, 0x7fffffff, 0x4ff, 0x7FFFBFFF]),
+            "opcache.memory_consumption": choice([7, 64]),
+            "opcache.max_accelerated_files": choice([10, 1000000]),
+            "opcache.revalidate_freq": choice([0, 60]),
+            "opcache.validate_timestamps": choice([0, 1]),
+            "opcache.interned_strings_buffer": choice([-1, 16, 131072]),
+
+            # Session settings
+            "session.save_handler": choice(["files", "non-existent", "qwerty"]),
+            "session.auto_start": choice([0, 1]),
+            "session.use_cookies": choice([0, 1]),
+            "session.cookie_httponly": choice([0, "TRUE"]),
+            "session.cookie_secure": choice([0, "TRUE"]),
+            "session.use_strict_mode": choice([0, 1]),
+            "session.use_trans_sid": choice([0, 1]),
+            "session.gc_maxlifetime": choice([300, 0]),
+            "session.upload_progress.enabled": choice([0, 1]),
+            "session.gc_probability": choice([0, 1]),
+            "session.sid_length": choice([32]),
+
+            # Error reporting settings
+            "error_reporting": choice([0, -1, 1, 8191, 14335, 2039, 2047, "E_ALL", "E_ALL^E_NOTICE", "E_ALL & ~E_DEPRECATED", "E_ALL & ~E_WARNING & ~E_NOTICE", "E_ALL & ~E_WARNING", "E_ALL & ~E_DEPRECATED", "E_ALL & E_NOTICE | E_PARSE ^ E_DEPRECATED & ~E_WARNING | !E_ERROR"]),
+
+            # Mail settings
+            "sendmail_path": "{MAIL:{PWD}/" + choice([
+                "mb_send_mail04.eml", "mailBasic7.out", "gh8086.eml", "mb_send_mail03.eml", "gh7902.eml"
+            ]) + "}"
+        }
+
+        # Randomly select one key-value pair from the config options
+        random_key = choice(list(config_options.keys()))
+        return f"{random_key}={config_options[random_key]}"
+
+    ini = _get_random_config() + '\n'
+    if choice([True,False]):
+        ini += _random_jit_mode()
+    return ini
+
 
 def room_service(safe_files):
     dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -37,7 +127,6 @@ def room_service(safe_files):
                 except Exception as e:
                     continue
 
-#There are multiple execution loops but only one llm loop, use the llm loop for the new gen
 def exec_loop():
     seed_data = None
     llm_queue = None
@@ -50,48 +139,20 @@ def exec_loop():
         if partner_died():
             quit()
         php_file = utils.pop_from_queue(cfg.exec_queue)
-        is_instructions = False
         if php_file == -1:
             continue
-        file_instr = utils.load_pickle(cfg.file_instr)
+        seed_data = utils.load_pickle(cfg.seed_data)
         seed_name = php_file.split("/")[-1].split(".")[0]
+        seed_phpt = seed_data[seed_name]['phpt_obj']
+        instructions = None
+        if len(seed_phpt.ini) != 0:
+            instructions = " ".join(["-d " + i for i in seed_phpt.ini])
         hour = -1
-
-        if seed_name in file_instr and file_instr[seed_name] != "":
-            is_instructions = True
-            instructions = file_instr[seed_name]
-            with codecs.open(os.path.join(cfg.inidir,seed_name),"w",encoding='utf-8',
-                 errors='ignore') as f:
-                f.write(instructions)
 
         #update_data(llm_queue, cov_queue, seed_data)
         print("mapping: " + php_file)
         cov_eng.load_global_coverage_map_from_file(cfg.base_map)
         code = utils.read_file(php_file)
-
-        for line in code.split("\n"):
-            first_word = line.strip().split(" ")[0]
-            if first_word == "require" or first_word == "require_once":
-                include_file = None
-                for word in line.split(" "):
-                    if ".inc" in word:
-                        include_file = word
-                        if "'" in word:
-                            if "/" in word:
-                                include_file = "'" + cfg.includes + word.split("/")[-1]
-                            else:
-                                include_file = "'" + cfg.includes + word.split("/")[0]
-                        else:
-                            if "/" in word:
-                                include_file = '"' + cfg.includes + word.split("/")[-1]
-                            else:
-                                include_file = '"' + cfg.includes + word.split("/")[0]
-                        code.replace(line, "require " + include_file + "\n")
-
-        '''if "require '" in code:
-            can also be require "
-            need to split code by lines to find require statement to patch'''
-            #code = code.replace("require '", "require '{}".format(cfg.includes))
 
         if cfg.require_statement not in code:
             code = code.replace("<?php","<?php\n" + cfg.require_statement + "\n")
@@ -102,10 +163,7 @@ def exec_loop():
             result = -1
         else:
             utils.write_file(php_file,code)
-            if is_instructions:
-                result = cov_eng.execute_prog(php_file, "-c {}".format(os.path.join(cfg.inidir,seed_name)))
-            else:
-                result = cov_eng.execute_prog(php_file)
+            result = cov_eng.execute_prog(php_file)
             current_files = os.listdir(
                     os.path.dirname(os.path.realpath(__file__)))
             tmp = [i for i in current_files if (
@@ -151,8 +209,12 @@ def exec_loop():
                 #new_coverage = cov_eng.read() - cur_cov
                 #cov_eng.save_global_coverage_map_in_file(cfg.collective_map)
 
-            for i in range(3):
-                command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),str(i)]
+            for i in range(2):
+                if instructions != None:
+                    command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),str(i),cfg.sanitizer_engine,instructions]
+                else:
+                    command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),str(i),cfg.sanitizer_engine]
+
                 child = None
                 try:
                     child = subprocess.run(command,
@@ -161,12 +223,6 @@ def exec_loop():
                                            capture_output=True)
                 except subprocess.TimeoutExpired as exc:
                     valid = False
-                    #These take too long. just kill them
-                    #crash = "NC"
-                    ##utils.write_file(php_file,og)
-                    #seed_data[seed_name]['php_file']=php_file
-                    #seed_data[seed_name]['crash']=crash
-                    #seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
                     break
                 if is_error(php_file):
                     php_file = php_file+".er"
@@ -181,18 +237,12 @@ def exec_loop():
                         error = utils.read_file(cfg.san_log)
                         #category = None
                         try:
-                            error = error.split("/dan/")[1].split(" ")[0]
+                            error = error.split("/dan/")[1].split(" ")[0] #change this
                         except Exception as e:
                             error = error
-                    #if 'LeakSanitizer' in error:
-                    #    category = error.split("LeakSanitizer")[1]
-                    #elif 'runtime error:' in error:
-                    #    category = error.split("runtime error")[1]
-                    #elif "ERROR:" in error:
-                    #    category = error.split("ERROR")[1]
                     bugs = utils.load_pickle(cfg.bug_log)
                     if error not in bugs:
-                        bugs[error]=[seed_name]
+                        bugs[error] = seed_name
                     else:
                         bugs[error].append(seed_name)
                     utils.dump_pickle(cfg.bug_log,bugs)
@@ -221,12 +271,12 @@ def exec_loop():
                 seed_data[seed_name]['php_file']=php_file.split(".er")[0]
                 seed_data[seed_name]['crash']=crash
                 seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
-            if is_instructions:
-                os.remove(os.path.join(cfg.inidir,seed_name))
             utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
         room_service(safe_files)
 
 def main():
+    print(generate_config())
+    quit()
     exec_loop()
 
 if __name__ == "__main__":
