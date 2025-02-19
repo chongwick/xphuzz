@@ -304,7 +304,7 @@ def new_corpus(llm, iterations, out_dir):
             file = init_corpus.pop(random.randint(0,len(init_corpus)))
             with codecs.open(file,'r', encoding='utf-8', errors='ignore') as f:
                 file_content = f.read()
-            influence = parse_phpt(file_content)[2]
+            influence = parse_phpt(file_content,"--FILE--")
             context = prompts.new_seed(influence, functions)
             #llm.change_temperature(random.randint(0,10)/10)
             llm.change_temperature(1)
