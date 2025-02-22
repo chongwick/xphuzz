@@ -133,8 +133,8 @@ def exec_loop():
             if start_time == -1:
                 quit()
             else:
-                hour = int((time.time() - start_time) // 1800) #use if double gpu
-                #hour = int((time.time() - start_time) // 3600)
+                #hour = int((time.time() - start_time) // 1800) #use if double gpu
+                hour = int((time.time() - start_time) // 3600)
             valid = True
             solo_coverage = None
             crash = None
