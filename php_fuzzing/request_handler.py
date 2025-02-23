@@ -266,7 +266,7 @@ def new_corpus(llm, iterations, out_dir):
     global GEN_NUM
     #i = 0
     type_num = 0
-    file_instr = utils.load_pickle(cfg.file_instr)
+    #file_instr = utils.load_pickle(cfg.file_instr)
     while len(os.listdir(out_dir)) < iterations:
         code = None
         instructions = ""
@@ -364,8 +364,8 @@ def new_corpus(llm, iterations, out_dir):
         with codecs.open(os.path.join(out_dir,mut_name),"w",encoding='utf-8',
                          errors='ignore') as f:
             f.write(code)
-        file_instr[mut_name] = instructions
-        utils.dump_pickle(cfg.file_instr,file_instr)
+        #file_instr[mut_name] = instructions
+        #utils.dump_pickle(cfg.file_instr,file_instr)
         #if type_num == 3:
         #if type_num == 2:
         #if type_num == 4:
@@ -382,7 +382,7 @@ def next_gen(llm):
     global GEN_NUM
     new_gen = []
     seed_data = utils.load_pickle(cfg.seed_data)
-    file_instr = utils.load_pickle(cfg.file_instr)
+    #file_instr = utils.load_pickle(cfg.file_instr)
     tmp = {}
     if GEN_NUM % 5 == 0 or (
             len([i for i in seed_data if (seed_data[i]['generation'] == GEN_NUM and seed_data[i]['valid'] == True)]) < 50):
@@ -429,11 +429,11 @@ def next_gen(llm):
         seed_node = create_seed_node()
         seed_node['parents'] = (pair[0],pair[1])
 
-        if pair[0] in file_instr and file_instr[pair[0]] != "":
-            instructions += file_instr[pair[0]]
-        if pair[1] in file_instr and file_instr[pair[1]] != "":
-            instructions += "\n" and file_instr[pair[1]]
-        file_instr[seed_name] = instructions
+        #if pair[0] in file_instr and file_instr[pair[0]] != "":
+        #    instructions += file_instr[pair[0]]
+        #if pair[1] in file_instr and file_instr[pair[1]] != "":
+        #    instructions += "\n" and file_instr[pair[1]]
+        #file_instr[seed_name] = instructions
 
         with codecs.open(seed_data[pair[0]]['php_file'],'r',encoding='utf-8',
                  errors='ignore') as m:
@@ -455,7 +455,7 @@ def next_gen(llm):
         utils.dump_pickle(mate_req_name, mate_query)
         utils.add_to_queue(cfg.llm_queue, mate_req_name)
         utils.dump_pickle(cfg.seed_data, seed_data)
-        utils.dump_pickle(cfg.file_instr, file_instr)
+        #utils.dump_pickle(cfg.file_instr, file_instr)
     #ancestry score and fix_amount calculation
     combined_parent_scores = {}
     for i in new_gen:
