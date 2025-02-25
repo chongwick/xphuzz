@@ -3,14 +3,15 @@
 
 script=$1
 san_type=$2 #0 for leak, 1 for asan, 2 for undefined
+instructions=$3
 if [ $san_type = "2" ]; then
-        OUTPUT=$(timeout -s SIGTERM 120 ~/php_engines/san_php "$script" 2>&1)
+        OUTPUT=$(timeout -s SIGTERM 120 ~/php_engines/san_php "$script" "$instructions" 2>&1)
 elif [ $san_type = "1" ]; then
         export USE_ZEND_ALLOC=0
         export ASAN_OPTIONS=detect_leaks=0
-        OUTPUT=$(timeout -s SIGTERM 120 ~/php_engines/san_php "$script" 2>&1)
+        OUTPUT=$(timeout -s SIGTERM 120 ~/php_engines/san_php "$script" "$instructions" 2>&1)
 elif [ $san_type = "0" ]; then
-        OUTPUT=$(timeout -s SIGTERM 120 ~/php_engines/undefined_php "$script" 2>&1)
+        OUTPUT=$(timeout -s SIGTERM 120 ~/php_engines/undefined_php "$script" "$instructions" 2>&1)
 fi
 RET=$?
 if [ $RET -ne 0 ]; then

@@ -139,7 +139,7 @@ def exec_loop():
         if partner_died():
             quit()
         php_file = utils.pop_from_queue(cfg.exec_queue)
-        instructions = None
+        instructions = ""
         if choice([False,False,True]):
             instructions = " ".join(["-d " + i for i in generate_config().split("\n")])
         if php_file == -1:
@@ -193,7 +193,7 @@ def exec_loop():
             result = -1
         else:
             utils.write_file(php_file,code)
-            if instructions != None:
+            if instructions != "":
                 result = cov_eng.execute_prog(php_file,instructions)
                 #result = cov_eng.execute_prog(php_file, "-c {}".format(os.path.join(cfg.inidir,seed_name)))
             else:
@@ -244,7 +244,7 @@ def exec_loop():
                 #cov_eng.save_global_coverage_map_in_file(cfg.collective_map)
 
             for i in range(3):
-                command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),str(i)]
+                command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),str(i), instructions]
                 child = None
                 try:
                     child = subprocess.run(command,
