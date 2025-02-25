@@ -35,7 +35,7 @@ else:
     GEN_NUM = max(tmp) #Current generation
 TOKEN_LIMIT = 3900 #Given that the context window is 8000 for our LLM,
                    #our cutoff will be 3900 tokens.
-MAX_FIXES = 1
+MAX_FIXES = 5
 del(tmp)
 
 functions = utils.load_pickle('functions.pickle')
