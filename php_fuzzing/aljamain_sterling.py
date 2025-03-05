@@ -19,26 +19,26 @@ def get_coverages(pool, seed_data):
     return coverages
 
 def new_scoring_function(seed_data):
-    exclusions = [str(i) for i in range(36)]
+    #exclusions = [str(i) for i in range(36)]
     name_score={}
     crashers = []
     max_token_length = cfg.llama3_max/4-100
     scale_cov = 100
-    scale_anc = 100
+    #scale_anc = 100
     data = seed_data.copy()
     w_cov = 1
-    w_anc = 1
+    #w_anc = 1
     w_anom = max([scale_cov,scale_anc]) * max([w_cov,w_anc]) * 2
     coverages = [data[i]['solo_cov'] for i in data if data[i]['solo_cov'] != None]
     min_cov = min(coverages)
     range_cov = max(coverages) - min(coverages)
-    ancestry = [data[i]['ancestry'] for i in data if data[i]['ancestry'] != None]
-    min_anc = min(ancestry)
-    range_anc = max(ancestry) - min(ancestry)
+    #ancestry = [data[i]['ancestry'] for i in data if data[i]['ancestry'] != None]
+    #min_anc = min(ancestry)
+    #range_anc = max(ancestry) - min(ancestry)
     scores = 0
     for i in data:
-        if i in exclusions:
-            continue
+        #if i in exclusions:
+        #    continue
         token_penalty = 1-data[i]['size']/max_token_length
         anom = int(data[i]['crash'] != 'NC')
         if anom != 0:
@@ -48,14 +48,13 @@ def new_scoring_function(seed_data):
         else:
             score_cov = scale_cov * (
                     (data[i]['solo_cov']-min_cov)/range_cov)
-        if range_anc == 0 or data[i]['generation'] == 0:
-            score_anc = 0
-        else:
-            score_anc = scale_anc * (
-                    (data[i]['ancestry']-min_anc)/range_anc)
+        #if range_anc == 0 or data[i]['generation'] == 0:
+        #    score_anc = 0
+        #else:
+        #    score_anc = scale_anc * (
+        #            (data[i]['ancestry']-min_anc)/range_anc)
         score = (token_penalty *
                  (w_cov*score_cov +
-                  w_anc*score_anc +
                   w_anom*anom)
                  )
         name_score[i] = score
