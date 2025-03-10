@@ -23,48 +23,49 @@ def new_scoring_function(seed_data):
     name_score={}
     crashers = []
     max_token_length = cfg.llama3_max/4-100
-    scale_cov = 100
+    #scale_cov = 100
     #scale_anc = 100
-    data = seed_data.copy()
-    w_cov = 1
+    #data = seed_data.copy()
+    #w_cov = 1
     #w_anc = 1
-    w_anom = max([scale_cov,scale_anc]) * max([w_cov,w_anc]) * 2
-    coverages = [data[i]['solo_cov'] for i in data if data[i]['solo_cov'] != None]
-    min_cov = min(coverages)
-    range_cov = max(coverages) - min(coverages)
+    #w_anom = max([scale_cov,scale_anc]) * max([w_cov,w_anc]) * 2
+    #coverages = [data[i]['solo_cov'] for i in data if data[i]['solo_cov'] != None]
+    #min_cov = min(coverages)
+    #range_cov = max(coverages) - min(coverages)
     #ancestry = [data[i]['ancestry'] for i in data if data[i]['ancestry'] != None]
     #min_anc = min(ancestry)
     #range_anc = max(ancestry) - min(ancestry)
     scores = 0
-    for i in data:
-        #if i in exclusions:
-        #    continue
-        token_penalty = 1-data[i]['size']/max_token_length
-        anom = int(data[i]['crash'] != 'NC')
-        if anom != 0:
-            crashers.append(i)
-        if range_cov == 0:
-            score_cov = 0
-        else:
-            score_cov = scale_cov * (
-                    (data[i]['solo_cov']-min_cov)/range_cov)
-        #if range_anc == 0 or data[i]['generation'] == 0:
-        #    score_anc = 0
+    for i in seed_data:
+        ##if i in exclusions:
+        ##    continue
+        #token_penalty = 1-data[i]['size']/max_token_length
+        #anom = int(data[i]['crash'] != 'NC')
+        #if anom != 0:
+        #    crashers.append(i)
+        #if range_cov == 0:
+        #    score_cov = 0
         #else:
-        #    score_anc = scale_anc * (
-        #            (data[i]['ancestry']-min_anc)/range_anc)
-        score = (token_penalty *
-                 (w_cov*score_cov +
-                  w_anom*anom)
-                 )
-        name_score[i] = score
+        #    score_cov = scale_cov * (
+        #            (data[i]['solo_cov']-min_cov)/range_cov)
+        ##if range_anc == 0 or data[i]['generation'] == 0:
+        ##    score_anc = 0
+        ##else:
+        ##    score_anc = scale_anc * (
+        ##            (data[i]['ancestry']-min_anc)/range_anc)
+        #score = (token_penalty *
+        #         (w_cov*score_cov +
+        #          w_anom*anom)
+        #         )
+        name_score[i] = random.randint(0,10)
     score = {k: v for k, v in sorted(name_score.items(), key=lambda item: item[1], reverse=True)}
     ranking = [i for i in score]
-    data_min = min([name_score[i] for i in score])
-    data_max = max([name_score[i] for i in score])
-    data_range = data_max - data_min
+    #data_min = min([name_score[i] for i in score])
+    #data_max = max([name_score[i] for i in score])
+    #data_range = data_max - data_min
     scale = 5
-    energy = [math.ceil(scale * (name_score[i]-data_min)/data_range) for i in score]
+    energy = [random.randint(1,5) for i in score]
+    #energy = [math.ceil(scale * (name_score[i]-data_min)/data_range) for i in score]
     name_energy = {k: v for (k,v) in zip(ranking,energy)}
     return (crashers, ranking, name_score, name_energy)
                   

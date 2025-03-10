@@ -142,7 +142,8 @@ def query_loop(llm):
             safe_files.append("gen_"+str(GEN_NUM+1))
             if not(os.path.exists(outdir)):
                 os.makedirs(outdir)
-            newcole=len(os.listdir("gen_0"))
+            #newcole=len(os.listdir("gen_0"))
+            newcole=456
             new_corpus(llm, newcole, outdir)
             next_gen(llm)
         request_file = utils.pop_from_queue(cfg.llm_queue)
