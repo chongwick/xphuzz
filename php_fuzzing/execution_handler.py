@@ -140,7 +140,8 @@ def exec_loop():
             quit()
         php_file = utils.pop_from_queue(cfg.exec_queue)
         instructions = ""
-        if choice([False,False,True]):
+        #if choice([False,False,True]):
+        if choice([False,False,False]):
             instructions = " ".join(["-d " + i for i in generate_config().split("\n")])
         if php_file == -1:
             continue
