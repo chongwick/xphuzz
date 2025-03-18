@@ -1,0 +1,19 @@
+<?php
+$a = array(1);
+$b = new stdClass();
+class __Get {
+    public function __construct($b) {
+        $this->b = $b;
+    }
+    public function __get($name) {
+        if ($name == 'b') {
+            $this->b = array();
+            $this->b[] = 0xffffffff;
+        }
+        return $this->b;
+    }
+}
+$b = new __Get($b);
+$c = array_merge($a, $b->__get('b'));
+
+?>
