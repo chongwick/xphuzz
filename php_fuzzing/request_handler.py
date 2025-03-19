@@ -299,7 +299,7 @@ def new_corpus(llm, iterations, out_dir):
             for i in ini.split("\n"):
                 tmp_phpt.add_ini(i)
             tmp_phpt.add_file(code)
-        elif type_num >= 2: #llm seed
+        elif type_num == 2: #llm seed
             init_corpus = utils.load_pickle(cfg.init_corpus)
             file = init_corpus.pop(random.randint(0,len(init_corpus)))
             with codecs.open(file,'r', encoding='utf-8', errors='ignore') as f:
@@ -318,7 +318,7 @@ def new_corpus(llm, iterations, out_dir):
         with codecs.open(os.path.join(out_dir,mut_name),"w",encoding='utf-8',
                          errors='ignore') as f:
             f.write(tmp_phpt.compile_phpt())
-        if type_num == 4:
+        if type_num == 3:
             type_num = 0
         else:
             type_num += 1
@@ -455,8 +455,8 @@ def main():
     #to stop running bc something went very wrong.
     utils.write_file(cfg.time_file,str(int(time.time())))
 
-    if len(utils.load_pickle(cfg.init_corpus)) == 0:
-        print("load corpus first and link incs")
+    #if len(utils.load_pickle(cfg.init_corpus)) == 0:
+    #    print("load corpus first and link incs")
 
     try:
         try:

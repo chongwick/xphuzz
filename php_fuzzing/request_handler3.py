@@ -456,8 +456,8 @@ def main():
     #to stop running bc something went very wrong.
     utils.write_file(cfg.time_file,str(int(time.time())))
 
-    if len(utils.load_pickle(cfg.init_corpus)) == 0:
-        print("load corpus first and link incs")
+    #if len(utils.load_pickle(cfg.init_corpus)) == 0:
+    #    print("load corpus first and link incs")
 
     try:
         try:
