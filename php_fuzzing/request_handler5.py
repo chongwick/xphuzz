@@ -8,7 +8,7 @@ import secrets
 import random
 import itertools
 import os
-import receiver2
+import receiver5
 import config as cfg
 import utils
 import pickle
@@ -503,13 +503,13 @@ def main():
         try:
             role = 'You are a chatting assistant'
             context = [{'role': 'system', 'content': role}]
-            llm = receiver2.LLAMA3_LLM(context)
+            llm = receiver5.LLAMA3_LLM(context)
             query_loop(llm)
         except Exception as e:
             print(traceback.format_exc())
             role = 'You are a chatting assistant'
             context = [{'role': 'system', 'content': role}]
-            llm = receiver2.LLAMA3_LLM(context)
+            llm = receiver5.LLAMA3_LLM(context)
             query_loop(llm)
     except Exception as e:
         print(traceback.format_exc())
