@@ -148,6 +148,12 @@ def query_loop(llm):
         request_file = utils.pop_from_queue(cfg.llm_queue)
         if request_file == -1 or not(os.path.exists(request_file)):
             continue
+        context = None
+        try:
+            context = utils.load_pickle(request_file)
+            os.remove(request_file)
+        except Exception as e:
+            continue
         seed_name = request_file.split("/")[-1].split("_")[0]
         #php_file = os.path.join(cfg.php_corpus,
         #        request_file.split("/")[-1].split("_")[0]+".php")
@@ -162,7 +168,6 @@ def query_loop(llm):
             llm.change_temperature(random.randint(0,10)/10)
             start = time.time()
             #utils.log("Translating: {}".format(request_file))
-            context = utils.load_pickle(request_file)
             result = query_llm(llm,context)
             context.append({'role':'assistant','content':result})
             code = correct_format(llm, result, context)
@@ -178,7 +183,6 @@ def query_loop(llm):
             #llm.change_temperature(random.randint(0,10)/10)
             llm.change_temperature(1)
             start = time.time()
-            context = utils.load_pickle(request_file)
             result = query_llm(llm,context)
             context.append({'role':'assistant','content':result})
             child = correct_format(llm, result, context)
@@ -197,7 +201,6 @@ def query_loop(llm):
             #llm.change_temperature(random.randint(0,10)/10)
             llm.change_temperature(1)
             start = time.time()
-            context = utils.load_pickle(request_file)
             result = query_llm(llm,context)
             context.append({'role':'assistant','content':result})
             child = correct_format(llm, result, context)
@@ -228,11 +231,9 @@ def query_loop(llm):
                     #del(seed_data[seed_name])
                     utils.dump_pickle(cfg.seed_data, seed_data)
                     #update_data(llm_queue, cov_queue, seed_data)
-                    os.remove(request_file)
                     #llm.change_temperature(0.6)
                     continue
             else:
-                context = utils.load_pickle(request_file)
                 seed_node['fix_count'] += 1
                 #Maybe make this an inherent feature of queries
                 if utils.num_tokens_from_context(context) > cfg.llama3_max / 2:
@@ -249,7 +250,6 @@ def query_loop(llm):
                         #del(seed_data[seed_name])
                         utils.dump_pickle(cfg.seed_data, seed_data)
                         #update_data(llm_queue, cov_queue, seed_data)
-                        os.remove(request_file)
                         #llm.change_temperature(0.6)
                         continue
                     utils.write_file(php_file, code)
@@ -259,7 +259,6 @@ def query_loop(llm):
         seed_data[seed_name] = seed_node
         utils.dump_pickle(cfg.seed_data, seed_data)
         #llm.change_temperature(0.6)
-        os.remove(request_file)
         #update_data(llm_queue, cov_queue, seed_data)
 
 def new_corpus(llm, iterations, out_dir):
