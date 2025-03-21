@@ -147,7 +147,7 @@ def query_loop(llm):
         #    new_corpus(llm, newcole, outdir)
         #    next_gen(llm)
         request_file = utils.pop_from_queue(cfg.llm_queue)
-        if request_file == -1:
+        if request_file == -1 or not(os.path.exists(request_file)):
             continue
         seed_name = request_file.split("/")[-1].split("_")[0]
         #php_file = os.path.join(cfg.php_corpus,
