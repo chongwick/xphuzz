@@ -35,7 +35,7 @@ else:
     GEN_NUM = max(tmp) #Current generation
 TOKEN_LIMIT = 3900 #Given that the context window is 8000 for our LLM,
                    #our cutoff will be 3900 tokens.
-MAX_FIXES = 5
+MAX_FIXES = 1
 del(tmp)
 
 functions = utils.load_pickle('functions.pickle')
@@ -495,7 +495,7 @@ def main():
     #seed_data = utils.load_pickle(cfg.seed_data)
     #This will start/stop the clock. Also, execution_handler uses this as a signal
     #to stop running bc something went very wrong.
-    utils.write_file(cfg.time_file,str(int(time.time())))
+    #utils.write_file(cfg.time_file,str(int(time.time())))
 
     try:
         try:
