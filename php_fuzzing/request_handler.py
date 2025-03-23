@@ -421,6 +421,7 @@ def next_gen(llm):
         mut_req_name = os.path.join(cfg.llm_requests, seed_name + "_mu")
         utils.dump_pickle(mut_req_name, mut_query)
         utils.add_to_queue(cfg.llm_queue, mut_req_name)
+        utils.dump_pickle(cfg.seed_data, seed_data)
     for pair in pairs:
         instructions = ""
         seed_name = secrets.token_hex(10)
