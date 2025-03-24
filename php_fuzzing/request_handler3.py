@@ -208,9 +208,9 @@ def query_loop(llm):
                 seed_node['fix_count'] = MAX_FIXES
                 #seed_node['fix_count'] = seed_node['max_fixes']
             else:
-                #dr = "gen_" + str(GEN_NUM)
-                #php_file = os.path.join(dr,seed_name+".php")
-                php_file = seed_node['php_file']
+                dr = "gen_" + str(GEN_NUM)
+                php_file = os.path.join(dr,seed_name+".php")
+                #php_file = seed_node['php_file']
                 utils.write_file(php_file,child)
                 seed_node['time'] += time.time() - start
                 utils.add_to_queue(cfg.exec_queue, php_file)
