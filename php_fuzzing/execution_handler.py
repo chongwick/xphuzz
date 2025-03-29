@@ -156,7 +156,7 @@ def exec_loop():
         #        f.write(instructions)
 
         #update_data(llm_queue, cov_queue, seed_data)
-        print("mapping: " + php_file)
+        #print("mapping: " + php_file)
         cov_eng.load_global_coverage_map_from_file(cfg.base_map)
         code = utils.read_file(php_file)
 
@@ -220,7 +220,7 @@ def exec_loop():
             utils.add_to_queue(cfg.llm_queue, fix_req_name)
         else:
             #sanitizeeeee
-            print('sanitizing')
+            #print('sanitizing')
             start_time = int(utils.read_file(cfg.time_file))
             if start_time == -1:
                 quit()

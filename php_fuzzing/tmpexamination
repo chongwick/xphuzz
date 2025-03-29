@@ -368,10 +368,7 @@ def new_corpus(llm, iterations, out_dir):
         #if type_num == 3:
         #if type_num == 2:
         #if type_num == 4:
-        #if type_num == 1:
-        #    type_num = 0
-        #else:
-        #    type_num += 1
+        type_num = 1
         #utils.add_to_queue(cfg.exec_queue,os.path.join(out_dir,mut_name))
     #llm.change_temperature(0.6)
 
