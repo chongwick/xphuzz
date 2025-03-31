@@ -269,7 +269,7 @@ def new_corpus(llm, iterations, out_dir):
     while len(os.listdir(out_dir)) < iterations:
         code = None
         instructions = ""
-        if type_num == 1:
+        if type_num == 9:
             phptests = utils.load_pickle(cfg.phptests)
             test_files = phptests[0]
             used_files = phptests[1]
@@ -325,7 +325,7 @@ def new_corpus(llm, iterations, out_dir):
             except Exception as e:
                 continue
             utils.dump_pickle(cfg.phptests,(test_files,used_files))
-        elif type_num == 0:
+        elif type_num == 1:
             new_code = generate_samples(
                     os.path.dirname(__file__),None,"<phpfuzz>",10,"grammar_generators/no_guard_php.txt")
             code = new_code
