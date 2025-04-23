@@ -1,3 +1,4 @@
+import os
 import config as cfg; import utils; import request_handler
 import subprocess
 
@@ -10,6 +11,6 @@ def load_seed_corpus(seed_corpus_directory):
     return [i.split("\n")[0] for i in files]
 
 
-utils.dump_pickle(cfg.init_corpus,request_handler.load_seed_corpus("nightly_php"))
+utils.dump_pickle(cfg.init_corpus,load_seed_corpus("nightly_php"))
 #command = ['bash','./linker.sh',"nightly_php",cfg.includes]
 #subprocess.run(command,text=True,timeout=40,capture_output=True)

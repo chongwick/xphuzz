@@ -1,3 +1,4 @@
+from phpt_parser import parse_phpt
 import traceback
 import time
 import codecs
@@ -16,7 +17,6 @@ from queue import Queue
 from threading import Thread, Lock
 from executor import Executor
 import errreader as err
-from aljamain_sterling import pairing_aljo, new_aljo, scoring_function, new_scoring_function
 from grammar_generators.php_gen import generate_samples
 import san
 import prompts
@@ -29,6 +29,40 @@ def query_llm(llm, context):
             return -1
     else:
         return result
+
+def correct_format(llm, result, context):
+    llm.change_temperature(0.6)
+    if type(result) != str:
+        return None
+    result = [line + "\n" for line in result.split("\n")]
+    #if result[0].strip() == "error":
+    #    raise RuntimeError("Restarting LLM")
+    i = 0
+    code = ""
+    while i < 2:
+        i += 1
+        code_section = False
+        for line in result:
+            if "```" in line and not(code_section):
+                code_section = True
+            elif "```" in line and code_section:
+                break
+            elif code_section:
+                code += line
+        if code == "":
+            utils.log("\n! Re-query: Format Error !\n")
+            context.append({'role': 'user', 'content': fix_prompt})
+            del(result)
+            result = query_llm(llm, context)
+            if type(result) != str:
+                return None
+        else:
+            break
+    if "<?php" not in code.split("\n")[0]:
+        code = "<?php\n" + code + "\n?>"
+
+    return code
+
 
 def _get_random_seed(corpus):
     file = corpus.pop(random.randint(0,len(corpus)))
@@ -54,7 +88,7 @@ def prompt_it(length=10):
     role = 'You are a fuzzer. Here are some values to use: 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400, PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Crash the PHP interpreter. Return as ```<code>```'
     context = [{'role': 'system', 'content': role}]
 
-    for i in length:
+    for i in range(length):
         context.append({'role':'user','content':random.choice(context_prompt_options)})
         context.append({'role':'assistant','content':'```{}```'.format(_get_random_seed(corpus))})
 
@@ -69,12 +103,20 @@ def query_loop(llm):
         out_dir = "gen_"+str(out_dir_num)
         if len(out_dir) > 500:
             out_dir_num += 1
+            out_dir = "gen_"+str(out_dir_num)
+            os.makedirs(out_dir)
         name = os.path.join(out_dir,secrets.token_hex(10))
-        result = query_llm(llm,prompt_it())
-        with codecs.open(name,"w",encoding='utf-8',
-                         errors='ignore') as f:
-            f.write(result)
-        utils.add_to_queue(cfg.exec_queue,name)
+        context = prompt_it()
+        result = query_llm(llm,context)
+        context.append({'role':'assistant','content':result})
+        code = correct_format(llm, result, context)
+        if code == None:
+            continue
+        else:
+            with codecs.open(name,"w",encoding='utf-8',
+                             errors='ignore') as f:
+                f.write(result)
+            utils.add_to_queue(cfg.exec_queue,name)
 
 def main():
     try:
