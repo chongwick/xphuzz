@@ -1,3 +1,4 @@
+init_corpus = "init_corpus.pickle"
 llama3_max = 8000
 query_time_limit = 20
 token_max = 4097*2
@@ -9,7 +10,8 @@ base_map_edges = 3737
 #release_engine = "/home/w023dtc/php_engines/rel_php"
 #undefined_engine = "/home/w023dtc/php_engines/undefined_php"
 coverage_engine = "php_engines/cov_php"
-sanitizer_engine = "php_engines/san_php"
+#sanitizer_engine = "php_engines/san_php"
+sanitizer_engine = "~/nightly_php/php-src/sapi/cli/php"
 undefined_engine = "php_engines/undefined_php"
 ini = "/php_engines/php.ini"
 model_id = "meta-llama/Meta-Llama-3-8B-Instruct"

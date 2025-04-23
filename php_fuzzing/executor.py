@@ -13,9 +13,9 @@ from multiprocessing import shared_memory
 
 MEM_SIZE = 0x100000
 #ENGINE_PATH = "/home/w023dtc/php_fuzzing/cov_php"  
-COVERAGE_ENGINE = "/home/w023dtc/php_fuzzing/cov_php"
-SANITIZER_ENGINE = "/home/w023dtc/php_fuzzing/san_php"
-RELASE_ENGINE = "/home/w023dtc/php_fuzzing/rel_php"
+#COVERAGE_ENGINE = "/home/w023dtc/php_fuzzing/cov_php"
+#SANITIZER_ENGINE = "/home/w023dtc/php_fuzzing/san_php"
+#RELASE_ENGINE = "/home/w023dtc/php_fuzzing/rel_php"
 
 class Executor():
     def __init__(self, engine):
