@@ -40,11 +40,14 @@ def exec_loop():
     cov_eng = Executor(cfg.coverage_engine)
     while(True):
         php_file = utils.pop_from_queue(cfg.exec_queue)
-        with codecs.open(php_file,'r',encoding='utf-8',errors='ignore') as f:
-            code = f.read()
         if php_file == -1:
             continue
         else:
+            with codecs.open(php_file,'r',encoding='utf-8',errors='ignore') as f:
+                code = f.read()
+            if "rm " in code or "rmdir" in code or "\'rm" in code or "\"rm" in code or (
+                len(code.split("\n")) < 7):
+                continue
             #sanitizeeeee
             print('sanitizing')
             crash = None

@@ -1,3 +1,4 @@
+import subprocess
 from phpt_parser import parse_phpt
 import traceback
 import time
