@@ -12,5 +12,5 @@ def load_seed_corpus(seed_corpus_directory):
 
 
 utils.dump_pickle(cfg.init_corpus,load_seed_corpus("nightly_php"))
-#command = ['bash','./linker.sh',"nightly_php",cfg.includes]
-#subprocess.run(command,text=True,timeout=40,capture_output=True)
+command = ['bash','./linker.sh',"nightly_php",cfg.includes]
+subprocess.run(command,text=True,timeout=40,capture_output=True)

@@ -1,3 +1,5 @@
+includes = 'includes'
+
 init_corpus = "init_corpus.pickle"
 llama3_max = 8000
 query_time_limit = 20
@@ -30,7 +32,6 @@ phptests = 'phptests.pickle' #set up as a tuple of lists.
                              #pop from one, add it to the other
                              #to get good coverage of all.
 inidir = "inis"
-includes = '../incs/'
 file_instr = 'file_instr.pickle'
 hour_prompts = "hour_prompts.pickle"
 

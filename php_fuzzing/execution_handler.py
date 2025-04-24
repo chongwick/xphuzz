@@ -40,6 +40,8 @@ def exec_loop():
     cov_eng = Executor(cfg.coverage_engine)
     while(True):
         php_file = utils.pop_from_queue(cfg.exec_queue)
+        with codecs.open(php_file,'r',encoding='utf-8',errors='ignore') as f:
+            code = f.read()
         if php_file == -1:
             continue
         else:
@@ -50,10 +52,7 @@ def exec_loop():
             is_trash = lambda x: os.path.exists(x+".tr")
 
             for i in range(2):
-                if instructions != None:
-                    command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),str(i),cfg.sanitizer_engine,instructions]
-                else:
-                    command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),str(i),cfg.sanitizer_engine]
+                command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file),str(i),cfg.sanitizer_engine]
 
                 child = None
                 try:
@@ -82,9 +81,9 @@ def exec_loop():
                             error = error
                     bugs = utils.load_pickle(cfg.bug_log)
                     if error not in bugs:
-                        bugs[error] = [seed_name]
+                        bugs[error] = [php_file]
                     else:
-                        bugs[error].append(seed_name)
+                        bugs[error].append(php_file)
                     utils.dump_pickle(cfg.bug_log,bugs)
                     break
                 else:
