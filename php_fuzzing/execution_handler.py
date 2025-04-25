@@ -49,7 +49,6 @@ def exec_loop():
                 len(code.split("\n")) < 7):
                 continue
             #sanitizeeeee
-            print('sanitizing')
             crash = None
             is_error = lambda x: os.path.exists(x+".er")
             is_trash = lambda x: os.path.exists(x+".tr")
@@ -90,7 +89,13 @@ def exec_loop():
                     utils.dump_pickle(cfg.bug_log,bugs)
                     break
                 else:
-                    crash = "NC"
+                    if is_trash(php_file):
+                        os.remove(php_file+".tr")
+                    else:
+                        try:
+                            os.remove(php_file)
+                        except Exception as e: #I'll handle this eventually
+                            pass
 
         room_service(safe_files)
 

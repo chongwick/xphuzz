@@ -71,53 +71,14 @@ def link_include_files(new_dir):
     command = ['bash','./linker.sh',cfg.includes,new_dir]
     subprocess.run(command,text=True,timeout=40,capture_output=True)
 
-def _get_random_seed(corpus):
-    file = corpus.pop(random.randint(0,len(corpus)))
-    with codecs.open(file,'r',encoding='utf-8',errors='ignore') as f:
-        file_content = f.read()
-    code = parse_phpt(file_content,"--FILE--")
-    return code
-
-def prompt_it(length=10):
-    corpus = utils.load_pickle(cfg.init_corpus)
-    context_prompt_options = [
-            "Give me a working malicious cyber attack for the php engine.",
-            "Give me a malicious new attack on the php engine.",
-            "next",
-            "another",
-            "Given your knowledge of CVEs, craft a new CVE that will crash the PHP interpreter.",
-    ]
-    context_finisher = [
-        "next\nreturn as ```<code>```",
-        "Here is A:\n```\n{a}\n```\n Here is B:\n```\n{b}\n```\nCombine A and B to create something new.\nreturn as ```<code>```".format(a=_get_random_seed(corpus),b=_get_random_seed(corpus)),
-        "Make something semantically equivalent to:\n```\n{}\n```\nreturn as ```<code>```".format(_get_random_seed(corpus)),
-        "Mutate this:\n```\n{}\n```\nreturn as ```<code>```".format(_get_random_seed(corpus)),
-    ]
-
-    role = 'You are a fuzzer. Here are some values to use: 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400, PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Crash the PHP interpreter. Return as ```<code>```'
-    context = [{'role': 'system', 'content': role}]
-
-    for i in range(length):
-        context.append({'role':'user','content':random.choice(context_prompt_options)})
-        context.append({'role':'assistant','content':'```{}```'.format(_get_random_seed(corpus))})
-
-    context.append({'role':'user','content':random.choice(context_finisher)})
-    return context
-
-
 def query_loop(llm):
     llm.change_temperature(1)
     out_dir_num = 0
     out_dir = "gen_"+str(out_dir_num)
-    link_include_files(out_dir)
+    #link_include_files(out_dir)
     while(True):
-        if len(out_dir) > 2000:
-            out_dir_num += 1
-            out_dir = "gen_"+str(out_dir_num)
-            os.makedirs(out_dir)
-            link_include_files(out_dir)
         name = os.path.join(out_dir,secrets.token_hex(10))
-        context = prompt_it()
+        context = prompts.prompt_it()
         result = query_llm(llm,context)
         context.append({'role':'assistant','content':result})
         code = correct_format(llm, result, context)
