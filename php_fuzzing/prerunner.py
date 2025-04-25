@@ -11,8 +11,7 @@ import subprocess
 #    return [i.split("\n")[0] for i in files]
 
 def load_seed_corpus(seed_corpus_directory):
-    return [i.split("\n")[0] for i in seed_corpus_directory]
-    return
+    return [os.path.join(seed_corpus_directory,i) for i in os.listdir(seed_corpus_directory)]
 
 
 utils.dump_pickle(cfg.init_corpus,load_seed_corpus("init_corpus"))

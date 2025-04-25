@@ -15,7 +15,7 @@ script=$1
 #        #OUTPUT=$(timeout -s SIGTERM 120 "$php_engine" "$options" "$script" 2>&1)
 #        OUTPUT=$(timeout -s SIGTERM 120 ./nightly_php/php-src/sapi/cli/php "$options" "$script" 2>&1)
 #fi
-OUTPUT=$(timeout -s SIGTERM 120 ./d8 --allow-natives-syntax "$script" 2>&1)
+OUTPUT=$(timeout -s SIGTERM 120 ./fuzzbuild/d8 --allow-natives-syntax "$script" 2>&1)
 RET=$?
 if [ $RET -ne 0 ]; then
        if [ $RET -eq 255 ]; then

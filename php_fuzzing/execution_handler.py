@@ -63,7 +63,6 @@ def exec_loop():
                                        capture_output=True)
             except subprocess.TimeoutExpired as exc:
                 valid = False
-                break
             if is_error(php_file):
                 php_file = php_file+".er"
                 crash = None
@@ -73,7 +72,6 @@ def exec_loop():
                     crash = "NC"
                     error = 'exit'
                 else:
-                    crash = i
                     error = utils.read_file(cfg.san_log)
                     #category = None
                     try:
@@ -86,7 +84,6 @@ def exec_loop():
                 else:
                     bugs[error].append(php_file)
                 utils.dump_pickle(cfg.bug_log,bugs)
-                break
             else:
                 if is_trash(php_file):
                     os.remove(php_file+".tr")

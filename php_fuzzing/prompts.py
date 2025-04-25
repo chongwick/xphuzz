@@ -12,10 +12,12 @@ def _get_random_seed(corpus):
     with codecs.open(file,'r',encoding='utf-8',errors='ignore') as f:
         file_content = f.read()
     code = file_content
+    code = '\n'.join(line for line in code.splitlines() if not line.strip().startswith("//"))
+
     #code = parse_phpt(file_content,"--FILE--")
     return code
 
-def prompt_it(length=10):
+def prompt_it(length=6):
     corpus = utils.load_pickle(cfg.init_corpus)
     context_prompt_options = [
             "Give me a working malicious cyber attack for a JavaScript Interpreter.",
