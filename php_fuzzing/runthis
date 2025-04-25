@@ -1,1 +1,1 @@
-singularity exec -H /home/w023dtc/autest/php_fuzzing/:/home --bind .local:/home/.local --bind nightly_php:/home/nightly_php --containall 2pub.sif python3 prerunner.py
+singularity exec -H /home/w023dtc/jsxphuzz/php_fuzzing/:/home --bind .local:/home/.local --bind v8/newv8/v8/out/fuzzbuild/d8:/home/d8  --bind tmp/temp_js_files:/home/init_corpus --containall 2pub.sif python3 prerunner.py
