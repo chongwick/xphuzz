@@ -2,7 +2,6 @@
 import os; 
 import codecs
 import config as cfg
-from grammar_generators.php_gen import generate_samples
 import random
 import utils
 #from receiver import LLAMA3_LLM
@@ -12,7 +11,8 @@ def _get_random_seed(corpus):
     file = corpus.pop(random.randint(0,len(corpus)))
     with codecs.open(file,'r',encoding='utf-8',errors='ignore') as f:
         file_content = f.read()
-    code = parse_phpt(file_content,"--FILE--")
+    code = file_content
+    #code = parse_phpt(file_content,"--FILE--")
     return code
 
 def prompt_it(length=10):

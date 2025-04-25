@@ -62,8 +62,6 @@ def correct_format(llm, result, context):
                 return None
         else:
             break
-    if "<?php" not in code.split("\n")[0]:
-        code = "<?php\n" + code + "\n?>"
 
     return code
 
