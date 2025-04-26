@@ -30,11 +30,19 @@ if [ $RET -ne 0 ]; then
                mv "$script" "${script}.tr"
                exit 0
        fi
-       if [ $RET -eq 153 ]; then
+       if [ $RET -eq 1 ]; then
                mv "$script" "${script}.tr"
                exit 0
        fi
        if [ $(echo "$OUTPUT" | grep "AddressSanitizer failed to allocate" | wc -l) -gt 0 ]; then
+               mv "$script" "${script}.tr"
+	       exit 0
+       fi
+       if [ $(echo "$OUTPUT" | grep "SyntaxError" | wc -l) -gt 0 ]; then
+               mv "$script" "${script}.tr"
+	       exit 0
+       fi
+       if [ $(echo "$OUTPUT" | grep "ReferenceError" | wc -l) -gt 0 ]; then
                mv "$script" "${script}.tr"
 	       exit 0
        fi

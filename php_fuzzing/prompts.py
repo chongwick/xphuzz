@@ -33,13 +33,13 @@ def prompt_it(length=6):
         "Mutate this:\n```\n{}\n```\nreturn as ```<code>```".format(_get_random_seed(corpus)),
     ]
 
-    role = 'You are a fuzzer. Here are some values to use: 0, 1, -1, Number.MAX_SAFE_INTEGER, Number.MIN_SAFE_INTEGER, Crash the JavaScript Interpreter. Return as ```<code>```'
+    role = 'You are a fuzzer. Here are some values to use: 0, 1, -1, Number.MAX_SAFE_INTEGER, Number.MIN_SAFE_INTEGER, Crash the JavaScript Interpreter. Return as ```<code>``` '
     context = [{'role': 'system', 'content': role}]
 
     for i in range(length):
         context.append({'role':'user','content':random.choice(context_prompt_options)})
         context.append({'role':'assistant','content':'```{}```'.format(_get_random_seed(corpus))})
 
-    context.append({'role':'user','content':random.choice(context_finisher)})
+    context.append({'role':'user','content':random.choice(context_finisher)+' Hint: <code> is a tag to replace with code. Do not include the literal string "<code>"'})
     return context
 

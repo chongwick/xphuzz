@@ -51,7 +51,8 @@ def correct_format(llm, result, context):
             elif "```" in line and code_section:
                 break
             elif code_section:
-                code += line
+                if "code>" not in line:
+                    code += line
         if code == "":
             utils.log("\n! Re-query: Format Error !\n")
             context.append({'role': 'user', 'content': fix_prompt})
@@ -75,6 +76,7 @@ def query_loop(llm):
         result = query_llm(llm,context)
         context.append({'role':'assistant','content':result})
         code = correct_format(llm, result, context)
+        print(code)
         if code == None:
             continue
         else:

@@ -10,34 +10,11 @@ import errreader as err
 import prompts
 import subprocess
 
-def room_service(safe_files):
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    cur_files = os.listdir(dir_path)
-    for i in cur_files:
-        if i not in safe_files and (
-                "gen_" not in i) and (
-                        "blank.php" not in i) and (
-                            "boot_" not in i) and (
-                                    i[0] != '.'):
-            path = os.path.join(dir_path,i)
-            if os.path.isdir(path):
-                try:
-                    shutil.rmtree(path)
-                except Exception as e:
-                    pass
-            else:
-                try:
-                    os.remove(path)
-                except Exception as e:
-                    continue
-
 def exec_loop():
     seed_data = None
     llm_queue = None
     exec_queue = None
     #safe_files = utils.load_pickle(cfg.safe_files)
-    safe_files = os.listdir(os.path.dirname(os.path.realpath(__file__)))
-    cov_eng = Executor(cfg.coverage_engine)
     while(True):
         php_file = utils.pop_from_queue(cfg.exec_queue)
         if php_file == -1:
@@ -93,7 +70,6 @@ def exec_loop():
                     except Exception as e: #I'll handle this eventually
                         pass
 
-        room_service(safe_files)
 
 def main():
     exec_loop()
