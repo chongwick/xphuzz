@@ -8,7 +8,7 @@ llm_workdir = "llm_workdir/"
 llm_workdir = "/mnt/llm2/llm_workdir/"
 #output_file = llm_workdir + "__output__"
 output_file = "/mnt/llm2/llm_workdir/__output__"
-is_output = lambda : (os.path.isfile(output_file) and 
+is_output = lambda : (os.path.isfile(output_file) and
         os.path.getsize(output_file) > 0)
 #terminate_file = llm_workdir + "__terminate__"
 terminate_file = "/mnt/llm2/llm_workdir/__terminate__"
@@ -17,7 +17,6 @@ llm_type_file = "/mnt/llm2/llm_workdir/__llm_type__.pickle"
 #llm_query_file = llm_workdir + "__llm_query__"
 #arguments_file = llm_workdir + "arguments.pickle"
 arguments_file = "/mnt/llm2/llm_workdir/arguments.pickle"
-
 
 def send_command_file(file, content=""):
     #print(file, content)
@@ -171,6 +170,13 @@ class LLAMA3_LLM:
                 'command':"change_temperature",'params':[temperature]
                 }
         return submit(arguments)
+
+    def batch_prompt(self, prompts, batch_size=10, max_tokens=100):
+        arguments = {
+                'command':"batch_prompt",'params':[prompts,batch_size,max_tokens]
+                }
+        result = submit(arguments)
+        return result
 
     def give_context(self, context):
         arguments = {

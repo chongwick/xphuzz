@@ -172,6 +172,13 @@ class LLAMA3_LLM:
                 }
         return submit(arguments)
 
+    def batch_prompt(self, prompts, batch_size=10, max_tokens=100):
+        arguments = {
+                'command':"batch_prompt",'params':[prompts,batch_size,max_tokens]
+                }
+        result = submit(arguments)
+        return result
+
     def give_context(self, context):
         arguments = {
                 'command':"give_context",'params':[context]

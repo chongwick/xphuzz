@@ -1,0 +1,3 @@
+[COV] no shared memory bitmap available, skipping
+[COV] edge counters initialized. Shared memory: (null) with 1496271 edges
+[COV] Additional 0 edges for builtins initialized.

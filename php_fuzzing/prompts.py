@@ -27,7 +27,15 @@ def prompt_it(length=6):
             "Given your knowledge of CVEs, craft a new CVE that will crash the JavaScript Interpreter.",
     ]
     context_finisher = [
-        "next\nreturn as ```<code>```",
+        "Generate a JavaScript code snippet inspired by a real-world CVE involving type confusion, JIT misoptimization, or object structure manipulation. Keep the code short but realistic.\nreturn as ```<code>```",
+        #"next\nreturn as ```<code>```",
+        "Create a JavaScript function that abuses type coercion and prototype manipulation to trigger type confusion or invalid type inference in a JIT compiler.\nreturn as ```<code>```",
+        "Generate a JavaScript snippet that dynamically changes an object's hidden class or shape during execution to confuse the JIT optimizer.\nreturn as ```<code>```",
+        "Write a short JavaScript snippet that abuses closures, lexical scoping, and variable hoisting in a way that might confuse the interpreter.\nreturn as ```<code>```",
+        "Create a JavaScript snippet that runs a loop with predictable types, then suddenly changes the types mid-loop to mislead the JIT.\nreturn as ```<code>```",
+        "Write a JavaScript snippet that stresses the interpreter by creating and invoking a large number of functions, manipulating `eval`, and modifying prototypes at runtime.\nreturn as ```<code>```",
+        "Generate a JavaScript snippet that creates a circular reference involving closures and DOM-like objects to challenge the garbage collector.\nreturn as ```<code>```",
+        "Give me a JavaScript snippet that is minimal but likely to trigger edge-case behavior in an engine (e.g., fast paths, hidden optimizations, inline caching).\nreturn as ```<code>```",
         "Here is A:\n```\n{a}\n```\n Here is B:\n```\n{b}\n```\nCombine A and B to create something new.\nreturn as ```<code>```".format(a=_get_random_seed(corpus),b=_get_random_seed(corpus)),
         "Make something semantically equivalent to:\n```\n{}\n```\nreturn as ```<code>```".format(_get_random_seed(corpus)),
         "Mutate this:\n```\n{}\n```\nreturn as ```<code>```".format(_get_random_seed(corpus)),
