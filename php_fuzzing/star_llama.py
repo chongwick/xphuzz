@@ -1,3 +1,5 @@
+import sys
+import gc
 from transformers import AutoTokenizer, AutoModelForCausalLM, StoppingCriteria
 from timeout import timeout, TimeoutError
 import transformers
@@ -9,6 +11,9 @@ import sys
 import pickle
 import time
 
+restarted = len(sys.argv) > 1
+last_status_file = "last_status_file.txt"
+
 FIM_PREFIX = "<fim_prefix>"
 FIM_MIDDLE = "<fim_middle>"
 FIM_SUFFIX = "<fim_suffix>"
@@ -19,6 +24,7 @@ CHAT = "chat"
 COMPLETION = "completion"
 FIM = "fim"
 LLAMA3 = "llama3"
+WHALE = "whale"
 
 llm_workdir = "llm_workdir/"
 terminate_file = llm_workdir + "__terminate__"
@@ -53,6 +59,8 @@ def execute_function(llm_type, llm_object, arguments):
         llm_functions = COMPLETION_FUNCTIONS
     elif llm_type == FIM:
         llm_functions = FIM_FUNCTIONS
+    elif llm_type == WHALE:
+        llm_functions = WHALE_FUNCTIONS
     function = llm_functions[arguments['command']]
     params = [llm_object] + arguments['params'] #Prepend self to the arguments
     return(function(*params))
@@ -97,6 +105,8 @@ LLAMA3_FUNCTIONS = {
         lambda llm, l : llm.change_response_max_length(l),
         "change_temperature":
         lambda llm, t : llm.change_temperature(t),
+        "batch_prompt":
+        lambda llm, p, bs: llm.batch_prompt(p,bs),
         "give_context":
         lambda llm, c: llm.give_context(c),
         "add_context":
@@ -106,6 +116,14 @@ LLAMA3_FUNCTIONS = {
         "change_role":
         lambda llm, rd : llm.change_role(rd),
 }
+WHALE_FUNCTIONS = {
+    "change_temperature":
+    lambda llm, t : llm.change_temperature(t),
+    "give_context":
+    lambda llm, c: llm.give_context(c),
+}
+
+
 
 #NEW
 class MyStoppingCriteria(StoppingCriteria):
@@ -295,6 +313,8 @@ class LLAMA3_LLM:
     def __init__(self, context, temperature=0.6):
         self.context = context
         self.model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
+        #self.model_id = "bigcode/starcoderbase-7b"
+        #self.model_id = "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B"
         self.original_context = self.context.copy()
         self.temperature = temperature
         self.absolute_max = 8000
@@ -312,11 +332,33 @@ class LLAMA3_LLM:
 
     def change_response_max_length(self, length):
         self.max_response_length = length
-        return 1
+        return "1"
 
     def change_temperature(self, temperature):
         self.temperature = temperature
-        return 1
+        return "1"
+
+    def batch_prompt(self, prompts, batch_size=10):
+        max_output_tokens = 4096 - len(self.tokenizer.encode(prompts[-1]))
+        self.tokenizer.pad_token = self.tokenizer.eos_token
+        inputs = self.tokenizer(prompts, return_tensors="pt",padding=True).to(self.model.device)
+        outputs = self.model.generate(
+            **inputs,
+            #max_new_tokens=100,
+            max_new_tokens=max_output_tokens,
+            #max_new_tokens=self.max_response_length,
+            #max_new_tokens=model_max_tokens,
+            do_sample=True,
+            temperature=0.9,  # Higher temp = more randomness
+            top_p=0.95,
+            pad_token_id=self.tokenizer.eos_token_id,
+            num_return_sequences=batch_size,
+        )
+
+        decoded = self.tokenizer.batch_decode(outputs, skip_special_tokens=True)
+        
+
+        return "".join(decoded)
 
     def give_context(self, context):
         self.context = context
@@ -382,13 +424,50 @@ class LLAMA3_LLM:
     def num_tokens_from_string(self, string, encoding_name="cl100k_base"):
         encoding = tiktoken.get_encoding(encoding_name)
         num_tokens = len(encoding.encode(string))
-        return num_tokens
+        return str(num_tokens)
+
+class WHALE_LLM:
+    def __init__(self, context, temperature=0.6):
+        self.context = context
+        self.model_id = "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B"
+        self.temperature = temperature
+        self.absolute_max = 8000
+        self.max_response_length = 512 * 3
+        self.tokenizer = AutoTokenizer.from_pretrained(self.model_id)
+        self.model = AutoModelForCausalLM.from_pretrained(
+                self.model_id,
+                torch_dtype="auto",
+                device_map="auto"
+                )
+
+    def change_temperature(self, temperature):
+        self.temperature = temperature
+        return 1
+
+    def give_context(self, context):
+        self.context = context
+        text = self.tokenizer.apply_chat_template(
+                self.context,
+                tokenize=False,
+                add_generation_prompt=True
+                )
+        model_inputs = self.tokenizer([text],return_tensors="pt").to(self.model.device)
+
+        generated_ids = self.model.generate(
+                **model_inputs,
+                max_new_tokens=self.max_response_length
+                )
+        generated_ids = [
+                output_ids[len(input_ids):] for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)]
+        response = self.tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
+        return response
 
 def main():
-    print("******* Star Llama Started ********")
+    global restarted
     for i in os.listdir(llm_workdir):
-        if os.path.isfile(i):
-            os.remove(i)
+        if os.path.isfile(os.path.join(llm_workdir,i)):
+            os.remove(os.path.join(llm_workdir,i))
+    print("******* Star Llama Started ********")
 
     llm_type = None
     cur_llm_type = None
@@ -404,6 +483,34 @@ def main():
         #try:
         #Check for termination/change command files
         result = None
+        if restarted:
+            llm_type = sys.argv[-1]
+            context = [{'role':'system','content':'You are a chatter'}]
+            if "chat" in llm_type:
+                llm_type = CHAT
+                cur_llm_type = CHAT
+                llm_object = Chat_LLM(context)
+            elif "llama3" in llm_type:
+                llm_type = LLAMA3
+                cur_llm_type = LLAMA3
+                llm_object = LLAMA3_LLM(context)
+            elif "completion" in llm_type:
+                llm_type = COMPLETION
+                cur_llm_type = COMPLETION
+                llm_object = Completion_LLM()
+            elif "fim" in llm_type:
+                llm_type = FIM
+                cur_llm_type = FIM
+                llm_object = FIM_LLM()
+            elif "whale" in llm_type:
+                llm_type = WHALE
+                cur_llm_type = WHALE
+                llm_object = WHALE_LLM(context)
+            restarted = False
+            result = "-1"
+            with open(output_file, "w") as f:
+                f.write(result)
+            continue
         if is_terminate():
             os.remove(terminate_file)
             quit()
@@ -432,9 +539,13 @@ def main():
                     llm_type = FIM
                     cur_llm_type = FIM
                     llm_object = FIM_LLM()
+                elif "whale" in llm_type:
+                    llm_type = WHALE
+                    cur_llm_type = WHALE
+                    llm_object = WHALE_LLM(context)
+            os.remove(llm_type_file)
             with open(output_file, "w") as f:
                 f.write("1")
-            os.remove(llm_type_file)
         elif is_query():
             try:
                 arguments = get_arguments(arguments_file)
@@ -451,32 +562,19 @@ def main():
                     result = execute_function(llm_type, llm_object, arguments)
                     print(time.time()-start)
                 except TimeoutError as t:
-                    result = "-1"
-                    print("TOOLONG")
-                    del(llm_object)
-                    llm_object = None
-                    torch.cuda.empty_cache()
-                    if "chat" in llm_type:
-                        llm_type = CHAT
-                        cur_llm_type = CHAT
-                        llm_object = Chat_LLM(context)
-                    elif "llama3" in llm_type:
-                        llm_type = LLAMA3
-                        cur_llm_type = LLAMA3
-                        llm_object = LLAMA3_LLM(context)
-                    elif "completion" in llm_type:
-                        llm_type = COMPLETION
-                        cur_llm_type = COMPLETION
-                        llm_object = Completion_LLM()
-                    elif "fim" in llm_type:
-                        llm_type = FIM
-                        cur_llm_type = FIM
-                        llm_object = FIM_LLM()
+                    with open(last_status_file,'w') as f:
+                        f.write(llm_type)
+                    print('toooo long')
+                    quit()
             except Exception as e:
                 print("didnot work", e)
                 result = "-1"
-            with open(output_file, "w") as f:
-                f.write(result)
+            try:
+                with open(output_file, "w") as f:
+                    f.write(result)
+            except Exception as e:
+                with open(output_file, "w") as f:
+                    f.write(result)
         else:
             pass
 
