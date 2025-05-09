@@ -262,10 +262,18 @@ def query_loop(llm):
 def new_corpus(llm, iterations, out_dir):
     global GEN_NUM
     #i = 0
-    type_num = 1
+    type_num = 0
     #file_instr = utils.load_pickle(cfg.file_instr)
     while len(os.listdir(out_dir)) < iterations:
         code = None
+        if type_num == 0:
+            file_name = os.path.join(cfg.init_corpus,random.choice(os.listdir(cfg.init_corpus)))
+            with codecs.open(file_name,"r",encoding='utf-8',errors='ignore') as f:
+                file_content = f.read()
+            mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
+            with codecs.open(os.path.join(out_dir,mut_name),"w",encoding='utf-8',
+                             errors='ignore') as f:
+                f.write(file_content)
         if type_num == 1:
             context = prompts.new_seed(type_num, None, None, None)
             #llm.change_temperature(random.randint(0,10)/10)
@@ -279,6 +287,10 @@ def new_corpus(llm, iterations, out_dir):
         with codecs.open(os.path.join(out_dir,mut_name),"w",encoding='utf-8',
                          errors='ignore') as f:
             f.write(code)
+        if type_num == 1:
+            type_num = 0
+        else:
+            type_num += 1
         #file_instr[mut_name] = instructions
         #utils.dump_pickle(cfg.file_instr,file_instr)
         #if type_num == 3:
