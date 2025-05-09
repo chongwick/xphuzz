@@ -82,8 +82,6 @@ def correct_format(llm, result, context):
                 return None
         else:
             break
-    if "<?php" not in code.split("\n")[0]:
-        code = "<?php\n" + code + "\n?>"
 
     return code
 
@@ -100,7 +98,7 @@ def room_service(safe_files):
     for i in cur_files:
         if i not in safe_files and (
                 "gen_" not in i) and (
-                        "blank.php" not in i) and (
+                        "blank.js" not in i) and (
                             "boot_" not in i):
             os.remove(os.path.join(dir_path,i))
 
@@ -264,94 +262,12 @@ def query_loop(llm):
 def new_corpus(llm, iterations, out_dir):
     global GEN_NUM
     #i = 0
-    type_num = 0
+    type_num = 1
     #file_instr = utils.load_pickle(cfg.file_instr)
     while len(os.listdir(out_dir)) < iterations:
         code = None
-        instructions = ""
-        if type_num == 9 or type_num == 9:
-            phptests = utils.load_pickle(cfg.phptests)
-            test_files = phptests[0]
-            used_files = phptests[1]
-            if len(test_files) == 0:
-                test_files = used_files.copy()
-                used_files = []
-            #target_file = test_files.pop(random.randint(0,len(test_files)))
-
-
-            target_file = None
-            good_file = False
-            code = None
-            #while(".phpt" not in target_file):
-            while(not good_file):
-                if len(test_files) == 0:
-                    test_files = used_files.copy()
-                    used_files = []
-                target_file = test_files.pop(random.randint(0,len(test_files)))
-                target_path = os.path.join(os.path.expanduser("~"),target_file)
-                if ".phpt" in target_path:
-                    #try:
-                    with codecs.open(target_path,'r',encoding='utf-8',
-                                     errors='ignore') as f:
-                        #with open(target_path,"r") as f:
-                        code = f.read()
-                    if "--FILE--" in code:
-                        good_file = True
-                        used_files.append(target_file)
-                    #except Exception as e:
-                    #    continue
-
-            #used_files.append(target_file)
-            #target_file = os.path.join(os.path.expanduser("~"),target_file)
-            #try:
-            #    with open(target_file,"r") as f:
-            #        code = f.read()
-            #except Exception as e:
-            #    continue
-
-            if "--INI--" in code:
-                noncodelines = code.split("--INI--")[1].split("\n")
-                for line in noncodelines:
-                    if line.count("--") == 2:
-                        break;
-                    elif not line.isspace() and line != '':
-                        instructions += " -d {}".format(line) #???????
-                        #instructions += line + "\n"
-
-            #code = code.split("--FILE--")[1].split("?>")[0] + "\n?>"
-            try:
-                code = "<?php\n" + code.split("<?php\n")[1]
-                code = code.split("?>")[0] + "\n?>"
-            except Exception as e:
-                continue
-            utils.dump_pickle(cfg.phptests,(test_files,used_files))
-        elif type_num == 0:
-            new_code = generate_samples(
-                    os.path.dirname(__file__),None,"<phpfuzz>",10,"grammar_generators/no_guard_php.txt")
-            code = new_code
-        elif type_num == 1:
-            bug_list = utils.load_pickle("phpbugs.pickle")[0]
-            used_list = utils.load_pickle("phpbugs.pickle")[1]
-            if len(bug_list) == 0:
-                bug_list = used_list.copy()
-                used_list = []
-            bug = random.choice(bug_list)
-            bug_list.remove(bug); used_list.append(bug)
-            bug = os.path.join(os.path.expanduser("~"),bug)
-            utils.dump_pickle("phpbugs.pickle",(bug_list,used_list))
-            #with codecs.open(os.path.join('native_crashers',
-            #                              random.choice(os.listdir('native_crashers'))),
-            #                 'r', encoding='utf-8',
-            #                 errors='ignore') as f:
-            #    influence = f.read()
-            with codecs.open(bug,'r', encoding='utf-8', errors='ignore') as f:
-                influence = f.read()
-            try:
-                influence = "<?php\n" + influence.split("<?php")[1]
-                influence = influence.split("?>")[0] + "?>"
-            except Exception as e:
-                pass
-            context = prompts.new_seed(type_num, influence, functions, new_code)
+        if type_num == 1:
+            context = prompts.new_seed(type_num, None, None, None)
             #llm.change_temperature(random.randint(0,10)/10)
             llm.change_temperature(1)
             result = query_llm(llm,context)
@@ -368,10 +284,6 @@ def new_corpus(llm, iterations, out_dir):
         #if type_num == 3:
         #if type_num == 2:
         #if type_num == 4:
-        if type_num == 1:
-            type_num = 0
-        else:
-            type_num += 1
         #utils.add_to_queue(cfg.exec_queue,os.path.join(out_dir,mut_name))
     #llm.change_temperature(0.6)
 

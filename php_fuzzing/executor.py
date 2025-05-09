@@ -12,10 +12,6 @@ from multiprocessing.managers import SharedMemoryManager
 from multiprocessing import shared_memory
 
 MEM_SIZE = 0x100000
-#ENGINE_PATH = "/home/w023dtc/php_fuzzing/cov_php"  
-COVERAGE_ENGINE = "/home/w023dtc/php_fuzzing/cov_php"
-SANITIZER_ENGINE = "/home/w023dtc/php_fuzzing/san_php"
-RELASE_ENGINE = "/home/w023dtc/php_fuzzing/rel_php"
 
 class Executor():
     def __init__(self, engine):
@@ -26,11 +22,11 @@ class Executor():
         self.smm.start()  # Start the process that manages the shared memory blocks
         self.raw_shm = self.smm.SharedMemory(size=MEM_SIZE)
         os.environ["SHM_ID"] = self.raw_shm.name
-        with open("blank.php", "w") as f:
-            f.write("<?php\n?>")
-        self.execute_prog("blank.php")
+        with open("blank.js", "w") as f:
+            f.write("\n")
+        self.execute_prog("blank.js")
         self.ret_code = None
-        os.remove("blank.php")
+        os.remove("blank.js")
         
     def __del__(self):
         self.smm.shutdown(self)
@@ -61,14 +57,10 @@ class Executor():
                 result += i
         return result
 
-    # We want the same session open when we're creating the base map
-    # Thus, child... pexpect...
     def adjust_coverage_with_dummy_executions(self):
-        child = pexpect.spawnu(self.engine, ['-a'])
-        child.expect('php >') 
-        cmd_input = "<?php\n?>"
-        for i in range(150):
-            child.write(cmd_input)
+        with open("blank.js", "w") as f:
+            f.write("\n")
+        self.execute_prog("blank.js")
 
     def save_global_coverage_map_in_file(self, file_name):
         with open(file_name,'wb') as f:

@@ -2,17 +2,20 @@
 #Usage, ./sanitize.sh [target_script] [san_types(0/1)]
 
 script=$1
-san_type=$2 #0 for leak, 1 for asan, 2 for undefined
-instructions=$3
-if [ $san_type = "2" ]; then
-        OUTPUT=$(timeout -s SIGTERM 120 ~/php_engines/san_php "$script" "$instructions" 2>&1)
-elif [ $san_type = "1" ]; then
-        export USE_ZEND_ALLOC=0
-        export ASAN_OPTIONS=detect_leaks=0
-        OUTPUT=$(timeout -s SIGTERM 120 ~/php_engines/san_php "$script" "$instructions" 2>&1)
-elif [ $san_type = "0" ]; then
-        OUTPUT=$(timeout -s SIGTERM 120 ~/php_engines/undefined_php "$script" "$instructions" 2>&1)
-fi
+#san_type=$2 #0 for other, 1 for leak
+#php_engine=$3
+#options=$4
+
+#OUTPUT=$(timeout -s SIGTERM 120 php run-tests.php -p "$php_engine" "$script" 2>&1)
+#OUTPUT=$(timeout -s SIGTERM 120 ./run-tests.php -p "$php_engine" "$script" 2>&1)
+#if [[ -z "$options" ]]; then
+#        #OUTPUT=$(timeout -s SIGTERM 120 "$php_engine" "$script" 2>&1)
+#        OUTPUT=$(timeout -s SIGTERM 120 ./nightly_php/php-src/sapi/cli/php "$script" 2>&1)
+#else
+#        #OUTPUT=$(timeout -s SIGTERM 120 "$php_engine" "$options" "$script" 2>&1)
+#        OUTPUT=$(timeout -s SIGTERM 120 ./nightly_php/php-src/sapi/cli/php "$options" "$script" 2>&1)
+#fi
+OUTPUT=$(timeout -s SIGTERM 120 ./fuzzbuild/d8 --allow-natives-syntax "$script" 2>&1)
 RET=$?
 if [ $RET -ne 0 ]; then
        if [ $RET -eq 255 ]; then
@@ -27,19 +30,19 @@ if [ $RET -ne 0 ]; then
                mv "$script" "${script}.tr"
                exit 0
        fi
-       if [ $RET -eq 153 ]; then
+       if [ $RET -eq 1 ]; then
                mv "$script" "${script}.tr"
                exit 0
-       fi
-       if [ $(echo "$OUTPUT" | grep "Allowed memory size of" | wc -l) -gt 0 ]; then
-               mv "$script" "${script}.tr"
-	       exit 0
        fi
        if [ $(echo "$OUTPUT" | grep "AddressSanitizer failed to allocate" | wc -l) -gt 0 ]; then
                mv "$script" "${script}.tr"
 	       exit 0
        fi
-       if [ $(echo "$OUTPUT" | grep ": Assertion " | wc -l) -gt 0 ]; then
+       if [ $(echo "$OUTPUT" | grep "SyntaxError" | wc -l) -gt 0 ]; then
+               mv "$script" "${script}.tr"
+	       exit 0
+       fi
+       if [ $(echo "$OUTPUT" | grep "ReferenceError" | wc -l) -gt 0 ]; then
                mv "$script" "${script}.tr"
 	       exit 0
        fi
@@ -50,32 +53,3 @@ elif [ $(echo "$OUTPUT" | grep "runtime error:" | wc -l) -gt 0 ]; then
        echo "$OUTPUT" > san.log
        exit 0
 fi
-
-## Directory containing the Python scripts
-#SCRIPT_DIR="/autest/php_fuzzing/gen_0"
-#
-## Iterate over each .py file in the directory
-##set -e
-#for script in *.php; do
-#  echo "Executing $script..."
-#  USE_ZEND_ALLOC=0 ~/san_php "$script"
-#  RET $?
-#  if [ $RET -ne 0 ]; then
-#	  if [ $RET -eq 255 ]; then
-#		  exit 0
-#	  fi
-#	  if [ $RET -eq 124 ]; then
-#		  exit 0
-#	  fi
-#	  if [ $RET -eq 153 ]; then
-#		  exit 0
-#	  fi
-#	  if [ $RET -eq 153 ]; then
-#		  exit 0
-#	  fi
-#
-#
-#	  mv "$script" "${script}.error"
-#  fi
-#  echo "$script executed."
-#done
