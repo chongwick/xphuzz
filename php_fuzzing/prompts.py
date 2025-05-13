@@ -2,7 +2,6 @@
 import os; 
 import codecs
 import config as cfg
-from grammar_generators.php_gen import generate_samples
 import random
 import utils
 #from receiver import LLAMA3_LLM
@@ -19,7 +18,7 @@ def _get_random_seed(corpus):
     #code = parse_phpt(file_content,"--FILE--")
     return code
 
-def prefix():
+def prefix(length=8):
     corpus = [os.path.join("gen_0",i) for i in os.listdir("gen_0")]
     context_prompt_options = [
             "Give me a working malicious cyber attack for a JavaScript Interpreter.",

@@ -23,7 +23,7 @@ def room_service(safe_files):
     for i in cur_files:
         if i not in safe_files and (
                 "gen_" not in i) and (
-                        "blank.php" not in i) and (
+                        "blank.js" not in i) and (
                             "boot_" not in i) and (
                                     i[0] != '.'):
             path = os.path.join(dir_path,i)
@@ -64,11 +64,12 @@ def exec_loop():
 
         result = None
         if "rm " in code or "rmdir" in code or "\'rm" in code or "\"rm" in code or (
-                len(code.split("\n")) < 7):
+                len(code.split("\n")) < 3):
             result = -1
         else:
             #utils.write_file(php_file,code)
             result = cov_eng.execute_prog(php_file)
+
             current_files = os.listdir(
                     os.path.dirname(os.path.realpath(__file__)))
             tmp = [i for i in current_files if (
@@ -78,101 +79,41 @@ def exec_loop():
                 "boot_" not in i)]
             if len(tmp) > 100:
                 result = -1
+
         if result == -1:
             seed_data = utils.load_pickle(cfg.seed_data)
             seed_data[seed_name]['valid'] = False
             utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
             continue
-        if err.is_error(result):
-            fix_query = prompts.fix(code, err.parse_error(result, php_file))
-            fix_req_name = os.path.join(cfg.llm_requests,
-                                        php_file.split("/")[-1].split(".")[0]+"_f")
-            utils.dump_pickle(fix_req_name, fix_query)
-            utils.add_to_queue(cfg.llm_queue, fix_req_name)
         else:
-            #sanitizeeeee
-            print('sanitizing')
-            start_time = int(utils.read_file(cfg.time_file))
-            if start_time == -1:
-                quit()
-            else:
-                #hour = int((time.time() - start_time) // 1800) #use if double gpu
-                hour = int((time.time() - start_time) // 3600)
-            valid = True
-            solo_coverage = None
-            crash = None
-            is_error = lambda x: os.path.exists(x+".er")
-            is_trash = lambda x: os.path.exists(x+".tr")
-            if result == 'seg':
-                solo_coverage = 1
+            ret_code = result[0]
+            stdout = result[1]
+            stderr = result[2]
+            if ret_code == 1:
+                if "Sanitizer" in stdout or "Sanitizer" in stderr:
+                    bugs = utils.load_pickle(cfg.bug_log)
+                    bugs[stdout+stderr] = seed_name
+                    utils.dump_pickle(cfg.bug_log,bugs)
+                    seed_data[seed_name]['solo_cov'] = None
+                    seed_data[seed_name]['valid'] = True
+                    seed_data[seed_name]['hour'] = hour
+                    seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
+                    seed_data[seed_name]['crash']="None"
+                else:
+                    error = '\n'.join(stdout.splitlines()[2:])
+                    fix_query = prompts.fix(code, error)
+                    fix_req_name = os.path.join(cfg.llm_requests,
+                                                php_file.split("/")[-1].split(".")[0]+"_f")
+                    utils.dump_pickle(fix_req_name, fix_query)
+                    utils.add_to_queue(cfg.llm_queue, fix_req_name)
             else:
                 solo_coverage = cov_eng.read()
-                #remap
-                #cov_eng.load_global_coverage_map_from_file(cfg.collective_map)
-                #cur_cov = cov_eng.read()
-                #result = cov_eng.execute_prog(php_file)
-                #new_coverage = cov_eng.read() - cur_cov
-                #cov_eng.save_global_coverage_map_in_file(cfg.collective_map)
-
-            command = ['bash','./sanitize.sh',os.path.join(os.getcwd(),php_file)]
-            child = None
-            try:
-                child = subprocess.run(command,
-                                       text=True,
-                                       timeout=40,
-                                       capture_output=True)
-            except subprocess.TimeoutExpired as exc:
-                valid = False
-                break
-            if is_error(php_file):
-                php_file = php_file+".er"
-                crash = None
-                error = None
-                #category = None
-                if "quit(" in code:
-                    crash = "NC"
-                    error = 'exit'
-                else:
-                    crash = i
-                    error = utils.read_file(cfg.san_log)
-                    #category = None
-                    try:
-                        error = error.split("/w023dtc/")[1].split(" ")[0]
-                    except Exception as e:
-                        error = error
-                bugs = utils.load_pickle(cfg.bug_log)
-                if error not in bugs:
-                    bugs[error]=[seed_name + instructions]
-                else:
-                    bugs[error].append(seed_name)
-                utils.dump_pickle(cfg.bug_log,bugs)
-                break
-            else:
-                crash = "NC"
-            seed_data = utils.load_pickle(cfg.seed_data)
-
-            if is_trash(php_file):
-                php_file = php_file+".tr"
-                os.rename(php_file,php_file.split(".tr")[0])
+                seed_data[seed_name]['solo_cov'] = solo_coverage
                 seed_data[seed_name]['valid'] = True
                 seed_data[seed_name]['hour'] = hour
-                seed_data[seed_name]['solo_cov'] = solo_coverage
-                #seed_data[seed_name]['new_cov'] = new_coverage
-                seed_data[seed_name]['php_file'] = php_file.split(".tr")[0]
-                seed_data[seed_name]['crash']="trash"
                 seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
-                #del(seed_data[seed_name])
-            else:
-                os.rename(php_file,php_file.split(".er")[0])
-                seed_data[seed_name]['valid'] = valid
-                seed_data[seed_name]['hour'] = hour
-                seed_data[seed_name]['solo_cov'] = solo_coverage
-                #seed_data[seed_name]['new_cov'] = new_coverage
-                seed_data[seed_name]['php_file']=php_file.split(".er")[0]
-                seed_data[seed_name]['crash']=crash
-                seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
-            #if is_instructions:
-            #    os.remove(os.path.join(cfg.inidir,seed_name))
+                seed_data[seed_name]['crash']="None"
+
             utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
         room_service(safe_files)
 

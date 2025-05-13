@@ -31,7 +31,7 @@ class Executor():
     def __del__(self):
         self.smm.shutdown(self)
 
-    def execute_prog(self, script, instructions=None):
+    def execute_prog(self, script, instructions="--allow-natives-syntax"):
         command = self.prog_argv.copy()
         if instructions != None and instructions != "":
             command.append(instructions)
@@ -46,16 +46,16 @@ class Executor():
             child.kill()
         except Exception as e:
             return -1
-        if self.ret_code == 1:
-            return 'seg'
         result = None
-        if self.engine == cfg.coverage_engine:
-            result = "\n".join(stdout.split("\n")[2:])
-        else:
-            result = ""
-            for i in stdout:
-                result += i
+        result = (self.ret_code, stdout, stderr)
         return result
+        #if self.engine == cfg.coverage_engine:
+        #    result = "\n".join(stdout.split("\n")[2:])
+        #else:
+        #    result = ""
+        #    for i in stdout:
+        #        result += i
+        #return result
 
     def adjust_coverage_with_dummy_executions(self):
         with open("blank.js", "w") as f:

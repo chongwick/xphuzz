@@ -17,7 +17,6 @@ from threading import Thread, Lock
 from executor import Executor
 import errreader as err
 from aljamain_sterling import pairing_aljo, new_aljo, scoring_function, new_scoring_function
-from grammar_generators.php_gen import generate_samples
 import san
 import prompts
 
@@ -269,11 +268,7 @@ def new_corpus(llm, iterations, out_dir):
         if type_num == 0:
             file_name = os.path.join(cfg.init_corpus,random.choice(os.listdir(cfg.init_corpus)))
             with codecs.open(file_name,"r",encoding='utf-8',errors='ignore') as f:
-                file_content = f.read()
-            mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
-            with codecs.open(os.path.join(out_dir,mut_name),"w",encoding='utf-8',
-                             errors='ignore') as f:
-                f.write(file_content)
+                code = f.read()
         if type_num == 1:
             context = prompts.new_seed(type_num, None, None, None)
             #llm.change_temperature(random.randint(0,10)/10)

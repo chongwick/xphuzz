@@ -17,7 +17,6 @@ from threading import Thread, Lock
 from executor import Executor
 import errreader as err
 from aljamain_sterling import pairing_aljo, new_aljo, scoring_function, new_scoring_function
-from grammar_generators.php_gen import generate_samples
 import san
 import prompts
 
