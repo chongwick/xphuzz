@@ -50,25 +50,25 @@ def exec_loop():
     while(True):
         if partner_died():
             quit()
-        php_file = utils.pop_from_queue(cfg.exec_queue)
-        if php_file == -1:
+        js_file = utils.pop_from_queue(cfg.exec_queue)
+        if js_file == -1:
             continue
         #file_instr = utils.load_pickle(cfg.file_instr)
-        seed_name = php_file.split("/")[-1].split(".")[0]
+        seed_name = js_file.split("/")[-1].split(".")[0]
         hour = -1
 
         #update_data(llm_queue, cov_queue, seed_data)
-        print("mapping: " + php_file)
+        print("mapping: " + js_file)
         cov_eng.load_global_coverage_map_from_file(cfg.base_map)
-        code = utils.read_file(php_file)
+        code = utils.read_file(js_file)
 
         result = None
         if "rm " in code or "rmdir" in code or "\'rm" in code or "\"rm" in code or (
                 len(code.split("\n")) < 3):
             result = -1
         else:
-            #utils.write_file(php_file,code)
-            result = cov_eng.execute_prog(php_file)
+            #utils.write_file(js_file,code)
+            result = cov_eng.execute_prog(js_file)
 
             current_files = os.listdir(
                     os.path.dirname(os.path.realpath(__file__)))
@@ -103,7 +103,7 @@ def exec_loop():
                     error = '\n'.join(stdout.splitlines()[2:])
                     fix_query = prompts.fix(code, error)
                     fix_req_name = os.path.join(cfg.llm_requests,
-                                                php_file.split("/")[-1].split(".")[0]+"_f")
+                                                js_file.split("/")[-1].split(".")[0]+"_f")
                     utils.dump_pickle(fix_req_name, fix_query)
                     utils.add_to_queue(cfg.llm_queue, fix_req_name)
             else:
