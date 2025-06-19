@@ -40,7 +40,6 @@ def room_service(safe_files):
 
 #There are multiple execution loops but only one llm loop, use the llm loop for the new gen
 def exec_loop():
-    seed_data = None
     llm_queue = None
     exec_queue = None
     #safe_files = utils.load_pickle(cfg.safe_files)
@@ -58,7 +57,7 @@ def exec_loop():
         hour = -1
 
         #update_data(llm_queue, cov_queue, seed_data)
-        print("mapping: " + js_file)
+        print("\nmapping: " + js_file)
         cov_eng.load_global_coverage_map_from_file(cfg.base_map)
         code = utils.read_file(js_file)
 
@@ -69,6 +68,7 @@ def exec_loop():
         else:
             #utils.write_file(js_file,code)
             result = cov_eng.execute_prog(js_file)
+            print(result)
 
             current_files = os.listdir(
                     os.path.dirname(os.path.realpath(__file__)))
@@ -108,12 +108,16 @@ def exec_loop():
                     utils.add_to_queue(cfg.llm_queue, fix_req_name)
             else:
                 solo_coverage = cov_eng.read()
+                seed_data = utils.load_pickle(cfg.seed_data)
                 seed_data[seed_name]['solo_cov'] = solo_coverage
                 seed_data[seed_name]['valid'] = True
                 seed_data[seed_name]['hour'] = hour
                 seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
                 seed_data[seed_name]['crash']="None"
+            #sanitize with other engines
+            utils.add_to_queue(cfg.other_sans, js_file)
 
+            seed_data = utils.load_pickle(cfg.seed_data)
             utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
         room_service(safe_files)
 

@@ -5,6 +5,7 @@ base_map = "base_map_js_05_09_25"
 collective_map = "collective_map"
 base_map_edges = 3737
 init_corpus = "init_corpus"
+other_sans = "other_sans.pickle"
 #coverage_engine = "/home/w023dtc/php_engines/cov_php"
 #sanitizer_engine = "/home/w023dtc/php_engines/san_php"
 #release_engine = "/home/w023dtc/php_engines/rel_php"
