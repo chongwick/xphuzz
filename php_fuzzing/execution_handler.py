@@ -63,7 +63,7 @@ def exec_loop():
 
         result = None
         if "rm " in code or "rmdir" in code or "\'rm" in code or "\"rm" in code or (
-                len(code.split("\n")) < 3):
+                len(code.split("\n")) < 1):
             result = -1
         else:
             #utils.write_file(js_file,code)
@@ -80,6 +80,7 @@ def exec_loop():
             if len(tmp) > 100:
                 result = -1
 
+        seed_data = utils.load_pickle(cfg.seed_data)
         if result == -1:
             seed_data = utils.load_pickle(cfg.seed_data)
             seed_data[seed_name]['valid'] = False
@@ -94,7 +95,7 @@ def exec_loop():
                     bugs = utils.load_pickle(cfg.bug_log)
                     bugs[stdout+stderr] = seed_name
                     utils.dump_pickle(cfg.bug_log,bugs)
-                    seed_data[seed_name]['solo_cov'] = None
+                    seed_data[seed_name]['solo_cov'] = cov_eng.read()
                     seed_data[seed_name]['valid'] = True
                     seed_data[seed_name]['hour'] = hour
                     seed_data[seed_name]['size']=utils.num_tokens_from_string(code)
@@ -107,6 +108,7 @@ def exec_loop():
                     utils.dump_pickle(fix_req_name, fix_query)
                     utils.add_to_queue(cfg.llm_queue, fix_req_name)
             else:
+                print("HERE")
                 solo_coverage = cov_eng.read()
                 seed_data = utils.load_pickle(cfg.seed_data)
                 seed_data[seed_name]['solo_cov'] = solo_coverage
@@ -117,7 +119,6 @@ def exec_loop():
             #sanitize with other engines
             utils.add_to_queue(cfg.other_sans, js_file)
 
-            seed_data = utils.load_pickle(cfg.seed_data)
             utils.dump_pickle(cfg.seed_data,seed_data) #update data!!!
         room_service(safe_files)
 
