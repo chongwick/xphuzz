@@ -144,7 +144,6 @@ def query_loop(llm):
                 os.makedirs(outdir)
             newcole=len(os.listdir("gen_0"))
             new_corpus(llm, newcole, outdir)
-            next_gen(llm)
         request_file = utils.pop_from_queue(cfg.llm_queue)
         if request_file == -1 or not(os.path.exists(request_file)):
             continue
@@ -263,6 +262,8 @@ def query_loop(llm):
 
 def new_corpus(llm, iterations, out_dir):
     global GEN_NUM
+    GEN_NUM+=1
+    new_dir = "gen_" + str(GEN_NUM)
     #i = 0
     type_num = 0
     #file_instr = utils.load_pickle(cfg.file_instr)
@@ -359,8 +360,8 @@ def new_corpus(llm, iterations, out_dir):
             code = correct_format(llm, result, context)
             if code == None: #Idk some weird error that idc about
                 continue
-        mut_name = str(GEN_NUM+1)+"_b_"+secrets.token_hex(10);
-        with codecs.open(os.path.join(out_dir,mut_name),"w",encoding='utf-8',
+        seed_name = secrets.token_hex(10);
+        with codecs.open(os.path.join(out_dir,seed_name),"w",encoding='utf-8',
                          errors='ignore') as f:
             f.write(code)
         #file_instr[mut_name] = instructions
@@ -372,125 +373,12 @@ def new_corpus(llm, iterations, out_dir):
             type_num = 0
         else:
             type_num += 1
-        #utils.add_to_queue(cfg.exec_queue,os.path.join(out_dir,mut_name))
+        seed_node = create_seed_node()
+        seed_node['parents'] = (None, None)
+        seed_node['php_file'] = os.path.join(out_dir,seed_name)
+        seed_data[seed_name] = seed_node
+        utils.add_to_queue(cfg.exec_queue,os.path.join(out_dir,seed_name))
     #llm.change_temperature(0.6)
-
-#safe to give seed_data as nothing will be accessing at that time
-#add seed nodes to seed data here
-def next_gen(llm):
-    global GEN_NUM
-    new_gen = []
-    seed_data = utils.load_pickle(cfg.seed_data)
-    #file_instr = utils.load_pickle(cfg.file_instr)
-    tmp = {}
-    if GEN_NUM % 5 == 0 or (
-            len([i for i in seed_data if (seed_data[i]['generation'] == GEN_NUM and seed_data[i]['valid'] == True)]) < 50):
-        for i in os.listdir("gen_" + str(0)):
-            name = i.split(".")[0]
-            if name in seed_data and seed_data[name]['valid'] == True:
-                tmp[name] = seed_data[name]
-    else:
-        for i in os.listdir("gen_" + str(GEN_NUM)):
-            name = i.split(".")[0]
-            if name in seed_data and seed_data[name]['valid'] == True:
-                tmp[name] = seed_data[name]
-    partitions = new_scoring_function(tmp)
-    crashers = partitions[0]
-    ranking = partitions[1]
-    name_score = partitions[2]
-    name_energy = partitions[3]
-    for i in name_score:
-        seed_data[i]['score'] = name_score[i]
-    partitions = (crashers,ranking)
-    aljo_result = new_aljo(GEN_NUM,partitions, name_energy)
-    pairs = aljo_result[0]
-    crashers = aljo_result[1]
-    GEN_NUM+=1
-    new_dir = "gen_" + str(GEN_NUM)
-    os.makedirs(new_dir)
-    for file in cfg.require_files:
-        shutil.copy(file,new_dir)
-    boot_gen = "boot_"+str(GEN_NUM)
-    for crasher in crashers:
-        seed_name = secrets.token_hex(10)
-        mut_query = prompts.mutate(seed_data[crasher]['php_file'])
-        seed_node = create_seed_node()
-        seed_node['parents'] = (crasher, None)
-        seed_node['php_file'] = os.path.join(new_dir,seed_name)
-        seed_data[seed_name] = seed_node
-        mut_req_name = os.path.join(cfg.llm_requests, seed_name + "_mu")
-        utils.dump_pickle(mut_req_name, mut_query)
-        utils.add_to_queue(cfg.llm_queue, mut_req_name)
-        utils.dump_pickle(cfg.seed_data, seed_data)
-    for pair in pairs:
-        instructions = ""
-        seed_name = secrets.token_hex(10)
-        new_gen.append(seed_name)
-        seed_node = create_seed_node()
-        seed_node['parents'] = (pair[0],pair[1])
-
-        #if pair[0] in file_instr and file_instr[pair[0]] != "":
-        #    instructions += file_instr[pair[0]]
-        #if pair[1] in file_instr and file_instr[pair[1]] != "":
-        #    instructions += "\n" and file_instr[pair[1]]
-        #file_instr[seed_name] = instructions
-
-        with codecs.open(seed_data[pair[0]]['php_file'],'r',encoding='utf-8',
-                 errors='ignore') as m:
-            male = m.read()
-        female = None
-        if "_b_" in pair[1]:
-            with codecs.open(os.path.join(boot_gen,pair[1]),'r',encoding='utf-8',
-                 errors='ignore') as f:
-                female = f.read()
-        else:
-            with codecs.open(seed_data[pair[1]]['php_file'],'r',encoding='utf-8',
-                 errors='ignore') as f:
-                  female = f.read()
-        seed_node['php_file'] = os.path.join(new_dir,seed_name)
-        seed_data[seed_name] = seed_node
-        mate_query = prompts.mate(male,female)
-        mate_req_name = os.path.join(cfg.llm_requests,
-                                     seed_name + "_ma")
-        utils.dump_pickle(mate_req_name, mate_query)
-        utils.add_to_queue(cfg.llm_queue, mate_req_name)
-        utils.dump_pickle(cfg.seed_data, seed_data)
-        #utils.dump_pickle(cfg.file_instr, file_instr)
-    #ancestry score and fix_amount calculation
-    combined_parent_scores = {}
-    for i in new_gen:
-        combined_parent_scores[i] = 0
-        father = seed_data[i]['parents'][0]
-        mother = seed_data[i]['parents'][1]
-        if GEN_NUM-1 == 0:
-            if father in seed_data:
-                seed_data[i]['ancestry'] += 1
-                if seed_data[father]['score'] != None:
-                    combined_parent_scores[i] += seed_data[father]['score']
-            if mother in seed_data:
-                seed_data[i]['ancestry'] += 1
-                if seed_data[mother]['score'] != None:
-                    combined_parent_scores[i] += seed_data[mother]['score']
-        else:
-            if father in seed_data:
-                seed_data[i]['ancestry'] += seed_data[father]['ancestry']
-                if seed_data[father]['score'] != None:
-                    combined_parent_scores[i] += seed_data[father]['score']
-            if mother in seed_data:
-                seed_data[i]['ancestry'] += seed_data[mother]['ancestry']
-                if seed_data[mother]['score'] != None:
-                    combined_parent_scores[i] += seed_data[mother]['score']
-        utils.dump_pickle(cfg.seed_data, seed_data)
-    score = {k: v for k, v in sorted(combined_parent_scores.items(), key=lambda item: item[1], reverse = True)}
-    quintiles = list(n_tile(list(score.keys()),5))
-    loop_count = len(quintiles)
-    fix_amounts = list(range(6))[1:]
-    for i in range(len(quintiles)):
-        fix = fix_amounts.pop()
-        for name in quintiles[i]:
-            seed_data[name]['max_fixes'] = fix
-    utils.dump_pickle(cfg.seed_data, seed_data)
-    return
 
 def main():
     #seed_data = utils.load_pickle(cfg.seed_data)
