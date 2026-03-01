@@ -194,3 +194,32 @@ Some error triggering code is not getting flagged because it is segfaulting the 
 
 September 3:
 We need to multithread the coverage queue/san queue/ whatever else
+
+November 20:
+Triage the boots! Expand conversation history. Expand repair section. 48 hours for every experiment. We're there 
+
+November 27:
+SANITIZE EVERYTHING
+throughput i.e. seeds per hour over a couple days 
+
+December 7:
+We're going to augment the input corpus with PHP tests -> ONLY standard extensions
+phptests directory will be preloaded into fry and copied into the working directory before execution
+ 
+For ini dependencies, make a new directory, write ini options in php.ini, use php -c option
+
+if INI in g:
+        g.split("INI")[1].split("\n")[1]
+request_handler needs full file access
+
+Maybe the tests are designed poorly going to 10 generations as we are using less seeds in every lower percentage test...
+
+
+made big changes that could have huge effects (bad) on the performance of the system. Specifically, the new_corpus code was changed such that the grammar generated snippets are directly used as auxiliary seeds (good); however, there were modifications that take out the "give me another" prompt.
+keep in mind. maybe restore this functionality
+
+NEXT SYSTEM CONSIDERATIONS:
+1) change mutation strategy -> move away from generational batches -> break coverage plateaus
+2) mutate environment
+3) double LLM?
+4) dataflow combination

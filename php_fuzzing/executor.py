@@ -1,5 +1,6 @@
 # This will run the executable and read from the shared memory :)
 
+import config as cfg
 import numpy
 import array
 import sys
@@ -34,8 +35,10 @@ class Executor():
     def __del__(self):
         self.smm.shutdown(self)
 
-    def execute_prog(self, script):
+    def execute_prog(self, script, instructions=None):
         command = self.prog_argv.copy()
+        if instructions != None and instructions != "":
+            command.append(instructions)
         command.append(script)
         try:
             child = subprocess.Popen(command, 
@@ -50,7 +53,7 @@ class Executor():
         if self.ret_code == 1:
             return 'seg'
         result = None
-        if self.engine == COVERAGE_ENGINE:
+        if self.engine == cfg.coverage_engine:
             result = "\n".join(stdout.split("\n")[2:])
         else:
             result = ""
@@ -76,6 +79,13 @@ class Executor():
             data = f.read()
         self.raw_shm.buf[:] = data[:]
 
+    #def get_new_coverage():
+    #    cov_eng.load_global_coverage_map_from_file(cfg.collective_map)
+    #    cur_cov = cov_eng.read()
+    #    cov_eng.execute_prog(php_file)
+    #    increase = cov_eng.read() - cur_cov
+    #    cov_eng.save_global_coverage_map_in_file(cfg.collective_map)
+
     def read(self):
         edge_count = 0
         arr = array.array('B', self.raw_shm.buf[:])
@@ -92,7 +102,7 @@ class Executor():
         self.save_global_coverage_map_in_file(filename)
 
 def main():
-    executor = Executor(COVERAGE_ENGINE)
+    executor = Executor(cfg.coverage_engine)
     executor.make_base_map("base_map_php_4_20_24")
 
 if __name__ == "__main__":

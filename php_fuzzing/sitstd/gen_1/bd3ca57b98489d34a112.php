@@ -1,4 +1,0 @@
-<?php
-// your code here
-password_get_info(str_repeat(chr(0x10000000 + 0x100), 0x100));
-?>

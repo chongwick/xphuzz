@@ -1,5 +1,0 @@
-<?php
-    $i = '<iframe src="https://abc.xyz"></iframe>';
-    $vars["SplFileObject"]->flock(0, $ref_int = 0x42 + 0x1a * (0x1a + 0x42) % 0x2a);
-    echo $i;
-?>

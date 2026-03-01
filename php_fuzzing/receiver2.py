@@ -1,21 +1,22 @@
+import utils
 import pickle
 import os
 import config as cfg
 import time
 
 llm_workdir = "llm_workdir/"
-llm_workdir = "/home/w023dtc/llm2/llm_workdir/"
+llm_workdir = "/mnt/llm2/llm_workdir/"
 #output_file = llm_workdir + "__output__"
-output_file = "/home/w023dtc/llm2/llm_workdir/__output__"
+output_file = "/mnt/llm2/llm_workdir/__output__"
 is_output = lambda : (os.path.isfile(output_file) and 
         os.path.getsize(output_file) > 0)
 #terminate_file = llm_workdir + "__terminate__"
-terminate_file = "/home/w023dtc/llm2/llm_workdir/__terminate__"
+terminate_file = "/mnt/llm2/llm_workdir/__terminate__"
 #llm_type_file = llm_workdir + "__llm_type__.pickle"
-llm_type_file = "/home/w023dtc/llm2/llm_workdir/__llm_type__.pickle"
+llm_type_file = "/mnt/llm2/llm_workdir/__llm_type__.pickle"
 #llm_query_file = llm_workdir + "__llm_query__"
 #arguments_file = llm_workdir + "arguments.pickle"
-arguments_file = "/home/w023dtc/llm2/llm_workdir/arguments.pickle"
+arguments_file = "/mnt/llm2/llm_workdir/arguments.pickle"
 
 
 def send_command_file(file, content=""):
@@ -176,6 +177,14 @@ class LLAMA3_LLM:
                 'command':"give_context",'params':[context]
                 }
         result = submit(arguments)
+        #start_time = int(utils.read_file(cfg.time_file))
+        #hour = int((time.time() - start_time) // 1800)
+        #hour_prompts = utils.load_pickle(cfg.hour_prompts)
+        #if hour not in hour_prompts:
+        #    hour_prompts[hour] = 1
+        #else:
+        #    hour_prompts[hour] += 1
+        #utils.dump_pickle(cfg.hour_prompts,hour_prompts)
         return result
 
     def add_context(self, role, content):

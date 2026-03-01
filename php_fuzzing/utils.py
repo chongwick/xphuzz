@@ -1,3 +1,4 @@
+import codecs
 import os
 import config as cfg
 import pickle
@@ -16,20 +17,44 @@ def log(msg):
         f.write(msg)
 
 def write_file(file_path, content):
-    f = open(file_path, "w")
-    fcntl.flock(f.fileno(), fcntl.LOCK_EX)
-    f.write(content)
-    fcntl.flock(f.fileno(), fcntl.LOCK_UN)
-    f.close()
+    #f = codecs.open(file_path, "w",encoding='utf-8',
+    #             errors='ignore')
+    #fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+    #f.write(content)
+    #fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+    #f.close()
+    if file_path in cfg.status:
+        lock = FileLock(cfg.status[file_path], timeout=-1)
+        with lock:
+            with codecs.open(file_path,"w",encoding='utf-8',
+                             errors='ignore') as f:
+                f.write(content)
+    else:
+        with codecs.open(file_path,"w",encoding='utf-8',
+                         errors='ignore') as f:
+            f.write(content)
+
+            
 
 def read_file(file_path):
-    f = open(file_path, "r")
-    fcntl.flock(f.fileno(), fcntl.LOCK_EX)
-    #while os.path.getsize(file_path) == 0:
-    #    pass
-    content = f.read()
-    fcntl.flock(f.fileno(), fcntl.LOCK_UN)
-    f.close()
+    #f = codecs.open(file_path, "r",encoding='utf-8',
+    #             errors='ignore')
+    #fcntl.flock(f.fileno(), fcntl.LOCK_EX)
+    ##while os.path.getsize(file_path) == 0:
+    ##    pass
+    #content = f.read()
+    #fcntl.flock(f.fileno(), fcntl.LOCK_UN)
+    #f.close()
+    if file_path in cfg.status:
+        lock = FileLock(cfg.status[file_path], timeout=-1)
+        with lock:
+            with codecs.open(file_path,"r",encoding='utf-8',
+                             errors='ignore') as f:
+                content = f.read()
+    else:
+        with codecs.open(file_path,"r",encoding='utf-8',
+                         errors='ignore') as f:
+            content = f.read()
     return content
         
 def dump_pickle(file_path, content):
