@@ -1,3 +1,0 @@
-<?php
-echo gmmktime(PHP_INT_MIN, PHP_FLOAT_MIN, PHP_FLOAT_MIN, PHP_INT_MAX, PHP_INT_MAX, PHP_INT_MAX). "\n";
-?>
