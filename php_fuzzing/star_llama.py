@@ -136,7 +136,7 @@ class Chat_LLM:
         self.context = context
         self.original_context = self.context.copy()
         self.temperature = temperature
-        self.max_response_length = 500
+        self.max_response_length = 2048
         self.token_count = self.num_tokens_from_string(self.context[0]['content'])
         self.tokenizer = AutoTokenizer.from_pretrained(cfg.model_id)
         self.model = AutoModelForCausalLM.from_pretrained(
